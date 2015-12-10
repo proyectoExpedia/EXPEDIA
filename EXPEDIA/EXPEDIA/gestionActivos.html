@@ -96,7 +96,7 @@
                                     </div>
 
                                     <fieldset class="pure-control-group">
-                                        <label for="Tipo">Descripción del activo</label>
+                                        <label for="descripcion">Descripción del activo</label>
                                         <select data-toggle="tooltip" title="En este espacio debe proporcionar la descripción del propósito general del activo, es requerido. " id="descripcion" class="pure-input-1-2">
                                             <option>Elija una descripción</option>
                                             <option>Laptop</option>
@@ -125,7 +125,7 @@
                                     </div>
 
                                     <div class="pure-control-group">
-                                        <label for="area">Proveedor</label>
+                                        <label for="provedor">Proveedor</label>
                                         <select data-toggle="tooltip" title="Proveedor: En este espacio debe proporcionar el nombre del proveedor del activo, es requerido." id="provedor" class="pure-input-1-2">
                                             <option>Elija un proveedor</option>
                                             <option>HP</option>
@@ -217,7 +217,7 @@
                                         </div>
 
                                         <fieldset class="pure-control-group">
-                                            <label for="Tipo">Descripción del activo</label>
+                                            <label for="descripcion1">Descripción del activo</label>
                                             <select data-toggle="tooltip" title="En este espacio debe proporcionar la descripción del propósito general del activo, es requerido. " disabled id="descripcion1" class="pure-input-1-2">
                                                 <option>Laptop</option>
                                                 <option>Dispositivo de audio</option>
@@ -233,7 +233,7 @@
                                         </fieldset>
 
                                         <div class="pure-control-group">
-                                            <label for="area">Área destinada</label>
+                                            <label for="prove1">Área destinada</label>
                                             <select data-toggle="tooltip" title="En este espacio debe proporcionar el área la cual está destinada el activo, es requerido. " disabled id="area1" class="pure-input-1-2">
                                                 <option>Recursos Humanos</option>
                                                 <option>Departamento Legal</option>
@@ -349,8 +349,8 @@
                                         </div>
                                         <div class="modal-footer">
                                             <div class="span">
-                                                <button id="btn" class="btn btn-success">Registrar descripción</button>
-                                                <button class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                                                <button onclick="Guardar(1)" id="btn" class="btn btn-success">Registrar descripción</button>
+                                                <button onclick="Mostrar_Infoo(1)" class="btn btn-default" data-dismiss="modal">Cerrar</button>
                                             </div>
                                             <div class="span pull-left" style="margin-top:20px;">
                                                 <div class="alert alert-success fade">
@@ -398,21 +398,21 @@
                                                     <fieldset class="pure-control-group">
                                                         <label for="telefono">Número telefónico de la empresa</label>
                                                         <span class="add-on btn btn-default">506</span>
-                                                        <input id="telefono" required type="text" placeholder="########" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar el número telefónico principal del proveedor a registrar, es requerido.">
+                                                        <input id="telefono" required type="number" placeholder="########" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar el número telefónico principal del proveedor a registrar, es requerido." min="11111111" max="99999999">
                                                     </fieldset>
 
                                                     <fieldset class="pure-control-group">
                                                         <label for="telefono">Número telefónico de contacto </label>
                                                         <span class="add-on btn btn-default">506</span>
-                                                        <input id="telefono" type="text" placeholder="########" required data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar el número telefónico principal del contacto del proveedor, es requerido.">
+                                                        <input id="telefono" type="number" placeholder="########" required data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar el número telefónico principal del contacto del proveedor, es requerido."  min="11111111" max="99999999">
                                                     </fieldset>
                                                 </fieldset>
                                             </div>
                                         </div>
                                         <div class="modal-footer">
                                             <div class="span">
-                                                <button id="pv1" class="btn btn-success">Registrar proveedor</button>
-                                                <button class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                                                <button onclick="Guardar(3)" id="pv1" class="btn btn-success">Registrar proveedor</button>
+                                                <button onclick="Mostrar_Infoo(3)" class="btn btn-default" data-dismiss="modal">Cerrar</button>
                                             </div>
                                             <div class="span pull-left" style="margin-top:20px;">
                                                 <div class="alert alert-success fade">
@@ -447,16 +447,16 @@
                                                             <input id="idareas" required type="text" placeholder="AR-001" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar un identificador que caracterice el área o unidad que se esté registrando, es requerido. ">
                                                         </div>
                                                         <div class="input-prepend">
-                                                            <label for="area">Área</label>
-                                                            <input id="area" required type="text" placeholder="Recursos Humanos" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar el nombre de la área que se desea registrar, es requerido. ">
+                                                            <label for="area57">Área</label>
+                                                            <input id="area57" required type="text" placeholder="Recursos Humanos" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar el nombre de la área que se desea registrar, es requerido. ">
                                                         </div>
                                                     </fieldset>
                                                 </div> <!-- /container -->
                                             </div>
                                             <div class="modal-footer">
                                                 <div class="span">
-                                                    <button id="bt1" class="btn btn-success">Registrar área</button>
-                                                    <button class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                                                    <button onclick="Guardar(2)" id="bt1" class="btn btn-success">Registrar área</button>
+                                                    <button  onclick="Mostrar_Infoo(2)"class="btn btn-default" data-dismiss="modal">Cerrar</button>
                                                 </div>
                                                 <div class="span pull-left" style="margin-top:20px;">
                                                     <div class="alert alert-success fade">
@@ -510,5 +510,54 @@
             $('[data-toggle="tooltip"]').tooltip();
         });
     </script>
+    <script>
+    function Guardar(y)
+    { switch(y){
+    case 1: { localStorage["Descripcion"] = document.getElementById("ocupacion").value; break; }
+    case 2: { localStorage["Area"] = document.getElementById("area57").value; break; }
+    case 3: { localStorage["Proveedor"] = document.getElementById("nproveedor").value; break; }
+    }
+    }
+
+
+    function Mostrar_Infoo(x)
+    {
+        switch (x) {
+            case 1: { var option = document.createElement("option");
+                option.text = localStorage["Descripcion"].toString();
+                document.getElementById("descripcion").add(option);
+            Mostrar_Infoo(4);
+            break;
+            }
+            case 2: {var option1 = document.createElement("option");
+            option1.text = localStorage["Area"];
+            document.getElementById("area").add(option1);
+            Mostrar_Infoo(5);
+            break;
+            }
+            case 3: {
+            var option = document.createElement("option");
+            option.text = localStorage["Proveedor"].toString();
+            document.getElementById("provedor").add(option);
+            Mostrar_Infoo(6);
+            break;
+            }
+
+            case 4: {
+            var option1 = document.createElement("option");
+            option1.text = localStorage["Descripcion"];
+            document.getElementById("descripcion1").add(option1); break;
+            }
+            case 5: { var option1 = document.createElement("option");
+                option1.text = localStorage["Area"];
+                document.getElementById("area1").add(option1); break;
+            }
+            case 6: { var option = document.createElement("option");
+                option.text = localStorage["Proveedor"].toString();
+                document.getElementById("prove1").add(option); break;
+            }
+            }
+
+    }</script>
 </body>
 </html>
