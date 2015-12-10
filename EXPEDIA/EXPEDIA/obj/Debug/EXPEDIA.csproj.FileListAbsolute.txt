@@ -1,0 +1,6 @@
+C:\Users\Personal\Documents\GitHub\cat-game\EXPEDIA\EXPEDIA\EXPEDIA\bin\EXPEDIA.dll.config
+C:\Users\Personal\Documents\GitHub\cat-game\EXPEDIA\EXPEDIA\EXPEDIA\bin\EXPEDIA.dll
+C:\Users\Personal\Documents\GitHub\cat-game\EXPEDIA\EXPEDIA\EXPEDIA\bin\EXPEDIA.pdb
+C:\Users\Personal\Documents\GitHub\cat-game\EXPEDIA\EXPEDIA\EXPEDIA\obj\Debug\EXPEDIA.csprojResolveAssemblyReference.cache
+C:\Users\Personal\Documents\GitHub\cat-game\EXPEDIA\EXPEDIA\EXPEDIA\obj\Debug\EXPEDIA.dll
+C:\Users\Personal\Documents\GitHub\cat-game\EXPEDIA\EXPEDIA\EXPEDIA\obj\Debug\EXPEDIA.pdb
