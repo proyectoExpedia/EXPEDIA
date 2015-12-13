@@ -77,7 +77,16 @@
                                         <label for="cedula">Número de cédula</label>
                                         <input id="cedula" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar el número de cedula de la persona a registrar, omita guiones y todos los dígitos del documento de identidad, es requerido." type="text" placeholder="#########" required>
                                     </div>
+                                    <button type="button" onclick="myFunction()">Insert option</button>
 
+                                    <script>
+function myFunction() {
+    var x = document.getElementById("puesto");
+    var option = document.createElement("option");
+    option.text = "Kiwi";
+    x.add(option);
+}
+                                    </script>
                                     <div class="pure-control-group">
                                         <label for="contraseña">Contraseña</label>
                                         <input id="contraseña" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar la contraseña que el usuario desee para su eventual ingreso al sistema, es requerido. " type="password" required>
@@ -98,7 +107,7 @@
                                         <div class="input-prepend">
                                             <label for="telefono">Número telefónico</label>
                                             <span class="add-on btn btn-default">506</span>
-                                            <input id="telefono" required type="text" placeholder="########" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar el número telefónico principal de la persona a registrar, es requerido.">
+                                            <input id="telefono" required type="number" placeholder="########" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar el número telefónico principal de la persona a registrar, es requerido." min="11111111" max="99999999">
                                         </div>
                                     </fieldset>
                                     <div class="pure-control-group">
@@ -210,7 +219,7 @@
                                         <fieldset class="pure-control-group">
                                             <label for="telefono1">Número telefónico</label>
                                             <span class="add-on btn btn-default">506</span>
-                                            <input id="telefono1" data-toggle="tooltip" title="En este espacio se debe proporcionar el número telefónico principal de la persona a modificar, es requerido." required type="text" value="83420113" placeholder="########" readonly>
+                                            <input id="telefono1" data-toggle="tooltip" title="En este espacio se debe proporcionar el número telefónico principal de la persona a modificar, es requerido." required type="number" value="83420113" placeholder="########" min="11111111" max="99999999" readonly>
                                         </fieldset>
 
                                         <div class="pure-control-group">
@@ -219,6 +228,7 @@
                                                 <option>Juez</option>
                                                 <option>Abogado(a)</option>
                                                 <option>Informático</option>
+                                                <option disabled>¿La ocupación no aparece? Haz uso el icono situado contiguo a esta categoría para proporcionar una nueva.</option>
                                             </select>
                                             <a id="p" data-toggle="modal" class="label disabled" data-target="#modalPuesto"><span class="glyphicon glyphicon-wrench"></span></a>
                                         </div>
@@ -229,6 +239,7 @@
                                                 <option>Departamento Legal</option>
                                                 <option>Recursos Humanos</option>
                                                 <option>Biblioteca</option>
+                                                <option disabled>¿El área no aparece? Haz uso el icono situado contiguo a esta categoría para proporcionar una nueva.</option>
                                             </select>
                                             <a id="a" data-toggle="modal" class="label disabled" data-target="#modalAreas"><span class="glyphicon glyphicon-wrench"></span></a>
                                         </div>
@@ -343,8 +354,8 @@
                                     </div>
                                     <div class="modal-footer">
                                         <div class="span">
-                                            <button id="btn" class="btn btn-success">Registrar ocupacion</button>
-                                            <button class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                                            <button id="btn" onclick="Guardar(1)" class="btn btn-success">Registrar ocupacion</button>
+                                            <button onclick="Mostrar_Info_Usuario(1)" class="btn btn-default" data-dismiss="modal">Cerrar</button>
                                         </div>
                                         <div class="span pull-left" style="margin-top:20px;">
                                             <div class="alert alert-success fade">
@@ -379,16 +390,16 @@
                                                         <input id="idareas" required type="text" placeholder="AR-001" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar un identificado que caracterice el área o unidad que se esté registrando, es requerido. ">
                                                     </div>
                                                     <div class="input-prepend">
-                                                        <label for="area">Área</label>
-                                                        <input id="area" required type="text" placeholder="Recursos Humanos" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar el nombre de la área que se desea registrar, es requerido. ">
+                                                        <label for="area57">Área</label>
+                                                        <input id="area57" required type="text" placeholder="Recursos Humanos" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar el nombre de la área que se desea registrar, es requerido. ">
                                                     </div>
                                                 </fieldset>
                                             </div> <!-- /container -->
                                         </div>
                                         <div class="modal-footer">
                                             <div class="span">
-                                                <button id="bt1" class="btn btn-success">Registrar área</button>
-                                                <button class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                                                <button onclick="Guardar(2)" id="bt1" class="btn btn-success">Registrar área</button>
+                                                <button onclick="Mostrar_Info_Usuario(2)" class="btn btn-default" data-dismiss="modal">Cerrar</button>
                                             </div>
                                             <div class="span pull-left" style="margin-top:20px;">
                                                 <div class="alert alert-success fade">
@@ -442,5 +453,47 @@
             $('[data-toggle="tooltip"]').tooltip();
         });
     </script>
+    <script>
+
+        function Guardar(y)
+        { switch(y){
+            case 1: { localStorage["Ocupacion"] = document.getElementById("ocupacion").value; break; }
+            case 2: { localStorage["Area"] = document.getElementById("area57").value; break; }
+                   }
+        }
+
+
+        function Mostrar_Info_Usuario(x)
+        {
+
+            switch(x){
+                case 1: {
+                   
+                    var option = document.createElement("option");
+                    option.text = localStorage["Ocupacion"].toString();
+                    document.getElementById("puesto").add(option);
+                    Mostrar_Info_Usuario(3);
+                    break;
+                }
+                case 2: {var option1 = document.createElement("option");
+                    option1.text = localStorage["Area"];
+                    document.getElementById("area").add(option1);
+                    Mostrar_Info_Usuario(4);
+                    break;
+                }
+                case 3: {
+                    var option = document.createElement("option");
+                    option.text = localStorage["Ocupacion"].toString();
+                    document.getElementById("puesto1").add(option);
+                    break;
+                }
+                case 4: {
+                    var option1 = document.createElement("option");
+                    option1.text = localStorage["Area"];
+                    document.getElementById("area1").add(option1); break;
+                }
+        }
+
+}</script>
 </body>
 </html>
