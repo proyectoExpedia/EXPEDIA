@@ -30,7 +30,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" style="float:right" href="#"><h3>Colegio de Abogados de Costa Rica</h3></a>
+                <a class="navbar-brand" style="float:right" href="#"><h3>Colegio de Abogados y Abogadas de Costa Rica</h3></a>
             </div>
             <!-- Opciones menu -->
             <div class="col-md-6" style="margin-top:15px;">
@@ -123,10 +123,32 @@
                                     </div>
 
                                     <div class="pure-control-group">
+                                        <label for="fechaCompra">Fecha de compra</label>
+                                        <input data-toggle="tooltip" title="En este espacio debe proporcionar la fecha de caducidad de la garantía del activo, es requerido." id="fechaCompra" type="text" placeholder="Fecha de compra">
+                                        <script>$("#fechaCompra").datepicker();</script>
+                                    </div>
+
+                                    <div class="pure-control-group">
                                         <label for="fechaGarantia">Fecha de la garantía</label>
                                         <input data-toggle="tooltip" title="En este espacio debe proporcionar la fecha de caducidad de la garantía del activo, es requerido." id="fechaGarantia" type="text" placeholder="Fecha de garantía">
                                         <script>$("#fechaGarantia").datepicker();</script>
                                     </div>
+
+                                    <fieldset class="pure-control-group">
+                                        <label for="descripcion">Duración de la garantía</label>
+                                        <select data-toggle="tooltip" title="En este espacio debe proporcionar la descripción del propósito general del activo, es requerido. " id="descripcion" class="pure-input-1-2">
+                                            <option>1 año</option>
+                                            <option>2 años</option>
+                                            <option>3 años</option>
+                                            <option disabled>¿La duración que busca no aparece? Haz uso el icono situado contiguo a esta categoría para proporcionar una nueva.</option>
+                                        </select>
+                                        <a data-toggle="modal" data-target="#modalDescripcion"><span class="glyphicon glyphicon-wrench"></span></a>
+                                    </fieldset>  
+                                   
+                                    <div class="pure-control-group">
+                                        <label for="nplaca">Costo en colones, del activo</label>
+                                        <input data-toggle="tooltip" title="En este espacio debe ingresar el precio en colones, del activo. Utilice la cifra exacta. Evite redondear números." id="nplaca" type="text" placeholder="120360.17" required>
+                                    </div>                                
 
                                     <fieldset class="pure-control-group">
                                         <label for="descripcion">Descripción del activo</label>
@@ -145,14 +167,16 @@
                                         <a data-toggle="modal" data-target="#modalDescripcion"><span class="glyphicon glyphicon-wrench"></span></a>
                                     </fieldset>
 
+
                                     <div class="pure-control-group">
-                                        <label for="area">Área destinada</label>
+                                        <label for="area">Departamento o Sede regional destinado(a)</label>
                                         <select data-toggle="tooltip" title="En este espacio debe proporcionar el área la cual está destinada el activo, es requerido. " id="area" class="pure-input-1-2">
                                             <option>Elija un área</option>
                                             <option>Recursos Humanos</option>
                                             <option>Departamento Legal</option>
-                                            <option>Biblioteca</option>
-                                            <option disabled>¿El area no aparece? Haz uso el icono situado contiguo a esta categoría para proporcionar una nueva.</option>
+                                            <option>Sede Grecia</option>
+                                            <option>Sede Alajuela</option>
+                                            <option disabled>¿La opción que busca no aparece? Haz uso el icono situado contiguo a esta categoría para proporcionar una nueva.</option>
                                         </select>
                                         <a data-toggle="modal" data-target="#modalAreas"><span class="glyphicon glyphicon-wrench"></span></a>
                                     </div>
