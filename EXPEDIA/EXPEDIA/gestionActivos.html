@@ -70,20 +70,53 @@
                                 <fieldset> 
                                     <div class="pure-controls-group">
                                         <label for="Genero">Tipo de activo</label>
-                                        <div style="margin-left:55px;" class="btn-group" data-toggle="buttons">
-                                            <label class="btn btn-primary">
+                                        <div style="margin-left:55px" class="btn-group" data-toggle="buttons">
+                                            <label class="btn btn-primary" onclick="mostrarleasing(1);">
                                                 <input type="radio" name="options" id="option1" autocomplete="off"> Software
                                             </label>
-                                            <label class="btn btn-primary ">
+                                            <label class="btn btn-primary " onclick="mostrarleasing(2);">
                                                 <input type="radio" name="options" id="option2" autocomplete="off"> Hardware
                                             </label>
+                                            <label class="btn btn-primary " onclick="mostrarleasing(3);">
+                                                <input type="radio" name="options" id="option3" autocomplete="off"> Leasing
+                                            </label> 
+                                            
                                         </div>
                                     </div>
 
+                                    <script> 
+                                        //function mostrarleasing() {
+                                        //    document.getElementById('leasing').style.display = 'block';
+                                        //}
+                                        function mostrarleasing(algo) {
+                                            switch (algo) {
+                                                case 1:
+                                                    document.getElementById('leasing').style.display = 'none';
+                                                    break;
+                                                case 2:
+                                                    document.getElementById('leasing').style.display = 'none';
+                                                    break;
+                                                case 3:
+                                                    document.getElementById('leasing').style.display = 'block';
+                                                    break;
+                                            }
+                                        }
+                                    </script>
+
                                     <div class="pure-control-group">
                                         <label for="nplaca">Número de placa del activo</label>
+                                        <input data-toggle="tooltip" title="En este espacio debe .roporcionar el nuevo número de placa del activo a registrar, es requerido" id="nplaca" type="text" placeholder="ENF-1523" required>
+                                    </div>
+
+                                    <div class="pure-control-group" id="leasing" style="display:none">
+                                        <label for="nplaca">Holi 1</label>
+                                        <input data-toggle="tooltip" title="En este espacio debe proporcionar el nuevo número de placa del activo a registrar, es requerido" id="nplaca" type="text" placeholder="ENF-1523" required>
+                                        <label for="nplaca">Holi 2</label>
+                                        <input data-toggle="tooltip" title="En este espacio debe proporcionar el nuevo número de placa del activo a registrar, es requerido" id="nplaca" type="text" placeholder="ENF-1523" required>
+                                        <label for="nplaca">Holi 3</label>
                                         <input data-toggle="tooltip" title="En este espacio debe proporcionar el nuevo número de placa del activo a registrar, es requerido" id="nplaca" type="text" placeholder="ENF-1523" required>
                                     </div>
+
                                     <div class="pure-control-group">
                                         <label for="nserie">Número de serie del activo</label>
                                         <input data-toggle="tooltip" title="En este espacio debe proporcionar el nuevo número de serie del activo, es requerido" id="nserie" type="text" placeholder="XAD234ASFSD23" required>
@@ -171,11 +204,13 @@
                                 </script>
                             </div>
 
+
                             <div id="oculto" class="pure-form pure-form-aligned" style="display:none">
                                 <!--Esto realmente es un form-->
                                 <fieldset>
                                     <div class="pure-control-group" style="margin-top:40px;">
                                         <p>
+
                                             <button class="btn btn-success" id="hab" onclick="habilitar();">Habilitar modificación</button>
                                             <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal">Inhabilitar activo</button>
                                         </p>
