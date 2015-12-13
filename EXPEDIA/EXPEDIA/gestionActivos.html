@@ -109,12 +109,27 @@
                                     </div>
 
                                     <div class="pure-control-group" id="leasing" style="display:none">
-                                        <label for="nplaca">Holi 1</label>
-                                        <input data-toggle="tooltip" title="En este espacio debe proporcionar el nuevo número de placa del activo a registrar, es requerido" id="nplaca" type="text" placeholder="ENF-1523" required>
-                                        <label for="nplaca">Holi 2</label>
-                                        <input data-toggle="tooltip" title="En este espacio debe proporcionar el nuevo número de placa del activo a registrar, es requerido" id="nplaca" type="text" placeholder="ENF-1523" required>
-                                        <label for="nplaca">Holi 3</label>
-                                        <input data-toggle="tooltip" title="En este espacio debe proporcionar el nuevo número de placa del activo a registrar, es requerido" id="nplaca" type="text" placeholder="ENF-1523" required>
+                                        <div class="pure-control-group">
+                                            <label for="fechaEntrega">Fecha de entrega a la empresa</label>
+                                            <input data-toggle="tooltip" title="En este espacio debe proporcionar la fecha en que la empresa recibe el activo por parte del proveedor, es requerido." id="fechaGarantia" type="text" placeholder="Fecha de entrega">
+                                            <script>$("#fechaEntrega").datepicker();</script>
+                                        </div>
+                                        <fieldset class="pure-control-group">
+                                            <label for="descripcion">Duración del contrato</label>
+                                            <select data-toggle="tooltip" title="En este espacio debe proporcionar la descripción del propósito general del activo, es requerido. " id="descripcion" class="pure-input-1-2">
+                                                <option>Elija una duración</option>
+                                                <option>1 año</option>
+                                                <option>2 años</option>
+                                                <option>3 años</option>
+                                                <option>Servidor</option>
+                                                <option disabled>¿La duración no aparece? Haz uso el icono situado contiguo a esta categoría para proporcionar una nueva.</option>
+                                            </select>
+                                            <a data-toggle="modal" data-target="#modalDescripcion"><span class="glyphicon glyphicon-wrench"></span></a>
+                                        </fieldset>
+                                        <fieldset class="pure-control-group">
+                                            <label for="Tipo">Especificaciones técnicas</label>
+                                            <textarea data-toggle="tooltip" title="En este espacio se debe proporcionar las cualidades del activo." class="pure-input-1-2" placeholder="Especificaciones Técnicas"></textarea>
+                                        </fieldset>
                                     </div>
 
                                     <div class="pure-control-group">
@@ -124,13 +139,13 @@
 
                                     <div class="pure-control-group">
                                         <label for="fechaCompra">Fecha de compra</label>
-                                        <input data-toggle="tooltip" title="En este espacio debe proporcionar la fecha de caducidad de la garantía del activo, es requerido." id="fechaCompra" type="text" placeholder="Fecha de compra">
+                                        <input data-toggle="tooltip" title="En este espacio debe proporcionar la fecha de compra del activo, es requerido." id="fechaCompra" type="text" placeholder="Fecha de compra">
                                         <script>$("#fechaCompra").datepicker();</script>
                                     </div>
 
                                     <div class="pure-control-group">
                                         <label for="fechaGarantia">Fecha de la garantía</label>
-                                        <input data-toggle="tooltip" title="En este espacio debe proporcionar la fecha de caducidad de la garantía del activo, es requerido." id="fechaGarantia" type="text" placeholder="Fecha de garantía">
+                                        <input data-toggle="tooltip" title="En este espacio debe proporcionar la fecha en que inicia la garantía del activo, es requerido." id="fechaGarantia" type="text" placeholder="Fecha de garantía">
                                         <script>$("#fechaGarantia").datepicker();</script>
                                     </div>
 
@@ -147,7 +162,7 @@
                                    
                                     <div class="pure-control-group">
                                         <label for="nplaca">Costo en colones, del activo</label>
-                                        <input data-toggle="tooltip" title="En este espacio debe ingresar el precio en colones, del activo. Utilice la cifra exacta. Evite redondear números." id="nplaca" type="text" placeholder="120360.17" required>
+                                        <input data-toggle="tooltip" title="En este espacio debe ingresar el precio en colones, del activo. Utilice la cifra exacta. Evite redondear números. Es requerido" id="nplaca" type="text" placeholder="120360.17" required>
                                     </div>                                
 
                                     <fieldset class="pure-control-group">
@@ -171,7 +186,7 @@
                                     <div class="pure-control-group">
                                         <label for="area">Departamento o Sede regional destinado(a)</label>
                                         <select data-toggle="tooltip" title="En este espacio debe proporcionar el área la cual está destinada el activo, es requerido. " id="area" class="pure-input-1-2">
-                                            <option>Elija un área</option>
+                                            <option>Elija un Área o Departamento</option>
                                             <option>Recursos Humanos</option>
                                             <option>Departamento Legal</option>
                                             <option>Sede Grecia</option>
