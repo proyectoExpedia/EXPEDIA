@@ -19,6 +19,7 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -102,6 +103,7 @@
     <Content Include="js\jQueryUI\jquery-ui.theme.min.css" />
     <Content Include="js\validator.js" />
     <Content Include="mainAdministrator.html" />
+    <Content Include="gestionConsultas.html" />
     <Content Include="pruebas.html" />
     <Content Include="Web.config" />
   </ItemGroup>
