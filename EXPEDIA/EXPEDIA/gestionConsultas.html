@@ -167,30 +167,16 @@
                                  
                                 </script>
 
-                               
-
-
-
-
-</form>
+                               </form>
                         </div>
 
-                      
-                        
-
-
-
-
-
-
-
+                      <!--FORMULARIO Y TABLAS DE BITACORA-->
+               
 
                         <div class="tab-pane fade" id="Consultar">
                             <h1 style="text-align:center">Bitacora</h1>
                             <div class="container">
-
-
-                                <div id="dvData1">
+                                 <div id="dvData1">
 
                                     <table id="table1" class="TABLAS">
                                         <tr>
@@ -276,14 +262,6 @@
                             </script>
 
 
-
-
-                                <script>
-                                                $("#bt1").on("click", function () {
-                                                    $(".alert").removeClass("in").show();
-                                                    $(".alert").delay(500).addClass("in").fadeOut(2000);
-                                                });
-                                </script>
 </div>
                                     </div>
                                 </div>
@@ -295,26 +273,7 @@
             <h5 style="text-align: center" class="text-muted">Prototipo I EXPEDIA - Ingeniería en sistemas de información II</h5>
         </div>
     </footer>
-    <script>
-        // You can also use "$(window).load(function() {"
-        $(document).ready(function () {
-            $('.bxslider').bxSlider({
-                mode: 'fade',
-                auto: true,
-                controls: false
-            });
-        });
-    </script>
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $("#enviar").click(function () {
-                $('#mensaje').show(2000, 'swing', function () {
-                    //callback function after animation finished
-                    $("enviar").attr('value', 'Las acciones han sido realizadas correctamente');
-                });
-            });
-        });
-    </script>
-   
+
+  
 </body>
 </html>
