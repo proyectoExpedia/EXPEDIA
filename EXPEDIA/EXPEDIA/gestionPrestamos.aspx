@@ -1,7 +1,10 @@
-﻿<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="gestionPrestamos.aspx.cs" Inherits="EXPEDIA.gestionPrestamos" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+ <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>EXPEDIA</title>
     <link href="css/bootstrap.css" rel="stylesheet" />
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" />
@@ -21,10 +24,9 @@
     <link href="css/bootstrap-table.css" rel="stylesheet" />
     <script src="https://cdn.datatables.net/1.10.10/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.10/js/dataTables.bootstrap.min.js"></script>
-
 </head>
 <body>
-    <!--Menu-->
+  <!--Menu-->
     <nav class="navbar" role="navigation" style="margin-top:20px;">
         <div class="container">
             <ul class="bxslider">
@@ -449,6 +451,5 @@ condiciones fisicas - en caso de préstamo o traslado)
             $('[data-toggle="tooltip"]').tooltip();
         });
     </script>
-
 </body>
 </html>

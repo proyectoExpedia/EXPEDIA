@@ -1,8 +1,10 @@
-﻿<!DOCTYPE html>
-<html lang="en">
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="index.aspx.cs" Inherits="EXPEDIA.index" %>
 
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>EXPEDIA</title>
     <link href="css/bootstrap.css" rel="stylesheet" />
     <link href="css/half-slider.css" rel="stylesheet">
@@ -13,9 +15,8 @@
     <link href="css/jquery.bxslider.css" rel="stylesheet" />
     <script src="js/jquery.bxslider.js"></script>
 </head>
-
 <body>
-    <!--Menu-->
+  <!--Menu-->
     <nav class="navbar" role="navigation" style="margin-top:20px;">
         <div class="container">
             <ul class="bxslider">
@@ -163,5 +164,4 @@
         });
     </script>
 </body>
-
 </html>

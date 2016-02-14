@@ -1,6 +1,9 @@
-﻿<!DOCTYPE html>
-<html lang="en">
-<head>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="gestionActivos.aspx.cs" Inherits="EXPEDIA.gestionActivos" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>EXPEDIA</title>
     <link href="css/bootstrap.css" rel="stylesheet" />
@@ -16,7 +19,7 @@
     <link href="js/jQueryUI/jquery-ui.min.css" rel="stylesheet" />
 </head>
 <body>
-    <!--Menu-->
+ <!--Menu-->
     <nav class="navbar" role="navigation" style="margin-top:20px;">
         <div class="container">
             <ul class="bxslider">
