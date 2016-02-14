@@ -332,6 +332,9 @@
        FIRMA DEL RESPONSABLE                                                  FIRMA DEL RESPONSABLE</pre>
                                                 <pre style="background:none; width:85%;">Observaciones: (indicar si se entrega con otros componentes,motivode préstamo,traslado o exclisión y
 condiciones fisicas - en caso de préstamo o traslado)
+
+
+
 </pre>
 
                                                 <pre style="border:none; background:none"> Visto bueno:  ___________________________________                    ___________________________________
@@ -349,11 +352,15 @@ condiciones fisicas - en caso de préstamo o traslado)
                                             function imprSelec(muestra)
                                             {
                                                 var ficha = document.getElementById(muestra);
-                                                var ventimp = window.open(' ', 'popimpr', imprSelec);
-                                                ventimp.document.write(ficha.innerHTML);
-                                                ventimp.document.close();
-                                                ventimp.print();
-                                                ventimp.close();
+                                               
+                                                var ventana = window.open("about :blank", "ventana", "width=711.628,height=692.105,top=0,left=0");
+                                                ventana.document.open();
+                                                ventana.document.write(ficha.outerHTML);
+                                    
+                                                ventana.document.close();
+                                                ventana.print();
+                                                ventana.focus();
+                                                ventana.close();
                                             }
                                                 </script>
                                                 <button class="btn btn-default" data-dismiss="modal">Cerrar</button>
