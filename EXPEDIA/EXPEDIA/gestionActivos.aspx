@@ -39,7 +39,7 @@
             <div class="col-md-6" style="margin-top:15px;">
                 <div class="panel-heading">
                     <ul class="nav nav-tabs">
-                        <li class="active"><a href="index.html">Salir</a></li>
+                        <li class="active"><a href="index.aspx">Salir</a></li>
                         <li><a href="#tab2primary" data-toggle="tab">Conozcanos</a></li>
                         <li><a href="#tab3primary" data-toggle="tab">Contacto</a></li>
                         <!--<li class="dropdown">
@@ -64,7 +64,7 @@
                     <ul id="myTab" class="nav nav-tabs">
                         <li class="active"><a href="#Ingresar" data-toggle="tab">Registro de activos <span class="glyphicon glyphicon-plus-sign"></span></a></li>
                         <li><a href="#Consultar" data-toggle="tab">Control de activos <span class="glyphicon glyphicon-question-sign"></span><span class="glyphicon glyphicon-minus-sign"></span><span class="glyphicon glyphicon-ok-sign"></span></a></li>
-                        <a style="float:right" href="mainAdministrator.html" class="btn"><span class="glyphicon glyphicon-menu-left"></span>  Atrás</a>
+                        <a style="float:right" href="mainAdministrador.aspx" class="btn"><span class="glyphicon glyphicon-menu-left"></span>  Atrás</a>
                     </ul>
                     <div id="myTabContent" class="tab-content">
                         <div class="tab-pane fade in active" id="Ingresar">

@@ -110,10 +110,10 @@
                         </div>
                         <div class="modal-body">
                             <div class="container" style="width: 300px;">
-                                <form action="mainAdministrator.html" onsubmit="">
+                                <form action="mainAdministrador.aspx" onsubmit="">
                                     <h2 class="form-signin-heading">Ingresa tus credenciales</h2>
-                                    <input name="username" type="text" id="username" size="20" class="form-control" placeholder="Número de cédula (#########)" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar su número de cedula, omita guiones y todos los dígitos del documento de identidad" required autofocus>
-                                    <input name="password" type="password" id="password" size="20" class="form-control" placeholder="Contraseña" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar su contraseña." required>
+                                    <input name="username" type="text" id="username" size="20" class="form-control" placeholder="Número de cédula (#########)" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar su número de cedula, omita guiones y todos los dígitos del documento de identidad" required autofocus />
+                                    <input name="password" type="password" id="password" size="20" class="form-control" placeholder="Contraseña" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar su contraseña." required />
                                     <div class="checkbox">
                                         <label>
                                             <input type="checkbox" value="remember-me"> Recuerdame

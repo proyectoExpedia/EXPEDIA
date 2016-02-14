@@ -37,7 +37,7 @@
             <div class="col-md-6" style="margin-top:15px;">
                 <div class="panel-heading">
                     <ul class="nav nav-tabs">
-                        <li class="active"><a href="index.html">Salir</a></li>
+                        <li class="active"><a href="index.aspx">Salir</a></li>
                         <li><a href="#tab2primary" data-toggle="tab">Conózcanos</a></li>
                         <li><a href="#tab3primary" data-toggle="tab">Contacto</a></li>
                         <!--<li class="dropdown">
@@ -90,7 +90,7 @@
                                     </div>
                                 </div>
                                 <div class="caption" style="text-align:center">
-                                    <a href="gestionUsuarios.html" class="btn">
+                                    <a href="gestionUsuarios.aspx" class="btn">
                                         <span style="font-size: 60px" class="glyphicon glyphicon-user"></span>
                                         <h3>Gestión de usuarios</h3>
                                     </a>
@@ -123,7 +123,7 @@
                                     </div>
                                 </div>
                                 <div class="caption" style="text-align:center">
-                                        <a href="gestionActivos.html" class="btn">
+                                        <a href="gestionActivos.aspx" class="btn">
                                         <span style="font-size: 60px" class="glyphicon glyphicon-barcode"></span>
                                         <h3>Gestión de activos</h3>
                                     </a>
@@ -189,7 +189,7 @@
                                     </div>
                                 </div>
                                 <div class="caption" style="text-align:center">
-                                    <a href="gestionPrestamos.html" class="btn">
+                                    <a href="gestionPrestamos.aspx" class="btn">
                                         <span style="font-size: 60px" class="glyphicon glyphicon-th-list"></span>
                                         <h3>Gestión de prestamos</h3>
                                     </a>
@@ -255,7 +255,7 @@
                                     </div>
                                 </div>
                                 <div class="caption" style="text-align:center">
-                                    <a href="gestionConsultas.html" class="btn">
+                                    <a href="gestionConsultas.aspx" class="btn">
                                         <span style="font-size: 60px" class="glyphicon glyphicon-shopping-cart"></span>
                                         <h3>Gestión de consultas</h3>
                                     </a>
