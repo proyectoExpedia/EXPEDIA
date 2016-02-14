@@ -58,6 +58,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="conectarBase.aspx" />
     <Content Include="css\boostrap-snipp.css" />
     <Content Include="css\bootstrap-table.css" />
     <Content Include="css\bootstrap.css" />
@@ -73,6 +74,7 @@
     <Content Include="img\Thumbs.db" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
+      <SubType>Designer</SubType>
     </None>
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -110,6 +112,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="conectarBase.aspx.cs">
+      <DependentUpon>conectarBase.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="conectarBase.aspx.designer.cs">
+      <DependentUpon>conectarBase.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <PropertyGroup>
