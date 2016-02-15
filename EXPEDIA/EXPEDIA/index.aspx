@@ -100,6 +100,37 @@
                 <h1>Bienvenido a Expedia</h1>
                 <p>Texto referente a la bienvenida . . .</p>
             </div>
+
+                 <% if (Server.UrlDecode(Request.QueryString["rid"]) != null) {
+                                    %>
+                                            <div class="modal fade" id="exampleModa" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+                <div class="modal-dialog" role="document" style="width: 350px;">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" style="text-align:center" id="exampleModalLabe">Los datos ingresados son incorrectos</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="container" style="width: 300px;">
+                                Cedula o contraseña incorrectos
+                            </div> <!-- /container -->
+                            <script type="text/javascript">
+                                $(window).load(function () {
+                                    $('[data-toggle="tooltip"]').tooltip();
+                                    $('#exampleModa').modal('show');
+                                });
+                            </script>
+                        </div>
+                        <div class="modal-footer">
+                            <img src="img/ExpediaLogo.png" alt="" style="width:50px; height:50px;float:left" />
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                <% } %>
+
+
      
             <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
                 <div class="modal-dialog" role="document" style="width: 350px;">

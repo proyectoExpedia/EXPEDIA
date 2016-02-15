@@ -37,14 +37,12 @@ namespace EXPEDIA
             ValidarUsuario Vu = new ValidarUsuario();
             if (Vu.ValidarUs(cedula, pass))
             {
-
-                Response.Write("Ingresó");
                 
-                Response.Redirect("mainAdministrador.aspx");
+                Response.Redirect("mainAdministrador.aspx?rid="+ Server.HtmlEncode(cedula));
 
             }
             else
-                Response.Write("no ingresó");
+                Response.Redirect("index.aspx?rid=" + Server.HtmlEncode(cedula));
         }
 
     }

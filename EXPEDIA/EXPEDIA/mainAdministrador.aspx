@@ -56,6 +56,7 @@
         <div class="alert alert-success" role="alert">
             <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
             <span class="sr-only"><strong>Bienvenido:</strong></span>
+            <%=Server.UrlDecode(Request.QueryString["rid"])%>
             Recuerda cerrar tu sesión al terminar tus acciones.
             <button type="button" class="close" data-dismiss="alert"><span>&times;</span></button>
         </div>
