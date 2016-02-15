@@ -21,17 +21,9 @@ namespace EXPEDIA
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            String dir = "Data Source=ROJAS-PC\\SQLEXPRESS;Initial Catalog=BD_EXPEDIA;User ID=Administrador;Password=123456";
-            SqlConnection conexion = new SqlConnection(dir);
-            conexion.Open();
-            try
-            {
-                Response.Write(@"ok");
-            }
-            catch (Exception)
-            {
-                Response.Write(@"no!!!!");
-            }
+     
+
+
 
 
         }

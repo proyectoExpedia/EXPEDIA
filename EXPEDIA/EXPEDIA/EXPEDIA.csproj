@@ -119,6 +119,7 @@
     </Compile>
     <Compile Include="conectarBase.aspx.designer.cs">
       <DependentUpon>conectarBase.aspx</DependentUpon>
+    </Compile>
     <Compile Include="gestionActivos.aspx.cs">
       <DependentUpon>gestionActivos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -162,6 +163,7 @@
       <DependentUpon>mainAdministrador.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ValidarUsuario.cs" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

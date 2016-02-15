@@ -110,16 +110,14 @@
                         </div>
                         <div class="modal-body">
                             <div class="container" style="width: 300px;">
-                                <form action="mainAdministrador.aspx" onsubmit="">
+                                <%--<form action="mainAdministrador.aspx" onsubmit="">--%>
+                                    <form   runat="server">
                                     <h2 class="form-signin-heading">Ingresa tus credenciales</h2>
-                                    <input name="username" type="text" id="username" size="20" class="form-control" placeholder="Número de cédula (#########)" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar su número de cedula, omita guiones y todos los dígitos del documento de identidad" required autofocus />
-                                    <input name="password" type="password" id="password" size="20" class="form-control" placeholder="Contraseña" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar su contraseña." required />
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox" value="remember-me"> Recuerdame
-                                        </label>
-                                    </div>
-                                    <input class="btn btn-lg btn-primary btn-block" type="submit" value="Ingresar" />
+                                    <asp:TextBox    runat="server" ID="username" size="20" CssClass="form-control" placeholder="Número de cédula (#########)" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar su número de cedula, omita guiones y todos los dígitos del documento de identidad"  />
+                                    <asp:TextBox     runat="server" TextMode="Password"  ID="password" size="20" CssClass="form-control" placeholder="Contraseña" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar su contraseña." required />
+
+                                    <asp:Button  runat="server"  ID="Bt_Ingresar" CssClass="btn btn-lg btn-primary btn-block" OnClick="Bt_Ingresar_Click"   text="Ingresar"/>
+
                                 </form>
                             </div> <!-- /container -->
                             <script type="text/javascript">
