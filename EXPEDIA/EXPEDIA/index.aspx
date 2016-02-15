@@ -1,8 +1,10 @@
-﻿<!DOCTYPE html>
-<html lang="en">
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="index.aspx.cs" Inherits="EXPEDIA.index" %>
 
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>EXPEDIA</title>
     <link href="css/bootstrap.css" rel="stylesheet" />
     <link href="css/half-slider.css" rel="stylesheet">
@@ -13,9 +15,8 @@
     <link href="css/jquery.bxslider.css" rel="stylesheet" />
     <script src="js/jquery.bxslider.js"></script>
 </head>
-
 <body>
-    <!--Menu-->
+  <!--Menu-->
     <nav class="navbar" role="navigation" style="margin-top:20px;">
         <div class="container">
             <ul class="bxslider">
@@ -109,10 +110,10 @@
                         </div>
                         <div class="modal-body">
                             <div class="container" style="width: 300px;">
-                                <form action="mainAdministrator.html" onsubmit="">
+                                <form action="mainAdministrador.aspx" onsubmit="">
                                     <h2 class="form-signin-heading">Ingresa tus credenciales</h2>
-                                    <input name="username" type="text" id="username" size="20" class="form-control" placeholder="Número de cédula (#########)" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar su número de cedula, omita guiones y todos los dígitos del documento de identidad" required autofocus>
-                                    <input name="password" type="password" id="password" size="20" class="form-control" placeholder="Contraseña" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar su contraseña." required>
+                                    <input name="username" type="text" id="username" size="20" class="form-control" placeholder="Número de cédula (#########)" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar su número de cedula, omita guiones y todos los dígitos del documento de identidad" required autofocus />
+                                    <input name="password" type="password" id="password" size="20" class="form-control" placeholder="Contraseña" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar su contraseña." required />
                                     <div class="checkbox">
                                         <label>
                                             <input type="checkbox" value="remember-me"> Recuerdame
@@ -163,5 +164,4 @@
         });
     </script>
 </body>
-
 </html>

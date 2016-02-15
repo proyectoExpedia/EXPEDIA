@@ -58,6 +58,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="conectarBase.aspx" />
     <Content Include="css\boostrap-snipp.css" />
     <Content Include="css\bootstrap-table.css" />
     <Content Include="css\bootstrap.css" />
@@ -67,15 +68,18 @@
     <Content Include="css\jquery.bxslider.css" />
     <Content Include="css\purecss.css" />
     <Content Include="css\Tablas.css" />
-    <Content Include="gestionActivos.html" />
-    <Content Include="gestionPrestamos.html" />
-    <Content Include="gestionUsuarios.html" />
+    <Content Include="gestionActivos.aspx" />
+    <Content Include="GestionConsultas.aspx" />
+    <Content Include="gestionPrestamos.aspx" />
+    <Content Include="gestionUsuarios.aspx" />
     <Content Include="img\Thumbs.db" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
+      <SubType>Designer</SubType>
     </None>
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
+      <SubType>Designer</SubType>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -87,7 +91,7 @@
     <Content Include="img\Slider03.jpg" />
     <Content Include="img\Slider03.png" />
     <Content Include="img\User.png" />
-    <Content Include="index.html" />
+    <Content Include="index.aspx" />
     <Content Include="js\bootstrap.js" />
     <Content Include="js\bootstrap.min.js" />
     <Content Include="js\hover.js" />
@@ -103,13 +107,60 @@
     <Content Include="js\jQueryUI\jquery-ui.theme.css" />
     <Content Include="js\jQueryUI\jquery-ui.theme.min.css" />
     <Content Include="js\validator.js" />
-    <Content Include="mainAdministrator.html" />
-    <Content Include="gestionConsultas.html" />
+    <Content Include="mainAdministrador.aspx" />
     <Content Include="pruebas.html" />
     <Content Include="starter.html" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="conectarBase.aspx.cs">
+      <DependentUpon>conectarBase.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="conectarBase.aspx.designer.cs">
+      <DependentUpon>conectarBase.aspx</DependentUpon>
+    <Compile Include="gestionActivos.aspx.cs">
+      <DependentUpon>gestionActivos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="gestionActivos.aspx.designer.cs">
+      <DependentUpon>gestionActivos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GestionConsultas.aspx.cs">
+      <DependentUpon>GestionConsultas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GestionConsultas.aspx.designer.cs">
+      <DependentUpon>GestionConsultas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="gestionPrestamos.aspx.cs">
+      <DependentUpon>gestionPrestamos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="gestionPrestamos.aspx.designer.cs">
+      <DependentUpon>gestionPrestamos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="gestionUsuarios.aspx.cs">
+      <DependentUpon>gestionUsuarios.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="gestionUsuarios.aspx.designer.cs">
+      <DependentUpon>gestionUsuarios.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="index.aspx.cs">
+      <DependentUpon>index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="index.aspx.designer.cs">
+      <DependentUpon>index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="mainAdministrador.aspx.cs">
+      <DependentUpon>mainAdministrador.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="mainAdministrador.aspx.designer.cs">
+      <DependentUpon>mainAdministrador.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <PropertyGroup>

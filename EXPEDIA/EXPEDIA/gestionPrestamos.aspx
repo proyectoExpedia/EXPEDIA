@@ -1,7 +1,10 @@
-﻿<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="gestionPrestamos.aspx.cs" Inherits="EXPEDIA.gestionPrestamos" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+ <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>EXPEDIA</title>
     <link href="css/bootstrap.css" rel="stylesheet" />
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" />
@@ -21,10 +24,9 @@
     <link href="css/bootstrap-table.css" rel="stylesheet" />
     <script src="https://cdn.datatables.net/1.10.10/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.10/js/dataTables.bootstrap.min.js"></script>
-
 </head>
 <body>
-    <!--Menu-->
+  <!--Menu-->
     <nav class="navbar" role="navigation" style="margin-top:20px;">
         <div class="container">
             <ul class="bxslider">
@@ -44,7 +46,7 @@
             <div class="col-md-6" style="margin-top:15px;">
                 <div class="panel-heading">
                     <ul class="nav nav-tabs">
-                        <li class="active"><a href="index.html">Salir</a></li>
+                        <li class="active"><a href="index.aspx">Salir</a></li>
                         <li><a href="#tab2primary" data-toggle="tab">Conozcanos</a></li>
                         <li><a href="#tab3primary" data-toggle="tab">Contacto</a></li>
                         <!--<li class="dropdown">
@@ -69,7 +71,7 @@
                     <ul id="myTab" class="nav nav-tabs">
                         <li class="active"><a href="#Ingresar" data-toggle="tab">Creacion de préstamos <span class="glyphicon glyphicon-plus-sign"></span></a></li>
                         <li><a href="#Consultar" data-toggle="tab">Control de préstamos <span class="glyphicon glyphicon-question-sign"></span><span class="glyphicon glyphicon-minus-sign"></span><span class="glyphicon glyphicon-ok-sign"></span></a></li>
-                        <a style="float:right" href="mainAdministrator.html" class="btn"><span class="glyphicon glyphicon-menu-left"></span>  Atrás</a>
+                        <a style="float:right" href="mainAdministrador.aspx" class="btn"><span class="glyphicon glyphicon-menu-left"></span>  Atrás</a>
                     </ul>
                     <div id="myTabContent" class="tab-content">
                         <div class="tab-pane fade in active" id="Ingresar">
@@ -176,7 +178,7 @@
                         </div>
                         <div class="tab-pane fade" id="Consultar">
                             <h1 style="text-align:center" id="titulo">Administrar préstamos</h1>
-                            <table id="tabla" class="display" cellspacing="0" width="100%">
+                            <table id="tabla" class="display" cellspacing="0" width="100">
                                 <thead style="text-align:center">
                                     <tr>
                                         <th>Identificador del préstamo</th>
@@ -263,55 +265,106 @@
                                 </div>
                             </div><!-- /.modal -->
                         </div>
-                        <div class="modal fade" id="modalProveedor" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal fade"    id="modalProveedor" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
+                                <div class="modal-content"  style="width:170%" >
+                                    <div class="modal-header" >
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                         <h4 class="modal-title" style="text-align:center" id="exampleModalLabel">Detalle del préstamo</h4>
                                     </div>
-                                    <div class="modal-body">
-                                        <div class="container">
+                                    <!-- MODAL A CAMBIAR  -->
+                                    <div id="muestra" >
+                                        <div class="modal-body">
+                                            <div class="container">
+                                                <img src="img/colegioAbogadoscr.png" style="width:90px; height:90px;float:left" alt="" />
                                                 <br />
-                                                <label for="idP">Prestamo: PRES-001</label><br/>
+                                                <label for="Fecha" style="font-size:20px; margin-right:148px; margin-left:75px;">COLEGIO DE ABOGADOS Y ABOGADAS DE COSTA RICA</label> <b id="Fecha">Fecha 28/01/2016</b>
+                                                <label for="Numero" style="font-size:20px; margin-right:150px; margin-left:25px;">SOLICITUD DE TRASLADO,PRESTAMO,EXCLUSIÓN DE ACTIVO FIJO </label><b id="Numero">N°001</b>
+                                                <br />
+                                                <br />
+                                                <br />
+                                                <fieldset class="pure-control-group" style="border:none">
+                                                    <label for="1ch" style="font-size:18px; margin-right:152px;">1.SOLICITUD DE TRASLADO (cuando es en forma permanente a otro departamento)</label>    <input id="1ch" type="checkbox" disabled />
+                                                    <label for="1ch" style="font-size:18px; margin-right:250px;">2.SOLICITUD DE EXCLUSIÓN(cuando va a dejarse de usar por el colegio)</label>            <input id="2ch" type="checkbox" disabled />
+                                                    <label for="1ch" style="font-size:18px; margin-right:370px;">3.SOLICITUD DE PRESTAMO (cuando es en forma temporal)</label>                           <input id="3ch" type="checkbox" checked disabled />
+                                                </fieldset>
                                                 <label for="idSolicitante">Identificación de solicitante: 115380448</label><br />
-                                                <label for="fechasalida">Fecha de emisión: 19/11/2015</label><br />
                                                 <label for="fechaentrada">Fecha de conclusión: 19/11/2015</label><br />
-                                            <div class="col-md-6 column">
-                                                <table class="table table-bordered table-hover" id="tab_logic">
-                                                    <thead>
-                                                        <tr>
-                                                            <th class="text-center">
-                                                                Consecutivo
-                                                            </th>
-                                                            <th class="text-center">
-                                                                Número de placa del activo
-                                                            </th>
-                                                            <th class="text-center">
-                                                                Descripción
-                                                            </th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr>
-                                                            <td>
-                                                                1
-                                                            </td>
-                                                            <td>
-                                                                <label>EIF-001</label>
-                                                            </td>
-                                                            <td>
-                                                                <label>Computadora Dell, Intel core i5, 500GB HDD, pantalla de 14 pulgadas</label>
-                                                            </td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
+                                                <div class="col-md-6 column">
+                                                    <table class="table table-bordered table-hover" id="tab_logic">
+                                                        <thead>
+                                                            <tr>
+                                                                <th class="text-center">
+                                                                    Consecutivo
+                                                                </th>
+                                                                <th class="text-center">
+                                                                    Número de placa del activo
+                                                                </th>
+                                                                <th class="text-center">
+                                                                    Descripción
+                                                                </th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>
+                                                                    1
+                                                                </td>
+                                                                <td>
+                                                                    <label>EIF-001</label>
+                                                                </td>
+                                                                <td>
+                                                                    <label>Computadora Dell, Intel core i5, 500GB HDD, pantalla de 14 pulgadas</label>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                <br />
+                                                <br />
+                                                <br />
+                                                <br />
+                                                <br />
+                                                <br />
+                                                <br />
+                                                <br />
+
+                                                <pre style="border:none; background:none">_________________________________________                     __________________________________________ 
+ NOMBRE DEL DEPARTAMENTO QUE ENTREGA Y                NOMBRE DEL DEPARTAMENTO QUE RECIBE Y 
+       FIRMA DEL RESPONSABLE                                                  FIRMA DEL RESPONSABLE</pre>
+                                                <pre style="background:none; width:85%;">Observaciones: (indicar si se entrega con otros componentes,motivode préstamo,traslado o exclisión y
+condiciones fisicas - en caso de préstamo o traslado)
+
+
+
+</pre>
+
+                                                <pre style="border:none; background:none"> Visto bueno:  ___________________________________                    ___________________________________
+                                 Jefe de Departamento                                                         Dirección Ejecutiva</pre>
+
+
                                             </div>
                                         </div>
+                                    </div>
                                         <div class="modal-footer">
                                             <div class="span">
-                                                <button id="detalle" class="btn btn-success">Descargar detalle</button>
+                                                <button id="descargar"  onclick="javascript:imprSelec('muestra')" class="btn btn-success">Descargar detalle</button> 
+                                                
+                                                <script type="text/javascript">
+                                            function imprSelec(muestra)
+                                            {
+                                                var ficha = document.getElementById(muestra);
+                                               
+                                                var ventana = window.open("about :blank", "ventana", "width=711.628,height=692.105,top=0,left=0");
+                                                ventana.document.open();
+                                                ventana.document.write(ficha.outerHTML);
+                                    
+                                                ventana.document.close();
+                                                ventana.print();
+                                                ventana.focus();
+                                                ventana.close();
+                                            }
+                                                </script>
                                                 <button class="btn btn-default" data-dismiss="modal">Cerrar</button>
                                             </div>
                                             <div class="span pull-left" style="margin-top:20px;">
@@ -329,7 +382,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div><!-- /.modal -->
+                            </div><!-- /.modal A CAMBIAR  -->
                         <div class="modal fade" id="modalAreas" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
@@ -398,6 +451,5 @@
             $('[data-toggle="tooltip"]').tooltip();
         });
     </script>
-
 </body>
 </html>
