@@ -100,8 +100,6 @@ hr {
           box-sizing: content-box;
 }
 pre {
-  margin: .67em 0;
-  font-size: 2em;
   overflow: auto;
 }
 code,
