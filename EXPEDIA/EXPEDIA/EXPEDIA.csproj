@@ -119,6 +119,7 @@
     </Compile>
     <Compile Include="conectarBase.aspx.designer.cs">
       <DependentUpon>conectarBase.aspx</DependentUpon>
+    </Compile>
     <Compile Include="gestionActivos.aspx.cs">
       <DependentUpon>gestionActivos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
