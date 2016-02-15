@@ -266,8 +266,8 @@
                             </div><!-- /.modal -->
                         </div>
                         <div class="modal fade"    id="modalProveedor" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content"  style="width:170%" >
+                            <div class="modal-dialog" role="document" style="float:left">
+                                <div class="modal-content"  style="width:180%;margin-left:140px" >
                                     <div class="modal-header" >
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                         <h4 class="modal-title" style="text-align:center" id="exampleModalLabel">Detalle del préstamo</h4>
@@ -284,9 +284,37 @@
                                                 <br />
                                                 <br />
                                                 <fieldset class="pure-control-group" style="border:none">
-                                                    <label for="1ch" style="font-size:18px; margin-right:152px;">1.SOLICITUD DE TRASLADO (cuando es en forma permanente a otro departamento)</label>    <input id="1ch" type="checkbox" disabled />
-                                                    <label for="1ch" style="font-size:18px; margin-right:250px;">2.SOLICITUD DE EXCLUSIÓN(cuando va a dejarse de usar por el colegio)</label>            <input id="2ch" type="checkbox" disabled />
-                                                    <label for="1ch" style="font-size:18px; margin-right:370px;">3.SOLICITUD DE PRESTAMO (cuando es en forma temporal)</label>                           <input id="3ch" type="checkbox" checked disabled />
+                                                    <div class="col-md-10 column">
+                                                    <table class="table table-bordered" id="tab_logic">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>
+                                                                    <label for="1ch" style="font-size:18px; margin-right:152px;">1.SOLICITUD DE TRASLADO (cuando es en forma permanente a otro departamento)</label>
+                                                                </td>
+                                                                <td>
+                                                                    <input id="1ch" type="checkbox" disabled />
+                                                                </td>
+                                                            </tr>
+                                                             <tr>
+                                                                <td>
+                                                                   <label for="1ch" style="font-size:18px; margin-right:250px;">2.SOLICITUD DE EXCLUSIÓN(cuando va a dejarse de usar por el colegio)</label> 
+                                                                </td>
+                                                                <td>
+                                                                    <input id="2ch" type="checkbox" disabled />
+                                                               </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                   <label for="1ch" style="font-size:18px; margin-right:370px;">3.SOLICITUD DE PRESTAMO (cuando es en forma temporal)</label> 
+                                                                </td>
+                                                                <td>
+                                                                   <input id="3ch" type="checkbox" checked disabled />
+                                                               </td>
+                                                            </tr>
+
+                                                        </tbody>
+                                                    </table>
+                                                </div>
                                                 </fieldset>
                                                 <label for="idSolicitante">Identificación de solicitante: 115380448</label><br />
                                                 <label for="fechaentrada">Fecha de conclusión: 19/11/2015</label><br />
