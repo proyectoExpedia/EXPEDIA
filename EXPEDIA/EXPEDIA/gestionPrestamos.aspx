@@ -8,7 +8,7 @@
     <title>EXPEDIA</title>
     <link href="css/bootstrap.css" rel="stylesheet" />
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" />
-    <link rel="icon" href="img/ExpediaLogo.png">
+    <link rel="icon" href="img/ExpediaLogo.png"/>
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <link href="css/jquery.bxslider.css" rel="stylesheet" />
     <script src="js/jquery.bxslider.js"></script>
@@ -18,7 +18,7 @@
     <link href="js/jQueryUI/jquery-ui.theme.min.css" rel="stylesheet" />
     <link href="js/jQueryUI/jquery-ui.min.css" rel="stylesheet" />
     <link href="css/boostrap-snipp.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.9/css/dataTables.jqueryui.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.9/css/dataTables.jqueryui.min.css"/>
     <script src="https://cdn.datatables.net/1.10.9/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.9/js/dataTables.jqueryui.min.js"></script>
     <link href="css/bootstrap-table.css" rel="stylesheet" />
@@ -81,23 +81,23 @@
 
                                     <div class="pure-control-group">
                                         <label for="idP">Identificador de préstamo</label>
-                                        <input id="idP" type="text" data-toggle="tooltip" title="En este espacio debe proporcionar un identificador que caracterice el préstamo a registrar, es requerido" placeholder="PRES-001">
+                                        <asp:TextBox runat="server" ID="idP"   data-toggle="tooltip" title="En este espacio debe proporcionar un identificador que caracterice el préstamo a registrar, es requerido" placeholder="PRES-001"/>
                                     </div>
 
                                     <div class="pure-control-group">
                                         <label for="idP">Identificación del solicitante</label>
-                                        <input id="idP" type="text" placeholder="#########" data-toggle="tooltip" data-placement="left" title="Proporciona el número de cédula del solicitante a cargo del préstamo. Recuerda no ingresar guiones y tomar en cuenta los ceros del documento de identidad, es requerido.">
+                                        <asp:TextBox runat="server" ID="ids"  placeholder="#########" data-toggle="tooltip" data-placement="left" title="Proporciona el número de cédula del solicitante a cargo del préstamo. Recuerda no ingresar guiones y tomar en cuenta los ceros del documento de identidad, es requerido."/>
                                     </div>
 
                                     <div class="pure-control-group">
                                         <label for="fechaGarantia">Fecha de entrega</label>
-                                        <input data-toggle="tooltip" title="Proporcione la fecha a la cual se extiende el préstamo, es requerido." id="fechaentrega" type="text" placeholder="Haz click para seleccionar tu fecha">
+                                        <asp:TextBox runat="server" data-toggle="tooltip" title="Proporcione la fecha a la cual se extiende el préstamo, es requerido." ID="fechaentrega"  placeholder="Haz click para seleccionar tu fecha"/>
                                         <script>$("#fechaentrega").datepicker();</script>
                                     </div>
 
                                     <div class="pure-control-group">
                                         <label for="fechaGarantia">Fecha de salida</label>
-                                        <input data-toggle="tooltip" title="Proporcione la fecha en la cual se emite el préstamo, es requerido" id="fechasalida" type="text" placeholder="Haz click para seleccionar tu fecha">
+                                        <asp:TextBox runat="server" data-toggle="tooltip" title="Proporcione la fecha en la cual se emite el préstamo, es requerido" ID="fechasalida" placeholder="Haz click para seleccionar tu fecha"/>
                                         <script>$("#fechasalida").datepicker();</script>
                                     </div>
 
@@ -106,7 +106,7 @@
                                      
                                                 <div class="col-md-6 column" >
                                                     <div>
-                                                    <table class="table table-striped table-hover" id="tab_logic">
+                                                    <asp:table runat="server" class="table table-striped table-hover" ID="tab_logic2"/>
                                                         <thead>
                                                             <tr>
                                                                 <th class="text-center">
@@ -123,12 +123,12 @@
                                                                     1
                                                                 </td>
                                                                 <td>
-                                                                    <input type="text" name='activo0' data-toggle="tooltip" title="En este espacio debe proporcionar el numero de placa del activo que desee prestar."  placeholder="ENF-1523" class="form-control" />
+                                                                    <asp:TextBox runat="server" name='activo0' data-toggle="tooltip" title="En este espacio debe proporcionar el numero de placa del activo que desee prestar."  placeholder="ENF-1523" class="form-control" />
                                                                 </td>
                                                             </tr>
                                                             <tr id='addr1'></tr>
                                                         </tbody>
-                                                    </table>
+                                                   
                                                     <a id="add_row" class="btn btn-primary">Agregar activo</a>
                                                     <a id='delete_row' class="btn btn-danger">Eliminar fila</a>
                                                     <a id="comprobar" class="btn btn-success">Comprobar activos</a>
@@ -178,7 +178,7 @@
                         </div>
                         <div class="tab-pane fade" id="Consultar">
                             <h1 style="text-align:center" id="titulo">Administrar préstamos</h1>
-                            <table id="tabla" class="display" cellspacing="0" width="100">
+                            <asp:table runat="server" ID="tabla" class="display" cellspacing="0" width="100">
                                 <thead style="text-align:center">
                                     <tr>
                                         <th>Identificador del préstamo</th>
@@ -197,7 +197,7 @@
                                         <td><a style="font-size:large" data-toggle="modal" data-target="#modalAreas"><span id="mano" class="glyphicon glyphicon-thumbs-down"></span></a></td>
                                     </tr>
                                 </tbody>
-                            </table>
+                            </asp:table>
                              <script>
                                  $(document).ready(function () {
                                      $('#tabla').DataTable();
@@ -209,10 +209,10 @@
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <asp:button runat="server" type="button" class="close" data-dismiss="modal" aria-label="Close"/>
                                             <span aria-hidden="true">&times;</span>
                                             <span class="sr-only">Close</span>
-                                        </button>
+                                      
                                         <h4 class="modal-title">Motivos de inhabilitación</h4>
                                     </div>
                                     <div class="modal-body">
@@ -229,7 +229,7 @@
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                        <asp:button runat="server" type="button" class="close" data-dismiss="modal" aria-label="Close"/><span aria-hidden="true">&times;</span>
                                         <h4 class="modal-title" style="text-align:center" id="exampleModalLabel">Nueva descripción</h4>
                                     </div>
                                     <div class="modal-body">
@@ -238,7 +238,7 @@
                                                 <fieldset class="pure-control-group">
                                                     <div class="input-prepend">
                                                         <label for="ocupacion">Descripción</label>
-                                                        <input id="ocupacion" required type="text" placeholder="Dispositivo de audio" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar la descripción del activo que se desea registrar, es requerido. ">
+                                                        <asp:TextBox runat="server" ID="ocupacion"  placeholder="Dispositivo de audio" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar la descripción del activo que se desea registrar, es requerido. "/>
                                                     </div>
                                                 </fieldset>
                                             </div> <!-- /container -->
@@ -269,8 +269,8 @@
                             <div class="modal-dialog" role="document" style="float:left">
                                 <div class="modal-content"  style="width:180%;margin-left:140px" >
                                     <div class="modal-header" >
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                        <h4 class="modal-title" style="text-align:center" id="exampleModalLabel">Detalle del préstamo</h4>
+                                        <asp:button runat="server" type="button" class="close" data-dismiss="modal" aria-label="Close"/><span aria-hidden="true">&times;</span>
+                                        <h4 class="modal-title" style="text-align:center" id="exampleModalLabel2">Detalle del préstamo</h4>
                                     </div>
                                     <!-- MODAL A CAMBIAR  -->
                                     <div id="muestra" >
@@ -285,30 +285,30 @@
                                                 <br />
                                                 <fieldset class="pure-control-group" style="border:none">
                                                     <div class="col-md-10 column">
-                                                    <table class="table table-bordered" id="tab_logic">
+                                                    <table class="table table-bordered" id="tab_logic_bordered">
                                                         <tbody>
                                                             <tr>
                                                                 <td>
-                                                                    <label for="1ch" style="font-size:18px; margin-right:152px;">1.SOLICITUD DE TRASLADO (cuando es en forma permanente a otro departamento)</label>
+                                                                    <label for="check_traslado" style="font-size:18px; margin-right:152px;">1.SOLICITUD DE TRASLADO (cuando es en forma permanente a otro departamento)</label>
                                                                 </td>
                                                                 <td>
-                                                                    <input id="1ch" type="checkbox" disabled />
+                                                                    <asp:CheckBox runat="server" ID="check_traslado" readonly = 'true' />
                                                                 </td>
                                                             </tr>
                                                              <tr>
                                                                 <td>
-                                                                   <label for="1ch" style="font-size:18px; margin-right:250px;">2.SOLICITUD DE EXCLUSIÓN(cuando va a dejarse de usar por el colegio)</label> 
+                                                                   <label for="check_exclusion" style="font-size:18px; margin-right:250px;">2.SOLICITUD DE EXCLUSIÓN(cuando va a dejarse de usar por el colegio)</label> 
                                                                 </td>
                                                                 <td>
-                                                                    <input id="2ch" type="checkbox" disabled />
+                                                                    <asp:CheckBox runat="server" ID="check_exclusion"  readonly = 'true'/>
                                                                </td>
                                                             </tr>
                                                             <tr>
                                                                 <td>
-                                                                   <label for="1ch" style="font-size:18px; margin-right:370px;">3.SOLICITUD DE PRESTAMO (cuando es en forma temporal)</label> 
+                                                                   <label for="check_prestamo" style="font-size:18px; margin-right:370px;">3.SOLICITUD DE PRESTAMO (cuando es en forma temporal)</label> 
                                                                 </td>
                                                                 <td>
-                                                                   <input id="3ch" type="checkbox" checked disabled />
+                                                                   <asp:CheckBox runat="server" ID="check_prestamo" readonly = 'true' Checked="true"  />
                                                                </td>
                                                             </tr>
 
@@ -319,7 +319,7 @@
                                                 <label for="idSolicitante">Identificación de solicitante: 115380448</label><br />
                                                 <label for="fechaentrada">Fecha de conclusión: 19/11/2015</label><br />
                                                 <div class="col-md-6 column">
-                                                    <table class="table table-bordered table-hover" id="tab_logic">
+                                                    <table class="table table-bordered table-hover" id="tab_logic_hover">
                                                         <thead>
                                                             <tr>
                                                                 <th class="text-center">
@@ -376,7 +376,7 @@ condiciones fisicas - en caso de préstamo o traslado)
                                     </div>
                                         <div class="modal-footer">
                                             <div class="span">
-                                                <button id="descargar"  onclick="javascript:imprSelec('muestra')" class="btn btn-success">Descargar detalle</button> 
+                                                <asp:button runat="server" id="descargar"  onclick="javascript:imprSelec('muestra')" class="btn btn-success"/>Descargar detalle
                                                 
                                                 <script type="text/javascript">
                                             function imprSelec(muestra)
@@ -415,18 +415,18 @@ condiciones fisicas - en caso de préstamo o traslado)
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                        <h4 class="modal-title" style="text-align:center" id="exampleModalLabel">¿Desea finalizar el préstamo?</h4>
+                                        <asp:button runat="server" type="button" class="close" data-dismiss="modal" aria-label="Close"/><span aria-hidden="true">&times;</span>
+                                        <h4 class="modal-title" style="text-align:center" id="exampleModalLabel1">¿Desea finalizar el préstamo?</h4>
                                     </div>
                    
                                     <div class="modal-footer">
                                             <div class="span">
-                                                <button id="bt1" class="btn btn-danger" onclick="cambiarMano();">Finalizar préstamo</button>
-                                                <button class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                                                <asp:button runat="server" ID="bt1" class="btn btn-danger" onclick="cambiarMano();"/>Finalizar préstamo
+                                                <asp:button runat="server" class="btn btn-default" data-dismiss="modal"/>Cerrar</asp:button>
                                             </div>
                                             <div class="span pull-left" style="margin-top:20px;">
                                                 <div id="fpre"class="alert alert-success fade">
-                                                    <button type="button" class="close" data-dismiss="alert">×</button>
+                                                    <asp:button runat="server" type="button" class="close" data-dismiss="alert"/>×
                                                     <strong>¡Acciones completadas!</strong> El préstamo ha terminado.
                                                 </div>
                                             </div>
