@@ -18,8 +18,8 @@ namespace EXPEDIA
 
         protected void Bt_Ingresar_Click(object sender, EventArgs e) {
             
-                Conexion c = new Conexion();
-                SqlConnection Conexion = c.Conectar();
+            Conexion c = new Conexion();
+            SqlConnection Conexion = c.Conectar();
             string Sql = @"INSERT INTO Usuarios (bd_tipo_usuario, bd_nombre, bd_apellido1, bd_apellido2, bd_telefono, bd_correo_electronico, bd_contrasena, bd_cedula, bd_id_puesto, bd_id_area) values (@tipo_usuario, @nombre, @apellido, @apellido2, @telefono,@correo,@contrasena,@cedula,@puesto,@area)";
 
             Conexion.Open();//abrimos conexion

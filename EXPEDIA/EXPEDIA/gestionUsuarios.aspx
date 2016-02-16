@@ -432,10 +432,10 @@
     </script>
     <script type="text/javascript">
         $(document).ready(function () {
-            $("#enviar").click(function () {
+            $("#Bt_Ingresar").click(function () {
                 $('#mensaje').show(2000, 'swing', function () {
                     //callback function after animation finished
-                    $("enviar").attr('value', 'Las acciones han sido realizadas correctamente');
+                    $("Bt_Ingresar").attr('value', 'Las acciones han sido realizadas correctamente');
                 });
             });
         });
