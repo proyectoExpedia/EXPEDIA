@@ -144,7 +144,7 @@
                                 <%--<form action="mainAdministrador.aspx" onsubmit="">--%>
                                     <form   runat="server">
                                     <h2 class="form-signin-heading">Ingresa tus credenciales</h2>
-                                    <asp:TextBox    runat="server" ID="username" size="20" CssClass="form-control" placeholder="Número de cédula (#########)" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar su número de cedula, omita guiones y todos los dígitos del documento de identidad"  />
+                                    <asp:TextBox    runat="server" ID="username" size="20" CssClass="form-control" placeholder="Número de cédula (#########)" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar su número de cedula, omita guiones y todos los dígitos del documento de identidad"  required />
                                     <asp:TextBox    runat="server" TextMode="Password"  ID="password" size="20" CssClass="form-control" placeholder="Contraseña" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar su contraseña." required />
 
                                     <asp:Button  runat="server"  ID="Bt_Ingresar" CssClass="btn btn-lg btn-primary btn-block" OnClick="Bt_Ingresar_Click"   text="Ingresar"/>
@@ -165,7 +165,6 @@
                 </div>
             </div>
         </div>
-        <hr>
     </div>
     <!-- /.container -->
     <footer class="navbar navbar-inverse" style="background-color:darkred">

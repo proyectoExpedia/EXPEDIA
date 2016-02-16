@@ -14,9 +14,9 @@ namespace EXPEDIA
         public SqlConnection Conectar(){
             try{
                 SqlConnection Conect;
-                Conect = new SqlConnection("Data Source=CHARLIE-PC\\SQLEXPRESS;Initial Catalog=BD_EXPEDIA;User ID=root;Password=root1234");
+                Conect = new SqlConnection("Data Source=ROJAS-PC\\SQLEXPRESS;Initial Catalog=BD_EXPEDIA;User ID=Administrador;Password=123456");
                 return Conect;
-            }catch(Exception ex){
+            }catch(Exception ){
                 return null;
             }
         }
