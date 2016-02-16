@@ -36,7 +36,7 @@ namespace EXPEDIA
         {
             Conexion c = new Conexion();
             SqlConnection Conexion = c.Conectar();
-            string Sql = @"SELECT bd_cedula, bd_contrasena, bd_nombre FROM Usuarios WHERE bd_cedula = @user AND bd_contrasena = @pass";
+            string Sql = @"SELECT bd_cedula, bd_contrasena, bd_nombre, bd_apellido1, bd_apellido2 FROM Usuarios WHERE bd_cedula = @user AND bd_contrasena = @pass";
             
             Conexion.Open();//abrimos conexion
 
@@ -44,6 +44,10 @@ namespace EXPEDIA
             cmd.Parameters.AddWithValue("@user", ced); //enviamos los parametros
             cmd.Parameters.AddWithValue("@pass", contra);
             String nombre="";
+            String apellido1 = "";
+            String apellido2 = "";
+            String NombreCompleto = "";
+
 
 
             int count = Convert.ToInt32(cmd.ExecuteScalar()); //devuelve la fila afectada
@@ -53,6 +57,11 @@ namespace EXPEDIA
             if (reader.HasRows){
                 while (reader.Read()){
                     nombre = reader.GetString(2);
+                    apellido1 = reader.GetString(3);
+                    apellido2 = reader.GetString(4);
+                    NombreCompleto = nombre + " " + apellido1 + " " + apellido2;
+                    
+
                 }
             }
 
@@ -61,7 +70,7 @@ namespace EXPEDIA
                 return null;
             }else{
                 c.Desconectar(Conexion);
-                return nombre;
+                return NombreCompleto;
             }
 
         }
