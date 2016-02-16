@@ -54,6 +54,7 @@
             </div>
         </div>
     </nav>
+    <form runat="server">
     <div class="container">
         <div class="panel panel-primary">
             <div class="panel-heading">
@@ -69,40 +70,31 @@
                     <div id="myTabContent" class="tab-content">
                         <div  class="tab-pane fade in active" id="Ingresar">
                             <h1 style="text-align:center">Formulario de registro</h1>
-                            <form class="pure-form pure-form-aligned" style="margin-top:5px;margin-left:20px;">
+                            <div class="pure-form pure-form-aligned" style="margin-top:5px;margin-left:20px;">
                                 <fieldset>
                                     <div class="pure-control-group">
                                         <label for="nombre">Nombre completo</label>
-                                        <input id="nombre" data-toggle="tooltip" data-placement="left" title="Este espacio debe proporcionar el nombre completo y apellidos de la persona a registrar, es requerido." type="text" required>                
+                                        <asp:TextBox runat="server" ID="nombre" data-toggle="tooltip" data-placement="left" toolT="Este espacio debe proporcionar el nombre completo y apellidos de la persona a registrar, es requerido." />                
                                     </div>
 
                                     <div class="pure-control-group">
                                         <label for="cedula">Número de cédula</label>
-                                        <input id="cedula" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar el número de cedula de la persona a registrar, omita guiones y todos los dígitos del documento de identidad, es requerido." type="text" placeholder="#########" required>
+                                        <asp:TextBox runat="server" ID="cedula" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar el número de cedula de la persona a registrar, omita guiones y todos los dígitos del documento de identidad, es requerido." placeholder="#########" />
                                     </div>
-                                    <button type="button" onclick="myFunction()">Insert option</button>
-
-                                    <script>
-function myFunction() {
-    var x = document.getElementById("puesto");
-    var option = document.createElement("option");
-    option.text = "Kiwi";
-    x.add(option);
-}
-                                    </script>
+    
                                     <div class="pure-control-group">
                                         <label for="contraseña">Contraseña</label>
-                                        <input id="contraseña" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar la contraseña que el usuario desee para su eventual ingreso al sistema, es requerido. " type="password" required>
+                                        <asp:TextBox runat="server" ID="contraseña" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar la contraseña que el usuario desee para su eventual ingreso al sistema, es requerido. "  TextMode="Password"/>
                                     </div>
 
                                     <div class="pure-control-group">
                                         <label for="correo">Correo electrónico</label>
-                                        <input id="correo" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar la dirección de correo electrónico de la persona a registrar, es requerido." type="email" required>
+                                        <asp:TextBox runat="server" ID="correo" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar la dirección de correo electrónico de la persona a registrar, es requerido." TextMode="Email" />
                                     </div>
 
                                     <div class="pure-control-group">
                                         <label for="nacimiento">Fecha de nacimiento</label>
-                                        <input id="nacimiento" type="text" placeholder="Fecha de nacimiento" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar la fecha de nacimiento de la persona a registrar.">
+                                         <asp:TextBox runat="server" ID="nacimiento"  placeholder="Fecha de nacimiento" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar la fecha de nacimiento de la persona a registrar."/>
                                         <script>$("#nacimiento").datepicker();</script>
                                     </div>
 
@@ -110,48 +102,43 @@ function myFunction() {
                                         <div class="input-prepend">
                                             <label for="telefono">Número telefónico</label>
                                             <span class="add-on btn btn-default">506</span>
-                                            <input id="telefono" required type="number" placeholder="########" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar el número telefónico principal de la persona a registrar, es requerido." min="11111111" max="99999999">
+                                            <asp:TextBox  runat="server" ID="telefono" TextMode="Number"  placeholder="########" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar el número telefónico principal de la persona a registrar, es requerido." min="11111111" max="99999999"/>
                                         </div>
                                     </fieldset>
                                     <div class="pure-control-group">
                                         <label for="puesto">Ocupación</label>
-                                        <select id="puesto" class="pure-input-1-2" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar el puesto en el cual se desempeña la persona a registrar, es requerido." required>
-                                            <option>Elige</option>
-                                            <option>Juez</option>
-                                            <option>Abogado(a)</option>
-                                            <option>Informático</option>
-                                            <option disabled>¿La ocupación no aparece? Haz uso el icono situado contiguo a esta categoría para proporcionar una nueva.</option>
-                                        </select>
+
+                                        <asp:dropdownlist runat ="server"  ID="puesto" class="pure-input-1-2" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar el puesto en el cual se desempeña la persona a registrar, es requerido." >
+                                          <asp:ListItem Selected="False">¿La ocupación no aparece? Haz uso el icono situado contiguo a esta categoría para proporcionar una nueva. </asp:ListItem>
+
+                                        </asp:dropdownlist>
                                         <a data-toggle="modal" data-target="#modalPuesto"><span class="glyphicon glyphicon-wrench"></span></a>
                                     </div>
 
                                     <div class="pure-control-group">
                                         <label for="area">Área de servicio</label>
-                                        <select id="area" class="pure-input-1-2" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar el área o unidad donde labora la persona a registrar, es requerido." required>                                         
-                                            <option>Elige</option>
-                                            <option>Recursos Humanos</option>
-                                            <option>Departamento Legal</option>
-                                            <option>Biblioteca</option>
-                                            <option disabled>¿El área no aparece? Haz uso el icono situado contiguo a esta categoría para proporcionar una nueva.</option>
-                                        </select>
+                                        <asp:dropdownlist runat ="server" ID="area" class="pure-input-1-2" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar el área o unidad donde labora la persona a registrar, es requerido." required>                                         
+                                            <asp:ListItem Selected="False">¿El área no aparece? Haz uso el icono situado contiguo a esta categoría para proporcionar una nueva.</asp:ListItem>
+                                          
+                                        </asp:dropdownlist>
                                         <a data-toggle="modal" data-target="#modalAreas"><span class="glyphicon glyphicon-wrench"></span></a>
                                     </div>
                                     <div class="pure-control-group">
-                                        <label for="usuario">Usuario</label>
-                                        <select id="usuario" class="pure-input-1-2" data-toggle="tooltip" data-placement="left" title="En este espacio se debe representar el rol de la persona a registrar en el sistema." required>
-                                            <option>Elige</option>
-                                            <option>Administrador</option>
-                                            <option>Consultas</option>
-                                        </select>
+                                        <label for="tipo_usuario">Usuario</label>
+                                        <asp:dropdownlist runat ="server" ID="tipo_usuario" class="pure-input-1-2" data-toggle="tooltip" data-placement="left" title="En este espacio se debe representar el rol de la persona a registrar en el sistema." required>
+                                            <asp:ListItem Selected="False">Elige</asp:ListItem>
+                                            <asp:ListItem Value="Administrador">Administrador</asp:ListItem>
+                                            <asp:ListItem Value="Consultas">Consultas</asp:ListItem>
+                                        </asp:dropdownlist>
                                     </div>
                                     <div class="pure-controls-group">
                                         <label for="Genero">Género</label>
                                         <div style="margin-left:104px;" class="btn-group"  data-toggle="buttons">
                                             <label class="btn btn-primary" >
-                                                <input type="radio" name="options" id="option1" autocomplete="off" data-toggle="tooltip" data-placement="left" title="Oprime para definir el género masculino."> Masculino
+                                                <asp:RadioButton runat="server"  name="options" ID="masculino" autocomplete="off" data-toggle="tooltip" data-placement="left" title="Oprime para definir el género masculino." Text="Masculino"/> 
                                             </label>
                                             <label class="btn btn-primary ">
-                                                <input type="radio" name="options" id="option2" autocomplete="off" data-toggle="tooltip" data-placement="left" title="Oprime para definir el género femenino. "> Femenino
+                                                 <asp:RadioButton runat="server"   name="options" ID="femenino" autocomplete="off" data-toggle="tooltip" data-placement="left" title="Oprime para definir el género femenino. " Text="Femenino"/> 
                                             </label>
                                         </div>
                                     </div>
@@ -161,14 +148,14 @@ function myFunction() {
                                         <div id="mensaje" style="display:none"><h3>Las acciones han sido realizadas con éxito.</h3></div>
                                     </div>
                                 </fieldset>
-                            </form>
+                            </div>
                         </div>
                         <div class="tab-pane fade" id="Consultar">
                             <h1 style="text-align:center" id="titulo">Formulario de consultas</h1>
                             <div class="pure-form pure-form-aligned">
                                 <div class="pure-control-group">
                                     <label for="cedula">Número de cédula</label>
-                                    <input id="cedula" data-toggle="tooltip" data-placement="left" title="Proporciona el número de cédula que desees consultar. Recuerda no ingresar guiones y tomar en cuenta los ceros del documento de identidad. " type="text" placeholder="#########" required></div>
+                                    <asp:TextBox runat="server" ID="cedula_Consulta" data-toggle="tooltip" data-placement="left" title="Proporciona el número de cédula que desees consultar. Recuerda no ingresar guiones y tomar en cuenta los ceros del documento de identidad. " placeholder="#########" /></div>
                                 <p>
                                     <button type="button" class="btn btn-primary" onclick="mostrar()">Consultar</button>
                                  </p>
@@ -185,7 +172,7 @@ function myFunction() {
                                         <div class="pure-control-group" style="margin-top:40px;">
                                             <p>
                                                 <button class="btn btn-success" id="hab" onclick="habilitar();">Habilitar modificación</button>
-                                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal">Inhabilitar usuario</button>
+                                                <asp:Button runat="server"  ID="inhabilitar" CssClass="btn btn-danger" data-toggle="modal" data-target="#myModal" Text="Inhabilitar usuario"></asp:Button>
                                             </p>
                                             <div id="t" style="display:none"><h3>Formulario de modificación</h3></div>
                                             <script>
@@ -201,73 +188,69 @@ function myFunction() {
                                         </div>
                                         <div class="pure-control-group" style="margin-top:30px;">
                                             <label for="nombre1">Nombre completo</label>
-                                            <input id="nombre1" data-toggle="tooltip" title="En este espacio se debe proporcionar el nombre completo y apellidos de la persona a modificar, es requerido." required value=" manuela solorzano quiel" type="text" readonly>
+                                            <asp:TextBox  disable runat="server" ID="nombre1" data-toggle="tooltip" title="En este espacio se debe proporcionar el nombre completo y apellidos de la persona a modificar, es requerido."  />
                                         </div>
                                         <div class="pure-control-group">
                                             <label for="contraseña1">Contraseña</label>
-                                            <input id="contraseña1" data-toggle="tooltip" title="En este espacio se debe proporcionar la contraseña que el usuario desee para su eventual ingreso al sistema, es requerido. " required type="password" value="Hola Mundo" readonly>
+                                             <asp:TextBox disable  runat="server"  ID="contraseña1" data-toggle="tooltip" title="En este espacio se debe proporcionar la contraseña que el usuario desee para su eventual ingreso al sistema, es requerido. " TextMode="Password" value="Hola Mundo" />
                                         </div>
 
                                         <div class="pure-control-group">
                                             <label for="correo1">Correo electrónico</label>
-                                            <input id="correo1" data-toggle="tooltip" title="En este espacio se debe proporcionar la dirección de correo electrónico de la persona a modificar, es requerido. " required type="email" value="msq2000@mail.com" readonly>
+                                            <asp:TextBox disable runat="server" data-toggle="tooltip" title="En este espacio se debe proporcionar la dirección de correo electrónico de la persona a modificar, es requerido. "  TextMode="Email" />
                                         </div>
 
                                         <div class="pure-control-group">
                                             <label for="nacimiento1">Fecha de nacimiento</label>
-                                            <input id="nacimiento1" value="12/11/2015" type="text" placeholder="Fecha de nacimiento" data-toggle="tooltip" title="En este espacio se debe proporcionar la fecha de nacimiento de la persona a modificar." disabled>
+                                            <asp:TextBox disable runat="server" ID="nacimiento1"   placeholder="Fecha de nacimiento" data-toggle="tooltip" title="En este espacio se debe proporcionar la fecha de nacimiento de la persona a modificar." />
                                             <script>$("#nacimiento1").datepicker();</script>
                                         </div>
 
                                         <fieldset class="pure-control-group">
                                             <label for="telefono1">Número telefónico</label>
                                             <span class="add-on btn btn-default">506</span>
-                                            <input id="telefono1" data-toggle="tooltip" title="En este espacio se debe proporcionar el número telefónico principal de la persona a modificar, es requerido." required type="number" value="83420113" placeholder="########" min="11111111" max="99999999" readonly>
+                                            <asp:TextBox runat="server" ID="telefono1" data-toggle="tooltip" title="En este espacio se debe proporcionar el número telefónico principal de la persona a modificar, es requerido." TextMode="Number" placeholder="########" min="11111111" max="99999999" disable />
                                         </fieldset>
 
                                         <div class="pure-control-group">
                                             <label for="puesto1">Ocupación</label>
-                                            <select id="puesto1" class="pure-input-1-2" disabled required data-toggle="tooltip" title="En este espacio se debe proporcionar el puesto en el cual se desempeña la persona a modificar, es requerido.">
-                                                <option>Juez</option>
-                                                <option>Abogado(a)</option>
-                                                <option>Informático</option>
-                                                <option disabled>¿La ocupación no aparece? Haz uso el icono situado contiguo a esta categoría para proporcionar una nueva.</option>
-                                            </select>
+                                            <asp:DropDownList runat="server" ID="puesto1" class="pure-input-1-2" data-toggle="tooltip" title="En este espacio se debe proporcionar el puesto en el cual se desempeña la persona a modificar, es requerido." disable>
+                         
+                                                <asp:ListItem Selected="False">¿La ocupación no aparece? Haz uso el icono situado contiguo a esta categoría para proporcionar una nueva.</asp:ListItem>
+                                            </asp:DropDownList>
                                             <a id="p" data-toggle="modal" class="label disabled" data-target="#modalPuesto"><span class="glyphicon glyphicon-wrench"></span></a>
                                         </div>
 
                                         <div class="pure-control-group">
                                             <label for="area1">Área de servicio</label>
-                                            <select id="area1" class="pure-input-1-2" data-toggle="tooltip" title="En este espacio se debe proporcionar el área o unidad donde labora la persona a modificar, es requerido." required disabled>
-                                                <option>Departamento Legal</option>
-                                                <option>Recursos Humanos</option>
-                                                <option>Biblioteca</option>
-                                                <option disabled>¿El área no aparece? Haz uso el icono situado contiguo a esta categoría para proporcionar una nueva.</option>
-                                            </select>
+                                            <asp:DropDownList runat="server" ID="area1" class="pure-input-1-2" data-toggle="tooltip" title="En este espacio se debe proporcionar el área o unidad donde labora la persona a modificar, es requerido."  disabled>
+
+                                                <asp:ListItem Selected="False">¿El área no aparece? Haz uso el icono situado contiguo a esta categoría para proporcionar una nueva.</asp:ListItem>
+                                            </asp:DropDownList>
                                             <a id="a" data-toggle="modal" class="label disabled" data-target="#modalAreas"><span class="glyphicon glyphicon-wrench"></span></a>
                                         </div>
 
                                         <div class="pure-control-group">
                                             <label for="tipo1">Usuario</label>
-                                            <select id="tipo1" class="pure-input-1-2" data-toggle="tooltip" title="En este espacio se debe representar el rol de la persona a modificar en el sistema." required disabled>
-                                                <option>Consultas</option>
-                                                <option>Administrador</option>
-                                            </select>
+                                            <asp:DropDownList runat="server" ID="tipo1" class="pure-input-1-2" data-toggle="tooltip" title="En este espacio se debe representar el rol de la persona a modificar en el sistema." disable>
+                                                <asp:ListItem Value="Consultas">Consultas</asp:ListItem>
+                                                <asp:ListItem Value="Administrador">Administrador</asp:ListItem>
+                                            </asp:DropDownList>
                                         </div>
 
                                         <div class="pure-controls-group">
                                             <label for="Genero1">Género </label>
                                             <div style="margin-left:104px;" class="btn-group" data-toggle="buttons">
                                                 <label class="btn btn-primary disabled" id="rb1">
-                                                    <input type="radio" name="options" id="option1" autocomplete="off"> Masculino
+                                                    <asp:RadioButton runat="server"  name="options" ID="option1" autocomplete="off" ValidationGroup="hola" Text="Masculino"/> 
                                                 </label>
                                                 <label class="btn btn-primary" id="rb2">
-                                                    <input type="radio" name="options" id="option1" autocomplete="off"> Femenino
+                                                    <asp:RadioButton runat="server" name="options" ID="option2" autocomplete="off" ValidationGroup="hola" Text="Femenino"  /> 
                                                 </label>
                                             </div>
                                         </div>
                                         <p style="margin-top:30px;">
-                                            <button class="btn btn-success" id="enviar1" style="display:none;float:left" type="button">Realizar modificaciones</button>
+                                            <asp:Button runat="server" CssClass="btn btn-success" id="enviar1" style="display:none;float:left" Text="Realizar modificaciones" />
                                         </p>
                                         <br/>
                                             <div id="mensaje1" style="display:none;float:right"><h3>Las acciones han sido realizadas con éxito.</h3></div>
@@ -324,11 +307,11 @@ function myFunction() {
                                         <h4 class="modal-title">Motivos de inhabilitación</h4>
                                     </div>
                                     <div class="modal-body">
-                                        <textarea></textarea>
+                                        <asp:TextBox runat="server" TextMode="MultiLine"/>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                                        <button type="button" class="btn btn-danger" id="enviar2">Inhabilitar</button>
+                                        <asp:Button runat="server"  CssClass="btn btn-danger" id="enviar2" Text="Inhabilitar"/>
                                     </div>
                                 </div><!-- /.modal-content -->
                             </div><!-- /.modal-dialog -->
@@ -346,18 +329,18 @@ function myFunction() {
                                                 <fieldset class="pure-control-group">
                                                     <div class="input-prepend">
                                                         <label for="idocupacion">Identificador de la ocupación</label>
-                                                        <input id="idocupacion" required type="text" placeholder="OC-001" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar un identificador que caracterice la ocupación que se esté registrando, es requerido. ">
+                                                        <asp:TextBox runat="server" ID="idocupacion" required  placeholder="OC-001" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar un identificador que caracterice la ocupación que se esté registrando, es requerido. "/>
                                                     </div>
                                                     <div class="input-prepend">
                                                         <label for="ocupacion">Ocupación</label>
-                                                        <input id="ocupacion" required type="text" placeholder="Programador" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar el nombre de la ocupación que se desea registrar, es requerido. ">
+                                                        <asp:TextBox runat="server" ID="ocupacion" required  placeholder="Programador" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar el nombre de la ocupación que se desea registrar, es requerido. "/>
                                                     </div>
                                                 </fieldset>
                                         </div> <!-- /container -->
                                     </div>
                                     <div class="modal-footer">
                                         <div class="span">
-                                            <button id="btn" onclick="Guardar(1)" class="btn btn-success">Registrar ocupacion</button>
+                                            <asp:Button runat="server" ID="btn"  class="btn btn-success" Text="Registrar ocupacion"/>
                                             <button onclick="Mostrar_Info_Usuario(1)" class="btn btn-default" data-dismiss="modal">Cerrar</button>
                                         </div>
                                         <div class="span pull-left" style="margin-top:20px;">
@@ -390,18 +373,18 @@ function myFunction() {
                                                 <fieldset class="pure-control-group">
                                                     <div class="input-prepend">
                                                         <label for="idarea">Identificador del área</label>
-                                                        <input id="idareas" required type="text" placeholder="AR-001" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar un identificado que caracterice el área o unidad que se esté registrando, es requerido. ">
+                                                        <asp:TextBox runat="server" ID="idareas"   placeholder="AR-001" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar un identificado que caracterice el área o unidad que se esté registrando, es requerido. "/>
                                                     </div>
                                                     <div class="input-prepend">
                                                         <label for="area57">Área</label>
-                                                        <input id="area57" required type="text" placeholder="Recursos Humanos" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar el nombre de la área que se desea registrar, es requerido. ">
+                                                        <asp:TextBox runat="server" ID="area57" required  placeholder="Recursos Humanos" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar el nombre de la área que se desea registrar, es requerido. "/>
                                                     </div>
                                                 </fieldset>
                                             </div> <!-- /container -->
                                         </div>
                                         <div class="modal-footer">
                                             <div class="span">
-                                                <button onclick="Guardar(2)" id="bt1" class="btn btn-success">Registrar área</button>
+                                                <asp:Button runat="server" ID="bt1" CssClass="btn btn-success" Text="Registrar área"/>
                                                 <button onclick="Mostrar_Info_Usuario(2)" class="btn btn-default" data-dismiss="modal">Cerrar</button>
                                             </div>
                                             <div class="span pull-left" style="margin-top:20px;">
@@ -426,6 +409,7 @@ function myFunction() {
             </div>
         </div>
     </div>
+        </form>
     <footer class="navbar" style="background-color:white">
         <div class="container">
             <h5 style="text-align: center" class="text-muted">Prototipo I EXPEDIA - Ingeniería en sistemas de información II</h5>
