@@ -21,6 +21,8 @@
     <link href="css/Tablas.css" rel="stylesheet" />
     <script src="http://tablefilter.free.fr/TableFilter/tablefilter_all_min.js"></script>
     <script src="http://tablefilter.free.fr/TableFilter/filtergrid.css"></script>
+    <link href="css/bootstrap-table.css" rel="stylesheet" />
+    <script src="https://cdn.datatables.net/1.10.10/js/jquery.dataTables.min.js"></script>
     <!--HASTA AQUI LAS TABLAS-->
 </head>
 <body>
@@ -75,11 +77,8 @@
                         <div class="tab-pane fade in active" id="Ingresar">
                             <h1 style="text-align:center">Activos</h1>
                             <form class="pure-form pure-form-aligned">
-                                
-
                                     <div id="dvData">
-
-                                        <table id="table11" class="TABLAS">
+                                        <table  id="table"  class="TABLAS">
                                             <tr>
                                                 <td>World Regions</td>
                                                 <td>Population ( 2007 Est.)</td>

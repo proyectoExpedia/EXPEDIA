@@ -58,7 +58,6 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="conectarBase.aspx" />
     <Content Include="css\boostrap-snipp.css" />
     <Content Include="css\bootstrap-table.css" />
     <Content Include="css\bootstrap.css" />
@@ -113,13 +112,7 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="conectarBase.aspx.cs">
-      <DependentUpon>conectarBase.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="conectarBase.aspx.designer.cs">
-      <DependentUpon>conectarBase.aspx</DependentUpon>
-    </Compile>
+    <Compile Include="Conexion.cs" />
     <Compile Include="gestionActivos.aspx.cs">
       <DependentUpon>gestionActivos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -163,7 +156,6 @@
       <DependentUpon>mainAdministrador.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ValidarUsuario.cs" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
