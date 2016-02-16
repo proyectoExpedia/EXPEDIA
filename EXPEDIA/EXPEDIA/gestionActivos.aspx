@@ -20,7 +20,7 @@
 </head>
 <body>
  <!--Menu-->
-      <form runat="server" class="pure-form pure-form-aligned">
+      
     <nav class="navbar" role="navigation" style="margin-top:20px;">
         <div class="container">
             <ul class="bxslider">
@@ -55,6 +55,7 @@
             </div>
         </div>
     </nav>
+    <form runat="server" class="pure-form pure-form-aligned">
     <div class="container">
         <div class="panel panel-primary">
             <div class="panel-heading">
@@ -70,7 +71,7 @@
                     <div id="myTabContent" class="tab-content">
                         <div class="tab-pane fade in active" id="Ingresar">
                             <h1 style="text-align:center">Formulario de registro</h1>
-                            <form  >
+                            
                                 <fieldset> 
                                     <div class="pure-controls-group">
                                         <label for="Genero">Tipo de activo</label>
@@ -120,14 +121,13 @@
                                         </div>
                                         <fieldset class="pure-control-group">
                                             <label for="descripcion">Duración del contrato</label>
-                                            <select data-toggle="tooltip" title="En este espacio debe proporcionar la descripción del propósito general del activo, es requerido. " ID="descripcion" class="pure-input-1-2">
-                                                <option>Elija una duración</option>
-                                                <option>1 año</option>
-                                                <option>2 años</option>
-                                                <option>3 años</option>
-                                                <option>Servidor</option>
-                                                <option disabled>¿La duración no aparece? Haz uso el icono situado contiguo a esta categoría para proporcionar una nueva.</option>
-                                            </select>
+                                            <asp:DropDownList runat="server"  data-toggle="tooltip" title="En este espacio debe proporcionar la descripción del propósito general del activo, es requerido. " ID="descripcion" class="pure-input-1-2">
+                                                <asp:ListItem>Elija una duración</asp:ListItem>
+                                                <asp:ListItem Value="1">1 año</asp:ListItem>
+                                                <asp:ListItem Value="2">2 años</asp:ListItem>
+                                                <asp:ListItem Value="3">3 años</asp:ListItem>
+                                                <asp:ListItem >¿La duración no aparece? Haz uso el icono situado contiguo a esta categoría para proporcionar una nueva.</asp:ListItem>
+                                            </asp:DropDownList>
                                             <a data-toggle="modal" data-target="#modalDescripcion"><span class="glyphicon glyphicon-wrench"></span></a>
                                         </fieldset>
                                         <fieldset class="pure-control-group">
@@ -155,12 +155,12 @@
 
                                     <fieldset class="pure-control-group">
                                         <label for="descripcion">Duración de la garantía</label>
-                                        <select data-toggle="tooltip" title="En este espacio debe proporcionar la descripción del propósito general del activo, es requerido. " id="duracion" class="pure-input-1-2">
-                                            <option>1 año</option>
-                                            <option>2 años</option>
-                                            <option>3 años</option>
-                                            <option disabled>¿La duración que busca no aparece? Haz uso el icono situado contiguo a esta categoría para proporcionar una nueva.</option>
-                                        </select>
+                                        <asp:DropDownList runat="server" data-toggle="tooltip" title="En este espacio debe proporcionar la descripción del propósito general del activo, es requerido. " id="duracion" class="pure-input-1-2">
+                                            <asp:ListItem Value="1">1 año</asp:ListItem>
+                                            <asp:ListItem Value="2">2 años</asp:ListItem>
+                                            <asp:ListItem Value="3">3 años</asp:ListItem>
+                                            <asp:ListItem >¿La duración que busca no aparece? Haz uso el icono situado contiguo a esta categoría para proporcionar una nueva.</asp:ListItem>
+                                        </asp:DropDownList>
                                         <a data-toggle="modal" data-target="#modalDescripcion"><span class="glyphicon glyphicon-wrench"></span></a>
                                     </fieldset>  
                                    
@@ -171,55 +171,36 @@
 
                                     <fieldset class="pure-control-group">
                                         <label for="descripcion">Descripción del activo</label>
-                                        <select data-toggle="tooltip" title="En este espacio debe proporcionar la descripción del propósito general del activo, es requerido. " id="descripcion2" class="pure-input-1-2">
-                                            <option>Elija una descripción</option>
-                                            <option>Laptop</option>
-                                            <option>Dispositivo de audio</option>
-                                            <option>Dispositivo de audio-visuales</option>
-                                            <option>Servidor</option>
-                                            <option>Dispositivo de red</option>
-                                            <option>Monitor</option>
-                                            <option>Dispositivo de entrada-Salida</option>
-                                            <option>Dispositivo de almacenamiento</option>
-                                            <option disabled>¿La descripción no aparece? Haz uso el icono situado contiguo a esta categoría para proporcionar una nueva.</option>
-                                        </select>
+                                        <asp:DropDownList runat="server" data-toggle="tooltip" title="En este espacio debe proporcionar la descripción del propósito general del activo, es requerido. " id="descripcion2" class="pure-input-1-2">
+                                            <asp:ListItem>Elija una descripción</asp:ListItem>
+                                            <asp:ListItem>¿La descripción no aparece? Haz uso el icono situado contiguo a esta categoría para proporcionar una nueva.</asp:ListItem>
+                                        </asp:DropDownList>
                                         <a data-toggle="modal" data-target="#modalDescripcion"><span class="glyphicon glyphicon-wrench"></span></a>
                                     </fieldset>
 
 
                                     <div class="pure-control-group">
                                         <label for="area">Departamento o Sede regional destinado(a)</label>
-                                        <select data-toggle="tooltip" title="En este espacio debe proporcionar el área la cual está destinada el activo, es requerido. " id="area" class="pure-input-1-2">
-                                            <option>Elija un Área o Departamento</option>
-                                            <option>Recursos Humanos</option>
-                                            <option>Departamento Legal</option>
-                                            <option>Sede Grecia</option>
-                                            <option>Sede Alajuela</option>
-                                            <option disabled>¿La opción que busca no aparece? Haz uso el icono situado contiguo a esta categoría para proporcionar una nueva.</option>
-                                        </select>
+                                        <asp:DropDownList runat="server" data-toggle="tooltip" title="En este espacio debe proporcionar el área la cual está destinada el activo, es requerido. " id="area" class="pure-input-1-2">
+                                            <asp:ListItem>Elija un Área o Departamento</asp:ListItem>
+ 
+                                            <asp:ListItem>¿La opción que busca no aparece? Haz uso el icono situado contiguo a esta categoría para proporcionar una nueva.</asp:ListItem>
+                                        </asp:DropDownList>
                                         <a data-toggle="modal" data-target="#modalAreas"><span class="glyphicon glyphicon-wrench"></span></a>
                                     </div>
 
                                     <div class="pure-control-group">
                                         <label for="provedor">Proveedor</label>
-                                        <select data-toggle="tooltip" title="Proveedor: En este espacio debe proporcionar el nombre del proveedor del activo, es requerido." id="provedor" class="pure-input-1-2">
-                                            <option>Elija un proveedor</option>
-                                            <option>HP</option>
-                                            <option>Dell</option>
-                                            <option>EMC</option>
-                                            <option>Apple</option>
-                                            <option>Toshiba</option>
-                                            <option>Acer</option>
-                                            <option>Asus</option>
-                                            <option>Distribuidor Independiente</option>
-                                            <option disabled>¿El proveedor no aparece? Haz uso el icono situado contiguo a esta categoría para proporcionar una nueva.</option>
-                                        </select>
+                                        <asp:DropDownList runat="server" data-toggle="tooltip" title="Proveedor: En este espacio debe proporcionar el nombre del proveedor del activo, es requerido." id="provedor" class="pure-input-1-2">
+                                            <asp:ListItem>Elija un proveedor</asp:ListItem>
+                                            <asp:ListItem>¿El proveedor no aparece? Haz uso el icono situado contiguo a esta categoría para proporcionar una nueva.</asp:ListItem>
+                                        </asp:DropDownList>
                                         <a data-toggle="modal" data-target="#modalProveedor"><span class="glyphicon glyphicon-wrench"></span></a>
                                     </div>
                                     <div class="pure-control-group">
                                         <fieldset class="pure-control-group">
                                             <label for="Tipo">Especificaciones técnicas</label>
-                                            <textarea data-toggle="tooltip" title="En este espacio se debe proporcionar las cualidades del activo." class="pure-input-1-2" placeholder="Especificaciones Técnicas"></textarea>
+                                            <asp:TextBox runat="server" ID="especificaciones_tecnicas" data-toggle="tooltip" title="En este espacio se debe proporcionar las cualidades del activo." class="pure-input-1-2" placeholder="Especificaciones Técnicas"/>
                                         </fieldset>
                                     </div>
                                     <div class="pure-controls">
@@ -227,7 +208,7 @@
                                         <div id="mensaje" style="display:none"><h3>Las acciones han sido realizado con éxito.</h3></div>
                                     </div>
                                 </fieldset>
-                            </form>
+                            
                         </div>
                         <div class="tab-pane fade" id="Consultar">
                             <h1 style="text-align:center" id="titulo">Formulario de consultas</h1>
@@ -240,7 +221,7 @@
                                          </div>
 
                                 <p>
-                                    <asp:Button runat="server" CssClass="btn btn-primary" Text="Consultar"/>
+                                    <button type="button" class="btn btn-primary" onclick="mostrar()">Consultar</button>
                                 </p>
                                 <script type="text/javascript">
                                     function mostrar() {
@@ -287,62 +268,45 @@
                                         </div>
 
                                         <div class="pure-control-group">
-                                            <label for="nserie">Número de serie del activo</label>
-                                            <asp:TextBox runat="server" data-toggle="tooltip" title="En este espacio debe proporcionar el nuevo número de serie del activo, es requerido" ID="nserie1" readonly placeholder="XAD234ASFSD23" required/>
+                                            <label for="nserie1">Número de serie del activo</label>
+                                            <asp:TextBox readonly = 'true' runat="server" data-toggle="tooltip" title="En este espacio debe proporcionar el nuevo número de serie del activo, es requerido" ID="nserie1"  placeholder="XAD234ASFSD23" />
                                         </div>
 
                                         <div class="pure-control-group">
                                             <label for="fechaGarantia">Fecha de la garantía</label>
-                                            <asp:TextBox  runat="server" data-toggle="tooltip" title="En este espacio debe proporcionar la fecha de caducidad de la garantía del activo, es requerido." disabled  id="fechaGarantia1"  placeholder="Fecha de garantía"/>
+                                            <asp:TextBox readonly = 'true' runat="server" data-toggle="tooltip" title="En este espacio debe proporcionar la fecha de caducidad de la garantía del activo, es requerido."   id="fechaGarantia1"  placeholder="Fecha de garantía"/>
                                             <script>$("#fechaGarantia1").datepicker();</script>
                                         </div>
 
                                         <fieldset class="pure-control-group">
                                             <label for="descripcion1">Descripción del activo</label>
-                                            <select data-toggle="tooltip" title="En este espacio debe proporcionar la descripción del propósito general del activo, es requerido. " disabled id="descripcion1" class="pure-input-1-2">
-                                                <option>Laptop</option>
-                                                <option>Dispositivo de audio</option>
-                                                <option>Dispositivo de audio-visuales</option>
-                                                <option>Servidor</option>
-                                                <option>Dispositivo de red</option>
-                                                <option>Monitor</option>
-                                                <option>Dispositivo de entrada-Salida</option>
-                                                <option>Dispositivo de almacenamiento</option>
-                                                <option disabled>¿La descripción no aparece? Haz uso el icono situado contiguo a esta categoría para proporcionar una nueva.</option>
-                                            </select>
+                                            <asp:DropDownList runat="server" readonly = 'true' data-toggle="tooltip" title="En este espacio debe proporcionar la descripción del propósito general del activo, es requerido. "  id="descripcion1" class="pure-input-1-2">
+  
+                                                <asp:ListItem >¿La descripción no aparece? Haz uso el icono situado contiguo a esta categoría para proporcionar una nueva.</asp:ListItem>
+                                            </asp:DropDownList>
                                             <a data-toggle="modal" class="label disabled" id="d" data-target="#modalDescripcion"><span class="glyphicon glyphicon-wrench"></span></a>
                                         </fieldset>
 
                                         <div class="pure-control-group">
                                             <label for="prove1">Área destinada</label>
-                                            <select data-toggle="tooltip" title="En este espacio debe proporcionar el área la cual está destinada el activo, es requerido. " disabled id="area1" class="pure-input-1-2">
-                                                <option>Recursos Humanos</option>
-                                                <option>Departamento Legal</option>
-                                                <option>Biblioteca</option>
-                                                <option disabled>¿El area no aparece? Haz uso el icono situado contiguo a esta categoría para proporcionar una nueva.</option>
-                                            </select>
+                                            <asp:DropDownList runat="server" readonly = 'true' data-toggle="tooltip" title="En este espacio debe proporcionar el área la cual está destinada el activo, es requerido. "  id="area1" class="pure-input-1-2">
+                                                <asp:ListItem>¿El area no aparece? Haz uso el icono situado contiguo a esta categoría para proporcionar una nueva.</asp:ListItem>
+                                            </asp:DropDownList>
                                             <a data-toggle="modal" class="label disabled" id="a" data-target="#modalAreas"><span class="glyphicon glyphicon-wrench"></span></a>
                                         </div>
 
                                         <div class="pure-control-group">
                                             <label for="area">Proveedor</label>
-                                            <select data-toggle="tooltip" disabled title="Proveedor: En este espacio debe proporcionar el nombre del proveedor del activo, es requerido." id="prove1" class="pure-input-1-2">
-                                                <option>HP</option>
-                                                <option>Dell</option>
-                                                <option>EMC</option>
-                                                <option>Apple</option>
-                                                <option>Toshiba</option>
-                                                <option>Acer</option>
-                                                <option>Asus</option>
-                                                <option>Distribuidor Independiente</option>
-                                                <option disabled>¿El proveedor no aparece? Haz uso el icono situado contiguo a esta categoría para proporcionar una nueva.</option>
-                                            </select>
+                                            <asp:DropDownList runat="server" readonly = 'true' data-toggle="tooltip"  title="Proveedor: En este espacio debe proporcionar el nombre del proveedor del activo, es requerido." id="prove1" class="pure-input-1-2">
+
+                                                <asp:ListItem >¿El proveedor no aparece? Haz uso el icono situado contiguo a esta categoría para proporcionar una nueva.</asp:ListItem>
+                                            </asp:DropDownList>
                                             <a data-toggle="modal" class="label disabled"  data-target="#modalProveedor" id="p"><span class="glyphicon glyphicon-wrench"></span></a>
                                         </div>
                                         <div class="pure-control-group">
                                             <fieldset class="pure-control-group">
                                                 <label for="Tipo">Especificaciones técnicas</label>
-                                                <textarea id="especificaciones" readonly data-toggle="tooltip" title="En este espacio se debe proporcionar las cualidades del activo." class="pure-input-1-2" placeholder="Especificaciones Técnicas">Procesador Intel core i7, 1Tb HDD, 14 pulgadas, censor de huella dactilar...</textarea>
+                                                <asp:TextBox runat="server" readonly = 'true' ID="especificaciones1"  data-toggle="tooltip" title="En este espacio se debe proporcionar las cualidades del activo." class="pure-input-1-2" placeholder="Especificaciones Técnicas">Procesador Intel core i7, 1Tb HDD, 14 pulgadas, censor de huella dactilar...</asp:TextBox>
                                             </fieldset>
                                         </div>
                                         <div class="pure-controls">
@@ -354,12 +318,12 @@
                             </div>
                             <script type="text/javascript">
                                 function habilitar() {
-                                    document.getElementById('nserie1').readOnly = false;
-                                    document.getElementById('area1').disabled = false;
-                                    document.getElementById('fechaGarantia1').disabled = false;
-                                    document.getElementById('descripcion1').disabled = false;
-                                    document.getElementById('especificaciones').readOnly = false;
-                                    document.getElementById('prove1').disabled = false;
+                                    document.getElementById('nserie1').removeAttribute("readonly", false);
+                                    document.getElementById('area1').removeAttribute("readonly", false);
+                                    document.getElementById('fechaGarantia1').removeAttribute("readonly", false);
+                                    document.getElementById('descripcion1').removeAttribute("readonly", false);
+                                    document.getElementById('especificaciones1').removeAttribute("readonly", false);
+                                    document.getElementById('prove1').removeAttribute("readonly", false);
                                     document.getElementById('enviar1').style.display = 'block';
                                     document.getElementById('rb1').className = "btn btn-primary";
                                     document.getElementById('rb2').className = "btn btn-primary active";
