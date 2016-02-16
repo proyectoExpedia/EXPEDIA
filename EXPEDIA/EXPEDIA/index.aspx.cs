@@ -15,37 +15,24 @@ namespace EXPEDIA
         
         protected void Page_Load(object sender, EventArgs e)
         {
-            //String dir = "Data Source=ROJAS-PC\\SQLEXPRESS;Initial Catalog=BD_EXPEDIA;User ID=Administrador;Password=123456";
-            //SqlConnection conexion = new SqlConnection(dir);
-            //conexion.Open();
-            ////try
-            ////{
-            ////    Response.Write("ok");
-            ////}
-            ////catch (Exception)
-            ////{
-            ////    Response.Write("no!!!!");
-            ////}
-
-
         }
-   protected void Bt_Ingresar_Click(object sender, EventArgs e)
-        {
+
+        protected void Bt_Ingresar_Click(object sender, EventArgs e){
             String cedula, pass;
             cedula = this.username.Text;
             pass = this.password.Text;
-            if (Login(cedula, pass))
-            {
-                
-                Response.Redirect("mainAdministrador.aspx?rid="+ Server.HtmlEncode(cedula));
 
+            String nombre = Login(cedula, pass);
+            if (nombre!=null)
+            {
+                Response.Redirect("mainAdministrador.aspx?rid=" + Server.HtmlEncode(nombre));
             }
             else
-                   Response.Redirect("index.aspx?rid=" + Server.HtmlEncode(cedula));
+                Response.Redirect("index.aspx?rid=" + Server.HtmlEncode(cedula));
         }
 
 
-        public bool Login(String ced, string contra)
+        public string Login(String ced, string contra)
         {
             Conexion c = new Conexion();
             SqlConnection Conexion = c.Conectar();
@@ -56,17 +43,25 @@ namespace EXPEDIA
             SqlCommand cmd = new SqlCommand(Sql, Conexion); //ejecutamos la instruccion
             cmd.Parameters.AddWithValue("@user", ced); //enviamos los parametros
             cmd.Parameters.AddWithValue("@pass", contra);
+            String nombre="";
 
 
             int count = Convert.ToInt32(cmd.ExecuteScalar()); //devuelve la fila afectada
 
-            if (count == 0)
-            {
+            SqlDataReader reader = cmd.ExecuteReader();
+            
+            if (reader.HasRows){
+                while (reader.Read()){
+                    nombre = reader.GetString(2);
+                }
+            }
+
+            if (count == 0){
                 c.Desconectar(Conexion);
-                return false;
+                return null;
             }else{
                 c.Desconectar(Conexion);
-                return true;
+                return nombre;
             }
 
         }
