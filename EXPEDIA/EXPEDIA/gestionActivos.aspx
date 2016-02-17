@@ -116,19 +116,14 @@
                                     <div class="pure-control-group" id="leasing" style="display:none">
                                         <div class="pure-control-group">
                                             <label for="fechaEntrega">Fecha de entrega a la empresa</label>
-                                            <asp:TextBox runat="server" data-toggle="tooltip" title="En este espacio debe proporcionar la fecha en que la empresa recibe el activo por parte del proveedor, es requerido." ID="fechaEntrega"  placeholder="Fecha de entrega"/>
+                                            <asp:TextBox runat="server" TextMode="Date" data-toggle="tooltip" title="En este espacio debe proporcionar la fecha en que la empresa recibe el activo por parte del proveedor, es requerido." ID="fechaEntrega"  placeholder="Fecha de entrega"/>
                                             
                                         </div>
                                         <fieldset class="pure-control-group">
                                             <label for="descripcion">Duración del contrato</label>
-                                            <asp:DropDownList runat="server"  data-toggle="tooltip" title="En este espacio debe proporcionar la descripción del propósito general del activo, es requerido. " ID="duracion_contrato" class="pure-input-1-2">
-                                                <asp:ListItem>Elija una duración</asp:ListItem>
-                                                <asp:ListItem Value="1">1 año</asp:ListItem>
-                                                <asp:ListItem Value="2">2 años</asp:ListItem>
-                                                <asp:ListItem Value="3">3 años</asp:ListItem>
-                                                <asp:ListItem >¿La duración no aparece? Haz uso el icono situado contiguo a esta categoría para proporcionar una nueva.</asp:ListItem>
-                                            </asp:DropDownList>
-                                            <a data-toggle="modal" data-target="#modalDescripcion"><span class="glyphicon glyphicon-wrench"></span></a>
+                                           <asp:TextBox runat="server" TextMode="Date"  data-toggle="tooltip" title="En este espacio debe proporcionar la fecha em la que termina el contrato  del activo, es requerido. " ID="duracion_contrato" CssClass="pure-input-1-2"/>
+
+                                        
                                         </fieldset>
                                         <fieldset class="pure-control-group">
                                             <label for="Tipo">Especificaciones técnicas</label>
@@ -143,18 +138,14 @@
 
                                     <div class="pure-control-group">
                                         <label for="fechaCompra">Fecha de compra</label>
-                                        <asp:TextBox  runat="server" data-toggle="tooltip" title="En este espacio debe proporcionar la fecha de compra del activo, es requerido." ID="fechaCompra"  placeholder="Fecha de compra"/>
+                                        <asp:TextBox TextMode="Date"  runat="server" data-toggle="tooltip" title="En este espacio debe proporcionar la fecha de compra del activo, es requerido." ID="fechaCompra"  placeholder="Fecha de compra"/>
                                     <script>$("#fechaCompra").datepicker();</script>
                                     </div>
 
                                     <fieldset class="pure-control-group">
                                         <label for="descripcion">Duración de la garantía</label>
-                                        <asp:DropDownList runat="server" data-toggle="tooltip" title="En este espacio debe proporcionar la descripción del propósito general del activo, es requerido. " id="duracion_garantia" class="pure-input-1-2">
-                                            <asp:ListItem Value="1">1 año</asp:ListItem>
-                                            <asp:ListItem Value="2">2 años</asp:ListItem>
-                                            <asp:ListItem Value="3">3 años</asp:ListItem>
-                                            <asp:ListItem >¿La duración que busca no aparece? Haz uso el icono situado contiguo a esta categoría para proporcionar una nueva.</asp:ListItem>
-                                        </asp:DropDownList>
+                                        <asp:TextBox TextMode="Date"   runat="server"  data-toggle="tooltip" title="En este espacio debe proporcionar la descripción del propósito general del activo, es requerido. " id="duracion_garantia" class="pure-input-1-2"/>
+
                                         <a data-toggle="modal" data-target="#modalDescripcion"><span class="glyphicon glyphicon-wrench"></span></a>
                                     </fieldset>  
                                    
@@ -198,7 +189,7 @@
                                         </fieldset>
                                     </div>
                                     <div class="pure-controls">
-                                        <asp:Button runat="server"  CssClass="btn btn-success"  ID="Bt_Ingresar"  Text="Registrar Activo"/>
+                                        <asp:Button runat="server"  CssClass="btn btn-success" OnClick="Bt_Ingresar_Click"  ID="Bt_Ingresar"  Text="Registrar Activo"/>
                                         <div id="mensaje" style="display:none"><h3>Las acciones han sido realizado con éxito.</h3></div>
                                     </div>
                                 </fieldset>

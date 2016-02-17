@@ -64,7 +64,7 @@ namespace EXPEDIA {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList duracion_contrato;
+        protected global::System.Web.UI.WebControls.TextBox duracion_contrato;
         
         /// <summary>
         /// especificaciones control.
@@ -100,7 +100,7 @@ namespace EXPEDIA {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList duracion_garantia;
+        protected global::System.Web.UI.WebControls.TextBox duracion_garantia;
         
         /// <summary>
         /// costo control.
