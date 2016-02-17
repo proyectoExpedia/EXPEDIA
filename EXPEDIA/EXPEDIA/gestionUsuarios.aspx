@@ -339,19 +339,19 @@
                                             <div class="pure-form pure-form-aligned">
                                                 <fieldset class="pure-control-group">
                                                     <div class="input-prepend">
-                                                        <label for="idocupacion">Identificador de la ocupación</label>
-                                                        <asp:TextBox runat="server" ID="idocupacion"  placeholder="OC-001" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar un identificador que caracterice la ocupación que se esté registrando, es requerido. "/>
+                                                        <label for="idocupacion_nueva">Identificador de la ocupación</label>
+                                                        <asp:TextBox runat="server" ID="idocupacion_nueva"  placeholder="OC-001" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar un identificador que caracterice la ocupación que se esté registrando, es requerido. "/>
                                                     </div>
                                                     <div class="input-prepend">
-                                                        <label for="ocupacion">Ocupación</label>
-                                                        <asp:TextBox runat="server" ID="ocupacion"   placeholder="Programador" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar el nombre de la ocupación que se desea registrar, es requerido. "/>
+                                                        <label for="ocupacion_nueva">Ocupación</label>
+                                                        <asp:TextBox runat="server" ID="ocupacion_nueva"   placeholder="Programador" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar el nombre de la ocupación que se desea registrar, es requerido. "/>
                                                     </div>
                                                 </fieldset>
                                         </div> <!-- /container -->
                                     </div>
                                     <div class="modal-footer">
                                         <div class="span">
-                                            <asp:Button runat="server" ID="btn"  class="btn btn-success" Text="Registrar ocupacion"/>
+                                            <asp:Button runat="server" ID="btn_Registrar_Ocupacion"  OnClick="btn_Registrar_Ocupacion_Click" class="btn btn-success" Text="Registrar ocupacion"/>
                                             <button onclick="Mostrar_Info_Usuario(1)" class="btn btn-default" data-dismiss="modal">Cerrar</button>
                                         </div>
                                         <div class="span pull-left" style="margin-top:20px;">
@@ -383,19 +383,19 @@
                                             <div class="pure-form pure-form-aligned">
                                                 <fieldset class="pure-control-group">
                                                     <div class="input-prepend">
-                                                        <label for="idarea">Identificador del área</label>
-                                                        <asp:TextBox runat="server" ID="idareas"   placeholder="AR-001" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar un identificado que caracterice el área o unidad que se esté registrando, es requerido. "/>
+                                                        <label for="idarea_nueva">Identificador del área</label>
+                                                        <asp:TextBox runat="server" ID="idarea_nueva"   placeholder="AR-001" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar un identificado que caracterice el área o unidad que se esté registrando, es requerido. "/>
                                                     </div>
                                                     <div class="input-prepend">
-                                                        <label for="area57">Área</label>
-                                                        <asp:TextBox runat="server" ID="area57"   placeholder="Recursos Humanos" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar el nombre de la área que se desea registrar, es requerido. "/>
+                                                        <label for="area_nueva">Área</label>
+                                                        <asp:TextBox runat="server" ID="area_nueva"   placeholder="Recursos Humanos" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar el nombre de la área que se desea registrar, es requerido. "/>
                                                     </div>
                                                 </fieldset>
                                             </div> <!-- /container -->
                                         </div>
                                         <div class="modal-footer">
                                             <div class="span">
-                                                <asp:Button runat="server" ID="bt1" CssClass="btn btn-success" Text="Registrar área"/>
+                                                <asp:Button runat="server" ID="btn_Registrar_area" OnClick="btn_Registrar_Area_Click"  CssClass="btn btn-success" Text="Registrar área"/>
                                                 <button onclick="Mostrar_Info_Usuario(2)" class="btn btn-default" data-dismiss="modal">Cerrar</button>
                                             </div>
                                             <div class="span pull-left" style="margin-top:20px;">

@@ -274,57 +274,57 @@ namespace EXPEDIA {
         protected global::System.Web.UI.WebControls.Button enviar2;
         
         /// <summary>
-        /// Control idocupacion.
+        /// Control idocupacion_nueva.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox idocupacion;
+        protected global::System.Web.UI.WebControls.TextBox idocupacion_nueva;
         
         /// <summary>
-        /// Control ocupacion.
+        /// Control ocupacion_nueva.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox ocupacion;
+        protected global::System.Web.UI.WebControls.TextBox ocupacion_nueva;
         
         /// <summary>
-        /// Control btn.
+        /// Control btn_Registrar_Ocupacion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn;
+        protected global::System.Web.UI.WebControls.Button btn_Registrar_Ocupacion;
         
         /// <summary>
-        /// Control idareas.
+        /// Control idarea_nueva.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox idareas;
+        protected global::System.Web.UI.WebControls.TextBox idarea_nueva;
         
         /// <summary>
-        /// Control area57.
+        /// Control area_nueva.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox area57;
+        protected global::System.Web.UI.WebControls.TextBox area_nueva;
         
         /// <summary>
-        /// Control bt1.
+        /// Control btn_Registrar_area.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button bt1;
+        protected global::System.Web.UI.WebControls.Button btn_Registrar_area;
     }
 }

@@ -133,8 +133,60 @@ namespace EXPEDIA
             Conexion.Close();
 
         }
+        protected void btn_Registrar_Ocupacion_Click(object sender, EventArgs e)
+        {
+            Conexion c = new Conexion();
+            SqlConnection Conexion = c.Conectar();
+            string Sql = @"INSERT INTO Puestos (bd_id_puesto, bd_descripcion) values (@id, @descripcion)";
 
-   
+            Conexion.Open();//abrimos conexion
+
+            try
+            {
+                SqlCommand cmd = new SqlCommand(Sql, Conexion);
+                cmd.Parameters.AddWithValue("@id", idocupacion_nueva.Text); //enviamos los parametros
+                cmd.Parameters.AddWithValue("@descripcion", ocupacion_nueva.Text);
+                cmd.ExecuteNonQuery();
+                c.Desconectar(Conexion);
+                Response.Redirect("gestionUsuarios.aspx");
+
+                cargar_puesto(puesto);
+
+            }
+            catch (Exception a)
+            {
+                Response.Write("error" + a.ToString());
+            }
+
+        }
+        protected void btn_Registrar_Area_Click(object sender, EventArgs e)
+        {
+            Conexion c = new Conexion();
+            SqlConnection Conexion = c.Conectar();
+            string Sql = @"INSERT INTO Areas (bd_id_area, bd_descripcion) values (@id, @descripcion)";
+
+            Conexion.Open();//abrimos conexion
+
+            try
+            {
+                SqlCommand cmd = new SqlCommand(Sql, Conexion);
+                cmd.Parameters.AddWithValue("@id", idarea_nueva.Text); //enviamos los parametros
+                cmd.Parameters.AddWithValue("@descripcion", area_nueva.Text);
+                Response.Redirect("gestionUsuarios.aspx");
+                cmd.ExecuteNonQuery();
+                c.Desconectar(Conexion);
+          
+               
+
+            }
+            catch (Exception a)
+            {
+                Response.Write("error" + a.ToString());
+            }
+
+        }
+
+
         protected void cargar_area(DropDownList dropdown)
         {
             Conexion c = new Conexion();
