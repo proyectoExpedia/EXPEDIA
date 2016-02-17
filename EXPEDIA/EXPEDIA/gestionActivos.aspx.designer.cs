@@ -85,6 +85,15 @@ namespace EXPEDIA {
         protected global::System.Web.UI.WebControls.TextBox nserie;
         
         /// <summary>
+        /// Control costo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox costo;
+        
+        /// <summary>
         /// Control fechaCompra.
         /// </summary>
         /// <remarks>
@@ -101,15 +110,6 @@ namespace EXPEDIA {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox duracion_garantia;
-        
-        /// <summary>
-        /// Control costo.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox costo;
         
         /// <summary>
         /// Control descripcion_activo.
@@ -247,22 +247,22 @@ namespace EXPEDIA {
         protected global::System.Web.UI.WebControls.Button enviar2;
         
         /// <summary>
-        /// Control ocupacion.
+        /// Control descripcion_nueva.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox ocupacion;
+        protected global::System.Web.UI.WebControls.TextBox descripcion_nueva;
         
         /// <summary>
-        /// Control btn_guardar.
+        /// Control btn_Registar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_guardar;
+        protected global::System.Web.UI.WebControls.Button btn_Registar;
         
         /// <summary>
         /// Control idp.

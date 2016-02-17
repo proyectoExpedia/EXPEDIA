@@ -47,7 +47,9 @@ namespace EXPEDIA
                     cmd.Parameters.AddWithValue("@proveedor", proveedor.SelectedValue);
                     cmd.Parameters.AddWithValue("@especificacion_tecnica", especificaciones_tecnicas.Text);
                     cmd.ExecuteNonQuery();
+                    Response.Redirect("gestionActivos.aspx");
                     c.Desconectar(Conexion);
+                   
                 }
                 catch (Exception t) { Response.Write("error" + t); }
 
@@ -81,6 +83,7 @@ namespace EXPEDIA
                     cmd.Parameters.AddWithValue("@especificacion_tecnica", especificaciones_tecnicas.Text);
 
                     cmd.ExecuteNonQuery();
+                    Response.Redirect("gestionActivos.aspx");
                     c.Desconectar(Conexion);
                 }
                 catch (Exception t) { Response.Write("error"+t); }
@@ -109,6 +112,7 @@ namespace EXPEDIA
                     cmd.Parameters.AddWithValue("@fecha_compra", fechaCompra.Text);
                     cmd.Parameters.AddWithValue("@costo", costo.Text);
                     cmd.ExecuteNonQuery();
+                    Response.Redirect("gestionActivos.aspx");
                     c.Desconectar(Conexion);
                 }
                 catch (Exception t) { Response.Write("error" + t); }
@@ -172,6 +176,15 @@ namespace EXPEDIA
                 dropdown.Items.Add(oItem);
             }
             Conexion.Close();
+        }
+        protected void btn_Registar_Click(object sender, EventArgs e) 
+        {
+            String nombre = descripcion_nueva.Text;
+            // Crea un nuevo Item
+            ListItem oItem = new ListItem(nombre, nombre);
+            // Lo agrega a la colección de Items del DropDownList
+            descripcion_activo.Items.Add(oItem);
+
         }
        
 

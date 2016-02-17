@@ -135,7 +135,13 @@
                                         <label for="nserie">Número de serie del activo</label>
                                         <asp:TextBox  runat="server" data-toggle="tooltip" title="En este espacio debe proporcionar el nuevo número de serie del activo, es requerido" ID="nserie"  placeholder="XAD234ASFSD23" />
                                     </div>
-
+ 
+                                   
+                                    <div class="pure-control-group">
+                                        <label for="nplaca">Costo en colones, del activo</label>
+                                        <asp:TextBox runat="server" TextMode="Number" data-toggle="tooltip" title="En este espacio debe ingresar el precio en colones, del activo. Utilice la cifra exacta. Evite redondear números. Es requerido" ID="costo"  placeholder="120360.17" />
+                                    </div>         
+                                    
                                     <div class="pure-control-group">
                                         <label for="fechaCompra">Fecha de compra</label>
                                         <asp:TextBox TextMode="Date"  runat="server" data-toggle="tooltip" title="En este espacio debe proporcionar la fecha de compra del activo, es requerido." ID="fechaCompra"  placeholder="Fecha de compra"/>
@@ -144,15 +150,9 @@
 
                                     <fieldset class="pure-control-group">
                                         <label for="descripcion">Duración de la garantía</label>
-                                        <asp:TextBox TextMode="Date"   runat="server"  data-toggle="tooltip" title="En este espacio debe proporcionar la descripción del propósito general del activo, es requerido. " id="duracion_garantia" class="pure-input-1-2"/>
-
-                                        <a data-toggle="modal" data-target="#modalDescripcion"><span class="glyphicon glyphicon-wrench"></span></a>
-                                    </fieldset>  
-                                   
-                                    <div class="pure-control-group">
-                                        <label for="nplaca">Costo en colones, del activo</label>
-                                        <asp:TextBox runat="server" TextMode="Number" data-toggle="tooltip" title="En este espacio debe ingresar el precio en colones, del activo. Utilice la cifra exacta. Evite redondear números. Es requerido" ID="costo"  placeholder="120360.17" />
-                                    </div>                                
+                                        <asp:TextBox TextMode="Date"   runat="server"  data-toggle="tooltip" title="En este espacio debe proporcionar la descripción del propósito general del activo, es requerido. " id="duracion_garantia"/>
+                                    </fieldset>    
+                                                        
 
                                     <fieldset class="pure-control-group">
                                         <label for="descripcion">Descripción del activo</label>
@@ -291,7 +291,7 @@
                                         <div class="pure-control-group">
                                             <fieldset class="pure-control-group">
                                                 <label for="Tipo">Especificaciones técnicas</label>
-                                                <asp:TextBox runat="server" readonly = 'true' ID="especificaciones1"  data-toggle="tooltip" title="En este espacio se debe proporcionar las cualidades del activo." class="pure-input-1-2" placeholder="Especificaciones Técnicas">Procesador Intel core i7, 1Tb HDD, 14 pulgadas, censor de huella dactilar...</asp:TextBox>
+                                                <asp:TextBox runat="server"  readonly = 'true' ID="especificaciones1"  data-toggle="tooltip" title="En este espacio se debe proporcionar las cualidades del activo." class="pure-input-1-2" placeholder="Especificaciones Técnicas">Procesador Intel core i7, 1Tb HDD, 14 pulgadas, censor de huella dactilar...</asp:TextBox>
                                             </fieldset>
                                         </div>
                                         <div class="pure-controls">
@@ -359,7 +359,8 @@
                                 </div><!-- /.modal-content -->
                             </div><!-- /.modal-dialog -->
                         </div><!-- /.modal -->
-                        <div class="modal fade" id="modalDescripcion" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                       
+                     <div class="modal fade" id="modalDescripcion" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -372,15 +373,15 @@
                                                 <fieldset class="pure-control-group">
                                                     <div class="input-prepend">
                                                         <label for="ocupacion">Descripción</label>
-                                                        <asp:TextBox runat="server" ID="ocupacion"   placeholder="Dispositivo de audio" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar la descripción del activo que se desea registrar, es requerido. "/>
+                                                        <asp:TextBox runat="server"    ID="descripcion_nueva"  placeholder="Dispositivo de audio" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar la descripción del activo que se desea registrar, es requerido. "/>
                                                     </div>
                                                 </fieldset>
                                             </div> <!-- /container -->
                                         </div>
                                         <div class="modal-footer">
                                             <div class="span">
-                                                <asp:Button runat="server" ID="btn_guardar" CssClass="btn btn-success" Text="Registrar descripción"/>
-                                               <button  class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                                                <asp:Button runat="server" ID="btn_Registar" onclick="btn_Registar_Click" CssClass="btn btn-success" Text="Registrar descripción"/>
+                                                <button class="btn btn-default" data-dismiss="modal">Cerrar</button>
                                             </div>
                                             <div class="span pull-left" style="margin-top:20px;">
                                                 <div class="alert alert-success fade">
@@ -389,7 +390,7 @@
                                                 </div>
                                             </div>
                                             <script>
-                                                $("#btn").on("click", function () {
+                                                $("#btn_Registar").on("click", function () {
                                                     $(".alert").removeClass("in").show();
                                                     $(".alert").delay(500).addClass("in").fadeOut(2000);
                                                 });
@@ -399,6 +400,17 @@
                                 </div>
                             </div><!-- /.modal -->
                          </div>
+
+
+        <script>
+            // Script para añadir opciones de descripcion
+            function masOpciones() {
+                var x = document.getElementById("descripcion_activo");
+                var option = document.createElement("option");
+                option.text = document.getElementById("Des").value;
+                x.add(option);
+            }
+</script>
                         <div class="modal fade" id="modalProveedor" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
