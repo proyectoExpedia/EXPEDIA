@@ -102,11 +102,6 @@
                                         <asp:TextBox runat="server" ID="correo_usuario" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar la dirección de correo electrónico de la persona a registrar, es requerido." TextMode="Email" />
                                     </div>
 
-                                    <div class="pure-control-group">
-                                        <label for="nacimiento">Fecha de nacimiento</label>
-                                         <asp:TextBox runat="server" ID="nacimiento_usuario"  placeholder="Fecha de nacimiento" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar la fecha de nacimiento de la persona a registrar."/>
-                                        <script>$("#nacimiento").datepicker();</script>
-                                    </div>
 
                                     <fieldset class="pure-control-group">
                                         <div class="input-prepend">
@@ -127,7 +122,7 @@
 
                                     <div class="pure-control-group">
                                         <label for="area">Área de servicio</label>
-                                        <asp:dropdownlist runat ="server" ID="area" class="pure-input-1-2" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar el área o unidad donde labora la persona a registrar, es requerido." required>                                         
+                                        <asp:dropdownlist runat ="server" ID="area" class="pure-input-1-2" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar el área o unidad donde labora la persona a registrar, es requerido." >                                         
                                             <asp:ListItem Selected="False">¿El área no aparece? Haz uso el icono situado contiguo a esta categoría para proporcionar una nueva.</asp:ListItem>
                                           
                                         </asp:dropdownlist>
@@ -135,10 +130,10 @@
                                     </div>
                                     <div class="pure-control-group">
                                         <label for="tipo_usuario">Usuario</label>
-                                        <asp:dropdownlist runat ="server" ID="tipo_usuario" class="pure-input-1-2" data-toggle="tooltip" data-placement="left" title="En este espacio se debe representar el rol de la persona a registrar en el sistema." required>
+                                        <asp:dropdownlist runat ="server" ID="tipo_usuario" class="pure-input-1-2" data-toggle="tooltip" data-placement="left" title="En este espacio se debe representar el rol de la persona a registrar en el sistema." >
                                             <asp:ListItem Selected="False">Elige</asp:ListItem>
-                                            <asp:ListItem Value="Administrador">Administrador</asp:ListItem>
-                                            <asp:ListItem Value="Consultas">Consultas</asp:ListItem>
+                                            <asp:ListItem Value="1">Administrador</asp:ListItem>
+                                            <asp:ListItem Value="0">Consultas</asp:ListItem>
                                         </asp:dropdownlist>
                                     </div>
                                     <div class="pure-controls-group">
@@ -154,7 +149,7 @@
                                     </div>
 
                                     <div class="pure-controls-group" style="margin-top:10px;">
-                                        <asp:Button runat="server" CssClass="btn btn-success" OnClick="insertar_usuario" ID="enviar" Text="Registrar Usuario" />
+                                        <asp:Button runat="server" CssClass="btn btn-success" OnClick=" Bt_Ingresar_Click" ID="Bt_Ingresar" Text="Registrar Usuario" />
                                         <div id="mensaje" style="display:none"><h3>Las acciones han sido realizadas con éxito.</h3></div>
                                     </div>
                                 </fieldset>
@@ -339,11 +334,11 @@
                                                 <fieldset class="pure-control-group">
                                                     <div class="input-prepend">
                                                         <label for="idocupacion">Identificador de la ocupación</label>
-                                                        <asp:TextBox runat="server" ID="idocupacion" required  placeholder="OC-001" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar un identificador que caracterice la ocupación que se esté registrando, es requerido. "/>
+                                                        <asp:TextBox runat="server" ID="idocupacion"  placeholder="OC-001" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar un identificador que caracterice la ocupación que se esté registrando, es requerido. "/>
                                                     </div>
                                                     <div class="input-prepend">
                                                         <label for="ocupacion">Ocupación</label>
-                                                        <asp:TextBox runat="server" ID="ocupacion" required  placeholder="Programador" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar el nombre de la ocupación que se desea registrar, es requerido. "/>
+                                                        <asp:TextBox runat="server" ID="ocupacion"   placeholder="Programador" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar el nombre de la ocupación que se desea registrar, es requerido. "/>
                                                     </div>
                                                 </fieldset>
                                         </div> <!-- /container -->
@@ -387,7 +382,7 @@
                                                     </div>
                                                     <div class="input-prepend">
                                                         <label for="area57">Área</label>
-                                                        <asp:TextBox runat="server" ID="area57" required  placeholder="Recursos Humanos" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar el nombre de la área que se desea registrar, es requerido. "/>
+                                                        <asp:TextBox runat="server" ID="area57"   placeholder="Recursos Humanos" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar el nombre de la área que se desea registrar, es requerido. "/>
                                                     </div>
                                                 </fieldset>
                                             </div> <!-- /container -->
