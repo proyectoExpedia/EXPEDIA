@@ -9,7 +9,7 @@
     <link href="css/bootstrap.css" rel="stylesheet" />
     <link href="css/half-slider.css" rel="stylesheet"/>
     <link href="css/boostrap-snipp.css" rel="stylesheet" />
-    <link rel="icon" href="img/ExpediaLogo.png"/>
+    <%--<link rel="icon" href="img/ExpediaLogo.png"/>--%>
     <link href="css/indexCSS.css" rel="stylesheet" />
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <link href="css/jquery.bxslider.css" rel="stylesheet" />

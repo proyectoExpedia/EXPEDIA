@@ -11,12 +11,10 @@ using System.Web.UI.WebControls;
 namespace EXPEDIA
 {
     public partial class index : System.Web.UI.Page
-    {
-        
+    {  
         protected void Page_Load(object sender, EventArgs e)
         {
         }
-
         protected void Bt_Ingresar_Click(object sender, EventArgs e){
             String cedula, pass;
             cedula = this.username.Text;
@@ -30,16 +28,12 @@ namespace EXPEDIA
             else
                 Response.Redirect("index.aspx?rid=" + Server.HtmlEncode(cedula));
         }
-
-
         public string Login(String ced, string contra)
         {
             Conexion c = new Conexion();
             SqlConnection Conexion = c.Conectar();
             string Sql = @"SELECT bd_cedula, bd_contrasena, bd_nombre, bd_apellido1, bd_apellido2 FROM Usuarios WHERE bd_cedula = @user AND bd_contrasena = @pass";
-            
             Conexion.Open();//abrimos conexion
-
             SqlCommand cmd = new SqlCommand(Sql, Conexion); //ejecutamos la instruccion
             cmd.Parameters.AddWithValue("@user", ced); //enviamos los parametros
             cmd.Parameters.AddWithValue("@pass", contra);
@@ -47,24 +41,16 @@ namespace EXPEDIA
             String apellido1 = "";
             String apellido2 = "";
             String NombreCompleto = "";
-
-
-
             int count = Convert.ToInt32(cmd.ExecuteScalar()); //devuelve la fila afectada
-
             SqlDataReader reader = cmd.ExecuteReader();
-            
             if (reader.HasRows){
                 while (reader.Read()){
                     nombre = reader.GetString(2);
                     apellido1 = reader.GetString(3);
                     apellido2 = reader.GetString(4);
                     NombreCompleto = nombre + " " + apellido1 + " " + apellido2;
-                    
-
                 }
             }
-
             if (count == 0){
                 c.Desconectar(Conexion);
                 return null;
@@ -72,8 +58,6 @@ namespace EXPEDIA
                 c.Desconectar(Conexion);
                 return NombreCompleto;
             }
-
         }
     }
-
 }
