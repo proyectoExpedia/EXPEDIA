@@ -110,7 +110,7 @@
 
                                     <div class="pure-control-group">
                                         <label for="nplaca">Número de placa del activo</label>
-                                        <asp:TextBox   runat="server" data-toggle="tooltip" title="En este espacio debe proporcionar el nuevo número de placa del activo a registrar, es requerido" ID="nplaca" type="text" placeholder="ENF-1523" required="true"/>
+                                        <asp:TextBox   runat="server" data-toggle="tooltip" title="En este espacio debe proporcionar el nuevo número de placa del activo a registrar, es requerido" ID="nplaca" type="text" placeholder="ENF-1523" />
                                     </div>
 
                                     <div class="pure-control-group" id="leasing" style="display:none">
@@ -133,7 +133,7 @@
 
                                     <div class="pure-control-group">
                                         <label for="nserie">Número de serie del activo</label>
-                                        <asp:TextBox  runat="server" data-toggle="tooltip" title="En este espacio debe proporcionar el nuevo número de serie del activo, es requerido" ID="nserie"  placeholder="XAD234ASFSD23" required/>
+                                        <asp:TextBox  runat="server" data-toggle="tooltip" title="En este espacio debe proporcionar el nuevo número de serie del activo, es requerido" ID="nserie"  placeholder="XAD234ASFSD23" />
                                     </div>
 
                                     <div class="pure-control-group">
@@ -151,7 +151,7 @@
                                    
                                     <div class="pure-control-group">
                                         <label for="nplaca">Costo en colones, del activo</label>
-                                        <asp:TextBox runat="server" TextMode="Number" data-toggle="tooltip" title="En este espacio debe ingresar el precio en colones, del activo. Utilice la cifra exacta. Evite redondear números. Es requerido" ID="costo"  placeholder="120360.17" required/>
+                                        <asp:TextBox runat="server" TextMode="Number" data-toggle="tooltip" title="En este espacio debe ingresar el precio en colones, del activo. Utilice la cifra exacta. Evite redondear números. Es requerido" ID="costo"  placeholder="120360.17" />
                                     </div>                                
 
                                     <fieldset class="pure-control-group">
@@ -201,7 +201,7 @@
                                 <div class="pure-control-group">
                                   
                                     <label for="cedula">Número de placa del activo</label>
-                                    <asp:TextBox  runat="server" ID="cedula_buscar" data-toggle="tooltip" data-placement="left" title="Proporciona el número de placa del activo que desees consultar."  placeholder="#########" required/>
+                                    <asp:TextBox  runat="server" ID="cedula_buscar" data-toggle="tooltip" data-placement="left" title="Proporciona el número de placa del activo que desees consultar."  placeholder="#########" />
                               
                                          </div>
 
@@ -372,7 +372,7 @@
                                                 <fieldset class="pure-control-group">
                                                     <div class="input-prepend">
                                                         <label for="ocupacion">Descripción</label>
-                                                        <asp:TextBox runat="server" ID="ocupacion" required  placeholder="Dispositivo de audio" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar la descripción del activo que se desea registrar, es requerido. "/>
+                                                        <asp:TextBox runat="server" ID="ocupacion"   placeholder="Dispositivo de audio" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar la descripción del activo que se desea registrar, es requerido. "/>
                                                     </div>
                                                 </fieldset>
                                             </div> <!-- /container -->
@@ -412,29 +412,29 @@
                                                 <fieldset>
                                                     <div class="pure-control-group">
                                                         <label for="idP">Identificador</label>
-                                                        <asp:TextBox runat="server" ID="idp"  required placeholder="PR-000" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar un identificador que caracterice el proveedor que se esté registrando, es requerido. "/>
+                                                        <asp:TextBox runat="server" ID="idp"   placeholder="PR-000" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar un identificador que caracterice el proveedor que se esté registrando, es requerido. "/>
                                                     </div>
 
                                                     <div class="pure-control-group">
                                                         <label for="nproveedor">Nombre del proveedor</label>
-                                                         <asp:TextBox runat="server" ID="nproveedor"  required placeholder="Dell" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar el nombre del proveedor que se esté registrando, es requerido."/>
+                                                         <asp:TextBox runat="server" ID="nproveedor"   placeholder="Dell" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar el nombre del proveedor que se esté registrando, es requerido."/>
                                                     </div>
 
                                                     <div class="pure-control-group">
                                                         <label for="correo">Correo electrónico</label>
-                                                        <asp:TextBox runat="server" TextMode="Email" ID="correo" type="email" required data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar la dirección de correo electrónico del proveedor a registrar, es requerido."/>
+                                                        <asp:TextBox runat="server" TextMode="Email" ID="correo" type="email"  data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar la dirección de correo electrónico del proveedor a registrar, es requerido."/>
                                                     </div>
 
                                                     <fieldset class="pure-control-group">
                                                         <label for="telefono">Número telefónico de la empresa</label>
                                                         <span class="add-on btn btn-default">506</span>
-                                                        <asp:TextBox  runat="server" ID="telefono1" required type="number" placeholder="########" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar el número telefónico principal del proveedor a registrar, es requerido." min="11111111" max="99999999"/>
+                                                        <asp:TextBox  runat="server" ID="telefono1"  type="number" placeholder="########" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar el número telefónico principal del proveedor a registrar, es requerido." min="11111111" max="99999999"/>
                                                     </fieldset>
 
                                                     <fieldset class="pure-control-group">
                                                         <label for="telefono">Número telefónico de contacto </label>
                                                         <span class="add-on btn btn-default">506</span>
-                                                        <asp:TextBox runat="server" ID="telefono" type="number" placeholder="########" required data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar el número telefónico principal del contacto del proveedor, es requerido."  min="11111111" max="99999999"/>
+                                                        <asp:TextBox runat="server" ID="telefono" type="number" placeholder="########"  data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar el número telefónico principal del contacto del proveedor, es requerido."  min="11111111" max="99999999"/>
                                                     </fieldset>
                                                 </fieldset>
                                             </div>
@@ -474,11 +474,11 @@
                                                     <fieldset class="pure-control-group">
                                                         <div class="input-prepend">
                                                             <label for="idarea">Identificador del área</label>
-                                                            <asp:TextBox runat="server" ID="idareas" required  placeholder="AR-001" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar un identificador que caracterice el área o unidad que se esté registrando, es requerido. "/>
+                                                            <asp:TextBox runat="server" ID="idareas"   placeholder="AR-001" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar un identificador que caracterice el área o unidad que se esté registrando, es requerido. "/>
                                                         </div>
                                                         <div class="input-prepend">
                                                             <label for="area57">Área</label>
-                                                             <asp:TextBox runat="server" ID="area57" required type="text" placeholder="Recursos Humanos" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar el nombre de la área que se desea registrar, es requerido. "/>
+                                                             <asp:TextBox runat="server" ID="area57"  type="text" placeholder="Recursos Humanos" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar el nombre de la área que se desea registrar, es requerido. "/>
                                                         </div>
                                                     </fieldset>
                                                 </div> <!-- /container -->
