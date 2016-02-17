@@ -207,11 +207,6 @@
                                         </div>
 
                                         <div class="pure-control-group">
-                                        <label for="cedula">Número de cédula</label>
-                                        <asp:TextBox runat="server" ID="cedula_actualizar" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar el número de cedula de la persona a registrar, omita guiones y todos los dígitos del documento de identidad, es requerido." placeholder="#########" />
-                                    </div>
-
-                                        <div class="pure-control-group">
                                             <label for="contraseña1">Contraseña</label>
                                              <asp:TextBox  runat="server"  ID="contrasena_actualizar" data-toggle="tooltip" title="En este espacio se debe proporcionar la contraseña que el usuario desee para su eventual ingreso al sistema, es requerido. " TextMode="Password" value="Hola Mundo" />
                                         </div>

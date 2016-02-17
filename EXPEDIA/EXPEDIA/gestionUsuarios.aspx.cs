@@ -37,6 +37,7 @@ namespace EXPEDIA
             cmd.Parameters.AddWithValue("@area", area.SelectedValue);    
             cmd.ExecuteNonQuery();
             c.Desconectar(Conexion);
+            Response.Redirect("gestionUsuarios.aspx");
             }
             catch(Exception a)
             {
@@ -49,7 +50,7 @@ namespace EXPEDIA
             Conexion c = new Conexion();
             SqlConnection Conexion = c.Conectar();
             //string Sql = @"Update Usuarios SET (bd_tipo_usuario, bd_nombre, bd_apellido1, bd_apellido2, bd_telefono, bd_correo_electronico, bd_contrasena, bd_cedula, bd_id_puesto, bd_id_area) WHERE (@tipo_usuario, @nombre, @apellido, @apellido2, @telefono,@correo,@contrasena,@cedula,@puesto,@area)";
-            string Sql = @"UPDATE Usuarios SET bd_tipo_usuario=@tipo_usuario, bd_nombre=@nombre, bd_apellido1=@apellido, bd_apellido2=@apellido2, bd_telefono=@telefono, bd_correo_electronico=@correo, bd_contrasena=@contrasena, bd_cedula='@cedula', bd_id_puesto=@puesto, bd_id_area=@area WHERE bd_cedula=@cedula";
+            string Sql = @"UPDATE Usuarios SET bd_tipo_usuario=@tipo_usuario, bd_nombre=@nombre, bd_apellido1=@apellido, bd_apellido2=@apellido2, bd_telefono=@telefono, bd_correo_electronico=@correo, bd_contrasena=@contrasena, bd_id_puesto=@puesto, bd_id_area=@area WHERE bd_cedula=@cedula";
             Conexion.Open();//abrimos conexion
             //int tipo_usuarioac = Convert.ToInt32(tipo_actualizar);
             try
@@ -58,16 +59,17 @@ namespace EXPEDIA
                 SqlCommand cmd = new SqlCommand(Sql, Conexion);
                 cmd.Parameters.AddWithValue("@tipo_usuario", true); //enviamos los parametros
                 cmd.Parameters.AddWithValue("@nombre", nombre_actualizar.Text);
+                cmd.Parameters.AddWithValue("@cedula", cedula_Consulta.Text);
                 cmd.Parameters.AddWithValue("@apellido", apellido_actualizar1.Text);
                 cmd.Parameters.AddWithValue("@apellido2", apellido_actualizar2.Text);
                 cmd.Parameters.AddWithValue("@telefono", telefono_actualizar.Text);
                 cmd.Parameters.AddWithValue("@correo", correo_actualizar.Text);
                 cmd.Parameters.AddWithValue("@contrasena", contrasena_actualizar.Text);
-                cmd.Parameters.AddWithValue("@cedula", cedula_actualizar.Text);
                 cmd.Parameters.AddWithValue("@puesto", puesto_actualizar.SelectedValue);
                 cmd.Parameters.AddWithValue("@area", area_actualizar.SelectedValue);
                 cmd.ExecuteNonQuery() ;
                 c.Desconectar(Conexion);
+               
             }
             catch (Exception a)
             {
@@ -114,14 +116,12 @@ namespace EXPEDIA
                     bool tipo = reader.GetBoolean(0);
                     if (tipo) tipo_actualizar.SelectedValue = "1";
                     else tipo_actualizar.SelectedValue = "0";
-
                     nombre_actualizar.Text = reader.GetString(1);
                     apellido_actualizar1.Text = reader.GetString(2);
                     apellido_actualizar2.Text = reader.GetString(3);
                     telefono_actualizar.Text = reader.GetInt32(4).ToString();
                     correo_actualizar.Text = reader.GetString(5);
                     contrasena_actualizar.Text = reader.GetString(6);
-                    cedula_actualizar.Text = reader.GetString(7);
                     puesto_actualizar.SelectedValue = reader.GetString(8);
                     area_actualizar.SelectedValue = reader.GetString(9);
                 }

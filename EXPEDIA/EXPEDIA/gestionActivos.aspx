@@ -77,13 +77,13 @@
                                         <label for="Genero">Tipo de activo</label>
                                         <div style="margin-left:55px" class="btn-group" data-toggle="buttons">
                                             <label class="btn btn-primary" onclick="mostrarleasing(1);">
-                                                <asp:RadioButton runat="server"   name="options" id="option1" autocomplete="off"/> Software
+                                                <asp:RadioButton runat="server"    ID="option1"  Text="Software" autocomplete="off"/> 
                                             </label>
                                             <label class="btn btn-primary " onclick="mostrarleasing(2);">
-                                                <asp:RadioButton runat="server" name="options" id="option2" autocomplete="off"/> Hardware
+                                                <asp:RadioButton runat="server" ID="option2"  Text="Hardware"  autocomplete="off"/> 
                                             </label>
                                             <label class="btn btn-primary " onclick="mostrarleasing(3);">
-                                               <asp:RadioButton runat="server" name="options" id="option3" autocomplete="off"/> Leasing
+                                               <asp:RadioButton runat="server"  ID="option3" Text="Leasing" autocomplete="off"/>
                                             </label> 
                                             
                                         </div>
@@ -110,25 +110,20 @@
 
                                     <div class="pure-control-group">
                                         <label for="nplaca">Número de placa del activo</label>
-                                        <asp:TextBox   runat="server" data-toggle="tooltip" title="En este espacio debe proporcionar el nuevo número de placa del activo a registrar, es requerido" ID="nplaca" type="text" placeholder="ENF-1523" required="true"/>
+                                        <asp:TextBox   runat="server" data-toggle="tooltip" title="En este espacio debe proporcionar el nuevo número de placa del activo a registrar, es requerido" ID="nplaca" type="text" placeholder="ENF-1523" />
                                     </div>
 
                                     <div class="pure-control-group" id="leasing" style="display:none">
                                         <div class="pure-control-group">
                                             <label for="fechaEntrega">Fecha de entrega a la empresa</label>
-                                            <asp:TextBox runat="server" data-toggle="tooltip" title="En este espacio debe proporcionar la fecha en que la empresa recibe el activo por parte del proveedor, es requerido." ID="fechaEntrega"  placeholder="Fecha de entrega"/>
+                                            <asp:TextBox runat="server" TextMode="Date" data-toggle="tooltip" title="En este espacio debe proporcionar la fecha en que la empresa recibe el activo por parte del proveedor, es requerido." ID="fechaEntrega"  placeholder="Fecha de entrega"/>
                                             
                                         </div>
                                         <fieldset class="pure-control-group">
-                                            <label for="descripcion">Duración del contrato</label>
-                                            <asp:DropDownList runat="server"  data-toggle="tooltip" title="En este espacio debe proporcionar la descripción del propósito general del activo, es requerido. " ID="descripcion" class="pure-input-1-2">
-                                                <asp:ListItem>Elija una duración</asp:ListItem>
-                                                <asp:ListItem Value="1">1 año</asp:ListItem>
-                                                <asp:ListItem Value="2">2 años</asp:ListItem>
-                                                <asp:ListItem Value="3">3 años</asp:ListItem>
-                                                <asp:ListItem >¿La duración no aparece? Haz uso el icono situado contiguo a esta categoría para proporcionar una nueva.</asp:ListItem>
-                                            </asp:DropDownList>
-                                            <a data-toggle="modal" data-target="#modalDescripcion"><span class="glyphicon glyphicon-wrench"></span></a>
+                                            <label for="duracion_contrato">Duración del contrato</label>
+                                           <asp:TextBox runat="server" TextMode="Date"  data-toggle="tooltip" title="En este espacio debe proporcionar la fecha em la que termina el contrato  del activo, es requerido. " ID="duracion_contrato" CssClass="pure-input-1-2"/>
+
+                                        
                                         </fieldset>
                                         <fieldset class="pure-control-group">
                                             <label for="Tipo">Especificaciones técnicas</label>
@@ -138,40 +133,30 @@
 
                                     <div class="pure-control-group">
                                         <label for="nserie">Número de serie del activo</label>
-                                        <asp:TextBox  runat="server" data-toggle="tooltip" title="En este espacio debe proporcionar el nuevo número de serie del activo, es requerido" ID="nserie"  placeholder="XAD234ASFSD23" required/>
+                                        <asp:TextBox  runat="server" data-toggle="tooltip" title="En este espacio debe proporcionar el nuevo número de serie del activo, es requerido" ID="nserie"  placeholder="XAD234ASFSD23" />
                                     </div>
 
                                     <div class="pure-control-group">
                                         <label for="fechaCompra">Fecha de compra</label>
-                                        <asp:TextBox  runat="server" data-toggle="tooltip" title="En este espacio debe proporcionar la fecha de compra del activo, es requerido." ID="fechaCompra"  placeholder="Fecha de compra"/>
-                                    <script>$("#fechaCompra").datepicker();</script>
-                                    </div>
-
-                                    <div class="pure-control-group">
-                                        <label for="fechaGarantia">Fecha de la garantía</label>
-                                        <asp:TextBox runat="server" data-toggle="tooltip" title="En este espacio debe proporcionar la fecha en que inicia la garantía del activo, es requerido." ID="fechaGarantia" type="text" placeholder="Fecha de garantía"/>
-                                        <script>$("#fechaGarantia").datepicker();</script>
+                                        <asp:TextBox TextMode="Date"  runat="server" data-toggle="tooltip" title="En este espacio debe proporcionar la fecha de compra del activo, es requerido." ID="fechaCompra"  placeholder="Fecha de compra"/>
+                            
                                     </div>
 
                                     <fieldset class="pure-control-group">
                                         <label for="descripcion">Duración de la garantía</label>
-                                        <asp:DropDownList runat="server" data-toggle="tooltip" title="En este espacio debe proporcionar la descripción del propósito general del activo, es requerido. " id="duracion" class="pure-input-1-2">
-                                            <asp:ListItem Value="1">1 año</asp:ListItem>
-                                            <asp:ListItem Value="2">2 años</asp:ListItem>
-                                            <asp:ListItem Value="3">3 años</asp:ListItem>
-                                            <asp:ListItem >¿La duración que busca no aparece? Haz uso el icono situado contiguo a esta categoría para proporcionar una nueva.</asp:ListItem>
-                                        </asp:DropDownList>
+                                        <asp:TextBox TextMode="Date"   runat="server"  data-toggle="tooltip" title="En este espacio debe proporcionar la descripción del propósito general del activo, es requerido. " id="duracion_garantia" class="pure-input-1-2"/>
+
                                         <a data-toggle="modal" data-target="#modalDescripcion"><span class="glyphicon glyphicon-wrench"></span></a>
                                     </fieldset>  
                                    
                                     <div class="pure-control-group">
                                         <label for="nplaca">Costo en colones, del activo</label>
-                                        <asp:TextBox runat="server" TextMode="Number" data-toggle="tooltip" title="En este espacio debe ingresar el precio en colones, del activo. Utilice la cifra exacta. Evite redondear números. Es requerido" ID="costo"  placeholder="120360.17" required/>
+                                        <asp:TextBox runat="server" TextMode="Number" data-toggle="tooltip" title="En este espacio debe ingresar el precio en colones, del activo. Utilice la cifra exacta. Evite redondear números. Es requerido" ID="costo"  placeholder="120360.17" />
                                     </div>                                
 
                                     <fieldset class="pure-control-group">
                                         <label for="descripcion">Descripción del activo</label>
-                                        <asp:DropDownList runat="server" data-toggle="tooltip" title="En este espacio debe proporcionar la descripción del propósito general del activo, es requerido. " id="descripcion2" class="pure-input-1-2">
+                                        <asp:DropDownList runat="server" data-toggle="tooltip" title="En este espacio debe proporcionar la descripción del propósito general del activo, es requerido. " id="descripcion_activo" class="pure-input-1-2">
                                             <asp:ListItem>Elija una descripción</asp:ListItem>
                                             <asp:ListItem>¿La descripción no aparece? Haz uso el icono situado contiguo a esta categoría para proporcionar una nueva.</asp:ListItem>
                                         </asp:DropDownList>
@@ -181,7 +166,7 @@
 
                                     <div class="pure-control-group">
                                         <label for="area">Departamento o Sede regional destinado(a)</label>
-                                        <asp:DropDownList runat="server" data-toggle="tooltip" title="En este espacio debe proporcionar el área la cual está destinada el activo, es requerido. " id="area" class="pure-input-1-2">
+                                        <asp:DropDownList runat="server" data-toggle="tooltip" title="En este espacio debe proporcionar el área la cual está destinada el activo, es requerido. " id="departamento_activo" class="pure-input-1-2">
                                             <asp:ListItem>Elija un Área o Departamento</asp:ListItem>
  
                                             <asp:ListItem>¿La opción que busca no aparece? Haz uso el icono situado contiguo a esta categoría para proporcionar una nueva.</asp:ListItem>
@@ -191,7 +176,7 @@
 
                                     <div class="pure-control-group">
                                         <label for="provedor">Proveedor</label>
-                                        <asp:DropDownList runat="server" data-toggle="tooltip" title="Proveedor: En este espacio debe proporcionar el nombre del proveedor del activo, es requerido." id="provedor" class="pure-input-1-2">
+                                        <asp:DropDownList runat="server" data-toggle="tooltip" title="Proveedor: En este espacio debe proporcionar el nombre del proveedor del activo, es requerido." id="proveedor" class="pure-input-1-2">
                                             <asp:ListItem>Elija un proveedor</asp:ListItem>
                                             <asp:ListItem>¿El proveedor no aparece? Haz uso el icono situado contiguo a esta categoría para proporcionar una nueva.</asp:ListItem>
                                         </asp:DropDownList>
@@ -204,7 +189,7 @@
                                         </fieldset>
                                     </div>
                                     <div class="pure-controls">
-                                        <asp:Button runat="server"  CssClass="btn btn-success"  ID="enviar" Text="Registrar Activo"/>
+                                        <asp:Button runat="server"  CssClass="btn btn-success" OnClick="Bt_Ingresar_Click"  ID="Bt_Ingresar"  Text="Registrar Activo"/>
                                         <div id="mensaje" style="display:none"><h3>Las acciones han sido realizado con éxito.</h3></div>
                                     </div>
                                 </fieldset>
@@ -216,7 +201,7 @@
                                 <div class="pure-control-group">
                                   
                                     <label for="cedula">Número de placa del activo</label>
-                                    <asp:TextBox  runat="server" ID="cedula_buscar" data-toggle="tooltip" data-placement="left" title="Proporciona el número de placa del activo que desees consultar."  placeholder="#########" required/>
+                                    <asp:TextBox  runat="server" ID="cedula_buscar" data-toggle="tooltip" data-placement="left" title="Proporciona el número de placa del activo que desees consultar."  placeholder="#########" />
                               
                                          </div>
 
@@ -387,7 +372,7 @@
                                                 <fieldset class="pure-control-group">
                                                     <div class="input-prepend">
                                                         <label for="ocupacion">Descripción</label>
-                                                        <asp:TextBox runat="server" ID="ocupacion" required  placeholder="Dispositivo de audio" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar la descripción del activo que se desea registrar, es requerido. "/>
+                                                        <asp:TextBox runat="server" ID="ocupacion"   placeholder="Dispositivo de audio" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar la descripción del activo que se desea registrar, es requerido. "/>
                                                     </div>
                                                 </fieldset>
                                             </div> <!-- /container -->
@@ -427,29 +412,29 @@
                                                 <fieldset>
                                                     <div class="pure-control-group">
                                                         <label for="idP">Identificador</label>
-                                                        <asp:TextBox runat="server" ID="idp"  required placeholder="PR-000" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar un identificador que caracterice el proveedor que se esté registrando, es requerido. "/>
+                                                        <asp:TextBox runat="server" ID="idp"   placeholder="PR-000" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar un identificador que caracterice el proveedor que se esté registrando, es requerido. "/>
                                                     </div>
 
                                                     <div class="pure-control-group">
                                                         <label for="nproveedor">Nombre del proveedor</label>
-                                                         <asp:TextBox runat="server" ID="nproveedor"  required placeholder="Dell" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar el nombre del proveedor que se esté registrando, es requerido."/>
+                                                         <asp:TextBox runat="server" ID="nproveedor"   placeholder="Dell" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar el nombre del proveedor que se esté registrando, es requerido."/>
                                                     </div>
 
                                                     <div class="pure-control-group">
                                                         <label for="correo">Correo electrónico</label>
-                                                        <asp:TextBox runat="server" TextMode="Email" ID="correo" type="email" required data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar la dirección de correo electrónico del proveedor a registrar, es requerido."/>
+                                                        <asp:TextBox runat="server" TextMode="Email" ID="correo" type="email"  data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar la dirección de correo electrónico del proveedor a registrar, es requerido."/>
                                                     </div>
 
                                                     <fieldset class="pure-control-group">
                                                         <label for="telefono">Número telefónico de la empresa</label>
                                                         <span class="add-on btn btn-default">506</span>
-                                                        <asp:TextBox  runat="server" ID="telefono1" required type="number" placeholder="########" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar el número telefónico principal del proveedor a registrar, es requerido." min="11111111" max="99999999"/>
+                                                        <asp:TextBox  runat="server" ID="telefono1"  type="number" placeholder="########" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar el número telefónico principal del proveedor a registrar, es requerido." min="11111111" max="99999999"/>
                                                     </fieldset>
 
                                                     <fieldset class="pure-control-group">
                                                         <label for="telefono">Número telefónico de contacto </label>
                                                         <span class="add-on btn btn-default">506</span>
-                                                        <asp:TextBox runat="server" ID="telefono" type="number" placeholder="########" required data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar el número telefónico principal del contacto del proveedor, es requerido."  min="11111111" max="99999999"/>
+                                                        <asp:TextBox runat="server" ID="telefono" type="number" placeholder="########"  data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar el número telefónico principal del contacto del proveedor, es requerido."  min="11111111" max="99999999"/>
                                                     </fieldset>
                                                 </fieldset>
                                             </div>
@@ -489,11 +474,11 @@
                                                     <fieldset class="pure-control-group">
                                                         <div class="input-prepend">
                                                             <label for="idarea">Identificador del área</label>
-                                                            <asp:TextBox runat="server" ID="idareas" required  placeholder="AR-001" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar un identificador que caracterice el área o unidad que se esté registrando, es requerido. "/>
+                                                            <asp:TextBox runat="server" ID="idareas"   placeholder="AR-001" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar un identificador que caracterice el área o unidad que se esté registrando, es requerido. "/>
                                                         </div>
                                                         <div class="input-prepend">
                                                             <label for="area57">Área</label>
-                                                             <asp:TextBox runat="server" ID="area57" required type="text" placeholder="Recursos Humanos" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar el nombre de la área que se desea registrar, es requerido. "/>
+                                                             <asp:TextBox runat="server" ID="area57"  type="text" placeholder="Recursos Humanos" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar el nombre de la área que se desea registrar, es requerido. "/>
                                                         </div>
                                                     </fieldset>
                                                 </div> <!-- /container -->
