@@ -73,28 +73,38 @@
                             <div class="pure-form pure-form-aligned" style="margin-top:5px;margin-left:20px;">
                                 <fieldset>
                                     <div class="pure-control-group">
-                                        <label for="nombre">Nombre completo</label>
-                                        <asp:TextBox runat="server" ID="nombre" data-toggle="tooltip" data-placement="left" toolT="Este espacio debe proporcionar el nombre completo y apellidos de la persona a registrar, es requerido." />                
+                                        <label for="nombre">Nombre</label>
+                                        <asp:TextBox runat="server" ID="nombre_usuario" data-toggle="tooltip" data-placement="left" toolT="Este espacio debe proporcionar el nombre completo y apellidos de la persona a registrar, es requerido." />                
+                                    </div>
+
+                                    <div class="pure-control-group">
+                                        <label for="nombre">Primer Apellido</label>
+                                        <asp:TextBox runat="server" ID="apellido_usuario1" data-toggle="tooltip" data-placement="left" toolT="Este espacio debe proporcionar el nombre completo y apellidos de la persona a registrar, es requerido." />                
+                                    </div>
+
+                                    <div class="pure-control-group">
+                                        <label for="nombre">Segundo Apellido</label>
+                                        <asp:TextBox runat="server" ID="apellido_usuario2" data-toggle="tooltip" data-placement="left" toolT="Este espacio debe proporcionar el nombre completo y apellidos de la persona a registrar, es requerido." />                
                                     </div>
 
                                     <div class="pure-control-group">
                                         <label for="cedula">Número de cédula</label>
-                                        <asp:TextBox runat="server" ID="cedula" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar el número de cedula de la persona a registrar, omita guiones y todos los dígitos del documento de identidad, es requerido." placeholder="#########" />
+                                        <asp:TextBox runat="server" ID="cedula_usuario" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar el número de cedula de la persona a registrar, omita guiones y todos los dígitos del documento de identidad, es requerido." placeholder="#########" />
                                     </div>
     
                                     <div class="pure-control-group">
                                         <label for="contraseña">Contraseña</label>
-                                        <asp:TextBox runat="server" ID="contraseña" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar la contraseña que el usuario desee para su eventual ingreso al sistema, es requerido. "  TextMode="Password"/>
+                                        <asp:TextBox runat="server" ID="contrasena_usuario" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar la contraseña que el usuario desee para su eventual ingreso al sistema, es requerido. "  TextMode="Password"/>
                                     </div>
 
                                     <div class="pure-control-group">
                                         <label for="correo">Correo electrónico</label>
-                                        <asp:TextBox runat="server" ID="correo" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar la dirección de correo electrónico de la persona a registrar, es requerido." TextMode="Email" />
+                                        <asp:TextBox runat="server" ID="correo_usuario" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar la dirección de correo electrónico de la persona a registrar, es requerido." TextMode="Email" />
                                     </div>
 
                                     <div class="pure-control-group">
                                         <label for="nacimiento">Fecha de nacimiento</label>
-                                         <asp:TextBox runat="server" ID="nacimiento"  placeholder="Fecha de nacimiento" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar la fecha de nacimiento de la persona a registrar."/>
+                                         <asp:TextBox runat="server" ID="nacimiento_usuario"  placeholder="Fecha de nacimiento" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar la fecha de nacimiento de la persona a registrar."/>
                                         <script>$("#nacimiento").datepicker();</script>
                                     </div>
 
@@ -102,7 +112,7 @@
                                         <div class="input-prepend">
                                             <label for="telefono">Número telefónico</label>
                                             <span class="add-on btn btn-default">506</span>
-                                            <asp:TextBox  runat="server" ID="telefono" TextMode="Number"  placeholder="########" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar el número telefónico principal de la persona a registrar, es requerido." min="11111111" max="99999999"/>
+                                            <asp:TextBox  runat="server" ID="telefono_usuario" TextMode="Number"  placeholder="########" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar el número telefónico principal de la persona a registrar, es requerido." min="11111111" max="99999999"/>
                                         </div>
                                     </fieldset>
                                     <div class="pure-control-group">
@@ -144,7 +154,7 @@
                                     </div>
 
                                     <div class="pure-controls-group" style="margin-top:10px;">
-                                        <button class="btn btn-success" id="enviar">Registrar Usuario</button>
+                                        <asp:Button runat="server" CssClass="btn btn-success" OnClick="insertar_usuario" ID="enviar" Text="Registrar Usuario" />
                                         <div id="mensaje" style="display:none"><h3>Las acciones han sido realizadas con éxito.</h3></div>
                                     </div>
                                 </fieldset>

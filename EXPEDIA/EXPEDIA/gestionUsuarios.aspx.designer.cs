@@ -13,58 +13,76 @@ namespace EXPEDIA {
     public partial class gestionUsuarios {
         
         /// <summary>
-        /// nombre control.
+        /// nombre_usuario control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox nombre;
+        protected global::System.Web.UI.WebControls.TextBox nombre_usuario;
         
         /// <summary>
-        /// cedula control.
+        /// apellido_usuario1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox cedula;
+        protected global::System.Web.UI.WebControls.TextBox apellido_usuario1;
         
         /// <summary>
-        /// contraseña control.
+        /// apellido_usuario2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox contraseña;
+        protected global::System.Web.UI.WebControls.TextBox apellido_usuario2;
         
         /// <summary>
-        /// correo control.
+        /// cedula_usuario control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox correo;
+        protected global::System.Web.UI.WebControls.TextBox cedula_usuario;
         
         /// <summary>
-        /// nacimiento control.
+        /// contrasena_usuario control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox nacimiento;
+        protected global::System.Web.UI.WebControls.TextBox contrasena_usuario;
         
         /// <summary>
-        /// telefono control.
+        /// correo_usuario control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox telefono;
+        protected global::System.Web.UI.WebControls.TextBox correo_usuario;
+        
+        /// <summary>
+        /// nacimiento_usuario control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox nacimiento_usuario;
+        
+        /// <summary>
+        /// telefono_usuario control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox telefono_usuario;
         
         /// <summary>
         /// puesto control.
@@ -110,6 +128,15 @@ namespace EXPEDIA {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RadioButton femenino;
+        
+        /// <summary>
+        /// enviar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button enviar;
         
         /// <summary>
         /// cedula_Consulta control.
