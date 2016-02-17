@@ -32,18 +32,18 @@ namespace EXPEDIA
                 SqlCommand cmd = new SqlCommand(Sql, Conexion);
                 if (option1.Checked)
                 {
-      
+                     
                     cmd.Parameters.AddWithValue("@tipo_activo", option1.Text);
-                    cmd.Parameters.AddWithValue("@fecha_compra", fechaCompra.Text);
+                    cmd.Parameters.AddWithValue("@fecha_compra", "2016-02-16");
                     cmd.Parameters.AddWithValue("@costo", costo.Text);
                     cmd.Parameters.AddWithValue("@placa", nplaca.Text);
                     cmd.Parameters.AddWithValue("@serie", nserie.Text);
-                    cmd.Parameters.AddWithValue("@garantia", duracion_garantia.Text);
+                    cmd.Parameters.AddWithValue("@garantia", "2016-02-16");
                     cmd.Parameters.AddWithValue("@descripcion", descripcion_activo.SelectedValue);
                     cmd.Parameters.AddWithValue("@departamento", descripcion_activo.SelectedValue);
                     cmd.Parameters.AddWithValue("@proveedor", proveedor.SelectedValue);
                     cmd.Parameters.AddWithValue("@especificacion_tecnica", especificaciones_tecnicas.Text);
-                    cmd.Parameters.AddWithValue("@duracion_contrato", "0000 - 00 - 00 00: 00");
+                    cmd.Parameters.AddWithValue("@duracion_contrato", "2016-02-16");
 
 
 
@@ -58,35 +58,36 @@ namespace EXPEDIA
                 if (option2.Checked)
                 {
                     cmd.Parameters.AddWithValue("@tipo_activo", option2.Text);
-                    cmd.Parameters.AddWithValue("@fecha_compra", fechaCompra.Text);
+                    cmd.Parameters.AddWithValue("@fecha_compra",  "2016-02-16");
                     cmd.Parameters.AddWithValue("@costo", costo.Text);
                     cmd.Parameters.AddWithValue("@placa", nplaca.Text);
                     cmd.Parameters.AddWithValue("@serie", nserie.Text);
-                    cmd.Parameters.AddWithValue("@garantia", duracion_garantia.Text);
+                    cmd.Parameters.AddWithValue("@garantia", "2016-02-16");
                     cmd.Parameters.AddWithValue("@descripcion", descripcion_activo.SelectedValue);
                     cmd.Parameters.AddWithValue("@departamento", descripcion_activo.SelectedValue);
                     cmd.Parameters.AddWithValue("@proveedor", proveedor.SelectedValue);
                     cmd.Parameters.AddWithValue("@especificacion_tecnica", especificaciones_tecnicas.Text);
-                    cmd.Parameters.AddWithValue("@duracion_contrato", "0000 - 00 - 00 00: 00");
+                    cmd.Parameters.AddWithValue("@duracion_contrato", "2016-02-16");
                 }
                 if (option3.Checked)
                 {
                     cmd.Parameters.AddWithValue("@tipo_activo", option3.Text);
                     cmd.Parameters.AddWithValue("@placa", nplaca.Text);
                     cmd.Parameters.AddWithValue("@serie", nserie.Text);
-                    cmd.Parameters.AddWithValue("@garantia", duracion_garantia.Text);
+                    cmd.Parameters.AddWithValue("@garantia", "2016-02-16");
                     cmd.Parameters.AddWithValue("@descripcion", descripcion_activo.SelectedValue);
                     cmd.Parameters.AddWithValue("@departamento", descripcion_activo.SelectedValue);
                     cmd.Parameters.AddWithValue("@proveedor", proveedor.SelectedValue);
                     cmd.Parameters.AddWithValue("@especificacion_tecnica", especificaciones_tecnicas.Text);
-                    cmd.Parameters.AddWithValue("@duracion_contrato", duracion_contrato.Text);
-                    cmd.Parameters.AddWithValue("@fecha_compra", fechaCompra.Text);
-                    cmd.Parameters.AddWithValue("@costo", costo.Text);
+                    cmd.Parameters.AddWithValue("@duracion_contrato", "2016-02-16");
+                    cmd.Parameters.AddWithValue("@fecha_compra", "2016-02-16");
+                    cmd.Parameters.AddWithValue("@costo",int.Parse( costo.Text));
                 }
                 //enviamos los parametros
 
                 cmd.ExecuteNonQuery();
                 c.Desconectar(Conexion);
+                Response.Write("error");
             }
             catch (Exception a)
             {
