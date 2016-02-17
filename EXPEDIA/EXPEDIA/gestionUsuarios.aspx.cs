@@ -15,7 +15,6 @@ namespace EXPEDIA
             cargar_area();
             cargar_puesto();
         }
-
         protected void Bt_Ingresar_Click(object sender, EventArgs e) {
             
             Conexion c = new Conexion();
@@ -36,35 +35,23 @@ namespace EXPEDIA
             cmd.Parameters.AddWithValue("@contrasena", contrasena_usuario.Text);
             cmd.Parameters.AddWithValue("@cedula", cedula_usuario.Text);
             cmd.Parameters.AddWithValue("@puesto", puesto.SelectedValue);
-            cmd.Parameters.AddWithValue("@area", area.SelectedValue);
-          
-                
-                cmd.ExecuteNonQuery();
-                c.Desconectar(Conexion);
+            cmd.Parameters.AddWithValue("@area", area.SelectedValue);    
+            cmd.ExecuteNonQuery();
+            c.Desconectar(Conexion);
             }
             catch(Exception a)
             {
                 Response.Write("error" + a.ToString());
-    }
-
-
-
+             }
         }
-
         protected void cargar_puesto()
         {
             Conexion c = new Conexion();
             SqlConnection Conexion = c.Conectar();
             string Sql = @"SELECT bd_id_puesto, bd_descripcion FROM Puestos";
-
             Conexion.Open();//abrimos conexion
-
             SqlCommand cmd = new SqlCommand(Sql, Conexion); //ejecutamos la instruccion
-
-           
             SqlDataReader reader = cmd.ExecuteReader();
-
-
                 while (reader.Read())
                 {
                 String nombre = reader.GetString(1);
@@ -82,16 +69,9 @@ namespace EXPEDIA
             Conexion c = new Conexion();
             SqlConnection Conexion = c.Conectar();
             string Sql = @"SELECT bd_id_area, bd_descripcion FROM Areas";
-
             Conexion.Open();//abrimos conexion
-
             SqlCommand cmd = new SqlCommand(Sql, Conexion); //ejecutamos la instruccion
-
-
-
             SqlDataReader reader = cmd.ExecuteReader();
-
-           
                 while (reader.Read())
                 {
                     String nombre = reader.GetString(1);
@@ -101,7 +81,6 @@ namespace EXPEDIA
                 // Lo agrega a la colección de Items del DropDownList
                 area.Items.Add(oItem);
                 }
-            
             Conexion.Close();
         }
     }
