@@ -121,14 +121,14 @@
                                         </div>
                                         <fieldset class="pure-control-group">
                                             <label for="duracion_contrato">Duración del contrato</label>
-                                           <asp:TextBox runat="server" TextMode="Date"  data-toggle="tooltip" title="En este espacio debe proporcionar la fecha em la que termina el contrato  del activo, es requerido. " ID="duracion_contrato" CssClass="pure-input-1-2"/>
+                                           <asp:TextBox runat="server" TextMode="Date"  data-toggle="tooltip" title="En este espacio debe proporcionar la fecha em la que termina el contrato  del activo, es requerido. " ID="duracion_contrato"/>
 
                                         
                                         </fieldset>
-                                        <fieldset class="pure-control-group">
+<%--                                        <fieldset class="pure-control-group">
                                             <label for="Tipo">Especificaciones técnicas</label>
                                             <asp:TextBox  runat="server" TextMode  ="multiline"  ID="especificaciones"  data-toggle="tooltip" title="En este espacio se debe proporcionar las cualidades del activo." CssClass="pure-input-1-2" placeholder="Especificaciones Técnicas"/>
-                                        </fieldset>
+                                        </fieldset>--%>
                                     </div>
 
                                     <div class="pure-control-group">
@@ -372,6 +372,9 @@
                                             <div class="pure-form pure-form-aligned">
                                                 <fieldset class="pure-control-group">
                                                     <div class="input-prepend">
+                                                        <label for="id_descripcion_nueva">ID de descripción:</label>
+                                                        <asp:TextBox runat="server"    ID="id_descripcion_nueva"  placeholder="Dispositivo de audio" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar la descripción del activo que se desea registrar, es requerido. "/>
+                                                        <br />
                                                         <label for="ocupacion">Descripción</label>
                                                         <asp:TextBox runat="server"    ID="descripcion_nueva"  placeholder="Dispositivo de audio" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar la descripción del activo que se desea registrar, es requerido. "/>
                                                     </div>
@@ -380,7 +383,7 @@
                                         </div>
                                         <div class="modal-footer">
                                             <div class="span">
-                                                <asp:Button runat="server" ID="btn_Registar" onclick="btn_Registar_Click" CssClass="btn btn-success" Text="Registrar descripción"/>
+                                                <asp:Button runat="server" ID="btn_Registar" onclick="btn_Registrar_Descripcion_Click" CssClass="btn btn-success" Text="Registrar descripción"/>
                                                 <button class="btn btn-default" data-dismiss="modal">Cerrar</button>
                                             </div>
                                             <div class="span pull-left" style="margin-top:20px;">

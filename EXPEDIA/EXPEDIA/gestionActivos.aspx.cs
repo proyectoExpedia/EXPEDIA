@@ -163,30 +163,48 @@ namespace EXPEDIA
         {
             Conexion c = new Conexion();
             SqlConnection Conexion = c.Conectar();
-            string Sql = @"SELECT Distinct bd_descripcion_activo FROM Activos";
+            string Sql = @"SELECT bd_id_descripcion, Descripcion FROM Descripcion";
             Conexion.Open();//abrimos conexion
             SqlCommand cmd = new SqlCommand(Sql, Conexion); //ejecutamos la instruccion
             SqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
                 String id = reader.GetString(0);
+                String descripcion = reader.GetString(1);
                 // Crea un nuevo Item
-                ListItem oItem = new ListItem(id, id);
+                ListItem oItem = new ListItem(descripcion,id);
                 // Lo agrega a la colección de Items del DropDownList
                 dropdown.Items.Add(oItem);
             }
             Conexion.Close();
         }
-        protected void btn_Registar_Click(object sender, EventArgs e) 
+  
+        protected void btn_Registrar_Descripcion_Click(object sender, EventArgs e)
         {
-            String nombre = descripcion_nueva.Text;
-            // Crea un nuevo Item
-            ListItem oItem = new ListItem(nombre, nombre);
-            // Lo agrega a la colección de Items del DropDownList
-            descripcion_activo.Items.Add(oItem);
+            Conexion c = new Conexion();
+            SqlConnection Conexion = c.Conectar();
+            string Sql = @"INSERT INTO Descripcion (bd_id_descripcion, Descripcion) values (@id, @descripcion)";
+
+            Conexion.Open();//abrimos conexion
+
+            try
+            {
+                SqlCommand cmd = new SqlCommand(Sql, Conexion);
+                cmd.Parameters.AddWithValue("@id", id_descripcion_nueva.Text); //enviamos los parametros
+                cmd.Parameters.AddWithValue("@descripcion", descripcion_nueva.Text);
+                cmd.ExecuteNonQuery();
+                c.Desconectar(Conexion);
+                Response.Redirect("gestionActivos.aspx");
+
+                cargar_descripcion(descripcion_activo);
+
+            }
+            catch (Exception a)
+            {
+                Response.Write("error" + a.ToString());
+            }
 
         }
-       
 
 
     }

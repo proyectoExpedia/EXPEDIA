@@ -9,6 +9,8 @@ namespace EXPEDIA
 {
     public partial class mainAdministrador : System.Web.UI.Page
     {
+        
+
         protected void Page_Load(object sender, EventArgs e)
         {
 

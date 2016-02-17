@@ -185,8 +185,6 @@ namespace EXPEDIA
             }
 
         }
-
-
         protected void cargar_area(DropDownList dropdown)
         {
             Conexion c = new Conexion();

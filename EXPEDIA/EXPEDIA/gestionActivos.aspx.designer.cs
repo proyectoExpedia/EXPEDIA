@@ -67,15 +67,6 @@ namespace EXPEDIA {
         protected global::System.Web.UI.WebControls.TextBox duracion_contrato;
         
         /// <summary>
-        /// Control especificaciones.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox especificaciones;
-        
-        /// <summary>
         /// Control nserie.
         /// </summary>
         /// <remarks>
@@ -245,6 +236,15 @@ namespace EXPEDIA {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button enviar2;
+        
+        /// <summary>
+        /// Control id_descripcion_nueva.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox id_descripcion_nueva;
         
         /// <summary>
         /// Control descripcion_nueva.
