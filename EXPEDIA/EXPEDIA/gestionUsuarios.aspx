@@ -176,7 +176,7 @@
                                     <fieldset>
                                         <div class="pure-control-group" style="margin-top:40px;">
                                             <p>
-                                                <button class="btn btn-success" id="hab" onclick="habilitar()">Habilitar modificación</button>
+                                               <input type="button" value="Habilitar modificación" class="btn btn-success" id="hab" onclick="habilitar()"/>
                                                 <asp:Button runat="server"  ID="inhabilitar" CssClass="btn btn-danger" data-toggle="modal" data-target="#myModal" Text="Inhabilitar usuario"></asp:Button>
                                             </p>
                                             <div id="t" style="display:none"><h3>Formulario de modificación</h3></div>
@@ -185,7 +185,7 @@
                                                     $("#hab").click(function () {
                                                         $('#t').show(2000, 'swing', function () {
                                                             //callback function after animation finished
-                                                            $("hab").attr('value', 'Formulario de modificacion');
+                                                            $("#hab").attr('value', 'Formulario de modificacion');
                                                         });
                                                     });
                                                 });
@@ -193,17 +193,17 @@
                                         </div>
                                         <div class="pure-control-group" style="margin-top:30px;">
                                             <label for="nombre1">Nombre</label>
-                                            <asp:TextBox readonly = 'true' runat="server" ID="nombre_actualizar" data-toggle="tooltip" title="En este espacio se debe proporcionar el nombre completo y apellidos de la persona a modificar, es requerido."  />
+                                            <asp:TextBox runat="server" ID="nombre_actualizar" data-toggle="tooltip" title="En este espacio se debe proporcionar el nombre completo y apellidos de la persona a modificar, es requerido."  />
                                         </div>
 
                                         <div class="pure-control-group" style="margin-top:30px;">
                                             <label for="nombre1">Primer Apellido</label>
-                                            <asp:TextBox readonly = 'true' runat="server" ID="apellido_actualizar1" data-toggle="tooltip" title="En este espacio se debe proporcionar el nombre completo y apellidos de la persona a modificar, es requerido."  />
+                                            <asp:TextBox runat="server" ID="apellido_actualizar1" data-toggle="tooltip" title="En este espacio se debe proporcionar el nombre completo y apellidos de la persona a modificar, es requerido."  />
                                         </div>
 
                                         <div class="pure-control-group" style="margin-top:30px;">
                                             <label for="nombre1">Segundo Apellido</label>
-                                            <asp:TextBox readonly = 'true' runat="server" ID="apellido_actualizar2" data-toggle="tooltip" title="En este espacio se debe proporcionar el nombre completo y apellidos de la persona a modificar, es requerido."  />
+                                            <asp:TextBox runat="server" ID="apellido_actualizar2" data-toggle="tooltip" title="En este espacio se debe proporcionar el nombre completo y apellidos de la persona a modificar, es requerido."  />
                                         </div>
 
                                         <div class="pure-control-group">
@@ -213,23 +213,23 @@
 
                                         <div class="pure-control-group">
                                             <label for="contraseña1">Contraseña</label>
-                                             <asp:TextBox readonly = 'true'  runat="server"  ID="contrasena_actualizar" data-toggle="tooltip" title="En este espacio se debe proporcionar la contraseña que el usuario desee para su eventual ingreso al sistema, es requerido. " TextMode="Password" value="Hola Mundo" />
+                                             <asp:TextBox  runat="server"  ID="contrasena_actualizar" data-toggle="tooltip" title="En este espacio se debe proporcionar la contraseña que el usuario desee para su eventual ingreso al sistema, es requerido. " TextMode="Password" value="Hola Mundo" />
                                         </div>
 
                                         <div class="pure-control-group">
                                             <label for="correo1">Correo electrónico</label>
-                                            <asp:TextBox readonly = 'true' ID="correo_actualizar"  runat="server" data-toggle="tooltip" title="En este espacio se debe proporcionar la dirección de correo electrónico de la persona a modificar, es requerido. "  TextMode="Email" />
+                                            <asp:TextBox ID="correo_actualizar"  runat="server" data-toggle="tooltip" title="En este espacio se debe proporcionar la dirección de correo electrónico de la persona a modificar, es requerido. "  TextMode="Email" />
                                         </div>
 
                                         <fieldset class="pure-control-group">
                                             <label for="telefono1">Número telefónico</label>
                                             <span class="add-on btn btn-default">506</span>
-                                            <asp:TextBox readonly = 'true' runat="server" ID="telefono_actualizar" data-toggle="tooltip" title="En este espacio se debe proporcionar el número telefónico principal de la persona a modificar, es requerido." TextMode="Number" placeholder="########" min="11111111" max="99999999" disable />
+                                            <asp:TextBox runat="server" ID="telefono_actualizar" data-toggle="tooltip" title="En este espacio se debe proporcionar el número telefónico principal de la persona a modificar, es requerido." TextMode="Number" placeholder="########" min="11111111" max="99999999" disable />
                                         </fieldset>
 
                                         <div class="pure-control-group">
                                             <label for="puesto1">Ocupación</label>
-                                            <asp:DropDownList readonly = 'true' runat="server" ID="puesto_actualizar" class="pure-input-1-2" data-toggle="tooltip" title="En este espacio se debe proporcionar el puesto en el cual se desempeña la persona a modificar, es requerido." disable>
+                                            <asp:DropDownList runat="server" ID="puesto_actualizar" class="pure-input-1-2" data-toggle="tooltip" title="En este espacio se debe proporcionar el puesto en el cual se desempeña la persona a modificar, es requerido." disable>
                          
                                                 <asp:ListItem Selected="False">¿La ocupación no aparece? Haz uso el icono situado contiguo a esta categoría para proporcionar una nueva.</asp:ListItem>
                                             </asp:DropDownList>
@@ -238,7 +238,7 @@
 
                                         <div class="pure-control-group">
                                             <label for="area1">Área de servicio</label>
-                                            <asp:DropDownList readonly = 'true' runat="server" ID="area_actualizar" class="pure-input-1-2" data-toggle="tooltip" title="En este espacio se debe proporcionar el área o unidad donde labora la persona a modificar, es requerido."  >
+                                            <asp:DropDownList runat="server" ID="area_actualizar" class="pure-input-1-2" data-toggle="tooltip" title="En este espacio se debe proporcionar el área o unidad donde labora la persona a modificar, es requerido."  >
 
                                                 <asp:ListItem Selected="False">¿El área no aparece? Haz uso el icono situado contiguo a esta categoría para proporcionar una nueva.</asp:ListItem>
                                             </asp:DropDownList>
@@ -247,7 +247,7 @@
 
                                         <div class="pure-control-group">
                                             <label for="tipo1">Usuario</label>
-                                            <asp:DropDownList readonly = 'true' runat="server" ID="tipo_actualizar" class="pure-input-1-2" data-toggle="tooltip" title="En este espacio se debe representar el rol de la persona a modificar en el sistema." disable>
+                                            <asp:DropDownList runat="server" ID="tipo_actualizar" class="pure-input-1-2" data-toggle="tooltip" title="En este espacio se debe representar el rol de la persona a modificar en el sistema." disable>
                                                 <asp:ListItem Value="0">Consultas</asp:ListItem>
                                                 <asp:ListItem Value="1">Administrador</asp:ListItem>
                                             </asp:DropDownList>
@@ -265,7 +265,7 @@
                                             </div>
                                         </div>
                                         <p style="margin-top:30px;">
-                                            <asp:Button runat="server" CssClass="btn btn-success" id="enviar1" OnClick="Bt_actualizar_Click" style="display:none;float:left" Text="Realizar modificaciones" />
+                                            <asp:Button runat="server" CssClass="btn btn-success" id="enviar1" OnClick="Bt_actualizar_Click" style="display:block;float:left" Text="Realizar modificaciones" />
                                         </p>
                                         <br/>
                                             <div id="mensaje1" style="display:none;float:right"><h3>Las acciones han sido realizadas con éxito.</h3></div>
@@ -274,13 +274,14 @@
                                 </div>
                             <script type="text/javascript">
                                 function habilitar() {
+                                    <%apellido_actualizar1.ReadOnly = false;%>
                                     document.getElementById('rb1').className = "btn btn-primary";
                                     document.getElementById('rb2').className = "btn btn-primary active";
                                     document.getElementById('area1').removeAttribute("readonly", false);
                                     document.getElementById('tipo1').removeAttribute("readonly", false);
-                                    document.getElementById('puesto1').removeAttribute("readonly", false);
+                                    document.getElementById("apellido_actualizar1").removeAttribute("readonly", false);
                                     document.getElementById('nombre1').removeAttribute("readonly", false);
-                                    document.getElementById('contraseña1').removeAttribute("readonly", false);
+                                    document.getElementById('apellido_actualizar2').removeAttribute("readonly", false);
                                     document.getElementById('correo1').removeAttribute("readonly", false);
                                     document.getElementById('telefono1').removeAttribute("readonly", false);
                                     document.getElementById('nacimiento1').removeAttribute("readonly", false);
