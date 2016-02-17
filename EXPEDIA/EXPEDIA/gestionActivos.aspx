@@ -77,13 +77,13 @@
                                         <label for="Genero">Tipo de activo</label>
                                         <div style="margin-left:55px" class="btn-group" data-toggle="buttons">
                                             <label class="btn btn-primary" onclick="mostrarleasing(1);">
-                                                <asp:RadioButton runat="server"   name="options" id="option1" autocomplete="off"/> Software
+                                                <asp:RadioButton runat="server"    ID="option1" Text="Software" autocomplete="off"/> 
                                             </label>
                                             <label class="btn btn-primary " onclick="mostrarleasing(2);">
-                                                <asp:RadioButton runat="server" name="options" id="option2" autocomplete="off"/> Hardware
+                                                <asp:RadioButton runat="server" ID="option2"  Text="Hardware"  autocomplete="off"/> 
                                             </label>
                                             <label class="btn btn-primary " onclick="mostrarleasing(3);">
-                                               <asp:RadioButton runat="server" name="options" id="option3" autocomplete="off"/> Leasing
+                                               <asp:RadioButton runat="server"  ID="option3" Text="Leasing" autocomplete="off"/>
                                             </label> 
                                             
                                         </div>
@@ -121,7 +121,7 @@
                                         </div>
                                         <fieldset class="pure-control-group">
                                             <label for="descripcion">Duración del contrato</label>
-                                            <asp:DropDownList runat="server"  data-toggle="tooltip" title="En este espacio debe proporcionar la descripción del propósito general del activo, es requerido. " ID="descripcion" class="pure-input-1-2">
+                                            <asp:DropDownList runat="server"  data-toggle="tooltip" title="En este espacio debe proporcionar la descripción del propósito general del activo, es requerido. " ID="duracion_contrato" class="pure-input-1-2">
                                                 <asp:ListItem>Elija una duración</asp:ListItem>
                                                 <asp:ListItem Value="1">1 año</asp:ListItem>
                                                 <asp:ListItem Value="2">2 años</asp:ListItem>
@@ -147,15 +147,9 @@
                                     <script>$("#fechaCompra").datepicker();</script>
                                     </div>
 
-                                    <div class="pure-control-group">
-                                        <label for="fechaGarantia">Fecha de la garantía</label>
-                                        <asp:TextBox runat="server" data-toggle="tooltip" title="En este espacio debe proporcionar la fecha en que inicia la garantía del activo, es requerido." ID="fechaGarantia" type="text" placeholder="Fecha de garantía"/>
-                                        <script>$("#fechaGarantia").datepicker();</script>
-                                    </div>
-
                                     <fieldset class="pure-control-group">
                                         <label for="descripcion">Duración de la garantía</label>
-                                        <asp:DropDownList runat="server" data-toggle="tooltip" title="En este espacio debe proporcionar la descripción del propósito general del activo, es requerido. " id="duracion" class="pure-input-1-2">
+                                        <asp:DropDownList runat="server" data-toggle="tooltip" title="En este espacio debe proporcionar la descripción del propósito general del activo, es requerido. " id="duracion_garantia" class="pure-input-1-2">
                                             <asp:ListItem Value="1">1 año</asp:ListItem>
                                             <asp:ListItem Value="2">2 años</asp:ListItem>
                                             <asp:ListItem Value="3">3 años</asp:ListItem>
@@ -171,7 +165,7 @@
 
                                     <fieldset class="pure-control-group">
                                         <label for="descripcion">Descripción del activo</label>
-                                        <asp:DropDownList runat="server" data-toggle="tooltip" title="En este espacio debe proporcionar la descripción del propósito general del activo, es requerido. " id="descripcion2" class="pure-input-1-2">
+                                        <asp:DropDownList runat="server" data-toggle="tooltip" title="En este espacio debe proporcionar la descripción del propósito general del activo, es requerido. " id="descripcion_activo" class="pure-input-1-2">
                                             <asp:ListItem>Elija una descripción</asp:ListItem>
                                             <asp:ListItem>¿La descripción no aparece? Haz uso el icono situado contiguo a esta categoría para proporcionar una nueva.</asp:ListItem>
                                         </asp:DropDownList>
@@ -181,7 +175,7 @@
 
                                     <div class="pure-control-group">
                                         <label for="area">Departamento o Sede regional destinado(a)</label>
-                                        <asp:DropDownList runat="server" data-toggle="tooltip" title="En este espacio debe proporcionar el área la cual está destinada el activo, es requerido. " id="area" class="pure-input-1-2">
+                                        <asp:DropDownList runat="server" data-toggle="tooltip" title="En este espacio debe proporcionar el área la cual está destinada el activo, es requerido. " id="departamento_activo" class="pure-input-1-2">
                                             <asp:ListItem>Elija un Área o Departamento</asp:ListItem>
  
                                             <asp:ListItem>¿La opción que busca no aparece? Haz uso el icono situado contiguo a esta categoría para proporcionar una nueva.</asp:ListItem>
@@ -191,7 +185,7 @@
 
                                     <div class="pure-control-group">
                                         <label for="provedor">Proveedor</label>
-                                        <asp:DropDownList runat="server" data-toggle="tooltip" title="Proveedor: En este espacio debe proporcionar el nombre del proveedor del activo, es requerido." id="provedor" class="pure-input-1-2">
+                                        <asp:DropDownList runat="server" data-toggle="tooltip" title="Proveedor: En este espacio debe proporcionar el nombre del proveedor del activo, es requerido." id="proveedor" class="pure-input-1-2">
                                             <asp:ListItem>Elija un proveedor</asp:ListItem>
                                             <asp:ListItem>¿El proveedor no aparece? Haz uso el icono situado contiguo a esta categoría para proporcionar una nueva.</asp:ListItem>
                                         </asp:DropDownList>
@@ -204,7 +198,7 @@
                                         </fieldset>
                                     </div>
                                     <div class="pure-controls">
-                                        <asp:Button runat="server"  CssClass="btn btn-success"  ID="enviar" Text="Registrar Activo"/>
+                                        <asp:Button runat="server"  CssClass="btn btn-success"  ID="Bt_Ingresar"  Text="Registrar Activo"/>
                                         <div id="mensaje" style="display:none"><h3>Las acciones han sido realizado con éxito.</h3></div>
                                     </div>
                                 </fieldset>

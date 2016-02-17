@@ -58,13 +58,13 @@ namespace EXPEDIA {
         protected global::System.Web.UI.WebControls.TextBox fechaEntrega;
         
         /// <summary>
-        /// descripcion control.
+        /// duracion_contrato control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList descripcion;
+        protected global::System.Web.UI.WebControls.DropDownList duracion_contrato;
         
         /// <summary>
         /// especificaciones control.
@@ -94,22 +94,13 @@ namespace EXPEDIA {
         protected global::System.Web.UI.WebControls.TextBox fechaCompra;
         
         /// <summary>
-        /// fechaGarantia control.
+        /// duracion_garantia control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox fechaGarantia;
-        
-        /// <summary>
-        /// duracion control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList duracion;
+        protected global::System.Web.UI.WebControls.DropDownList duracion_garantia;
         
         /// <summary>
         /// costo control.
@@ -121,31 +112,31 @@ namespace EXPEDIA {
         protected global::System.Web.UI.WebControls.TextBox costo;
         
         /// <summary>
-        /// descripcion2 control.
+        /// descripcion_activo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList descripcion2;
+        protected global::System.Web.UI.WebControls.DropDownList descripcion_activo;
         
         /// <summary>
-        /// area control.
+        /// departamento_activo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList area;
+        protected global::System.Web.UI.WebControls.DropDownList departamento_activo;
         
         /// <summary>
-        /// provedor control.
+        /// proveedor control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList provedor;
+        protected global::System.Web.UI.WebControls.DropDownList proveedor;
         
         /// <summary>
         /// especificaciones_tecnicas control.
@@ -157,13 +148,13 @@ namespace EXPEDIA {
         protected global::System.Web.UI.WebControls.TextBox especificaciones_tecnicas;
         
         /// <summary>
-        /// enviar control.
+        /// Bt_Ingresar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button enviar;
+        protected global::System.Web.UI.WebControls.Button Bt_Ingresar;
         
         /// <summary>
         /// cedula_buscar control.
