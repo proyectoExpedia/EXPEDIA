@@ -24,7 +24,7 @@ namespace EXPEDIA
 
             Conexion c = new Conexion();
             SqlConnection Conexion = c.Conectar();
-            string Sql = @"INSERT INTO Activos (bd_tipo_activo, bd_numero_placa, bd_numero_serie, bd_fecha_garantia_activo, bd_descripcion_activo, bd_departamento, bd_proveedor, bd_especificacion_tecnica, bd_duracion_de_contrato, bd_fecha_compra, bd_costo_activo) values (@tipo_activo, @placa, @serie, @garantia @descripcion,@departamento,@proveedor,@especificacion_tecnica,@duracion_contrato,@fecha_compra, @costo)";
+            string Sql = @"INSERT INTO Activos (bd_tipo_activo, bd_numero_placa, bd_numero_serie, bd_fecha_garantia_activo, bd_descripcion_activo, bd_departamento, bd_proveedor, bd_especificacion_tecnica, bd_duracion_de_contrato, bd_fecha_compra, bd_costo_activo) values (@tipo_activo, @placa, @serie, @garantia, @descripcion,@departamento,@proveedor,@especificacion_tecnica,@duracion_contrato,@fecha_compra, @costo)";
 
             Conexion.Open();//abrimos conexion            
             try
@@ -33,17 +33,17 @@ namespace EXPEDIA
                 if (option1.Checked)
                 {
                      
-                    cmd.Parameters.AddWithValue("@tipo_activo", option1.Text);
-                    cmd.Parameters.AddWithValue("@fecha_compra", "2016-02-16");
+                    cmd.Parameters.AddWithValue("@tipo_activo", 1);
+                    cmd.Parameters.AddWithValue("@fecha_compra", DateTime.Now);
                     cmd.Parameters.AddWithValue("@costo", costo.Text);
                     cmd.Parameters.AddWithValue("@placa", nplaca.Text);
                     cmd.Parameters.AddWithValue("@serie", nserie.Text);
-                    cmd.Parameters.AddWithValue("@garantia", "2016-02-16");
+                    cmd.Parameters.AddWithValue("@garantia", DateTime.Now);
                     cmd.Parameters.AddWithValue("@descripcion", descripcion_activo.SelectedValue);
                     cmd.Parameters.AddWithValue("@departamento", descripcion_activo.SelectedValue);
                     cmd.Parameters.AddWithValue("@proveedor", proveedor.SelectedValue);
                     cmd.Parameters.AddWithValue("@especificacion_tecnica", especificaciones_tecnicas.Text);
-                    cmd.Parameters.AddWithValue("@duracion_contrato", "2016-02-16");
+                    cmd.Parameters.AddWithValue("@duracion_contrato", DateTime.Now);
 
 
 
@@ -81,7 +81,7 @@ namespace EXPEDIA
                     cmd.Parameters.AddWithValue("@especificacion_tecnica", especificaciones_tecnicas.Text);
                     cmd.Parameters.AddWithValue("@duracion_contrato", "2016-02-16");
                     cmd.Parameters.AddWithValue("@fecha_compra", "2016-02-16");
-                    cmd.Parameters.AddWithValue("@costo",int.Parse( costo.Text));
+                    cmd.Parameters.AddWithValue("@costo", costo.Text);
                 }
                 //enviamos los parametros
 
