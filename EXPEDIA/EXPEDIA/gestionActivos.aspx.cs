@@ -22,17 +22,20 @@ namespace EXPEDIA
         protected void Bt_Ingresar_Click(object sender, EventArgs e)
         {
 
-            Conexion c = new Conexion();
-            SqlConnection Conexion = c.Conectar();
-            string Sql = @"INSERT INTO Activos (bd_tipo_activo, bd_numero_placa, bd_numero_serie, bd_fecha_garantia_activo, bd_descripcion_activo, bd_departamento, bd_proveedor, bd_especificacion_tecnica, bd_duracion_de_contrato, bd_fecha_compra, bd_costo_activo) values (@tipo_activo, @placa, @serie, @garantia, @descripcion,@departamento,@proveedor,@especificacion_tecnica,@duracion_contrato,@fecha_compra, @costo)";
 
-            Conexion.Open();//abrimos conexion            
-            try
+
+            if (option1.Checked)
             {
-                SqlCommand cmd = new SqlCommand(Sql, Conexion);
-                if (option1.Checked)
+                Conexion c = new Conexion();
+                SqlConnection Conexion = c.Conectar();
+                string Sql = @"INSERT INTO Activos (bd_tipo_activo, bd_numero_placa, bd_numero_serie, bd_fecha_garantia_activo, bd_descripcion_activo, bd_departamento, bd_proveedor, bd_especificacion_tecnica,bd_fecha_compra, bd_costo_activo) values (@tipo_activo, @placa, @serie, @garantia, @descripcion,@departamento,@proveedor,@especificacion_tecnica,@fecha_compra, @costo)";
+
+                Conexion.Open();//abrimos conexion    
+                try
                 {
-                     
+                    SqlCommand cmd = new SqlCommand(Sql, Conexion);
+
+
                     cmd.Parameters.AddWithValue("@tipo_activo", 1);
                     cmd.Parameters.AddWithValue("@fecha_compra", fechaCompra.Text);
                     cmd.Parameters.AddWithValue("@costo", costo.Text);
@@ -44,12 +47,15 @@ namespace EXPEDIA
                     cmd.Parameters.AddWithValue("@proveedor", proveedor.SelectedValue);
                     cmd.Parameters.AddWithValue("@especificacion_tecnica", especificaciones_tecnicas.Text);
                     cmd.Parameters.AddWithValue("@duracion_contrato", null);
-
-
-
-
-
+                    cmd.ExecuteNonQuery();
+                    c.Desconectar(Conexion);
+                    Response.Write("error");
                 }
+                catch (Exception t) { Response.Write("error" + t); }
+
+
+            }
+
 
 
 
@@ -57,7 +63,15 @@ namespace EXPEDIA
 
                 if (option2.Checked)
                 {
-                    cmd.Parameters.AddWithValue("@tipo_activo", option2.Text);
+                Conexion c = new Conexion();
+                SqlConnection Conexion = c.Conectar();
+                string Sql = @"INSERT INTO Activos (bd_tipo_activo, bd_numero_placa, bd_numero_serie, bd_fecha_garantia_activo, bd_descripcion_activo, bd_departamento, bd_proveedor, bd_especificacion_tecnica,bd_fecha_compra, bd_costo_activo) values (@tipo_activo, @placa, @serie, @garantia, @descripcion,@departamento,@proveedor,@especificacion_tecnica,@fecha_compra, @costo)";
+
+                Conexion.Open();//abrimos conexion    
+                try
+                {
+                    SqlCommand cmd = new SqlCommand(Sql, Conexion);
+                    cmd.Parameters.AddWithValue("@tipo_activo", 2);
                     cmd.Parameters.AddWithValue("@fecha_compra", fechaCompra.Text);
                     cmd.Parameters.AddWithValue("@costo", costo.Text);
                     cmd.Parameters.AddWithValue("@placa", nplaca.Text);
@@ -67,11 +81,26 @@ namespace EXPEDIA
                     cmd.Parameters.AddWithValue("@departamento", descripcion_activo.SelectedValue);
                     cmd.Parameters.AddWithValue("@proveedor", proveedor.SelectedValue);
                     cmd.Parameters.AddWithValue("@especificacion_tecnica", especificaciones_tecnicas.Text);
-                    cmd.Parameters.AddWithValue("@duracion_contrato", null);
+
+                    cmd.ExecuteNonQuery();
+                    c.Desconectar(Conexion);
+                    Response.Write("error");
                 }
-                if (option3.Checked)
+                catch (Exception t) { Response.Write("error"+t); }
+                }
+
+            if (option3.Checked)
+            {
+                Conexion c = new Conexion();
+                SqlConnection Conexion = c.Conectar();
+                string Sql = @"INSERT INTO Activos (bd_tipo_activo, bd_numero_placa, bd_numero_serie, bd_fecha_garantia_activo, bd_descripcion_activo, bd_departamento, bd_proveedor, bd_especificacion_tecnica,bd_duracion_de_contrato,bd_fecha_compra, bd_costo_activo) values (@tipo_activo, @placa, @serie, @garantia, @descripcion,@departamento,@proveedor,@especificacion_tecnica,@duracion_contrato,@fecha_compra, @costo)";
+
+                Conexion.Open();//abrimos conexion    
+                try
                 {
-                    cmd.Parameters.AddWithValue("@tipo_activo", option3.Text);
+                    SqlCommand cmd = new SqlCommand(Sql, Conexion);
+
+                    cmd.Parameters.AddWithValue("@tipo_activo", 3);
                     cmd.Parameters.AddWithValue("@placa", nplaca.Text);
                     cmd.Parameters.AddWithValue("@serie", nserie.Text);
                     cmd.Parameters.AddWithValue("@garantia", duracion_garantia.Text);
@@ -82,18 +111,17 @@ namespace EXPEDIA
                     cmd.Parameters.AddWithValue("@duracion_contrato", duracion_contrato.Text);
                     cmd.Parameters.AddWithValue("@fecha_compra", fechaCompra.Text);
                     cmd.Parameters.AddWithValue("@costo", costo.Text);
+                    cmd.ExecuteNonQuery();
+                    c.Desconectar(Conexion);
+                    Response.Write("error");
                 }
-                //enviamos los parametros
+                catch (Exception t) { Response.Write("error" + t); }
 
-                cmd.ExecuteNonQuery();
-                c.Desconectar(Conexion);
-                Response.Write("error");
+
             }
-            catch (Exception a)
-            {
-                Response.Write("error" + a.ToString());
             }
-        }
+      
+        
         protected void cargar_area(DropDownList dropdown)
         {
             Conexion c = new Conexion();
