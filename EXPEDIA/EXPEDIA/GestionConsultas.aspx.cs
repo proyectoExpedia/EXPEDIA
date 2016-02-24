@@ -25,17 +25,17 @@ namespace EXPEDIA
             DataTable dt = new DataTable();
 
             dt.Columns.AddRange(new DataColumn[11] {
-                               new DataColumn("_proveedor", typeof(string)),
-                               new DataColumn("_descripcion_activo", typeof(string)),
-                            new DataColumn("Placa", typeof(string)),
-                            new DataColumn("Serie",typeof(string)),
-                             new DataColumn("bd_tipo_activo",typeof(string)),
-                              new DataColumn("fecha_garantia_activo",typeof(string)),
-                               new DataColumn("departamento",typeof(string)),
-                                new DataColumn("especificacion_tecnica",typeof(string)),
-                                 new DataColumn("duracion_de_contrato",typeof(string)),
-                                  new DataColumn("fecha_compra",typeof(string)),
-                                   new DataColumn("costo_activo",typeof(string)),
+                            new DataColumn(" Placa ", typeof(string)),
+                            new DataColumn(" Serie ",typeof(string)),
+                            new DataColumn(" Descripcion ", typeof(string)),
+                            new DataColumn(" Tipo ",typeof(string)),
+                            new DataColumn(" Departamento ",typeof(string)),
+                            new DataColumn(" Proveedor ", typeof(string)),
+                            new DataColumn(" Especificaciones ",typeof(string)),
+                            new DataColumn(" Garantia ",typeof(string)),
+                            new DataColumn(" Duracion de contrato ",typeof(string)),
+                           new DataColumn(" fecha compra ",typeof(string)),
+                          new DataColumn(" costo ",typeof(string)),
 
 
 
@@ -58,7 +58,7 @@ namespace EXPEDIA
                     while (reader.Read())
                     {
 
-                        dt.Rows.Add(reader.GetInt16(0).ToString(), reader.GetString(1), reader.GetString(2), reader.GetDateTime(3).ToString(), reader.GetString(4), reader.GetString(5), reader.GetString(6), reader.GetString(7), reader.GetDateTime(8).ToString(), reader.GetDateTime(9).ToString(), reader.GetInt32(10).ToString());
+                        dt.Rows.Add(reader.GetString(1), reader.GetString(2), reader.GetString(4), reader.GetInt16(0).ToString(), reader.GetString(5), reader.GetString(6), reader.GetString(7), reader.GetDateTime(3).ToString() , reader.GetDateTime(8).ToString(), reader.GetDateTime(9).ToString(), reader.GetInt32(10).ToString());
                     }
 
                     lista.DataSource = dt;
