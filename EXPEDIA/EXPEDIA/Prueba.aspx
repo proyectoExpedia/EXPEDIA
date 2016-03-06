@@ -1,10 +1,11 @@
-﻿<%@ Page Language="C#"  AutoEventWireup="true" EnableEventValidation="true" CodeBehind="GestionConsultas.aspx.cs" Inherits="EXPEDIA.GestionConsultas" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true"   EnableEventValidation="true" CodeBehind="Prueba.aspx.cs" Inherits="EXPEDIA.Prueba" %>
 
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>EXPEDIA</title>
     <link href="css/bootstrap.css" rel="stylesheet" />
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" />
@@ -17,12 +18,18 @@
     <script src="js/jQueryUI/jquery-ui.min.js"></script>
     <link href="js/jQueryUI/jquery-ui.theme.min.css" rel="stylesheet" />
     <link href="js/jQueryUI/jquery-ui.min.css" rel="stylesheet" />
+    <!--SCRIPT PARA TABLA CON FILTROS-->
     <link href="css/Tablas.css" rel="stylesheet" />
-
+    <script src="http://tablefilter.free.fr/TableFilter/tablefilter_all_min.js"></script>
+    <script src="http://tablefilter.free.fr/TableFilter/filtergrid.css"></script>
+    <link href="css/bootstrap-table.css" rel="stylesheet" />
+    <script src="https://cdn.datatables.net/1.10.10/js/jquery.dataTables.min.js"></script>
+    <!--HASTA AQUI LAS TABLAS-->
 </head>
 <body>
-    <form id="for" runat="server" >
- <!--Menu-->
+    <form id="form1" runat="server">
+   
+<!--Menu-->
     <nav class="navbar" role="navigation" style="margin-top:20px;">
         <div class="container">
             <ul class="bxslider">
@@ -69,46 +76,37 @@
                         <li><a href="#Consultar" data-toggle="tab">Consulta de bitacora  <span class="glyphicon glyphicon-question-sign"></span><span class="glyphicon glyphicon-minus-sign"></span><span class="glyphicon glyphicon-ok-sign"></span></a></li>
                         <a style="float:right" href="mainAdministrador.aspx" class="btn"><span class="glyphicon glyphicon-menu-left"></span>  Atrás</a>
                     </ul>
-                    <%-- PANTALLA DONDE SE MUESTRA LAS OPCIONES DE CONSULTA DE ACTIVOS  --%>
                     <div id="myTabContent" class="tab-content">
                         <div class="tab-pane fade in active" id="Ingresar">
                             <h1 style="text-align:center">Activos</h1>
-                            
-                                     <label  for="numero" >Número de Placa / Serie </label>
+                            <form class="pure-form pure-form-aligned">
+                                    <div id="dvData">
                                        <asp:textbox runat="server" ID="numero"/>
-                             <div class="pure-control-group">
-                             <label for="descripcion">Descripción del activo</label>
-                                        <asp:DropDownList runat="server" data-toggle="tooltip" title="En este espacio puede seleccionar la descripción a buscar." id="descripcion_activo" CssClass="pure-input-1-2">
-                                        <asp:ListItem Value="0">Elija una descripción</asp:ListItem>
-                                        </asp:DropDownList>
-                               
-                             
-                             <label for="area">Departamento o Sede regional destinado(a)</label>
-                                        <asp:DropDownList runat="server" data-toggle="tooltip" title="En este espacio puede seleccionar el Departamento o Sede regional destinado(a) a buscar. " id="departamento_activo" CssClass="pure-input-1-2">
-                                          <asp:ListItem Value="0">Elija un Departamento o Sede</asp:ListItem>
-                                             </asp:DropDownList>
+                     <asp:Button runat="server" ID="Button1" OnClick="Consultar_Click" />
+                                <asp:GridView  runat="server" ID="lista" CssClass="table" >
+                                                     </asp:GridView>
+
+                                      
+
+                                    </div>
+                                    <br />
+                                    <br />
+                                    <input class="btn btn-success" type="button" id="btnExport" value=" Exportar a Excel " />
+
+
+                                    <script>
+                                    $("#btnExport").click(function (e) {
+
+                                        window.open('data:application/vnd.ms-excel,' + encodeURIComponent($('#dvData').html()));
+
+                                        e.preventDefault();
+
+                                    });
+
+                                    </script>
+
                                 
-                             
-                             <label for="provedor">Proveedor</label>
-                                        <asp:DropDownList runat="server" data-toggle="tooltip" title=" En este espacio puede selecionar el nombre del proveedor del activo a buscar." id="proveedor" CssClass="pure-input-1-2">
-                                        <asp:ListItem Value="0">Elija un proveedor</asp:ListItem>
-                                             </asp:DropDownList>
-                                 </div>
-
-                     <asp:Button runat="server" ID="Button1" CssClass="btn btn-primary" OnClick="Consultar_Click"  Text="Consultar"/>
-                               <br />
-                               <br />
-                                <asp:GridView  runat="server" ID="lista" CssClass="table" > </asp:GridView>
-
-                                    <br />
-                                    <br />
-                                   
-                            <asp:Button ID="exportar" runat="server"    CssClass="btn btn-success" Text="Exportar a Excel"  OnClick="exportar_Click" />
-                            
-
-                                  
-
-                        
+                            </form>
                         </div>
                         <div class="tab-pane fade" id="Consultar">
                             <h1 style="text-align:center" id="titulo">Bitacora</h1>
@@ -126,7 +124,16 @@
                             <br />
                             <br />
                             <input class="btn btn-success" type="button" id="btnExport11" value=" Exportar a Excel " />
-                       
+                            <script>
+                                    $("#btnExport11").click(function (e) {
+
+                                        window.open('data:application/vnd.ms-excel,' + encodeURIComponent($('#dvData1').html()));
+
+                                        e.preventDefault();
+
+                                    });
+
+                            </script>
 
                             
                             </div>
@@ -162,19 +169,64 @@
             });
         });
     </script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+    </script>
+    <script>
+    function Guardar(y)
+    { switch(y){
+    case 1: { localStorage["Descripcion"] = document.getElementById("ocupacion").value; break; }
+    case 2: { localStorage["Area"] = document.getElementById("area57").value; break; }
+    case 3: { localStorage["Proveedor"] = document.getElementById("nproveedor").value; break; }
+    }
+    }
 
-  
-        </form>
-   
-        	<script >
-		$(function() {
-		  theTable = $("#lista");
-		  $("#q").keyup(function() {
-			$.uiTableFilter(theTable, this.value);
-		  });
-		});
-		</script>
 
-  
+    function Mostrar_Infoo(x)
+    {
+        switch (x) {
+            case 1: { var option = document.createElement("option");
+                option.text = localStorage["Descripcion"].toString();
+                document.getElementById("descripcion").add(option);
+            Mostrar_Infoo(4);
+            break;
+            }
+            case 2: {var option1 = document.createElement("option");
+            option1.text = localStorage["Area"];
+            document.getElementById("area").add(option1);
+            Mostrar_Infoo(5);
+            break;
+            }
+            case 3: {
+            var option = document.createElement("option");
+            option.text = localStorage["Proveedor"].toString();
+            document.getElementById("provedor").add(option);
+            Mostrar_Infoo(6);
+            break;
+            }
+
+            case 4: {
+            var option1 = document.createElement("option");
+            option1.text = localStorage["Descripcion"];
+            document.getElementById("descripcion1").add(option1); break;
+            }
+            case 5: { var option1 = document.createElement("option");
+                option1.text = localStorage["Area"];
+                document.getElementById("area1").add(option1); break;
+            }
+            case 6: { var option = document.createElement("option");
+                option.text = localStorage["Proveedor"].toString();
+                document.getElementById("prove1").add(option); break;
+            }
+            }
+
+    }</script>
+        
+ 
+
+    
+    </form>
 </body>
 </html>

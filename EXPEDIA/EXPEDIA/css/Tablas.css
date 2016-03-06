@@ -1,95 +1,13 @@
-﻿.TABLAS {
-	margin:0px;padding:0px;
-	width:100%;
-	box-shadow: 10px 10px 5px #888888;
-	border:1px solid #cccccc;
-	
-	-moz-border-radius-bottomleft:18px;
-	-webkit-border-bottom-left-radius:18px;
-	border-bottom-left-radius:18px;
-	
-	-moz-border-radius-bottomright:18px;
-	-webkit-border-bottom-right-radius:18px;
-	border-bottom-right-radius:18px;
-	
-	-moz-border-radius-topright:18px;
-	-webkit-border-top-right-radius:18px;
-	border-top-right-radius:18px;
-	
-	-moz-border-radius-topleft:18px;
-	-webkit-border-top-left-radius:18px;
-	border-top-left-radius:18px;
-}.TABLAS table{
-    border-collapse: collapse;
-        border-spacing: 0;
-	width:100%;
-	height:100%;
-	margin:0px;padding:0px;
-}.TABLAS tr:last-child td:last-child {
-	-moz-border-radius-bottomright:18px;
-	-webkit-border-bottom-right-radius:18px;
-	border-bottom-right-radius:18px;
-}
-.TABLAS table tr:first-child td:first-child {
-	-moz-border-radius-topleft:18px;
-	-webkit-border-top-left-radius:18px;
-	border-top-left-radius:18px;
-}
-.TABLAS table tr:first-child td:last-child {
-	-moz-border-radius-topright:18px;
-	-webkit-border-top-right-radius:18px;
-	border-top-right-radius:18px;
-}.TABLAS tr:last-child td:first-child{
-	-moz-border-radius-bottomleft:18px;
-	-webkit-border-bottom-left-radius:18px;
-	border-bottom-left-radius:18px;
-}.TABLAS tr:hover td{
-	
-}
-.TABLAS tr:nth-child(odd){ background-color:#e5e5e5; }
-.TABLAS tr:nth-child(even)    { background-color:#ffffff; }.TABLAS td{
-	vertical-align:middle;
-	
-	
-	border:1px solid #cccccc;
-	border-width:0px 1px 1px 0px;
-	text-align:left;
-	padding:12px;
-	font-size:14px;
-	font-family:Verdana;
-	font-weight:normal;
-	color:#000000;
-}.TABLAS tr:last-child td{
-	border-width:0px 1px 0px 0px;
-}.TABLAS tr td:last-child{
-	border-width:0px 0px 1px 0px;
-}.TABLAS tr:last-child td:last-child{
-	border-width:0px 0px 0px 0px;
-}
-.TABLAS tr:first-child td{
-		background:-o-linear-gradient(bottom, #4c4c4c 5%, #333333 100%);	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #4c4c4c), color-stop(1, #333333) );
-	background:-moz-linear-gradient( center top, #4c4c4c 5%, #333333 100% );
-	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr="#4c4c4c", endColorstr="#333333");	background: -o-linear-gradient(top,#4c4c4c,333333);
+﻿
 
-	background-color:#4c4c4c;
-	border:0px solid #cccccc;
-	text-align:center;
-	border-width:0px 0px 1px 1px;
-	font-size:15px;
-	font-family:Verdana;
-	font-weight:bold;
-	color:#ffffff;
-}
-.TABLAS tr:first-child:hover td{
-	background:-o-linear-gradient(bottom, #4c4c4c 5%, #333333 100%);	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #4c4c4c), color-stop(1, #333333) );
-	background:-moz-linear-gradient( center top, #4c4c4c 5%, #333333 100% );
-	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr="#4c4c4c", endColorstr="#333333");	background: -o-linear-gradient(top,#4c4c4c,333333);
 
-	background-color:#4c4c4c;
+
+tr:nth-child(even){background-color: #f2f2f2}
+
+th {
+    background-color: #0c3a72 ;
+    color: white;
 }
-.TABLAS tr:first-child td:first-child{
-	border-width:0px 0px 1px 0px;
-}
-.TABLAS tr:first-child td:last-child{
-	border-width:0px 0px 1px 1px;
-}
+    tr:hover {
+         background-color: #9db9e0;
+    }
