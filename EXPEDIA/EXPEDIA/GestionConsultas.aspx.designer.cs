@@ -31,6 +31,33 @@ namespace EXPEDIA {
         protected global::System.Web.UI.WebControls.TextBox numero;
         
         /// <summary>
+        /// Control descripcion_activo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList descripcion_activo;
+        
+        /// <summary>
+        /// Control departamento_activo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList departamento_activo;
+        
+        /// <summary>
+        /// Control proveedor.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList proveedor;
+        
+        /// <summary>
         /// Control Button1.
         /// </summary>
         /// <remarks>
