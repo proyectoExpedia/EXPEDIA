@@ -14,6 +14,9 @@
     <script src="js/jquery.bxslider.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <link href="css/purecss.css" rel="stylesheet" />
+    <script src="js/pikaday.js"></script>
+    
+    <link href="css/pikaday.css" rel="stylesheet" />
     <script src="js/jQueryUI/jquery-ui.min.js"></script>
     <link href="js/jQueryUI/jquery-ui.theme.min.css" rel="stylesheet" />
     <link href="js/jQueryUI/jquery-ui.min.css" rel="stylesheet" />
@@ -26,7 +29,9 @@
     <script src="https://cdn.datatables.net/1.10.10/js/dataTables.bootstrap.min.js"></script>
 </head>
 <body>
+    <form runat="server">
   <!--Menu-->
+  
     <nav class="navbar" role="navigation" style="margin-top:20px;">
         <div class="container">
             <ul class="bxslider">
@@ -79,65 +84,73 @@
                             <div class="pure-form pure-form-aligned">
                                 <fieldset>
 
+                                     <label for="descripcion_activo">Descripción del activo</label>
+                                        <asp:DropDownList runat="server" data-toggle="tooltip"   title="Este espacio es para realizar una busqueda de activos libres. " id="descripcion_activo" class="pure-input-1-2">
+                                           <asp:ListItem>Elija una descripción</asp:ListItem>
+                                             </asp:DropDownList>
+                                        <asp:Button runat="server" ID="Button1" CssClass="btn btn-primary" OnClick="Button1_Click"  Text="Consultar"/>
+
+                                    <asp:GridView ID="tabla" runat="server"  CssClass="table table-striped table-hover" OnRowDeleting="tabla_SelectedIndexChanged" >
+                                        <Columns>
+                                               <asp:CommandField DeleteText="Agregar Activo"   ControlStyle-CssClass="btn btn-primary" ShowDeleteButton="True" /> 
+                                        </Columns>
+                                    </asp:GridView>
+                                    <br />
+                                    <br />
                                     <div class="pure-control-group">
-                                        <label for="idP">Identificador de préstamo</label>
-                                        <asp:TextBox runat="server" ID="idP"   data-toggle="tooltip" title="En este espacio debe proporcionar un identificador que caracterice el préstamo a registrar, es requerido" placeholder="PRES-001"/>
+                                        <label for="ids">Identificación del solicitante</label>
+                                        <asp:TextBox runat="server" ID="ids"   placeholder="#########" data-toggle="tooltip" data-placement="left" title="Proporciona el número de cédula del solicitante a cargo del préstamo. Recuerda no ingresar guiones y tomar en cuenta los ceros del documento de identidad, es requerido."/>
                                     </div>
 
                                     <div class="pure-control-group">
-                                        <label for="idP">Identificación del solicitante</label>
-                                        <asp:TextBox runat="server" ID="ids"  placeholder="#########" data-toggle="tooltip" data-placement="left" title="Proporciona el número de cédula del solicitante a cargo del préstamo. Recuerda no ingresar guiones y tomar en cuenta los ceros del documento de identidad, es requerido."/>
+                                        <label for="fechaentrega">Fecha de entrega</label>
+                                        <asp:TextBox TextMode="Date"  runat="server" data-toggle="tooltip"  title="Proporcione la fecha a la cual se extiende el préstamo, es requerido." ID="fechaentrega"  placeholder="Haz click para seleccionar tu fecha"/>
+<%--                                        <script>
+                                            var picker = new Pikaday({
+                                                firstDay: 1,
+                                                     field: document.getElementById('fechaentrega'),
+                                                     format: 'YYYY MMM D',
+                                                     theme: 'dark-theme',
+                                                onSelect: function() {
+                                                    console.log(this.getMoment().format('YYYY MMMM Do'));
+        }
+    });
+</script>--%>
+
                                     </div>
 
                                     <div class="pure-control-group">
-                                        <label for="fechaGarantia">Fecha de entrega</label>
-                                        <asp:TextBox runat="server" data-toggle="tooltip" title="Proporcione la fecha a la cual se extiende el préstamo, es requerido." ID="fechaentrega"  placeholder="Haz click para seleccionar tu fecha"/>
-                                        <script>$("#fechaentrega").datepicker();</script>
-                                    </div>
-
-                                    <div class="pure-control-group">
-                                        <label for="fechaGarantia">Fecha de salida</label>
-                                        <asp:TextBox runat="server" data-toggle="tooltip" title="Proporcione la fecha en la cual se emite el préstamo, es requerido" ID="fechasalida" placeholder="Haz click para seleccionar tu fecha"/>
-                                        <script>$("#fechasalida").datepicker();</script>
+                                        <label for="fechasalida">Fecha de salida</label>
+                                        <asp:TextBox TextMode="Date"  runat="server" data-toggle="tooltip" title="Proporcione la fecha en la cual se emite el préstamo, es requerido" ID="fechasalida" placeholder="Haz click para seleccionar tu fecha"/>
+                                                                            <%--  <script>
+                                            var picker = new Pikaday({
+                                                firstDay: 1,
+                                                field: document.getElementById('fechasalida'),
+                                                     format: 'YYYY MMM D',
+                                                     theme: 'dark-theme',
+                                                onSelect: function() {
+                                                    console.log(this.getMoment().format('YYYY MMMM Do'));
+        }
+    });
+</script>--%>
                                     </div>
 
                                     <div class="pure-control-group">
                                         <div class="container"style="margin-top:30px;">
                                      
                                                 <div class="col-md-6 column" >
-                                                    <div>
-                                                    <asp:table runat="server" class="table table-striped table-hover" ID="tab_logic2"/>
-                                                        <thead>
-                                                            <tr>
-                                                                <th class="text-center">
-                                                                    Consecutivo
-                                                                </th>
-                                                                <th class="text-center">
-                                                                    Número de placa del activo
-                                                                </th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            <tr id='addr0'>
-                                                                <td>
-                                                                    1
-                                                                </td>
-                                                                <td>
-                                                                    <asp:TextBox runat="server" name='activo0' data-toggle="tooltip" title="En este espacio debe proporcionar el numero de placa del activo que desee prestar."  placeholder="ENF-1523" class="form-control" />
-                                                                </td>
-                                                            </tr>
-                                                            <tr id='addr1'></tr>
-                                                        </tbody>
+                                                    <div> 
+                                                  
+                                                     <asp:GridView ID="tabla1" runat="server" OnRowDeleting="tabla1_RowDeleting" CssClass="table table-striped table-hover"  >
+                                                         <Columns>
+                                                             <asp:CommandField DeleteText="Eliminar Activo" ControlStyle-CssClass="btn btn-danger"  ShowDeleteButton="True" />
+                                                         </Columns>
+                                                      </asp:GridView>
+                                                       
                                                    
-                                                    <a id="add_row" class="btn btn-primary">Agregar activo</a>
-                                                    <a id='delete_row' class="btn btn-danger">Eliminar fila</a>
-                                                    <a id="comprobar" class="btn btn-success">Comprobar activos</a>
-                                                    <div class="span pull-left" style="margin-top:10px;">
-                                                           <div class="alert alert-success fade"> 
-                                                                <button type="button" class="close" data-dismiss="alert">×</button>
-                                                                <strong>¡Excelente!</strong> Hay existencia de todos los activos indicados.
-                                                            </div>
-                                                    </div>
+                                                    
+                                                   
+
                                                         <script>
                                                             $("#comprobar").on("click", function () {
                                                                 $(".alert").removeClass("in").show();
@@ -146,29 +159,13 @@
                                                         </script>
                                                 </div>
                                             </div>
-                                        <script>
-                                            $(document).ready(function () {
-                                                var i = 1;
-                                                $("#add_row").click(function () {
-                                                    $('#addr' + i).html("<td>" + (i + 1) + "</td><td><input name='activo" + i + "' type='text' placeholder='ENF-1523' class='form-control input-md'  /> </td>");
 
-                                                    $('#tab_logic').append('<tr id="addr' + (i + 1) + '"></tr>');
-                                                    i++;
-                                                });
-                                                $("#delete_row").click(function () {
-                                                    if (i > 1) {
-                                                        $("#addr" + (i - 1)).html('');
-                                                        i--;
-                                                    }
-                                                });
-
-                                            });
-                                        </script>
                                     </div>
 
                                 </div>
                                     <div class="pure-controls-group" style="margin-top:40px;">
-                                        <button data-toggle="modal" data-target="#modalProveedor" class="btn btn-success" id="enviar">Realizar préstamo</button>
+                                      
+                                        <asp:Button  runat="server"   data-toggle="modal" data-target="#modalDetalle"  onclick="enviar_Click" class="btn btn-success" Text="Realizar préstamo"></asp:Button>
                                         <div id="mensaje" style="display:none">
                                             <h3>Las acciones han sido realizado con éxito.</h3>
                                         </div>
@@ -178,26 +175,16 @@
                         </div>
                         <div class="tab-pane fade" id="Consultar">
                             <h1 style="text-align:center" id="titulo">Administrar préstamos</h1>
-                            <asp:table runat="server" ID="tabla" class="display" cellspacing="0" width="100">
-                                <thead style="text-align:center">
-                                    <tr>
-                                        <th>Identificador del préstamo</th>
-                                        <th>Identificación del solicitante asociado</th>
-                                        <th>Detalle</th>
-                                        <th>¿Al dia?</th>
-                                        <th>¿Finalizado?</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>PRES-001</td>
-                                        <td>115380448</td>
-                                        <td><a style="font-size:large" data-toggle="modal" data-target="#modalProveedor"><span class="glyphicon glyphicon-list-alt"></span></a></td>
+                            <asp:GridView runat="server" ID="tabla2" CssClass="display" cellspacing="0" width="100">
+                               
+         
+                                  
+                                        <%--<td><a style="font-size:large" data-toggle="modal" data-target="#modalProveedor"><span class="glyphicon glyphicon-list-alt"></span></a></td>
                                         <td><a style="font-size:large" ><span class="glyphicon glyphicon-thumbs-up"></span></a></td>
                                         <td><a style="font-size:large" data-toggle="modal" data-target="#modalAreas"><span id="mano" class="glyphicon glyphicon-thumbs-down"></span></a></td>
-                                    </tr>
-                                </tbody>
-                            </asp:table>
+                                   --%>
+                               
+                            </asp:GridView>
                              <script>
                                  $(document).ready(function () {
                                      $('#tabla').DataTable();
@@ -205,81 +192,18 @@
                              </script>
  
                         </div>
-                        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <asp:button runat="server" type="button" class="close" data-dismiss="modal" aria-label="Close"/>
-                                            <span aria-hidden="true">&times;</span>
-                                            <span class="sr-only">Close</span>
-                                      
-                                        <h4 class="modal-title">Motivos de inhabilitación</h4>
-                                    </div>
-                                    <div class="modal-body">
-                                        <textarea></textarea>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                                        <button type="button" class="btn btn-danger" id="enviar2">Inhabilitar</button>
-                                    </div>
-                                </div><!-- /.modal-content -->
-                            </div><!-- /.modal-dialog -->
-                        </div><!-- /.modal -->
-                        <div class="modal fade" id="modalDescripcion" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <asp:button runat="server" type="button" class="close" data-dismiss="modal" aria-label="Close"/><span aria-hidden="true">&times;</span>
-                                        <h4 class="modal-title" style="text-align:center" id="exampleModalLabel">Nueva descripción</h4>
-                                    </div>
-                                    <div class="modal-body">
-                                        <div class="container">
-                                            <div class="pure-form pure-form-aligned">
-                                                <fieldset class="pure-control-group">
-                                                    <div class="input-prepend">
-                                                        <label for="ocupacion">Descripción</label>
-                                                        <asp:TextBox runat="server" ID="ocupacion"  placeholder="Dispositivo de audio" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar la descripción del activo que se desea registrar, es requerido. "/>
-                                                    </div>
-                                                </fieldset>
-                                            </div> <!-- /container -->
-                                        </div>
-                                        <div class="modal-footer">
-                                            <div class="span">
-                                                <button id="btn" class="btn btn-success">Registrar descripción</button>
-                                                <button class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                                            </div>
-                                            <div class="span pull-left" style="margin-top:20px;">
-                                                <div class="alert alert-success fade">
-                                                    <button type="button" class="close" data-dismiss="alert">×</button>
-                                                    <strong>¡Acciones completadas!</strong> Ahora puedes seleccionar esta categoria.
-                                                </div>
-                                            </div>
-                                            <script>
-                                                $("#btn").on("click", function () {
-                                                    $(".alert").removeClass("in").show();
-                                                    $(".alert").delay(500).addClass("in").fadeOut(2000);
-                                                });
-                                            </script>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div><!-- /.modal -->
+
                         </div>
-                        <div class="modal fade"    id="modalProveedor" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                            <div class="modal-dialog" role="document" style="float:left">
-                                <div class="modal-content"  style="width:180%;margin-left:140px" >
-                                    <div class="modal-header" >
-                                        <asp:button runat="server" type="button" class="close" data-dismiss="modal" aria-label="Close"/><span aria-hidden="true">&times;</span>
-                                        <h4 class="modal-title" style="text-align:center" id="exampleModalLabel2">Detalle del préstamo</h4>
-                                    </div>
+                        
                                     <!-- MODAL A CAMBIAR  -->
+                   <%-- <div class="modal fade" id="modalDetalle" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">--%>
                                     <div id="muestra" >
-                                        <div class="modal-body">
+                                       <div class="modal-body">
                                             <div class="container">
                                                 <img src="img/colegioAbogadoscr.png" style="width:90px; height:90px;float:left" alt="" />
                                                 <br />
-                                                <label for="Fecha" style="font-size:20px; margin-right:148px; margin-left:75px;">COLEGIO DE ABOGADOS Y ABOGADAS DE COSTA RICA</label> <b id="Fecha">Fecha 28/01/2016</b>
-                                                <label for="Numero" style="font-size:20px; margin-right:150px; margin-left:25px;">SOLICITUD DE TRASLADO,PRESTAMO,EXCLUSIÓN DE ACTIVO FIJO </label><b id="Numero">N°001</b>
+                                                <label for="Fecha" style="font-size:20px; margin-right:148px; margin-left:75px;">COLEGIO DE ABOGADOS Y ABOGADAS DE COSTA RICA</label> Fecha:<asp:TextBox runat="server" ID="TextBox3" BorderStyle="None" BorderWidth="0px" Enabled="False" EnableTheming="True" BackColor="White" />
+                                                <label for="Numero" style="font-size:20px; margin-right:150px; margin-left:25px;">SOLICITUD DE TRASLADO,PRESTAMO,EXCLUSIÓN DE ACTIVO FIJO N°</label><asp:TextBox runat="server" ID="TextBox2" BorderStyle="None" BorderWidth="0px" Enabled="False" EnableTheming="True" BackColor="White" />
                                                 <br />
                                                 <br />
                                                 <br />
@@ -316,37 +240,12 @@
                                                     </table>
                                                 </div>
                                                 </fieldset>
-                                                <label for="idSolicitante">Identificación de solicitante: 115380448</label><br />
-                                                <label for="fechaentrada">Fecha de conclusión: 19/11/2015</label><br />
+                                                <label for="idSolicitante">Identificación de solicitante:</label><asp:TextBox runat="server" ID="TextBox1" BorderStyle="None" BorderWidth="0px" Enabled="False" EnableTheming="True" BackColor="White"  /><br />
+                                                <label for="fechaentrada">Fecha de conclusión:</label><asp:TextBox runat="server" ID="fecha_conclucion" BorderStyle="None" BorderWidth="0px" Enabled="False" EnableTheming="True" BackColor="White" /><br />
                                                 <div class="col-md-6 column">
-                                                    <table class="table table-bordered table-hover" id="tab_logic_hover">
-                                                        <thead>
-                                                            <tr>
-                                                                <th class="text-center">
-                                                                    Consecutivo
-                                                                </th>
-                                                                <th class="text-center">
-                                                                    Número de placa del activo
-                                                                </th>
-                                                                <th class="text-center">
-                                                                    Descripción
-                                                                </th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            <tr>
-                                                                <td>
-                                                                    1
-                                                                </td>
-                                                                <td>
-                                                                    <label>EIF-001</label>
-                                                                </td>
-                                                                <td>
-                                                                    <label>Computadora Dell, Intel core i5, 500GB HDD, pantalla de 14 pulgadas</label>
-                                                                </td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
+                                                    <asp:GridView runat="server" CssClass="table table-bordered table-hover" id="tab_logic_hover" EnableSortingAndPagingCallbacks="True">
+                                                        
+                                                    </asp:GridView>
                                                 </div>
                                                 <br />
                                                 <br />
@@ -360,7 +259,7 @@
                                                 <pre style="border:none; background:none">_________________________________________                     __________________________________________ 
  NOMBRE DEL DEPARTAMENTO QUE ENTREGA Y                NOMBRE DEL DEPARTAMENTO QUE RECIBE Y 
        FIRMA DEL RESPONSABLE                                                  FIRMA DEL RESPONSABLE</pre>
-                                                <pre style="background:none; width:85%;">Observaciones: (indicar si se entrega con otros componentes,motivode préstamo,traslado o exclisión y
+                                                <pre style="background:none; width:85%;">Observaciones: (indicar si se entrega con otros componentes,motivo de préstamo,traslado o exclisión y
 condiciones fisicas - en caso de préstamo o traslado)
 
 
@@ -376,10 +275,9 @@ condiciones fisicas - en caso de préstamo o traslado)
                                     </div>
                                         <div class="modal-footer">
                                             <div class="span">
-                                                <asp:button runat="server" id="descargar"  onclick="javascript:imprSelec('muestra')" class="btn btn-success"/>Descargar detalle
-                                                
+                                                <asp:button runat="server" ID="descargar"  Onclick="descargar_Click"  CssClass="btn btn-success" Text="Descargar detalle"/>
                                                 <script type="text/javascript">
-                                            function imprSelec(muestra)
+                                            function imprSelec()
                                             {
                                                 var ficha = document.getElementById(muestra);
                                                
@@ -410,7 +308,7 @@ condiciones fisicas - en caso de préstamo o traslado)
                                         </div>
                                     </div>
                                 </div>
-                            </div><!-- /.modal A CAMBIAR  -->
+                           <%-- </div>--%><!-- /.modal A CAMBIAR  -->
                         <div class="modal fade" id="modalAreas" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
@@ -421,8 +319,9 @@ condiciones fisicas - en caso de préstamo o traslado)
                    
                                     <div class="modal-footer">
                                             <div class="span">
-                                                <asp:button runat="server" ID="bt1" class="btn btn-danger" onclick="cambiarMano();"/>Finalizar préstamo
-                                                <asp:button runat="server" class="btn btn-default" data-dismiss="modal"/>Cerrar</asp:button>
+                                                <%--onclick="cambiarMano();"--%>
+                                                <asp:button runat="server" ID="bt1" class="btn btn-danger" />Finalizar préstamo
+                                                <asp:button runat="server" class="btn btn-default" data-dismiss="modal" Text="Cerrar"></asp:button>
                                             </div>
                                             <div class="span pull-left" style="margin-top:20px;">
                                                 <div id="fpre"class="alert alert-success fade">
@@ -479,5 +378,6 @@ condiciones fisicas - en caso de préstamo o traslado)
             $('[data-toggle="tooltip"]').tooltip();
         });
     </script>
+        </form>
 </body>
 </html>
