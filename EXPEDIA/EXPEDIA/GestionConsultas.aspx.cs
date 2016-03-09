@@ -41,6 +41,7 @@ namespace EXPEDIA
             departamento = Seleciono_Departamento();
             descripcion = Seleciono_Descripcion();
             provedor = Seleciono_proveedor();
+            if ((departamento == null) && (numero.Text == "") && (descripcion == null) && (provedor == null)) { Consultar_todo(y); }
             if ((departamento != null) && (numero.Text != "") && (descripcion == null) && (provedor == null)) { Consulta_Despartamento_Numero("bd_numero_placa", y); }
             if ((departamento != null) && (numero.Text == "") && (descripcion == null) && (provedor == null)) { Consulta_Despartamento(); }
             if ((departamento != null) && (numero.Text != "") && (descripcion != null) && (provedor == null)) { Consulta_Despartamento_Numero_descripcion("bd_numero_placa", y); }
@@ -158,6 +159,60 @@ namespace EXPEDIA
         }
 
         // ****LAS DIFERENTES CONSULTAS DEPENDIANDO DE LOS FILTROS DE BUSQUEDA****
+        protected void Consultar_todo(int cuantas)
+        {
+            if (cuantas < 2)
+            {
+
+                DataTable dt = new DataTable();
+
+                dt.Columns.AddRange(new DataColumn[11] {
+                            new DataColumn("Número de  Placa ", typeof(string)),
+                            new DataColumn("Número de Serie ",typeof(string)),
+                            new DataColumn(" Descripcion ", typeof(string)),
+                            new DataColumn(" Tipo ",typeof(string)),
+                            new DataColumn(" Departamento ",typeof(string)),
+                            new DataColumn(" Proveedor ", typeof(string)),
+                            new DataColumn(" Especificaciones ",typeof(string)),
+                            new DataColumn(" Fecha de garantia ",typeof(string)),
+                            new DataColumn(" Duracion de contrato ",typeof(string)),
+                           new DataColumn(" Fecha compra ",typeof(string)),
+                          new DataColumn(" Costo ",typeof(string)),
+
+
+
+            });
+
+
+                try
+                {
+
+                    Conexion c = new Conexion();
+                    SqlConnection Conexion = c.Conectar();
+                    string Sql = @"SELECT * FROM Activos ";
+                    Conexion.Open();//abrimos conexion
+                    SqlCommand cmd = new SqlCommand(Sql, Conexion); //ejecutamos la instruccion
+
+
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+
+                            Retornar_Descripcion(reader.GetString(4));
+                            Retornar_Departamento(reader.GetString(5));
+                            dt.Rows.Add(reader.GetString(1), reader.GetString(2), id_des, reader.GetString(0), id_dep, reader.GetString(6), reader.GetString(7), reader.GetDateTime(3).ToString(), reader.GetDateTime(8).ToString(), reader.GetDateTime(9).ToString(), reader.GetInt32(10).ToString());
+                        }
+
+                        lista.DataSource = dt;
+                        lista.DataBind();
+                    }
+                    else { cuantas++; Consulta_Despartamento_Numero("bd_numero_serie", cuantas); }
+                }
+                catch (Exception a) { Response.Write(a); }
+            }
+        }
         protected void Consulta_Despartamento_Numero(string quien, int cuantas)
         {
 
