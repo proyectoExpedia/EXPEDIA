@@ -16,6 +16,12 @@
     <script src="js/hover.js"></script>
     <link href="css/hover.css" rel="stylesheet" />
 </head>
+     <style>
+        a {
+          color:#003566;
+        }
+    </style>
+
 <body>
 <!--Menu-->
     <nav class="navbar" role="navigation" style="margin-top:20px;">
@@ -59,11 +65,11 @@
             <%=Server.UrlDecode(Request.QueryString["rid"])%>, recuerda cerrar tu sesión al terminar tus acciones.
             <button type="button" class="close" data-dismiss="alert"><span>&times;</span></button>
         </div>
-        <div class="row" style="color: white; background-color:darkred">
-                <div class="container">
+        <div class="row"  style="border: 7px double white;color:white;background-color:#003566;">
+                <div class="container" style="margin-left:-8px;">
                     <h1 style="text-align: center">Bienvenido Administrador</h1>
                     <h2 style="text-align: center"> Elige tu opcion</h2>
-                    <div class="row">
+                    <div class="row" >
                         <div class="col-sm-3 col-md-4">
                             <div class="thumbnail">
                                 <a class="" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">

@@ -25,10 +25,14 @@ namespace EXPEDIA
         protected void Page_Load(object sender, EventArgs e)
         {
             y = 0;
+            if (!IsPostBack)
+            {
+               
 
-            cargar_area(departamento_activo);
-            cargar_descripcion(descripcion_activo);
-            cargar_proveedor(proveedor);
+                cargar_area(departamento_activo);
+                cargar_descripcion(descripcion_activo);
+                cargar_proveedor(proveedor);
+            }
 
         }
 
@@ -41,7 +45,7 @@ namespace EXPEDIA
             departamento = Seleciono_Departamento();
             descripcion = Seleciono_Descripcion();
             provedor = Seleciono_proveedor();
-            if ((departamento == null) && (numero.Text == "") && (descripcion == null) && (provedor == null)) { Consultar_todo(y); }
+            if ((departamento == null) && (numero.Text == "") && (descripcion == null) && (provedor == null)) { Consultar_todo(); }
             if ((departamento != null) && (numero.Text != "") && (descripcion == null) && (provedor == null)) { Consulta_Despartamento_Numero("bd_numero_placa", y); }
             if ((departamento != null) && (numero.Text == "") && (descripcion == null) && (provedor == null)) { Consulta_Despartamento(); }
             if ((departamento != null) && (numero.Text != "") && (descripcion != null) && (provedor == null)) { Consulta_Despartamento_Numero_descripcion("bd_numero_placa", y); }
@@ -159,10 +163,9 @@ namespace EXPEDIA
         }
 
         // ****LAS DIFERENTES CONSULTAS DEPENDIANDO DE LOS FILTROS DE BUSQUEDA****
-        protected void Consultar_todo(int cuantas)
+        protected void Consultar_todo()
         {
-            if (cuantas < 2)
-            {
+            
 
                 DataTable dt = new DataTable();
 
@@ -189,7 +192,9 @@ namespace EXPEDIA
 
                     Conexion c = new Conexion();
                     SqlConnection Conexion = c.Conectar();
-                    string Sql = @"SELECT * FROM Activos ";
+                    string Sql = @"SELECT bd_tipo_activo,bd_numero_placa,bd_numero_serie,bd_fecha_garantia_activo,bd_descripcion_activo,bd_departamento,bd_proveedor,bd_especificacion_tecnica,bd_duracion_de_contrato,bd_fecha_compra,bd_costo_activo FROM Activos ";
+
+            
                     Conexion.Open();//abrimos conexion
                     SqlCommand cmd = new SqlCommand(Sql, Conexion); //ejecutamos la instruccion
 
@@ -207,12 +212,13 @@ namespace EXPEDIA
 
                         lista.DataSource = dt;
                         lista.DataBind();
-                    }
-                    else { cuantas++; Consulta_Despartamento_Numero("bd_numero_serie", cuantas); }
+                    
+                    
+                }
                 }
                 catch (Exception a) { Response.Write(a); }
             }
-        }
+        
         protected void Consulta_Despartamento_Numero(string quien, int cuantas)
         {
 

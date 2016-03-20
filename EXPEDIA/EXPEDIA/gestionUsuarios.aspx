@@ -1,7 +1,8 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="gestionUsuarios.aspx.cs" Inherits="EXPEDIA.gestionUsuarios" %>
-
 <%@ Register assembly="AjaxControlToolkit" namespace="AjaxControlToolkit" tagprefix="asp" %>
 <%@ Register assembly="AjaxControlToolkit" namespace="AjaxControlToolkit" tagprefix="cc1" %>
+
+
 
 <!DOCTYPE html>
 
@@ -68,7 +69,7 @@
                 <!-----------------------------------------------Fin de las opciones----------------------------------------------->
             </div>
         </nav>
-   <%--     <asp:UpdatePanel runat="server">
+<%--        <asp:UpdatePanel runat="server">
             <ContentTemplate>--%>
             <div class="container">
                 <div class="panel panel-primary">
@@ -78,6 +79,7 @@
                         <a style="float:right;margin-top:21px;" href="mainAdministrador.aspx" class="btn"><span class="glyphicon glyphicon-menu-left"></span>  Atrás</a>
                         </div>
                     </div>
+                  
                     <div class="panel-body">
                         <asp:TabContainer ID="TabContainer1" CssClass="nav nav-tabs" runat="server" ActiveTabIndex="0">
                             <asp:TabPanel runat="server" HeaderText="<span style='margin: 5px' data-toggle='tab'><b>Registro de usuarios</b><span style='margin: 10px' class='glyphicon glyphicon-plus-sign'></span></span>" ID="TabPanel1">
@@ -409,7 +411,7 @@
                     </asp:Panel>
                 </div>
             </div>
-  <%--          </ContentTemplate>
+<%--            </ContentTemplate>
         </asp:UpdatePanel>--%>
     </form>
 </body>

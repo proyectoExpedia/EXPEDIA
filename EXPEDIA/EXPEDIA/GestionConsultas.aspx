@@ -81,7 +81,7 @@
                                         <asp:DropDownList runat="server" data-toggle="tooltip" title="En este espacio puede seleccionar la descripción a buscar." id="descripcion_activo" CssClass="pure-input-1-2">
                                         <asp:ListItem Value="0">Elija una descripción</asp:ListItem>
                                         </asp:DropDownList>
-                               
+                             
                              
                              <label for="area">Departamento o Sede regional destinado(a)</label>
                                         <asp:DropDownList runat="server" data-toggle="tooltip" title="En este espacio puede seleccionar el Departamento o Sede regional destinado(a) a buscar. " id="departamento_activo" CssClass="pure-input-1-2">

@@ -142,7 +142,7 @@
 
 
                                                 <div class="pure-controls-group" style="margin-top: 10px;">
-                                                    <asp:Button runat="server" CssClass="btn btn-success"  ValidationGroup="one" OnClick="Bt_Ingresar_Click" ID="Bt_Ingresar" Text="Registrar Usuario" />
+                                                    <asp:Button runat="server" CssClass="btn btn-success"  ValidationGroup="one" OnClick="Bt_Ingresar_Click" ID="Bt_Ingresar" Text="Realizar préstamo" />
                                                     <div id="mensaje" style="display: none">
                                                         <h3>Las acciones han sido realizadas con éxito.</h3>
                                                     </div>

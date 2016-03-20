@@ -41,7 +41,7 @@ namespace EXPEDIA
             String apellido1 = "";
             String apellido2 = "";
             String NombreCompleto = "";
-            int count = Convert.ToInt32(cmd.ExecuteScalar()); //devuelve la fila afectada
+            string count = Convert.ToString(cmd.ExecuteScalar()); //devuelve la fila afectada
             SqlDataReader reader = cmd.ExecuteReader();
             if (reader.HasRows){
                 while (reader.Read()){
@@ -51,7 +51,7 @@ namespace EXPEDIA
                     NombreCompleto = nombre + " " + apellido1 + " " + apellido2;
                 }
             }
-            if (count == 0){
+            if (count == ""){
                 c.Desconectar(Conexion);
                 return null;
             }else{

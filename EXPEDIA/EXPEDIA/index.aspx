@@ -1,5 +1,6 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="index.aspx.cs" Inherits="EXPEDIA.index" %>
 
+<%@ Register assembly="AjaxControlToolkit" namespace="AjaxControlToolkit" tagprefix="cc1" %>
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -142,11 +143,20 @@
                         <div class="modal-body">
                             <div class="container" style="width: 300px;">
                                 <%--<form action="mainAdministrador.aspx" onsubmit="">--%>
-                                    <form   runat="server">
+                                     <form   runat="server">
+                                    <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
                                     <h2 class="form-signin-heading">Ingresa tus credenciales</h2>
-                                    <asp:TextBox    runat="server" ID="username" size="20" CssClass="form-control" placeholder="Número de cédula (#########)" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar su número de cedula, omita guiones y todos los dígitos del documento de identidad"  required="" />
-                                    <asp:TextBox    runat="server" TextMode="Password"  ID="password" size="20" CssClass="form-control" placeholder="Contraseña" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar su contraseña." required="" />
-
+                                                <div class="pure-control-group">
+                                                    <label for="cedula">Número de cédula</label>
+                                                    <asp:TextBox ValidationGroup="one" runat="server" ID="username" CssClass="form-control" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar el número de cedula de la persona a registrar, omita guiones y todos los dígitos del documento de identidad, es requerido." placeholder="#-####-####" />
+                                                    <asp:RequiredFieldValidator ValidationGroup="one" ID="vCedula" runat="server" ControlToValidate="username" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
+                                                    <cc1:MaskedEditExtender ID="username_MaskedEditExtender" runat="server" BehaviorID="username_MaskedEditExtender" Century="2000" ClearMaskOnLostFocus="False" CultureAMPMPlaceholder="" CultureCurrencySymbolPlaceholder="" CultureDateFormat="" CultureDatePlaceholder="" CultureDecimalPlaceholder="" CultureThousandsPlaceholder="" CultureTimePlaceholder="" Mask="9-9999-9999" TargetControlID="username"></cc1:MaskedEditExtender>
+                                                    <asp:RegularExpressionValidator ValidationGroup="one" ID="RegularExpressionValidator2" runat="server" ControlToValidate="username" ErrorMessage="&lt;b&gt;Formato no valido&lt;/b&gt;" ForeColor="Red" ValidationExpression="^[1-9]-\d{4}-\d{4}$"></asp:RegularExpressionValidator>
+                                                    <br />
+                                                    <label for="contraseña">Contraseña</label>
+                                                     <asp:TextBox    runat="server" TextMode="Password"  ID="password" size="20" CssClass="form-control" placeholder="Contraseña" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar su contraseña." required="" />
+                                                </div>
+                                         <br />
                                     <asp:Button  runat="server"  ID="Bt_Ingresar" CssClass="btn btn-lg btn-primary btn-block" OnClick="Bt_Ingresar_Click"   text="Ingresar"/>
 
                                 </form>
