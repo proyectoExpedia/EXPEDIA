@@ -15,10 +15,10 @@ namespace EXPEDIA
         {
             cargar_area(area);
             cargar_descripcion(descripcion);
-           
+
             cargar_proveedor(proveedor);
-          
-            
+
+
         }
         protected void Bt_Ingresar_Click(object sender, EventArgs e)
         {
@@ -51,7 +51,7 @@ namespace EXPEDIA
                     cmd.ExecuteNonQuery();
                     Response.Redirect("gestionActivos.aspx");
                     c.Desconectar(Conexion);
-                   
+
                 }
                 catch (Exception t) { Response.Write("error" + t); }
 
@@ -63,8 +63,8 @@ namespace EXPEDIA
 
 
 
-                if (RadioButton3.Checked)
-                {
+            if (RadioButton3.Checked)
+            {
                 Conexion c = new Conexion();
                 SqlConnection Conexion = c.Conectar();
                 string Sql = @"INSERT INTO Activos (bd_tipo_activo, bd_numero_placa, bd_numero_serie, bd_fecha_garantia_activo, bd_descripcion_activo, bd_departamento, bd_proveedor, bd_especificacion_tecnica,bd_fecha_compra, bd_costo_activo) values (@tipo_activo, @placa, @serie, @garantia, @descripcion,@departamento,@proveedor,@especificacion_tecnica,@fecha_compra, @costo)";
@@ -89,8 +89,8 @@ namespace EXPEDIA
                     Response.Redirect("gestionActivos.aspx");
                     c.Desconectar(Conexion);
                 }
-                catch (Exception t) { Response.Write("error"+t); }
-                }
+                catch (Exception t) { Response.Write("error" + t); }
+            }
 
             if (RadioButton4.Checked)
             {
@@ -123,9 +123,9 @@ namespace EXPEDIA
 
 
             }
-            }
-      
-        
+        }
+
+
         protected void cargar_area(DropDownList dropdown)
         {
             Conexion c = new Conexion();
@@ -154,7 +154,7 @@ namespace EXPEDIA
             SqlCommand cmd = new SqlCommand(Sql, Conexion); //ejecutamos la instruccion
             SqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
-            {             
+            {
                 String nombre = reader.GetString(0);
                 // Crea un nuevo Item
                 ListItem oItem = new ListItem(nombre, nombre);
@@ -176,13 +176,13 @@ namespace EXPEDIA
                 String id = reader.GetString(0);
                 String descripcion = reader.GetString(1);
                 // Crea un nuevo Item
-                ListItem oItem = new ListItem(descripcion,id);
+                ListItem oItem = new ListItem(descripcion, id);
                 // Lo agrega a la colección de Items del DropDownList
                 dropdown.Items.Add(oItem);
             }
             Conexion.Close();
         }
-  
+
         protected void btn_Registrar_Descripcion_Click(object sender, EventArgs e)
         {
             Conexion c = new Conexion();
@@ -209,9 +209,9 @@ namespace EXPEDIA
             }
 
         }
-        
 
 
-    }
 
     }
+
+}
