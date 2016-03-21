@@ -13,8 +13,8 @@ namespace EXPEDIA
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            cargar_area(departamento_activo);
-            cargar_descripcion(descripcion_activo);
+            cargar_area(area);
+            cargar_descripcion(descripcion);
            
             cargar_proveedor(proveedor);
           
@@ -25,7 +25,7 @@ namespace EXPEDIA
 
 
 
-            if (option1.Checked)
+            if (RadioButton2.Checked)
             {
                 Conexion c = new Conexion();
                 SqlConnection Conexion = c.Conectar();
@@ -37,16 +37,17 @@ namespace EXPEDIA
                     SqlCommand cmd = new SqlCommand(Sql, Conexion);
 
 
-                    cmd.Parameters.AddWithValue("@tipo_activo", option1.Text);
-                    cmd.Parameters.AddWithValue("@fecha_compra", fechaCompra.Text);
-                    cmd.Parameters.AddWithValue("@costo", costo.Text);
-                    cmd.Parameters.AddWithValue("@placa", nplaca.Text);
-                    cmd.Parameters.AddWithValue("@serie", nserie.Text);
-                    cmd.Parameters.AddWithValue("@garantia", duracion_garantia.Text);
-                    cmd.Parameters.AddWithValue("@descripcion", descripcion_activo.SelectedValue);
-                    cmd.Parameters.AddWithValue("@departamento", descripcion_activo.SelectedValue);
+                    cmd.Parameters.AddWithValue("@tipo_activo", "");
+                    cmd.Parameters.AddWithValue("@fecha_compra", fecha_compra.Text);
+                    cmd.Parameters.AddWithValue("@costo", precio.Text);
+                    cmd.Parameters.AddWithValue("@placa", numero_placa.Text);
+                    cmd.Parameters.AddWithValue("@serie", numero_serie.Text);
+                    cmd.Parameters.AddWithValue("@garantia", inicio_garantia.Text);
+                    cmd.Parameters.AddWithValue("@garantia", final_garantia.Text);
+                    cmd.Parameters.AddWithValue("@descripcion", descripcion.SelectedValue);
+                    cmd.Parameters.AddWithValue("@departamento", area.SelectedValue);
                     cmd.Parameters.AddWithValue("@proveedor", proveedor.SelectedValue);
-                    cmd.Parameters.AddWithValue("@especificacion_tecnica", especificaciones_tecnicas.Text);
+                    cmd.Parameters.AddWithValue("@especificacion_tecnica", especificacion_tecnica.Text);
                     cmd.ExecuteNonQuery();
                     Response.Redirect("gestionActivos.aspx");
                     c.Desconectar(Conexion);
@@ -62,7 +63,7 @@ namespace EXPEDIA
 
 
 
-                if (option2.Checked)
+                if (RadioButton3.Checked)
                 {
                 Conexion c = new Conexion();
                 SqlConnection Conexion = c.Conectar();
@@ -72,16 +73,17 @@ namespace EXPEDIA
                 try
                 {
                     SqlCommand cmd = new SqlCommand(Sql, Conexion);
-                    cmd.Parameters.AddWithValue("@tipo_activo", option2.Text);
-                    cmd.Parameters.AddWithValue("@fecha_compra", fechaCompra.Text);
-                    cmd.Parameters.AddWithValue("@costo", costo.Text);
-                    cmd.Parameters.AddWithValue("@placa", nplaca.Text);
-                    cmd.Parameters.AddWithValue("@serie", nserie.Text);
-                    cmd.Parameters.AddWithValue("@garantia", duracion_garantia.Text);
-                    cmd.Parameters.AddWithValue("@descripcion", descripcion_activo.SelectedValue);
-                    cmd.Parameters.AddWithValue("@departamento", descripcion_activo.SelectedValue);
+                    cmd.Parameters.AddWithValue("@tipo_activo", "");
+                    cmd.Parameters.AddWithValue("@fecha_compra", fecha_entrega3.Text);
+                    cmd.Parameters.AddWithValue("@costo", precio2.Text);
+                    cmd.Parameters.AddWithValue("@placa", numero_placa2.Text);
+                    cmd.Parameters.AddWithValue("@serie", numero_serie2.Text);
+                    cmd.Parameters.AddWithValue("@garantia", inicio_garantia3.Text);
+                    cmd.Parameters.AddWithValue("@garantia", final_garantia3.Text);
+                    cmd.Parameters.AddWithValue("@descripcion", descripcion.SelectedValue);
+                    cmd.Parameters.AddWithValue("@departamento", descripcion.SelectedValue);
                     cmd.Parameters.AddWithValue("@proveedor", proveedor.SelectedValue);
-                    cmd.Parameters.AddWithValue("@especificacion_tecnica", especificaciones_tecnicas.Text);
+                    cmd.Parameters.AddWithValue("@especificacion_tecnica", especificacion_tecnica2.Text);
 
                     cmd.ExecuteNonQuery();
                     Response.Redirect("gestionActivos.aspx");
@@ -90,7 +92,7 @@ namespace EXPEDIA
                 catch (Exception t) { Response.Write("error"+t); }
                 }
 
-            if (option3.Checked)
+            if (RadioButton4.Checked)
             {
                 Conexion c = new Conexion();
                 SqlConnection Conexion = c.Conectar();
@@ -101,17 +103,18 @@ namespace EXPEDIA
                 {
                     SqlCommand cmd = new SqlCommand(Sql, Conexion);
 
-                    cmd.Parameters.AddWithValue("@tipo_activo", option3.Text);
-                    cmd.Parameters.AddWithValue("@placa", nplaca.Text);
-                    cmd.Parameters.AddWithValue("@serie", nserie.Text);
-                    cmd.Parameters.AddWithValue("@garantia", duracion_garantia.Text);
-                    cmd.Parameters.AddWithValue("@descripcion", descripcion_activo.SelectedValue);
-                    cmd.Parameters.AddWithValue("@departamento", descripcion_activo.SelectedValue);
+                    cmd.Parameters.AddWithValue("@tipo_activo", RadioButton4.Text);
+                    cmd.Parameters.AddWithValue("@placa", numero_placa.Text);
+                    cmd.Parameters.AddWithValue("@serie", numero_serie.Text);
+                    cmd.Parameters.AddWithValue("@garantia", inicio_garantia.ToString());
+                    cmd.Parameters.AddWithValue("@garantia", final_garantia.ToString());
+                    cmd.Parameters.AddWithValue("@descripcion", descripcion.SelectedValue);
+                    cmd.Parameters.AddWithValue("@departamento", area.SelectedValue);
                     cmd.Parameters.AddWithValue("@proveedor", proveedor.SelectedValue);
-                    cmd.Parameters.AddWithValue("@especificacion_tecnica", especificaciones_tecnicas.Text);
-                    cmd.Parameters.AddWithValue("@duracion_contrato", duracion_contrato.Text);
-                    cmd.Parameters.AddWithValue("@fecha_compra", fechaCompra.Text);
-                    cmd.Parameters.AddWithValue("@costo", costo.Text);
+                    cmd.Parameters.AddWithValue("@especificacion_tecnica", especificacion_tecnica.Text);
+                    cmd.Parameters.AddWithValue("@duracion_contrato", finalizacion_contrato.ToString());
+                    cmd.Parameters.AddWithValue("@fecha_compra", fecha_compra.ToString());
+                    cmd.Parameters.AddWithValue("@costo", precio.Text);
                     cmd.ExecuteNonQuery();
                     Response.Redirect("gestionActivos.aspx");
                     c.Desconectar(Conexion);
@@ -197,7 +200,7 @@ namespace EXPEDIA
                 c.Desconectar(Conexion);
                 Response.Redirect("gestionActivos.aspx");
 
-                cargar_descripcion(descripcion_activo);
+                cargar_descripcion(descripcion);
 
             }
             catch (Exception a)
