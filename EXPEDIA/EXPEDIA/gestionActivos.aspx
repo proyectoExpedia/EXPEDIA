@@ -1,7 +1,8 @@
 ﻿
 <%@ Page Language="C#" AutoEventWireup="true" CodeBehind="gestionActivos.aspx.cs" Inherits="EXPEDIA.gestionActivos" %>
-
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
+
 
 <!DOCTYPE html>
 
@@ -23,73 +24,70 @@
 </head>
 <body>
     <!--Menu-->
-
-    <nav class="navbar" role="navigation" style="margin-top: 20px;">
-        <div class="container">
-            <ul class="bxslider">
-                <li>
-                    <img src="img/colegioAbogadoscr.png" style="width: 100px; height: 100px; float: left" alt="" /></li>
-                <li>
-                    <img src="img/ExpediaLogo.png" alt="" style="width: 100px; height: 100px; float: left" /></li>
-            </ul>
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" style="float: right" href="#">
-                    <h3>Colegio de Abogados y Abogadas de Costa Rica</h3>
-                </a>
-            </div>
-            <!-- Opciones menu -->
-            <div class="col-md-6" style="margin-top: 15px;">
-                <div class="panel-heading">
-                    <ul class="nav nav-tabs">
-                        <li class="active"><a href="index.aspx">Salir</a></li>
-                        <li><a href="#tab2primary" data-toggle="tab">Conozcanos</a></li>
-                        <li><a href="#tab3primary" data-toggle="tab">Contacto</a></li>
-                        <!--<li class="dropdown">
-                            <a href="#" data-toggle="dropdown">Dropdown <span class="caret"></span></a>
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a href="#tab4primary" data-toggle="tab">Primary 4</a></li>
-                                <li><a href="#tab5primary" data-toggle="tab">Primary 5</a></li>
-                            </ul>
-                        </li>-->
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </nav>
-    <form runat="server" class="pure-form pure-form-aligned">
-            
+        <form id="form1" runat="server">
         <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+        <nav class="navbar" role="navigation" style="margin-top: 20px;">
+            <div class="container">
+                <ul class="bxslider">
+                    <li>
+                        <img src="img/colegioAbogadoscr.png" style="width: 100px; height: 100px; float: left" alt="" /></li>
+                    <li>
+                        <img src="img/ExpediaLogo.png" alt="" style="width: 100px; height: 100px; float: left" /></li>
+                </ul>
+                <script>
+                    // You can also use "$(window).load(function() {"
+                    $(document).ready(function () {
+                        $('.bxslider').bxSlider({
+                            mode: 'fade',
+                            auto: true,
+                            controls: false
+                        });
+                    });
+                </script>
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" style="float: right" href="#">
+                        <h3>Colegio de Abogados y Abogadas de Costa Rica</h3>
+                    </a>
+                </div>
+                <!----------------------------------------------- Opciones menu ------------------------------------------------------>
+                <div class="col-md-6" style="margin-top: 15px;">
+                    <div class="panel-heading">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="index.aspx">Salir</a></li>
+                            <li><a href="#tab2primary" data-toggle="tab">Conozcanos</a></li>
+                            <li><a href="#tab3primary" data-toggle="tab">Contacto</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-----------------------------------------------Fin de las opciones----------------------------------------------->
+            </div>
+        </nav>
 
 
         <div class="container">
-            <div class="panel panel-primary">
+        <div class="panel panel-primary">
                 <div class="panel-heading">
                     <h3 class="panel-title">Gestión de activos</h3>
+                    <div>
+                    <a style="float: right" href="mainAdministrador.aspx" class="btn"><span class="glyphicon glyphicon-menu-left"></span>Atrás</a>
+                    </div>
                 </div>               
 
-                <div class="panel-body">
-                    <div class="tabs-example">
-                        <ul id="myTab" class="nav nav-tabs">
-                            <li class="active"><a href="#Ingresar" data-toggle="TabPanel1">Registro de activos <span class="glyphicon glyphicon-plus-sign"></span></a></li>
-                            <li><a href="#Consultar" data-toggle="TabPanel2">Control de activos <span class="glyphicon glyphicon-question-sign"></span><span class="glyphicon glyphicon-minus-sign"></span><span class="glyphicon glyphicon-ok-sign"></span></a></li>
-                            <li><a style="float: right" href="mainAdministrador.aspx" class="btn"><span class="glyphicon glyphicon-menu-left"></span>Atrás</a></li>
-                       </ul>
-                           
-                        
+        <div class="panel-body">    
         <cc1:TabContainer ID="TabContainer1" CssClass="nav nav-tabs" runat="server" ActiveTabIndex="0"> 
             
              <%-- Formulario 1 --%>            
            
-            <cc1:TabPanel runat="server">
+            <cc1:TabPanel runat="server" HeaderText="<span style='margin: 5px' data-toggle='tab'><b>Registro de Activos</b><span style='margin: 10px' class='glyphicon glyphicon-plus-sign'></span></span>" ID="TabPanel1">
                 <ContentTemplate>
                     <asp:Panel ID="Panel1" runat="server" DefaultButton="Button1">
-                        <asp:TextBox runat="server" ValidationGroup="ingreso"> </asp:TextBox>
+                        <asp:TextBox runat="server" ValidationGroup="one"> </asp:TextBox>
                         <div class="tab-pane fade in active" id="Ingresar">
                             <h1 style="text-align: center">Formulario de registro</h1>
                             <fieldset>
@@ -152,10 +150,7 @@
                                         <cc1:CalendarExtender TargetControlID="finalizacion_contrato"  ID="finContrato" runat="server" />
                                         <asp:RequiredFieldValidator ValidationGroup="one" ID="vFinalizacion" runat="server" ControlToValidate="finalizacion_contrato" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
                                     </fieldset>
-                                    <%--                                        <fieldset class="pure-control-group">
-                                            <label for="Tipo">Especificaciones técnicas</label>
-                                            <asp:TextBox  runat="server" TextMode  ="multiline"  ID="especificaciones"  data-toggle="tooltip" title="En este espacio se debe proporcionar las cualidades del activo." CssClass="pure-input-1-2" placeholder="Especificaciones Técnicas"/>
-                                        </fieldset>--%>
+
                                 </div>
 
                                 <div class="pure-control-group">
@@ -250,10 +245,10 @@
 
              <%-- Formulario 2 --%>
 
-            <cc1:TabPanel runat="server">
+            <cc1:TabPanel runat="server" HeaderText="<span style='margin: 5px'  data-toggle='tab'><b>Control de usuarios</b> <span style='margin: 10px'  class='glyphicon glyphicon-question-sign'></span><span class='glyphicon glyphicon-minus-sign'></span><span class='glyphicon glyphicon-ok-sign'></span></span>" ID="TabPanel2">
                 <ContentTemplate>
-                    <asp:Panel ID="Panel2" runat="server" DefaultButton="btn_consultar">
-                        <asp:TextBox runat="server" ValidationGroup="consulta"> </asp:TextBox>
+                    <asp:Panel ID="Panel2" runat="server" DefaultButton="btn_consultarAc">
+                        <asp:TextBox runat="server" ValidationGroup="two"> </asp:TextBox>
                         <div class="tab-pane fade" id="Consultar">
                             <h1 style="text-align: center" id="titulo">Formulario de consultas</h1>
                             <div class="pure-form pure-form-aligned">
@@ -265,7 +260,7 @@
                                 </div>
 
                                 <p>
-                                    <asp:Button runat="server" ID="btn_consultar" CssClass="btn btn-primary" OnClientClick="mostrar()" Text="Consultar"/>
+                                    <asp:Button runat="server" ID="btn_consultarAc" CssClass="btn btn-primary" OnClientClick="mostrar()" Text="Consultar"/>
                                 </p>
                                 <script type="text/javascript">
                                     function mostrar() {
@@ -471,11 +466,10 @@
             </cc1:TabPanel>
 
         </cc1:TabContainer>
-                            
+        </div>
+        </div>         
                         
-                        <div id="myTabContent" class="tab-content">                                 
-
-
+        <div id="myTabContent" class="tab-content">                                 
                             <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
@@ -668,15 +662,9 @@
                                 <!-- /.modal -->
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
         </div>
-        <footer class="navbar" style="background-color: white">
-            <div class="container">
-                <h5 style="text-align: center" class="text-muted">Prototipo I EXPEDIA - Ingeniería en sistemas de información II</h5>
-            </div>
-        </footer>
+
+        
         <script>
             // You can also use "$(window).load(function() {"
             $(document).ready(function () {

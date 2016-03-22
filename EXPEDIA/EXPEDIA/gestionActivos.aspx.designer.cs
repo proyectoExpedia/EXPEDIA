@@ -13,6 +13,15 @@ namespace EXPEDIA {
     public partial class gestionActivos {
         
         /// <summary>
+        /// form1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        
+        /// <summary>
         /// ScriptManager1 control.
         /// </summary>
         /// <remarks>
@@ -29,6 +38,15 @@ namespace EXPEDIA {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::AjaxControlToolkit.TabContainer TabContainer1;
+        
+        /// <summary>
+        /// TabPanel1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.TabPanel TabPanel1;
         
         /// <summary>
         /// Panel1 control.
@@ -337,6 +355,15 @@ namespace EXPEDIA {
         protected global::System.Web.UI.WebControls.Button Button1;
         
         /// <summary>
+        /// TabPanel2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.TabPanel TabPanel2;
+        
+        /// <summary>
         /// Panel2 control.
         /// </summary>
         /// <remarks>
@@ -355,13 +382,13 @@ namespace EXPEDIA {
         protected global::System.Web.UI.WebControls.TextBox cedula_buscar;
         
         /// <summary>
-        /// btn_consultar control.
+        /// btn_consultarAc control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_consultar;
+        protected global::System.Web.UI.WebControls.Button btn_consultarAc;
         
         /// <summary>
         /// options control.
