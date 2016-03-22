@@ -87,7 +87,6 @@
             <cc1:TabPanel runat="server" HeaderText="<span style='margin: 5px' data-toggle='tab'><b>Registro de Activos</b><span style='margin: 10px' class='glyphicon glyphicon-plus-sign'></span></span>" ID="TabPanel1">
                 <ContentTemplate>
                     <asp:Panel ID="Panel1" runat="server" DefaultButton="Button1">
-                        <asp:TextBox runat="server" ValidationGroup="one"> </asp:TextBox>
                         <div class="tab-pane fade in active" id="Ingresar">
                             <h1 style="text-align: center">Formulario de registro</h1>
                             <fieldset>
@@ -248,10 +247,10 @@
             <cc1:TabPanel runat="server" HeaderText="<span style='margin: 5px'  data-toggle='tab'><b>Control de usuarios</b> <span style='margin: 10px'  class='glyphicon glyphicon-question-sign'></span><span class='glyphicon glyphicon-minus-sign'></span><span class='glyphicon glyphicon-ok-sign'></span></span>" ID="TabPanel2">
                 <ContentTemplate>
                     <asp:Panel ID="Panel2" runat="server" DefaultButton="btn_consultarAc">
-                        <asp:TextBox runat="server" ValidationGroup="two"> </asp:TextBox>
-                        <div class="tab-pane fade" id="Consultar">
+                        <div class="tab-pane" id="Consultar">
                             <h1 style="text-align: center" id="titulo">Formulario de consultas</h1>
                             <div class="pure-form pure-form-aligned">
+                                <asp:Panel ID="Panel3" runat="server" DefaultButton="">
                                 <div class="pure-control-group">
 
                                     <label for="cedula">Número de placa del activo</label>
@@ -262,6 +261,7 @@
                                 <p>
                                     <asp:Button runat="server" ID="btn_consultarAc" CssClass="btn btn-primary" OnClientClick="mostrar()" Text="Consultar"/>
                                 </p>
+                                </asp:Panel>
                                 <script type="text/javascript">
                                     function mostrar() {
                                         document.getElementById('oculto').style.display = 'block';
@@ -271,7 +271,7 @@
                             </div>
 
 
-                            <div id="oculto" class="pure-form pure-form-aligned" style="display: none">
+                            <div id="oculto" class="pure-form pure-form-aligned" style="display:none">
                                 <!--Esto realmente es un form-->
                                 <fieldset>
                                     <div class="pure-control-group" style="margin-top: 40px;">
@@ -309,9 +309,9 @@
                                                
                                                 </label>
                                             </div>
-                                        </div>
+                                        
 
-                                        <div class="pure-control-group">
+                                <div class="pure-control-group">
                                     <label for="nplaca">Número de placa del activo</label>
                                      <asp:TextBox ValidationGroup="two" ReadOnly="true" runat="server" ID="numero_placa2" data-placement="left" ToolTip="Este espacio debe proporcionar el número de placa del activo que desea consultar, este espacio es requerido." placeholder="ENF-1523" />
                                      <asp:RequiredFieldValidator ValidationGroup="two" ID="vPlaca2" runat="server" ControlToValidate="numero_placa2" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
@@ -460,6 +460,7 @@
                                 });
 
                             </script>
+                        </div>
                         </div>
                     </asp:Panel>
                 </ContentTemplate>

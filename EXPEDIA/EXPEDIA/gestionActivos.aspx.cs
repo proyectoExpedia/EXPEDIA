@@ -15,7 +15,6 @@ namespace EXPEDIA
         {
             cargar_area(area);
             cargar_descripcion(descripcion);
-
             cargar_proveedor(proveedor);
 
 
