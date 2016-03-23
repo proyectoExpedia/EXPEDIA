@@ -43,7 +43,13 @@ namespace EXPEDIA
                 RangeValidator1.MaximumValue = "99/99/9999";
 
             }
-          
+
+            if (Session["Usuario"] == "Inicio")
+            {
+                Session["Usuario"] = "Anonimo";
+                Response.Redirect("index.aspx");
+            }
+
 
         }
     
