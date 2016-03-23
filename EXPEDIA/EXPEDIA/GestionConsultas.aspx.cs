@@ -24,6 +24,13 @@ namespace EXPEDIA
 
         protected void Page_Load(object sender, EventArgs e)
         {
+      
+                if (Session["Usuario"] == "Inicio")
+                {
+                    Session["Usuario"] = "Anonimo";
+                    Response.Redirect("index.aspx");
+                }
+            
             y = 0;
             if (!IsPostBack)
             {

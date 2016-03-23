@@ -12,6 +12,12 @@ namespace EXPEDIA
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+       
+                if (Session["Usuario"] == "Inicio")
+                {
+                    Session["Usuario"] = "Anonimo";
+                    Response.Redirect("index.aspx");
+                }
 
             cargar_puesto(puesto);
             cargar_area(area);
@@ -21,11 +27,12 @@ namespace EXPEDIA
         }
         protected void Bt_Ingresar_Click(object sender, EventArgs e)
         {
+            Session["Inhabilitado"] = "";
             if (corroborarExistenciaDatos("Usuarios", "bd_cedula", cedula_usuario.Text, Bt_Ingresar))
             {
                 Conexion c = new Conexion();
                 SqlConnection Conexion = c.Conectar();
-                string Sql = @"INSERT INTO Usuarios (bd_tipo_usuario, bd_nombre, bd_apellido1, bd_apellido2, bd_telefono, bd_correo_electronico, bd_contrasena, bd_cedula, bd_id_puesto, bd_id_area) values (@tipo_usuario, @nombre, @apellido, @apellido2, @telefono,@correo,@contrasena,@cedula,@puesto,@area)";
+                string Sql = @"INSERT INTO Usuarios (bd_tipo_usuario, bd_nombre, bd_apellido1, bd_apellido2, bd_telefono, bd_correo_electronico, bd_contrasena, bd_cedula, bd_id_puesto, bd_id_area, bd_motivos, bd_estado) values (@tipo_usuario, @nombre, @apellido, @apellido2, @telefono,@correo,@contrasena,@cedula,@puesto,@area,@motivos,@estado)";
 
                 // Evaluar si existe...
                 Conexion.Open();//abrimos conexion
@@ -43,6 +50,8 @@ namespace EXPEDIA
                     cmd.Parameters.AddWithValue("@cedula", cedula_usuario.Text);
                     cmd.Parameters.AddWithValue("@puesto", puesto.SelectedValue);
                     cmd.Parameters.AddWithValue("@area", area.SelectedValue);
+                    cmd.Parameters.AddWithValue("@motivos", "Activo");
+                    cmd.Parameters.AddWithValue("@estado", 1);
                     cmd.ExecuteNonQuery();
                     excelente(Bt_Ingresar);
                     //System.Threading.Thread.Sleep(9000);
@@ -131,6 +140,9 @@ namespace EXPEDIA
         {
             Conexion c = new Conexion();
             SqlConnection Conexion = c.Conectar();
+            int estado = 0;
+            string motivos = "";
+            Session["Inhabilitado"] = "";
             string Sql = @"SELECT * FROM Usuarios WHERE bd_cedula = @ced";
             Conexion.Open();//abrimos conexion
             SqlCommand cmd = new SqlCommand(Sql, Conexion); //ejecutamos la instruccion            
@@ -138,7 +150,6 @@ namespace EXPEDIA
             SqlDataReader reader = cmd.ExecuteReader();
             if (reader.HasRows)
             {
-                excelente(Btn_consultar);
                 while (reader.Read())
                 {
                     bool tipo = reader.GetBoolean(0);
@@ -153,9 +164,22 @@ namespace EXPEDIA
                     rcontrasena_actualizar.Text = contrasena_actualizar.Text.ToString();
                     puesto_actualizar.SelectedValue = reader.GetString(8);
                     area_actualizar.SelectedValue = reader.GetString(9);
+                    motivos = reader.GetString(10);
+                    estado = reader.GetInt16(11);
                 }
-                inhabilitarCampos();
-                mostrarConsulta();
+                if (estado == 3)
+                {
+                    mostrarInhabilitacion(Btn_consultar, motivos, cedula_consulta.Text);
+                    inhabilitarCampos();
+                    mostrarConsulta();
+                }
+                else
+                {
+                    this.controles.Style.Add("display", "block");
+                    excelente(Btn_consultar);
+                    inhabilitarCampos();
+                    mostrarConsulta();
+                }
             }
             else
             {
@@ -392,6 +416,24 @@ namespace EXPEDIA
 
         protected void Btn_inhabilitar_Click(object sender, EventArgs e)
         {
+            Conexion c = new Conexion();
+            SqlConnection Conexion = c.Conectar();
+            string Sql = @"UPDATE Usuarios SET bd_estado=@usuario_estado, bd_motivos=@motivos WHERE bd_cedula=@cedula";
+            Conexion.Open();
+            try
+            {
+                SqlCommand cmd = new SqlCommand(Sql, Conexion);
+                cmd.Parameters.AddWithValue("@usuario_Estado", 3);
+                cmd.Parameters.AddWithValue("@cedula", cedula_consulta.Text);
+                cmd.Parameters.AddWithValue("@motivos", TextArea1.Text);
+                cmd.ExecuteNonQuery();
+                c.Desconectar(Conexion);
+
+            }
+            catch (Exception a)
+            {
+                Response.Write("error" + a.ToString());
+            }
             excelente(Btn_inhabilitar);
             ocultarConsulta();
         }
@@ -420,6 +462,40 @@ namespace EXPEDIA
 
         }
 
+        protected void mostrarInhabilitacion(Control boton, string motivos, string cedula)
+        {
+            Session["Inhabilitado"] = cedula + "*" + motivos;
+            this.controles.Style.Add("display", "none");
+        }
+
+
+        protected void btn_habilitarUsuario_Click(object sender, EventArgs e) {
+            string[] separadores = { "*" };
+            string[] final = Session["Inhabilitado"].ToString().Split(separadores, StringSplitOptions.RemoveEmptyEntries);
+            Conexion c = new Conexion();
+            SqlConnection Conexion = c.Conectar();
+            string Sql = @"UPDATE Usuarios SET bd_estado=@usuario_estado, bd_motivos=@motivos WHERE bd_cedula=@cedula";
+            Conexion.Open();
+            try
+            {
+                SqlCommand cmd = new SqlCommand(Sql, Conexion);
+                cmd.Parameters.AddWithValue("@usuario_Estado", 1);
+                cmd.Parameters.AddWithValue("@cedula", final[0]);
+                cmd.Parameters.AddWithValue("@motivos", "Activo");
+                cmd.ExecuteNonQuery();
+                excelente(Btn_inhabilitar);
+                this.controles.Style.Add("display", "block");
+            }
+            catch (Exception a)
+            {
+                Response.Write("error" + a.ToString());
+            }
+            finally {
+                c.Desconectar(Conexion);
+                Session["Inhabilitado"] = "";
+            }
+        
+        }
     }
 
 }

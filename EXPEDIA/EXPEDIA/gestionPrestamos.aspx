@@ -135,9 +135,8 @@
                                                 <asp:GridView ID="tabla1" runat="server" OnRowDeleting="tabla1_RowDeleting" CssClass="table table-striped table-hover">
                                                             <Columns>
                                                                 <asp:CommandField DeleteText="Eliminar Activo" ControlStyle-CssClass="btn btn-danger" ShowDeleteButton="True"></asp:CommandField>
-
                                                             </Columns>
-                                                        </asp:GridView>
+                                                 </asp:GridView>
                                     
 
 

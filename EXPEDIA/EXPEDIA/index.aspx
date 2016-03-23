@@ -3,15 +3,12 @@
 <%@ Register assembly="AjaxControlToolkit" namespace="AjaxControlToolkit" tagprefix="cc1" %>
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+
 <head runat="server">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>EXPEDIA</title>
     <link href="css/bootstrap.css" rel="stylesheet" />
     <link href="css/half-slider.css" rel="stylesheet"/>
-    <link href="css/boostrap-snipp.css" rel="stylesheet" />
-    <%--<link rel="icon" href="img/ExpediaLogo.png"/>--%>
-    <link href="css/indexCSS.css" rel="stylesheet" />
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <link href="css/jquery.bxslider.css" rel="stylesheet" />
     <script src="js/jquery.bxslider.js"></script>
@@ -102,9 +99,9 @@
                 <p>Texto referente a la bienvenida . . .</p>
             </div>
 
-                 <% if (Server.UrlDecode(Request.QueryString["rid"]) != null) {
-                                    %>
-                                            <div class="modal fade" id="exampleModa" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+                <% if (Session["Usuario"]=="Desconocido") {
+                       Session["Usuario"] = "Inicio";%>
+                    <div class="modal fade" id="exampleModa" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
                 <div class="modal-dialog" role="document" style="width: 350px;">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -131,8 +128,99 @@
             </div>
                 <% } %>
 
+                <% if (Session["Usuario"]=="Desactivado") {
+                       Session["Usuario"] = "Inicio";%>
+                    <div class="modal fade" id="exampleModa" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+                        <div class="modal-dialog" role="document" style="width: 350px;">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" style="text-align:center" id="exampleModalLabe">Los datos ingresados son incorrectos</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="container" style="width: 300px;">
+                                El usuario esta desactivado en el sistema.
+                            </div> <!-- /container -->
+                            <script type="text/javascript">
+                                $(window).load(function () {
+                                    $('[data-toggle="tooltip"]').tooltip();
+                                    $('#exampleModa').modal('show');
+                                });
+                            </script>
+                        </div>
+                        <div class="modal-footer">
+                            <img src="img/ExpediaLogo.png" alt="" style="width:50px; height:50px;float:left" />
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                <% } %>
 
-     
+                <% if (Session["Usuario"] == "Anonimo")
+                   {
+                       Session["Usuario"] = "Inicio";
+                       %>
+                    <div class="modal fade" id="exampleModa" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+                        <div class="modal-dialog" role="document" style="width: 350px;">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" style="text-align:center" id="exampleModalLabe">Debes autentificarte</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="container" style="width: 300px;">
+                                Necesitas un usuario para ingresar al sistema.
+                            </div> <!-- /container -->
+                            <script type="text/javascript">
+                                $(window).load(function () {
+                                    $('[data-toggle="tooltip"]').tooltip();
+                                    $('#exampleModa').modal('show');
+                                });
+                            </script>
+                        </div>
+                        <div class="modal-footer">
+                            <img src="img/ExpediaLogo.png" alt="" style="width:50px; height:50px;float:left" />
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                <% } %>
+
+               <% if (Session["Usuario"] == "")
+                  {
+                      Session["Usuario"] = "Inicio";%>
+                    <div class="modal fade" id="exampleMo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+                        <div class="modal-dialog" role="document" style="width: 350px;">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" style="text-align:center" id="exampleMod">Debes autentificarte</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="container" style="width: 300px;">
+                                Lo sentimos, se acabo el tiempo en el sistema para realizar acciones.
+                            </div> <!-- /container -->
+                            <script type="text/javascript">
+                                $(window).load(function () {
+                                    $('[data-toggle="tooltip"]').tooltip();
+                                    $('#exampleMo').modal('show');
+                                });
+                            </script>
+                        </div>
+                        <div class="modal-footer">
+                            <img src="img/ExpediaLogo.png" alt="" style="width:50px; height:50px;float:left" />
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                <% } %>
+
+
+            <% if (Session["Usuario"] != "Inicio") { Session["Inhabilitado"] = ""; Session["Usuario"] = "Inicio"; }%>
+
             <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
                 <div class="modal-dialog" role="document" style="width: 350px;">
                     <div class="modal-content">
@@ -145,10 +233,10 @@
                                 <%--<form action="mainAdministrador.aspx" onsubmit="">--%>
                                      <form   runat="server">
                                     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-                                    <h2 class="form-signin-heading">Ingresa tus credenciales</h2>
+                                    <h2 class="form-signin-heading" style="text-align:center">Ingresa tus credenciales</h2>
                                                 <div class="pure-control-group">
                                                     <label for="cedula">Número de cédula</label>
-                                                    <asp:TextBox ValidationGroup="one" runat="server" ID="username" CssClass="form-control" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar el número de cedula de la persona a registrar, omita guiones y todos los dígitos del documento de identidad, es requerido." placeholder="#-####-####" />
+                                                    <asp:TextBox ValidationGroup="one" runat="server" ID="username" CssClass="form-control" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar el número de cedula de la persona a registrar, omita guiones y todos los dígitos del documento de identidad, es requerido." />
                                                     <asp:RequiredFieldValidator ValidationGroup="one" ID="vCedula" runat="server" ControlToValidate="username" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
                                                     <cc1:MaskedEditExtender ID="username_MaskedEditExtender" runat="server" BehaviorID="username_MaskedEditExtender" Century="2000" ClearMaskOnLostFocus="False" CultureAMPMPlaceholder="" CultureCurrencySymbolPlaceholder="" CultureDateFormat="" CultureDatePlaceholder="" CultureDecimalPlaceholder="" CultureThousandsPlaceholder="" CultureTimePlaceholder="" Mask="9-9999-9999" TargetControlID="username"></cc1:MaskedEditExtender>
                                                     <asp:RegularExpressionValidator ValidationGroup="one" ID="RegularExpressionValidator2" runat="server" ControlToValidate="username" ErrorMessage="&lt;b&gt;Formato no valido&lt;/b&gt;" ForeColor="Red" ValidationExpression="^[1-9]-\d{4}-\d{4}$"></asp:RegularExpressionValidator>

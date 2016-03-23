@@ -400,6 +400,15 @@ namespace EXPEDIA {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl divOcultoConsulta;
         
         /// <summary>
+        /// Control controles.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl controles;
+        
+        /// <summary>
         /// Control Btn_habilitar.
         /// </summary>
         /// <remarks>
@@ -776,5 +785,14 @@ namespace EXPEDIA {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Btn_areas;
+        
+        /// <summary>
+        /// Control btn_habilitarUsuario.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_habilitarUsuario;
     }
 }

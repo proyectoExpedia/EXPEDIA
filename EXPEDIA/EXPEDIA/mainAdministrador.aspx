@@ -8,19 +8,20 @@
     <title>EXPEDIA</title>
     <link href="css/bootstrap.css" rel="stylesheet" />
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" />
-    <link rel="icon" href="img/ExpediaLogo.png">
+    <link rel="icon" href="img/ExpediaLogo.png"/>
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <link href="css/jquery.bxslider.css" rel="stylesheet" />
     <script src="js/jquery.bxslider.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/hover.js"></script>
     <link href="css/hover.css" rel="stylesheet" />
-</head>
-     <style>
+    <style type="text/css">
         a {
           color:#003566;
         }
     </style>
+</head>
+
 
 <body>
 <!--Menu-->
@@ -62,16 +63,18 @@
         <div class="alert alert-success" role="alert">
             <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
             <span class="sr-only"><strong></strong></span> Bienvenido: 
-            <%=Server.UrlDecode(Request.QueryString["rid"])%>, recuerda cerrar tu sesión al terminar tus acciones.
+            <%=Session["Usuario"].ToString() %>, recuerda cerrar tu sesión al terminar tus acciones.
             <button type="button" class="close" data-dismiss="alert"><span>&times;</span></button>
         </div>
-        <div class="row"  style="border: 7px double white;color:white;background-color:#003566;">
+        <div class="row">
                 <div class="container" style="margin-left:-8px;">
-                    <h1 style="text-align: center">Bienvenido Administrador</h1>
+                    <div>
+                    <h1 style="text-align: center"><b>Bienvenido Administrador</b></h1>
                     <h2 style="text-align: center"> Elige tu opcion</h2>
+                    </div>
                     <div class="row" >
-                        <div class="col-sm-3 col-md-4">
-                            <div class="thumbnail">
+                        <div class="col-sm-3 col-md-4" >
+                            <div class="thumbnail"  style=" border: 7px double #003566;">
                                 <a class="" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">
                                     <span style="font-size: 40px" class="glyphicon glyphicon-question-sign"></span>
                                 </a>
@@ -104,7 +107,7 @@
                             </div>
                         </div>
                         <div class="col-sm-3 col-md-4">
-                            <div class="thumbnail">
+                            <div class="thumbnail"   style=" border: 7px double #003566;">
                                 <a class="" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">
                                     <span style="font-size: 40px" class="glyphicon glyphicon-question-sign"></span>
                                 </a>
@@ -136,8 +139,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-3 col-md-4" style="display:none;">
-                            <div class="thumbnail">
+                        <div class="col-sm-3 col-md-4" style="display:none;" >
+                            <div class="thumbnail"   style=" border: 7px double #003566;">
                                 <a class="" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">
                                     <span style="font-size: 40px" class="glyphicon glyphicon-question-sign"></span>
                                 </a>
@@ -170,7 +173,7 @@
                             </div>
                         </div>
                         <div class="col-sm-3 col-md-4">
-                            <div class="thumbnail">
+                            <div class="thumbnail"   style=" border: 7px double #003566;">
                                 <a class="" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">
                                     <span style="font-size: 40px" class="glyphicon glyphicon-question-sign"></span>
                                 </a>
@@ -203,7 +206,7 @@
                             </div>
                         </div>
                         <div class="col-sm-3 col-md-4" >
-                            <div class="thumbnail">
+                            <div class="thumbnail"   style=" border: 7px double #003566;">
                                 <a class="" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">
                                     <span style="font-size: 40px" class="glyphicon glyphicon-question-sign"></span>
                                 </a>
@@ -236,7 +239,7 @@
                             </div>
                         </div>
                         <div class="col-sm-3 col-md-4" >
-                            <div class="thumbnail">
+                            <div class="thumbnail"   style=" border: 7px double #003566;">
                                 <a class="" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">
                                     <span style="font-size: 40px" class="glyphicon glyphicon-question-sign"></span>
                                 </a>
