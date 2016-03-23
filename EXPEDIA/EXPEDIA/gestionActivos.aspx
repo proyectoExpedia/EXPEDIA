@@ -23,7 +23,7 @@
     <link href="js/jQueryUI/jquery-ui.min.css" rel="stylesheet" />
 </head>
 <body>
-    <!--Menu-->
+    <!--               Menu                -->
         <form id="form1" runat="server">
         <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
         <nav class="navbar" role="navigation" style="margin-top: 20px;">
