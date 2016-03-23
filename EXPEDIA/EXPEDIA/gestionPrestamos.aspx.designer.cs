@@ -31,15 +31,6 @@ namespace EXPEDIA {
         protected global::System.Web.UI.ScriptManager ScriptManager2;
         
         /// <summary>
-        /// Control TabContainer2.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::AjaxControlToolkit.TabContainer TabContainer2;
-        
-        /// <summary>
         /// Control TabContainer1.
         /// </summary>
         /// <remarks>
@@ -67,31 +58,58 @@ namespace EXPEDIA {
         protected global::System.Web.UI.WebControls.Panel Panel2;
         
         /// <summary>
-        /// Control descripcion.
+        /// Control idiv.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList descripcion;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl idiv;
         
         /// <summary>
-        /// Control RequiredFieldValidator1.
+        /// Control numero.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
+        protected global::System.Web.UI.WebControls.TextBox numero;
         
         /// <summary>
-        /// Control Button1.
+        /// Control descripcion_activo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.WebControls.DropDownList descripcion_activo;
+        
+        /// <summary>
+        /// Control departamento_activo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList departamento_activo;
+        
+        /// <summary>
+        /// Control proveedor.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList proveedor;
+        
+        /// <summary>
+        /// Control Consultar1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Consultar1;
         
         /// <summary>
         /// Control tabla.
@@ -101,6 +119,15 @@ namespace EXPEDIA {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView tabla;
+        
+        /// <summary>
+        /// Control theDiv.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl theDiv;
         
         /// <summary>
         /// Control cedula_usuario.
@@ -139,40 +166,94 @@ namespace EXPEDIA {
         protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator2;
         
         /// <summary>
-        /// Control fecha_entreg.
+        /// Control Info.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox fecha_entreg;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Info;
         
         /// <summary>
-        /// Control vfecha_entreg.
+        /// Control Agregar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator vfecha_entreg;
+        protected global::System.Web.UI.WebControls.Button Agregar;
         
         /// <summary>
-        /// Control fecha_regres.
+        /// Control Fecha_entrega.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox fecha_regres;
+        protected global::System.Web.UI.WebControls.TextBox Fecha_entrega;
         
         /// <summary>
-        /// Control vfecha_regres.
+        /// Control Fechaentrega.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator vfecha_regres;
+        protected global::AjaxControlToolkit.CalendarExtender Fechaentrega;
+        
+        /// <summary>
+        /// Control vFinalizacon.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator vFinalizacon;
+        
+        /// <summary>
+        /// Control RangeValidator1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RangeValidator RangeValidator1;
+        
+        /// <summary>
+        /// Control Fecha_regreso.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox Fecha_regreso;
+        
+        /// <summary>
+        /// Control Fecharegreso.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::AjaxControlToolkit.CalendarExtender Fecharegreso;
+        
+        /// <summary>
+        /// Control RequiredFieldValidator5.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator5;
+        
+        /// <summary>
+        /// Control CompareValidator1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CompareValidator CompareValidator1;
         
         /// <summary>
         /// Control tabla1.
@@ -382,15 +463,6 @@ namespace EXPEDIA {
         protected global::System.Web.UI.WebControls.GridView tab_logic_hover;
         
         /// <summary>
-        /// Control Panel6.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel Panel6;
-        
-        /// <summary>
         /// Control Panel7.
         /// </summary>
         /// <remarks>
@@ -398,5 +470,50 @@ namespace EXPEDIA {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel Panel7;
+        
+        /// <summary>
+        /// Control update1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel update1;
+        
+        /// <summary>
+        /// Control idareas.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox idareas;
+        
+        /// <summary>
+        /// Control RequiredFieldValidator6.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator6;
+        
+        /// <summary>
+        /// Control areas.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox areas;
+        
+        /// <summary>
+        /// Control RequiredFieldValidator7.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator7;
     }
 }
