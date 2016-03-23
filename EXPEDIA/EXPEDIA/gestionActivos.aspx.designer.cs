@@ -769,22 +769,22 @@ namespace EXPEDIA {
         protected global::System.Web.UI.WebControls.Button Resgistrar_Proveedor;
         
         /// <summary>
-        /// idareas control.
+        /// id_areas control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox idareas;
+        protected global::System.Web.UI.WebControls.TextBox id_areas;
         
         /// <summary>
-        /// area57 control.
+        /// descripcion_area control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox area57;
+        protected global::System.Web.UI.WebControls.TextBox descripcion_area;
         
         /// <summary>
         /// Registrar_Area control.

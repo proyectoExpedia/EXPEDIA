@@ -208,6 +208,32 @@ namespace EXPEDIA
             }
 
         }
+        protected void btn_Registrar_Area_Click(object sender, EventArgs e)
+        {
+            Conexion c = new Conexion();
+            SqlConnection Conexion = c.Conectar();
+            string Sql = @"INSERT INTO Areas (bd_id_area, bd_descripcion) values (@idA, @descripcionA)";
+
+            Conexion.Open();//abrimos conexion
+
+            try
+            {
+                SqlCommand cmd = new SqlCommand(Sql, Conexion);
+                cmd.Parameters.AddWithValue("@idA", id_areas.Text); //enviamos los parametros
+                cmd.Parameters.AddWithValue("@descripcionA", descripcion_area.Text);
+                cmd.ExecuteNonQuery();
+                c.Desconectar(Conexion);
+                Response.Redirect("gestionActivos.aspx");
+
+                cargar_descripcion(descripcion);
+
+            }
+            catch (Exception a)
+            {
+                Response.Write("error" + a.ToString());
+            }
+
+        }
 
 
 

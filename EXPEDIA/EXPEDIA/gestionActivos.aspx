@@ -632,11 +632,11 @@
                                                     <fieldset class="pure-control-group">
                                                         <div class="input-prepend">
                                                             <label for="idarea">Identificador del área</label>
-                                                            <asp:TextBox runat="server" ID="idareas" placeholder="AR-001" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar un identificador que caracterice el área o unidad que se esté registrando, es requerido. " />
+                                                            <asp:TextBox runat="server" ID="id_areas" placeholder="AR-001" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar un identificador que caracterice el área o unidad que se esté registrando, es requerido. " />
                                                         </div>
                                                         <div class="input-prepend">
                                                             <label for="area57">Área</label>
-                                                            <asp:TextBox runat="server" ID="area57" type="text" placeholder="Recursos Humanos" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar el nombre de la área que se desea registrar, es requerido. " />
+                                                            <asp:TextBox runat="server" ID="descripcion_area" type="text" placeholder="Recursos Humanos" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar el nombre de la área que se desea registrar, es requerido. " />
                                                         </div>
                                                     </fieldset>
                                                 </div>
@@ -644,7 +644,7 @@
                                             </div>
                                             <div class="modal-footer">
                                                 <div class="span">
-                                                    <asp:Button runat="server" ID="Registrar_Area" CssClass="btn btn-success" Text="Registrar área" />
+                                                    <asp:Button runat="server" ID="Registrar_Area" CssClass="btn btn-success" OnClick="btn_Registrar_Area" Text="Registrar área" />
                                                     <button class="btn btn-default" data-dismiss="modal">Cerrar</button>
                                                 </div>
                                                 <div class="span pull-left" style="margin-top: 20px;">
@@ -698,9 +698,9 @@
         <script>
             function Guardar(y) {
                 switch (y) {
-                    case 1: { localStorage["Descripcion"] = document.getElementById("ocupacion").value; break; }
-                    case 2: { localStorage["Area"] = document.getElementById("area57").value; break; }
-                    case 3: { localStorage["Proveedor"] = document.getElementById("nproveedor").value; break; }
+                    case 1: { localStorage["Descripcion"] = document.getElementById("btn_Registar").value; break; }
+                    case 2: { localStorage["Area"] = document.getElementById("descripcion_area").value; break; }
+                    case 3: { localStorage["Proveedor"] = document.getElementById("Resgistrar_Proveedor").value; break; }
                 }
             }
 
