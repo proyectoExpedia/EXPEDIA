@@ -36,7 +36,7 @@ namespace EXPEDIA
                     SqlCommand cmd = new SqlCommand(Sql, Conexion);
 
 
-                    cmd.Parameters.AddWithValue("@tipo_activo", "");
+                    cmd.Parameters.AddWithValue("@tipo_activo", );
                     cmd.Parameters.AddWithValue("@fecha_compra", fecha_compra.Text);
                     cmd.Parameters.AddWithValue("@costo", precio.Text);
                     cmd.Parameters.AddWithValue("@placa", numero_placa.Text);

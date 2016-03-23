@@ -92,7 +92,7 @@
                             <div class="pure-form pure-form-aligned" style="margin-top: 5px; margin-left: 20px;">
                             <fieldset>
                                 <div class="pure-controls-group">
-                                    <label for="Genero">Tipo de activo</label>
+                                    <label for="tipo_activo">Tipo de activo</label>
                                     <div style="margin-left: 55px" class="btn-group" data-toggle="buttons">
                                         <label class="btn btn-primary" onclick="mostrarleasing(1);">
                                             <asp:RadioButton runat="server" ID="RadioButton2" Text="Software" autocomplete="off" />
@@ -497,7 +497,8 @@
                                 </div>
                                 <!-- /.modal-dialog -->
                             </div>
-                            <!-- /.modal -->
+
+                       <%--                            Modal Agregar Nueva Descripción                                --%>   
 
                             <div class="modal fade" id="modalDescripcion" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
@@ -545,9 +546,9 @@
                                 <!-- /.modal -->
                             </div>
 
-
+                                   
                             <script>
-                                // Script para añadir opciones de descripcion
+            
                                 function masOpciones() {
                                     var x = document.getElementById("descripcion_activo");
                                     var option = document.createElement("option");
@@ -555,6 +556,9 @@
                                     x.add(option);
                                 }
                             </script>
+
+                       <%--                            Modal Agregar Nuevo Proveedor                                --%>              
+
                             <div class="modal fade" id="modalProveedor" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
@@ -617,7 +621,9 @@
                                         </div>
                                     </div>
                                 </div>
-                                <!-- /.modal -->
+
+                       <%--               ----------------Modal Agregar Nueva Area--------------                                --%>   
+
                             </div>
                             <div class="modal fade" id="modalAreas" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
@@ -631,7 +637,7 @@
                                                 <div class="pure-form pure-form-aligned">
                                                     <fieldset class="pure-control-group">
                                                         <div class="input-prepend">
-                                                            <label for="idarea">Identificador del área</label>
+                                                            <label for="id_area">Identificador del área</label>
                                                             <asp:TextBox runat="server" ID="id_areas" placeholder="AR-001" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar un identificador que caracterice el área o unidad que se esté registrando, es requerido. " />
                                                         </div>
                                                         <div class="input-prepend">
@@ -644,7 +650,7 @@
                                             </div>
                                             <div class="modal-footer">
                                                 <div class="span">
-                                                    <asp:Button runat="server" ID="Registrar_Area" CssClass="btn btn-success" OnClick="btn_Registrar_Area" Text="Registrar área" />
+                                                    <asp:Button runat="server" ID="Registrar_Area" CssClass="btn btn-success" OnClientClick="btn_Registrar_Area" Text="Registrar área" />
                                                     <button class="btn btn-default" data-dismiss="modal">Cerrar</button>
                                                 </div>
                                                 <div class="span pull-left" style="margin-top: 20px;">
@@ -698,9 +704,9 @@
         <script>
             function Guardar(y) {
                 switch (y) {
-                    case 1: { localStorage["Descripcion"] = document.getElementById("btn_Registar").value; break; }
-                    case 2: { localStorage["Area"] = document.getElementById("descripcion_area").value; break; }
-                    case 3: { localStorage["Proveedor"] = document.getElementById("Resgistrar_Proveedor").value; break; }
+                    case 1: { localStorage["Descripcion"] = document.getElementById("id_descripcion_nueva").value; break; }
+                    case 2: { localStorage["Area"] = document.getElementById("id_area").value; break; }
+                    case 3: { localStorage["Proveedor"] = document.getElementById("idP").value; break; }
                 }
             }
 
