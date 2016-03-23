@@ -13,13 +13,13 @@ namespace EXPEDIA
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-          
-                if (Session["Usuario"] == "Inicio")
-                {
-                    Session["Usuario"] = "Anonimo";
-                    Response.Redirect("index.aspx");
-                }
+            if (Session["Usuario"] == "Inicio")
+            {
+                Session["Usuario"] = "Anonimo";
+                Response.Redirect("index.aspx");
+            }
             
+
             cargar_area(departamento_activo);
             cargar_descripcion(descripcion_activo);
            
