@@ -129,22 +129,21 @@
                                         }
                                     }
                                     </script>
-<%--       -----------> --%>      <%--      Lo que despliega el botón leasing       --%>
-
-                            <%--      Numero de placa del activo       --%>
-                                <div class="pure-control-group">
-                                    <label for="nplaca">Número de placa del activo</label>
-                                     <asp:TextBox ValidationGroup="one" runat="server" ID="numero_placa" data-placement="left" ToolTip="Este espacio debe proporcionar el número de placa del activo que desea consultar, este espacio es requerido." placeholder="ENF-1523" />
-                                     <asp:RequiredFieldValidator ValidationGroup="one" ID="vPlaca" runat="server" ControlToValidate="numero_placa" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
-                                                                     
-                                </div>
-                                <%--      Numero de placa del activo       --%>
-                                <div class="pure-control-group">
-                                    <label for="nserie">Número de serie del activo</label>
-                                    <asp:TextBox ValidationGroup="one" ID="numero_serie" runat="server" data-placement="left" ToolTip="Este espacio debe proporcionar el número de serie del activo, este espacio es requerido." placeholder="MUJ23HJCK987" />
-                                    <asp:RequiredFieldValidator ValidationGroup="one" ID="vSerie" runat="server" ControlToValidate="numero_serie" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
-                                </div>
-
+<%--       -----------> --%><%--      Los cambios que genera el botón leasing       --%> 
+<%--      |             --%>
+<%--      |             --%>         <%--      Numero de placa del activo       --%>
+<%--      |             --%>        <div class="pure-control-group">
+<%--      |             --%>                <label for="nplaca">Número de placa del activo</label>
+<%--      |             --%>                <asp:TextBox ValidationGroup="one" runat="server" ID="numero_placa" data-placement="left" ToolTip="Este espacio debe proporcionar el número de placa del activo que desea consultar, este espacio es requerido." placeholder="ENF-1523" />
+<%--      |             --%>                <asp:RequiredFieldValidator ValidationGroup="one" ID="vPlaca" runat="server" ControlToValidate="numero_placa" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
+<%--      |             --%>                </div>
+<%--      |             --%>          <%--      Numero de placa del activo       --%>
+<%--      |             --%>         <div class="pure-control-group">
+<%--      |             --%>                <label for="nserie">Número de serie del activo</label>
+<%--      |             --%>                <asp:TextBox ValidationGroup="one" ID="numero_serie" runat="server" data-placement="left" ToolTip="Este espacio debe proporcionar el número de serie del activo, este espacio es requerido." placeholder="MUJ23HJCK987" />
+<%--      |             --%>                <asp:RequiredFieldValidator ValidationGroup="one" ID="vSerie" runat="server" ControlToValidate="numero_serie" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
+<%--      |             --%>         </div>
+<%--      |             --%>
 <%--      |             --%>  <div class="pure-control-group" id="leasing" style="display: none">
 <%--      |             --%>        <div class="pure-control-group">
 <%--      |             --%>  <%--      Fecha de adquisición       --%>
@@ -162,7 +161,7 @@
 <%--      |             --%>     <cc1:CalendarExtender TargetControlID="finalizacion_contrato"  ID="finContrato" runat="server" />
 <%--      |             --%>     <asp:RequiredFieldValidator ValidationGroup="one" ID="vFinalizacion" runat="server" ControlToValidate="finalizacion_contrato" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
 <%--      |             --%> </div>
-<%--       -----------> --%>     <%--      terminan las opciones del leasing       --%>
+<%--       -----------> --%><%--      terminan las opciones del leasing       --%>
 
                                 </div>
                                   
@@ -319,40 +318,44 @@
                                                 </label>
                                             </div>
                                         
-                                       <%--      Numero de placa del activo       --%>
-                                <div class="pure-control-group">
-                                    <label for="nplaca">Número de placa del activo</label>
-                                     <asp:TextBox ValidationGroup="two" ReadOnly="true" runat="server" ID="numero_placa2" data-placement="left" ToolTip="Este espacio debe proporcionar el número de placa del activo que desea consultar, este espacio es requerido." placeholder="ENF-1523" />
-                                     <asp:RequiredFieldValidator ValidationGroup="two" ID="vPlaca2" runat="server" ControlToValidate="numero_placa2" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
-                                                                     
-                                </div>
-                                        <%--      Fecha de entrega      --%>
-                                <div class="pure-control-group" style="display: none">
-                                    <div class="pure-control-group">
-                                        <label for="fechaEntrega">Fecha de adquisición</label>
-                                        <asp:TextBox runat="server" ID="fecha_entrega3" tooltip="En este espacio debe proporcionar la fecha en que el activo fue adquirido por el Colegio de Abogados y Abogadas de Costa Rica, este espacio es requerido"></asp:TextBox>
-                                        <cc1:CalendarExtender TargetControlID="fecha_entrega3" ID="entrega2" runat="server" />
-                                        <asp:RequiredFieldValidator ValidationGroup="two" ID="vEntrega" runat="server" ControlToValidate="fecha_entrega3" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
-                                     
-                                    </div>
-                                    <%--      Duración del Contrato       --%>
-                                    <fieldset class="pure-control-group">
-                                        <label for="duracion_contrato">Duración del Contrato</label>
-                                        <asp:TextBox runat="server" ID="finalizacion_contrato3" data-toggle="tooltip" title="Este espacio debe contener la fecha en que finaliza el contrato para el activo, este espacio es requerido."></asp:TextBox>
-                                        <cc1:CalendarExtender TargetControlID="finalizacion_contrato3" ID="calFinalizacion" runat="server"/>
-                                        <asp:RequiredFieldValidator ValidationGroup="two" ID="vDuracion" runat="server" ControlToValidate="finalizacion_contrato3" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
-                                    </fieldset>
+                                       
+<%--       -----------> --%><%--      Los cambios que genera el botón leasing       --%> 
+<%--      |             --%>     <%--      Numero de placa del activo       --%>                              
+<%--      |             --%>         <div class="pure-control-group">
+<%--      |             --%>             <label for="nplaca">Número de placa del activo</label>
+<%--      |             --%>                 <asp:TextBox ValidationGroup="two" ReadOnly="true" runat="server" ID="numero_placa2" data-placement="left" ToolTip="Este espacio debe proporcionar el número de placa del activo que desea consultar, este espacio es requerido." placeholder="ENF-1523" />
+<%--      |             --%>                      <asp:RequiredFieldValidator ValidationGroup="two" ID="vPlaca2" runat="server" ControlToValidate="numero_placa2" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
+<%--      |             --%>         </div>
+<%--      |             --%>         <div class="pure-control-group">
+<%--      |             --%>             <label for="nserie">Número de serie del activo</label>
+<%--      |             --%>                  <asp:TextBox ValidationGroup="two" ReadOnly="true" ID="numero_serie2" runat="server" data-placement="left" ToolTip="Este espacio debe proporcionar el número de serie del activo, este espacio es requerido." placeholder="MUJ23HJCK987" />
+<%--      |             --%>                       <asp:RequiredFieldValidator ValidationGroup="two" ID="vSerie2" runat="server" ControlToValidate="numero_serie2" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
+<%--      |             --%>         </div>
+<%--      |             --%> 
+<%--      |             --%>              <%--      Fecha de entrega      --%>
+<%--      |             --%>         <div class="pure-control-group" style="display: none">
+<%--      |             --%>              <div class="pure-control-group">
+<%--      |             --%>                  <label for="fechaEntrega">Fecha de adquisición</label>
+<%--      |             --%>                       <asp:TextBox runat="server" ID="fecha_entrega3" tooltip="En este espacio debe proporcionar la fecha en que el activo fue adquirido por el Colegio de Abogados y Abogadas de Costa Rica, este espacio es requerido"></asp:TextBox>
+<%--      |             --%>                       <cc1:CalendarExtender TargetControlID="fecha_entrega3" ID="entrega2" runat="server" />
+<%--      |             --%>                       <asp:RequiredFieldValidator ValidationGroup="two" ID="vEntrega" runat="server" ControlToValidate="fecha_entrega3" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
+<%--      |             --%>         </div>
+<%--      |             --%>               <%--      Duración del Contrato       --%>
+<%--      |             --%>         <div class="pure-control-group">
+<%--      |             --%>              <label for="duracion_contrato">Duración del Contrato</label>
+<%--      |             --%>                  <asp:TextBox runat="server" ID="finalizacion_contrato3" data-toggle="tooltip" title="Este espacio debe contener la fecha en que finaliza el contrato para el activo, este espacio es requerido."></asp:TextBox>
+<%--      |             --%>                       <cc1:CalendarExtender TargetControlID="finalizacion_contrato3" ID="calFinalizacion" runat="server"/>
+<%--      |             --%>                       <asp:RequiredFieldValidator ValidationGroup="two" ID="vDuracion" runat="server" ControlToValidate="finalizacion_contrato3" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
+<%--      |             --%>         </div>
+<%--       -----------> --%><%--      terminan las opciones del leasing       --%>
+
                                     <%--                                        <fieldset class="pure-control-group">
                                             <label for="Tipo">Especificaciones técnicas</label>
                                             <asp:TextBox  runat="server" TextMode  ="multiline"  ID="especificaciones"  data-toggle="tooltip" title="En este espacio se debe proporcionar las cualidades del activo." CssClass="pure-input-1-2" placeholder="Especificaciones Técnicas"/>
                                         </fieldset>--%>
                                 </div>
                                         <%--      Numero de serie       --%>
-                                <div class="pure-control-group">
-                                    <label for="nserie">Número de serie del activo</label>
-                                    <asp:TextBox ValidationGroup="two" ReadOnly="true" ID="numero_serie2" runat="server" data-placement="left" ToolTip="Este espacio debe proporcionar el número de serie del activo, este espacio es requerido." placeholder="MUJ23HJCK987" />
-                                    <asp:RequiredFieldValidator ValidationGroup="two" ID="vSerie2" runat="server" ControlToValidate="numero_serie2" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
-                                </div>
+                               
 
                                         <%--      Precio       --%>
                                 <div class="pure-control-group">
@@ -430,8 +433,7 @@
                                                 <h3>Las acciones han sido realizado con éxito.</h3>
                                             </div>
                                         </div>
-                                    </fieldset>
-                                </fieldset>
+                               
                             </div>
                             <script type="text/javascript">
                                 function habilitar() {
@@ -470,7 +472,7 @@
                                 });
 
                             </script>
-                        </div>
+        </div>
                         </div>
                     </asp:Panel>
                 </ContentTemplate>

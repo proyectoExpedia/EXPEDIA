@@ -436,6 +436,24 @@ namespace EXPEDIA {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator vPlaca2;
         
         /// <summary>
+        /// numero_serie2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox numero_serie2;
+        
+        /// <summary>
+        /// vSerie2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator vSerie2;
+        
+        /// <summary>
         /// fecha_entrega3 control.
         /// </summary>
         /// <remarks>
@@ -488,24 +506,6 @@ namespace EXPEDIA {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator vDuracion;
-        
-        /// <summary>
-        /// numero_serie2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox numero_serie2;
-        
-        /// <summary>
-        /// vSerie2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator vSerie2;
         
         /// <summary>
         /// precio2 control.
