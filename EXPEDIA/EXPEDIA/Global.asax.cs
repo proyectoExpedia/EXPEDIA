@@ -12,15 +12,14 @@ namespace EXPEDIA
 
         protected void Application_Start(object sender, EventArgs e)
         {
-            Session["Usuario"] = "Inicio";
-            Session["Inhabilitado"] = "";
-            Session.Timeout = 1;
 
         }
 
         protected void Session_Start(object sender, EventArgs e)
         {
-
+            Session["Usuario"] = "Inicio";
+            Session["Inhabilitado"] = "";
+            Session.Timeout = 60;
         }
 
         protected void Application_BeginRequest(object sender, EventArgs e)
