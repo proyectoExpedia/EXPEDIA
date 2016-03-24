@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
+using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 
 namespace EXPEDIA
@@ -19,13 +20,15 @@ namespace EXPEDIA
         private string num;
         private string id_des;
         private string id_dep;
- 
-      
-        
+        private  static int id_finalizar;
+        private static int id_prolongar;
+
+
+
         private bool bandera = false;
         private int id;
 
-       static DataTable dt ;
+        static DataTable dt;
 
 
         protected void Page_Load(object sender, EventArgs e)
@@ -52,10 +55,10 @@ namespace EXPEDIA
 
 
         }
-    
 
 
-       
+
+
 
         //** METODOS ESPECIFICOS PARA BOTONES*****
         protected void Consultar1_Click(object sender, EventArgs e)
@@ -96,7 +99,7 @@ namespace EXPEDIA
                     if (bandera == false)
                     {
                         Cargar_Id_Prestamo(cedula_usuario.Text);
-                        Cargar_Activos();
+                        Cargar_Activos(id, tab_logic_hover);
                         excelente(Bt_Ingresar);
                         Page.ClientScript.RegisterStartupScript(this.GetType(), "Bt_Ingresar ", "imprimePanel()", true);
                         limpiarIngresar();
@@ -128,7 +131,7 @@ namespace EXPEDIA
             SqlCommand cmd = new SqlCommand(Sql, Conexion); //ejecutamos la instruccion
             cmd.Parameters.AddWithValue("@user", ced); //enviamos los parametros
 
-           
+
             SqlDataReader reader = cmd.ExecuteReader();
 
             if (reader.HasRows)
@@ -178,7 +181,7 @@ namespace EXPEDIA
 
             });
         }
-       
+
 
         protected void tabla_SelectedIndexChanged(object sender, GridViewDeleteEventArgs e)
         {
@@ -398,8 +401,8 @@ namespace EXPEDIA
         {
 
 
-                error(Consultar1, "Disculpa", "Utiliaza los filtros de busqueda para una mejor consulta"); 
-         
+            error(Consultar1, "Disculpa", "Utiliaza los filtros de busqueda para una mejor consulta");
+
         }
 
         protected void Consulta_Despartamento_Numero(string quien, int cuantas)
@@ -432,7 +435,7 @@ namespace EXPEDIA
 
                     Conexion c = new Conexion();
                     SqlConnection Conexion = c.Conectar();
-                    string Sql = @"SELECT * FROM Activos  WHERE " + quien + "= @num  AND bd_departamento = @dpt AND bd_estado=1";
+                    string Sql = @"SELECT  bd_tipo_activo, bd_numero_placa , bd_numero_serie, bd_descripcion_activo, bd_departamento,bd_proveedor, bd_especificacion_tecnica FROM Activos  WHERE " + quien + "= @num  AND bd_departamento = @dpt AND bd_estado=1 AND bd_tipo_activo='Hardware'";
                     Conexion.Open();//abrimos conexion
                     SqlCommand cmd = new SqlCommand(Sql, Conexion); //ejecutamos la instruccion
                     cmd.Parameters.AddWithValue("@num", num); //enviamos los paramet
@@ -444,9 +447,9 @@ namespace EXPEDIA
                         while (reader.Read())
                         {
 
-                            Retornar_Departamento(reader.GetString(5));
-                            Retornar_Descripcion(reader.GetString(4));
-                            dt.Rows.Add(reader.GetString(1), reader.GetString(2), id_des, reader.GetString(0), id_dep, reader.GetString(6), reader.GetString(7));
+                            Retornar_Departamento(reader.GetString(4));
+                            Retornar_Descripcion(reader.GetString(3));
+                            dt.Rows.Add(reader.GetString(1), reader.GetString(2), id_des, reader.GetString(0), id_dep, reader.GetString(5), reader.GetString(6));
                         }
 
                         tabla.DataSource = dt;
@@ -490,7 +493,7 @@ namespace EXPEDIA
 
                     Conexion c = new Conexion();
                     SqlConnection Conexion = c.Conectar();
-                    string Sql = @"SELECT * FROM Activos  WHERE " + quien + "= @num  AND bd_descripcion_activo = @dpt AND bd_estado=1";
+                    string Sql = @"SELECT  bd_tipo_activo, bd_numero_placa , bd_numero_serie, bd_descripcion_activo, bd_departamento,bd_proveedor, bd_especificacion_tecnica FROM Activos WHERE " + quien + "= @num  AND bd_descripcion_activo = @dpt AND bd_estado=1 AND bd_tipo_activo='Hardware'";
                     Conexion.Open();//abrimos conexion
                     SqlCommand cmd = new SqlCommand(Sql, Conexion); //ejecutamos la instruccion
                     cmd.Parameters.AddWithValue("@num", num); //enviamos los paramet
@@ -501,9 +504,9 @@ namespace EXPEDIA
                     {
                         while (reader.Read())
                         {
-                            Retornar_Departamento(reader.GetString(5));
-                            Retornar_Descripcion(reader.GetString(4));
-                            dt.Rows.Add(reader.GetString(1), reader.GetString(2), id_des, reader.GetString(0), id_dep, reader.GetString(6), reader.GetString(7));
+                            Retornar_Departamento(reader.GetString(4));
+                            Retornar_Descripcion(reader.GetString(3));
+                            dt.Rows.Add(reader.GetString(1), reader.GetString(2), id_des, reader.GetString(0), id_dep, reader.GetString(5), reader.GetString(6));
                         }
 
                         tabla.DataSource = dt;
@@ -545,7 +548,7 @@ namespace EXPEDIA
 
                     Conexion c = new Conexion();
                     SqlConnection Conexion = c.Conectar();
-                    string Sql = @"SELECT * FROM Activos  WHERE " + quien + "= @num  AND bd_proveedor = @dpt  AND bd_estado=1";
+                    string Sql = @"SELECT  bd_tipo_activo, bd_numero_placa , bd_numero_serie, bd_descripcion_activo, bd_departamento,bd_proveedor, bd_especificacion_tecnica FROM Activos  WHERE " + quien + "= @num  AND bd_proveedor = @dpt  AND bd_estado=1 AND bd_tipo_activo='Hardware'";
                     Conexion.Open();//abrimos conexion
                     SqlCommand cmd = new SqlCommand(Sql, Conexion); //ejecutamos la instruccion
                     cmd.Parameters.AddWithValue("@num", num); //enviamos los paramet
@@ -556,9 +559,9 @@ namespace EXPEDIA
                     {
                         while (reader.Read())
                         {
-                            Retornar_Departamento(reader.GetString(5));
-                            Retornar_Descripcion(reader.GetString(4));
-                            dt.Rows.Add(reader.GetString(1), reader.GetString(2), id_des, reader.GetString(0), id_dep, reader.GetString(6), reader.GetString(7));
+                            Retornar_Departamento(reader.GetString(4));
+                            Retornar_Descripcion(reader.GetString(3));
+                            dt.Rows.Add(reader.GetString(1), reader.GetString(2), id_des, reader.GetString(0), id_dep, reader.GetString(5), reader.GetString(6));
                         }
 
                         tabla.DataSource = dt;
@@ -600,7 +603,7 @@ namespace EXPEDIA
 
                     Conexion c = new Conexion();
                     SqlConnection Conexion = c.Conectar();
-                    string Sql = @"SELECT * FROM Activos  WHERE " + quien + "= @num  AND bd_departamento=@dpt AND bd_descripcion_activo=@desc  AND bd_estado=1";
+                    string Sql = @"SELECT  bd_tipo_activo, bd_numero_placa , bd_numero_serie, bd_descripcion_activo, bd_departamento,bd_proveedor, bd_especificacion_tecnica FROM Activos WHERE " + quien + "= @num  AND bd_departamento=@dpt AND bd_descripcion_activo=@desc  AND bd_estado=1 AND bd_tipo_activo='Hardware'";
                     Conexion.Open();//abrimos conexion
                     SqlCommand cmd = new SqlCommand(Sql, Conexion); //ejecutamos la instruccion
                     cmd.Parameters.AddWithValue("@num", num); //enviamos los paramet
@@ -613,9 +616,9 @@ namespace EXPEDIA
                         while (reader.Read())
                         {
 
-                            Retornar_Departamento(reader.GetString(5));
-                            Retornar_Descripcion(reader.GetString(4));
-                            dt.Rows.Add(reader.GetString(1), reader.GetString(2), id_des, reader.GetString(0), id_dep, reader.GetString(6), reader.GetString(7));
+                            Retornar_Departamento(reader.GetString(4));
+                            Retornar_Descripcion(reader.GetString(3));
+                            dt.Rows.Add(reader.GetString(1), reader.GetString(2), id_des, reader.GetString(0), id_dep, reader.GetString(5), reader.GetString(6));
                         }
 
                         tabla.DataSource = dt;
@@ -657,7 +660,7 @@ namespace EXPEDIA
 
                     Conexion c = new Conexion();
                     SqlConnection Conexion = c.Conectar();
-                    string Sql = @"SELECT * FROM Activos  WHERE " + quien + "=@num  AND bd_departamento =@dpt AND bd_descripcion_activo=@desc AND bd_proveedor=@pro  AND bd_estado=1";
+                    string Sql = @"SELECT  bd_tipo_activo, bd_numero_placa , bd_numero_serie, bd_descripcion_activo, bd_departamento,bd_proveedor, bd_especificacion_tecnica FROM Activos  WHERE " + quien + "=@num  AND bd_departamento =@dpt AND bd_descripcion_activo=@desc AND bd_proveedor=@pro  AND bd_estado=1 AND bd_tipo_activo='Hardware'";
                     Conexion.Open();//abrimos conexion
                     SqlCommand cmd = new SqlCommand(Sql, Conexion); //ejecutamos la instruccion
                     cmd.Parameters.AddWithValue("@num", num); //enviamos los paramet
@@ -671,9 +674,9 @@ namespace EXPEDIA
                         while (reader.Read())
                         {
 
-                            Retornar_Departamento(reader.GetString(5));
-                            Retornar_Descripcion(reader.GetString(4));
-                            dt.Rows.Add(reader.GetString(1), reader.GetString(2), id_des, reader.GetString(0), id_dep, reader.GetString(6), reader.GetString(7));
+                            Retornar_Departamento(reader.GetString(4));
+                            Retornar_Descripcion(reader.GetString(3));
+                            dt.Rows.Add(reader.GetString(1), reader.GetString(2), id_des, reader.GetString(0), id_dep, reader.GetString(5), reader.GetString(6));
                         }
 
                         tabla.DataSource = dt;
@@ -711,7 +714,7 @@ namespace EXPEDIA
                 string num = numero.Text;
                 Conexion c = new Conexion();
                 SqlConnection Conexion = c.Conectar();
-                string Sql = @"SELECT * FROM Activos  WHERE  bd_departamento=@dpt  AND bd_estado=1";
+                string Sql = @"SELECT  bd_tipo_activo, bd_numero_placa , bd_numero_serie, bd_descripcion_activo, bd_departamento,bd_proveedor, bd_especificacion_tecnica FROM Activos  WHERE  bd_departamento=@dpt  AND bd_estado=1 AND bd_tipo_activo='Hardware'";
                 Conexion.Open();//abrimos conexion
                 SqlCommand cmd = new SqlCommand(Sql, Conexion); //ejecutamos la instruccion
                 cmd.Parameters.AddWithValue("@dpt", departamento); //enviamos los paramet
@@ -722,9 +725,9 @@ namespace EXPEDIA
                     while (reader.Read())
                     {
 
-                        Retornar_Departamento(reader.GetString(5));
-                        Retornar_Descripcion(reader.GetString(4));
-                        dt.Rows.Add(reader.GetString(1), reader.GetString(2), id_des, reader.GetString(0), id_dep, reader.GetString(6), reader.GetString(7));
+                        Retornar_Departamento(reader.GetString(4));
+                        Retornar_Descripcion(reader.GetString(3));
+                        dt.Rows.Add(reader.GetString(1), reader.GetString(2), id_des, reader.GetString(0), id_dep, reader.GetString(5), reader.GetString(6));
                     }
 
                     tabla.DataSource = dt;
@@ -734,7 +737,7 @@ namespace EXPEDIA
                 else { error(Consultar1, "Disculpa", "No se encuentran activos con la informacion solicitada  disponibles en el sistema"); }
             }
             catch (Exception a) { Response.Write(a); }
-                 
+
         }
         protected void Consulta_Proveedor()
         {
@@ -761,7 +764,7 @@ namespace EXPEDIA
                 string num = numero.Text;
                 Conexion c = new Conexion();
                 SqlConnection Conexion = c.Conectar();
-                string Sql = @"SELECT * FROM Activos  WHERE  bd_proveedor=@dpt  AND bd_estado=1";
+                string Sql = @"SELECT  bd_tipo_activo, bd_numero_placa , bd_numero_serie, bd_descripcion_activo, bd_departamento,bd_proveedor, bd_especificacion_tecnica FROM Activos WHERE  bd_proveedor=@dpt  AND bd_estado=1 AND bd_tipo_activo='Hardware'";
                 Conexion.Open();//abrimos conexion
                 SqlCommand cmd = new SqlCommand(Sql, Conexion); //ejecutamos la instruccion
                 cmd.Parameters.AddWithValue("@dpt", provedor); //enviamos los paramet
@@ -772,9 +775,9 @@ namespace EXPEDIA
                     while (reader.Read())
                     {
 
-                        Retornar_Departamento(reader.GetString(5));
-                        Retornar_Descripcion(reader.GetString(4));
-                        dt.Rows.Add(reader.GetString(1), reader.GetString(2), id_des, reader.GetString(0), id_dep, reader.GetString(6), reader.GetString(7));
+                        Retornar_Departamento(reader.GetString(4));
+                        Retornar_Descripcion(reader.GetString(3));
+                        dt.Rows.Add(reader.GetString(1), reader.GetString(2), id_des, reader.GetString(0), id_dep, reader.GetString(5), reader.GetString(6));
                     }
 
                     tabla.DataSource = dt;
@@ -784,7 +787,7 @@ namespace EXPEDIA
                 else { error(Consultar1, "Disculpa", "No se encuentran activos con la informacion solicitada  disponibles en el sistema"); }
             }
             catch (Exception a) { Response.Write(a); }
-                 
+
         }
         protected void Consulta_Despartamento_descripcion_proveedor()
         {
@@ -810,7 +813,7 @@ namespace EXPEDIA
                 string num = numero.Text;
                 Conexion c = new Conexion();
                 SqlConnection Conexion = c.Conectar();
-                string Sql = @"SELECT * FROM Activos  WHERE  bd_departamento=@dpt AND bd_descripcion_activo=@des  AND bd_proveedor=@pro  AND bd_estado=1";
+                string Sql = @"SELECT  bd_tipo_activo, bd_numero_placa , bd_numero_serie, bd_descripcion_activo, bd_departamento,bd_proveedor, bd_especificacion_tecnica FROM Activos  WHERE  bd_departamento=@dpt AND bd_descripcion_activo=@des  AND bd_proveedor=@pro  AND bd_estado=1 AND bd_tipo_activo='Hardware'";
                 Conexion.Open();//abrimos conexion
                 SqlCommand cmd = new SqlCommand(Sql, Conexion); //ejecutamos la instruccion
                 cmd.Parameters.AddWithValue("@dpt", departamento); //enviamos los paramet
@@ -823,9 +826,9 @@ namespace EXPEDIA
                     while (reader.Read())
                     {
 
-                        Retornar_Departamento(reader.GetString(5));
-                        Retornar_Descripcion(reader.GetString(4));
-                        dt.Rows.Add(reader.GetString(1), reader.GetString(2), id_des, reader.GetString(0), id_dep, reader.GetString(6), reader.GetString(7));
+                        Retornar_Departamento(reader.GetString(4));
+                        Retornar_Descripcion(reader.GetString(3));
+                        dt.Rows.Add(reader.GetString(1), reader.GetString(2), id_des, reader.GetString(0), id_dep, reader.GetString(5), reader.GetString(6));
                     }
 
                     tabla.DataSource = dt;
@@ -863,7 +866,7 @@ namespace EXPEDIA
                 string num = numero.Text;
                 Conexion c = new Conexion();
                 SqlConnection Conexion = c.Conectar();
-                string Sql = @"SELECT * FROM Activos  WHERE  bd_departamento=@dpt AND bd_descripcion_activo=@des  AND bd_estado=1 ";
+                string Sql = @"SELECT  bd_tipo_activo, bd_numero_placa , bd_numero_serie, bd_descripcion_activo, bd_departamento,bd_proveedor, bd_especificacion_tecnica FROM Activos  WHERE  bd_departamento=@dpt AND bd_descripcion_activo=@des  AND bd_estado=1 AND bd_tipo_activo='Hardware' ";
                 Conexion.Open();//abrimos conexion
                 SqlCommand cmd = new SqlCommand(Sql, Conexion); //ejecutamos la instruccion
                 cmd.Parameters.AddWithValue("@dpt", departamento); //enviamos los paramet
@@ -876,9 +879,9 @@ namespace EXPEDIA
                     while (reader.Read())
                     {
 
-                        Retornar_Departamento(reader.GetString(5));
-                        Retornar_Descripcion(reader.GetString(4));
-                        dt.Rows.Add(reader.GetString(1), reader.GetString(2), id_des, reader.GetString(0), id_dep, reader.GetString(6), reader.GetString(7));
+                        Retornar_Departamento(reader.GetString(4));
+                        Retornar_Descripcion(reader.GetString(3));
+                        dt.Rows.Add(reader.GetString(1), reader.GetString(2), id_des, reader.GetString(0), id_dep, reader.GetString(5), reader.GetString(6));
                     }
 
                     tabla.DataSource = dt;
@@ -912,7 +915,7 @@ namespace EXPEDIA
                 string num = numero.Text;
                 Conexion c = new Conexion();
                 SqlConnection Conexion = c.Conectar();
-                string Sql = @"SELECT * FROM Activos  WHERE bd_descripcion_activo=@dpt  AND bd_estado=1";
+                string Sql = @"SELECT bd_tipo_activo, bd_numero_placa , bd_numero_serie, bd_descripcion_activo, bd_departamento,bd_proveedor, bd_especificacion_tecnica FROM Activos  WHERE bd_descripcion_activo=@dpt  AND bd_estado=1 AND bd_tipo_activo='Hardware'";
                 Conexion.Open();//abrimos conexion
                 SqlCommand cmd = new SqlCommand(Sql, Conexion); //ejecutamos la instruccion
                 cmd.Parameters.AddWithValue("@dpt", descripcion); //enviamos los paramet
@@ -923,19 +926,18 @@ namespace EXPEDIA
                     while (reader.Read())
                     {
 
-                        Retornar_Departamento(reader.GetString(5));
-                        Retornar_Descripcion(reader.GetString(4));
-                        dt.Rows.Add(reader.GetString(1), reader.GetString(2), id_des, reader.GetString(0), id_dep, reader.GetString(6), reader.GetString(7));
+                        Retornar_Departamento(reader.GetString(4));
+                        Retornar_Descripcion(reader.GetString(3));
+                        dt.Rows.Add(reader.GetString(1), reader.GetString(2), id_des, reader.GetString(0), id_dep, reader.GetString(5), reader.GetString(6));
                     }
-
-                    tabla.DataSource = dt;
+                        tabla.DataSource = dt;
                     tabla.DataBind();
                 }
                 else { error(Consultar1, "Disculpa", "No se encuentran activos con la informacion solicitada  disponibles en el sistema"); }
             }
             catch (Exception a) { Response.Write(a); }
         }
-        protected void Consulta_Numero(string que , int cuantas)
+        protected void Consulta_Numero(string que, int cuantas)
         {
 
             if (cuantas < 2)
@@ -962,7 +964,7 @@ namespace EXPEDIA
                     string num = numero.Text;
                     Conexion c = new Conexion();
                     SqlConnection Conexion = c.Conectar();
-                    string Sql = @"SELECT * FROM Activos  WHERE " + que + "=@num  AND bd_estado=1";
+                    string Sql = @"SELECT  bd_tipo_activo, bd_numero_placa , bd_numero_serie, bd_descripcion_activo, bd_departamento,bd_proveedor, bd_especificacion_tecnica FROM Activos  WHERE " + que + "=@num  AND bd_estado=1 AND bd_tipo_activo='Hardware'";
                     Conexion.Open();//abrimos conexion
                     SqlCommand cmd = new SqlCommand(Sql, Conexion); //ejecutamos la instruccion
                     cmd.Parameters.AddWithValue("num", num); //enviamos los paramet
@@ -973,16 +975,16 @@ namespace EXPEDIA
                         while (reader.Read())
                         {
 
-                            Retornar_Departamento(reader.GetString(5));
-                            Retornar_Descripcion(reader.GetString(4));
-                            dt.Rows.Add(reader.GetString(1), reader.GetString(2), id_des, reader.GetString(0), id_dep, reader.GetString(6), reader.GetString(7));
+                            Retornar_Departamento(reader.GetString(4));
+                            Retornar_Descripcion(reader.GetString(3));
+                            dt.Rows.Add(reader.GetString(1), reader.GetString(2), id_des, reader.GetString(0), id_dep, reader.GetString(5), reader.GetString(6));
                         }
 
                         tabla.DataSource = dt;
                         tabla.DataBind();
                     }
                     else { cuantas++; Consulta_Numero("bd_numero_serie", cuantas); }
-                   
+
                 }
                 catch (Exception a) { Response.Write(a); }
             }
@@ -1012,7 +1014,7 @@ namespace EXPEDIA
                 string num = numero.Text;
                 Conexion c = new Conexion();
                 SqlConnection Conexion = c.Conectar();
-                string Sql = @"SELECT * FROM Activos  WHERE bd_descripcion_activo=@dpt AND bd_proveedor=@pro AND bd_estado=1";
+                string Sql = @"SELECT  bd_tipo_activo, bd_numero_placa , bd_numero_serie, bd_descripcion_activo, bd_departamento,bd_proveedor, bd_especificacion_tecnica FROM Activos  WHERE bd_descripcion_activo=@dpt AND bd_proveedor=@pro AND bd_estado=1 AND bd_tipo_activo='Hardware'";
                 Conexion.Open();//abrimos conexion
                 SqlCommand cmd = new SqlCommand(Sql, Conexion); //ejecutamos la instruccion
                 cmd.Parameters.AddWithValue("@dpt", descripcion); //enviamos los paramet
@@ -1024,9 +1026,9 @@ namespace EXPEDIA
                     while (reader.Read())
                     {
 
-                        Retornar_Departamento(reader.GetString(5));
-                        Retornar_Descripcion(reader.GetString(4));
-                        dt.Rows.Add(reader.GetString(1), reader.GetString(2), id_des, reader.GetString(0), id_dep, reader.GetString(6), reader.GetString(7));
+                        Retornar_Departamento(reader.GetString(4));
+                        Retornar_Descripcion(reader.GetString(3));
+                        dt.Rows.Add(reader.GetString(1), reader.GetString(2), id_des, reader.GetString(0), id_dep, reader.GetString(5), reader.GetString(6));
                     }
 
                     tabla.DataSource = dt;
@@ -1061,7 +1063,7 @@ namespace EXPEDIA
                 string num = numero.Text;
                 Conexion c = new Conexion();
                 SqlConnection Conexion = c.Conectar();
-                string Sql = @"SELECT * FROM Activos  WHERE  bd_departamento=@dpt AND bd_proveedor=@pro  AND bd_estado=1";
+                string Sql = @"SELECT  bd_tipo_activo, bd_numero_placa , bd_numero_serie, bd_descripcion_activo, bd_departamento,bd_proveedor, bd_especificacion_tecnica FROM Activos  WHERE  bd_departamento=@dpt AND bd_proveedor=@pro  AND bd_estado=1 AND bd_tipo_activo='Hardware'";
                 Conexion.Open();//abrimos conexion
                 SqlCommand cmd = new SqlCommand(Sql, Conexion); //ejecutamos la instruccion
                 cmd.Parameters.AddWithValue("@dpt", departamento); //enviamos los paramet
@@ -1072,10 +1074,9 @@ namespace EXPEDIA
                 {
                     while (reader.Read())
                     {
-
-                        Retornar_Departamento(reader.GetString(5));
-                        Retornar_Descripcion(reader.GetString(4));
-                        dt.Rows.Add(reader.GetString(1), reader.GetString(2), id_des, reader.GetString(0), id_dep, reader.GetString(6), reader.GetString(7));
+                        Retornar_Departamento(reader.GetString(4));
+                        Retornar_Descripcion(reader.GetString(3));
+                        dt.Rows.Add(reader.GetString(1), reader.GetString(2), id_des, reader.GetString(0), id_dep, reader.GetString(5), reader.GetString(6));
                     }
 
                     tabla.DataSource = dt;
@@ -1147,10 +1148,10 @@ namespace EXPEDIA
             catch (Exception a) { Response.Write(a); }
 
         }
-       
 
 
-       //**** METODOS PARA REALIZAR LOS PRESTAMOS ********************
+
+        //**** METODOS PARA REALIZAR LOS PRESTAMOS ********************
 
 
         protected void Crear_Prestamo(String val)
@@ -1248,7 +1249,7 @@ namespace EXPEDIA
         }
 
 
-        protected void Cargar_Activos()
+        protected void Cargar_Activos(int g, GridView j)
         {
             DataTable dt = new DataTable();
 
@@ -1268,7 +1269,7 @@ namespace EXPEDIA
                 string Sql = @"SELECT bd_numero_placa,bd_descripcion_activo,bd_especificacion_tecnica FROM Activos  WHERE bd_id_prestamo=@num ";
                 Conexion.Open();//abrimos conexion
                 SqlCommand cmd = new SqlCommand(Sql, Conexion); //ejecutamos la instruccion
-                cmd.Parameters.AddWithValue("num", id); //enviamos los paramet
+                cmd.Parameters.AddWithValue("num", g); //enviamos los paramet
 
                 SqlDataReader reader = cmd.ExecuteReader();
                 if (reader.HasRows)
@@ -1280,8 +1281,8 @@ namespace EXPEDIA
                         dt.Rows.Add(reader.GetString(0), reader.GetString(1), reader.GetString(2));
                     }
 
-                    tab_logic_hover.DataSource = dt;
-                    tab_logic_hover.DataBind();
+                    j.DataSource = dt;
+                    j.DataBind();
                 }
             }
             catch (Exception a) { Response.Write(a); }
@@ -1298,13 +1299,12 @@ namespace EXPEDIA
         {
             DataTable dt = new DataTable();
 
-            dt.Columns.AddRange(new DataColumn[5] {
+            dt.Columns.AddRange(new DataColumn[3] {
 
                             new DataColumn("Identificador del préstamo", typeof(int)),
                             new DataColumn("Identificacíon del solicitante asosiado ",typeof(string)),
-                            new DataColumn("Detalle ",typeof(Button)),
-                            new DataColumn("Al día ",typeof(Button)),
-                            new DataColumn("¿Finalizo?",typeof(Button)),
+                            new DataColumn("Estado ",typeof(string)),
+
 
 
 
@@ -1326,14 +1326,27 @@ namespace EXPEDIA
             SqlDataReader reader = cmd.ExecuteReader();
             if (reader.HasRows)
             {
-                
+
                 while (reader.Read())
                 {
+                    DateTime date = reader.GetDateTime(3);
+                    string t = DateTime.Now.ToString("yyyy/MM/dd");
+                    string al = System.Drawing.Color.Green.ToString();
+                    al = "Al día";
+                    string at = System.Drawing.Color.Red.ToString();
+                    at = "Atrasado";
+
+                    DateTime date2 = DateTime.Parse(t);
+
+
+                    int y = DateTime.Compare(date, date2);
+
+                    if (y > 0 || y == 0)
+                    { dt.Rows.Add(reader.GetInt32(0), reader.GetString(1), al); }
+                    else { dt.Rows.Add(reader.GetInt32(0), reader.GetString(1), at); }
 
 
 
-
-                    dt.Rows.Add(reader.GetInt32(0), reader.GetString(1));
 
                 }
 
@@ -1346,23 +1359,266 @@ namespace EXPEDIA
 
         }
 
-
         protected void tabla2_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-           
             switch (e.CommandName)
             {
-                case "Detalle": {  break; }
-                case "Al_día": { break; }
-                case "Finalizo": { break; }
-                case "Prolongar": {Panel5 .Visible = true; break; }
+                case "Detalle":
+                    {
 
+
+                        string rowIndex = e.CommandArgument.ToString();
+
+                        int index = Convert.ToInt32(rowIndex);
+                        TableCell cell = tabla2.Rows[index].Cells[3];
+
+                        string pap = cell.Text;
+
+                        int row = Convert.ToInt32(pap);
+
+                        llenar_detalle(row);
+
+                        Cargar_Activos(row, Gridview1);
+
+                        detalle.Visible = true; break;
+                    }
+                case "Al_día":
+                    {
+
+                        string rowIndex = e.CommandArgument.ToString();
+
+                        int index = Convert.ToInt32(rowIndex);
+                        TableCell cell = tabla2.Rows[index].Cells[3];
+
+                        string pap = cell.Text;
+
+                        int row = Convert.ToInt32(pap);
+                        calcular(row,Faltan,TextBox8);
+                        id_finalizar = row;
+                        finalizar.Visible = true;
+                        tabla2.DataBind();
+
+                        break;
+                    }
+                case "Prolongar": {
+
+                        string rowIndex = e.CommandArgument.ToString();
+
+                        int index = Convert.ToInt32(rowIndex);
+                        TableCell cell = tabla2.Rows[index].Cells[3];
+                       
+                        string pap = cell.Text;
+
+                        int row = Convert.ToInt32(pap);
+                        id_prolongar = row;
+                        if (validar_prolongar(row)) { calcular(row,Label1, TextBox9); prolongar.Visible = true; }
+                        else { error(prolongar1, "Disculpa", "Este prestamo ya esta retrasado por favor finalice y realice un prestamo nuevo"); }
+
+
+
+                        break; }
             }
+
+
+
 
         }
 
-      
 
 
+
+        //******FUNCIONES PARA LA MODAL DE DETALLE****************************
+        protected void close_Click(object sender, EventArgs e)
+        {
+            detalle.Visible = false;
+        }
+
+        protected void llenar_detalle(int y)
+        {
+            Conexion c = new Conexion();
+            SqlConnection Conexion = c.Conectar();
+            string Sql = @"SELECT * FROM Prestamos  WHERE bd_id_prestamo= @num ";
+            Conexion.Open();//abrimos conexion
+            SqlCommand cmd = new SqlCommand(Sql, Conexion); //ejecutamos la instruccion
+            cmd.Parameters.AddWithValue("@num", y); //enviamos los paramet
+
+            SqlDataReader reader = cmd.ExecuteReader();
+            if (reader.HasRows)
+            {
+
+                while (reader.Read())
+                {
+
+
+                    TextBox4.Text = reader.GetInt32(0).ToString(); 
+                    TextBox5.Text = reader.GetString(1).ToString();
+                    TextBox6.Text = reader.GetDateTime(2).ToString("dd/MM/yyyy");
+                    TextBox7.Text = reader.GetDateTime(3).ToString("dd/MM/yyyy");
+
+
+                }
+
+
+
+            }
+
+            else { error(Consulta_prestamo, "Disculpa", "No se pudo cargar el detalle  en el sistema"); }
+
+        }
+
+        //***FUNCIONES PARA LA MODAL FINALIZAR****************************
+
+        protected void calcular(int x , HtmlGenericControl l , TextBox tx)
+        {
+            Conexion c = new Conexion();
+            SqlConnection Conexion = c.Conectar();
+            string Sql = @"SELECT bd_fecha_recepcion FROM Prestamos  WHERE bd_id_prestamo= @num ";
+            Conexion.Open();//abrimos conexion
+            SqlCommand cmd = new SqlCommand(Sql, Conexion); //ejecutamos la instruccion
+            cmd.Parameters.AddWithValue("@num", x); //enviamos los paramet
+
+            SqlDataReader reader = cmd.ExecuteReader();
+            if (reader.HasRows)
+            {
+
+                while (reader.Read())
+                {
+
+
+                    DateTime date = reader.GetDateTime(0);
+                    tx.Text = date.ToString("yyyy/MM/dd");
+                    string t = DateTime.Now.ToString("yyyy/MM/dd");
+
+                    DateTime date2 = DateTime.Parse(t);
+
+                    
+                    
+                    int y = DateTime.Compare(date, date2);
+
+                    if (y > 0) { l.InnerText = "Faltan " + y + " dias restantes para finalizar préstamo"; l.Style.Add("color", "green"); }
+
+                    if (y == 0) { l.InnerText = "Faltan " + y + " dias restantes para finalizar préstamo"; l.Style.Add("color", "green"); }
+                    if (y < 0) { l.InnerText = "Entrega del prestamo tarde por  " + y + " dias "; l.Style.Add("color", "red"); }
+
+
+
+                }
+
+
+
+            }
+
+            else { error(Consulta_prestamo, "Disculpa", "No se pudo realizar la accion de finalizar"); }
+
+
+        }
+
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+            finalizar.Visible = false;
+        }
+
+        protected void Finalizar1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                regresar_ativos();
+                eliminar_prestamo();
+                excelente(Finalizar1);
+                
+          
+            }
+            catch{ error(Finalizar1, "Disculpa", "no se pudo realizar la accion "); }
+        }
+
+        protected void regresar_ativos()
+        {
+
+            Conexion c = new Conexion();
+            SqlConnection Conexion = c.Conectar();
+            string Sql = @"UPDATE Activos SET bd_id_prestamo=NULL , bd_estado= 1   WHERE bd_id_prestamo=@fech";
+            Conexion.Open();//abrimos conexion
+            SqlCommand cmd = new SqlCommand(Sql, Conexion); //ejecutamos la instruccion
+            cmd.Parameters.AddWithValue("@fech", id_finalizar);
+            cmd.ExecuteNonQuery();
+        }
+
+        protected void eliminar_prestamo()
+        {
+            Conexion c = new Conexion();
+            SqlConnection Conexion = c.Conectar();
+            string Sql = @"DELETE FROM Prestamos WHERE bd_id_prestamo=@fin";
+            Conexion.Open();//abrimos conexion
+            SqlCommand cmd = new SqlCommand(Sql, Conexion); //ejecutamos la instruccion
+            cmd.Parameters.AddWithValue("@fin",id_finalizar);
+            cmd.ExecuteNonQuery();
+        }
+
+        //***FUNCIONES PARA LA MODAL PROLONGAR****************************
+
+        protected bool validar_prolongar(int y)
+        {
+            Conexion c = new Conexion();
+            SqlConnection Conexion = c.Conectar();
+            string Sql = @"SELECT bd_fecha_recepcion FROM Prestamos  WHERE bd_id_prestamo= @num ";
+            Conexion.Open();//abrimos conexion
+            SqlCommand cmd = new SqlCommand(Sql, Conexion); //ejecutamos la instruccion
+            cmd.Parameters.AddWithValue("@num", y); //enviamos los paramet
+
+            SqlDataReader reader = cmd.ExecuteReader();
+            if (reader.HasRows)
+            {
+
+                while (reader.Read())
+                {
+
+
+                    DateTime date = reader.GetDateTime(0);
+                    TextBox8.Text = date.ToString("dd/MM/yyyy");
+                    string t = DateTime.Now.ToString("yyyy/MM/dd");
+
+                    DateTime date2 = DateTime.Parse(t);
+
+
+                    int x = DateTime.Compare(date, date2);
+
+                    if (y > 0) { return true; }
+
+                    if (y == 0) { return true; }
+                    if (y < 0) { return false; }
+
+
+
+                }
+
+            }
+            else { return false; }
+
+            return false;
+
+        }
+
+        protected void Button3_Click(object sender, EventArgs e)
+        {
+            prolongar.Visible = false;
+        }
+
+        protected void prolongar1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Conexion c = new Conexion();
+                SqlConnection Conexion = c.Conectar();
+                string Sql = @"UPDATE Prestamos SET  bd_fecha_recepcion=@fech    WHERE bd_id_prestamo=" + id_prolongar + "";
+                Conexion.Open();//abrimos conexion
+                SqlCommand cmd = new SqlCommand(Sql, Conexion); //ejecutamos la instruccion
+                cmd.Parameters.AddWithValue("@fech", TextBox10.Text);
+                cmd.ExecuteNonQuery();
+                excelente(prolongar1);
+
+            }
+            catch
+            {       error(prolongar1, "Disculpa", "no se pudo realizar la accion "); }
+        }
     }
 }

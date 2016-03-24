@@ -157,7 +157,7 @@
                                                   
                                                       <fieldset class="pure-control-group">
                                                  <label for="Fecha_entrega">Fecha de entrega:</label>
-                                                <asp:TextBox runat="server" ID="Fecha_entrega" ToolTip="Este espacio debe contener la fecha en que finaliza el contrato para el activo, este espacio es requerido."></asp:TextBox>
+                                                <asp:TextBox runat="server" ID="Fecha_entrega" ToolTip="Este espacio debe contener la fecha de entrega del préstamo, este espacio es requerido."></asp:TextBox>
                                                  <asp:CalendarExtender Format="yyyy/MM/dd"  ID="Fechaentrega" runat="server"  PopupButtonID="Fecha_entrega"  TargetControlID="Fecha_entrega" BehaviorID="_content_Fechaentrega" />
                                                 <asp:RequiredFieldValidator ValidationGroup="one" ID="vFinalizacon" runat="server"   ControlToValidate="Fecha_entrega" ForeColor="Red" SetFocusOnError="True" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
                                                           <asp:RangeValidator ID="RangeValidator1"  ControlToValidate="Fecha_entrega" ValidationGroup="one" runat="server" ErrorMessage="No se puede escoger una fecha menor a la del día de hoy" ForeColor="Red" SetFocusOnError="True"></asp:RangeValidator>
@@ -169,7 +169,7 @@
                                                                                                   
                                                      <fieldset class="pure-control-group">
                                                  <label for="Fecha_entrega">Fecha de regreso:</label>
-                                                <asp:TextBox runat="server"  ID="Fecha_regreso" ToolTip="Este espacio debe contener la fecha en que finaliza el contrato para el activo, este espacio es requerido."></asp:TextBox>
+                                                <asp:TextBox runat="server"  ID="Fecha_regreso" ToolTip="Este espacio debe contener la fecha de regreso del préstamo, este espacio es requerido."></asp:TextBox>
                                                          <asp:CalendarExtender ID="Fecharegreso" Format="yyyy/MM/dd"  runat="server"   PopupButtonID="Fecha_regreso"   TargetControlID="Fecha_regreso" BehaviorID="_content_Fecharegreso" />
                                                          <asp:RequiredFieldValidator  ValidationGroup="one"   ID="RequiredFieldValidator5"   runat="server" ControlToValidate="Fecha_regreso"   ForeColor="Red" SetFocusOnError="True" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
                                                          <asp:CompareValidator ID="CompareValidator1" runat="server" ValidationGroup="one"  ControlToCompare="Fecha_entrega" Operator="GreaterThanEqual" ControlToValidate="Fecha_regreso"  ErrorMessage="No se puede escoger una fecha menor a la del día de entrega" ForeColor="Red" SetFocusOnError="True"></asp:CompareValidator>
@@ -214,132 +214,39 @@
                                                 </p
                                                      <label for="fechasalida">Número de Prestamo:</label>
                                     <asp:TextBox runat="server" data-toggle="tooltip" ToolTip="Proporcione el número de prestamo,a consultar" ID="id_prestamo" />
-                                    <asp:Button runat="server" ID="Consulta_prestamo"   OnClick="Consulta_prestamo_Click" class="btn btn-success" Text="Consultar"></asp:Button>
+                                    <asp:Button runat="server" ID="Consulta_prestamo" OnClick="Consulta_prestamo_Click"    class="btn btn-success" Text="Consultar"></asp:Button>
 
+                                  <br />
+                                  <br />
+                                  <br />
 
+                                             
+                                                <asp:GridView runat="server" OnRowCommand="tabla2_RowCommand" ID="tabla2" CssClass="table table-striped table-hover" >
 
+                                                    <Columns>
 
-
-
-                                <asp:GridView runat="server"  OnRowCommand="tabla2_RowCommand" ID="tabla2" CssClass="table" CellSpacing="0" Width="100">
-                                    
-                                    <Columns >
-                                       
-                                    
-                                       
-                                        <asp:TemplateField HeaderText="Detallle" >
-                                    <ItemTemplate  ><asp:LinkButton ID="detalle"  runat="server"  CssClass="glyphicon glyphicon-list-alt" CommandName="Detalle"   CommandArgument="<%# ((GridViewRow) Container).RowIndex %>"  /> </ItemTemplate> </asp:TemplateField>
-                                          <asp:TemplateField HeaderText="Al_día">
-                                    <ItemTemplate><asp:LinkButton  ID="al_dia" runat="server"   CssClass="glyphicon glyphicon-thumbs-up" CommandName="Al_día"   CommandArgument="<%# ((GridViewRow) Container).RowIndex %>"  /> </ItemTemplate> </asp:TemplateField>
-                                        <asp:TemplateField HeaderText="Prolongar">
-                                    <ItemTemplate><asp:LinkButton  ID="Prolongar" runat="server"    CssClass="glyphicon glyphicon-plus"  CommandName="Prolongar"  CommandArgument="<%# ((GridViewRow) Container).RowIndex %>"  /></ItemTemplate> 
-                                             </asp:TemplateField>
-                                       
-                                          <asp:TemplateField HeaderText="¿Finalizo?">
-                                    <ItemTemplate><asp:LinkButton  ID="finalizo" runat="server"    CssClass="glyphicon glyphicon-thumbs-down"  CommandName="Finalizo"  CommandArgument="<%# ((GridViewRow) Container).RowIndex %>"  /> </ItemTemplate> </asp:TemplateField>
-
+                                                        <asp:TemplateField HeaderText="Detalle">
+                                                            <ItemTemplate>
+                                                                <asp:LinkButton ID="detalle" runat="server"  CssClass="glyphicon glyphicon-list-alt" CommandName="Detalle"  CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" />
+                                                            </ItemTemplate>
+                                                        </asp:TemplateField>
+                                                        <asp:TemplateField  HeaderText="Finalizar">
+                                                            <ItemTemplate>
+                                                                <asp:LinkButton ID="Finalizar" runat="server" CssClass="glyphicon glyphicon-thumbs-down" CommandName="Al_día" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" />
+                                                            </ItemTemplate>
+                                                        </asp:TemplateField>
+                                                        <asp:TemplateField HeaderText="Prolongar">
+                                                            <ItemTemplate><asp:LinkButton   ID="Prolongar" runat="server"  CssClass="glyphicon glyphicon-plus"  CommandName="Prolongar"   CommandArgument="<%# ((GridViewRow) Container).RowIndex %>"  /> </ItemTemplate> </asp:TemplateField>
+                                      
+    
                                     </Columns>
 
                                 </asp:GridView>
+
                             
                                             </asp:Panel>
                                         </div>  
-                                            <div id="divOcultoConsulta" runat="server" class="pure-form pure-form-aligned" style="display:none">
-                                                <div class="pure-control-group" style="margin-top: 40px;">
-                                                    <p>
-                                                        <%--<asp:Button runat="server"  Text="Habilitar modificación" CssClass="btn btn-success" ClientIDMode="Static"  ID="Btn_habilitar" OnClientClick="habilitar()"--%> OnClick="Btn_habilitar_Click" />
-                                                        <input type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalInhabilitar" value="Inhabilitar usuario" />
-                                                        <%--<asp:Button runat="server" ID="inhabilitar" CssClass="btn btn-danger" data-toggle="modal" data-target="#myModal" Text="Inhabilitar usuario"></asp:Button>--%>
-                                                    </p>
-                                                    <div id="notificacionDatosConsulta" style="display: none">
-                                                        <h3>Formulario de modificación</h3>
-                                                    </div>
-                                                </div>
-                                                <div>
-                                                    <fieldset>
-                                                       <%-- DefaultButton="Btn_actualizar"--%>
-                                                        <asp:Panel ID="Panel4" runat="server" >
-                                                           <%-- <!--Consulta nombre-->
-                                                            <div class="pure-control-group">
-                                                                <label for="nombre1">Nombre</label>
-                                                                <asp:TextBox runat="server" ValidationGroup="three" ID="nombre_actualizar" data-toggle="tooltip" title="En este espacio se debe proporcionar el nombre completo y apellidos de la persona a modificar, es requerido." />
-                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" ErrorMessage="<b>*</b>" ValidationGroup="three" ControlToValidate="nombre_actualizar" ForeColor="Red"></asp:RequiredFieldValidator>
-                                                            </div>
-                                                            <!--Consulta Apellido1-->
-                                                            <div class="pure-control-group">
-                                                                <label for="nombre1">Primer Apellido</label>
-                                                                <asp:TextBox runat="server" ValidationGroup="three"  ID="apellido_actualizar1" data-toggle="tooltip" title="En este espacio se debe proporcionar el nombre completo y apellidos de la persona a modificar, es requerido." />
-                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator12" runat="server" ErrorMessage="<b>*</b>" ValidationGroup="three" ControlToValidate="apellido_actualizar1" ForeColor="Red"></asp:RequiredFieldValidator>
-                                                            </div>
-                                                            <!--Consulta Apellido2-->
-                                                            <div class="pure-control-group">
-                                                                <label for="nombre1">Segundo Apellido</label>
-                                                                <asp:TextBox runat="server" ValidationGroup="three"  ID="apellido_actualizar2" data-toggle="tooltip" title="En este espacio se debe proporcionar el nombre completo y apellidos de la persona a modificar, es requerido." />
-                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator13" runat="server" ErrorMessage="<b>*</b>" ValidationGroup="three" ControlToValidate="apellido_actualizar2" ForeColor="Red"></asp:RequiredFieldValidator>
-                                                            </div>
-                                                            <!--Consulta Contraseña-->
-                                                            <div class="pure-control-group">
-                                                                <label for="contraseña1">Contraseña</label>
-                                                                <asp:TextBox runat="server" ValidationGroup="three"  ID="contrasena_actualizar" data-toggle="tooltip" title="En este espacio se debe proporcionar la contraseña que el usuario desee para su eventual ingreso al sistema, es requerido. "  />
-                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator14" runat="server" ErrorMessage="<b>*</b>" ValidationGroup="three" ControlToValidate="contrasena_actualizar" ForeColor="Red"></asp:RequiredFieldValidator>
-                                                            </div>
-                                                            <!--Ingresar ReContraseña-->
-                                                            <div class="pure-control-group">
-                                                                    <label for="contraseña">Ingrese nuevamente la contraseña</label>
-                                                                    <asp:TextBox ValidationGroup="three" runat="server" ID="rcontrasena_actualizar" data-toggle="tooltip" data-placement="left" title="En este espacio se debe corroborar la contraseña, es requerido. " TextMode="Password" />
-                                                                    <asp:RequiredFieldValidator ValidationGroup="three" ID="RequiredFieldValidator8" runat="server" ControlToValidate="rcontrasena_actualizar" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
-                                                                    <asp:CompareValidator ID="CompareValidator2" ValidationGroup="three" ForeColor="Red"  runat="server" ControlToValidate="contrasena_actualizar" ControlToCompare="rcontrasena_actualizar" ErrorMessage="<b>Las contraseñas no coinciden</b>"></asp:CompareValidator>                                                            
-                                                            </div>
-                                                            <!--Consulta Correo Electronico-->
-                                                            <div class="pure-control-group">
-                                                                <label for="correo1">Correo electrónico</label>
-                                                                <asp:TextBox ID="correo_actualizar" ValidationGroup="three"  runat="server" data-toggle="tooltip" title="En este espacio se debe proporcionar la dirección de correo electrónico de la persona a modificar, es requerido. " TextMode="Email" />
-                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator15" runat="server" ErrorMessage="<b>*</b>" ValidationGroup="three" ControlToValidate="correo_actualizar" ForeColor="Red"></asp:RequiredFieldValidator>
-                                                                <asp:RegularExpressionValidator ValidationGroup="three" ID="RegularExpressionValidator16" runat="server" ControlToValidate="correo_actualizar" ErrorMessage="&lt;b&gt;  Formato no valido&lt;/b&gt;" ForeColor="Red" ValidationExpression="^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$"></asp:RegularExpressionValidator>
-                                                            </div>
-                                                            <!--Consulta Numero telefonico-->
-                                                            <fieldset class="pure-control-group">
-                                                                <label for="telefono1">Número telefónico</label>
-                                                                <span class="add-on btn btn-default">506</span>
-                                                                <asp:TextBox runat="server" ValidationGroup="three"  ID="telefono_actualizar" data-toggle="tooltip" title="En este espacio se debe proporcionar el número telefónico principal de la persona a modificar, es requerido."  placeholder="####-####" min="11111111" max="99999999" />
-                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator17" runat="server" ErrorMessage="<b>*</b>" ValidationGroup="three" ControlToValidate="telefono_actualizar" ForeColor="Red"></asp:RequiredFieldValidator> 
-                                                                <asp:RegularExpressionValidator ValidationGroup="three" ID="RegularExpressionValidator18" runat="server" ControlToValidate="telefono_actualizar" ErrorMessage="&lt;b&gt;Formato no valido&lt;/b&gt;" ForeColor="Red" ValidationExpression="^\d{4}-\d{4}$"></asp:RegularExpressionValidator>
-                                                                <cc1:MaskedEditExtender ID="MaskedEditExtender2" runat="server" BehaviorID="telefono_actualizar_MaskedEditExtender" Century="2000" ClearMaskOnLostFocus="False" CultureAMPMPlaceholder="" CultureCurrencySymbolPlaceholder="" CultureDateFormat="" CultureDatePlaceholder="" CultureDecimalPlaceholder="" CultureThousandsPlaceholder="" CultureTimePlaceholder="" Mask="9999-9999" TargetControlID="telefono_actualizar"></cc1:MaskedEditExtender>
-                                                            </fieldset>
-                                                            <!--Consulta Ocupacion-->
-                                                            <div class="pure-control-group">
-                                                                <label for="puesto1">Ocupación</label>
-                                                                <asp:DropDownList runat="server" ValidationGroup="three" ID="puesto_actualizar" CssClass="pure-input-1-2" data-toggle="tooltip" title="En este espacio se debe proporcionar el puesto en el cual se desempeña la persona a modificar, es requerido.">
-                                                                    <asp:ListItem Selected="False" disabled="disabled">¿La ocupación no aparece? Haz uso el icono situado contiguo a esta categoría para proporcionar una nueva.</asp:ListItem>
-                                                                </asp:DropDownList>
-                                                                <a runat="server" id="llavePuestos" data-toggle="modal" data-target="#modalPuesto"><span class="glyphicon glyphicon-wrench"></span></a>
-                                                            </div>
-                                                            <!--Consulta Area-->
-                                                            <div class="pure-control-group">
-                                                                <label for="area1">Área de servicio</label>
-                                                                <asp:DropDownList ValidationGroup="three"  runat="server" ID="area_actualizar" CssClass="pure-input-1-2" data-toggle="tooltip" title="En este espacio se debe proporcionar el área o unidad donde labora la persona a modificar, es requerido.">
-                                                                    <asp:ListItem Selected="False" disabled="disabled">¿El área no aparece? Haz uso el icono situado contiguo a esta categoría para proporcionar una nueva.</asp:ListItem>
-                                                                </asp:DropDownList>
-                                                                 <a runat="server" id="llaveAreas" data-toggle="modal" data-target="#modalAreas"><span class="glyphicon glyphicon-wrench"></span></a>
-                                                            </div>
-                                                            <!--Consulta Tipo de Usuario-->
-                                                            <div class="pure-control-group">
-                                                                <label for="tipo1">Usuario</label>
-                                                                <asp:DropDownList ValidationGroup="three"  runat="server" ID="tipo_actualizar" CssClass="pure-input-1-2" data-toggle="tooltip" title="En este espacio se debe representar el rol de la persona a modificar en el sistema." disable>
-                                                                    <asp:ListItem Value="0">Consultas</asp:ListItem>
-                                                                    <asp:ListItem Value="1">Administrador</asp:ListItem>
-                                                                </asp:DropDownList>
-                                                            </div>
-                 --%>
-                                                           <!--Consulta Accion Guardar Modificaciones-->
-                                                            <p style="margin-top: 30px;">
-                                                                <%--<asp:Button runat="server" ValidationGroup="three"  CssClass="btn btn-success" ID="Btn_actualizar" OnClick="Bt_actualizar_Click" Style="display: block; float: left" Text="Realizar modificaciones" />--%>
-                                                            </p>
-                                                            
-                                                    </asp:Panel>
-                                                </fieldset>
-                                            </div>
-                                        </div>  
+                                      
                                      
                                     </asp:Panel>
                                 </ContentTemplate>
@@ -347,6 +254,133 @@
                         </asp:TabContainer>
                     </div>
                 </div>
+
+                <%-- *********MODAL DE DETALLLE****************************** --%>
+
+                 <asp:Panel ID="PanelModal"  runat="server" >
+<div class="modalPrestamo" runat="server" visible="false" tabindex="-1" style="background-color:rgba(51, 51, 51, 0.71)"  id="detalle" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <asp:Button runat="server" CssClass="close"  BorderStyle="None" OnClick="close_Click" aria-label="Close" aria-hidden="true" Text="&times;" ></asp:Button>
+        <h4 class="modal-title">Detalle del préstamo</h4>
+
+      </div>
+      <div class="modal-body">
+      
+           <div class="container" id="Imprimir" runat="server">
+              <img src="img/ExpediaLogo.png" style="width:90px; height:90px; padding-right:7px;  float:left" alt="" />
+                                                <br />
+                                               <label for="TextBox4">Prestamo: </label> <asp:TextBox ID="TextBox4" runat="server" BorderStyle="None" BorderWidth="0px" Enabled="False" EnableTheming="True" BackColor="White"></asp:TextBox><br/>
+                                                <label for="TextBox5">Identificación de solicitante:</label><asp:TextBox ID="TextBox5" runat="server" BorderStyle="None" BorderWidth="0px" Enabled="False" EnableTheming="True" BackColor="White"></asp:TextBox><br/>
+                                                <label for="TextBox6">Fecha de entrega:</label><asp:TextBox ID="TextBox6" runat="server" BorderStyle="None" BorderWidth="0px" Enabled="False" EnableTheming="True" BackColor="White"></asp:TextBox><br/>
+                                                <label for="TextBox7" style="padding-left:90px;">Fecha de regreso: </label><asp:TextBox ID="TextBox7" runat="server" BorderStyle="None" BorderWidth="0px" Enabled="False" EnableTheming="True" BackColor="White"></asp:TextBox><br />
+                                            <div class="col-md-6 column">
+                                              
+                                                    
+                                                    <asp:GridView runat="server" ID="Gridview1" CssClass="table table-bordered table-hover"></asp:GridView>
+                                                
+                                                </div>
+                                             
+
+                                            </div>
+
+      </div>
+      <div class="modal-footer">
+        <asp:Button  runat="server" ID="detalle1" CssClass="btn btn-primary"  OnClientClick="imprimeDetalle();" Text="Impimir Detalle" ></asp:Button>
+        <asp:Button runat="server" ID="close" CssClass="btn btn-default" Text="Cerrar" OnClick="close_Click"></asp:Button>
+        
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div>
+   </asp:Panel>
+                     <%--******** FIN DE MODAL DETALLE ************************ --%>
+
+                     <%--************ MODAL DE FINALIZAR************  --%>  
+                 <asp:Panel ID="Panel4"  runat="server" >
+<div class="modalPrestamo" runat="server" visible="false" tabindex="-1" style="background-color:rgba(51, 51, 51, 0.71)"  id="finalizar" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <asp:Button runat="server" CssClass="close"  BorderStyle="None" OnClick="Button2_Click" aria-label="Close" aria-hidden="true" Text="&times;" ></asp:Button>
+        <h4 class="modal-title">Finalizar préstamo</h4>
+
+      </div>
+      <div class="modal-body">
+      
+           <div class="container" id="Div2" runat="server">
+               <img src="img/ExpediaLogo.png" style="width:90px; height:90px; padding-right:7px;  float:left" alt="" />
+               <br />
+               <label for="TextBox8" >Fecha de regreso: </label><asp:TextBox ID="TextBox8" runat="server" BorderStyle="None" BorderWidth="0px" Enabled="False" EnableTheming="True" BackColor="White"></asp:TextBox>
+               <br />
+               
+                <label  runat="server" id="Faltan"></label>
+
+
+            </div>
+
+      </div>
+      <div class="modal-footer">
+        <asp:Button  runat="server" ID="Finalizar1" CssClass="btn btn-primary" OnClick="Button2_Click"   Text="Finalizar" ></asp:Button>
+        <asp:Button runat="server" ID="Button2" CssClass="btn btn-default" Text="Cerrar" OnClick="Button2_Click"></asp:Button>
+        
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div>
+   </asp:Panel>
+
+                   <%--************ FIN MODAL DE FINALIZAR************  --%>  
+
+                <%-- ************ MODAL DE PROLONGAR ***********--%>
+
+
+                                 <asp:Panel ID="Panel6"  runat="server" >
+<div class="modalPrestamo" runat="server" visible="false" tabindex="-1" style="background-color:rgba(51, 51, 51, 0.71)"  id="prolongar" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <asp:Button runat="server" CssClass="close"  BorderStyle="None" OnClick="Button3_Click" aria-label="Close" aria-hidden="true" Text="&times;" ></asp:Button>
+        <h4 class="modal-title">Prolongar préstamo</h4>
+
+      </div>
+      <div class="modal-body">
+      
+           <div class="container" id="Div3" runat="server">
+               <img src="img/ExpediaLogo.png" style="width:90px; height:90px; padding-right:7px;  float:left" alt="" />
+               <br />
+               <label for="TextBox9" >Fecha de regreso: </label><asp:TextBox ID="TextBox9" runat="server" BorderStyle="None" BorderWidth="0px" Enabled="False" EnableTheming="True" BackColor="White"></asp:TextBox>
+               <br />
+               <label  runat="server" id="Label1"></label>
+
+                     <div class="pure-control-group">
+               <label for="TextBox10" >Fecha de cambio: </label>
+               <asp:TextBox ID="TextBox10" runat="server" ToolTip="Este espacio debe contener la fecha de regreso del préstamo, este espacio es requerido."></asp:TextBox>
+               <asp:CalendarExtender runat="server" Format="yyyy/MM/dd"  BehaviorID="TextBox10_CalendarExtender" TargetControlID="TextBox10" ID="TextBox10_CalendarExtender"></asp:CalendarExtender>
+                <asp:RequiredFieldValidator  ValidationGroup="one"   ID="RequiredFieldValidator1"   runat="server" ControlToValidate="TextBox10"   ForeColor="Red" SetFocusOnError="True" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator><br />
+               <asp:CompareValidator ID="CompareValidator2" runat="server" ValidationGroup="one"  ControlToCompare="TextBox9" Operator="GreaterThan"  ControlToValidate="TextBox10"  ErrorMessage="No se puede escoger una fecha menor a la del día de entrega /n Si desea puede finalizar el prestamo " ForeColor="Red" SetFocusOnError="True"></asp:CompareValidator>
+               </div>
+            </div>
+
+      </div>
+      <div class="modal-footer">
+        <asp:Button  runat="server" ID="prolongar1" ValidationGroup="one" CssClass="btn btn-primary" OnClick="prolongar1_Click"   Text="Prolongar" ></asp:Button>
+        <asp:Button runat="server" ID="Button3" CssClass="btn btn-default" Text="Cerrar" OnClick="Button3_Click"></asp:Button>
+        
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div>
+   </asp:Panel>
+
+
+                <%-- ************ FIN DE MODAL PROLONGAR*********  --%>
+                    
+
+
+
+
                 <div id="Modales">
                    <%-- DefaultButton="Btn_ocupacion"--%>
                     <asp:Panel ID="Panel5" runat="server" >
@@ -440,52 +474,13 @@ condiciones fisicas - en caso de préstamo o traslado)
                   </asp:Panel>
 
                     
-
                     
+                   
                   
-                    <asp:Panel ID="Panel7" runat="server" >
-                        <asp:UpdatePanel ID="update1" runat="server">
-                            <ContentTemplate>
-                         <div class="modal fade" id="modalAreas" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                        <h4 class="modal-title" style="text-align:center" id="exampleModalLabel">Nueva área de servicio</h4>
-                                    </div>
-                                    <div class="modal-body">
-                                        <div class="container">
-                                            <div class="pure-form pure-form-aligned">
-                                                <fieldset class="pure-control-group">
-                                                    <div class="input-prepend">
-                                                        <label for="idarea">Identificador del área</label>
-                                                        <asp:TextBox runat="server" ValidationGroup="Six"  ID="idareas"   placeholder="AR-001" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar un identificado que caracterice el área o unidad que se esté registrando, es requerido. " />
-                                                        <asp:RequiredFieldValidator ValidationGroup="Six" ID="RequiredFieldValidator6" runat="server"  ForeColor="Red" ControlToValidate="idareas" ErrorMessage="<b>*</b>"></asp:RequiredFieldValidator>
-                                                    </div>
-                                                    <div class="input-prepend">
-                                                        <label for="area">Área</label>
-                                                        <asp:TextBox runat="server" id="areas" ValidationGroup="Six" type="text" placeholder="Recursos Humanos" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar el nombre de la área que se desea registrar, es requerido. " />
-                                                        <asp:RequiredFieldValidator ValidationGroup="Six" ID="RequiredFieldValidator7" runat="server"  ForeColor="Red" ControlToValidate="areas" ErrorMessage="<b>*</b>"></asp:RequiredFieldValidator>
-                                                    </div>
-                                                </fieldset>
-                                            </div> <!-- /container -->
-                                        </div>
-                                        <div class="modal-footer">
-                                            <div class="span">
-                                                <%--<asp:Button runat="server" ValidationGroup="Six" CssClass="btn btn-success" OnClick="Btn_areas_Click" ID="Btn_areas" Text="Registrar área" />--%>
-                                                <button class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                         </div>
-                                </ContentTemplate>
-                            </asp:UpdatePanel>
-                    </asp:Panel>
+                  
                         </div>
                 </div>
-            </div>
+          
   <%--          </ContentTemplate>
         </asp:UpdatePanel>--%>
 
@@ -493,19 +488,33 @@ condiciones fisicas - en caso de préstamo o traslado)
            <!----------JAVA SCRIPTS--------->
            <script  type="text/jscript">
 function imprimePanel() {
-var printContent = document.getElementById("<%=Panel5.ClientID%>");
-       var windowUrl = 'about:blank';
-      
-       var windowName = 'Comprobante de solicitud de préstamo' ;
-       var printWindow = window.open(windowUrl, windowName, 'width=745.628,height=692.105,top=0,left=0');
- 
-       printWindow.document.write(printContent.innerHTML);
-       printWindow.document.close();
-       printWindow.focus();
-       printWindow.print();
-       printWindow.close();
+    var printContent = document.getElementById("<%=Panel5.ClientID%>");
+    var windowUrl = 'about:blank';
+
+    var windowName = 'Comprobante de solicitud de préstamo';
+    var printWindow = window.open(windowUrl, windowName, 'width=745.628,height=692.105,top=0,left=0');
+
+    printWindow.document.write(printContent.innerHTML);
+    printWindow.document.close();
+    printWindow.focus();
+    printWindow.print();
+    printWindow.close();
 }
- 
+
+               function imprimeDetalle() {
+    var printContent = document.getElementById("<%=Imprimir.ClientID%>");
+    var windowUrl = 'about:blank';
+
+    var windowName = 'detalle del prestamo';
+    var printWindow = window.open(windowUrl, windowName, 'width=745.628,height=692.105,top=0,left=0');
+
+    printWindow.document.write(printContent.innerHTML);
+    printWindow.document.close();
+    printWindow.focus();
+    printWindow.print();
+    printWindow.close();
+}
+
 </script>
 
 
