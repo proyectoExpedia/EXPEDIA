@@ -1,14 +1,19 @@
-﻿<%@ Page Language="C#"  AutoEventWireup="true" EnableEventValidation="true" CodeBehind="GestionConsultas.aspx.cs" Inherits="EXPEDIA.GestionConsultas" %>
+﻿
+
+<%@ Page Language="C#"  AutoEventWireup="true" EnableEventValidation="true" CodeBehind="GestionConsultas.aspx.cs" Inherits="EXPEDIA.GestionConsultas" %>
+
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
+
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>EXPEDIA</title>
     <link href="css/bootstrap.css" rel="stylesheet" />
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" />
-    <link rel="icon" href="img/ExpediaLogo.png"/>
+    <link rel="icon" href="img/ExpediaLogo.png" />
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <link href="css/jquery.bxslider.css" rel="stylesheet" />
     <script src="js/jquery.bxslider.js"></script>
@@ -17,6 +22,8 @@
     <script src="js/jQueryUI/jquery-ui.min.js"></script>
     <link href="js/jQueryUI/jquery-ui.theme.min.css" rel="stylesheet" />
     <link href="js/jQueryUI/jquery-ui.min.css" rel="stylesheet" />
+    <script src="js/sweetalert.min.js"></script>
+    <link href="css/sweetalert.css" rel="stylesheet" />
     <link href="css/Tablas.css" rel="stylesheet" />
 
 </head>
@@ -73,6 +80,24 @@
                     <div id="myTabContent" class="tab-content">
                         <div class="tab-pane fade in active" id="Ingresar">
                             <h1 style="text-align:center">Activos</h1>
+
+                             <div class="pure-controls-group">
+                                    <label for="tipo_activo">Tipo de activo</label>
+                                    <div style="margin-left: 55px" class="btn-group" data-toggle="buttons">
+                                        <label class="btn btn-primary" >
+                                            <asp:RadioButton  runat="server" GroupName="tipo" ID="RadioButton2" Text="Software" autocomplete="off" />
+                                        </label>
+                                        <label class="btn btn-primary ">
+                                            <asp:RadioButton runat="server"   GroupName="tipo" ID="RadioButton3" Text="Hardware" autocomplete="off" />
+                                        </label>
+                                        <label class="btn btn-primary " >
+                                            <asp:RadioButton runat="server"   GroupName="tipo" ID="RadioButton4" Text="Leasing" autocomplete="off" />
+                                        </label>
+
+                                    </div>
+                                </div>
+                            <br />
+                            <br />
                             
                                      <label  for="numero" >Número de Placa / Serie </label>
                                        <asp:textbox runat="server" ID="numero"/>
@@ -98,6 +123,8 @@
                      <asp:Button runat="server" ID="Button1" CssClass="btn btn-primary" OnClick="Consultar_Click"  Text="Consultar"/>
                                <br />
                                <br />
+                                                        <br />
+                            <br />
                                 <asp:GridView  runat="server" ID="lista" CssClass="table" > </asp:GridView>
 
                                     <br />
