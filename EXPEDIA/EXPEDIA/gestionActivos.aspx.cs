@@ -28,7 +28,7 @@ namespace EXPEDIA
             {
                 Conexion c = new Conexion();
                 SqlConnection Conexion = c.Conectar();
-                string Sql = @"INSERT INTO Activos (bd_tipo_activo, bd_numero_placa, bd_numero_serie, bd_fecha_garantia_activo, bd_descripcion_activo, bd_departamento, bd_proveedor, bd_especificacion_tecnica,bd_fecha_compra, bd_costo_activo) values (@tipo_activo, @placa, @serie, @garantia, @descripcion,@departamento,@proveedor,@especificacion_tecnica,@fecha_compra, @costo)";
+                string Sql = @"INSERT INTO Activos (bd_tipo_activo, bd_numero_placa, bd_numero_serie, bd_fecha_inicio_garantia, bd_fecha_final_garantia, bd_descripcion_activo, bd_departamento, bd_proveedor, bd_especificacion_tecnica,bd_fecha_compra, bd_costo_activo) values (@tipo_activo, @placa, @serie, @garantia_inicio, @garantia_final, @descripcion,@departamento,@proveedor,@especificacion_tecnica,@fecha_compra, @costo)";
 
                 Conexion.Open();//abrimos conexion    
                 try
@@ -36,13 +36,13 @@ namespace EXPEDIA
                     SqlCommand cmd = new SqlCommand(Sql, Conexion);
 
 
-                    cmd.Parameters.AddWithValue("@tipo_activo", "");
+                    cmd.Parameters.AddWithValue("@tipo_activo", "Software");
                     cmd.Parameters.AddWithValue("@fecha_compra", fecha_compra.Text);
                     cmd.Parameters.AddWithValue("@costo", precio.Text);
                     cmd.Parameters.AddWithValue("@placa", numero_placa.Text);
                     cmd.Parameters.AddWithValue("@serie", numero_serie.Text);
-                    cmd.Parameters.AddWithValue("@garantia", inicio_garantia.Text);
-                    cmd.Parameters.AddWithValue("@garantia", final_garantia.Text);
+                    cmd.Parameters.AddWithValue("@garantia_inicio", inicio_garantia.Text);
+                    cmd.Parameters.AddWithValue("@garantia_final", final_garantia.Text);
                     cmd.Parameters.AddWithValue("@descripcion", descripcion.SelectedValue);
                     cmd.Parameters.AddWithValue("@departamento", area.SelectedValue);
                     cmd.Parameters.AddWithValue("@proveedor", proveedor.SelectedValue);
@@ -66,24 +66,23 @@ namespace EXPEDIA
             {
                 Conexion c = new Conexion();
                 SqlConnection Conexion = c.Conectar();
-                string Sql = @"INSERT INTO Activos (bd_tipo_activo, bd_numero_placa, bd_numero_serie, bd_fecha_garantia_activo, bd_descripcion_activo, bd_departamento, bd_proveedor, bd_especificacion_tecnica,bd_fecha_compra, bd_costo_activo) values (@tipo_activo, @placa, @serie, @garantia, @descripcion,@departamento,@proveedor,@especificacion_tecnica,@fecha_compra, @costo)";
+                string Sql = @"INSERT INTO Activos (bd_tipo_activo, bd_numero_placa, bd_numero_serie, bd_fecha_inicio_garantia, bd_fecha_final_garantia, bd_descripcion_activo, bd_departamento, bd_proveedor, bd_especificacion_tecnica,bd_fecha_compra, bd_costo_activo) values (@tipo_activo, @placa, @serie, @garantia_inicio, @garantia_final, @descripcion,@departamento,@proveedor,@especificacion_tecnica,@fecha_compra, @costo)";
 
                 Conexion.Open();//abrimos conexion    
                 try
                 {
                     SqlCommand cmd = new SqlCommand(Sql, Conexion);
-                    cmd.Parameters.AddWithValue("@tipo_activo", "");
-                    cmd.Parameters.AddWithValue("@fecha_compra", fecha_entrega3.Text);
-                    cmd.Parameters.AddWithValue("@costo", precio2.Text);
-                    cmd.Parameters.AddWithValue("@placa", numero_placa2.Text);
-                    cmd.Parameters.AddWithValue("@serie", numero_serie2.Text);
-                    cmd.Parameters.AddWithValue("@garantia", inicio_garantia3.Text);
-                    cmd.Parameters.AddWithValue("@garantia", final_garantia3.Text);
+                    cmd.Parameters.AddWithValue("@tipo_activo", "Hardware");
+                    cmd.Parameters.AddWithValue("@placa", numero_placa.Text);
+                    cmd.Parameters.AddWithValue("@serie", numero_serie.Text);
+                    cmd.Parameters.AddWithValue("@garantia_inicio", inicio_garantia.Text);
+                    cmd.Parameters.AddWithValue("@garantia_final", final_garantia.Text);
                     cmd.Parameters.AddWithValue("@descripcion", descripcion.SelectedValue);
-                    cmd.Parameters.AddWithValue("@departamento", descripcion.SelectedValue);
+                    cmd.Parameters.AddWithValue("@departamento", area.SelectedValue);
                     cmd.Parameters.AddWithValue("@proveedor", proveedor.SelectedValue);
-                    cmd.Parameters.AddWithValue("@especificacion_tecnica", especificacion_tecnica2.Text);
-
+                    cmd.Parameters.AddWithValue("@especificacion_tecnica", especificacion_tecnica.Text);
+                    cmd.Parameters.AddWithValue("@fecha_compra", fecha_compra.Text);
+                    cmd.Parameters.AddWithValue("@costo", precio.Text);
                     cmd.ExecuteNonQuery();
                     Response.Redirect("gestionActivos.aspx");
                     c.Desconectar(Conexion);
@@ -95,25 +94,24 @@ namespace EXPEDIA
             {
                 Conexion c = new Conexion();
                 SqlConnection Conexion = c.Conectar();
-                string Sql = @"INSERT INTO Activos (bd_tipo_activo, bd_numero_placa, bd_numero_serie, bd_fecha_garantia_activo, bd_descripcion_activo, bd_departamento, bd_proveedor, bd_especificacion_tecnica,bd_duracion_de_contrato,bd_fecha_compra, bd_costo_activo) values (@tipo_activo, @placa, @serie, @garantia, @descripcion,@departamento,@proveedor,@especificacion_tecnica,@duracion_contrato,@fecha_compra, @costo)";
+                string Sql = @"INSERT INTO Activos (bd_tipo_activo, bd_numero_placa, bd_numero_serie, bd_aquisicion_ac, bd_finalizacion_contrato, bd_costo_activo, bd_descripcion_activo, bd_departamento, bd_proveedor, bd_especificacion_tecnica) values (@tipo_activo, @placa, @serie, @adquiscion, @finalizacion, @costo, @descripcion, @departamento, @proveedor, @especificacion_tecnica)";
 
                 Conexion.Open();//abrimos conexion    
                 try
                 {
                     SqlCommand cmd = new SqlCommand(Sql, Conexion);
 
-                    cmd.Parameters.AddWithValue("@tipo_activo", RadioButton4.Text);
+                    cmd.Parameters.AddWithValue("@tipo_activo", "Leasing");
                     cmd.Parameters.AddWithValue("@placa", numero_placa.Text);
                     cmd.Parameters.AddWithValue("@serie", numero_serie.Text);
-                    cmd.Parameters.AddWithValue("@garantia", inicio_garantia.ToString());
-                    cmd.Parameters.AddWithValue("@garantia", final_garantia.ToString());
+                    cmd.Parameters.AddWithValue("@adquiscion", fecha_adquisicion.Text);
+                    cmd.Parameters.AddWithValue("@finalizacion", finalizacion_contrato.Text);
+                    cmd.Parameters.AddWithValue("@costo", precio.Text);
                     cmd.Parameters.AddWithValue("@descripcion", descripcion.SelectedValue);
                     cmd.Parameters.AddWithValue("@departamento", area.SelectedValue);
                     cmd.Parameters.AddWithValue("@proveedor", proveedor.SelectedValue);
                     cmd.Parameters.AddWithValue("@especificacion_tecnica", especificacion_tecnica.Text);
-                    cmd.Parameters.AddWithValue("@duracion_contrato", finalizacion_contrato.ToString());
-                    cmd.Parameters.AddWithValue("@fecha_compra", fecha_compra.ToString());
-                    cmd.Parameters.AddWithValue("@costo", precio.Text);
+
                     cmd.ExecuteNonQuery();
                     Response.Redirect("gestionActivos.aspx");
                     c.Desconectar(Conexion);
@@ -223,7 +221,6 @@ namespace EXPEDIA
                 cmd.Parameters.AddWithValue("@descripcionA", descripcion_area.Text);
                 cmd.ExecuteNonQuery();
                 c.Desconectar(Conexion);
-                Response.Redirect("gestionActivos.aspx");
 
                 cargar_descripcion(descripcion);
 
@@ -235,7 +232,34 @@ namespace EXPEDIA
 
         }
 
+        protected void btn_Registrar_Proveedor_Click(object sender, EventArgs e)
+        {
+            Conexion c = new Conexion();
+            SqlConnection Conexion = c.Conectar();
+            string Sql = @"INSERT INTO Proveedores (bd_id_proveedor, bd_nombre_proveedor, bd_correo_electronico_prov, bd_numero_telefonico_empresa, bd_numero_contacto) values (@idProv, @nombProv, @CorreoProv, @telProv, @telCont)";
 
+            Conexion.Open();//abrimos conexion
+
+            try
+            {
+                SqlCommand cmd = new SqlCommand(Sql, Conexion);
+                cmd.Parameters.AddWithValue("@idProv", idp.Text); //enviamos los parametros
+                cmd.Parameters.AddWithValue("@nombProv", nproveedor.Text);
+                cmd.Parameters.AddWithValue("@CorreoProv", correo.Text);
+                cmd.Parameters.AddWithValue("@telProv", telefono1.Text);
+                cmd.Parameters.AddWithValue("@telCont", telefono.Text);
+                cmd.ExecuteNonQuery();
+                c.Desconectar(Conexion);
+
+                cargar_descripcion(descripcion);
+
+            }
+            catch (Exception a)
+            {
+                Response.Write("error" + a.ToString());
+            }
+
+        }
 
     }
 
