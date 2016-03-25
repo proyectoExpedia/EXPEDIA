@@ -22,6 +22,9 @@ namespace EXPEDIA
         private string id_dep;
         private  static int id_finalizar;
         private static int id_prolongar;
+        private static bool tiene=false;
+        private static bool no_puede=false;
+        private static string ced;
 
 
 
@@ -88,45 +91,55 @@ namespace EXPEDIA
         }
         protected void Bt_Ingresar_Click(object sender, EventArgs e)
         {
-
-            if (tabla1.Rows.Count != 0)
+            if (!no_puede)
             {
-                if (corroborarExistenciaDatos("Usuarios", "bd_cedula", cedula_usuario.Text, Bt_Ingresar))
+                if (!tiene)
                 {
-
-
-                    Crear_Prestamo(cedula_usuario.Text);
-                    if (bandera == false)
+                    if (tabla1.Rows.Count != 0)
                     {
-                        Cargar_Id_Prestamo(cedula_usuario.Text);
-                        Cargar_Activos(id, tab_logic_hover);
-                        excelente(Bt_Ingresar);
-                        Page.ClientScript.RegisterStartupScript(this.GetType(), "Bt_Ingresar ", "imprimePanel()", true);
-                        limpiarIngresar();
+                        if (corroborarExistenciaDatos("Usuarios", "bd_cedula", cedula_usuario.Text, Bt_Ingresar))
+                        {
+
+
+                            Crear_Prestamo(cedula_usuario.Text);
+                            if (bandera == false)
+                            {
+                                Cargar_Id_Prestamo(cedula_usuario.Text);
+                                Cargar_Activos(id, tab_logic_hover);
+                                excelente(Bt_Ingresar);
+                                Page.ClientScript.RegisterStartupScript(this.GetType(), "Bt_Ingresar ", "imprimePanel()", true);
+                                Cambiar_Estado_usuario(2, cedula_usuario.Text);
+                                limpiarIngresar();
 
 
 
+                            }
+                            else { error(Bt_Ingresar, "Disculpa", "Se tuvo un problema a la hora de crear el prestamo"); }
+
+
+                            //System.Threading.Thread.Sleep(9000);
+
+
+                        }
                     }
-                    else { error(Bt_Ingresar, "Disculpa", "Se tuvo un problema a la hora de crear el prestamo"); }
-
-
-                    //System.Threading.Thread.Sleep(9000);
-
+                    else { error(Bt_Ingresar, "Disculpa", "No hay ningun activos selecionados el prestamo"); }
 
                 }
+                else { Pendiente_detalle(cedula_usuario.Text); pendiente.Visible = true; }
             }
-            else { error(Bt_Ingresar, "Disculpa", "No hay ningun activos selecionados el prestamo"); }
+            else { error(Bt_Ingresar, "Disculpa", "El usuario esta inhabilitado, para más infomarcion vaya a gestion de usuarios en consultar"); }
         }
 
         protected void cedula_usuario_TextChanged(object sender, EventArgs e)
         {
+            
             string ced = cedula_usuario.Text;
             Conexion c = new Conexion();
             SqlConnection Conexion = c.Conectar();
 
 
 
-            string Sql = @"SELECT bd_nombre, bd_apellido1,  bd_telefono  FROM Usuarios WHERE bd_cedula = @user";
+            string Sql = @"SELECT bd_nombre, bd_apellido1, bd_estado FROM Usuarios WHERE bd_cedula = @user";
             Conexion.Open();//abrimos conexion
             SqlCommand cmd = new SqlCommand(Sql, Conexion); //ejecutamos la instruccion
             cmd.Parameters.AddWithValue("@user", ced); //enviamos los parametros
@@ -139,15 +152,16 @@ namespace EXPEDIA
                 while (reader.Read())
                 {
 
-                    Info.InnerText = "" + reader.GetString(0) + " " + reader.GetString(1) + "  Tel: " + reader.GetString(2);
+                    if (reader.GetInt16(2) == 2) { Info.InnerText = "" + reader.GetString(0) + " " + reader.GetString(1) + " tiene prestamos pendientes"; Info.Style.Add("color", "red"); tiene = true; Pendiente_detalle(cedula_usuario.Text); pendiente.Visible = true; }
+                    if (reader.GetInt16(2) == 1) { Info.InnerText = "" + reader.GetString(0) + " " + reader.GetString(1) + " no tiene prestamos pendientes "; Info.Style.Add("color", "green"); }
+                    if (reader.GetInt16(2) == 3) { Info.InnerText = "" + reader.GetString(0) + " " + reader.GetString(1) + "se encuentra inhabilitado "; Info.Style.Add("color", "red");  no_puede = true; }
+
 
                 }
-
-
             }
             else
             {
-                Info.InnerText = "No existe ningun usuario con esa cedula";
+                Info.InnerText = "No existe ningun usuario con esa cedula"; Info.Style.Add("color", "red");
 
             }
 
@@ -218,6 +232,18 @@ namespace EXPEDIA
             Conexion c = new Conexion();
             SqlConnection Conexion = c.Conectar();
             string Sql = @"UPDATE Activos SET bd_estado=" + y + " WHERE bd_numero_placa=" + placa + "";
+            Conexion.Open();//abrimos conexion
+            SqlCommand cmd = new SqlCommand(Sql, Conexion); //ejecutamos la instruccion
+            cmd.ExecuteNonQuery();
+
+
+        }
+
+        protected void Cambiar_Estado_usuario(int y, string placa)
+        {
+            Conexion c = new Conexion();
+            SqlConnection Conexion = c.Conectar();
+            string Sql = @"UPDATE Usuarios SET bd_estado=" + y + " WHERE bd_cedula='" + placa +"'";
             Conexion.Open();//abrimos conexion
             SqlCommand cmd = new SqlCommand(Sql, Conexion); //ejecutamos la instruccion
             cmd.ExecuteNonQuery();
@@ -1293,9 +1319,227 @@ namespace EXPEDIA
             Page.ClientScript.RegisterStartupScript(this.GetType(), "descargar", "imprSelec()", true);
         }
 
+        //****** VA LIDACION DE PENDIENTES********
+        protected void Pendiente_detalle(string y)
+        {
+            Conexion c = new Conexion();
+            SqlConnection Conexion = c.Conectar();
+            string Sql = @"SELECT * FROM Prestamos  WHERE bd_id_solicitante= @num ";
+            Conexion.Open();//abrimos conexion
+            SqlCommand cmd = new SqlCommand(Sql, Conexion); //ejecutamos la instruccion
+            cmd.Parameters.AddWithValue("@num", y); //enviamos los paramet
+
+            SqlDataReader reader = cmd.ExecuteReader();
+            if (reader.HasRows)
+            {
+
+                while (reader.Read())
+                {
+
+
+                    TextBox11.Text = reader.GetInt32(0).ToString();
+                    TextBox12.Text = reader.GetString(1).ToString();
+                    TextBox13.Text = reader.GetDateTime(2).ToString("dd/MM/yyyy");
+                    TextBox14.Text = reader.GetDateTime(3).ToString("dd/MM/yyyy");
+                    Cargar_Activos(reader.GetInt32(0), Gridview2);
+
+
+                }
+
+
+
+            }
+
+            else { error(Consulta_prestamo, "Disculpa", "No se pudo cargar el detalle  en el sistema"); }
+
+        }
+        protected void Button4_Click(object sender, EventArgs e)
+        {
+            pendiente.Visible = false;
+        }
+
         //****************** METODOS PARA LA PARTE DE CONTROL DE PRESTAMOS**********************************
 
+
+        protected void cedula_consulta_TextChanged(object sender, EventArgs e)
+        {
+
+         
+            Conexion c = new Conexion();
+            SqlConnection Conexion = c.Conectar();
+
+
+
+            string Sql = @"SELECT bd_nombre, bd_apellido1, bd_estado FROM Usuarios WHERE bd_cedula = @user";
+            Conexion.Open();//abrimos conexion
+            SqlCommand cmd = new SqlCommand(Sql, Conexion); //ejecutamos la instruccion
+            cmd.Parameters.AddWithValue("@user", cedula_consulta.Text); //enviamos los parametros
+
+
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            if (reader.HasRows)
+            {
+                while (reader.Read())
+                {
+
+                    if (reader.GetInt16(2) == 2) { Info2.InnerText = "" + reader.GetString(0) + " " + reader.GetString(1) + " tiene prestamos pendientes"; Info2.Style.Add("color", "red"); tiene = true;  }
+                    if (reader.GetInt16(2) == 1) { Info2.InnerText = "" + reader.GetString(0) + " " + reader.GetString(1) + " no tiene prestamos pendientes "; Info2.Style.Add("color", "green"); }
+                    if (reader.GetInt16(2) == 3) { Info2.InnerText = "" + reader.GetString(0) + " " + reader.GetString(1) + "se encuentra inhabilitado "; Info2.Style.Add("color", "red"); no_puede = true; }
+
+
+                }
+            }
+            else
+            {
+                Info.InnerText = "No existe ningun usuario con esa cedula"; Info.Style.Add("color", "red");
+
+            }
+
+
+        }
         protected void Consulta_prestamo_Click(object sender, EventArgs e)
+        {
+            tiene = false;
+            if (cedula_consulta.Text == "_-____-____" &&  id_prestamo.Text == "") { error(Consulta_prestamo, "Disculpa", "Utilice los filtros de busqueda para una mejor consulta"); }
+            if (cedula_consulta.Text != "" && id_prestamo.Text == "") { Consultar_cedula(); }
+            if (cedula_consulta.Text == "_-____-____" && id_prestamo.Text != "") { Consultar_id(); }
+            if (cedula_consulta.Text != "" && id_prestamo.Text != "") { Consultar_cedula_id(); }
+
+        }
+
+        protected void tabla2_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            switch (e.CommandName)
+            {
+                case "Detalle":
+                    {
+
+
+                        string rowIndex = e.CommandArgument.ToString();
+
+                        int index = Convert.ToInt32(rowIndex);
+                        TableCell cell = tabla2.Rows[index].Cells[3];
+
+                        string pap = cell.Text;
+
+                        int row = Convert.ToInt32(pap);
+
+                        llenar_detalle(row);
+
+                        Cargar_Activos(row, Gridview1);
+
+                        detalle.Visible = true; break;
+                    }
+                case "Al_día":
+                    {
+
+                        string rowIndex = e.CommandArgument.ToString();
+
+                        int index = Convert.ToInt32(rowIndex);
+                        TableCell cell = tabla2.Rows[index].Cells[3];
+                        TableCell cell1 = tabla2.Rows[index].Cells[4];
+                        string cd = cell1.Text;
+
+                        string pap = cell.Text;
+
+                        int row = Convert.ToInt32(pap);
+                        calcular(row,Faltan,TextBox8);
+                        id_finalizar = row;
+                        ced = cd;
+                        finalizar.Visible = true;
+                        tabla2.DataBind();
+
+                        break;
+                    }
+                case "Prolongar": {
+
+                        string rowIndex = e.CommandArgument.ToString();
+
+                        int index = Convert.ToInt32(rowIndex);
+                        TableCell cell = tabla2.Rows[index].Cells[3];
+                       
+                        string pap = cell.Text;
+
+                        int row = Convert.ToInt32(pap);
+                        id_prolongar = row;
+                        if (validar_prolongar(row)) { calcular(row,Label1, TextBox9); prolongar.Visible = true; }
+                        else { error(prolongar1, "Disculpa", "Este prestamo ya esta retrasado por favor finalice y realice un prestamo nuevo"); }
+
+
+
+                        break; }
+            }
+
+
+
+
+        }
+
+        private void Consultar_cedula()
+        {
+            DataTable dt = new DataTable();
+
+            dt.Columns.AddRange(new DataColumn[3] {
+
+                            new DataColumn("Identificador del préstamo", typeof(int)),
+                            new DataColumn("Identificacíon del solicitante asosiado ",typeof(string)),
+                            new DataColumn("Estado ",typeof(string)),
+
+
+
+
+
+
+
+
+            });
+
+            
+
+            Conexion c = new Conexion();
+            SqlConnection Conexion = c.Conectar();
+            string Sql = @"SELECT * FROM Prestamos  WHERE bd_id_solicitante= @num ";
+            Conexion.Open();//abrimos conexion
+            SqlCommand cmd = new SqlCommand(Sql, Conexion); //ejecutamos la instruccion
+            cmd.Parameters.AddWithValue("@num", cedula_consulta.Text); //enviamos los paramet
+
+            SqlDataReader reader = cmd.ExecuteReader();
+            if (reader.HasRows)
+            {
+
+                while (reader.Read())
+                {
+                    DateTime date = reader.GetDateTime(3);
+                    string t = DateTime.Now.ToString("yyyy/MM/dd");
+                    string al = System.Drawing.Color.Green.ToString();
+                    al = "Al día";
+                    string at = System.Drawing.Color.Red.ToString();
+                    at = "Atrasado";
+
+                    DateTime date2 = DateTime.Parse(t);
+
+
+                    int y = DateTime.Compare(date, date2);
+
+                    if (y > 0 || y == 0)
+                    { dt.Rows.Add(reader.GetInt32(0), reader.GetString(1), al); }
+                    else { dt.Rows.Add(reader.GetInt32(0), reader.GetString(1), at); }
+
+
+
+
+                }
+
+                tabla2.DataSource = dt;
+                tabla2.DataBind();
+
+            }
+
+            else { error(Consulta_prestamo, "Disculpa", "No se encuentran prestamos con el id solicitado  en el sistema"); }
+        }
+    
+        private void Consultar_id()
         {
             DataTable dt = new DataTable();
 
@@ -1355,76 +1599,73 @@ namespace EXPEDIA
 
             }
 
-            else { error(Consulta_prestamo, "Disculpa", "No se encuentran prestamos con el id solicitado  en el sistema"); }
-
+            else { error(Consulta_prestamo, "Disculpa", "No se encuentran prestamos con la informacion solicitado  en el sistema"); }
         }
-
-        protected void tabla2_RowCommand(object sender, GridViewCommandEventArgs e)
+        private void Consultar_cedula_id()
         {
-            switch (e.CommandName)
+            DataTable dt = new DataTable();
+
+            dt.Columns.AddRange(new DataColumn[3] {
+
+                            new DataColumn("Identificador del préstamo", typeof(int)),
+                            new DataColumn("Identificacíon del solicitante asosiado ",typeof(string)),
+                            new DataColumn("Estado ",typeof(string)),
+
+
+
+
+
+
+
+
+            });
+
+            int g = int.Parse(id_prestamo.Text);
+
+            Conexion c = new Conexion();
+            SqlConnection Conexion = c.Conectar();
+            string Sql = @"SELECT * FROM Prestamos  WHERE bd_id_prestamo= @num AND bd_id_solicitante= @ced ";
+            Conexion.Open();//abrimos conexion
+            SqlCommand cmd = new SqlCommand(Sql, Conexion); //ejecutamos la instruccion
+            cmd.Parameters.AddWithValue("@num", g); //enviamos los paramet
+            cmd.Parameters.AddWithValue("@ced", cedula_consulta.Text); //enviamos los paramet
+
+            SqlDataReader reader = cmd.ExecuteReader();
+            if (reader.HasRows)
             {
-                case "Detalle":
-                    {
+
+                while (reader.Read())
+                {
+                    DateTime date = reader.GetDateTime(3);
+                    string t = DateTime.Now.ToString("yyyy/MM/dd");
+                    string al = System.Drawing.Color.Green.ToString();
+                    al = "Al día";
+                    string at = System.Drawing.Color.Red.ToString();
+                    at = "Atrasado";
+
+                    DateTime date2 = DateTime.Parse(t);
 
 
-                        string rowIndex = e.CommandArgument.ToString();
+                    int y = DateTime.Compare(date, date2);
 
-                        int index = Convert.ToInt32(rowIndex);
-                        TableCell cell = tabla2.Rows[index].Cells[3];
-
-                        string pap = cell.Text;
-
-                        int row = Convert.ToInt32(pap);
-
-                        llenar_detalle(row);
-
-                        Cargar_Activos(row, Gridview1);
-
-                        detalle.Visible = true; break;
-                    }
-                case "Al_día":
-                    {
-
-                        string rowIndex = e.CommandArgument.ToString();
-
-                        int index = Convert.ToInt32(rowIndex);
-                        TableCell cell = tabla2.Rows[index].Cells[3];
-
-                        string pap = cell.Text;
-
-                        int row = Convert.ToInt32(pap);
-                        calcular(row,Faltan,TextBox8);
-                        id_finalizar = row;
-                        finalizar.Visible = true;
-                        tabla2.DataBind();
-
-                        break;
-                    }
-                case "Prolongar": {
-
-                        string rowIndex = e.CommandArgument.ToString();
-
-                        int index = Convert.ToInt32(rowIndex);
-                        TableCell cell = tabla2.Rows[index].Cells[3];
-                       
-                        string pap = cell.Text;
-
-                        int row = Convert.ToInt32(pap);
-                        id_prolongar = row;
-                        if (validar_prolongar(row)) { calcular(row,Label1, TextBox9); prolongar.Visible = true; }
-                        else { error(prolongar1, "Disculpa", "Este prestamo ya esta retrasado por favor finalice y realice un prestamo nuevo"); }
+                    if (y > 0 || y == 0)
+                    { dt.Rows.Add(reader.GetInt32(0), reader.GetString(1), al); }
+                    else { dt.Rows.Add(reader.GetInt32(0), reader.GetString(1), at); }
 
 
 
-                        break; }
+
+                }
+
+                tabla2.DataSource = dt;
+                tabla2.DataBind();
+
             }
 
-
-
-
+            else { error(Consulta_prestamo, "Disculpa", "No se encuentran prestamos con la informacion solicitado  en el sistema"); }
         }
 
-
+    
 
 
         //******FUNCIONES PARA LA MODAL DE DETALLE****************************
@@ -1524,6 +1765,7 @@ namespace EXPEDIA
             {
                 regresar_ativos();
                 eliminar_prestamo();
+                Cambiar_Estado_usuario(1, ced);
                 excelente(Finalizar1);
                 
           
@@ -1620,5 +1862,7 @@ namespace EXPEDIA
             catch
             {       error(prolongar1, "Disculpa", "no se pudo realizar la accion "); }
         }
+
+
     }
 }

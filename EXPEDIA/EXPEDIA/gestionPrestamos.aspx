@@ -145,7 +145,7 @@
                                                     <asp:RequiredFieldValidator ValidationGroup="one" ID="vCedula" runat="server" ControlToValidate="cedula_usuario" ForeColor="Red" SetFocusOnError="True" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
                                                     <asp:MaskedEditExtender ID="cedula_usuario_MaskedEditExtender" runat="server" BehaviorID="cedula_usuario_MaskedEditExtender" Century="2000" ClearMaskOnLostFocus="False" CultureAMPMPlaceholder="" CultureCurrencySymbolPlaceholder="" CultureDateFormat="" CultureDatePlaceholder="" CultureDecimalPlaceholder="" CultureThousandsPlaceholder="" CultureTimePlaceholder="" Mask="9-9999-9999" TargetControlID="cedula_usuario" />
                                                     <asp:RegularExpressionValidator ValidationGroup="one" ID="RegularExpressionValidator2" runat="server" ControlToValidate="cedula_usuario" ErrorMessage="&lt;b&gt;*&lt;/b&gt;" ForeColor="Red" ValidationExpression="^[1-9]-\d{4}-\d{4}$"></asp:RegularExpressionValidator>
-                                                     <label for="cedula_usuario" runat="server"  id="Info" style="font-family: Arial, Helvetica, sans-serif; font-size: 17px; font-style: normal; color: #008080; margin-right: 10px"></label>
+                                                     <label for="cedula_usuario" runat="server"  id="Info" style="font-family: Arial, Helvetica, sans-serif; font-size: 17px; font-style: normal;  margin-right: 10px"></label>
                                                     
                                                     
                                                     <asp:Button runat="server" CssClass="btn btn-primary"  OnClick="Agregar_Click" ID="Agregar"  Text="Agregar más  Activos " />
@@ -205,16 +205,15 @@
                                             <div class="pure-form pure-form-aligned">
                                             <asp:Panel ID="Panel3" runat="server">
                                                 <label for="cedulaC">Número de cédula</label>
-                                                <asp:TextBox ID="cedula_consulta" ValidationGroup="two" runat="server" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar el número de cedula de la persona a registrar, omita guiones y todos los dígitos del documento de identidad, es requerido." placeholder="#-####-####"></asp:TextBox>
-                                                <asp:RequiredFieldValidator ValidationGroup="two" ID="RequiredFieldValidator2" runat="server" ControlToValidate="cedula_consulta" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
+                                                <asp:TextBox ID="cedula_consulta" ValidationGroup="two" AutoPostBack="true" OnTextChanged="cedula_consulta_TextChanged" runat="server" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar el número de cedula de la persona a registrar, omita guiones y todos los dígitos del documento de identidad, es requerido." placeholder="#-####-####"></asp:TextBox>
                                                 <asp:RegularExpressionValidator ValidationGroup="two" ID="RegularExpressionValidator4" runat="server" ControlToValidate="cedula_consulta" ErrorMessage="&lt;b&gt;Formato no valido&lt;/b&gt;" ForeColor="Red" ValidationExpression="^[1-9]-\d{4}-\d{4}$"></asp:RegularExpressionValidator>
                                                 <cc1:MaskedEditExtender ID="MaskedEditExtender1" runat="server" BehaviorID="cedula_consulta_MaskedEditExtender" Century="2000" ClearMaskOnLostFocus="False" CultureAMPMPlaceholder="" CultureCurrencySymbolPlaceholder="" CultureDateFormat="" CultureDatePlaceholder="" CultureDecimalPlaceholder="" CultureThousandsPlaceholder="" CultureTimePlaceholder="" Mask="9-9999-9999" TargetControlID="cedula_consulta"></cc1:MaskedEditExtender>
-                                                <p>
-                                                    <%--<asp:Button ID="Btn_consultar" ValidationGroup="two" Text="Consultar" CssClass="btn btn-primary" OnClick="Btn_consultar_Click" runat="server" />--%>
-                                                </p
-                                                     <label for="fechasalida">Número de Prestamo:</label>
-                                    <asp:TextBox runat="server" data-toggle="tooltip" ToolTip="Proporcione el número de prestamo,a consultar" ID="id_prestamo" />
-                                    <asp:Button runat="server" ID="Consulta_prestamo" OnClick="Consulta_prestamo_Click"    class="btn btn-success" Text="Consultar"></asp:Button>
+                                                <label  runat="server"  id="Info2" style="font-family: Arial, Helvetica, sans-serif; font-size: 17px; font-style: normal;" ></label>
+                                                <br />
+                                                <label for="id_prestamo">Número de Prestamo:</label>
+                                                <asp:TextBox runat="server"    data-toggle="tooltip" data-placement="left"     ToolTip="Proporcione el número de prestamo,a consultar" ID="id_prestamo" />
+                                                <cc1:MaskedEditExtender ID="MaskedEditExtender2" runat="server" BehaviorID="id_prestamo_MaskedEditExtender" Century="2000" ClearMaskOnLostFocus="true" CultureAMPMPlaceholder="" CultureCurrencySymbolPlaceholder="" CultureDateFormat="" CultureDatePlaceholder="" CultureDecimalPlaceholder="" CultureThousandsPlaceholder="" CultureTimePlaceholder="" Mask="999999999" TargetControlID="id_prestamo"></cc1:MaskedEditExtender>
+                                                <asp:Button runat="server" ID="Consulta_prestamo" OnClick="Consulta_prestamo_Click"    class="btn btn-success" Text="Consultar"></asp:Button>
 
                                   <br />
                                   <br />
@@ -322,7 +321,7 @@
 
       </div>
       <div class="modal-footer">
-        <asp:Button  runat="server" ID="Finalizar1" CssClass="btn btn-primary" OnClick="Button2_Click"   Text="Finalizar" ></asp:Button>
+        <asp:Button  runat="server" ID="Finalizar1" CssClass="btn btn-primary" OnClick="Finalizar1_Click"   Text="Finalizar" ></asp:Button>
         <asp:Button runat="server" ID="Button2" CssClass="btn btn-default" Text="Cerrar" OnClick="Button2_Click"></asp:Button>
         
       </div>
@@ -376,6 +375,59 @@
 
 
                 <%-- ************ FIN DE MODAL PROLONGAR*********  --%>
+
+
+
+                <%--****** MODAL PRESTAMO PENDIENTE--%>
+
+                
+                         <asp:Panel ID="Panel7"  runat="server" >
+<div class="modalPrestamo" runat="server" visible="false" tabindex="-1" style="background-color:rgba(51, 51, 51, 0.71)"  id="pendiente" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <asp:Button runat="server" CssClass="close"  BorderStyle="None" OnClick="Button4_Click" aria-label="Close" aria-hidden="true" Text="&times;" ></asp:Button>
+        <h4 class="modal-title">Prestamo pendiente</h4>
+
+      </div>
+      <div class="modal-body">
+      
+           <div class="container" id="Div4" runat="server">
+
+                <label for="TextBox11">Prestamo: </label> <asp:TextBox ID="TextBox11" runat="server" BorderStyle="None" BorderWidth="0px" Enabled="False" EnableTheming="True" BackColor="White"></asp:TextBox><br/>
+                <label for="TextBox12">Identificación de solicitante:</label><asp:TextBox ID="TextBox12" runat="server" BorderStyle="None" BorderWidth="0px" Enabled="False" EnableTheming="True" BackColor="White"></asp:TextBox><br/>
+                 <label for="TextBox13">Fecha de entrega:</label><asp:TextBox ID="TextBox13" runat="server" BorderStyle="None" BorderWidth="0px" Enabled="False" EnableTheming="True" BackColor="White"></asp:TextBox><br/>
+                 <label for="TextBox14" style="padding-left:90px;">Fecha de regreso: </label><asp:TextBox ID="TextBox14" runat="server" BorderStyle="None" BorderWidth="0px" Enabled="False" EnableTheming="True" BackColor="White"></asp:TextBox><br />
+                  <div class="col-md-6 column">
+                                              
+                                                    
+                <asp:GridView runat="server" ID="Gridview2" CssClass="table table-bordered table-hover"></asp:GridView>
+                                                
+                          </div>
+                                             
+>
+            </div>
+
+      </div>
+      <div class="modal-footer">
+        
+        <asp:Button runat="server" ID="Button4" CssClass="btn btn-danger" Text="Cerrar" OnClick="Button4_Click"></asp:Button>
+        
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div>
+   </asp:Panel>
+
+
+
+
+
+
+
+
+
+                <%-- ****** FIN DE MODAL DE USUARIO INHABILIDATO --%>
                     
 
 
