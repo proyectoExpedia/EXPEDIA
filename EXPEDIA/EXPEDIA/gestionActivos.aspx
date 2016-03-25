@@ -132,17 +132,17 @@
 <%--       -----------> --%><%--      Los cambios que genera el botón leasing       --%> 
 <%--      |             --%>
 <%--      |             --%>         <%--      Numero de placa del activo       --%>
-<%--      |             --%>        <div class="pure-control-group">
-<%--      |             --%>                <label for="nplaca">Número de placa del activo</label>
-<%--      |             --%>                <asp:TextBox ValidationGroup="one" runat="server" ID="numero_placa" data-placement="left" ToolTip="Este espacio debe proporcionar el número de placa del activo que desea consultar, este espacio es requerido." placeholder="ENF-1523" />
-<%--      |             --%>                <asp:RequiredFieldValidator ValidationGroup="one" ID="vPlaca" runat="server" ControlToValidate="numero_placa" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
-<%--      |             --%>                </div>
-<%--      |             --%>          <%--      Numero de placa del activo       --%>
-<%--      |             --%>         <div class="pure-control-group">
-<%--      |             --%>                <label for="nserie">Número de serie del activo</label>
-<%--      |             --%>                <asp:TextBox ValidationGroup="one" ID="numero_serie" runat="server" data-placement="left" ToolTip="Este espacio debe proporcionar el número de serie del activo, este espacio es requerido." placeholder="MUJ23HJCK987" />
-<%--      |             --%>                <asp:RequiredFieldValidator ValidationGroup="one" ID="vSerie" runat="server" ControlToValidate="numero_serie" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
-<%--      |             --%>         </div>
+<%--      |             --%>  <div class="pure-control-group">
+<%--      |             --%>        <label for="nplaca">Número de placa del activo</label>
+<%--      |             --%>        <asp:TextBox ValidationGroup="one" runat="server" ID="numero_placa" data-placement="left" ToolTip="Este espacio debe proporcionar el número de placa del activo que desea consultar, este espacio es requerido." placeholder="ENF-1523" />
+<%--      |             --%>      <%--      Numero de placa del activo       --%>
+<%--      |             --%>  <br />
+<%--      |             --%>  <label for="nserie">Número de serie del activo</label>
+<%--      |             --%>        <asp:TextBox ValidationGroup="one" ID="numero_serie" runat="server" data-placement="left" ToolTip="Este espacio debe proporcionar el número de serie del activo, este espacio es requerido." placeholder="MUJ23HJCK987" />
+<%--      |             --%>        <asp:CompareValidator ValidationGroup="one" ID="vPlacaYserie" runat="server" ControlToCompare="numero_serie" ControlToValidate="numero_placa" Operator="NotEqual" Type="String" ForeColor="Red" SetFocusOnError="true" Display="Dynamic" ErrorMessage="Los números de placa y serie no pueden ser iguales. Por favor ingrese números de placa y serie distintos."></asp:CompareValidator>
+<%--      |             --%>        <asp:RequiredFieldValidator ValidationGroup="one" ID="RequiredFieldValidator1" runat="server" ControlToValidate="numero_placa" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
+<%--      |             --%>  </div>
+<%--      |             --%>  
 <%--      |             --%>
 <%--      |             --%>  <div class="pure-control-group" id="leasing" style="display: none">
 <%--      |             --%>        <div class="pure-control-group">
