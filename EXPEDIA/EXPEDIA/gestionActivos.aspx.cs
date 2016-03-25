@@ -22,9 +22,11 @@ namespace EXPEDIA
         protected void Bt_Ingresar_Click(object sender, EventArgs e)
         {
 
+            Session["Inhabilitado"] = "";
+            if (corroborarExistenciaDatos("Activos", "bd_numero_placa", numero_placa.Text, Button1))
+            {
 
-
-            if (RadioButton2.Checked)
+                if (RadioButton2.Checked)
             {
                 Conexion c = new Conexion();
                 SqlConnection Conexion = c.Conectar();
@@ -90,38 +92,58 @@ namespace EXPEDIA
                 catch (Exception t) { Response.Write("error" + t); }
             }
 
-            if (RadioButton4.Checked)
-            {
-                Conexion c = new Conexion();
-                SqlConnection Conexion = c.Conectar();
-                string Sql = @"INSERT INTO Activos (bd_tipo_activo, bd_numero_placa, bd_numero_serie, bd_aquisicion_ac, bd_finalizacion_contrato, bd_costo_activo, bd_descripcion_activo, bd_departamento, bd_proveedor, bd_especificacion_tecnica) values (@tipo_activo, @placa, @serie, @adquiscion, @finalizacion, @costo, @descripcion, @departamento, @proveedor, @especificacion_tecnica)";
-
-                Conexion.Open();//abrimos conexion    
-                try
+                if (RadioButton4.Checked)
                 {
-                    SqlCommand cmd = new SqlCommand(Sql, Conexion);
+                    Conexion c = new Conexion();
+                    SqlConnection Conexion = c.Conectar();
+                    string Sql = @"INSERT INTO Activos (bd_tipo_activo, bd_numero_placa, bd_numero_serie, bd_aquisicion_ac, bd_finalizacion_contrato, bd_costo_activo, bd_descripcion_activo, bd_departamento, bd_proveedor, bd_especificacion_tecnica) values (@tipo_activo, @placa, @serie, @adquiscion, @finalizacion, @costo, @descripcion, @departamento, @proveedor, @especificacion_tecnica)";
 
-                    cmd.Parameters.AddWithValue("@tipo_activo", "Leasing");
-                    cmd.Parameters.AddWithValue("@placa", numero_placa.Text);
-                    cmd.Parameters.AddWithValue("@serie", numero_serie.Text);
-                    cmd.Parameters.AddWithValue("@adquiscion", fecha_adquisicion.Text);
-                    cmd.Parameters.AddWithValue("@finalizacion", finalizacion_contrato.Text);
-                    cmd.Parameters.AddWithValue("@costo", precio.Text);
-                    cmd.Parameters.AddWithValue("@descripcion", descripcion.SelectedValue);
-                    cmd.Parameters.AddWithValue("@departamento", area.SelectedValue);
-                    cmd.Parameters.AddWithValue("@proveedor", proveedor.SelectedValue);
-                    cmd.Parameters.AddWithValue("@especificacion_tecnica", especificacion_tecnica.Text);
+                    Conexion.Open();//abrimos conexion    
+                    try
+                    {
+                        SqlCommand cmd = new SqlCommand(Sql, Conexion);
 
-                    cmd.ExecuteNonQuery();
-                    Response.Redirect("gestionActivos.aspx");
-                    c.Desconectar(Conexion);
+                        cmd.Parameters.AddWithValue("@tipo_activo", "Leasing");
+                        cmd.Parameters.AddWithValue("@placa", numero_placa.Text);
+                        cmd.Parameters.AddWithValue("@serie", numero_serie.Text);
+                        cmd.Parameters.AddWithValue("@adquiscion", fecha_adquisicion.Text);
+                        cmd.Parameters.AddWithValue("@finalizacion", finalizacion_contrato.Text);
+                        cmd.Parameters.AddWithValue("@costo", precio.Text);
+                        cmd.Parameters.AddWithValue("@descripcion", descripcion.SelectedValue);
+                        cmd.Parameters.AddWithValue("@departamento", area.SelectedValue);
+                        cmd.Parameters.AddWithValue("@proveedor", proveedor.SelectedValue);
+                        cmd.Parameters.AddWithValue("@especificacion_tecnica", especificacion_tecnica.Text);
+
+                        cmd.ExecuteNonQuery();
+                        Response.Redirect("gestionActivos.aspx");
+                        c.Desconectar(Conexion);
+                    }
+                    catch (Exception t) { Response.Write("error" + t); }
                 }
-                catch (Exception t) { Response.Write("error" + t); }
-
 
             }
         }
-
+        protected bool corroborarExistenciaDatos(String tabla, String id, String valor, Control btn)
+        {
+            Conexion c = new Conexion();
+            SqlConnection Conexion = c.Conectar();
+            string Sql = @"SELECT COUNT(*) FROM " + tabla + " where " + id + "=@valor";
+            Conexion.Open();//abrimos conexion
+            SqlCommand cmd = new SqlCommand(Sql, Conexion); //ejecutamos la instruccion 
+            cmd.Parameters.AddWithValue("@valor", valor);
+            int respuesta = Convert.ToInt32(cmd.ExecuteScalar());
+            if (respuesta == 0)
+            {
+                Conexion.Close();
+                return true;
+            }
+            else
+            {
+                error(btn, "Disculpa", "El valor " + valor + " ya fue registrado en el sistema");
+                Conexion.Close();
+                return false;
+            }
+        }
 
         protected void cargar_area(DropDownList dropdown)
         {
@@ -231,7 +253,22 @@ namespace EXPEDIA
             }
 
         }
+        protected void error(Control btn, String titulo, String texto)
+        {
+            System.Text.StringBuilder sb = new System.Text.StringBuilder();
+            sb.Append(@"<script language='javascript'>");
+            sb.Append(@"swal({");
+            sb.Append(@"title: ' " + titulo + " ',");
+            sb.Append(@"text: ' " + texto + "',");
+            sb.Append(@"type: 'error',");
+            sb.Append(@"confirmButtonText: 'Continuar'");
+            sb.Append(@"})");
+            sb.Append(@"</script>");
 
+            ScriptManager.RegisterStartupScript(btn, this.GetType(), "Holi", sb.ToString(), false);
+            //http://limonte.github.io/sweetalert2/
+
+        }
         protected void btn_Registrar_Proveedor_Click(object sender, EventArgs e)
         {
             Conexion c = new Conexion();
