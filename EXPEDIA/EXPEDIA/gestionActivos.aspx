@@ -230,9 +230,8 @@
                                 <fieldset class="pure-control-group">
                                     <label for="area">Departamento o Sede regional destinado(a)</label>
                                     <asp:DropDownList ValidationGroup="one" ID="area" runat="server" data-toggle="tooltip" title="En este espacio debe proporcionar el área la cual está destinada el activo, es requerido. " class="pure-input-1-2">
-                                        <asp:ListItem>Elija un Área o Departamento</asp:ListItem>
-
-                                        <asp:ListItem>¿La opción que busca no aparece? Haz uso el icono situado contiguo a esta categoría para proporcionar una nueva.</asp:ListItem>
+                                        <asp:ListItem Selected="True" disabled>Elija un Área o Departamento</asp:ListItem>
+                                        <asp:ListItem disabled>¿La opción que busca no aparece? Haz uso el icono situado contiguo a esta categoría para proporcionar una nueva.</asp:ListItem>
                                     </asp:DropDownList>
                                     <a data-toggle="modal" data-target="#modalAreas"><span class="glyphicon glyphicon-wrench"></span></a>
                                     <asp:RequiredFieldValidator ValidationGroup="one" ID="vArea" runat="server" ControlToValidate="area" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
@@ -256,10 +255,7 @@
                                          </fieldset>
                                
                                 <div class="pure-controls">
-                                    <asp:Button runat="server" CssClass="btn btn-success" OnClick="Bt_Ingresar_Click" ID="Button1" Text="Registrar Activo" />
-                                    <div id="mensaje" style="display: none">
-                                        <h3>Las acciones han sido realizado con éxito.</h3>
-                                    </div>
+                                    <asp:Button runat="server" CssClass="btn btn-success" ValidationGroup="one" OnClick="Bt_Ingresar_Click" ID="Button1" Text="Registrar Activo" />
                                 </div>
                             </fieldset>
 
@@ -651,7 +647,8 @@
                        <%--               ----------------Modal Agregar Nueva Area--------------                                --%>   
 
                             </div>
-                            <div class="modal fade" id="modalAreas" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                            <asp:Panel runat="server" DefaultButton="Registrar_Area" ID="panel5"> 
+                                    <div class="modal fade" id="modalAreas" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
@@ -664,10 +661,10 @@
                                                     <fieldset class="pure-control-group">
                                                         <div class="input-prepend">
                                                             <label for="id_area">Identificador del área</label>
-                                                            <asp:TextBox runat="server" ID="id_areas" placeholder="AR-001" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar un identificador que caracterice el área o unidad que se esté registrando, es requerido. " />
+                                                            <asp:TextBox ValidationGroup="a" runat="server" ID="id_areas" placeholder="AR-001" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar un identificador que caracterice el área o unidad que se esté registrando, es requerido. " />
                                                             <br />
                                                             <label for="area57">Área</label>
-                                                            <asp:TextBox runat="server" ID="descripcion_area" type="text" placeholder="Recursos Humanos" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar el nombre de la área que se desea registrar, es requerido. " />
+                                                            <asp:TextBox ValidationGroup="a" runat="server" ID="descripcion_area" type="text" placeholder="Recursos Humanos" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar el nombre de la área que se desea registrar, es requerido. " />
                                                         </div>
                                                     </fieldset>
                                                 </div>
@@ -675,7 +672,7 @@
                                             </div>
                                             <div class="modal-footer">
                                                 <div class="span">
-                                                    <asp:Button runat="server" ID="Registrar_Area" CssClass="btn btn-success" OnClick="btn_Registrar_Area_Click" Text="Registrar área" />
+                                                    <asp:Button runat="server" ValidationGroup="a" ID="Registrar_Area" CssClass="btn btn-success" OnClick="btn_Registrar_Area_Click" Text="Registrar área" />
                                                     <button class="btn btn-default" data-dismiss="modal">Cerrar</button>
                                                 </div>
                                                 <div class="span pull-left" style="margin-top: 20px;">
@@ -697,6 +694,7 @@
                                 </div>
                                 <!-- /.modal -->
                             </div>
+                            </asp:Panel>
                         </div>
         </div>
 

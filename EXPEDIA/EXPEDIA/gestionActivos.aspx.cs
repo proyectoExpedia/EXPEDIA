@@ -13,9 +13,12 @@ namespace EXPEDIA
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            cargar_area(area);
-            cargar_descripcion(descripcion);
-            cargar_proveedor(proveedor);
+            if (!IsPostBack)
+            {
+                cargar_area(area);
+                cargar_descripcion(descripcion);
+                cargar_proveedor(proveedor);
+            }     
 
 
         }
@@ -227,7 +230,6 @@ namespace EXPEDIA
                 cmd.ExecuteNonQuery();
                 c.Desconectar(Conexion);
                 Response.Redirect("gestionActivos.aspx");
-
                 cargar_descripcion(descripcion);
 
             }
@@ -252,14 +254,34 @@ namespace EXPEDIA
                 cmd.Parameters.AddWithValue("@descripcionA", descripcion_area.Text);
                 cmd.ExecuteNonQuery();
                 c.Desconectar(Conexion);
-
-                cargar_descripcion(descripcion);
+                ListItem item = new ListItem(descripcion_area.Text, id_areas.Text, true);
+                area.Items.Add(item);
+                excelente(Registrar_Area);
+                //area_actualizar.Items.Add(item);
+                //descripcion.Controls.Add(new ListItem());
+                //cargar_descripcion(descripcion);
 
             }
             catch (Exception a)
             {
                 Response.Write("error" + a.ToString());
             }
+
+        }
+
+        protected void excelente(Control boton)
+        {
+            System.Text.StringBuilder sb = new System.Text.StringBuilder();
+            sb.Append(@"<script language='javascript'>");
+            sb.Append(@"swal({");
+            sb.Append(@"title: 'Solicitudes realizadas correctamente',");
+            sb.Append(@"timer: 2000,");
+            sb.Append(@"type: 'success'");
+            sb.Append(@"})");
+            sb.Append(@"</script>");
+            ScriptManager.RegisterStartupScript(boton, this.GetType(), "Holi", sb.ToString(), false);
+            //http://limonte.github.io/sweetalert2/
+
 
         }
         protected void error(Control btn, String titulo, String texto)
@@ -296,8 +318,7 @@ namespace EXPEDIA
                 cmd.Parameters.AddWithValue("@telCont", telefono.Text);
                 cmd.ExecuteNonQuery();
                 c.Desconectar(Conexion);
-
-                cargar_descripcion(descripcion);
+                
 
             }
             catch (Exception a)

@@ -74,6 +74,7 @@
     <Content Include="css\sweetalert.css" />
     <Content Include="css\Tablas.css" />
     <Content Include="gestionActivos.aspx" />
+    <Content Include="gestionAreas.aspx" />
     <Content Include="GestionConsultas.aspx" />
     <Content Include="gestionPrestamos.aspx" />
     <Content Include="gestionUsuarios.aspx" />
@@ -136,6 +137,12 @@
     </Compile>
     <Compile Include="gestionActivos.aspx.designer.cs">
       <DependentUpon>gestionActivos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="gestionAreas.aspx.cs">
+      <DependentUpon>gestionAreas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="gestionAreas.aspx.designer.cs">
+      <DependentUpon>gestionAreas.aspx</DependentUpon>
     </Compile>
     <Compile Include="GestionConsultas.aspx.cs">
       <DependentUpon>GestionConsultas.aspx</DependentUpon>
