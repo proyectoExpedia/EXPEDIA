@@ -21,8 +21,11 @@ namespace EXPEDIA
         }
         protected void Bt_Ingresar_Click(object sender, EventArgs e)
         {
+            if (Page.IsValid)
+            {
+                //valida radios correctamente.
+            }
 
-            Session["Inhabilitado"] = "";
             if (corroborarExistenciaDatos("Activos", "bd_numero_placa", numero_placa.Text, Button1))
             {
 
@@ -30,7 +33,8 @@ namespace EXPEDIA
             {
                 Conexion c = new Conexion();
                 SqlConnection Conexion = c.Conectar();
-                string Sql = @"INSERT INTO Activos (bd_tipo_activo, bd_numero_placa, bd_numero_serie, bd_fecha_inicio_garantia, bd_fecha_final_garantia, bd_descripcion_activo, bd_departamento, bd_proveedor, bd_especificacion_tecnica,bd_fecha_compra, bd_costo_activo) values (@tipo_activo, @placa, @serie, @garantia_inicio, @garantia_final, @descripcion,@departamento,@proveedor,@especificacion_tecnica,@fecha_compra, @costo)";
+                string Sql = @"INSERT INTO Activos (bd_tipo_activo, bd_numero_placa, bd_numero_serie, bd_fecha_inicio_garantia, bd_fecha_final_garantia, bd_descripcion_activo, bd_departamento, bd_proveedor, bd_especificacion_tecnica,bd_fecha_compra, bd_costo_activo, bd_estado) 
+                values (@tipo_activo, @placa, @serie, @garantia_inicio, @garantia_final, @descripcion,@departamento,@proveedor,@especificacion_tecnica,@fecha_compra, @costo , @estado)";
 
                 Conexion.Open();//abrimos conexion    
                 try
@@ -49,6 +53,8 @@ namespace EXPEDIA
                     cmd.Parameters.AddWithValue("@departamento", area.SelectedValue);
                     cmd.Parameters.AddWithValue("@proveedor", proveedor.SelectedValue);
                     cmd.Parameters.AddWithValue("@especificacion_tecnica", especificacion_tecnica.Text);
+                    cmd.Parameters.AddWithValue("@estado", 1);
+                        
                     cmd.ExecuteNonQuery();
                     Response.Redirect("gestionActivos.aspx");
                     c.Desconectar(Conexion);
@@ -68,7 +74,8 @@ namespace EXPEDIA
             {
                 Conexion c = new Conexion();
                 SqlConnection Conexion = c.Conectar();
-                string Sql = @"INSERT INTO Activos (bd_tipo_activo, bd_numero_placa, bd_numero_serie, bd_fecha_inicio_garantia, bd_fecha_final_garantia, bd_descripcion_activo, bd_departamento, bd_proveedor, bd_especificacion_tecnica,bd_fecha_compra, bd_costo_activo) values (@tipo_activo, @placa, @serie, @garantia_inicio, @garantia_final, @descripcion,@departamento,@proveedor,@especificacion_tecnica,@fecha_compra, @costo)";
+                string Sql = @"INSERT INTO Activos (bd_tipo_activo, bd_numero_placa, bd_numero_serie, bd_fecha_inicio_garantia, bd_fecha_final_garantia, bd_descripcion_activo, bd_departamento, bd_proveedor, bd_especificacion_tecnica,bd_fecha_compra, bd_costo_activo, bd_estado) 
+                values (@tipo_activo, @placa, @serie, @garantia_inicio, @garantia_final, @descripcion,@departamento,@proveedor,@especificacion_tecnica,@fecha_compra, @costo, @estado)";
 
                 Conexion.Open();//abrimos conexion    
                 try
@@ -85,6 +92,7 @@ namespace EXPEDIA
                     cmd.Parameters.AddWithValue("@especificacion_tecnica", especificacion_tecnica.Text);
                     cmd.Parameters.AddWithValue("@fecha_compra", fecha_compra.Text);
                     cmd.Parameters.AddWithValue("@costo", precio.Text);
+                    cmd.Parameters.AddWithValue("@estado", 1);
                     cmd.ExecuteNonQuery();
                     Response.Redirect("gestionActivos.aspx");
                     c.Desconectar(Conexion);
@@ -96,7 +104,8 @@ namespace EXPEDIA
                 {
                     Conexion c = new Conexion();
                     SqlConnection Conexion = c.Conectar();
-                    string Sql = @"INSERT INTO Activos (bd_tipo_activo, bd_numero_placa, bd_numero_serie, bd_aquisicion_ac, bd_finalizacion_contrato, bd_costo_activo, bd_descripcion_activo, bd_departamento, bd_proveedor, bd_especificacion_tecnica) values (@tipo_activo, @placa, @serie, @adquiscion, @finalizacion, @costo, @descripcion, @departamento, @proveedor, @especificacion_tecnica)";
+                    string Sql = @"INSERT INTO Activos (bd_tipo_activo, bd_numero_placa, bd_numero_serie, bd_aquisicion_ac, bd_finalizacion_contrato, bd_costo_activo, bd_descripcion_activo, bd_departamento, bd_proveedor, bd_especificacion_tecnica) 
+                    values (@tipo_activo, @placa, @serie, @adquiscion, @finalizacion, @costo, @descripcion, @departamento, @proveedor, @especificacion_tecnica)";
 
                     Conexion.Open();//abrimos conexion    
                     try
@@ -297,6 +306,12 @@ namespace EXPEDIA
             }
 
         }
+
+        protected void ValidarRadio234_ServerValidate(object source, ServerValidateEventArgs args)
+        {
+            args.IsValid = RadioButton2.Checked || RadioButton3.Checked || RadioButton4.Checked;
+        }
+
 
     }
 

@@ -85,6 +85,15 @@ namespace EXPEDIA {
         protected global::System.Web.UI.WebControls.RadioButton RadioButton4;
         
         /// <summary>
+        /// ValidarRadio234 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CustomValidator ValidarRadio234;
+        
+        /// <summary>
         /// numero_placa control.
         /// </summary>
         /// <remarks>

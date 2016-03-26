@@ -12,15 +12,17 @@
     <title>EXPEDIA</title>
     <link href="css/bootstrap.css" rel="stylesheet" />
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" />
-    <link rel="icon" href="img/ExpediaLogo.png">
+    <link rel="icon" href="img/ExpediaLogo.png"/>
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <link href="css/jquery.bxslider.css" rel="stylesheet" />
     <script src="js/jquery.bxslider.js"></script>
     <script src="js/bootstrap.min.js"></script>
-    <link href="css/purecss.css" rel="stylesheet" />
+    <link href="css/purecss.css" rel="stylesheet"/>
     <script src="js/jQueryUI/jquery-ui.min.js"></script>
     <link href="js/jQueryUI/jquery-ui.theme.min.css" rel="stylesheet" />
     <link href="js/jQueryUI/jquery-ui.min.css" rel="stylesheet" />
+    <link href="css/sweetalert.css" rel="stylesheet" />
+    <script src="js/sweetalert.min.js"></script>
 </head>
 <body>
     <!--               Menu                -->
@@ -95,17 +97,33 @@
                                     <label for="tipo_activo">Tipo de activo</label>
                                     <div style="margin-left: 55px" class="btn-group" data-toggle="buttons">
                                         <label class="btn btn-primary" onclick="mostrarleasing(1);">
-                                            <asp:RadioButton runat="server" ID="RadioButton2" Text="Software" autocomplete="off" />
+                                            <asp:RadioButton runat="server" ID="RadioButton2" Text="Software" autocomplete="off" GroupName="TiposActivo"/>
                                         </label>
                                         <label class="btn btn-primary " onclick="mostrarleasing(2);">
-                                            <asp:RadioButton runat="server" ID="RadioButton3" Text="Hardware" autocomplete="off" />
+                                            <asp:RadioButton runat="server" ID="RadioButton3" Text="Hardware" autocomplete="off" GroupName="TiposActivo"/>
                                         </label>
                                         <label class="btn btn-primary " onclick="mostrarleasing(3);">
-                                            <asp:RadioButton runat="server" ID="RadioButton4" Text="Leasing" autocomplete="off" />
+                                            <asp:RadioButton runat="server" ID="RadioButton4" Text="Leasing" autocomplete="off" GroupName="TiposActivo"/>
                                         </label>
+                                        <asp:CustomValidator id="ValidarRadio234" runat="server" Display="Dynamic" ForeColor="Red" ErrorMessage="*Debe elegir un tipo de Activo" ClientValidationFunction="ValidarRadio234_ClientValidate" OnServerValidate="ValidarRadio234_ServerValidate"></asp:CustomValidator>
 
                                     </div>
                                 </div>
+
+                                <script>
+                                    function ValidarRadio234_ClientValidate(source, args)
+                                        {   
+                                            if(document.getElementById("<%= RadioButton2.ClientID %>").checked || document.getElementById("<%= RadioButton3.ClientID %>").checked || document.getElementById("<%= RadioButton4.ClientID %>").checked)
+                                            {
+                                                args.IsValid = true;
+                                            }
+                                            else
+                                            {
+                                                args.IsValid = false;
+                                            }
+    
+                                        }
+                                </script>
 
                                 <script>
                                     //function mostrarleasing() {
