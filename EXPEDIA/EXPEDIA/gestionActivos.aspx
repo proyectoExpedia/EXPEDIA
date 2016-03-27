@@ -105,10 +105,8 @@
                                         <label class="btn btn-primary " onclick="mostrarleasing(3);">
                                             <asp:RadioButton runat="server" ID="RadioButton4" Text="Leasing" autocomplete="off" GroupName="TiposActivo"/>
                                         </label>
-                                        <br/>
-                                        <asp:CustomValidator id="ValidarRadio234" runat="server" Display="Dynamic" ForeColor="Red" ErrorMessage="Seleccione Uno" ClientValidationFunction="ValidarRadio234_ClientValidate" OnServerValidate="ValidarRadio234_ServerValidate"></asp:CustomValidator>
                                     </div>
-                                    
+                                        <asp:CustomValidator id="ValidarRadio234" runat="server" Display="Dynamic" ForeColor="Red" ErrorMessage="Seleccione Uno" ClientValidationFunction="ValidarRadio234_ClientValidate" OnServerValidate="ValidarRadio234_ServerValidate"></asp:CustomValidator>
                                 </div>
 
                                 <script>
@@ -271,10 +269,7 @@
                                          </fieldset>
                                
                                 <div class="pure-controls">
-                                    
                                     <asp:Button runat="server" CssClass="btn btn-success" ValidationGroup="one" OnClick="Bt_Ingresar_Click" ID="Button1" Text="Registrar Activo" />
-                                 
-                                  
                                 </div>
                             </fieldset>
                             </div>
@@ -299,9 +294,9 @@
 
                                 </div>
 
-                                <p>
+                                <div class="pure-control-group">
                                     <asp:Button runat="server" ID="btn_consultarAc" CssClass="btn btn-primary" OnClientClick="mostrar()" Text="Consultar"/>
-                                </p>
+                                </div>
                                 </asp:Panel>
                                 <script type="text/javascript">
                                     function mostrar() {

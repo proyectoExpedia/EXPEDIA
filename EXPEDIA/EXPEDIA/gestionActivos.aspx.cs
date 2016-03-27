@@ -58,11 +58,12 @@ namespace EXPEDIA
                     cmd.Parameters.AddWithValue("@estado", 1);
                         
                     cmd.ExecuteNonQuery();
-                    excelente(Button1);
-                    Response.Redirect("gestionActivos.aspx");
                     c.Desconectar(Conexion);
+                    excelente(Button1);
 
-                }
+
+
+                    }
                 catch (Exception t) { Response.Write("error" + t); }
 
 
@@ -97,10 +98,10 @@ namespace EXPEDIA
                     cmd.Parameters.AddWithValue("@costo", precio.Text);
                     cmd.Parameters.AddWithValue("@estado", 1);
                     cmd.ExecuteNonQuery();
-                        excelente(Button1);
-                        Response.Redirect("gestionActivos.aspx");
                     c.Desconectar(Conexion);
-                }
+                    excelente(Button1);
+
+                    }
                 catch (Exception t) { Response.Write("error" + t); }
             }
 
@@ -126,15 +127,16 @@ namespace EXPEDIA
                         cmd.Parameters.AddWithValue("@departamento", area.SelectedValue);
                         cmd.Parameters.AddWithValue("@proveedor", proveedor.SelectedValue);
                         cmd.Parameters.AddWithValue("@especificacion_tecnica", especificacion_tecnica.Text);
-
                         cmd.ExecuteNonQuery();
-                        excelente(Button1);
-                        Response.Redirect("gestionActivos.aspx");
                         c.Desconectar(Conexion);
+                        excelente(Button1);
+                        //Response.Redirect("gestionActivos.aspx");
+
+
                     }
                     catch (Exception t) { Response.Write("error" + t); }
                 }
-
+                
             }
         }
         protected bool corroborarExistenciaDatos(String tabla, String id, String valor, Control btn)
@@ -269,9 +271,9 @@ namespace EXPEDIA
                 cmd.ExecuteNonQuery();
                 c.Desconectar(Conexion);
                 ListItem item2 = new ListItem(id_descripcion_nueva.Text, descripcion_nueva.Text, true);
-                area.Items.Add(item2);
+                descripcion.Items.Add(item2);
                 excelente(Registar_Descripcion_Ac);
-                Response.Redirect("gestionActivos.aspx");
+                //Response.Redirect("gestionActivos.aspx");
                 //cargar_descripcion(descripcion);
 
             }
@@ -302,10 +304,10 @@ namespace EXPEDIA
                     cmd.Parameters.AddWithValue("@telCont", telefono.Text);
                     cmd.ExecuteNonQuery();
                     ListItem item3 = new ListItem(idp.Text, nproveedor.Text, true);
-                    area.Items.Add(item3);
-                    excelente(Resgistrar_Proveedor);
-                    Response.Redirect("gestionActivos.aspx");
+                    proveedor.Items.Add(item3);
                     c.Desconectar(Conexion);
+                    excelente(Resgistrar_Proveedor);
+                    //Response.Redirect("gestionActivos.aspx");
 
 
                 }
