@@ -26,10 +26,9 @@ namespace EXPEDIA
         {
             if (Page.IsValid)
             {
-                //valida radios correctamente.
+                //validate is successful.
             }
-
-            if (corroborarExistenciaDatos("Activos", "bd_numero_placa", numero_placa.Text, Button1))
+            if ((corroborarExistenciaDatos("Activos", "bd_numero_placa", numero_placa.Text, Button1) && corroborarExistenciaDatos("Activos", "bd_numero_serie", numero_serie.Text, Button1)))
             {
 
                 if (RadioButton2.Checked)
@@ -217,33 +216,12 @@ namespace EXPEDIA
             Conexion.Close();
         }
 
-        protected void btn_Registrar_Descripcion_Click(object sender, EventArgs e)
-        {
-            Conexion c = new Conexion();
-            SqlConnection Conexion = c.Conectar();
-            string Sql = @"INSERT INTO Descripcion (bd_id_descripcion, Descripcion) values (@id, @descripcion)";
-
-            Conexion.Open();//abrimos conexion
-
-            try
-            {
-                SqlCommand cmd = new SqlCommand(Sql, Conexion);
-                cmd.Parameters.AddWithValue("@id", id_descripcion_nueva.Text); //enviamos los parametros
-                cmd.Parameters.AddWithValue("@descripcion", descripcion_nueva.Text);
-                cmd.ExecuteNonQuery();
-                c.Desconectar(Conexion);
-                Response.Redirect("gestionActivos.aspx");
-                cargar_descripcion(descripcion);
-
-            }
-            catch (Exception a)
-            {
-                Response.Write("error" + a.ToString());
-            }
-
-        }
+        
         protected void btn_Registrar_Area_Click(object sender, EventArgs e)
         {
+            if (corroborarExistenciaDatos("Areas", "bd_id_area", id_areas.Text, Registrar_Area))
+            {
+            
             Conexion c = new Conexion();
             SqlConnection Conexion = c.Conectar();
             string Sql = @"INSERT INTO Areas (bd_id_area, bd_descripcion) values (@idA, @descripcionA)";
@@ -269,7 +247,73 @@ namespace EXPEDIA
             {
                 Response.Write("error" + a.ToString());
             }
+            }
 
+        }
+
+        protected void btn_Registrar_Descripcion_Ac_Click(object sender, EventArgs e)
+        {
+            if (corroborarExistenciaDatos("Descripcion", "bd_id_descripcion", id_descripcion_nueva.Text, Registar_Descripcion_Ac)) { 
+
+            Conexion c = new Conexion();
+            SqlConnection Conexion = c.Conectar();
+            string Sql = @"INSERT INTO Descripcion (bd_id_descripcion, Descripcion) values (@id, @descripcion)";
+
+            Conexion.Open();//abrimos conexion
+
+            try
+            {
+                SqlCommand cmd = new SqlCommand(Sql, Conexion);
+                cmd.Parameters.AddWithValue("@id", id_descripcion_nueva.Text); //enviamos los parametros
+                cmd.Parameters.AddWithValue("@descripcion", descripcion_nueva.Text);
+                cmd.ExecuteNonQuery();
+                c.Desconectar(Conexion);
+                ListItem item2 = new ListItem(id_descripcion_nueva.Text, descripcion_nueva.Text, true);
+                area.Items.Add(item2);
+                excelente(Registar_Descripcion_Ac);
+                Response.Redirect("gestionActivos.aspx");
+                //cargar_descripcion(descripcion);
+
+            }
+            catch (Exception a)
+            {
+                Response.Write("error" + a.ToString());
+            }
+            }
+        }
+
+        protected void btn_Registrar_Proveedor_Click(object sender, EventArgs e)
+        {
+            if (corroborarExistenciaDatos("Proveedores", "bd_nombre_proveedor", nproveedor.Text, Resgistrar_Proveedor))
+            {
+                Conexion c = new Conexion();
+                SqlConnection Conexion = c.Conectar();
+                string Sql = @"INSERT INTO Proveedores (bd_id_proveedor, bd_nombre_proveedor, bd_correo_electronico_prov, bd_numero_telefonico_empresa, bd_numero_contacto) values (@idProv, @nombProv, @CorreoProv, @telProv, @telCont)";
+
+                Conexion.Open();//abrimos conexion
+
+                try
+                {
+                    SqlCommand cmd = new SqlCommand(Sql, Conexion);
+                    cmd.Parameters.AddWithValue("@idProv", idp.Text); //enviamos los parametros
+                    cmd.Parameters.AddWithValue("@nombProv", nproveedor.Text);
+                    cmd.Parameters.AddWithValue("@CorreoProv", correo.Text);
+                    cmd.Parameters.AddWithValue("@telProv", telefono1.Text);
+                    cmd.Parameters.AddWithValue("@telCont", telefono.Text);
+                    cmd.ExecuteNonQuery();
+                    ListItem item3 = new ListItem(idp.Text, nproveedor.Text, true);
+                    area.Items.Add(item3);
+                    excelente(Resgistrar_Proveedor);
+                    Response.Redirect("gestionActivos.aspx");
+                    c.Desconectar(Conexion);
+
+
+                }
+                catch (Exception a)
+                {
+                    Response.Write("error" + a.ToString());
+                }
+            }
         }
 
         protected void excelente(Control boton)
@@ -287,6 +331,7 @@ namespace EXPEDIA
 
 
         }
+
         protected void error(Control btn, String titulo, String texto)
         {
             System.Text.StringBuilder sb = new System.Text.StringBuilder();
@@ -303,39 +348,13 @@ namespace EXPEDIA
             //http://limonte.github.io/sweetalert2/
 
         }
-        protected void btn_Registrar_Proveedor_Click(object sender, EventArgs e)
-        {
-            Conexion c = new Conexion();
-            SqlConnection Conexion = c.Conectar();
-            string Sql = @"INSERT INTO Proveedores (bd_id_proveedor, bd_nombre_proveedor, bd_correo_electronico_prov, bd_numero_telefonico_empresa, bd_numero_contacto) values (@idProv, @nombProv, @CorreoProv, @telProv, @telCont)";
 
-            Conexion.Open();//abrimos conexion
-
-            try
-            {
-                SqlCommand cmd = new SqlCommand(Sql, Conexion);
-                cmd.Parameters.AddWithValue("@idProv", idp.Text); //enviamos los parametros
-                cmd.Parameters.AddWithValue("@nombProv", nproveedor.Text);
-                cmd.Parameters.AddWithValue("@CorreoProv", correo.Text);
-                cmd.Parameters.AddWithValue("@telProv", telefono1.Text);
-                cmd.Parameters.AddWithValue("@telCont", telefono.Text);
-                cmd.ExecuteNonQuery();
-                c.Desconectar(Conexion);
-                
-
-            }
-            catch (Exception a)
-            {
-                Response.Write("error" + a.ToString());
-            }
-
-        }
 
         protected void ValidarRadio234_ServerValidate(object source, ServerValidateEventArgs args)
         {
             args.IsValid = RadioButton2.Checked || RadioButton3.Checked || RadioButton4.Checked;
         }
-        
+
 
     }
 

@@ -90,7 +90,7 @@
                 <ContentTemplate>
                     <asp:Panel ID="Panel1" runat="server" DefaultButton="Button1">
                         <div class="tab-pane fade in active" id="Ingresar">
-                            <h1 style="text-align: center">Formulario de registro</h1>
+                            <h1 style="text-align: center">Control de Activos</h1>
                             <div class="pure-form pure-form-aligned" style="margin-top: 5px; margin-left: 20px;">
                             <fieldset>
                                 <div class="pure-controls-group">
@@ -105,9 +105,10 @@
                                         <label class="btn btn-primary " onclick="mostrarleasing(3);">
                                             <asp:RadioButton runat="server" ID="RadioButton4" Text="Leasing" autocomplete="off" GroupName="TiposActivo"/>
                                         </label>
-                                        <asp:CustomValidator id="ValidarRadio234" runat="server" Display="Dynamic" ForeColor="Red" ErrorMessage="*Debe elegir un tipo de Activo" ClientValidationFunction="ValidarRadio234_ClientValidate" OnServerValidate="ValidarRadio234_ServerValidate"></asp:CustomValidator>
-
+                                        <br/>
+                                        <asp:CustomValidator id="ValidarRadio234" runat="server" Display="Dynamic" ForeColor="Red" ErrorMessage="Seleccione Uno" ClientValidationFunction="ValidarRadio234_ClientValidate" OnServerValidate="ValidarRadio234_ServerValidate"></asp:CustomValidator>
                                     </div>
+                                    
                                 </div>
 
                                 <script>
@@ -120,6 +121,7 @@
                                             else
                                             {
                                                 args.IsValid = false;
+                                                
                                             }
     
                                         }
@@ -233,10 +235,10 @@
                                 <fieldset class="pure-control-group">
                                     <label for="descripcion">Descripción del activo</label>
                                     <asp:DropDownList ValidationGroup="one" ID="descripcion" runat="server" data-toggle="tooltip" title="Para completar este espacio facilmente, preguntese a si mismo: ¿Que estoy ingresando? Ejemplo: Estoy ingresando una Laptop. En este espacio usted deberá colocar la palabra Laptop, este espacio es requerido. " class="pure-input-1-2">
-                                        <asp:ListItem>Elija una descripción</asp:ListItem>
-                                        <asp:ListItem>¿La descripción no aparece? Haz uso el icono situado contiguo a esta categoría para proporcionar una nueva.</asp:ListItem>
+                                        <asp:ListItem disabled="disabled" Selected="True">Elija una descripción</asp:ListItem>
+                                        <asp:ListItem disabled="disabled" >¿La descripción no aparece? Haz uso el icono situado contiguo a esta categoría para proporcionar una nueva.</asp:ListItem>
                                     </asp:DropDownList>
-                                    <a data-toggle="modal" data-target="#modalDescripcion"><span class="glyphicon glyphicon-wrench"></span></a>
+                                    <a data-toggle="modal" data-target="#modalDescripcionAc"><span class="glyphicon glyphicon-wrench"></span></a>
                                      <asp:RequiredFieldValidator ValidationGroup="one" ID="vDescripción" runat="server" ControlToValidate="descripcion" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
                                 </fieldset>
 
@@ -244,8 +246,8 @@
                                 <fieldset class="pure-control-group">
                                     <label for="area">Departamento o Sede regional destinado(a)</label>
                                     <asp:DropDownList ValidationGroup="one" ID="area" runat="server" data-toggle="tooltip" title="En este espacio debe proporcionar el área la cual está destinada el activo, es requerido. " class="pure-input-1-2">
-                                        <asp:ListItem Selected="True" disabled>Elija un Área o Departamento</asp:ListItem>
-                                        <asp:ListItem disabled>¿La opción que busca no aparece? Haz uso el icono situado contiguo a esta categoría para proporcionar una nueva.</asp:ListItem>
+                                        <asp:ListItem disabled="disabled" Selected="True">Elija un Área o Departamento</asp:ListItem>
+                                        <asp:ListItem disabled="disabled" >¿La opción que busca no aparece? Haz uso el icono situado contiguo a esta categoría para proporcionar una nueva.</asp:ListItem>
                                     </asp:DropDownList>
                                     <a data-toggle="modal" data-target="#modalAreas"><span class="glyphicon glyphicon-wrench"></span></a>
                                     <asp:RequiredFieldValidator ValidationGroup="one" ID="vArea" runat="server" ControlToValidate="area" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
@@ -254,8 +256,8 @@
                                 <fieldset class="pure-control-group">
                                     <label for="provedor">Proveedor</label>
                                     <asp:DropDownList ValidationGroup="one" ID="proveedor" runat="server" data-toggle="tooltip" title="Proveedor: En este espacio debe proporcionar el nombre del proveedor del activo, este espacio es requerido." class="pure-input-1-2">
-                                        <asp:ListItem>Elija un proveedor</asp:ListItem>
-                                        <asp:ListItem>¿El proveedor no aparece? Haz uso el icono situado contiguo a esta categoría para proporcionar una nueva.</asp:ListItem>
+                                        <asp:ListItem  disabled="disabled" Selected="True">Elija un proveedor</asp:ListItem>
+                                        <asp:ListItem disabled="disabled" >¿El proveedor no aparece? Haz uso el icono situado contiguo a esta categoría para proporcionar una nueva.</asp:ListItem>
                                     </asp:DropDownList>
                                     <a data-toggle="modal" data-target="#modalProveedor"><span class="glyphicon glyphicon-wrench"></span></a>
                                     <asp:RequiredFieldValidator ValidationGroup="one" ID="vProveedor" runat="server" ControlToValidate="proveedor" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
@@ -272,30 +274,10 @@
                                     
                                     <asp:Button runat="server" CssClass="btn btn-success" ValidationGroup="one" OnClick="Bt_Ingresar_Click" ID="Button1" Text="Registrar Activo" />
                                  
-                                   <%--   validar para el boton    
-                                     <script type="text/javascript">
-                                         $(document).ready(function () {
-                                             var $submit = $("input[type=submit]"),
-                                                 $inputs = $('input[type=text], input[type=password]');
-
-                                             function checkEmpty() {
-
-                                                 // filter over the empty inputs
-
-                                                 return $inputs.filter(function () {
-                                                     return !$.trim(this.value);
-                                                 }).length === 0;
-                                             }
-
-                                             $inputs.on('blur', function () {
-                                                 $submit.prop("disabled", !checkEmpty());
-                                             }).blur(); // trigger an initial blur
-                                         });
-                                    </script>
-                                    -------------------------------     --%>
+                                  
                                 </div>
                             </fieldset>
-
+                            </div>
                         </div>
                     </asp:Panel>
                 </ContentTemplate>
@@ -303,7 +285,7 @@
 
              <%-- Formulario 2 --%>
 
-            <cc1:TabPanel runat="server" HeaderText="<span style='margin: 5px'  data-toggle='tab'><b>Control de usuarios</b> <span style='margin: 10px'  class='glyphicon glyphicon-question-sign'></span><span class='glyphicon glyphicon-minus-sign'></span><span class='glyphicon glyphicon-ok-sign'></span></span>" ID="TabPanel2">
+            <cc1:TabPanel runat="server" HeaderText="<span style='margin: 5px'  data-toggle='tab'><b>Control de Activos</b> <span style='margin: 10px'  class='glyphicon glyphicon-question-sign'></span><span class='glyphicon glyphicon-minus-sign'></span><span class='glyphicon glyphicon-ok-sign'></span></span>" ID="TabPanel2">
                 <ContentTemplate>
                     <asp:Panel ID="Panel2" runat="server" DefaultButton="btn_consultarAc">
                         <div class="tab-pane" id="Consultar">
@@ -313,7 +295,7 @@
                                 <div class="pure-control-group">
 
                                     <label for="cedula">Número de placa del activo</label>
-                                    <asp:TextBox runat="server" ID="cedula_buscar" data-toggle="tooltip" data-placement="left" title="Proporciona el número de placa del activo que desees consultar." placeholder="#########" />
+                                    <asp:TextBox runat="server" ID="cedula_buscar" data-toggle="tooltip" data-placement="left" title="Proporciona el número de placa o serie del activo que desees consultar." placeholder="#########" />
 
                                 </div>
 
@@ -400,12 +382,9 @@
 <%--      |             --%>         </div>
 <%--       -----------> --%><%--      terminan las opciones del leasing       --%>
 
-                                    <%--                                        <fieldset class="pure-control-group">
-                                            <label for="Tipo">Especificaciones técnicas</label>
-                                            <asp:TextBox  runat="server" TextMode  ="multiline"  ID="especificaciones"  data-toggle="tooltip" title="En este espacio se debe proporcionar las cualidades del activo." CssClass="pure-input-1-2" placeholder="Especificaciones Técnicas"/>
-                                        </fieldset>--%>
+                                   
                                 </div>
-                                        <%--      Numero de serie       --%>
+                                        
                                
 
                                         <%--      Precio       --%>
@@ -445,7 +424,7 @@
                                         <asp:ListItem>Elija una descripción</asp:ListItem>
                                         <asp:ListItem>¿La descripción no aparece? Haz uso el icono situado contiguo a esta categoría para proporcionar una nueva.</asp:ListItem>
                                     </asp:DropDownList>
-                                    <a data-toggle="modal" data-target="#modalDescripcion"><span class="glyphicon glyphicon-wrench"></span></a>
+                                    <a data-toggle="modal" data-target="#modalDescripcionAc"><span class="glyphicon glyphicon-wrench"></span></a>
                                      <asp:RequiredFieldValidator ValidationGroup="two" ID="vDescripcion2" runat="server" ControlToValidate="descripcion2" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
                                 </fieldset>
 
@@ -557,135 +536,10 @@
                                 <!-- /.modal-dialog -->
                             </div>
 
-                       <%--                            Modal Agregar Nueva Descripción                                --%>   
+                      <%--               ----------------Modal Agregar Nueva Area--------------                                --%>   
 
-                            <div class="modal fade" id="modalDescripcion" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                            <h4 class="modal-title" style="text-align: center" id="NuevaDescripcion">Nueva descripción</h4>
-                                        </div>
-                                        <div class="modal-body">
-                                            <div class="container">
-                                                <div class="pure-form pure-form-aligned">
-                                                    <fieldset class="pure-control-group">
-                                                        <div class="input-prepend">
-                                                            <label for="id_descripcion_nueva">ID de descripción:</label>
-                                                            <asp:TextBox runat="server" ID="id_descripcion_nueva" placeholder="Dispositivo de audio" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar la descripción del activo que se desea registrar, es requerido. " />
-                                                            <br />
-                                                            <label for="ocupacion">Descripción</label>
-                                                            <asp:TextBox runat="server" ID="descripcion_nueva" placeholder="Dispositivo de audio" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar la descripción del activo que se desea registrar, es requerido. " />
-                                                        </div>
-                                                    </fieldset>
-                                                </div>
-                                                <!-- /container -->
-                                            </div>
-                                            <div class="modal-footer">
-                                                <div class="span">
-                                                    <asp:Button runat="server" ID="btn_Registar" OnClick="btn_Registrar_Descripcion_Click" CssClass="btn btn-success" Text="Registrar descripción" />
-                                                    <button class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                                                </div>
-                                                <div class="span pull-left" style="margin-top: 20px;">
-                                                    <div class="alert alert-success fade">
-                                                        <button type="button" class="close" data-dismiss="alert">×</button>
-                                                        <strong>¡Acciones completadas!</strong> Ahora puedes seleccionar esta categoria.
-                                                    </div>
-                                                </div>
-                                                <script>
-                                                    $("#btn_Registar").on("click", function () {
-                                                        $(".alert").removeClass("in").show();
-                                                        $(".alert").delay(500).addClass("in").fadeOut(2000);
-                                                    });
-                                                </script>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- /.modal -->
-                            </div>
-
-                                   
-                            <script>
-            
-                                function masOpciones() {
-                                    var x = document.getElementById("descripcion_activo");
-                                    var option = document.createElement("option");
-                                    option.text = document.getElementById("Des").value;
-                                    x.add(option);
-                                }
-                            </script>
-
-                       <%--                            Modal Agregar Nuevo Proveedor                                --%>              
-
-                            <div class="modal fade" id="modalProveedor" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                            <h4 class="modal-title" style="text-align: center" id="Nuevoproveedor">Nuevo proveedor</h4>
-                                        </div>
-                                        <div class="modal-body">
-                                            <div class="container">
-                                                <div class="pure-form pure-form-aligned">
-                                                    <fieldset>
-                                                        <div class="pure-control-group">
-                                                            <label for="idP">Identificador</label>
-                                                            <asp:TextBox runat="server" ID="idp" placeholder="PR-000" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar un identificador que caracterice el proveedor que se esté registrando, es requerido. " />
-                                                        </div>
-
-                                                        <div class="pure-control-group">
-                                                            <label for="nproveedor">Nombre del proveedor</label>
-                                                            <asp:TextBox runat="server" ID="nproveedor" placeholder="Dell" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar el nombre del proveedor que se esté registrando, es requerido." />
-                                                        </div>
-
-                                                        <div class="pure-control-group">
-                                                            <label for="correo">Correo electrónico</label>
-                                                            <asp:TextBox runat="server" TextMode="Email" ID="correo" type="email" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar la dirección de correo electrónico del proveedor a registrar, es requerido." />
-                                                        </div>
-
-                                                        <fieldset class="pure-control-group">
-                                                            <label for="telefono">Número telefónico de la empresa</label>
-                                                            <span class="add-on btn btn-default">506</span>
-                                                            <asp:TextBox runat="server" ID="telefono1" type="number" placeholder="########" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar el número telefónico principal del proveedor a registrar, es requerido." min="11111111" max="99999999" />
-                                                        </fieldset>
-
-                                                        <fieldset class="pure-control-group">
-                                                            <label for="telefono">Número telefónico de contacto </label>
-                                                            <span class="add-on btn btn-default">506</span>
-                                                            <asp:TextBox runat="server" ID="telefono" type="number" placeholder="########" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar el número telefónico principal del contacto del proveedor, es requerido." min="11111111" max="99999999" />
-                                                        </fieldset>
-                                                    </fieldset>
-                                                </div>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <div class="span">
-                                                    <asp:Button runat="server" ID="Resgistrar_Proveedor" CssClass="btn btn-success" OnClick="btn_Registrar_Proveedor_Click" Text="Registrar proveedor" />
-                                                    <button class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                                                </div>
-                                                <div class="span pull-left" style="margin-top: 20px;">
-                                                    <div class="alert alert-success fade">
-                                                        <button type="button" class="close" data-dismiss="alert">×</button>
-                                                        <strong>¡Acciones completadas!</strong> Ahora puedes seleccionar esta categoria.
-                                               
-                                                    </div>
-                                                </div>
-                                                <script>
-                                                    $("#pv1").on("click", function () {
-                                                        $(".alert").removeClass("in").show();
-                                                        $(".alert").delay(500).addClass("in").fadeOut(2000);
-                                                    });
-                                            </script>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                       <%--               ----------------Modal Agregar Nueva Area--------------                                --%>   
-
-                            </div>
                             <asp:Panel runat="server" DefaultButton="Registrar_Area" ID="panel5"> 
-                                    <div class="modal fade" id="modalAreas" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                <div class="modal fade" id="modalAreas" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
@@ -732,6 +586,144 @@
                                 <!-- /.modal -->
                             </div>
                             </asp:Panel>
+
+                       <%--                            Modal Agregar Nueva Descripción                                --%>   
+                        <asp:Panel runat="server" DefaultButton="Registar_Descripcion_Ac" ID="panel6"> 
+                            <div class="modal fade" id="modalDescripcionAc" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                            <h4 class="modal-title" style="text-align: center" id="NuevaDescripcion">Nueva descripción Activo</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="container">
+                                                <div class="pure-form pure-form-aligned">
+                                                    <fieldset class="pure-control-group">
+                                                        <div class="input-prepend">
+                                                            <label for="id_descripcion_nueva">ID de descripción:</label>
+                                                            <asp:TextBox runat="server" ValidationGroup="b" ID="id_descripcion_nueva" placeholder="D-001" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar la descripción del activo que se desea registrar, es requerido. " />
+                                                             <asp:RequiredFieldValidator ValidationGroup="b" ID="vDescId" runat="server" ControlToValidate="id_descripcion_nueva" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
+                                                            </div>
+                                                            <br />
+                                                            <div class="input-prepend">
+                                                            <label for="ocupacion">Descripción</label>
+                                                            <asp:TextBox runat="server" ValidationGroup="b" ID="descripcion_nueva" placeholder="Laptop" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar la descripción del activo que se desea registrar, es requerido. " />
+                                                            <asp:RequiredFieldValidator ValidationGroup="b" ID="vDesc" runat="server" ControlToValidate="descripcion_nueva" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
+                                                            </div>
+                                                    </fieldset>
+                                                </div>
+                                                <!-- /container -->
+                                            </div>
+                                            <div class="modal-footer">
+                                                <div class="span">
+                                                    <asp:Button runat="server" ValidationGroup="b" ID="Registar_Descripcion_Ac" OnClick="btn_Registrar_Descripcion_Ac_Click" CssClass="btn btn-success" Text="Registrar descripción" />
+                                                    <button class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                                                </div>
+                                                <div class="span pull-left" style="margin-top: 20px;">
+                                                    <div class="alert alert-success fade">
+                                                        <button type="button" class="close" data-dismiss="alert">×</button>
+                                                        <strong>¡Acciones completadas!</strong> Ahora puedes seleccionar esta categoria.
+                                                    </div>
+                                                </div>
+                                                <script>
+                                                    $("#btn_Registar").on("click", function () {
+                                                        $(".alert").removeClass("in").show();
+                                                        $(".alert").delay(500).addClass("in").fadeOut(2000);
+                                                    });
+                                                </script>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /.modal -->
+                            </div>
+                                   
+<%--                            <script>
+                                function masOpciones() {
+                                    var x = document.getElementById("descripcion_activo");
+                                    var option = document.createElement("option");
+                                    option.text = document.getElementById("Des").value;
+                                    x.add(option);
+                                }
+                            </script>--%>
+                        </asp:Panel>
+                       <%--                            Modal Agregar Nuevo Proveedor                                --%>              
+                        <asp:Panel runat="server" DefaultButton="Resgistrar_Proveedor" ID="panel7"> 
+                            <div class="modal fade" id="modalProveedor" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                            <h4 class="modal-title" style="text-align: center" id="Nuevoproveedor">Nuevo proveedor</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="container">
+                                                <div class="pure-form pure-form-aligned">
+                                                    <fieldset>
+                                                        <div class="pure-control-group">
+                                                            <label for="idP">Identificador</label>
+                                                            <asp:TextBox runat="server" ValidationGroup="c" ID="idp" placeholder="PR-000" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar un identificador que caracterice el proveedor que se esté registrando, es requerido. " />
+                                                            <asp:RequiredFieldValidator ValidationGroup="c" ID="vIdp" runat="server" ControlToValidate="idp" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
+                                                        </div>
+
+                                                        <div class="pure-control-group">
+                                                            <label for="nproveedor">Nombre del proveedor</label>
+                                                            <asp:TextBox runat="server" ValidationGroup="c" ID="nproveedor" placeholder="Dell" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar el nombre del proveedor que se esté registrando, es requerido." />
+                                                            <asp:RequiredFieldValidator ValidationGroup="c" ID="vnproveedor" runat="server" ControlToValidate="nproveedor" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
+                                                        </div>
+
+                                                        <div class="pure-control-group">
+                                                            <label for="correo">Correo electrónico</label>
+                                                            <asp:TextBox runat="server" ValidationGroup="c" TextMode="Email" ID="correo" type="email" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar la dirección de correo electrónico del proveedor a registrar, es requerido." />
+                                                            <asp:RequiredFieldValidator ValidationGroup="c" ID="vcorreo" runat="server" ControlToValidate="correo" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
+                                                        </div>
+
+                                                        <div class="pure-control-group">
+                                                            <label for="telefono">Número telefónico de la empresa</label>
+                                                            <span class="add-on btn btn-default">506</span>
+                                                            <asp:TextBox runat="server" ValidationGroup="c" ID="telefono1" type="number" placeholder="########" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar el número telefónico principal del proveedor a registrar, es requerido." min="11111111" max="99999999" />
+                                                            <asp:RequiredFieldValidator ValidationGroup="c" ID="vtelefono1" runat="server" ControlToValidate="telefono1" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
+                                                        </div>
+
+                                                        <div class="pure-control-group">
+                                                            <label for="telefono">Número telefónico de contacto </label>
+                                                            <span class="add-on btn btn-default">506</span>
+                                                            <asp:TextBox runat="server" ValidationGroup="c" ID="telefono" type="number" placeholder="########" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar el número telefónico principal del contacto del proveedor, es requerido." min="11111111" max="99999999" />
+                                                            <asp:RequiredFieldValidator ValidationGroup="c" ID="vtelefono" runat="server" ControlToValidate="telefono" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
+                                                        </div>
+                                                    </fieldset>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <div class="span">
+                                                    <asp:Button runat="server" ValidationGroup="c" ID="Resgistrar_Proveedor" CssClass="btn btn-success" OnClick="btn_Registrar_Proveedor_Click" Text="Registrar proveedor" />
+                                                    <button class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                                                </div>
+                                                <div class="span pull-left" style="margin-top: 20px;">
+                                                    <div class="alert alert-success fade">
+                                                        <button type="button" class="close" data-dismiss="alert">×</button>
+                                                        <strong>¡Acciones completadas!</strong> Ahora puedes seleccionar esta categoria.
+                                               
+                                                    </div>
+                                                </div>
+                                                <script>
+                                                    $("#pv1").on("click", function () {
+                                                        $(".alert").removeClass("in").show();
+                                                        $(".alert").delay(500).addClass("in").fadeOut(2000);
+                                                    });
+                                            </script>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </asp:Panel>
+
+
+
+
                         </div>
         </div>
 
