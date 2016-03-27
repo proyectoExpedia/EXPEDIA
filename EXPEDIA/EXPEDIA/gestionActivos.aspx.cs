@@ -33,7 +33,7 @@ namespace EXPEDIA
             {
 
                 if (RadioButton2.Checked)
-            {
+                {
                 Conexion c = new Conexion();
                 SqlConnection Conexion = c.Conectar();
                 string Sql = @"INSERT INTO Activos (bd_tipo_activo, bd_numero_placa, bd_numero_serie, bd_fecha_inicio_garantia, bd_fecha_final_garantia, bd_descripcion_activo, bd_departamento, bd_proveedor, bd_especificacion_tecnica,bd_fecha_compra, bd_costo_activo, bd_estado) 
@@ -59,6 +59,7 @@ namespace EXPEDIA
                     cmd.Parameters.AddWithValue("@estado", 1);
                         
                     cmd.ExecuteNonQuery();
+                    excelente(Button1);
                     Response.Redirect("gestionActivos.aspx");
                     c.Desconectar(Conexion);
 
@@ -97,7 +98,8 @@ namespace EXPEDIA
                     cmd.Parameters.AddWithValue("@costo", precio.Text);
                     cmd.Parameters.AddWithValue("@estado", 1);
                     cmd.ExecuteNonQuery();
-                    Response.Redirect("gestionActivos.aspx");
+                        excelente(Button1);
+                        Response.Redirect("gestionActivos.aspx");
                     c.Desconectar(Conexion);
                 }
                 catch (Exception t) { Response.Write("error" + t); }
@@ -127,6 +129,7 @@ namespace EXPEDIA
                         cmd.Parameters.AddWithValue("@especificacion_tecnica", especificacion_tecnica.Text);
 
                         cmd.ExecuteNonQuery();
+                        excelente(Button1);
                         Response.Redirect("gestionActivos.aspx");
                         c.Desconectar(Conexion);
                     }
@@ -332,7 +335,7 @@ namespace EXPEDIA
         {
             args.IsValid = RadioButton2.Checked || RadioButton3.Checked || RadioButton4.Checked;
         }
-
+        
 
     }
 

@@ -133,15 +133,29 @@
                                         switch (algo) {
                                             case 1:
                                                 document.getElementById('leasing').style.display = 'none';
+                                                document.getElementById('leaComp').style.display = 'block';
+                                                document.getElementById('leaComp2').style.display = 'block';
+                                                document.getElementById('leaComp3').style.display = 'block';
+                                                document.getElementById('fecha_adquisicion').value = "1/1/1900";
+                                                document.getElementById('finalizacion_contrato').value = "1/1/1900";
+
                                                 break;
                                             case 2:
                                                 document.getElementById('leasing').style.display = 'none';
+                                                document.getElementById('leaComp').style.display = 'block';
+                                                document.getElementById('leaComp2').style.display = 'block';
+                                                document.getElementById('leaComp3').style.display = 'block';
+                                                document.getElementById('fecha_adquisicion').value = "1/1/1900";
+                                                document.getElementById('finalizacion_contrato').value = "1/1/1900";
                                                 break;
                                             case 3:
                                                 document.getElementById('leasing').style.display = 'block';
                                                 document.getElementById('leaComp').style.display = 'none';
                                                 document.getElementById('leaComp2').style.display = 'none';
                                                 document.getElementById('leaComp3').style.display = 'none';
+                                                document.getElementById('fecha_compra').value = "1/1/1900";
+                                                document.getElementById('inicio_garantia').value = "1/1/1900";
+                                                document.getElementById('final_garantia').value = "1/1/1900";
                                                 break;
                                                 
                                         }
@@ -166,7 +180,7 @@
 <%--      |             --%>        <div class="pure-control-group">
 <%--      |             --%>  <%--      Fecha de adquisición       --%>
 <%--      |             --%>        <label for="fechaEntrega">Fecha de adquisición</label>
-<%--      |             --%>            <asp:TextBox runat="server" ID="fecha_adquisicion" ToolTip="Este espacio debe contener la fecha en que el Colegio de Abogados y Abogadas de Costa Rica adquirió el activo, este espacio es requerido." > </asp:TextBox>
+<%--      |             --%>            <asp:TextBox runat="server" ID="fecha_adquisicion" ClientIDMode="Static" ToolTip="Este espacio debe contener la fecha en que el Colegio de Abogados y Abogadas de Costa Rica adquirió el activo, este espacio es requerido." > </asp:TextBox>
 <%--      |             --%>            <cc1:CalendarExtender TargetControlID="fecha_adquisicion"  ID="calAdquisicion" runat="server"/>
 <%--      |             --%>            <asp:RequiredFieldValidator ValidationGroup="one" ID="vFechaAdquisicion" runat="server" ControlToValidate="fecha_adquisicion" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
 <%--      |             --%>
@@ -175,7 +189,7 @@
 <%--      |             --%>                                    
 <%--      |             --%>     <%--     Fecha de Finalización      --%>
 <%--      |             --%>     <label for="duracion_contrato">Finalización del Contrato</label>
-<%--      |             --%>     <asp:TextBox runat="server" ID="finalizacion_contrato" ToolTip="Este espacio debe contener la fecha en que finaliza el contrato para el activo, este espacio es requerido."> </asp:TextBox>
+<%--      |             --%>     <asp:TextBox runat="server" ID="finalizacion_contrato" ClientIDMode="Static" ToolTip="Este espacio debe contener la fecha en que finaliza el contrato para el activo, este espacio es requerido."> </asp:TextBox>
 <%--      |             --%>     <cc1:CalendarExtender TargetControlID="finalizacion_contrato"  ID="finContrato" runat="server" />
 <%--      |             --%>     <asp:RequiredFieldValidator ValidationGroup="one" ID="vFinalizacion" runat="server" ControlToValidate="finalizacion_contrato" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
 <%--      |             --%> </div>
@@ -187,13 +201,13 @@
                                 <%--      Costo del activo       --%>
                                 <div class="pure-control-group">
                                     <label for="precio">Costo en colones, del activo</label>
-                                    <asp:TextBox ValidationGroup="one" ID="precio" runat="server" TextMode="Number" data-placement="left" ToolTip="Este espacio debe proporcionar el valor total del activo, este espacio es requerido." placeholder="120360.17" />
+                                    <asp:TextBox ValidationGroup="one" ID="precio" ClientIDMode="Static" runat="server" TextMode="Number" data-placement="left" ToolTip="Este espacio debe proporcionar el valor total del activo, este espacio es requerido." placeholder="120360.17" />
                                     <asp:RequiredFieldValidator ValidationGroup="one" ID="vPrecio" runat="server" ControlToValidate="precio" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
                                 </div>
                                 <%--      fecha de compra       --%>
                                 <div class="pure-control-group" id="leaComp" style="display: block">
                                     <label for="fechaCompra">Fecha de compra</label>
-                                    <asp:TextBox runat="server" ID="fecha_compra" data-toggle="tooltip" title="En este espacio debe proporcionar la fecha de compra del activo, este espacio es requerido."> </asp:TextBox>
+                                    <asp:TextBox runat="server" ID="fecha_compra" ClientIDMode="Static" data-toggle="tooltip" title="En este espacio debe proporcionar la fecha de compra del activo, este espacio es requerido."> </asp:TextBox>
                                     <cc1:CalendarExtender TargetControlID="fecha_compra" ID="calCompra" runat="server" />
                                     <asp:RequiredFieldValidator ValidationGroup="one" ID="vFechaCompra" runat="server" ControlToValidate="fecha_compra" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
                                 
@@ -201,7 +215,7 @@
                                 <%--      Inicio de la garantía       --%>
                                 <fieldset class="pure-control-group" id="leaComp2" style="display: block">
                                     <label for="inicio">Fecha de Inicio de la garantía</label>
-                                    <asp:TextBox runat="server" ID="inicio_garantia" data-toggle="tooltip" title="En este espacio debe proporcionar la fecha en que inicia la garantía, especificada por el proveedor, este espacio es requerido."></asp:TextBox>
+                                    <asp:TextBox runat="server" ID="inicio_garantia" ClientIDMode="Static" data-toggle="tooltip" title="En este espacio debe proporcionar la fecha en que inicia la garantía, especificada por el proveedor, este espacio es requerido."></asp:TextBox>
                                     <cc1:CalendarExtender TargetControlID="inicio_garantia"  ID="calInicio" runat="server" />
                                     <asp:RequiredFieldValidator ValidationGroup="one" ID="vFechaInicio" runat="server" ControlToValidate="inicio_garantia" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
                                 
@@ -209,7 +223,7 @@
                                 <%--      Finalización de la garantía       --%>
                                 <fieldset class="pure-control-group" id="leaComp3" style="display: block">
                                     <label for="finalizacion">Fecha de finalización de la garantía</label>
-                                    <asp:TextBox runat="server" ID="final_garantia" data-toggle="tooltip" title="En este espacio debe proporcionar la fecha en que finaliza la garantía, especificada por el proveedor, este espacio es requerido."></asp:TextBox>
+                                    <asp:TextBox runat="server" ID="final_garantia" ClientIDMode="Static" data-toggle="tooltip" title="En este espacio debe proporcionar la fecha en que finaliza la garantía, especificada por el proveedor, este espacio es requerido."></asp:TextBox>
                                     <cc1:CalendarExtender TargetControlID="final_garantia"  ID="calFinal" runat="server" />
                                     <asp:RequiredFieldValidator ValidationGroup="one" ID="vFinal" runat="server" ControlToValidate="final_garantia" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
                                 
@@ -255,7 +269,30 @@
                                          </fieldset>
                                
                                 <div class="pure-controls">
+                                    
                                     <asp:Button runat="server" CssClass="btn btn-success" ValidationGroup="one" OnClick="Bt_Ingresar_Click" ID="Button1" Text="Registrar Activo" />
+                                 
+                                   <%--   validar para el boton    
+                                     <script type="text/javascript">
+                                         $(document).ready(function () {
+                                             var $submit = $("input[type=submit]"),
+                                                 $inputs = $('input[type=text], input[type=password]');
+
+                                             function checkEmpty() {
+
+                                                 // filter over the empty inputs
+
+                                                 return $inputs.filter(function () {
+                                                     return !$.trim(this.value);
+                                                 }).length === 0;
+                                             }
+
+                                             $inputs.on('blur', function () {
+                                                 $submit.prop("disabled", !checkEmpty());
+                                             }).blur(); // trigger an initial blur
+                                         });
+                                    </script>
+                                    -------------------------------     --%>
                                 </div>
                             </fieldset>
 
