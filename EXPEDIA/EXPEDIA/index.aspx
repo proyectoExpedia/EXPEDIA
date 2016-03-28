@@ -29,6 +29,8 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand" style="float:right" href="#"><h3>Colegio de Abogados y Abogadas de Costa Rica</h3></a>
+                <br />
+                <div style="margin-top:50px;"><asp:SiteMapPath ID="SiteMapPath1" runat="server"></asp:SiteMapPath></div>
             </div>
             <!-- Opciones menu -->
             <div class="col-md-6" style="margin-top:15px;">

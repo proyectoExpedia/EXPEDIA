@@ -73,6 +73,7 @@
    <%--     <asp:UpdatePanel runat="server">
             <ContentTemplate>--%>
             <div class="container">
+                <div style="margin-top:50px;"><asp:SiteMapPath ID="SiteMapPath1" runat="server"></asp:SiteMapPath></div>
                 <div class="panel panel-primary">
                     <div class="panel-heading">
                         <h3 class="panel-title">Gestión de préstamos</h3>

@@ -355,7 +355,7 @@ namespace EXPEDIA
             {
                 Conexion c = new Conexion();
                 SqlConnection Conexion = c.Conectar();
-                string Sql = @"INSERT INTO Puestos (bd_id_puesto, bd_descripcion) values (@id, @descripcion)";
+                string Sql = @"INSERT INTO Puestos (bd_id_puesto, bd_descripcion, bd_motivos, bd_estado) values (@id, @descripcion, @motivos, @estado)";
 
                 Conexion.Open();//abrimos conexion
 
@@ -364,6 +364,8 @@ namespace EXPEDIA
                     SqlCommand cmd = new SqlCommand(Sql, Conexion);
                     cmd.Parameters.AddWithValue("@id", idocupacion.Text); //enviamos los parametros
                     cmd.Parameters.AddWithValue("@descripcion", ocupacion.Text);
+                    cmd.Parameters.AddWithValue("@estado", 1);
+                    cmd.Parameters.AddWithValue("@motivos", "Activo");
                     cmd.ExecuteNonQuery();
                     c.Desconectar(Conexion);
                     ListItem item = new ListItem(ocupacion.Text, idocupacion.Text, true);
@@ -388,7 +390,7 @@ namespace EXPEDIA
             {
                 Conexion c = new Conexion();
                 SqlConnection Conexion = c.Conectar();
-                string Sql = @"INSERT INTO Areas (bd_id_area, bd_descripcion) values (@id, @descripcion)";
+                string Sql = @"INSERT INTO Areas (bd_id_area, bd_descripcion, bd_motivos, bd_estado) values (@id, @descripcion,@motivos, @estado)";
 
                 Conexion.Open();//abrimos conexion
 
@@ -397,6 +399,8 @@ namespace EXPEDIA
                     SqlCommand cmd = new SqlCommand(Sql, Conexion);
                     cmd.Parameters.AddWithValue("@id", idareas.Text); //enviamos los parametros
                     cmd.Parameters.AddWithValue("@descripcion", areas.Text);
+                    cmd.Parameters.AddWithValue("@estado", 1);
+                    cmd.Parameters.AddWithValue("@motivos", "Activo");
                     //Response.Redirect("gestionUsuarios.aspx");
                     cmd.ExecuteNonQuery();
                     c.Desconectar(Conexion);

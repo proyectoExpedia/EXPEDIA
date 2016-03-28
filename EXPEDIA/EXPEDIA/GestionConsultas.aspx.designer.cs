@@ -22,6 +22,15 @@ namespace EXPEDIA {
         protected global::System.Web.UI.HtmlControls.HtmlForm @for;
         
         /// <summary>
+        /// Control SiteMapPath1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SiteMapPath SiteMapPath1;
+        
+        /// <summary>
         /// Control RadioButton2.
         /// </summary>
         /// <remarks>

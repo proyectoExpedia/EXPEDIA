@@ -73,6 +73,7 @@
 
             
         <div class="container">
+        <asp:SiteMapPath ID="SiteMapPath1" runat="server"></asp:SiteMapPath>
         <div class="panel panel-primary">
                 <div class="panel-heading">
                     <h3 class="panel-title">Gestión de activos</h3>

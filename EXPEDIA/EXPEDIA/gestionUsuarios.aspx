@@ -69,6 +69,7 @@
 <%--        <asp:UpdatePanel runat="server">
             <ContentTemplate>--%>
             <div class="container">
+                <asp:SiteMapPath ID="SiteMapPath1" runat="server"></asp:SiteMapPath>
                 <div class="panel panel-primary">
                     <div class="panel-heading">
                         <h3 class="panel-title">Gestión de usuarios</h3>
@@ -300,7 +301,7 @@
                                                                     <asp:ListItem Value="0">Consultas</asp:ListItem>
                                                                     <asp:ListItem Value="1">Administrador</asp:ListItem>
                                                                 </asp:DropDownList>
-                                                                 <asp:RequiredFieldValidator InitialValue="none" ControlToValidate="tipo_usuario" ValidationGroup="three" ForeColor="Red" ID="vTipoUsuario" runat="server" ErrorMessage="<b>Debe elegir una opcion</b>"></asp:RequiredFieldValidator>
+                                                                 <asp:RequiredFieldValidator InitialValue="none" ControlToValidate="tipo_actualizar" ValidationGroup="three" ForeColor="Red" ID="vTipoUsuario" runat="server" ErrorMessage="<b>Debe elegir una opcion</b>"></asp:RequiredFieldValidator>
                                                             </div>
                  
                                                            <!--Consulta Accion Guardar Modificaciones-->
