@@ -10,7 +10,7 @@
 namespace EXPEDIA {
     
     
-    public partial class gestionAreas {
+    public partial class gestionPuestos {
         
         /// <summary>
         /// Control form1.
@@ -67,49 +67,49 @@ namespace EXPEDIA {
         protected global::System.Web.UI.WebControls.Panel Panel2;
         
         /// <summary>
-        /// Control idareas.
+        /// Control idocupacion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox idareas;
+        protected global::System.Web.UI.WebControls.TextBox idocupacion;
         
         /// <summary>
-        /// Control RequiredFieldValidator6.
+        /// Control RequiredFieldValidator58.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator6;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator58;
         
         /// <summary>
-        /// Control areas.
+        /// Control ocupacion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox areas;
+        protected global::System.Web.UI.WebControls.TextBox ocupacion;
         
         /// <summary>
-        /// Control RequiredFieldValidator7.
+        /// Control RequiredFieldValidator51.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator7;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator51;
         
         /// <summary>
-        /// Control Btn_areas.
+        /// Control Btn_ocupacion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Btn_areas;
+        protected global::System.Web.UI.WebControls.Button Btn_ocupacion;
         
         /// <summary>
         /// Control TabPanel2.
@@ -157,22 +157,22 @@ namespace EXPEDIA {
         protected global::System.Web.UI.WebControls.Panel Panel7;
         
         /// <summary>
-        /// Control midArea.
+        /// Control mIdOcu.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox midArea;
+        protected global::System.Web.UI.WebControls.TextBox mIdOcu;
         
         /// <summary>
-        /// Control midAreas.
+        /// Control mIdOcuO.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox midAreas;
+        protected global::System.Web.UI.WebControls.TextBox mIdOcuO;
         
         /// <summary>
         /// Control RequiredFieldValidator1.

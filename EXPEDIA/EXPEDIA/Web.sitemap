@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
+  <siteMapNode url="index.aspx" title="Inicio"  description="">
+      <siteMapNode url="mainAdministrador.aspx" title="Menu principal del administrador"  description="">
+        <siteMapNode url="gestionUsuarios.aspx" title="Gestion de usuarios"  description="" />
+        <siteMapNode url="gestionActivos.aspx" title="Gestion de activos"  description="" />
+        <siteMapNode url="gestionPrestamos.aspx" title="Gestion de prestamos"  description="" />
+        <siteMapNode url="GestionConsultas.aspx" title="Gestion de consultas"  description="" />
+        <siteMapNode url="gestionAreas.aspx" title="Gestion de áreas"  description="" />
+        <siteMapNode url="gestionPuestos.aspx" title="Gestion de ocupaciónes"  description="" />
+      </siteMapNode>
+  </siteMapNode>
+
+</siteMap>
