@@ -73,6 +73,7 @@
     <Content Include="css\purecss.css" />
     <Content Include="css\sweetalert.css" />
     <Content Include="css\Tablas.css" />
+    <Content Include="Errores.aspx" />
     <Content Include="gestionActivos.aspx" />
     <Content Include="gestionAreas.aspx" />
     <Content Include="GestionConsultas.aspx" />
@@ -134,6 +135,12 @@
       <DependentUpon>Ajax.aspx</DependentUpon>
     </Compile>
     <Compile Include="Conexion.cs" />
+    <Compile Include="Errores.aspx.cs">
+      <DependentUpon>Errores.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Errores.aspx.designer.cs">
+      <DependentUpon>Errores.aspx</DependentUpon>
+    </Compile>
     <Compile Include="gestionActivos.aspx.cs">
       <DependentUpon>gestionActivos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
