@@ -30,6 +30,7 @@
           
         <nav class="navbar" role="navigation" style="margin-top: 20px;">
             <div class="container">
+          
                 <ul class="bxslider">
                     <li>
                         <img src="img/colegioAbogadoscr.png" style="width: 100px; height: 100px; float: left" alt="" /></li>
@@ -203,10 +204,11 @@
                                     <asp:Panel ID="Panel1" runat="server">
                                         <div class="tab-pane" id="Consultar">
                                             <h1 style="text-align: center" id="titulo">Formulario de consultas</h1>
-                                            <div class="pure-form pure-form-aligned">
+                                            
                                             <asp:Panel ID="Panel3" runat="server">
-                                                <label for="cedulaC">Número de cédula</label>
-                                                <asp:TextBox ID="cedula_consulta" ValidationGroup="two" AutoPostBack="true" OnTextChanged="cedula_consulta_TextChanged" runat="server" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar el número de cedula de la persona a registrar, omita guiones y todos los dígitos del documento de identidad, es requerido." placeholder="#-####-####"></asp:TextBox>
+                                                <div class="pure-form pure-form-aligned">
+                                                <label for="cedula_consulta"> Número de cédula: </label>
+                                                <asp:TextBox ID="cedula_consulta" ValidationGroup="two" AutoPostBack="true" OnTextChanged="cedula_consulta_TextChanged" runat="server"   data-toggle="tooltip" data-placement="left" ToolTip="En este espacio se debe proporcionar el número de cedula de la persona a registrar, omita guiones y todos los dígitos del documento de identidad, es requerido." placeholder="#-####-####"></asp:TextBox>
                                                 <asp:RegularExpressionValidator ValidationGroup="two" ID="RegularExpressionValidator4" runat="server" ControlToValidate="cedula_consulta" ErrorMessage="&lt;b&gt;Formato no valido&lt;/b&gt;" ForeColor="Red" ValidationExpression="^[1-9]-\d{4}-\d{4}$"></asp:RegularExpressionValidator>
                                                 <cc1:MaskedEditExtender ID="MaskedEditExtender1" runat="server" BehaviorID="cedula_consulta_MaskedEditExtender" Century="2000" ClearMaskOnLostFocus="False" CultureAMPMPlaceholder="" CultureCurrencySymbolPlaceholder="" CultureDateFormat="" CultureDatePlaceholder="" CultureDecimalPlaceholder="" CultureThousandsPlaceholder="" CultureTimePlaceholder="" Mask="9-9999-9999" TargetControlID="cedula_consulta"></cc1:MaskedEditExtender>
                                                 <label  runat="server"  id="Info2" style="font-family: Arial, Helvetica, sans-serif; font-size: 17px; font-style: normal;" ></label>
@@ -215,7 +217,7 @@
                                                 <asp:TextBox runat="server"    data-toggle="tooltip" data-placement="left"     ToolTip="Proporcione el número de prestamo,a consultar" ID="id_prestamo" />
                                                 <cc1:MaskedEditExtender ID="MaskedEditExtender2" runat="server" BehaviorID="id_prestamo_MaskedEditExtender" Century="2000" ClearMaskOnLostFocus="true" CultureAMPMPlaceholder="" CultureCurrencySymbolPlaceholder="" CultureDateFormat="" CultureDatePlaceholder="" CultureDecimalPlaceholder="" CultureThousandsPlaceholder="" CultureTimePlaceholder="" Mask="999999999" TargetControlID="id_prestamo"></cc1:MaskedEditExtender>
                                                 <asp:Button runat="server" ID="Consulta_prestamo" OnClick="Consulta_prestamo_Click"    class="btn btn-success" Text="Consultar"></asp:Button>
-
+                                                 </div>  
                                   <br />
                                   <br />
                                   <br />
@@ -245,9 +247,7 @@
 
                             
                                             </asp:Panel>
-                                        </div>  
-                                      
-                                     
+                                       
                                     </asp:Panel>
                                 </ContentTemplate>
                             </asp:TabPanel>
