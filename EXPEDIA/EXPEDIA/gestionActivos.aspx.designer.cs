@@ -121,13 +121,13 @@ namespace EXPEDIA {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator2;
         
         /// <summary>
-        /// Value1RangeValidator control.
+        /// MenuLabelVal control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RangeValidator Value1RangeValidator;
+        protected global::System.Web.UI.WebControls.CustomValidator MenuLabelVal;
         
         /// <summary>
         /// numero_serie control.
@@ -155,6 +155,15 @@ namespace EXPEDIA {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
+        
+        /// <summary>
+        /// CustomValidator1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CustomValidator CustomValidator1;
         
         /// <summary>
         /// fecha_adquisicion control.
@@ -227,6 +236,15 @@ namespace EXPEDIA {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator vPrecio;
+        
+        /// <summary>
+        /// CustomValidator7 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CustomValidator CustomValidator7;
         
         /// <summary>
         /// fecha_compra control.
@@ -382,6 +400,15 @@ namespace EXPEDIA {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator vEspecificacion;
         
         /// <summary>
+        /// CustomValidator3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CustomValidator CustomValidator3;
+        
+        /// <summary>
         /// Button1 control.
         /// </summary>
         /// <remarks>
@@ -472,6 +499,15 @@ namespace EXPEDIA {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator vPlaca2;
         
         /// <summary>
+        /// CustomValidator4 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CustomValidator CustomValidator4;
+        
+        /// <summary>
         /// numero_serie2 control.
         /// </summary>
         /// <remarks>
@@ -488,6 +524,15 @@ namespace EXPEDIA {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator vSerie2;
+        
+        /// <summary>
+        /// CustomValidator5 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CustomValidator CustomValidator5;
         
         /// <summary>
         /// fecha_entrega3 control.
@@ -562,31 +607,13 @@ namespace EXPEDIA {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator vPrecio2;
         
         /// <summary>
-        /// fecha_compra3 control.
+        /// CustomValidator8 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox fecha_compra3;
-        
-        /// <summary>
-        /// calCompra3 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::AjaxControlToolkit.CalendarExtender calCompra3;
-        
-        /// <summary>
-        /// vCompra control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator vCompra;
+        protected global::System.Web.UI.WebControls.CustomValidator CustomValidator8;
         
         /// <summary>
         /// inicio_garantia3 control.
@@ -713,6 +740,15 @@ namespace EXPEDIA {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator vEspecificacion2;
+        
+        /// <summary>
+        /// CustomValidator6 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CustomValidator CustomValidator6;
         
         /// <summary>
         /// enviar2 control.

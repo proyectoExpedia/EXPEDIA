@@ -126,7 +126,6 @@
                                         }
 
                                 </script>
-
                                 <script>
                                     //function mostrarleasing() {
                                     //    document.getElementById('leasing').style.display = 'block';
@@ -179,15 +178,40 @@
 <%--      |             --%>        <asp:TextBox ValidationGroup="one" runat="server" ID="numero_placa" data-placement="left" ToolTip="Este espacio debe proporcionar el número de placa del activo que desea consultar, este espacio es requerido." placeholder="ENF-1523" />
 <%--      |             --%>        <asp:CompareValidator ValidationGroup="one" ID="CompareValidator1" runat="server" ControlToCompare="numero_placa" ControlToValidate="numero_serie" Operator="NotEqual" Type="String" ForeColor="Red" SetFocusOnError="true" Display="Dynamic" ErrorMessage="Los números de placa y serie no pueden ser iguales. Por favor ingrese números de placa y serie distintos."></asp:CompareValidator>
 <%--      |             --%>        <asp:RequiredFieldValidator ValidationGroup="one" ID="RequiredFieldValidator2" runat="server" ControlToValidate="numero_placa" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
-                                    <asp:RangeValidator ID="Value1RangeValidator" ControlToValidate="numero_placa" Type="String" ForeColor="red" MinimumValue="1" MaximumValue="10" Display="Dynamic" ErrorMessage="*Solo puede ingresar 10 digitos" runat="server"/>
-                                    <%--      Numero de placa del activo       --%>
+                                    <asp:CustomValidator ValidationGroup="one" ID="MenuLabelVal" runat="server" ClientValidationFunction="ValidateFieldLegth_P" ErrorMessage="El número de placa no puede exceder los 10 digitos." ControlToValidate="numero_placa" EnableClientScript="true"  /> 
+<%--      |             --%>         <%--     Validar si excede 10 espacios       --%>    
+                                    <script>
+                                            function ValidateFieldLegth_P(sender, args) {
+                                             var v = document.getElementById('<%=numero_placa.ClientID%>').value;
+                                             if (v.length > 10) {
+                                                 args.IsValid = false;
+                                              }
+                                            else {
+                                            args.IsValid = true;
+                                            }
+                                         }
+                                    </script>
 <%--      |             --%>  </div>
+                                <%--      Numero de placa del activo       --%>
                               <div class="pure-control-group">
 <%--      |             --%>  <label for="nserie">Número de serie del activo</label>
 <%--      |             --%>        <asp:TextBox ValidationGroup="one" ID="numero_serie" runat="server" data-placement="left" ToolTip="Este espacio debe proporcionar el número de serie del activo, este espacio es requerido." placeholder="MUJ23HJCK987" />
 <%--      |             --%>        <asp:CompareValidator ValidationGroup="one" ID="vPlacaYserie" runat="server" ControlToCompare="numero_serie" ControlToValidate="numero_placa" Operator="NotEqual" Type="String" ForeColor="Red" SetFocusOnError="true" Display="Dynamic" ErrorMessage="Los números de placa y serie no pueden ser iguales. Por favor ingrese números de placa y serie distintos."></asp:CompareValidator>
-<%--      |             --%>        <asp:RequiredFieldValidator ValidationGroup="one" ID="RequiredFieldValidator1" runat="server" ControlToValidate="numero_placa" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
-<%--      |             --%>  </div>
+<%--      |             --%>        <asp:RequiredFieldValidator ValidationGroup="one" ID="RequiredFieldValidator1" runat="server" ControlToValidate="numero_serie" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
+<%--      |             --%>        <asp:CustomValidator ValidationGroup="one" ID="CustomValidator1" runat="server" ClientValidationFunction="ValidateFieldLegth_S" ErrorMessage="El número de serie no puede exceder los 10 digitos." ControlToValidate="numero_serie" EnableClientScript="true"  /> 
+<%--      |             --%>         <%--     Validar si excede 10 espacios       --%>    
+                                    <script>
+                                            function ValidateFieldLegth_S(sender, args) {
+                                             var v = document.getElementById('<%=numero_serie.ClientID%>').value;
+                                             if (v.length > 10) {
+                                                 args.IsValid = false;
+                                              }
+                                            else {
+                                            args.IsValid = true;
+                                            }
+                                         }
+                                    </script>
+                              </div>
 <%--      |             --%>  
 <%--      |             --%>
 <%--      |             --%>  <div class="pure-control-group" id="leasing" style="display: none">
@@ -208,9 +232,7 @@
 <%--      |             --%>     <asp:RequiredFieldValidator ValidationGroup="one" ID="vFinalizacion" runat="server" ControlToValidate="finalizacion_contrato" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
 <%--      |             --%> </div>
 <%--       -----------> --%><%--      terminan las opciones del leasing       --%>
-
                                 </div>
-
                                 <%--validar adquisicion menor a final contrato--%>
                                 <script>
                                     function verificarFechaG3(sender, args) {
@@ -280,33 +302,27 @@
                                             if (FAD1 > FFC) {
                                             swal({
                                                 title: 'Error!',
-                                                text: 'Fecha de adquisicion no puede ser una fecha mayor al final de contrato',
+                                                text: ' La fecha de adquisición no puede ser una fecha mayor a la fecha de finalización de contrato.',
                                                 type: 'error',
                                                 confirmButtonText: 'Continuar'
                                             })
-                                            document.getElementById('<%=fecha_adquisicion.ClientID%>').value = '';
-                                        
+                                            document.getElementById('<%=fecha_adquisicion.ClientID%>').value = '';                                        
                                             }
-
                                         }
-
                                     //fecha validar futuro no existente
                                         var d = new Date();
                                         d.setDate(d.getDate());
                                         if (sender._selectedDate > d) {
                                             swal({
                                                 title: 'Error!',
-                                                text: 'La fecha no existe aún',
+                                                text: 'La fecha que ingresó aún no existe o no se encuentra entre el rango de fechas admitidas, ingrese una fecha que se encuentre en el mes actual.',
                                                 type: 'error',
                                                 confirmButtonText: 'Continuar'
                                             })
                                             sender._textbox.set_Value('')
                                         }
                                     }
-
-
-                                </script>
-                                
+                                </script> 
                                 <%--validar adquisicion menor a final contrato--%>
                                 <script>
                                     function verificarFechaG4(sender, args) {
@@ -376,7 +392,7 @@
                                             if (FFC < FAD1) {
                                                 swal({
                                                     title: 'Error!',
-                                                    text: 'Fecha de final de contrato no puede ser una fecha menor al de adquisicion de contrato',
+                                                    text: ' La fecha de final de contrato no puede ser una fecha menor a la fecha en que fue adquirido el activo (Fecha en que inició el contrato).',
                                                     type: 'error',
                                                     confirmButtonText: 'Continuar'
                                                 })
@@ -386,15 +402,25 @@
 
                                         }
                                     }
-
-                                </script>
-                                  
-                               
+                                </script>  
                                 <%--      Costo del activo       --%>
                                 <div class="pure-control-group">
                                     <label for="precio">Costo en colones, del activo</label>
                                     <asp:TextBox ValidationGroup="one" ID="precio" ClientIDMode="Static" runat="server" TextMode="Number" data-placement="left" ToolTip="Este espacio debe proporcionar el valor total del activo, este espacio es requerido." placeholder="120360.17" />
                                     <asp:RequiredFieldValidator ValidationGroup="one" ID="vPrecio" runat="server" ControlToValidate="precio" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
+                               <asp:CustomValidator ValidationGroup="one" ID="CustomValidator7" runat="server" ClientValidationFunction="ValidateFieldLegth_Pr" ErrorMessage="El precio no puede exceder los 10 digitos." ControlToValidate="precio" EnableClientScript="true"  />
+                                <%--     Validar si excede 10 espacios       --%>  
+                                <script>     
+                                function ValidateFieldLegth_Pr(sender, args) { // Pr -> Precio
+                                    var v = document.getElementById('<%=precio.ClientID%>').value;
+                                    if (v.length > 10) {
+                                        args.IsValid = false;
+                                    }
+                                    else {
+                                        args.IsValid = true;
+                                    }
+                                }
+                                </script>
                                 </div>
                                 <%--      fecha de compra       --%>
                                 <div class="pure-control-group" id="leaComp" style="display: block">
@@ -473,7 +499,7 @@
                                             if( FC < FC1) {
                                             swal({
                                                 title: 'Error!',
-                                                text: 'El inicio de garantia no puede ser una fecha anterior a la compra',
+                                                text: 'La fecha de inicio de la garantía no puede ser una fecha anterior a la fecha de compra.',
                                                 type: 'error',
                                                 confirmButtonText: 'Continuar'
                                             })
@@ -512,7 +538,7 @@
                                             if( FC111 < FC ) {
                                             swal({
                                                 title: 'Error!',
-                                                text: 'El inicio de garantia no puede ser una fecha mayor al final de garantia',
+                                                text: 'La fecha de inicio de la garantía no puede ser una fecha mayor a la fecha final de la garantía',
                                                 type: 'error',
                                                 confirmButtonText: 'Continuar'
                                             })
@@ -527,7 +553,7 @@
                                         if (sender._selectedDate > d) {
                                             swal({
                                                 title: 'Error!',
-                                                text: 'La fecha no existe aún',
+                                                text: 'La fecha que ingresó aún no existe o no se encuentra entre el rango de fechas admitidas, ingrese una fecha que se encuentre en el mes actual.',
                                                 type: 'error',
                                                 confirmButtonText: 'Continuar'
                                             })
@@ -537,8 +563,6 @@
 
 
                                 </script>
-
-
                                 <%--validar compra menor a garantia / inicial menor a final--%>
                                 <script>
                                     function verificarFechaG1(sender, args) {
@@ -609,7 +633,7 @@
                                             if (FC1 > FC) {
                                                 swal({
                                                     title: 'Error!',
-                                                    text: 'La compra no puede ser una fecha anterior a la garantia',
+                                                    text: 'La fecha de compra no puede ser una fecha anterior a la fecha de inicio de la garantía',
                                                     type: 'error',
                                                     confirmButtonText: 'Continuar'
                                                 })
@@ -624,7 +648,7 @@
                                         if (sender._selectedDate > d) {
                                             swal({
                                                 title: 'Error!',
-                                                text: 'La fecha no existe aún',
+                                                text: 'La fecha que ingresó aún no existe o no se encuentra entre el rango de fechas admitidas, ingrese una fecha que se encuentre en el mes actual.',
                                                 type: 'error',
                                                 confirmButtonText: 'Continuar'
                                             })
@@ -633,8 +657,6 @@
                                     }
                                     
                                 </script>
-
-
                                 <%--validar Garantiafinal mayor incio--%>
                                 <script>
                                     function verificarFechaG2(sender, args) {
@@ -705,7 +727,7 @@
                                             if( FC111 < FC  ) {
                                             swal({
                                                 title: 'Error!',
-                                                text: 'El final de garantia no puede ser una fecha menor al inico de garantia',
+                                                text: 'La fecha final de la garantáa no puede ser menor a la fecha de inico de la garantía',
                                                 type: 'error',
                                                 confirmButtonText: 'Continuar'
                                             })
@@ -718,11 +740,6 @@
 
 
                                 </script>
-
-
-
-
-
                                 <%--fecha valida solo futuro--%>
                                 <script>
                                 function verificarFecha(sender,args){
@@ -831,6 +848,19 @@
                                         <label for="Tipo">Especificaciones técnicas</label>
                                         <asp:TextBox ValidationGroup="one" ID="especificacion_tecnica" runat="server" data-toggle="tooltip" title="En este espacio se debe proporcionar las cualidades del activo. Ejemplo: 1TB disco duro, 16GB RAM, 2GB AMD Radeon Fury (se pueden incluir otras caracteristicas que se deseen), este espacio es requerido" class="pure-input-1-2" placeholder="Especificaciones Técnicas" />
                                    <asp:RequiredFieldValidator ValidationGroup="one" ID="vEspecificacion" runat="server" ControlToValidate="especificacion_tecnica" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
+                                        <asp:CustomValidator ValidationGroup="one" ID="CustomValidator3" runat="server" ClientValidationFunction="ValidateFieldLegth_ET" ErrorMessage="La especificación técnica no puede exceder los 350 digitos." ControlToValidate="especificacion_tecnica" EnableClientScript="true"  />
+                               <%--     Validar si excede 350 espacios       --%> 
+                                         <script>
+                                            function ValidateFieldLegth_ET(sender, args) {   //ET -> Especificación Tecnica
+                                             var v = document.getElementById('<%=especificacion_tecnica.ClientID%>').value;
+                                             if (v.length > 350) {
+                                                 args.IsValid = false;
+                                              }
+                                            else {
+                                            args.IsValid = true;
+                                            }
+                                         }
+                                    </script>
                                          </fieldset>
                                
                                 <div class="pure-controls">
@@ -918,26 +948,51 @@
 <%--      |             --%>             <label for="nplaca">Número de placa del activo</label>
 <%--      |             --%>                 <asp:TextBox ValidationGroup="two" ReadOnly="true" runat="server" ID="numero_placa2" data-placement="left" ToolTip="Este espacio debe proporcionar el número de placa del activo que desea consultar, este espacio es requerido." placeholder="ENF-1523" />
 <%--      |             --%>                      <asp:RequiredFieldValidator ValidationGroup="two" ID="vPlaca2" runat="server" ControlToValidate="numero_placa2" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
-<%--      |             --%>         </div>
+<%--      |             --%>        <asp:CustomValidator ValidationGroup="one" ID="CustomValidator4" runat="server" ClientValidationFunction="ValidateFieldLegth_PrM" ErrorMessage="El número de placa no puede exceder los 10 digitos." ControlToValidate="numero_placa2" EnableClientScript="true"  /> 
+<%--      |             --%>         <%--     Validar si excede 10 espacios       --%>    
+                                    <script>
+                                            function ValidateFieldLegth_PrM(sender, args) {   // PrM -> Precio Modificar
+                                             var v = document.getElementById('<%=numero_placa2.ClientID%>').value;
+                                             if (v.length > 10) {
+                                                 args.IsValid = false;
+                                              }
+                                            else {
+                                            args.IsValid = true;
+                                            }
+                                         }
+                                    </script>
+                                     </div>
 <%--      |             --%>         <div class="pure-control-group">
 <%--      |             --%>             <label for="nserie">Número de serie del activo</label>
 <%--      |             --%>                  <asp:TextBox ValidationGroup="two" ReadOnly="true" ID="numero_serie2" runat="server" data-placement="left" ToolTip="Este espacio debe proporcionar el número de serie del activo, este espacio es requerido." placeholder="MUJ23HJCK987" />
 <%--      |             --%>                       <asp:RequiredFieldValidator ValidationGroup="two" ID="vSerie2" runat="server" ControlToValidate="numero_serie2" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
-<%--      |             --%>         </div>
-<%--      |             --%> 
+<%--      |             --%>        <asp:CustomValidator ValidationGroup="one" ID="CustomValidator5" runat="server" ClientValidationFunction="ValidateFieldLegth_SM" ErrorMessage="El número de serie no puede exceder los 10 digitos." ControlToValidate="numero_serie2" EnableClientScript="true"  /> 
+<%--      |             --%>         <%--     Validar si excede 10 espacios       --%>    
+                                    <script>
+                                            function ValidateFieldLegth_SM(sender, args) {   //SM  -> Serie de Modificar
+                                             var v = document.getElementById('<%=numero_serie2.ClientID%>').value;
+                                             if (v.length > 10) {
+                                                 args.IsValid = false;
+                                              }
+                                            else {
+                                            args.IsValid = true;
+                                            }
+                                         }
+                                    </script>
+<%--      |             --%>        </div>
 <%--      |             --%>              <%--      Fecha de entrega      --%>
 <%--      |             --%>         <div class="pure-control-group" style="display: none">
 <%--      |             --%>              <div class="pure-control-group">
 <%--      |             --%>                  <label for="fechaEntrega">Fecha de adquisición</label>
 <%--      |             --%>                       <asp:TextBox runat="server" ID="fecha_entrega3" tooltip="En este espacio debe proporcionar la fecha en que el activo fue adquirido por el Colegio de Abogados y Abogadas de Costa Rica, este espacio es requerido"></asp:TextBox>
-<%--      |             --%>                       <cc1:CalendarExtender TargetControlID="fecha_entrega3" ID="entrega2" runat="server" />
+<%--      |             --%>                       <cc1:CalendarExtender TargetControlID="fecha_entrega3" ID="entrega2" runat="server" OnClientDateSelectionChanged="verificarFechaG3" />
 <%--      |             --%>                       <asp:RequiredFieldValidator ValidationGroup="two" ID="vEntrega" runat="server" ControlToValidate="fecha_entrega3" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
 <%--      |             --%>         </div>
 <%--      |             --%>               <%--      Duración del Contrato       --%>
 <%--      |             --%>         <div class="pure-control-group">
 <%--      |             --%>              <label for="duracion_contrato">Duración del Contrato</label>
 <%--      |             --%>                  <asp:TextBox runat="server" ID="finalizacion_contrato3" data-toggle="tooltip" title="Este espacio debe contener la fecha en que finaliza el contrato para el activo, este espacio es requerido."></asp:TextBox>
-<%--      |             --%>                       <cc1:CalendarExtender TargetControlID="finalizacion_contrato3" ID="calFinalizacion" runat="server"/>
+<%--      |             --%>                       <cc1:CalendarExtender TargetControlID="finalizacion_contrato3" ID="calFinalizacion" runat="server" OnClientDateSelectionChanged="verificarFechaG4"/>
 <%--      |             --%>                       <asp:RequiredFieldValidator ValidationGroup="two" ID="vDuracion" runat="server" ControlToValidate="finalizacion_contrato3" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
 <%--      |             --%>         </div>
 <%--       -----------> --%><%--      terminan las opciones del leasing       --%>
@@ -952,20 +1007,26 @@
                                     <label for="precio">Costo en colones, del activo</label>
                                     <asp:TextBox ValidationGroup="two" ReadOnly="true" ID="precio2" runat="server" TextMode="Number" data-placement="left" ToolTip="Este espacio debe proporcionar el valor total del activo, este espacio es requerido." placeholder="120360.17" />
                                     <asp:RequiredFieldValidator ValidationGroup="two" ID="vPrecio2" runat="server" ControlToValidate="precio2" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
+                                <asp:CustomValidator ValidationGroup="one" ID="CustomValidator8" runat="server" ClientValidationFunction="ValidateFieldLegth_PM" ErrorMessage="El precio no puede exceder los 10 digitos." ControlToValidate="precio2" EnableClientScript="true"  />
+                                <%--     Validar si excede 10 espacios       --%>  
+                                <script>     
+                                function ValidateFieldLegth_PM(sender, args) { // PM -> Precio Modificar
+                                    var v = document.getElementById('<%=precio2.ClientID%>').value;
+                                    if (v.length > 10) {
+                                        args.IsValid = false;
+                                    }
+                                    else {
+                                        args.IsValid = true;
+                                    }
+                                }
+                                </script>
                                 </div>
-                                        <%--      fecha de compra       --%>
-                                <div class="pure-control-group">
-                                    <label for="fechaCompra">Fecha de compra</label>
-                                    <asp:TextBox runat="server" ID="fecha_compra3" data-toggle="tooltip" title="En este espacio debe proporcionar la fecha de compra del activo, este espacio es requerido."></asp:TextBox>
-                                    <cc1:CalendarExtender TargetControlID="fecha_compra3" ID="calCompra3" runat="server"/>
-                                    <asp:RequiredFieldValidator ValidationGroup="two" ID="vCompra" runat="server" ControlToValidate="fecha_compra3" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
-                                
-                                </div>
+                                       
                                         <%--     Inicio de la garantía      --%>
                                 <fieldset class="pure-control-group">
                                     <label for="inicio">Fecha de Inicio de la garantía</label>
                                     <asp:TextBox runat="server" ID="inicio_garantia3" data-toggle="tooltip" title="En este espacio debe proporcionar la fecha en que inicia la garantía, especificada por el proveedor, este espacio es requerido."></asp:TextBox>
-                                    <cc1:CalendarExtender TargetControlID="inicio_garantia3" ID="calInicio3" runat="server"/>
+                                    <cc1:CalendarExtender TargetControlID="inicio_garantia3" ID="calInicio3" runat="server" OnClientDateSelectionChanged="verificarFechaG"/>
                                     <asp:RequiredFieldValidator ValidationGroup="two" ID="vInicio" runat="server" ControlToValidate="inicio_garantia3" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
                                 
                                 </fieldset>
@@ -973,7 +1034,7 @@
                                 <fieldset class="pure-control-group">
                                     <label for="finalizacion">Fecha de finalización de la garantía</label>
                                     <asp:TextBox runat="server" ID="final_garantia3" data-toggle="tooltip" title="En este espacio debe proporcionar la fecha en que finaliza la garantía, especificada por el proveedor, este espacio es requerido."></asp:TextBox>
-                                    <cc1:CalendarExtender TargetControlID="final_garantia3" ID="calFinal3" runat="server"/>
+                                    <cc1:CalendarExtender TargetControlID="final_garantia3" ID="calFinal3" runat="server" OnClientDateSelectionChanged="verificarFechaG2"/>
                                     <asp:RequiredFieldValidator ValidationGroup="two" ID="vFinal2" runat="server" ControlToValidate="final_garantia3" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
                                 
                                      </fieldset>
@@ -1015,7 +1076,20 @@
                                         <label for="Tipo">Especificaciones técnicas</label>
                                         <asp:TextBox ValidationGroup="two" ReadOnly="true" ID="especificacion_tecnica2" runat="server" data-toggle="tooltip" title="En este espacio se debe proporcionar las cualidades del activo, este espacio es requerido" class="pure-input-1-2" placeholder="Especificaciones Técnicas" />
                                    <asp:RequiredFieldValidator ValidationGroup="two" ID="vEspecificacion2" runat="server" ControlToValidate="especificacion_tecnica2" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
-                                         </fieldset>
+                                   <asp:CustomValidator ValidationGroup="one" ID="CustomValidator6" runat="server" ClientValidationFunction="ValidateFieldLegth_ETM" ErrorMessage="La especificación técnica no puede exceder los 350 digitos." ControlToValidate="especificacion_tecnica2" EnableClientScript="true"  />
+                               <%--     Validar si excede 350 espacios       --%> 
+                                         <script>
+                                            function ValidateFieldLegth_ETM(sender, args) {  // ETM  -> Especificaciones técnicas de Modificar
+                                             var v = document.getElementById('<%=especificacion_tecnica2.ClientID%>').value;
+                                             if (v.length > 350) {
+                                                 args.IsValid = false;
+                                              }
+                                            else {
+                                            args.IsValid = true;
+                                            }
+                                         }
+                                    </script>
+                                    </fieldset>
                                         </div>
                                         <div class="pure-controls">
                                             <button class="btn btn-success" id="enviar1" style="display: none">Realizar modificaciones</button>
@@ -1039,7 +1113,12 @@
                                     document.getElementById('a').className = '';
                                     document.getElementById('p').className = '';
                                     document.getElementById('d').className = '';
-
+                                }
+                            </script>
+                        <script type="text/javascript">
+                                function habilitar_MDescr() {
+                                    document.getElementById('nserie1').removeAttribute("readonly", false);
+                                    document.getElementById('area1').removeAttribute("readonly", false);
                                 }
                             </script>
 
@@ -1155,12 +1234,13 @@
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                             <h4 class="modal-title" style="text-align: center" id="NuevaDescripcion">Nueva descripción Activo</h4>
                                         </div>
                                         <div class="modal-body">
                                             <div class="container">
                                                 <div class="pure-form pure-form-aligned">
+ <%--------------------------%>                   <button class="btn btn-success" id="habMod" onclick="habilitar();">Habilitar modificación</button>
                                                     <fieldset class="pure-control-group">
                                                         <div class="input-prepend">
                                                             <label for="id_descripcion_nueva">ID de descripción:</label>

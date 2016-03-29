@@ -31,13 +31,13 @@
   <div class="body-content">
     <div class="row">
       <div class="col-md-6">
-        <h2>¿Que sucedio?</h2>
-        <p class="lead">El estado de un error 500 implica que el software del servidor web ejecuto una incorrectamente una funcion.</p>
+        <h2>¿Que sucedió?</h2>
+        <p class="lead">El estado de un error 500 implica que el software del servidor web ejecuto incorrectamente una función.</p>
       </div>
       <div class="col-md-6">
         <h2>¿Que puedo hacer?</h2>
         <p class="lead">Si eres visitante</p>
-        <p> No puedes hacer nada de momento. Si necesitas asistencia, por favor envie un correo electronico notificando el error. Nos disculpamos por este inconveniente.</p>
+        <p> No puedes hacer nada de momento. Si necesitas asistencia, por favor envía un correo electronico notificando el error. Nos disculpamos por este inconveniente.</p>
         <p class="lead">Si eres dueño del sistema</p>
          <p>Contactece con los con los administradores del servidor, ellos lograran solucionar el problema.</p>
      </div>
