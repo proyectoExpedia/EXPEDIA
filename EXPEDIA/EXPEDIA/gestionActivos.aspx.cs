@@ -975,7 +975,7 @@ namespace EXPEDIA
                 //}
 
             }
-
+        }
           protected void BajaActivo_Click(object sender, EventArgs e) {
                 Conexion c = new Conexion();
                 SqlConnection Conexion = c.Conectar();
@@ -999,8 +999,7 @@ namespace EXPEDIA
 
 
 
-            }
-
+       
 
 
 
