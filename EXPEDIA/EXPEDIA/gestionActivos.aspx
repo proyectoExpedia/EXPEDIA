@@ -1109,7 +1109,7 @@
                                                 type: 'error',
                                                 confirmButtonText: 'Continuar'
                                             })
-                                            document.getElementById('<%=inicio_garantia.ClientID%>').value = '';
+                                            document.getElementById('<%=inicio_garantia2.ClientID%>').value = '';
                                         
                                             }
 
