@@ -847,7 +847,7 @@
                                 <%--      Especificaciones       --%>
                                     <fieldset class="pure-control-group">
                                         <label for="Tipo">Especificaciones técnicas</label>
-                                        <asp:TextBox ValidationGroup="one" ID="especificacion_tecnica" runat="server" data-toggle="tooltip" title="En este espacio se debe proporcionar las cualidades del activo. Ejemplo: 1TB disco duro, 16GB RAM, 2GB AMD Radeon Fury (se pueden incluir otras caracteristicas que se deseen), este espacio es requerido" class="pure-input-1-2" placeholder="Especificaciones Técnicas" />
+                                        <asp:TextBox ValidationGroup="one" ID="especificacion_tecnica" TextMode="MultiLine" runat="server" data-toggle="tooltip" title="En este espacio se debe proporcionar las cualidades del activo. Ejemplo: 1TB disco duro, 16GB RAM, 2GB AMD Radeon Fury (se pueden incluir otras caracteristicas que se deseen), este espacio es requerido" class="pure-input-1-2" placeholder="Especificaciones Técnicas" />
                                    <asp:RequiredFieldValidator ValidationGroup="one" ID="vEspecificacion" runat="server" ControlToValidate="especificacion_tecnica" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
                                         <asp:CustomValidator ValidationGroup="one" ID="CustomValidator3" runat="server" ClientValidationFunction="ValidateFieldLegth_ET" ErrorMessage="La especificación técnica no puede exceder los 350 digitos." ControlToValidate="especificacion_tecnica" EnableClientScript="true"  />
                                <%--     Validar si excede 350 espacios       --%> 
@@ -932,14 +932,14 @@
                                     <div class="pure-controls-group">
                                     <label for="tipo_activo">Tipo de activo</label>
                                     <div style="margin-left: 55px" class="btn-group">
-                                        <asp:RadioButton runat="server" ID="RadioButton5" ClientIDMode="Static" Enabled="true" Text="Software" GroupName="location" />
-                                        <asp:RadioButton runat="server" ID="RadioButton6" ClientIDMode="Static" Enabled="true" Text="Hardware" GroupName="location" />
-<%--                                        <label class="btn btn-primary" runat="server" id="btn5">
-                                            <asp:RadioButton runat="server" ID="RadioButton5" Text="Software" autocomplete="off" GroupName="location" />
+<%--                                        <asp:RadioButton runat="server" ID="RadioButton5" ClientIDMode="Static" Enabled="true" Text="Software" GroupName="location" />
+                                        <asp:RadioButton runat="server" ID="RadioButton6" ClientIDMode="Static" Enabled="true" Text="Hardware" GroupName="location" />--%>
+                                        <label class="btn btn-primary" runat="server" id="btn5">
+                                            <asp:RadioButton runat="server" ID="RadioButton5" Text="Software" GroupName="location" />
                                         </label>
                                         <label class="btn btn-primary" runat="server" id="btn6">
-                                            <asp:RadioButton runat="server" ID="RadioButton6" Text="Hardware" autocomplete="off" GroupName="location" />
-                                        </label>--%>
+                                            <asp:RadioButton runat="server" ID="RadioButton6" Text="Hardware" GroupName="location" />
+                                        </label>
                                     </div>
                                         <asp:CustomValidator id="CustomValidator9" ValidationGroup="one" runat="server" Display="Dynamic" ForeColor="Red" ErrorMessage="*" ClientValidationFunction="CustomValidator1_ClientValidate"></asp:CustomValidator>
 
@@ -1087,7 +1087,7 @@
                                 <%--      Especificaciones Técnicas       --%>
                                     <fieldset class="pure-control-group">
                                         <label for="Tipo">Especificaciones técnicas</label>
-                                        <asp:TextBox ValidationGroup="two" ID="especificacion_tecnica2" runat="server" data-toggle="tooltip" title="En este espacio se debe proporcionar las cualidades del activo, este espacio es requerido" class="pure-input-1-2" placeholder="Especificaciones Técnicas" />
+                                        <asp:TextBox ValidationGroup="two" ID="especificacion_tecnica2" TextMode="MultiLine" runat="server" data-toggle="tooltip" title="En este espacio se debe proporcionar las cualidades del activo, este espacio es requerido" class="pure-input-1-2" placeholder="Especificaciones Técnicas" />
                                    <asp:RequiredFieldValidator ValidationGroup="two" ID="vEspecificacion2" runat="server" ControlToValidate="especificacion_tecnica2" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
                                    <asp:CustomValidator ValidationGroup="one" ID="CustomValidator6" runat="server" ClientValidationFunction="ValidateFieldLegth_ETM" ErrorMessage="La especificación técnica no puede exceder los 350 digitos." ControlToValidate="especificacion_tecnica2" EnableClientScript="true"  />
                                <%--     Validar si excede 350 espacios       --%> 
@@ -1181,7 +1181,7 @@
                                         </div>
                                         <div class="modal-footer">
                                             <asp:Button runat="server" CssClass="btn btn-secondary" data-dismiss="modal" Text="Cerrar" />
-                                            <asp:Button runat="server" CssClass="btn btn-danger" ID="enviar2" Text="Inhabilitar" />
+                                            <asp:Button runat="server" CssClass="btn btn-danger" OnClick="BajaActivo_Click" ID="enviar2" Text="Inhabilitar" />
                                         </div>
                                     </div>
                                     <!-- /.modal-content -->

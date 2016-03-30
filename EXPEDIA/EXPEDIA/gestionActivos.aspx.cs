@@ -101,7 +101,7 @@ namespace EXPEDIA
                         cmd.Parameters.AddWithValue("@garantia_final", final_garantia.Text);
                         cmd.Parameters.AddWithValue("@descripcion", descripcion.SelectedValue);
                         cmd.Parameters.AddWithValue("@departamento", area.SelectedValue);
-                        cmd.Parameters.AddWithValue("@proveedor", proveedor.SelectedValue);
+                        cmd.Parameters.AddWithValue("@proveedor", proveedor.SelectedItem.Text);
                         cmd.Parameters.AddWithValue("@especificacion_tecnica", especificacion_tecnica.Text);
                         cmd.Parameters.AddWithValue("@fecha_compra", fecha_compra.Text);
                         cmd.Parameters.AddWithValue("@costo", precio.Text);
@@ -140,7 +140,7 @@ namespace EXPEDIA
                         cmd.Parameters.AddWithValue("@costo", precio.Text);
                         cmd.Parameters.AddWithValue("@descripcion", descripcion.SelectedValue);
                         cmd.Parameters.AddWithValue("@departamento", area.SelectedValue);
-                        cmd.Parameters.AddWithValue("@proveedor", proveedor.SelectedValue);
+                        cmd.Parameters.AddWithValue("@proveedor", proveedor.SelectedItem.Text);
                         cmd.Parameters.AddWithValue("@especificacion_tecnica", especificacion_tecnica.Text);
                         //insertar invalidos
                         cmd.Parameters.AddWithValue("@garantia_inicio", "");
@@ -406,7 +406,7 @@ namespace EXPEDIA
                         cmd.Parameters.AddWithValue("@garantia_final", final_garantia.Text);
                         cmd.Parameters.AddWithValue("@descripcion", descripcion.SelectedValue);
                         cmd.Parameters.AddWithValue("@departamento", area.SelectedValue);
-                        cmd.Parameters.AddWithValue("@proveedor", proveedor.SelectedValue);
+                        cmd.Parameters.AddWithValue("@proveedor", proveedor.SelectedItem.Text);
                         cmd.Parameters.AddWithValue("@especificacion_tecnica", especificacion_tecnica.Text);
                         cmd.Parameters.AddWithValue("@estado", 1);
                         cmd.ExecuteNonQuery();
@@ -661,6 +661,9 @@ namespace EXPEDIA
 
             return x;
         }
+
+
+
 
         protected void bt_consultarAC_Click(object sender, EventArgs e)
         {
@@ -972,7 +975,8 @@ namespace EXPEDIA
 
             }
         }
-          protected void BajaActivo_Click(object sender, EventArgs e) {
+
+        protected void BajaActivo_Click(object sender, EventArgs e) {
                 Conexion c = new Conexion();
                 SqlConnection Conexion = c.Conectar();
                 string Sql = @"UPDATE Activos SET bd_estado = @estado WHERE bd_numero_placa = @placa ";
@@ -992,17 +996,6 @@ namespace EXPEDIA
                 }
                 catch (Exception t) { Response.Write("error" + t); }
             }
-
-
-
-       
-
-
-
-
-
-
-
 
     }
 }
