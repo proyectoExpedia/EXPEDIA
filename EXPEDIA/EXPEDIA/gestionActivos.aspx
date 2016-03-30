@@ -82,7 +82,7 @@
                 </div>               
 
         <div class="panel-body">    
-        <cc1:TabContainer ID="TabContainer1" CssClass="nav nav-tabs" runat="server" ActiveTabIndex="0"> 
+        <cc1:TabContainer ID="TabContainer1" CssClass="navi nav-tabs" runat="server" ActiveTabIndex="0"> 
             
              <%-- Formulario 1 --%>            
            
@@ -908,19 +908,21 @@
                                 <fieldset>
                                     <div class="pure-control-group" style="margin-top: 40px;">
                                         <div>
-                                            <button class="btn btn-success" id="habilitar" onclick="habilitar();" >Habilitar modificación</button>
+                                            <asp:Button class="btn btn-success" runat="server" id="habilitarMA" Onclick="bt_Habilitar_Modif_Click"  Text="Habilitar modificación" />
                                             <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal">Inhabilitar activo</button>
                                         </div>
+                                        <%--<asp:Button runat="server" ID="HOLI" OnClick="bt_Habilitar_Modif_Click" />--%>
                                         <div id="t" style="display: none">
                                             <h3>Formulario de modificación</h3>
                                         </div>
                                
-                               <script>
-                                function habilitar() {
-                                    document.getElementById('<%= numero_placa2.ClientID %>').value =";return false;";
+<%--                               <script>
+                                   function habilitarEscapacios() {
+                                    document.getElementById('actualizaDatos').style.display = 'block';
+                                    document.getElementById('<%= numero_placa2.ClientID %>').readOnly = false;
                                     document.getElementById('<%= numero_serie2.ClientID %>').readOnly = false;
                                     document.getElementById('<%= precio2.ClientID %>').readOnly = false;
-                                }
+                                }--%>
                             
                                </script>
                                     
@@ -929,12 +931,14 @@
                                     <div class="pure-controls-group">
                                     <label for="tipo_activo">Tipo de activo</label>
                                     <div style="margin-left: 55px" class="btn-group" data-toggle="buttons">
-                                        <label class="btn btn-primary" >
+                                        <asp:RadioButton runat="server" ID="RadioButton5" ClientIDMode="Static" Enabled="true" Text="Software" GroupName="location" />
+                                        <asp:RadioButton runat="server" ID="RadioButton6" ClientIDMode="Static" Enabled="true" Text="Hardware" GroupName="location" />
+<%--                                        <label class="btn btn-primary" runat="server" id="btn5">
                                             <asp:RadioButton runat="server" ID="RadioButton5" Text="Software" autocomplete="off" GroupName="location" />
                                         </label>
-                                        <label class="btn btn-primary ">
+                                        <label class="btn btn-primary" runat="server" id="btn6">
                                             <asp:RadioButton runat="server" ID="RadioButton6" Text="Hardware" autocomplete="off" GroupName="location" />
-                                        </label>
+                                        </label>--%>
                                     </div>
                                         <asp:CustomValidator id="CustomValidator9" ValidationGroup="one" runat="server" Display="Dynamic" ForeColor="Red" ErrorMessage="*" ClientValidationFunction="CustomValidator1_ClientValidate"></asp:CustomValidator>
 
@@ -946,7 +950,7 @@
 <%--      |             --%>     <%--      Numero de placa del activo       --%>                              
 <%--      |             --%>         <div class="pure-control-group">
 <%--      |             --%>             <label for="nplaca">Número de placa del activo</label>
-<%--      |             --%>                 <asp:TextBox ValidationGroup="two" runat="server" ReadOnly="true" ID="numero_placa2" data-placement="left" ToolTip="Este espacio debe proporcionar el número de placa del activo que desea consultar, este espacio es requerido." placeholder="ENF-1523" />
+<%--      |             --%>                 <asp:TextBox ValidationGroup="two" runat="server" ID="numero_placa2" data-placement="left" ToolTip="Este espacio debe proporcionar el número de placa del activo que desea consultar, este espacio es requerido." placeholder="ENF-1523" />
 <%--      |             --%>                      <asp:RequiredFieldValidator ValidationGroup="two" ID="vPlaca2" runat="server" ControlToValidate="numero_placa2" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
 <%--      |             --%>        <asp:CustomValidator ValidationGroup="one" ID="CustomValidator4" runat="server" ClientValidationFunction="ValidateFieldLegth_PrM" ErrorMessage="El número de placa no puede exceder los 10 digitos." ControlToValidate="numero_placa2" EnableClientScript="true"  /> 
 <%--      |             --%>         <%--     Validar si excede 10 espacios       --%>    
@@ -964,7 +968,7 @@
                                      </div>
 <%--      |             --%>         <div class="pure-control-group">
 <%--      |             --%>             <label for="nserie">Número de serie del activo</label>
-<%--      |             --%>                  <asp:TextBox ValidationGroup="two" ID="numero_serie2" ReadOnly="true" runat="server" data-placement="left" ToolTip="Este espacio debe proporcionar el número de serie del activo, este espacio es requerido." placeholder="MUJ23HJCK987" />
+<%--      |             --%>                  <asp:TextBox ValidationGroup="two" ID="numero_serie2" runat="server" data-placement="left" ToolTip="Este espacio debe proporcionar el número de serie del activo, este espacio es requerido." placeholder="MUJ23HJCK987" />
 <%--      |             --%>                       <asp:RequiredFieldValidator ValidationGroup="two" ID="vSerie2" runat="server" ControlToValidate="numero_serie2" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
 <%--      |             --%>        <asp:CustomValidator ValidationGroup="one" ID="CustomValidator5" runat="server" ClientValidationFunction="ValidateFieldLegth_SM" ErrorMessage="El número de serie no puede exceder los 10 digitos." ControlToValidate="numero_serie2" EnableClientScript="true"  /> 
 <%--      |             --%>         <%--     Validar si excede 10 espacios       --%>    
@@ -1005,7 +1009,7 @@
                                         <%--      costo       --%>
                                 <div class="pure-control-group">
                                     <label for="lprecio2">Costo en colones, del activo</label>
-                                    <asp:TextBox ValidationGroup="two" ID="precio2" ReadOnly="true" runat="server" TextMode="Number" data-placement="left" ToolTip="Este espacio debe proporcionar el valor total del activo, este espacio es requerido." placeholder="120360.17" />
+                                    <asp:TextBox ValidationGroup="two" ID="precio2" runat="server" TextMode="Number" data-placement="left" ToolTip="Este espacio debe proporcionar el valor total del activo, este espacio es requerido." placeholder="120360.17" />
                                     <asp:RequiredFieldValidator ValidationGroup="two" ID="vPrecio2" runat="server" ControlToValidate="precio2" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
                                 <asp:CustomValidator ValidationGroup="two" ID="CustomValidator8" runat="server" ClientValidationFunction="ValidateFieldLegth_PM" ErrorMessage="El precio no puede exceder los 10 digitos." ControlToValidate="precio2" EnableClientScript="true"  />
                                 <%--     Validar si excede 10 espacios       --%>  
@@ -1099,14 +1103,15 @@
                                     </script>
                                         </div>
                                     </fieldset>
-                                        </div>
-                                        <div class="pure-controls">
-                                            <button class="btn btn-success" id="enviar1" style="display: none">Realizar modificaciones</button>
+                                       <div class="pure-controls" runat="server" id="bny" style="display:none"> 
+                                            <asp:Button class="btn btn-success" runat="server" id="actualizaDatosAC" Text="Realizar modificaciones"/>
                                             <div id="mensaje1" style="display: none; float: right">
                                                 <h3>Las acciones han sido realizado con éxito.</h3>
                                             </div>
                                         </div>
-                               
+                                        </div>
+
+<%--                               
                             <script type="text/javascript">
                                 function habilitar() {
                                     document.getElementById('nserie1').removeAttribute("readonly", false);
@@ -1148,7 +1153,7 @@
                                     });
                                 });
 
-                            </script>
+                            </script>--%>
         </div>
                         </div>
                     </asp:Panel>

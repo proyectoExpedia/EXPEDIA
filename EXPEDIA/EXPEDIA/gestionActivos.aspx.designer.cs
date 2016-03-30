@@ -472,6 +472,15 @@ namespace EXPEDIA {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl ocultoAC;
         
         /// <summary>
+        /// habilitarMA control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button habilitarMA;
+        
+        /// <summary>
         /// RadioButton5 control.
         /// </summary>
         /// <remarks>
@@ -794,6 +803,24 @@ namespace EXPEDIA {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CustomValidator CustomValidator6;
+        
+        /// <summary>
+        /// bny control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl bny;
+        
+        /// <summary>
+        /// actualizaDatosAC control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button actualizaDatosAC;
         
         /// <summary>
         /// enviar2 control.
