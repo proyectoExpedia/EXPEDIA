@@ -984,22 +984,22 @@
                                             }
                                          }
                                     </script>
-<%--      |             --%>        </div>
-<%--      |             --%>              <%--      Fecha de entrega      --%>
-<%--      |             --%>         <div class="pure-control-group" style="display: none">
-<%--      |             --%>              <div class="pure-control-group">
-<%--      |             --%>                  <label for="fechaEntrega">Fecha de adquisición</label>
-<%--      |             --%>                       <asp:TextBox runat="server" ValidationGroup="two" ID="fecha_entrega3" tooltip="En este espacio debe proporcionar la fecha en que el activo fue adquirido por el Colegio de Abogados y Abogadas de Costa Rica, este espacio es requerido"></asp:TextBox>
-<%--      |             --%>                       <cc1:CalendarExtender TargetControlID="fecha_entrega3" ID="entrega2" runat="server" OnClientDateSelectionChanged="verificarFechaG3" />
-<%--      |             --%>                       <asp:RequiredFieldValidator ValidationGroup="two" ID="vEntrega" runat="server" ControlToValidate="fecha_entrega3" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
-<%--      |             --%>         </div>
-<%--      |             --%>               <%--      Duración del Contrato       --%>
-<%--      |             --%>         <div class="pure-control-group">
-<%--      |             --%>              <label for="duracion_contrato">Duración del Contrato</label>
-<%--      |             --%>                  <asp:TextBox runat="server" ValidationGroup="two" ID="finalizacion_contrato3" data-toggle="tooltip" title="Este espacio debe contener la fecha en que finaliza el contrato para el activo, este espacio es requerido."></asp:TextBox>
-<%--      |             --%>                       <cc1:CalendarExtender TargetControlID="finalizacion_contrato3" ID="calFinalizacion" runat="server" OnClientDateSelectionChanged="verificarFechaG4"/>
-<%--      |             --%>                       <asp:RequiredFieldValidator ValidationGroup="two" ID="vDuracion" runat="server" ControlToValidate="finalizacion_contrato3" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
-<%--      |             --%>         </div>
+                                    </div>
+                                          <%--      Fecha de entrega      --%>
+<%--                                    <div class="pure-control-group" style="display: none">
+                                         <div class="pure-control-group">
+                                              <label for="fechaEntrega">Fecha de adquisición</label>
+                                                  <asp:TextBox runat="server" ValidationGroup="two" ID="fecha_entrega3" tooltip="En este espacio debe proporcionar la fecha en que el activo fue adquirido por el Colegio de Abogados y Abogadas de Costa Rica, este espacio es requerido"></asp:TextBox>
+                                                  <cc1:CalendarExtender TargetControlID="fecha_entrega3" ID="entrega2" runat="server" OnClientDateSelectionChanged="verificarFechaG3" />
+                                                   <asp:RequiredFieldValidator ValidationGroup="two" ID="vEntrega" runat="server" ControlToValidate="fecha_entrega3" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
+                                     </div>--%>
+                                          <%--      Duración del Contrato       --%>
+<%--                                    <div class="pure-control-group">
+                                        <label for="duracion_contrato">Duración del Contrato</label>
+                                             <asp:TextBox runat="server" ValidationGroup="two" ID="finalizacion_contrato3" data-toggle="tooltip" title="Este espacio debe contener la fecha en que finaliza el contrato para el activo, este espacio es requerido."></asp:TextBox>
+                                                  <cc1:CalendarExtender TargetControlID="finalizacion_contrato3" ID="calFinalizacion" runat="server" OnClientDateSelectionChanged="verificarFechaG4"/>
+                                                   <asp:RequiredFieldValidator ValidationGroup="two" ID="vDuracion" runat="server" ControlToValidate="finalizacion_contrato3" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
+                                    </div>--%>
 <%--       -----------> --%><%--      terminan las opciones del leasing       --%>
 
                                    
@@ -1030,16 +1030,328 @@
                                 <div class="pure-control-group">
                                     <label for="lfechaCompra2">Fecha de compra</label>
                                     <asp:TextBox runat="server" ValidationGroup="two" ID="fecha_compra2" ClientIDMode="Static" data-toggle="tooltip" title="En este espacio debe proporcionar la fecha de compra del activo, este espacio es requerido."> </asp:TextBox>
-                                    <cc1:CalendarExtender TargetControlID="fecha_compra2" ID="vFC2" runat="server" OnClientDateSelectionChanged="verificarFechaG1"/>
+                                    <cc1:CalendarExtender TargetControlID="fecha_compra2" ID="vFC2" runat="server" OnClientDateSelectionChanged="verificarFechaG11"/>
                                     <asp:RequiredFieldValidator ValidationGroup="two" ID="RequiredFieldValidator5" runat="server" ControlToValidate="fecha_compra2" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
                                 
                                 </div>
+
+
+                                <%--validar Garantia menor compra--%>
+                                <script>
+                                    function verificarFechaGG(sender, args) {
+                                        //fecha con formato de textbox
+                                        //var fecha = new Date();
+                                        //var dd = fecha.getDate();
+                                        //var mm = fecha.getMonth() + 1; //enero es 1
+                                        //var yyyy = fecha.getFullYear();
+                                        //if (dd < 10) {
+                                        //    dd = '0' + dd
+                                        //}
+                                        //if (mm < 10) {
+                                        //    mm = '0' + mm
+                                        //}
+                                        //var t = yyyy+mm+dd;
+                                        //alert(t)
+                                        //fecha del texbox que quiera (fecha_compra)
+                                        var vfechaC = document.getElementById('<%=fecha_compra2.ClientID%>').value;
+                                        var dia1;
+                                        var mes1;
+                                        var anno1;
+                                        var FC1 = 0;
+                                        var f1 = vfechaC.toString();
+                                        var f2 = f1.charAt(0);
+                                        var f3 = f1.charAt(1);
+                                        var f4 = f1.substr(-7, 6);
+                                        var f5 = f4.charAt(0);
+                                        var f6 = f4.charAt(1);
+                                        if (f3 == '/') {
+                                            mes1 = '0' + f2;
+                                        } else {
+                                            mes1 = f2 + f3;
+                                        }
+                                        if (f5 == '/') {
+                                            dia1 = '0' + f6;
+                                        } else {
+                                            dia1 = f5 + f6;
+                                        }
+                                        anno1 = f1.substr(-4);
+                                        FC1 = anno1 + mes1 + dia1;
+                                        //fecha del texbox que quiera (inicio_garantia)
+                                        var vfechaIG = document.getElementById('<%=inicio_garantia2.ClientID%>').value;
+                                        var dia;
+                                        var mes;
+                                        var anno;
+                                        var FC = 0;
+                                        var f11 = vfechaIG.toString();
+                                        var f22 = f11.charAt(0);
+                                        var f33 = f11.charAt(1);
+                                        var f44 = f11.substr(-7, 6);
+                                        var f55 = f44.charAt(0);
+                                        var f66 = f44.charAt(1);
+                                        if (f33 == '/') {
+                                            mes = '0' + f22;
+                                        } else {
+                                            mes = f22 + f33;
+                                        }
+                                        if (f55 == '/') {
+                                            dia = '0' + f66;
+                                        } else {
+                                            dia = f55 + f66;
+                                        }
+                                        anno = f11.substr(-4);
+                                        FC = anno + mes + dia;
+
+                                        if (FC != 0) {
+                                            if( FC < FC1) {
+                                            swal({
+                                                title: 'Error!',
+                                                text: 'La fecha de inicio de la garantía no puede ser una fecha anterior a la fecha de compra.',
+                                                type: 'error',
+                                                confirmButtonText: 'Continuar'
+                                            })
+                                            document.getElementById('<%=inicio_garantia.ClientID%>').value = '';
+                                        
+                                            }
+
+                                        }
+
+                                        //////////////////garantia no mayor a finalizar grantia///////////
+                                        var vfechaFG = document.getElementById('<%=final_garantia2.ClientID%>').value;
+                                        var dia111;
+                                        var mes111;
+                                        var anno111;
+                                        var FC111 = 0;
+                                        var f111 = vfechaFG.toString();
+                                        var f222 = f111.charAt(0);
+                                        var f333 = f111.charAt(1);
+                                        var f444 = f111.substr(-7, 6);
+                                        var f555 = f444.charAt(0);
+                                        var f666 = f444.charAt(1);
+                                        
+                                       if (f333 == '/') {
+                                            mes111 = '0' + f222;
+                                        } else {
+                                            mes111 = f222 + f333;
+                                        }
+                                        if (f555 == '/') {
+                                            dia111 = '0' + f666;
+                                        } else {
+                                            dia111 = f555 + f666;
+                                        }
+                                        anno111 = f111.substr(-4);
+                                        FC111 = anno111 + mes111 + dia111;
+                                            if (FC111 != 0) {
+                                            if( FC111 < FC ) {
+                                            swal({
+                                                title: 'Error!',
+                                                text: 'La fecha de inicio de la garantía no puede ser una fecha mayor a la fecha final de la garantía',
+                                                type: 'error',
+                                                confirmButtonText: 'Continuar'
+                                            })
+                                            document.getElementById('<%=inicio_garantia2.ClientID%>').value = '';
+                                        
+                                            }
+
+                                        }
+                                    //fecha validar futuro no existente
+                                        var d = new Date();
+                                        d.setDate(d.getDate());
+                                        if (sender._selectedDate > d) {
+                                            swal({
+                                                title: 'Error!',
+                                                text: 'La fecha que ingresó aún no existe o no se encuentra entre el rango de fechas admitidas, ingrese una fecha que se encuentre en el mes actual.',
+                                                type: 'error',
+                                                confirmButtonText: 'Continuar'
+                                            })
+                                            sender._textbox.set_Value('')
+                                        }
+                                    }
+
+
+                                </script>
+                                <%--validar compra menor a garantia / inicial menor a final--%>
+                                <script>
+                                    function verificarFechaG11(sender, args) {
+                                        //fecha con formato de textbox
+                                        //var fecha = new Date();
+                                        //var dd = fecha.getDate();
+                                        //var mm = fecha.getMonth() + 1; //enero es 1
+                                        //var yyyy = fecha.getFullYear();
+                                        //if (dd < 10) {
+                                        //    dd = '0' + dd
+                                        //}
+                                        //if (mm < 10) {
+                                        //    mm = '0' + mm
+                                        //}
+                                        //var t = yyyy+mm+dd;
+                                        //alert(t);
+
+                                        //fecha del texbox que quiera (fecha_compra)
+                                        var vfechaC = document.getElementById('<%=fecha_compra2.ClientID%>').value;
+                                        var dia1;
+                                        var mes1;
+                                        var anno1;
+                                        var FC1 = 0;
+                                        var f1 = vfechaC.toString();
+                                        var f2 = f1.charAt(0);
+                                        var f3 = f1.charAt(1);
+                                        var f4 = f1.substr(-7, 6);
+                                        var f5 = f4.charAt(0);
+                                        var f6 = f4.charAt(1);
+                                        if (f3 == '/') {
+                                            mes1 = '0' + f2;
+                                        } else {
+                                            mes1 = f2 + f3;
+                                        }
+                                        if (f5 == '/') {
+                                            dia1 = '0' + f6;
+                                        } else {
+                                            dia1 = f5 + f6;
+                                        }
+                                        anno1 = f1.substr(-4);
+                                        FC1 = anno1 + mes1 + dia1;
+                                        //fecha del texbox que quiera (inicio_garantia)
+                                        var vfechaIG = document.getElementById('<%=inicio_garantia2.ClientID%>').value;
+                                        var dia;
+                                        var mes;
+                                        var anno;
+                                        var FC = 0;
+                                        var f11 = vfechaIG.toString();
+                                        var f22 = f11.charAt(0);
+                                        var f33 = f11.charAt(1);
+                                        var f44 = f11.substr(-7, 6);
+                                        var f55 = f44.charAt(0);
+                                        var f66 = f44.charAt(1);
+                                        if (f33 == '/') {
+                                            mes = '0' + f22;
+                                        } else {
+                                            mes = f22 + f33;
+                                        }
+                                        if (f55 == '/') {
+                                            dia = '0' + f66;
+                                        } else {
+                                            dia = f55 + f66;
+                                        }
+                                        anno = f11.substr(-4);
+                                        FC = anno + mes + dia;
+
+                                        if (FC != 0) {
+                                            if (FC1 > FC) {
+                                                swal({
+                                                    title: 'Error!',
+                                                    text: 'La fecha de compra no puede ser una fecha anterior a la fecha de inicio de la garantía',
+                                                    type: 'error',
+                                                    confirmButtonText: 'Continuar'
+                                                })
+                                                document.getElementById('<%=inicio_garantia2.ClientID%>').value = '';
+
+                                            }
+                                        }
+
+                                    //fecha validar futuro no existente
+                                        var d = new Date();
+                                        d.setDate(d.getDate());
+                                        if (sender._selectedDate > d) {
+                                            swal({
+                                                title: 'Error!',
+                                                text: 'La fecha que ingresó aún no existe o no se encuentra entre el rango de fechas admitidas, ingrese una fecha que se encuentre en el mes actual.',
+                                                type: 'error',
+                                                confirmButtonText: 'Continuar'
+                                            })
+                                            sender._textbox.set_Value('')
+                                        }
+                                    }
+                                    
+                                </script>
+                                <%--validar Garantiafinal mayor incio--%>
+                                <script>
+                                    function verificarFechaG22(sender, args) {
+                                        //fecha con formato de textbox
+                                        //var fecha = new Date();
+                                        //var dd = fecha.getDate();
+                                        //var mm = fecha.getMonth() + 1; //enero es 1
+                                        //var yyyy = fecha.getFullYear();
+                                        //if (dd < 10) {
+                                        //    dd = '0' + dd
+                                        //}
+                                        //if (mm < 10) {
+                                        //    mm = '0' + mm
+                                        //}
+                                        //var t = yyyy+mm+dd;
+                                        //alert(t)
+                                        //fecha del texbox que quiera (inicio_garantia)
+                                        var vfechaIG = document.getElementById('<%=inicio_garantia2.ClientID%>').value;
+                                        var dia;
+                                        var mes;
+                                        var anno;
+                                        var FC = 0;
+                                        var f11 = vfechaIG.toString();
+                                        var f22 = f11.charAt(0);
+                                        var f33 = f11.charAt(1);
+                                        var f44 = f11.substr(-7, 6);
+                                        var f55 = f44.charAt(0);
+                                        var f66 = f44.charAt(1);
+                                        if (f33 == '/') {
+                                            mes = '0' + f22;
+                                        } else {
+                                            mes = f22 + f33;
+                                        }
+                                        if (f55 == '/') {
+                                            dia = '0' + f66;
+                                        } else {
+                                            dia = f55 + f66;
+                                        }
+                                        anno = f11.substr(-4);
+                                        FC = anno + mes + dia;
+
+                                        //////////////////garantia no mayor a finalizar grantia///////////
+                                        var vfechaFG = document.getElementById('<%=final_garantia2.ClientID%>').value;
+                                        var dia111;
+                                        var mes111;
+                                        var anno111;
+                                        var FC111 = 0;
+                                        var f111 = vfechaFG.toString();
+                                        var f222 = f111.charAt(0);
+                                        var f333 = f111.charAt(1);
+                                        var f444 = f111.substr(-7, 6);
+                                        var f555 = f444.charAt(0);
+                                        var f666 = f444.charAt(1);
+                                        
+                                       if (f333 == '/') {
+                                            mes111 = '0' + f222;
+                                        } else {
+                                            mes111 = f222 + f333;
+                                        }
+                                        if (f555 == '/') {
+                                            dia111 = '0' + f666;
+                                        } else {
+                                            dia111 = f555 + f666;
+                                        }
+                                        anno111 = f111.substr(-4);
+                                        FC111 = anno111 + mes111 + dia111;
+                                        if (FC != 0) {
+                                            if( FC111 < FC  ) {
+                                            swal({
+                                                title: 'Error!',
+                                                text: 'La fecha final de la garantáa no puede ser menor a la fecha de inico de la garantía',
+                                                type: 'error',
+                                                confirmButtonText: 'Continuar'
+                                            })
+                                            document.getElementById('<%=final_garantia2.ClientID%>').value = '';
+                                        
+                                            }
+
+                                        }
+                                    }
+
+
+                                </script>
                                        
                                         <%--     Inicio de la garantía      --%>
                                 <fieldset class="pure-control-group">
                                     <label for="inicio">Fecha de Inicio de la garantía</label>
                                     <asp:TextBox runat="server" ID="inicio_garantia2" ValidationGroup="two" data-toggle="tooltip" title="En este espacio debe proporcionar la fecha en que inicia la garantía, especificada por el proveedor, este espacio es requerido."></asp:TextBox>
-                                    <cc1:CalendarExtender TargetControlID="inicio_garantia2" ID="calInicio3" runat="server" OnClientDateSelectionChanged="verificarFechaG"/>
+                                    <cc1:CalendarExtender TargetControlID="inicio_garantia2" ID="calInicio3" runat="server" OnClientDateSelectionChanged="verificarFechaGG"/>
                                     <asp:RequiredFieldValidator ValidationGroup="two" ID="vInicio" runat="server" ControlToValidate="inicio_garantia2" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
                                 
                                 </fieldset>
@@ -1047,7 +1359,7 @@
                                 <fieldset class="pure-control-group">
                                     <label for="finalizacion">Fecha de finalización de la garantía</label>
                                     <asp:TextBox runat="server" ID="final_garantia2" ValidationGroup="two" data-toggle="tooltip" title="En este espacio debe proporcionar la fecha en que finaliza la garantía, especificada por el proveedor, este espacio es requerido."></asp:TextBox>
-                                    <cc1:CalendarExtender TargetControlID="final_garantia2" ID="calFinal3" runat="server" OnClientDateSelectionChanged="verificarFechaG2"/>
+                                    <cc1:CalendarExtender TargetControlID="final_garantia2" ID="calFinal3" runat="server" OnClientDateSelectionChanged="verificarFechaG22"/>
                                     <asp:RequiredFieldValidator ValidationGroup="two" ID="vFinal2" runat="server" ControlToValidate="final_garantia2" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
                                 
                                      </fieldset>
@@ -1055,8 +1367,8 @@
                                 <fieldset class="pure-control-group">
                                     <label for="descripcion">Descripción del activo</label>
                                     <asp:DropDownList ValidationGroup="two"  ID="descripcion2" runat="server" tooltip="Para completar este espacio facilmente, preguntese a si mismo: ¿Que estoy ingresando? Ejemplo: Estoy ingresando una Laptop. En este espacio usted deberá colocar la palabra Laptop, este espacio es requerido. " class="pure-input-1-2">
-                                        <asp:ListItem>Elija una descripción</asp:ListItem>
-                                        <asp:ListItem>¿La descripción no aparece? Haz uso el icono situado contiguo a esta categoría para proporcionar una nueva.</asp:ListItem>
+                                        <asp:ListItem disabled="disabled">Elija una descripción</asp:ListItem>
+                                        <asp:ListItem disabled="disabled">¿La descripción no aparece? Haz uso el icono situado contiguo a esta categoría para proporcionar una nueva.</asp:ListItem>
                                     </asp:DropDownList>
                                     <a data-toggle="modal" data-target="#modalDescripcionAc"><span class="glyphicon glyphicon-wrench"></span></a>
                                      <asp:RequiredFieldValidator ValidationGroup="two" ID="vDescripcion2" runat="server" ControlToValidate="descripcion2" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
@@ -1066,9 +1378,9 @@
                                 <fieldset class="pure-control-group">
                                     <label for="area">Departamento o Sede regional destinado(a)</label>
                                     <asp:DropDownList ValidationGroup="two" ID="area2" runat="server" data-toggle="tooltip" title="En este espacio debe proporcionar el área la cual está destinada el activo, es requerido. " class="pure-input-1-2">
-                                        <asp:ListItem>Elija un Área o Departamento</asp:ListItem>
+                                        <asp:ListItem disabled="disabled">Elija un Área o Departamento</asp:ListItem>
 
-                                        <asp:ListItem>¿La opción que busca no aparece? Haz uso el icono situado contiguo a esta categoría para proporcionar una nueva.</asp:ListItem>
+                                        <asp:ListItem disabled="disabled">¿La opción que busca no aparece? Haz uso el icono situado contiguo a esta categoría para proporcionar una nueva.</asp:ListItem>
                                     </asp:DropDownList>
                                     <a data-toggle="modal" data-target="#modalAreas"><span class="glyphicon glyphicon-wrench"></span></a>
                                     <asp:RequiredFieldValidator ValidationGroup="two" ID="vArea2" runat="server" ControlToValidate="area2" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
@@ -1077,8 +1389,8 @@
                                 <fieldset class="pure-control-group">
                                     <label for="provedor">Proveedor</label>
                                     <asp:DropDownList ValidationGroup="two" ID="proveedor2" runat="server" data-toggle="tooltip" title="Proveedor: En este espacio debe proporcionar el nombre del proveedor del activo, este espacio es requerido." class="pure-input-1-2">
-                                        <asp:ListItem>Elija un proveedor</asp:ListItem>
-                                        <asp:ListItem>¿El proveedor no aparece? Haz uso el icono situado contiguo a esta categoría para proporcionar una nueva.</asp:ListItem>
+                                        <asp:ListItem disabled="disabled">Elija un proveedor</asp:ListItem>
+                                        <asp:ListItem disabled="disabled">¿El proveedor no aparece? Haz uso el icono situado contiguo a esta categoría para proporcionar una nueva.</asp:ListItem>
                                     </asp:DropDownList>
                                     <a data-toggle="modal" data-target="#modalProveedor"><span class="glyphicon glyphicon-wrench"></span></a>
                                     <asp:RequiredFieldValidator ValidationGroup="two" ID="vProveedor2" runat="server" ControlToValidate="proveedor2" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
@@ -1254,7 +1566,7 @@
                                         <div class="modal-body">
                                             <div class="container">
                                                 <div class="pure-form pure-form-aligned">
- <%--------------------------%>                   <button class="btn btn-success" id="habMod" onclick="habilitar();">Habilitar modificación</button>
+ <%--------------------------%>                   <%--<button class="btn btn-success" id="habMod" onclick="habilitar();">Habilitar modificación</button>--%>
                                                     <fieldset class="pure-control-group">
                                                         <div class="input-prepend">
                                                             <label for="id_descripcion_nueva">ID de descripción:</label>

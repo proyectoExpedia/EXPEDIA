@@ -580,60 +580,6 @@ namespace EXPEDIA {
         protected global::System.Web.UI.WebControls.CustomValidator CustomValidator5;
         
         /// <summary>
-        /// fecha_entrega3 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox fecha_entrega3;
-        
-        /// <summary>
-        /// entrega2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::AjaxControlToolkit.CalendarExtender entrega2;
-        
-        /// <summary>
-        /// vEntrega control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator vEntrega;
-        
-        /// <summary>
-        /// finalizacion_contrato3 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox finalizacion_contrato3;
-        
-        /// <summary>
-        /// calFinalizacion control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::AjaxControlToolkit.CalendarExtender calFinalizacion;
-        
-        /// <summary>
-        /// vDuracion control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator vDuracion;
-        
-        /// <summary>
         /// precio2 control.
         /// </summary>
         /// <remarks>

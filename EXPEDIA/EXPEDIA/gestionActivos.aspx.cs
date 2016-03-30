@@ -263,7 +263,7 @@ namespace EXPEDIA
                     ListItem item = new ListItem(descripcion_area.Text, id_areas.Text, true);
                     area.Items.Add(item);
                     excelente(Registrar_Area);
-                    Response.Redirect("gestionActivos.aspx");
+                    limpiarArea();
                     //area_actualizar.Items.Add(item);
                     //descripcion.Controls.Add(new ListItem());
                     //cargar_descripcion(descripcion);
@@ -272,6 +272,7 @@ namespace EXPEDIA
                 catch (Exception a)
                 {
                     Response.Write("error" + a.ToString());
+                    
                 }
             }
 
@@ -298,7 +299,7 @@ namespace EXPEDIA
                     ListItem item2 = new ListItem(id_descripcion_nueva.Text, descripcion_nueva.Text, true);
                     descripcion.Items.Add(item2);
                     excelente(Registar_Descripcion_Ac);
-                    Response.Redirect("gestionActivos.aspx");
+                    limpiarDescrip();
                     //Response.Redirect("gestionActivos.aspx");
                     //cargar_descripcion(descripcion);
 
@@ -333,7 +334,7 @@ namespace EXPEDIA
                     proveedor.Items.Add(item3);
                     c.Desconectar(Conexion);
                     excelente(Resgistrar_Proveedor);
-                    Response.Redirect("gestionActivos.aspx");
+                    limpiarPro();
                     //Response.Redirect("gestionActivos.aspx");
 
 
@@ -1026,8 +1027,8 @@ namespace EXPEDIA
             numero_placa2.Text = "";
             fecha_compra2.Text = "";
             numero_serie2.Text = "";
-            fecha_entrega3.Text = "";
-            finalizacion_contrato3.Text = "";
+            //fecha_entrega3.Text = "";
+            //finalizacion_contrato3.Text = "";
             precio2.Text = "";
             fecha_compra2.Text = "";
             inicio_garantia2.Text = "";
@@ -1037,6 +1038,26 @@ namespace EXPEDIA
             proveedor2.SelectedIndex = 0;
             especificacion_tecnica2.Text = "";
 
+        }
+
+        protected void limpiarArea() {
+            id_areas.Text = "";
+            descripcion_area.Text = "";
+        }
+
+        protected void limpiarDescrip()
+        {
+            id_descripcion_nueva.Text = "";
+            descripcion_nueva.Text = "";
+        }
+
+        protected void limpiarPro()
+        {
+            idp.Text = "";
+            nproveedor.Text = "";
+            correo.Text = "";
+            telefono.Text = "";
+            telefono1.Text = "";
         }
 
     }
