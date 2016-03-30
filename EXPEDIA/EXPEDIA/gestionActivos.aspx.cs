@@ -68,7 +68,7 @@ namespace EXPEDIA
                         excelente(Button1);
                         //System.Threading.Thread.Sleep(9000);
 
-                        Response.Redirect("gestionActivos.aspx");
+                        limpiar1();
 
 
 
@@ -114,7 +114,7 @@ namespace EXPEDIA
                         excelente(Button1);
                         c.Desconectar(Conexion);
 
-                        Response.Redirect("gestionActivos.aspx");
+                        limpiar1();
 
                     }
                     catch (Exception t) { Response.Write("error" + t); }
@@ -151,7 +151,7 @@ namespace EXPEDIA
                         cmd.ExecuteNonQuery();
                         c.Desconectar(Conexion);
                         excelente(Button1);
-                        Response.Redirect("gestionActivos.aspx");
+                        limpiar1();
 
 
 
@@ -838,6 +838,7 @@ namespace EXPEDIA
 
         protected void bt_Habilitar_Modif_Click(object sender, EventArgs e)
         {
+            
             habilitarCampos();
 
 
@@ -885,7 +886,7 @@ namespace EXPEDIA
                         cmd.ExecuteNonQuery();
                         excelente(actualizaDatosAC);
                         c.Desconectar(Conexion);
-
+                        limpiar2();
 
 
                     }
@@ -928,6 +929,7 @@ namespace EXPEDIA
                         cmd.ExecuteNonQuery();
                         excelente(actualizaDatosAC);
                         c.Desconectar(Conexion);
+                        limpiar2();
 
 
                     }
@@ -995,9 +997,51 @@ namespace EXPEDIA
 
                 }
                 catch (Exception t) { Response.Write("error" + t); }
-            }
+        }
+
+        protected void limpiar1() {
+            RadioButton2.Checked = false;
+            RadioButton3.Checked = false;
+            RadioButton4.Checked = false;
+            numero_placa.Text = "";
+            fecha_compra.Text = "";
+            numero_serie.Text = "";
+            fecha_adquisicion.Text = "";
+            finalizacion_contrato.Text = "";
+            precio.Text = "";
+            fecha_compra.Text = "";
+            inicio_garantia.Text = "";
+            final_garantia.Text = "";
+            descripcion.SelectedIndex = 0;
+            area.SelectedIndex = 0;
+            proveedor.SelectedIndex = 0;
+            especificacion_tecnica.Text = "";
+
+        }
+
+        protected void limpiar2()
+        {
+            RadioButton5.Checked = false;
+            RadioButton6.Checked = false;
+            numero_placa2.Text = "";
+            fecha_compra2.Text = "";
+            numero_serie2.Text = "";
+            fecha_entrega3.Text = "";
+            finalizacion_contrato3.Text = "";
+            precio2.Text = "";
+            fecha_compra2.Text = "";
+            inicio_garantia2.Text = "";
+            final_garantia2.Text = "";
+            descripcion2.SelectedIndex = 0;
+            area2.SelectedIndex = 0;
+            proveedor2.SelectedIndex = 0;
+            especificacion_tecnica2.Text = "";
+
+        }
 
     }
+
+        
 }
 
 
