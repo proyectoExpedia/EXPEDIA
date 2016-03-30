@@ -18,6 +18,9 @@ namespace EXPEDIA
                 cargar_area(area);
                 cargar_descripcion(descripcion);
                 cargar_proveedor(proveedor);
+                cargar_area(area2);
+                cargar_descripcion(descripcion2);
+                cargar_proveedor(proveedor2);
             }
 
 
@@ -183,6 +186,7 @@ namespace EXPEDIA
             }
         }
 
+
         protected void cargar_area(DropDownList dropdown)
         {
             Conexion c = new Conexion();
@@ -262,6 +266,8 @@ namespace EXPEDIA
                     c.Desconectar(Conexion);
                     ListItem item = new ListItem(descripcion_area.Text, id_areas.Text, true);
                     area.Items.Add(item);
+                    // Cuando lo ingresa tiene que meterlos en los 2 dropdown Antes estaba solo el de arriba, yo agregue el de abajo
+                    area2.Items.Add(item);
                     excelente(Registrar_Area);
                     limpiarArea();
                     //area_actualizar.Items.Add(item);
@@ -298,6 +304,7 @@ namespace EXPEDIA
                     c.Desconectar(Conexion);
                     ListItem item2 = new ListItem(id_descripcion_nueva.Text, descripcion_nueva.Text, true);
                     descripcion.Items.Add(item2);
+                    descripcion2.Items.Add(item2);
                     excelente(Registar_Descripcion_Ac);
                     limpiarDescrip();
                     //Response.Redirect("gestionActivos.aspx");
@@ -332,6 +339,7 @@ namespace EXPEDIA
                     cmd.ExecuteNonQuery();
                     ListItem item3 = new ListItem(idp.Text, nproveedor.Text, true);
                     proveedor.Items.Add(item3);
+                    proveedor2.Items.Add(item3);
                     c.Desconectar(Conexion);
                     excelente(Resgistrar_Proveedor);
                     limpiarPro();
@@ -378,111 +386,111 @@ namespace EXPEDIA
             //http://limonte.github.io/sweetalert2/
 
         }
-        protected void Bt_Modificar_Click(object sender, EventArgs e)
-        {
-            if (Page.IsValid)
-            {
-                //validate is successful.
-            }
+        //protected void Bt_Modificar_Click(object sender, EventArgs e)
+        //{
+        //    if (Page.IsValid)
+        //    {
+        //        //validate is successful.
+        //    }
 
-            if (corroborarExistenciaDatos("Activos", "bd_numero_placa", numero_placa.Text, Button1) && corroborarExistenciaDatos("Activos", "bd_numero_serie", numero_serie.Text, Button1))
-            {
-                if (RadioButton2.Checked)
-                {
-                    Conexion c = new Conexion();
-                    SqlConnection Conexion = c.Conectar();
-                    string Sql = @"UPDATE Activos SET (bd_tipo_activo = @tipo_activo, bd_numero_placa = @placa, bd_numero_serie = @serie, bd_fecha_inicio_garantia = @garantia_inicio, bd_fecha_final_garantia = @garantia_final, bd_descripcion_activo = @descripcion, bd_departamento = @departamento, bd_proveedor = @proveedor, bd_especificacion_tecnica = @especificacion_tecnica, bd_fecha_compra = @fecha_compra, bd_costo_activo = @costo, bd_estado = @estado) 
-                                    WHERE (bd_numero_placa = @placa)";
+        //    if (corroborarExistenciaDatos("Activos", "bd_numero_placa", numero_placa.Text, Button1) && corroborarExistenciaDatos("Activos", "bd_numero_serie", numero_serie.Text, Button1))
+        //    {
+        //        if (RadioButton2.Checked)
+        //        {
+        //            Conexion c = new Conexion();
+        //            SqlConnection Conexion = c.Conectar();
+        //            string Sql = @"UPDATE Activos SET (bd_tipo_activo = @tipo_activo, bd_numero_placa = @placa, bd_numero_serie = @serie, bd_fecha_inicio_garantia = @garantia_inicio, bd_fecha_final_garantia = @garantia_final, bd_descripcion_activo = @descripcion, bd_departamento = @departamento, bd_proveedor = @proveedor, bd_especificacion_tecnica = @especificacion_tecnica, bd_fecha_compra = @fecha_compra, bd_costo_activo = @costo, bd_estado = @estado) 
+        //                            WHERE (bd_numero_placa = @placa)";
 
-                    Conexion.Open();//abrimos conexion    
-                    try
-                    {
-                        SqlCommand cmd = new SqlCommand(Sql, Conexion);
-                        cmd.Parameters.AddWithValue("@tipo_activo", "Software");
-                        cmd.Parameters.AddWithValue("@fecha_compra", fecha_compra.Text);
-                        cmd.Parameters.AddWithValue("@costo", precio.Text);
-                        cmd.Parameters.AddWithValue("@placa", numero_placa.Text);
-                        cmd.Parameters.AddWithValue("@serie", numero_serie.Text);
-                        cmd.Parameters.AddWithValue("@garantia_inicio", inicio_garantia.Text);
-                        cmd.Parameters.AddWithValue("@garantia_final", final_garantia.Text);
-                        cmd.Parameters.AddWithValue("@descripcion", descripcion.SelectedValue);
-                        cmd.Parameters.AddWithValue("@departamento", area.SelectedValue);
-                        cmd.Parameters.AddWithValue("@proveedor", proveedor.SelectedItem.Text);
-                        cmd.Parameters.AddWithValue("@especificacion_tecnica", especificacion_tecnica.Text);
-                        cmd.Parameters.AddWithValue("@estado", 1);
-                        cmd.ExecuteNonQuery();
+        //            Conexion.Open();//abrimos conexion    
+        //            try
+        //            {
+        //                SqlCommand cmd = new SqlCommand(Sql, Conexion);
+        //                cmd.Parameters.AddWithValue("@tipo_activo", "Software");
+        //                cmd.Parameters.AddWithValue("@fecha_compra", fecha_compra.Text);
+        //                cmd.Parameters.AddWithValue("@costo", precio.Text);
+        //                cmd.Parameters.AddWithValue("@placa", numero_placa.Text);
+        //                cmd.Parameters.AddWithValue("@serie", numero_serie.Text);
+        //                cmd.Parameters.AddWithValue("@garantia_inicio", inicio_garantia.Text);
+        //                cmd.Parameters.AddWithValue("@garantia_final", final_garantia.Text);
+        //                cmd.Parameters.AddWithValue("@descripcion", descripcion.SelectedValue);
+        //                cmd.Parameters.AddWithValue("@departamento", area.SelectedValue);
+        //                cmd.Parameters.AddWithValue("@proveedor", proveedor.SelectedItem.Text);
+        //                cmd.Parameters.AddWithValue("@especificacion_tecnica", especificacion_tecnica.Text);
+        //                cmd.Parameters.AddWithValue("@estado", 1);
+        //                cmd.ExecuteNonQuery();
 
-                        c.Desconectar(Conexion);
-                        excelente(Button1);
-                        //System.Threading.Thread.Sleep(9000);
+        //                c.Desconectar(Conexion);
+        //                excelente(Button1);
+        //                //System.Threading.Thread.Sleep(9000);
 
-                        Response.Redirect("gestionActivos.aspx");
-                    }
-                    catch (Exception t) { Response.Write("error" + t); }
-                }
-                if (RadioButton3.Checked)
-                {
-                    Conexion c = new Conexion();
-                    SqlConnection Conexion = c.Conectar();
+        //                Response.Redirect("gestionActivos.aspx");
+        //            }
+        //            catch (Exception t) { Response.Write("error" + t); }
+        //        }
+        //        if (RadioButton3.Checked)
+        //        {
+        //            Conexion c = new Conexion();
+        //            SqlConnection Conexion = c.Conectar();
 
-                    string Sql = @"UPDATE Activos SET (bd_tipo_activo = @tipo_activo, bd_numero_placa = @placa, bd_numero_serie = @serie, bd_fecha_inicio_garantia = @garantia_inicio, bd_fecha_final_garantia = @garantia_final, bd_descripcion_activo = @descripcion, bd_departamento = @departamento, bd_proveedor = @proveedor, bd_especificacion_tecnica = @especificacion_tecnica, bd_fecha_compra = @fecha_compra, bd_costo_activo = @costo, bd_estado = @estado) 
-                                    WHERE (bd_numero_placa = @placa)";
-                    Conexion.Open();//abrimos conexion    
-                    try
-                    {
-                        SqlCommand cmd = new SqlCommand(Sql, Conexion);
-                        cmd.Parameters.AddWithValue("@tipo_activo", "Hardware");
-                        cmd.Parameters.AddWithValue("@placa", numero_placa.Text);
-                        cmd.Parameters.AddWithValue("@serie", numero_serie.Text);
-                        cmd.Parameters.AddWithValue("@garantia_inicio", inicio_garantia.Text);
-                        cmd.Parameters.AddWithValue("@garantia_final", final_garantia.Text);
-                        cmd.Parameters.AddWithValue("@descripcion", descripcion.SelectedValue);
-                        cmd.Parameters.AddWithValue("@departamento", area.SelectedValue);
-                        cmd.Parameters.AddWithValue("@proveedor", proveedor.SelectedValue);
-                        cmd.Parameters.AddWithValue("@especificacion_tecnica", especificacion_tecnica.Text);
-                        cmd.Parameters.AddWithValue("@fecha_compra", fecha_compra.Text);
-                        cmd.Parameters.AddWithValue("@costo", precio.Text);
-                        cmd.Parameters.AddWithValue("@estado", 1);
-                        cmd.ExecuteNonQuery();
-                        excelente(Button1);
-                        c.Desconectar(Conexion);
+        //            string Sql = @"UPDATE Activos SET (bd_tipo_activo = @tipo_activo, bd_numero_placa = @placa, bd_numero_serie = @serie, bd_fecha_inicio_garantia = @garantia_inicio, bd_fecha_final_garantia = @garantia_final, bd_descripcion_activo = @descripcion, bd_departamento = @departamento, bd_proveedor = @proveedor, bd_especificacion_tecnica = @especificacion_tecnica, bd_fecha_compra = @fecha_compra, bd_costo_activo = @costo, bd_estado = @estado) 
+        //                            WHERE (bd_numero_placa = @placa)";
+        //            Conexion.Open();//abrimos conexion    
+        //            try
+        //            {
+        //                SqlCommand cmd = new SqlCommand(Sql, Conexion);
+        //                cmd.Parameters.AddWithValue("@tipo_activo", "Hardware");
+        //                cmd.Parameters.AddWithValue("@placa", numero_placa.Text);
+        //                cmd.Parameters.AddWithValue("@serie", numero_serie.Text);
+        //                cmd.Parameters.AddWithValue("@garantia_inicio", inicio_garantia.Text);
+        //                cmd.Parameters.AddWithValue("@garantia_final", final_garantia.Text);
+        //                cmd.Parameters.AddWithValue("@descripcion", descripcion.SelectedValue);
+        //                cmd.Parameters.AddWithValue("@departamento", area.SelectedValue);
+        //                cmd.Parameters.AddWithValue("@proveedor", proveedor.SelectedValue);
+        //                cmd.Parameters.AddWithValue("@especificacion_tecnica", especificacion_tecnica.Text);
+        //                cmd.Parameters.AddWithValue("@fecha_compra", fecha_compra.Text);
+        //                cmd.Parameters.AddWithValue("@costo", precio.Text);
+        //                cmd.Parameters.AddWithValue("@estado", 1);
+        //                cmd.ExecuteNonQuery();
+        //                excelente(Button1);
+        //                c.Desconectar(Conexion);
 
-                        Response.Redirect("gestionActivos.aspx");
+        //                Response.Redirect("gestionActivos.aspx");
 
-                    }
-                    catch (Exception t) { Response.Write("error" + t); }
-                }
-                if (RadioButton4.Checked)
-                {
-                    Conexion c = new Conexion();
-                    SqlConnection Conexion = c.Conectar();
+        //            }
+        //            catch (Exception t) { Response.Write("error" + t); }
+        //        }
+        //        if (RadioButton4.Checked)
+        //        {
+        //            Conexion c = new Conexion();
+        //            SqlConnection Conexion = c.Conectar();
 
-                    string Sql = @"UPDATE Activos SET (bd_tipo_activo = @tipo_activo, bd_numero_placa = @placa, bd_numero_serie = @serie, bd_aquisicion_ac = @adquiscion, bd_finalizacion_contrato = @finalizacion,, bd_costo_activo = @costo, bd_descripcion_activo = @descripcion, bd_departamento = @departamento, bd_proveedor = @proveedor, bd_especificacion_tecnica = @especificacion_tecnica) 
-                                    WHERE (bd_numero_placa = @placa)";
-                    Conexion.Open();//abrimos conexion    
-                    try
-                    {
-                        SqlCommand cmd = new SqlCommand(Sql, Conexion);
+        //            string Sql = @"UPDATE Activos SET (bd_tipo_activo = @tipo_activo, bd_numero_placa = @placa, bd_numero_serie = @serie, bd_aquisicion_ac = @adquiscion, bd_finalizacion_contrato = @finalizacion,, bd_costo_activo = @costo, bd_descripcion_activo = @descripcion, bd_departamento = @departamento, bd_proveedor = @proveedor, bd_especificacion_tecnica = @especificacion_tecnica) 
+        //                            WHERE (bd_numero_placa = @placa)";
+        //            Conexion.Open();//abrimos conexion    
+        //            try
+        //            {
+        //                SqlCommand cmd = new SqlCommand(Sql, Conexion);
 
-                        cmd.Parameters.AddWithValue("@tipo_activo", "Leasing");
-                        cmd.Parameters.AddWithValue("@placa", numero_placa.Text);
-                        cmd.Parameters.AddWithValue("@serie", numero_serie.Text);
-                        cmd.Parameters.AddWithValue("@adquiscion", fecha_adquisicion.Text);
-                        cmd.Parameters.AddWithValue("@finalizacion", finalizacion_contrato.Text);
-                        cmd.Parameters.AddWithValue("@costo", precio.Text);
-                        cmd.Parameters.AddWithValue("@descripcion", descripcion.SelectedValue);
-                        cmd.Parameters.AddWithValue("@departamento", area.SelectedValue);
-                        cmd.Parameters.AddWithValue("@proveedor", proveedor.SelectedValue);
-                        cmd.Parameters.AddWithValue("@especificacion_tecnica", especificacion_tecnica.Text);
-                        cmd.ExecuteNonQuery();
-                        c.Desconectar(Conexion);
-                        excelente(Button1);
-                        Response.Redirect("gestionActivos.aspx");
-                    }
-                    catch (Exception t) { Response.Write("error" + t); }
-                }
-            }
-        }
+        //                cmd.Parameters.AddWithValue("@tipo_activo", "Leasing");
+        //                cmd.Parameters.AddWithValue("@placa", numero_placa.Text);
+        //                cmd.Parameters.AddWithValue("@serie", numero_serie.Text);
+        //                cmd.Parameters.AddWithValue("@adquiscion", fecha_adquisicion.Text);
+        //                cmd.Parameters.AddWithValue("@finalizacion", finalizacion_contrato.Text);
+        //                cmd.Parameters.AddWithValue("@costo", precio.Text);
+        //                cmd.Parameters.AddWithValue("@descripcion", descripcion.SelectedValue);
+        //                cmd.Parameters.AddWithValue("@departamento", area.SelectedValue);
+        //                cmd.Parameters.AddWithValue("@proveedor", proveedor.SelectedValue);
+        //                cmd.Parameters.AddWithValue("@especificacion_tecnica", especificacion_tecnica.Text);
+        //                cmd.ExecuteNonQuery();
+        //                c.Desconectar(Conexion);
+        //                excelente(Button1);
+        //                Response.Redirect("gestionActivos.aspx");
+        //            }
+        //            catch (Exception t) { Response.Write("error" + t); }
+        //        }
+        //    }
+        //}
         // ----------- Modificar, deberíamos crear un boton en la tuerca que permita consultar área, proveedor y descripción ----------//
         protected void btn_Modificar_Proveedor_Click(object sender, EventArgs e)
         {
@@ -663,16 +671,14 @@ namespace EXPEDIA
             return x;
         }
 
-
-
-
         protected void bt_consultarAC_Click(object sender, EventArgs e)
         {
             mostrarConsultaAC();
             inhabilitarCampos();
-            cargar_descripcion(descripcion2);
-            cargar_area(area2);
-            cargar_proveedor(proveedor2);
+            //Dele asi mop no no syave
+            //cargar_descripcion(descripcion2);
+            //cargar_area(area2);
+           // cargar_proveedor(proveedor2);
             Conexion c = new Conexion();
             SqlConnection Conexion = c.Conectar();
             string Sql = @"SELECT * FROM Activos WHERE bd_numero_placa = @placa";
