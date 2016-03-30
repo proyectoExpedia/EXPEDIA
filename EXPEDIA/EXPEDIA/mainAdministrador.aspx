@@ -232,7 +232,7 @@
                                     </div>
                                 </div>
                                 <div class="caption" style="text-align:center">
-                                    <a href="" class="btn">
+                                    <a href="GestionDonaciones.aspx" class="btn">
                                         <span style="font-size: 60px" class="glyphicon glyphicon-gift"></span>
                                         <h3>Gestión de donaciones</h3>
                                     </a>
@@ -266,7 +266,7 @@
                                 </div>
                                 <div class="caption" style="text-align:center">
                                     <a href="gestionConsultas.aspx" class="btn">
-                                        <span style="font-size: 60px" class="glyphicon glyphicon-earphone"></span>
+                                        <span style="font-size: 60px" class="glyphicon glyphicon-info-sign"></span>
                                         <h3>Gestión de consultas</h3>
                                     </a>
                                 </div>
