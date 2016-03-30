@@ -24,6 +24,7 @@ namespace EXPEDIA
         private static int id_prolongar;
         private static bool tiene=false;
         private static bool no_puede=false;
+        private static bool atrasado = false;
         private static string ced;
 
 
@@ -1463,7 +1464,8 @@ namespace EXPEDIA
 
                         int row = Convert.ToInt32(pap);
                         id_prolongar = row;
-                        if (validar_prolongar(row)) { calcular(row,Label1, TextBox9); prolongar.Visible = true; }
+                        validar_prolongar(row);
+                        if (atrasado) { calcular(row,Label1, TextBox9); prolongar.Visible = true; }
                         else { error(prolongar1, "Disculpa", "Este prestamo ya esta retrasado por favor finalice y realice un prestamo nuevo"); }
 
 
@@ -1798,7 +1800,7 @@ namespace EXPEDIA
 
         //***FUNCIONES PARA LA MODAL PROLONGAR****************************
 
-        protected bool validar_prolongar(int y)
+        protected void validar_prolongar(int y)
         {
             Conexion c = new Conexion();
             SqlConnection Conexion = c.Conectar();
@@ -1824,19 +1826,19 @@ namespace EXPEDIA
 
                     int x = DateTime.Compare(date, date2);
 
-                    if (y > 0) { return true; }
+                    if (x > 0) { atrasado = true; }
 
-                    if (y == 0) { return true; }
-                    if (y < 0) { return false; }
+                    if (x == 0) { atrasado = true; }
+                    if (x < 0) { atrasado =false; }
 
 
 
                 }
 
             }
-            else { return false; }
+            
 
-            return false;
+           
 
         }
 
