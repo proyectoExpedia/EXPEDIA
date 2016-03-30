@@ -115,6 +115,7 @@
                                    function CustomValidator1_ClientValidate(source,args)
                                         {   
                                             if(document.getElementById("<%= RadioButton2.ClientID %>").checked || document.getElementById("<%= RadioButton3.ClientID %>").checked || document.getElementById("<%= RadioButton4.ClientID %>").checked)
+                                            if(document.getElementById("<%= RadioButton2.ClientID %>").checked || document.getElementById("<%= RadioButton3.ClientID %>").checked || document.getElementById("<%= RadioButton4.ClientID %>").checked)
                                             {
                                                 args.IsValid = true;
                                             }
