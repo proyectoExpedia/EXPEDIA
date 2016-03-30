@@ -18,7 +18,7 @@ namespace EXPEDIA
                 cargar_area(area);
                 cargar_descripcion(descripcion);
                 cargar_proveedor(proveedor);
-            }     
+            }
 
 
         }
@@ -39,8 +39,8 @@ namespace EXPEDIA
                 {
                     Conexion c = new Conexion();
                     SqlConnection Conexion = c.Conectar();
-                    string Sql = @"INSERT INTO Activos (bd_tipo_activo, bd_numero_placa, bd_numero_serie, bd_fecha_inicio_garantia, bd_fecha_final_garantia, bd_descripcion_activo, bd_departamento, bd_proveedor, bd_especificacion_tecnica,bd_fecha_compra, bd_costo_activo, bd_estado) 
-                        values (@tipo_activo, @placa, @serie, @garantia_inicio, @garantia_final, @descripcion,@departamento,@proveedor,@especificacion_tecnica,@fecha_compra, @costo , @estado)";
+                    string Sql = @"INSERT INTO Activos (bd_tipo_activo, bd_numero_placa, bd_numero_serie, bd_fecha_inicio_garantia, bd_fecha_final_garantia, bd_descripcion_activo, bd_departamento, bd_proveedor, bd_especificacion_tecnica, bd_aquisicion_ac, bd_finalizacion_contrato, bd_fecha_compra, bd_costo_activo, bd_id_prestamo, bd_estado) 
+                        values (@tipo_activo, @placa, @serie, @garantia_inicio, @garantia_final, @descripcion, @departamento, @proveedor, @especificacion_tecnica, @aquisicion_ac, @finalizacion_contrato,  @fecha_compra, @costo , @id_prestamo, @estado)";
 
                     Conexion.Open();//abrimos conexion    
                     try
@@ -58,12 +58,16 @@ namespace EXPEDIA
                         cmd.Parameters.AddWithValue("@proveedor", proveedor.SelectedValue);
                         cmd.Parameters.AddWithValue("@especificacion_tecnica", especificacion_tecnica.Text);
                         cmd.Parameters.AddWithValue("@estado", 1);
+                        //invalidos
+                        cmd.Parameters.AddWithValue("@aquisicion_ac", "");
+                        cmd.Parameters.AddWithValue("@finalizacion_contrato", "");
+                        cmd.Parameters.AddWithValue("@id_prestamo", 0);
                         cmd.ExecuteNonQuery();
-                        
+
                         c.Desconectar(Conexion);
                         excelente(Button1);
                         //System.Threading.Thread.Sleep(9000);
-                        
+
                         Response.Redirect("gestionActivos.aspx");
 
 
@@ -83,8 +87,8 @@ namespace EXPEDIA
                 {
                     Conexion c = new Conexion();
                     SqlConnection Conexion = c.Conectar();
-                    string Sql = @"INSERT INTO Activos (bd_tipo_activo, bd_numero_placa, bd_numero_serie, bd_fecha_inicio_garantia, bd_fecha_final_garantia, bd_descripcion_activo, bd_departamento, bd_proveedor, bd_especificacion_tecnica,bd_fecha_compra, bd_costo_activo, bd_estado) 
-                values (@tipo_activo, @placa, @serie, @garantia_inicio, @garantia_final, @descripcion,@departamento,@proveedor,@especificacion_tecnica,@fecha_compra, @costo, @estado)";
+                    string Sql = @"INSERT INTO Activos (bd_tipo_activo, bd_numero_placa, bd_numero_serie, bd_fecha_inicio_garantia, bd_fecha_final_garantia, bd_descripcion_activo, bd_departamento, bd_proveedor, bd_especificacion_tecnica, bd_aquisicion_ac, bd_finalizacion_contrato, bd_fecha_compra, bd_costo_activo, bd_id_prestamo, bd_estado) 
+                        values (@tipo_activo, @placa, @serie, @garantia_inicio, @garantia_final, @descripcion, @departamento, @proveedor, @especificacion_tecnica, @aquisicion_ac, @finalizacion_contrato,  @fecha_compra, @costo , @id_prestamo, @estado)";
 
                     Conexion.Open();//abrimos conexion    
                     try
@@ -102,10 +106,14 @@ namespace EXPEDIA
                         cmd.Parameters.AddWithValue("@fecha_compra", fecha_compra.Text);
                         cmd.Parameters.AddWithValue("@costo", precio.Text);
                         cmd.Parameters.AddWithValue("@estado", 1);
+                        //invalidos
+                        cmd.Parameters.AddWithValue("@aquisicion_ac", "");
+                        cmd.Parameters.AddWithValue("@finalizacion_contrato", "");
+                        cmd.Parameters.AddWithValue("@id_prestamo", 0);
                         cmd.ExecuteNonQuery();
                         excelente(Button1);
                         c.Desconectar(Conexion);
-                        
+
                         Response.Redirect("gestionActivos.aspx");
 
                     }
@@ -116,8 +124,8 @@ namespace EXPEDIA
                 {
                     Conexion c = new Conexion();
                     SqlConnection Conexion = c.Conectar();
-                    string Sql = @"INSERT INTO Activos (bd_tipo_activo, bd_numero_placa, bd_numero_serie, bd_aquisicion_ac, bd_finalizacion_contrato, bd_costo_activo, bd_descripcion_activo, bd_departamento, bd_proveedor, bd_especificacion_tecnica) 
-                    values (@tipo_activo, @placa, @serie, @adquiscion, @finalizacion, @costo, @descripcion, @departamento, @proveedor, @especificacion_tecnica)";
+                    string Sql = @"INSERT INTO Activos (bd_tipo_activo, bd_numero_placa, bd_numero_serie, bd_fecha_inicio_garantia, bd_fecha_final_garantia, bd_descripcion_activo, bd_departamento, bd_proveedor, bd_especificacion_tecnica, bd_aquisicion_ac, bd_finalizacion_contrato, bd_fecha_compra, bd_costo_activo, bd_id_prestamo, bd_estado) 
+                        values (@tipo_activo, @placa, @serie, @garantia_inicio, @garantia_final, @descripcion, @departamento, @proveedor, @especificacion_tecnica, @aquisicion_ac, @finalizacion_contrato,  @fecha_compra, @costo , @id_prestamo, @estado)";
 
                     Conexion.Open();//abrimos conexion    
                     try
@@ -127,13 +135,19 @@ namespace EXPEDIA
                         cmd.Parameters.AddWithValue("@tipo_activo", "Leasing");
                         cmd.Parameters.AddWithValue("@placa", numero_placa.Text);
                         cmd.Parameters.AddWithValue("@serie", numero_serie.Text);
-                        cmd.Parameters.AddWithValue("@adquiscion", fecha_adquisicion.Text);
-                        cmd.Parameters.AddWithValue("@finalizacion", finalizacion_contrato.Text);
+                        cmd.Parameters.AddWithValue("@aquisicion_ac", fecha_adquisicion.Text);
+                        cmd.Parameters.AddWithValue("@finalizacion_contrato", finalizacion_contrato.Text);
                         cmd.Parameters.AddWithValue("@costo", precio.Text);
                         cmd.Parameters.AddWithValue("@descripcion", descripcion.SelectedValue);
                         cmd.Parameters.AddWithValue("@departamento", area.SelectedValue);
                         cmd.Parameters.AddWithValue("@proveedor", proveedor.SelectedValue);
                         cmd.Parameters.AddWithValue("@especificacion_tecnica", especificacion_tecnica.Text);
+                        //insertar invalidos
+                        cmd.Parameters.AddWithValue("@garantia_inicio", "");
+                        cmd.Parameters.AddWithValue("@garantia_final", "");
+                        cmd.Parameters.AddWithValue("@fecha_compra", "");
+                        cmd.Parameters.AddWithValue("@id_prestamo", 0);
+                        cmd.Parameters.AddWithValue("@estado", 1);
                         cmd.ExecuteNonQuery();
                         c.Desconectar(Conexion);
                         excelente(Button1);
@@ -144,7 +158,7 @@ namespace EXPEDIA
                     }
                     catch (Exception t) { Response.Write("error" + t); }
                 }
-                
+
             }
         }
         protected bool corroborarExistenciaDatos(String tabla, String id, String valor, Control btn)
@@ -192,15 +206,16 @@ namespace EXPEDIA
         {
             Conexion c = new Conexion();
             SqlConnection Conexion = c.Conectar();
-            string Sql = @"SELECT bd_nombre_proveedor FROM Proveedores";
+            string Sql = @"SELECT bd_id_proveedor, bd_nombre_proveedor FROM Proveedores";
             Conexion.Open();//abrimos conexion
             SqlCommand cmd = new SqlCommand(Sql, Conexion); //ejecutamos la instruccion
             SqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
-                String nombre = reader.GetString(0);
+                String nombre = reader.GetString(1);
+                String id = reader.GetString(0);
                 // Crea un nuevo Item
-                ListItem oItem = new ListItem(nombre, nombre);
+                ListItem oItem = new ListItem(nombre, id);
                 // Lo agrega a la colección de Items del DropDownList
                 dropdown.Items.Add(oItem);
             }
@@ -226,71 +241,72 @@ namespace EXPEDIA
             Conexion.Close();
         }
 
-        
+
         protected void btn_Registrar_Area_Click(object sender, EventArgs e)
         {
             if (corroborarExistenciaDatos("Areas", "bd_id_area", id_areas.Text, Registrar_Area))
             {
-            
-            Conexion c = new Conexion();
-            SqlConnection Conexion = c.Conectar();
-            string Sql = @"INSERT INTO Areas (bd_id_area, bd_descripcion) values (@idA, @descripcionA)";
 
-            Conexion.Open();//abrimos conexion
+                Conexion c = new Conexion();
+                SqlConnection Conexion = c.Conectar();
+                string Sql = @"INSERT INTO Areas (bd_id_area, bd_descripcion) values (@idA, @descripcionA)";
 
-            try
-            {
-                SqlCommand cmd = new SqlCommand(Sql, Conexion);
-                cmd.Parameters.AddWithValue("@idA", id_areas.Text); //enviamos los parametros
-                cmd.Parameters.AddWithValue("@descripcionA", descripcion_area.Text);
-                cmd.ExecuteNonQuery();
-                c.Desconectar(Conexion);
-                ListItem item = new ListItem(descripcion_area.Text, id_areas.Text, true);
-                area.Items.Add(item);
-                excelente(Registrar_Area);
+                Conexion.Open();//abrimos conexion
+
+                try
+                {
+                    SqlCommand cmd = new SqlCommand(Sql, Conexion);
+                    cmd.Parameters.AddWithValue("@idA", id_areas.Text); //enviamos los parametros
+                    cmd.Parameters.AddWithValue("@descripcionA", descripcion_area.Text);
+                    cmd.ExecuteNonQuery();
+                    c.Desconectar(Conexion);
+                    ListItem item = new ListItem(descripcion_area.Text, id_areas.Text, true);
+                    area.Items.Add(item);
+                    excelente(Registrar_Area);
                     Response.Redirect("gestionActivos.aspx");
                     //area_actualizar.Items.Add(item);
                     //descripcion.Controls.Add(new ListItem());
                     //cargar_descripcion(descripcion);
 
                 }
-            catch (Exception a)
-            {
-                Response.Write("error" + a.ToString());
-            }
+                catch (Exception a)
+                {
+                    Response.Write("error" + a.ToString());
+                }
             }
 
         }
 
         protected void btn_Registrar_Descripcion_Ac_Click(object sender, EventArgs e)
         {
-            if (corroborarExistenciaDatos("Descripcion", "bd_id_descripcion", id_descripcion_nueva.Text, Registar_Descripcion_Ac)) { 
-
-            Conexion c = new Conexion();
-            SqlConnection Conexion = c.Conectar();
-            string Sql = @"INSERT INTO Descripcion (bd_id_descripcion, Descripcion) values (@id, @descripcion)";
-
-            Conexion.Open();//abrimos conexion
-
-            try
+            if (corroborarExistenciaDatos("Descripcion", "bd_id_descripcion", id_descripcion_nueva.Text, Registar_Descripcion_Ac))
             {
-                SqlCommand cmd = new SqlCommand(Sql, Conexion);
-                cmd.Parameters.AddWithValue("@id", id_descripcion_nueva.Text); //enviamos los parametros
-                cmd.Parameters.AddWithValue("@descripcion", descripcion_nueva.Text);
-                cmd.ExecuteNonQuery();
-                c.Desconectar(Conexion);
-                ListItem item2 = new ListItem(id_descripcion_nueva.Text, descripcion_nueva.Text, true);
-                descripcion.Items.Add(item2);
-                excelente(Registar_Descripcion_Ac);
+
+                Conexion c = new Conexion();
+                SqlConnection Conexion = c.Conectar();
+                string Sql = @"INSERT INTO Descripcion (bd_id_descripcion, Descripcion) values (@id, @descripcion)";
+
+                Conexion.Open();//abrimos conexion
+
+                try
+                {
+                    SqlCommand cmd = new SqlCommand(Sql, Conexion);
+                    cmd.Parameters.AddWithValue("@id", id_descripcion_nueva.Text); //enviamos los parametros
+                    cmd.Parameters.AddWithValue("@descripcion", descripcion_nueva.Text);
+                    cmd.ExecuteNonQuery();
+                    c.Desconectar(Conexion);
+                    ListItem item2 = new ListItem(id_descripcion_nueva.Text, descripcion_nueva.Text, true);
+                    descripcion.Items.Add(item2);
+                    excelente(Registar_Descripcion_Ac);
                     Response.Redirect("gestionActivos.aspx");
                     //Response.Redirect("gestionActivos.aspx");
                     //cargar_descripcion(descripcion);
 
                 }
-            catch (Exception a)
-            {
-                Response.Write("error" + a.ToString());
-            }
+                catch (Exception a)
+                {
+                    Response.Write("error" + a.ToString());
+                }
             }
         }
 
@@ -568,8 +584,253 @@ namespace EXPEDIA
             }
 
         }
-        
+
+        protected void mostrarConsultaAC()
+        {
+            ocultoAC.Style.Add("display", "block");
+            
+        }
+
+        protected void habilitarCampos_Click(object sender, EventArgs e) {
+            numero_placa2.ReadOnly = false;
+            numero_serie2.ReadOnly = false;
+            precio2.ReadOnly = false;
+            fecha_compra2.ReadOnly = false;
+            inicio_garantia2.ReadOnly = false;
+            final_garantia2.ReadOnly = false;
+            descripcion2.Enabled = true;
+            area2.Enabled = true;
+            proveedor2.Enabled = true;
+            especificacion_tecnica2.ReadOnly = false;
+        }
+
+        //protected void inhabilitarCampos()
+        //{
+        //    numero_placa2.ReadOnly = true;
+        //    numero_serie2.ReadOnly = true;
+        //    precio2.ReadOnly = true;
+        //    fecha_compra2.ReadOnly = true;
+        //    inicio_garantia2.ReadOnly = true;
+        //    final_garantia2.ReadOnly = true;
+        //    descripcion2.Enabled = false;
+        //    area2.Enabled = false;
+        //    proveedor2.Enabled = false;
+        //    especificacion_tecnica2.ReadOnly = true;
+        //}
+
+
+        protected String cargaridDescrip(String descrip)
+        {
+            String i = "";
+            Conexion c = new Conexion();
+            SqlConnection Conexion = c.Conectar();
+            string Sql = @"SELECT Descripcion FROM Descripcion WHERE bd_id_descripcion = " + descrip;
+            Conexion.Open();//abrimos conexion
+            SqlCommand cmd = new SqlCommand(Sql, Conexion); //ejecutamos la instruccion
+            SqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                String descripcion = reader.GetString(0);
+                i = descripcion;
+            }
+            Conexion.Close();
+            
+            return i;
+        }
+
+        protected String cargaridArea(String AuxArea)
+        {
+            String x = "";
+            Conexion c = new Conexion();
+            SqlConnection Conexion = c.Conectar();
+            string Sql = @"SELECT bd_descripcion FROM Areas WHERE bd_id_area = " + AuxArea;
+            Conexion.Open();//abrimos conexion
+            SqlCommand cmd = new SqlCommand(Sql, Conexion); //ejecutamos la instruccion
+            SqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                String descripcion = reader.GetString(0);
+                x = descripcion;
+            }
+            Conexion.Close();
+
+            return x;
+        }
+
+        protected void bt_consultarAC_Click(object sender, EventArgs e)
+        {
+            mostrarConsultaAC();
+            //inhabilitarCampos();
+            cargar_descripcion(descripcion2);
+            cargar_area(area2);
+            cargar_proveedor(proveedor2);
+            Conexion c = new Conexion();
+            SqlConnection Conexion = c.Conectar();
+            string Sql = @"SELECT * FROM Activos WHERE bd_numero_placa = @placa";
+            Conexion.Open();//abrimos conexion
+            SqlCommand cmd = new SqlCommand(Sql, Conexion); //ejecutamos la instruccion            
+            cmd.Parameters.AddWithValue("@placa", placa_buscar.Text);
+            SqlDataReader reader = cmd.ExecuteReader();
+            if (reader.HasRows)
+            {
+                while (reader.Read())
+                {
+                    if (reader.GetString(0) == "Software") {
+                    this.RadioButton5.Checked = true;
+                    this.RadioButton6.Checked = false;
+                    numero_placa2.Text = reader.GetString(1);
+                    numero_serie2.Text = reader.GetString(2);
+                        precio2.Text = reader.GetInt32(12).ToString();
+                        String fechaC = reader.GetDateTime(11).ToString();
+                        fechaC = fechaC.Split(' ')[0];
+                    fecha_compra2.Text = fechaC;
+                        String fechaIG = reader.GetDateTime(3).ToString();
+                        fechaIG = fechaIG.Split(' ')[0];
+                    inicio_garantia2.Text = fechaIG;
+                        String fechaFG = reader.GetDateTime(4).ToString();
+                        fechaFG = fechaFG.Split(' ')[0];
+                    final_garantia2.Text = fechaFG;
+                        //Cargar descrip para el drop
+                        String descrip = reader.GetString(5).ToString();
+                        String descripVal = cargaridDescrip(descrip);
+                        int i = 0;
+                        foreach (var item in descripcion2.Items)
+                        {
+                            if (item.ToString().Equals(descripVal))
+                            {
+                                descripcion2.SelectedIndex = i;
+                                break;
+                            }
+                            i++;
+                        }
+                        //Cargar areas para el drop
+                        String AuxArea = reader.GetString(6).ToString();
+                        String AreaVal = cargaridArea(AuxArea);
+                        int x = 0;
+                        foreach (var item in area2.Items)
+                        {
+                            if (item.ToString().Equals(AreaVal))
+                            {
+                                area2.SelectedIndex = x;
+                                break;
+                            }
+                            x++;
+                        }
+                        //Cargar proveedor para el drop
+                        String AuxPro = reader.GetString(7).ToString();
+                        int y = 0;
+                        foreach (var item in proveedor2.Items)
+                        {
+                            if (item.ToString().Equals(AuxPro))
+                            {
+                                proveedor2.SelectedIndex = y;
+                                break;
+                            }
+                            y++;
+                        }
+                        especificacion_tecnica2.Text = reader.GetString(8);
+
+                    }
+                    if (reader.GetString(0) == "Hardware")
+                    {
+                        this.RadioButton5.Checked = false;
+                        this.RadioButton6.Checked = true;
+                        numero_placa2.Text = reader.GetString(1);
+                        numero_serie2.Text = reader.GetString(2);
+                        precio2.Text = reader.GetInt32(12).ToString();
+                        String fechaC = reader.GetDateTime(11).ToString();
+                        fechaC = fechaC.Split(' ')[0];
+                        fecha_compra2.Text = fechaC;
+                        String fechaIG = reader.GetDateTime(3).ToString();
+                        fechaIG = fechaIG.Split(' ')[0];
+                        inicio_garantia2.Text = fechaIG;
+                        String fechaFG = reader.GetDateTime(4).ToString();
+                        fechaFG = fechaFG.Split(' ')[0];
+                        final_garantia2.Text = fechaFG;
+                        //Cargar descrip para el drop
+                        String descrip = reader.GetString(5).ToString();
+                        String descripVal = cargaridDescrip(descrip);
+                        int i = 0;
+                        foreach (var item in descripcion2.Items)
+                        {
+                            if (item.ToString().Equals(descripVal))
+                            {
+                                descripcion2.SelectedIndex = i;
+                                break;
+                            }
+                            i++;
+                        }
+                        //Cargar areas para el drop
+                        String AuxArea = reader.GetString(6).ToString();
+                        String AreaVal = cargaridArea(AuxArea);
+                        int x = 0;
+                        foreach (var item in area2.Items)
+                        {
+                            if (item.ToString().Equals(AreaVal))
+                            {
+                                area2.SelectedIndex = x;
+                                break;
+                            }
+                            x++;
+                        }
+                        //Cargar proveedor para el drop
+                        String AuxPro = reader.GetString(7).ToString();
+                        int y = 0;
+                        foreach (var item in proveedor2.Items)
+                        {
+                            if (item.ToString().Equals(AuxPro))
+                            {
+                                proveedor2.SelectedIndex = y;
+                                break;
+                            }
+                            y++;
+                        }
+                        especificacion_tecnica2.Text = reader.GetString(8);
+                    }
+
+                    //        apellido_actualizar2.Text = reader.GetString(3);
+                    //        telefono_actualizar.Text = reader.GetString(4);
+                    //        correo_actualizar.Text = reader.GetString(5);
+                    //        contrasena_actualizar.Text = reader.GetString(6);
+                    //        rcontrasena_actualizar.Text = contrasena_actualizar.Text.ToString();
+                    //        puesto_actualizar.SelectedValue = reader.GetString(8);
+                    //        area_actualizar.SelectedValue = reader.GetString(9);
+                    //        motivos = reader.GetString(10);
+                    //        estado = reader.GetInt16(11);
+                    //    }
+                    //    if (estado == 3)
+                    //    {
+                    //        mostrarInhabilitacion(Btn_consultar, motivos, cedula_consulta.Text);
+                    //        inhabilitarCampos();
+                    //        mostrarConsulta();
+                    //    }
+                    //    else
+                    //    {
+                    //        this.controles.Style.Add("display", "block");
+                    //        excelente(Btn_consultar);
+                    //        inhabilitarCampos();
+                    //        mostrarConsulta();
+                    //    }
+                    //}
+                    //else
+                    //{
+                    //    error(Btn_consultar, " Usuario no encontrado", "");
+                    //    ocultarConsulta();
+                }
+
+                Conexion.Close();
+
+            }
+        }
+
+
+
+
+
+
 
     }
-
 }
+
+
+

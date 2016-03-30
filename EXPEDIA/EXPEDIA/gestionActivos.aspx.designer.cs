@@ -445,13 +445,13 @@ namespace EXPEDIA {
         protected global::System.Web.UI.WebControls.Panel Panel3;
         
         /// <summary>
-        /// cedula_buscar control.
+        /// placa_buscar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox cedula_buscar;
+        protected global::System.Web.UI.WebControls.TextBox placa_buscar;
         
         /// <summary>
         /// btn_consultarAc control.
@@ -463,22 +463,31 @@ namespace EXPEDIA {
         protected global::System.Web.UI.WebControls.Button btn_consultarAc;
         
         /// <summary>
-        /// options control.
+        /// ocultoAC control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton options;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl ocultoAC;
         
         /// <summary>
-        /// RadioButton1 control.
+        /// RadioButton5 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton RadioButton1;
+        protected global::System.Web.UI.WebControls.RadioButton RadioButton5;
+        
+        /// <summary>
+        /// RadioButton6 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButton RadioButton6;
         
         /// <summary>
         /// numero_placa2 control.
@@ -616,13 +625,40 @@ namespace EXPEDIA {
         protected global::System.Web.UI.WebControls.CustomValidator CustomValidator8;
         
         /// <summary>
-        /// inicio_garantia3 control.
+        /// fecha_compra2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox inicio_garantia3;
+        protected global::System.Web.UI.WebControls.TextBox fecha_compra2;
+        
+        /// <summary>
+        /// vFC2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.CalendarExtender vFC2;
+        
+        /// <summary>
+        /// RequiredFieldValidator5 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator5;
+        
+        /// <summary>
+        /// inicio_garantia2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox inicio_garantia2;
         
         /// <summary>
         /// calInicio3 control.
@@ -643,13 +679,13 @@ namespace EXPEDIA {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator vInicio;
         
         /// <summary>
-        /// final_garantia3 control.
+        /// final_garantia2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox final_garantia3;
+        protected global::System.Web.UI.WebControls.TextBox final_garantia2;
         
         /// <summary>
         /// calFinal3 control.

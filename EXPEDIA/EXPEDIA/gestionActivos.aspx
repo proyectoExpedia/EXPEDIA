@@ -885,68 +885,69 @@
                                 <div class="pure-control-group">
 
                                     <label for="cedula">Número de placa del activo</label>
-                                    <asp:TextBox runat="server" ID="cedula_buscar" data-toggle="tooltip" data-placement="left" title="Proporciona el número de placa o serie del activo que desees consultar." placeholder="#########" />
+                                    <asp:TextBox runat="server" ID="placa_buscar" data-toggle="tooltip" data-placement="left" title="Proporciona el número de placa o serie del activo que desees consultar." placeholder="#########" />
 
                                 </div>
 
                                 <div class="pure-control-group">
-                                    <asp:Button runat="server" ID="btn_consultarAc" CssClass="btn btn-primary" OnClientClick="mostrar()" Text="Consultar"/>
+                                    <asp:Button runat="server" ID="btn_consultarAc" CssClass="btn btn-primary" OnClick="bt_consultarAC_Click" Text="Consultar"/>
                                 </div>
                                 </asp:Panel>
-                                <script type="text/javascript">
+<%--                                <script type="text/javascript">
                                     function mostrar() {
                                         document.getElementById('oculto').style.display = 'block';
                                     }
 
-                                </script>
+                                </script>--%>
                             </div>
 
 
-                            <div id="oculto" class="pure-form pure-form-aligned" style="display:none">
+                            <div id="ocultoAC" class="pure-form pure-form-aligned" style="display:none" runat="server">
                                 <!--Esto realmente es un form-->
                                 <fieldset>
                                     <div class="pure-control-group" style="margin-top: 40px;">
-                                        <p>
-
-                                            <button class="btn btn-success" id="hab" onclick="habilitar();">Habilitar modificación</button>
+                                        <div>
+                                            <button class="btn btn-success" id="habilitar" onclick="habilitar();" >Habilitar modificación</button>
                                             <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal">Inhabilitar activo</button>
-                                        </p>
+                                        </div>
                                         <div id="t" style="display: none">
                                             <h3>Formulario de modificación</h3>
                                         </div>
-                                        <script>
-                                            $(document).ready(function () {
-                                                $("#hab").click(function () {
-                                                    $('#t').show(2000, 'swing', function () {
-                                                        //callback function after animation finished
-                                                        $("hab").attr('value', 'Formulario de modificacion');
-                                                    });
-                                                });
-                                            });
-                                        </script>
-                                    </div>
+                               
+                               <script>
+                                function habilitar() {
+                                    document.getElementById('<%= numero_placa2.ClientID %>').value =";return false;";
+                                    document.getElementById('<%= numero_serie2.ClientID %>').readOnly = false;
+                                    document.getElementById('<%= precio2.ClientID %>').readOnly = false;
+                                }
+                            
+                               </script>
+                                    
 
                                     <fieldset>
-                                        <div class="pure-controls-group">
-                                            <label for="Genero">Tipo de activo</label>          
-                                                <label class="btn btn-primary disabled" id="rb1">
-                                                    <asp:RadioButton runat="server" ID="options" autocomplete="off" />
-                                                    Software
-                                               
-                                                </label>
-                                                <label class="btn btn-primary" id="rb2">
-                                                    <asp:RadioButton runat="server" ID="RadioButton1" autocomplete="off" />
-                                                    Hardware
-                                               
-                                                </label>
-                                            </div>
+                                    <div class="pure-controls-group">
+                                    <label for="tipo_activo">Tipo de activo</label>
+                                    <div style="margin-left: 55px" class="btn-group" data-toggle="buttons">
+                                        <asp:RadioButton runat="server" ID="RadioButton5" Text="Software" autocomplete="off" GroupName="location" />
+                                        <asp:RadioButton runat="server" ID="RadioButton6" Text="Hardware" autocomplete="off" GroupName="location" />
+<%--                                        <label class="btn btn-primary" >
+                                            <asp:RadioButton runat="server" ID="RadioButton5" Text="Software" autocomplete="off" GroupName="location" />
+                                        </label>
+                                        <label class="btn btn-primary ">
+                                            <asp:RadioButton runat="server" ID="RadioButton6" Text="Hardware" autocomplete="off" GroupName="location" />
+                                        </label>--%>
+                                    </div>
+<%--                                        <asp:CustomValidator id="CustomValidator9" ValidationGroup="one" runat="server" Display="Dynamic" ForeColor="Red" ErrorMessage="*" ClientValidationFunction="CustomValidator1_ClientValidate"></asp:CustomValidator>--%>
+
+
+                                </div>
                                         
                                        
 <%--       -----------> --%><%--      Los cambios que genera el botón leasing       --%> 
 <%--      |             --%>     <%--      Numero de placa del activo       --%>                              
 <%--      |             --%>         <div class="pure-control-group">
 <%--      |             --%>             <label for="nplaca">Número de placa del activo</label>
-<%--      |             --%>                 <asp:TextBox ValidationGroup="two" ReadOnly="true" runat="server" ID="numero_placa2" data-placement="left" ToolTip="Este espacio debe proporcionar el número de placa del activo que desea consultar, este espacio es requerido." placeholder="ENF-1523" />
+<%--      |             --%>                 <asp:TextBox ValidationGroup="two" runat="server" ReadOnly="true" ID="numero_placa2" data-placement="left" ToolTip="Este espacio debe proporcionar el número de placa del activo que desea consultar, este espacio es requerido." placeholder="ENF-1523" />
 <%--      |             --%>                      <asp:RequiredFieldValidator ValidationGroup="two" ID="vPlaca2" runat="server" ControlToValidate="numero_placa2" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
 <%--      |             --%>        <asp:CustomValidator ValidationGroup="one" ID="CustomValidator4" runat="server" ClientValidationFunction="ValidateFieldLegth_PrM" ErrorMessage="El número de placa no puede exceder los 10 digitos." ControlToValidate="numero_placa2" EnableClientScript="true"  /> 
 <%--      |             --%>         <%--     Validar si excede 10 espacios       --%>    
@@ -964,7 +965,7 @@
                                      </div>
 <%--      |             --%>         <div class="pure-control-group">
 <%--      |             --%>             <label for="nserie">Número de serie del activo</label>
-<%--      |             --%>                  <asp:TextBox ValidationGroup="two" ReadOnly="true" ID="numero_serie2" runat="server" data-placement="left" ToolTip="Este espacio debe proporcionar el número de serie del activo, este espacio es requerido." placeholder="MUJ23HJCK987" />
+<%--      |             --%>                  <asp:TextBox ValidationGroup="two" ID="numero_serie2" ReadOnly="true" runat="server" data-placement="left" ToolTip="Este espacio debe proporcionar el número de serie del activo, este espacio es requerido." placeholder="MUJ23HJCK987" />
 <%--      |             --%>                       <asp:RequiredFieldValidator ValidationGroup="two" ID="vSerie2" runat="server" ControlToValidate="numero_serie2" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
 <%--      |             --%>        <asp:CustomValidator ValidationGroup="one" ID="CustomValidator5" runat="server" ClientValidationFunction="ValidateFieldLegth_SM" ErrorMessage="El número de serie no puede exceder los 10 digitos." ControlToValidate="numero_serie2" EnableClientScript="true"  /> 
 <%--      |             --%>         <%--     Validar si excede 10 espacios       --%>    
@@ -1002,12 +1003,12 @@
                                         
                                
 
-                                        <%--      Precio       --%>
+                                        <%--      costo       --%>
                                 <div class="pure-control-group">
-                                    <label for="precio">Costo en colones, del activo</label>
-                                    <asp:TextBox ValidationGroup="two" ReadOnly="true" ID="precio2" runat="server" TextMode="Number" data-placement="left" ToolTip="Este espacio debe proporcionar el valor total del activo, este espacio es requerido." placeholder="120360.17" />
+                                    <label for="lprecio2">Costo en colones, del activo</label>
+                                    <asp:TextBox ValidationGroup="two" ID="precio2" ReadOnly="true" runat="server" TextMode="Number" data-placement="left" ToolTip="Este espacio debe proporcionar el valor total del activo, este espacio es requerido." placeholder="120360.17" />
                                     <asp:RequiredFieldValidator ValidationGroup="two" ID="vPrecio2" runat="server" ControlToValidate="precio2" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
-                                <asp:CustomValidator ValidationGroup="one" ID="CustomValidator8" runat="server" ClientValidationFunction="ValidateFieldLegth_PM" ErrorMessage="El precio no puede exceder los 10 digitos." ControlToValidate="precio2" EnableClientScript="true"  />
+                                <asp:CustomValidator ValidationGroup="two" ID="CustomValidator8" runat="server" ClientValidationFunction="ValidateFieldLegth_PM" ErrorMessage="El precio no puede exceder los 10 digitos." ControlToValidate="precio2" EnableClientScript="true"  />
                                 <%--     Validar si excede 10 espacios       --%>  
                                 <script>     
                                 function ValidateFieldLegth_PM(sender, args) { // PM -> Precio Modificar
@@ -1021,27 +1022,35 @@
                                 }
                                 </script>
                                 </div>
+                                    <%--     Inicio de la garantía      --%>
+                                <div class="pure-control-group">
+                                    <label for="lfechaCompra2">Fecha de compra</label>
+                                    <asp:TextBox runat="server" ValidationGroup="two" ID="fecha_compra2" ClientIDMode="Static" data-toggle="tooltip" title="En este espacio debe proporcionar la fecha de compra del activo, este espacio es requerido."> </asp:TextBox>
+                                    <cc1:CalendarExtender TargetControlID="fecha_compra2" ID="vFC2" runat="server" OnClientDateSelectionChanged="verificarFechaG1"/>
+                                    <asp:RequiredFieldValidator ValidationGroup="two" ID="RequiredFieldValidator5" runat="server" ControlToValidate="fecha_compra2" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
+                                
+                                </div>
                                        
                                         <%--     Inicio de la garantía      --%>
                                 <fieldset class="pure-control-group">
                                     <label for="inicio">Fecha de Inicio de la garantía</label>
-                                    <asp:TextBox runat="server" ID="inicio_garantia3" data-toggle="tooltip" title="En este espacio debe proporcionar la fecha en que inicia la garantía, especificada por el proveedor, este espacio es requerido."></asp:TextBox>
-                                    <cc1:CalendarExtender TargetControlID="inicio_garantia3" ID="calInicio3" runat="server" OnClientDateSelectionChanged="verificarFechaG"/>
-                                    <asp:RequiredFieldValidator ValidationGroup="two" ID="vInicio" runat="server" ControlToValidate="inicio_garantia3" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
+                                    <asp:TextBox runat="server" ID="inicio_garantia2" data-toggle="tooltip" title="En este espacio debe proporcionar la fecha en que inicia la garantía, especificada por el proveedor, este espacio es requerido."></asp:TextBox>
+                                    <cc1:CalendarExtender TargetControlID="inicio_garantia2" ID="calInicio3" runat="server" OnClientDateSelectionChanged="verificarFechaG"/>
+                                    <asp:RequiredFieldValidator ValidationGroup="two" ID="vInicio" runat="server" ControlToValidate="inicio_garantia2" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
                                 
                                 </fieldset>
                                         <%--      Finalización de la garantía      --%>
                                 <fieldset class="pure-control-group">
                                     <label for="finalizacion">Fecha de finalización de la garantía</label>
-                                    <asp:TextBox runat="server" ID="final_garantia3" data-toggle="tooltip" title="En este espacio debe proporcionar la fecha en que finaliza la garantía, especificada por el proveedor, este espacio es requerido."></asp:TextBox>
-                                    <cc1:CalendarExtender TargetControlID="final_garantia3" ID="calFinal3" runat="server" OnClientDateSelectionChanged="verificarFechaG2"/>
-                                    <asp:RequiredFieldValidator ValidationGroup="two" ID="vFinal2" runat="server" ControlToValidate="final_garantia3" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
+                                    <asp:TextBox runat="server" ID="final_garantia2" data-toggle="tooltip" title="En este espacio debe proporcionar la fecha en que finaliza la garantía, especificada por el proveedor, este espacio es requerido."></asp:TextBox>
+                                    <cc1:CalendarExtender TargetControlID="final_garantia2" ID="calFinal3" runat="server" OnClientDateSelectionChanged="verificarFechaG2"/>
+                                    <asp:RequiredFieldValidator ValidationGroup="two" ID="vFinal2" runat="server" ControlToValidate="final_garantia2" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
                                 
                                      </fieldset>
                                         <%--      Descripción del activo       --%>
                                 <fieldset class="pure-control-group">
                                     <label for="descripcion">Descripción del activo</label>
-                                    <asp:DropDownList ValidationGroup="two" ReadOnly="true"  ID="descripcion2" runat="server" tooltip="Para completar este espacio facilmente, preguntese a si mismo: ¿Que estoy ingresando? Ejemplo: Estoy ingresando una Laptop. En este espacio usted deberá colocar la palabra Laptop, este espacio es requerido. " class="pure-input-1-2">
+                                    <asp:DropDownList ValidationGroup="two"  ID="descripcion2" runat="server" tooltip="Para completar este espacio facilmente, preguntese a si mismo: ¿Que estoy ingresando? Ejemplo: Estoy ingresando una Laptop. En este espacio usted deberá colocar la palabra Laptop, este espacio es requerido. " class="pure-input-1-2">
                                         <asp:ListItem>Elija una descripción</asp:ListItem>
                                         <asp:ListItem>¿La descripción no aparece? Haz uso el icono situado contiguo a esta categoría para proporcionar una nueva.</asp:ListItem>
                                     </asp:DropDownList>
@@ -1052,7 +1061,7 @@
                                         <%--     Area/Sede regional      --%>
                                 <fieldset class="pure-control-group">
                                     <label for="area">Departamento o Sede regional destinado(a)</label>
-                                    <asp:DropDownList ValidationGroup="two" ReadOnly="true" ID="area2" runat="server" data-toggle="tooltip" title="En este espacio debe proporcionar el área la cual está destinada el activo, es requerido. " class="pure-input-1-2">
+                                    <asp:DropDownList ValidationGroup="two" ID="area2" runat="server" data-toggle="tooltip" title="En este espacio debe proporcionar el área la cual está destinada el activo, es requerido. " class="pure-input-1-2">
                                         <asp:ListItem>Elija un Área o Departamento</asp:ListItem>
 
                                         <asp:ListItem>¿La opción que busca no aparece? Haz uso el icono situado contiguo a esta categoría para proporcionar una nueva.</asp:ListItem>
@@ -1063,7 +1072,7 @@
                                         <%--      Proveedor       --%>
                                 <fieldset class="pure-control-group">
                                     <label for="provedor">Proveedor</label>
-                                    <asp:DropDownList ValidationGroup="two" ReadOnly="true" ID="proveedor2" runat="server" data-toggle="tooltip" title="Proveedor: En este espacio debe proporcionar el nombre del proveedor del activo, este espacio es requerido." class="pure-input-1-2">
+                                    <asp:DropDownList ValidationGroup="two" ID="proveedor2" runat="server" data-toggle="tooltip" title="Proveedor: En este espacio debe proporcionar el nombre del proveedor del activo, este espacio es requerido." class="pure-input-1-2">
                                         <asp:ListItem>Elija un proveedor</asp:ListItem>
                                         <asp:ListItem>¿El proveedor no aparece? Haz uso el icono situado contiguo a esta categoría para proporcionar una nueva.</asp:ListItem>
                                     </asp:DropDownList>
@@ -1074,7 +1083,7 @@
                                 <%--      Especificaciones Técnicas       --%>
                                     <fieldset class="pure-control-group">
                                         <label for="Tipo">Especificaciones técnicas</label>
-                                        <asp:TextBox ValidationGroup="two" ReadOnly="true" ID="especificacion_tecnica2" runat="server" data-toggle="tooltip" title="En este espacio se debe proporcionar las cualidades del activo, este espacio es requerido" class="pure-input-1-2" placeholder="Especificaciones Técnicas" />
+                                        <asp:TextBox ValidationGroup="two" ID="especificacion_tecnica2" runat="server" data-toggle="tooltip" title="En este espacio se debe proporcionar las cualidades del activo, este espacio es requerido" class="pure-input-1-2" placeholder="Especificaciones Técnicas" />
                                    <asp:RequiredFieldValidator ValidationGroup="two" ID="vEspecificacion2" runat="server" ControlToValidate="especificacion_tecnica2" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
                                    <asp:CustomValidator ValidationGroup="one" ID="CustomValidator6" runat="server" ClientValidationFunction="ValidateFieldLegth_ETM" ErrorMessage="La especificación técnica no puede exceder los 350 digitos." ControlToValidate="especificacion_tecnica2" EnableClientScript="true"  />
                                <%--     Validar si excede 350 espacios       --%> 
@@ -1089,6 +1098,7 @@
                                             }
                                          }
                                     </script>
+                                        </div>
                                     </fieldset>
                                         </div>
                                         <div class="pure-controls">
