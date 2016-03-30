@@ -900,6 +900,7 @@
 
                                 </script>--%>
                             </div>
+                            </div>
 
 
                             <div id="ocultoAC" class="pure-form pure-form-aligned" style="display:none" runat="server">
@@ -928,16 +929,14 @@
                                     <div class="pure-controls-group">
                                     <label for="tipo_activo">Tipo de activo</label>
                                     <div style="margin-left: 55px" class="btn-group" data-toggle="buttons">
-                                        <asp:RadioButton runat="server" ID="RadioButton5" Text="Software" autocomplete="off" GroupName="location" />
-                                        <asp:RadioButton runat="server" ID="RadioButton6" Text="Hardware" autocomplete="off" GroupName="location" />
-<%--                                        <label class="btn btn-primary" >
+                                        <label class="btn btn-primary" >
                                             <asp:RadioButton runat="server" ID="RadioButton5" Text="Software" autocomplete="off" GroupName="location" />
                                         </label>
                                         <label class="btn btn-primary ">
                                             <asp:RadioButton runat="server" ID="RadioButton6" Text="Hardware" autocomplete="off" GroupName="location" />
-                                        </label>--%>
+                                        </label>
                                     </div>
-<%--                                        <asp:CustomValidator id="CustomValidator9" ValidationGroup="one" runat="server" Display="Dynamic" ForeColor="Red" ErrorMessage="*" ClientValidationFunction="CustomValidator1_ClientValidate"></asp:CustomValidator>--%>
+                                        <asp:CustomValidator id="CustomValidator9" ValidationGroup="one" runat="server" Display="Dynamic" ForeColor="Red" ErrorMessage="*" ClientValidationFunction="CustomValidator1_ClientValidate"></asp:CustomValidator>
 
 
                                 </div>
@@ -1108,7 +1107,6 @@
                                             </div>
                                         </div>
                                
-                            </div>
                             <script type="text/javascript">
                                 function habilitar() {
                                     document.getElementById('nserie1').removeAttribute("readonly", false);
