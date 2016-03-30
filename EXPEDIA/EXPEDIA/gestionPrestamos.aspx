@@ -100,7 +100,7 @@
                                                 <div class="pure-control-group">
                                          
                                         <label  for="numero" >Número de Placa / Serie </label>
-                                          <asp:TextBox ValidationGroup="one" runat="server" ID="numero" data-toggle="tooltip" MaxLength="10" data-placement="left" ToolTip="Este espacio debe proporcionar el numero de placa o de seria para consultar activo." />
+                                          <asp:TextBox ValidationGroup="one" runat="server" ID="numero" data-toggle="tooltip" data-placement="right" MaxLength="10"  title="Este espacio debe proporcionar el numero de placa o de seria para consultar activo." />
                                         
                                                </div>
                                          <!--Ingresar DESCRIPCION -->
