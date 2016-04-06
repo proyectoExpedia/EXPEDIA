@@ -77,6 +77,7 @@
     <Content Include="gestionActivos.aspx" />
     <Content Include="gestionAreas.aspx" />
     <Content Include="GestionConsultas.aspx" />
+    <Content Include="GestionDonaciones.aspx" />
     <Content Include="gestionPrestamos.aspx" />
     <Content Include="gestionProveedores.aspx" />
     <Content Include="gestionPuestos.aspx" />
@@ -161,6 +162,13 @@
     </Compile>
     <Compile Include="GestionConsultas.aspx.designer.cs">
       <DependentUpon>GestionConsultas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GestionDonaciones.aspx.cs">
+      <DependentUpon>GestionDonaciones.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GestionDonaciones.aspx.designer.cs">
+      <DependentUpon>GestionDonaciones.aspx</DependentUpon>
     </Compile>
     <Compile Include="gestionPrestamos.aspx.cs">
       <DependentUpon>gestionPrestamos.aspx</DependentUpon>

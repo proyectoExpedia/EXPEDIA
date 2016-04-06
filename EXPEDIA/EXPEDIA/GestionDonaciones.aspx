@@ -40,7 +40,7 @@
                    
                 </ul>
                 <script>
-                    // You can also use "$(window).load(function() {"
+                    //         u can also use "$(window).load(function() {"
                     $(document).ready(function () {
                         $('.bxslider').bxSlider({
                             mode: 'fade',
