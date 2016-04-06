@@ -50,7 +50,7 @@
                 <div class="panel-heading">
                     <ul class="nav nav-tabs">
                         <li class="active"><a href="index.aspx">Salir</a></li>
-                        <li><a href="#tab2primary" data-toggle="tab">Conozcanos</a></li>
+                        <li><a href="#tab2primary" data-toggle="tab">Conózcanos</a></li>
                         <li><a href="#tab3primary" data-toggle="tab">Contacto</a></li>
                         <!--<li class="dropdown">
                             <a href="#" data-toggle="dropdown">Dropdown <span class="caret"></span></a>
@@ -68,13 +68,13 @@
         <div style="margin-top:50px;"><asp:SiteMapPath ID="SiteMapPath1" runat="server"></asp:SiteMapPath></div>
         <div class="panel panel-primary">
             <div class="panel-heading">
-                <h3 class="panel-title">Gestión de activos</h3>
+                <h3 class="panel-title">Gestión de Activos</h3>
             </div>
             <div class="panel-body">
                 <div class="tabs-example">
                     <ul id="myTab" class="nav nav-tabs">
-                        <li class="active"><a href="#Ingresar" data-toggle="tab">Consulta de activos <span class="glyphicon glyphicon-plus-sign"></span></a></li>
-                        <li><a href="#Consultar" data-toggle="tab">Consulta de bitacora  <span class="glyphicon glyphicon-question-sign"></span><span class="glyphicon glyphicon-minus-sign"></span><span class="glyphicon glyphicon-ok-sign"></span></a></li>
+                        <li class="active"><a href="#Ingresar" data-toggle="tab">Consulta de Activos <span class="glyphicon glyphicon-plus-sign"></span></a></li>
+                        <li><a href="#Consultar" data-toggle="tab">Consulta de bitácora  <span class="glyphicon glyphicon-question-sign"></span><span class="glyphicon glyphicon-minus-sign"></span><span class="glyphicon glyphicon-ok-sign"></span></a></li>
                         <a style="float:right" href="mainAdministrador.aspx" class="btn"><span class="glyphicon glyphicon-menu-left"></span>  Atrás</a>
                     </ul>
                     <%-- PANTALLA DONDE SE MUESTRA LAS OPCIONES DE CONSULTA DE ACTIVOS  --%>
@@ -83,7 +83,7 @@
                             <h1 style="text-align:center">Activos</h1>
 
                              <div class="pure-controls-group">
-                                    <label for="tipo_activo">Tipo de activo</label>
+                                    <label for="tipo_activo">Tipo de Activo</label>
                                     <div style="margin-left: 55px" class="btn-group" data-toggle="buttons">
                                         <label class="btn btn-primary" >
                                             <asp:RadioButton  runat="server" GroupName="tipo" ID="RadioButton2" Text="Software" autocomplete="off" />
@@ -104,19 +104,19 @@
                                        <asp:textbox runat="server" ID="numero"/>
                              <div class="pure-control-group">
                              <label for="descripcion">Descripción del activo</label>
-                                        <asp:DropDownList runat="server" data-toggle="tooltip" title="En este espacio puede seleccionar la descripción a buscar." id="descripcion_activo" CssClass="pure-input-1-2">
+                                        <asp:DropDownList runat="server" data-toggle="tooltip" title="Seleccione una descripción como filtro para búsqueda." id="descripcion_activo" CssClass="pure-input-1-2">
                                         <asp:ListItem Value="0">Elija una descripción</asp:ListItem>
                                         </asp:DropDownList>
                              
                              
                              <label for="area">Departamento o Sede regional destinado(a)</label>
-                                        <asp:DropDownList runat="server" data-toggle="tooltip" title="En este espacio puede seleccionar el Departamento o Sede regional destinado(a) a buscar. " id="departamento_activo" CssClass="pure-input-1-2">
+                                        <asp:DropDownList runat="server" data-toggle="tooltip" title="Seleccione un departamento o área como filtro para su búsqueda." id="departamento_activo" CssClass="pure-input-1-2">
                                           <asp:ListItem Value="0">Elija un Departamento o Sede</asp:ListItem>
                                              </asp:DropDownList>
                                 
                              
                              <label for="provedor">Proveedor</label>
-                                        <asp:DropDownList runat="server" data-toggle="tooltip" title=" En este espacio puede selecionar el nombre del proveedor del activo a buscar." id="proveedor" CssClass="pure-input-1-2">
+                                        <asp:DropDownList runat="server" data-toggle="tooltip" title="Seleccione un proveedor como filtro para búsqueda." id="proveedor" CssClass="pure-input-1-2">
                                         <asp:ListItem Value="0">Elija un proveedor</asp:ListItem>
                                              </asp:DropDownList>
                                  </div>
@@ -125,38 +125,21 @@
                                <br />
                                <br />
                                                         <br />
-                            <br />
+                                                        <br />
                                 <asp:GridView  runat="server" ID="lista" CssClass="table" > </asp:GridView>
-
                                     <br />
-                                    <br />
-                                   
+                                    <br />                                   
                             <asp:Button ID="exportar" runat="server"    CssClass="btn btn-success" Text="Exportar a Excel"  OnClick="exportar_Click" />
-                            
-
-                                  
-
-                        
                         </div>
                         <div class="tab-pane fade" id="Consultar">
-                            <h1 style="text-align:center" id="titulo">Bitacora</h1>
+                            <h1 style="text-align:center" id="titulo">Bitácora</h1>
                             <div class="pure-form pure-form-aligned">
                                 <div id="dvData1">
-
-
-
-
                                 </div>
-
-              
-
                             </div>
                             <br />
                             <br />
-                            <input class="btn btn-success" type="button" id="btnExport11" value=" Exportar a Excel " />
-                       
-
-                            
+                            <input class="btn btn-success" type="button" id="btnExport11" value=" Exportar a Excel " /> 
                             </div>
                        
                             </div>
@@ -164,10 +147,10 @@
                 </div>
             </div>
         </div>
-    </div>
+
     <footer class="navbar" style="background-color:white">
         <div class="container">
-            <h5 style="text-align: center" class="text-muted">Prototipo I EXPEDIA - Ingeniería en sistemas de información II</h5>
+<%--            <h5 style="text-align: center" class="text-muted">Prototipo I EXPEDIA - Ingeniería en sistemas de información II</h5>--%>
         </div>
     </footer>
     <script>

@@ -62,7 +62,7 @@
                     <div class="panel-heading">
                         <ul class="nav nav-tabs">
                             <li class="active"><a href="index.aspx">Salir</a></li>
-                            <li><a href="#tab2primary" data-toggle="tab">Conozcanos</a></li>
+                            <li><a href="#tab2primary" data-toggle="tab">Conózcanos</a></li>
                             <li><a href="#tab3primary" data-toggle="tab">Contacto</a></li>
                         </ul>
                     </div>
@@ -880,12 +880,12 @@
                 <ContentTemplate>
                     <asp:Panel ID="Panel2" runat="server" DefaultButton="btn_consultarAc">
                         <div class="tab-pane" id="Consultar">
-                            <h1 style="text-align: center" id="titulo">Formulario de consultas</h1>
+                            <h1 style="text-align: center" id="titulo">Formulario de Consultas</h1>
                             <div class="pure-form pure-form-aligned">
                                 <asp:Panel ID="Panel3" runat="server" DefaultButton="">
                                 <div class="pure-control-group">
 
-                                    <label for="cedula">Número de placa del activo</label>
+                                    <label for="cedula">Número de placa o serie del activo</label>
                                     <asp:TextBox runat="server" ID="placa_buscar" data-toggle="tooltip" data-placement="left" title="Proporciona el número de placa o serie del activo que desees consultar." placeholder="#########" />
 
                                 </div>
@@ -951,7 +951,7 @@
 <%--      |             --%>     <%--      Numero de placa del activo       --%>                              
 <%--      |             --%>         <div class="pure-control-group">
 <%--      |             --%>             <label for="nplaca">Número de placa del activo</label>
-<%--      |             --%>                 <asp:TextBox ValidationGroup="two" runat="server" ReadOnly="true" ID="numero_placa2" data-placement="left" ToolTip="Este espacio debe proporcionar el número de placa del activo que desea consultar, este espacio es requerido." placeholder="ENF-1523" />
+<%--      |             --%>                 <asp:TextBox ValidationGroup="two" runat="server" ReadOnly="true" ID="numero_placa2" data-placement="left" ToolTip="Este espacio debe proporcionar el número de placa del activo, este espacio es requerido." placeholder="ENF-1523" />
 <%--      |             --%>                      <asp:RequiredFieldValidator ValidationGroup="two" ID="vPlaca2" runat="server" ControlToValidate="numero_placa2" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
 <%--      |             --%>        <asp:CustomValidator ValidationGroup="two" ID="CustomValidator4" runat="server" ClientValidationFunction="ValidateFieldLegth_PrM" ErrorMessage="El número de placa no puede exceder los 10 digitos." ControlToValidate="numero_placa2" EnableClientScript="true"  /> 
 <%--      |             --%>         <%--     Validar si excede 10 espacios       --%>    

@@ -112,7 +112,7 @@
                     <div class="panel-heading">
                         <ul class="nav nav-tabs">
                             <li class="active"><a href="index.aspx">Salir</a></li>
-                            <li><a href="#tab2primary" data-toggle="tab">Conozcanos</a></li>
+                            <li><a href="#tab2primary" data-toggle="tab">Conózcanos</a></li>
                             <li><a href="#tab3primary" data-toggle="tab">Contacto</a></li>
                         </ul>
                     </div>
@@ -126,15 +126,15 @@
                 <asp:SiteMapPath ID="SiteMapPath1" runat="server"></asp:SiteMapPath>
                 <div class="panel panel-primary">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Gestión de ocupaciones</h3>
+                        <h3 class="panel-title">Gestión de Ocupaciones</h3>
                         <div>
-                        <a style="float:right;margin-top:21px;" href="gestionAjustes.aspx" class="btn"><span class="glyphicon glyphicon-menu-left"></span>  Atrás</a>
+                        <a style="float:right;margin-top:21px;" href="mainAdministrador.aspx" class="btn"><span class="glyphicon glyphicon-menu-left"></span>  Atrás</a>
                         </div>
                     </div>
                   
                     <div class="panel-body">
                         <asp:TabContainer ID="TabContainer1" CssClass="nav nav-tabs" runat="server" ActiveTabIndex="0">
-                            <asp:TabPanel runat="server" HeaderText="<span style='margin: 5px' data-toggle='tab'><b>Registro de ocupaciones</b><span style='margin: 10px' class='glyphicon glyphicon-plus-sign'></span></span>" ID="TabPanel1">
+                            <asp:TabPanel runat="server" HeaderText="<span style='margin: 5px' data-toggle='tab'><b>Registro de Ocupaciones</b><span style='margin: 10px' class='glyphicon glyphicon-plus-sign'></span></span>" ID="TabPanel1">
                                 <ContentTemplate>
                                     <asp:Panel ID="Panel2" runat="server" DefaultButton="Btn_ocupacion">
                                         <div class="tab-pane fade in active" id="Ingresar">
@@ -143,7 +143,7 @@
                                                 <fieldset class="pure-control-group">
                                                     <div class="input-prepend">
                                                         <label for="idocupacion">Identificador de la ocupación</label>
-                                                        <asp:TextBox runat="server" MaxLength="20" ID="idocupacion" ValidationGroup="four" placeholder="OC-001" data-toggle="tooltip" data-placement="right" title="En este espacio se debe proporcionar un identificador que caracterice la ocupación que se esté registrando, este espacio es requerido."/>
+                                                        <asp:TextBox runat="server" MaxLength="20" ID="idocupacion" ValidationGroup="four" placeholder="OC-001" data-toggle="tooltip" data-placement="right" title="En este espacio se debe proporcionar un identificador para la ocupación que se está registrando, este espacio es requerido."/>
                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator58" ForeColor="Red" ControlToValidate="idocupacion" ValidationGroup="four" runat="server" ErrorMessage="<b>*</b>"></asp:RequiredFieldValidator>   
                                                     </div>
                                                     <div class="input-prepend">
@@ -153,7 +153,7 @@
                                                     </div>
                                                 </fieldset>
                                                 <div class="span">
-                                                    <asp:Button ValidationGroup="four" runat="server" CssClass="btn btn-success" OnClick="Btn_ocupacion_Click" ID="Btn_ocupacion" Text="Registrar Ocupacion"/>
+                                                    <asp:Button ValidationGroup="four" runat="server" CssClass="btn btn-success" OnClick="Btn_ocupacion_Click" ID="Btn_ocupacion" Text="Registrar Ocupación"/>
                                                  </div>
                                                 <br />
                                             </div>
@@ -165,10 +165,9 @@
                                 <ContentTemplate>
                                     <asp:Panel ID="Panel1" runat="server">
                                         <div class="tab-pane" id="Consultar">
-                                            <h1 style="text-align: center" id="titulo">Formulario de consultas</h1>
+                                            <h1 style="text-align: center" id="titulo">Formulario de Consultas</h1>
                                             <div class="pure-form pure-form-aligned">
-                                            <asp:Panel ID="Panel3" runat="server" DefaultButton="">
-                                                    <div class="form-group pull-right">  <input type="text" class="search form-control" placeholder="Digita el valor a buscar" /></div>
+                                            <asp:Panel ID="Panel3" runat="server" DefaultButton="">Ingrese el valor a buscar" /></div>
                                                     <span class="counter pull-left"></span>
                                                 <div class="form-group pull-right"><label>Buscar:  </label></div>
                                                     <asp:Table ID="Table2" runat="server" CssClass="table table-hover table-bordered results">
@@ -197,21 +196,21 @@
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                        <h4 class="modal-title" style="text-align:center" id="exampleModalLabel">Nueva ocupacion</h4>
+                                        <h4 class="modal-title" style="text-align:center" id="exampleModalLabel">Nueva Ocupación</h4>
                                     </div>
                                     <div class="modal-body">
                                         <div class="container">
                                             <div class="pure-form pure-form-aligned">
                                                 <fieldset class="pure-control-group">
                                                     <div class="input-prepend">
-                                                        <label for="idarea">Identificador de la ocupación</label>
-                                                        <asp:TextBox ClientIDMode="Static" runat="server" MaxLength="20" ValidationGroup="Six" ReadOnly="true" ID="mIdOcu" placeholder="OC-001" data-toggle="tooltip" data-placement="right" title="En este espacio se debe proporcionar un identificador que caracterice el la ocupacion que se esté registrando, es requerido. " />
+                                                        <label for="idarea">Identificador de la Ocupación</label>
+                                                        <asp:TextBox ClientIDMode="Static" runat="server" MaxLength="20" ValidationGroup="Six" ReadOnly="true" ID="mIdOcu" placeholder="OC-001" data-toggle="tooltip" data-placement="right" title="En este espacio se debe proporcionar un identificador para la ocupación que se está registrando, este espacio es requerido. " />
                                                         <asp:TextBox runat="server" ClientIDMode="Static" ID="mIdOcuO" ></asp:TextBox>
                                                         <asp:RequiredFieldValidator ValidationGroup="Six" ID="RequiredFieldValidator1" runat="server"  ForeColor="Red" ControlToValidate="mIdOcu" ErrorMessage="<b>*</b>"></asp:RequiredFieldValidator>
                                                     </div>
                                                     <div class="input-prepend">
                                                         <label for="area">Ocupación</label>
-                                                        <asp:TextBox runat="server" ClientIDMode="Static" MaxLength="20" id="mDescripcion" ValidationGroup="Six" type="text" placeholder="Recursos Humanos" data-toggle="tooltip" data-placement="right" title="En este espacio se debe proporcionar el nombre de la ocupación que se desea registrar, es requerido. " />
+                                                        <asp:TextBox runat="server" ClientIDMode="Static" MaxLength="20" id="mDescripcion" ValidationGroup="Six" type="text" placeholder="Recursos Humanos" data-toggle="tooltip" data-placement="right" title="En este espacio se debe proporcionar el nombre de la ocupación que se desea registrar, este espacio es requerido. " />
                                                         <asp:RequiredFieldValidator ValidationGroup="Six" MaxLength="500" ID="RequiredFieldValidator2" runat="server"  ForeColor="Red" ControlToValidate="mDescripcion" ErrorMessage="<b>*</b>"></asp:RequiredFieldValidator>
                                                     </div>
                                                 </fieldset>
@@ -265,16 +264,16 @@
                         </div>
                         <div class="modal-body">
                             <div class="container">
-                               La ocupación <b id="idA"></b> que deseas consultar se encuentra inhabilitado en el sistema.
+                               La ocupación <b id="idA"></b> que está consultando, se encuentra inhabilitada en el sistema.
                                 <br />
-                                <a href="#" title="Motivos de inhabilitacion: " id="motivos" data-toggle="popover" data-trigger="focus" data-content=""><b>Detalle <span style='margin: 5px'  class='glyphicon glyphicon-paperclip'></span></b></a>          
+                                <a href="#" title="Motivos de inhabilitación: " id="motivos" data-toggle="popover" data-trigger="focus" data-content=""><b>Detalle <span style='margin: 5px'  class='glyphicon glyphicon-paperclip'></span></b></a>          
                                     <script>
                                         $(document).ready(function () {
                                             $('[data-toggle="popover"]').popover();
                                         });
                                     </script>
                                 <br />
-                                <h3>¿Desea habilitar denuevo la ocupacion?</h3>
+                                <h3>¿Desea habilitar de nuevo la ocupación?</h3>
                                 </div>
                             </div> <!-- /container -->
                         <div class="modal-footer">

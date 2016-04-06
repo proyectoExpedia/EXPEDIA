@@ -58,7 +58,7 @@
                     <div class="panel-heading">
                         <ul class="nav nav-tabs">
                             <li class="active"><a href="index.aspx">Salir</a></li>
-                            <li><a href="#tab2primary" data-toggle="tab">Conozcanos</a></li>
+                            <li><a href="#tab2primary" data-toggle="tab">Conózcanos</a></li>
                             <li><a href="#tab3primary" data-toggle="tab">Contacto</a></li>
                         </ul>
                     </div>
@@ -72,7 +72,7 @@
                 <asp:SiteMapPath ID="SiteMapPath1" runat="server"></asp:SiteMapPath>
                 <div class="panel panel-primary">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Gestión de usuarios</h3>
+                        <h3 class="panel-title">Gestión de Usuarios</h3>
                         <div>
                         <a style="float:right;margin-top:21px;" href="mainAdministrador.aspx" class="btn"><span class="glyphicon glyphicon-menu-left"></span>  Atrás</a>
                         </div>
@@ -80,11 +80,11 @@
                   
                     <div class="panel-body">
                         <asp:TabContainer ID="TabContainer1" CssClass="nav nav-tabs" runat="server" ActiveTabIndex="0">
-                            <asp:TabPanel runat="server" HeaderText="<span style='margin: 5px' data-toggle='tab'><b>Registro de usuarios</b><span style='margin: 10px' class='glyphicon glyphicon-plus-sign'></span></span>" ID="TabPanel1">
+                            <asp:TabPanel runat="server" HeaderText="<span style='margin: 5px' data-toggle='tab'><b>Registro de Usuarios</b><span style='margin: 10px' class='glyphicon glyphicon-plus-sign'></span></span>" ID="TabPanel1">
                                 <ContentTemplate>
                                     <asp:Panel ID="Panel2" runat="server" DefaultButton="Bt_Ingresar">
                                     <div class="tab-pane fade in active" id="Ingresar">
-                                        <h1 style="text-align: center">Formulario de registro</h1>
+                                        <h1 style="text-align: center">Formulario de Registro</h1>
                                         <div class="pure-form pure-form-aligned" style="margin-top: 5px; margin-left: 20px;">
 
                                             <fieldset>
@@ -109,7 +109,7 @@
                                                 <!--Ingresar Cedula-->
                                                 <div class="pure-control-group">
                                                     <label for="cedula">Número de cédula</label>
-                                                    <asp:TextBox ValidationGroup="one" runat="server" ID="cedula_usuario" data-toggle="tooltip" data-placement="right" title="En este espacio se debe proporcionar el número de cedula de la persona a registrar, omita guiones y todos los dígitos del documento de identidad, este espacio es requerido." placeholder="#-####-####" />
+                                                    <asp:TextBox ValidationGroup="one" runat="server" ID="cedula_usuario" data-toggle="tooltip" data-placement="right" title="En este espacio se debe proporcionar el número de cedula de la persona a registrar, omita guiones, no excluya ningún dígito, este espacio es requerido." placeholder="#-####-####" />
                                                     <asp:RequiredFieldValidator ValidationGroup="one" ID="vCedula" runat="server" ControlToValidate="cedula_usuario" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
                                                     <cc1:MaskedEditExtender ID="cedula_usuario_MaskedEditExtender" runat="server" BehaviorID="cedula_usuario_MaskedEditExtender" Century="2000" ClearMaskOnLostFocus="False" CultureAMPMPlaceholder="" CultureCurrencySymbolPlaceholder="" CultureDateFormat="" CultureDatePlaceholder="" CultureDecimalPlaceholder="" CultureThousandsPlaceholder="" CultureTimePlaceholder="" Mask="9-9999-9999" TargetControlID="cedula_usuario"></cc1:MaskedEditExtender>
                                                     <asp:RegularExpressionValidator ValidationGroup="one" ID="RegularExpressionValidator2" runat="server" ControlToValidate="cedula_usuario" ErrorMessage="&lt;b&gt;Formato no valido&lt;/b&gt;" ForeColor="Red" ValidationExpression="^[1-9]-\d{4}-\d{4}$"></asp:RegularExpressionValidator>
@@ -134,7 +134,7 @@
                                                     <label for="correo">Correo electrónico</label>
                                                     <asp:TextBox ValidationGroup="one" MaxLength="70" runat="server" ID="correo_usuario" data-toggle="tooltip" data-placement="right" title="En este espacio se debe proporcionar la dirección de correo electrónico de la persona a registrar, este espacio es requerido." TextMode="Email" />
                                                     <asp:RequiredFieldValidator ValidationGroup="one" ID="vCorreo" runat="server" ControlToValidate="correo_usuario" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
-                                                    <asp:RegularExpressionValidator ValidationGroup="one" ID="RegularExpressionValidator1" runat="server" ControlToValidate="correo_usuario" ErrorMessage="&lt;b&gt;  Formato no valido&lt;/b&gt;" ForeColor="Red" ValidationExpression="^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$"></asp:RegularExpressionValidator>
+                                                    <asp:RegularExpressionValidator ValidationGroup="one" ID="RegularExpressionValidator1" runat="server" ControlToValidate="correo_usuario" ErrorMessage="&lt;b&gt;  Formato no válido&lt;/b&gt;" ForeColor="Red" ValidationExpression="^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$"></asp:RegularExpressionValidator>
                                                     
                                                 </div>
 
@@ -146,7 +146,7 @@
                                                         <asp:TextBox ValidationGroup="one" MaxLength="20" runat="server" ID="telefono_usuario" placeholder="####-####" data-toggle="tooltip" data-placement="right" title="En este espacio se debe proporcionar el número telefónico principal de la persona a registrar, este espacio es requerido." />
                                                         <cc1:MaskedEditExtender ID="telefono_usuario_MaskedEditExtender" runat="server" BehaviorID="telefono_usuario_MaskedEditExtender" Century="2000" ClearMaskOnLostFocus="False" CultureAMPMPlaceholder="" CultureCurrencySymbolPlaceholder="" CultureDateFormat="" CultureDatePlaceholder="" CultureDecimalPlaceholder="" CultureThousandsPlaceholder="" CultureTimePlaceholder="" Mask="9999-9999" TargetControlID="telefono_usuario"></cc1:MaskedEditExtender>
                                                         <asp:RequiredFieldValidator ValidationGroup="one" ID="vTelefono" runat="server" ControlToValidate="telefono_usuario" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
-                                                        <asp:RegularExpressionValidator ValidationGroup="one" ID="RegularExpressionValidator3" runat="server" ControlToValidate="telefono_usuario" ErrorMessage="&lt;b&gt;Formato no valido&lt;/b&gt;" ForeColor="Red" ValidationExpression="^\d{4}-\d{4}$"></asp:RegularExpressionValidator>
+                                                        <asp:RegularExpressionValidator ValidationGroup="one" ID="RegularExpressionValidator3" runat="server" ControlToValidate="telefono_usuario" ErrorMessage="&lt;b&gt;Formato no válido&lt;/b&gt;" ForeColor="Red" ValidationExpression="^\d{4}-\d{4}$"></asp:RegularExpressionValidator>
                                                     </div>
                                                 </fieldset>
 
@@ -157,7 +157,7 @@
                                                         <asp:ListItem Selected="True" Value="none" disabled="disabled"> ¿La ocupación no aparece? Haz uso el icono situado contiguo a esta categoría para proporcionar una nueva. </asp:ListItem>
                                                     </asp:DropDownList>
                                                     <a data-toggle="modal" data-target="#modalPuesto"><span class="glyphicon glyphicon-wrench"></span></a>
-                                                    <asp:RequiredFieldValidator InitialValue="none" ControlToValidate="puesto" ValidationGroup="one" ForeColor="Red" ID="RequiredFieldValidator1" runat="server" ErrorMessage="<b>Debe elegir una opcion</b>"></asp:RequiredFieldValidator>
+                                                    <asp:RequiredFieldValidator InitialValue="none" ControlToValidate="puesto" ValidationGroup="one" ForeColor="Red" ID="RequiredFieldValidator1" runat="server" ErrorMessage="<b>Debe elegir una opción</b>"></asp:RequiredFieldValidator>
                                                 </div>
                                                 <!--Ingresar Area de servicio-->
                                                 <div class="pure-control-group">
@@ -166,7 +166,7 @@
                                                         <asp:ListItem Selected="True" Value="none" disabled="disabled">¿El área no aparece? Haz uso el icono situado contiguo a esta categoría para proporcionar una nueva.</asp:ListItem>
                                                     </asp:DropDownList>
                                                     <a data-toggle="modal" data-target="#modalAreas"><span class="glyphicon glyphicon-wrench"></span></a>
-                                                    <asp:RequiredFieldValidator InitialValue="none" ControlToValidate="area" ValidationGroup="one" ForeColor="Red" ID="RequiredFieldValidator3" runat="server" ErrorMessage="<b>Debe elegir una opcion</b>"></asp:RequiredFieldValidator>
+                                                    <asp:RequiredFieldValidator InitialValue="none" ControlToValidate="area" ValidationGroup="one" ForeColor="Red" ID="RequiredFieldValidator3" runat="server" ErrorMessage="<b>Debe elegir una opción</b>"></asp:RequiredFieldValidator>
                                                 </div>
 
                                                 <!--Ingresar tipo de Usuario-->
@@ -177,7 +177,7 @@
                                                         <asp:ListItem Value="1">Administrador</asp:ListItem>
                                                         <asp:ListItem Value="0">Consultas</asp:ListItem>
                                                     </asp:DropDownList>
-                                                    <asp:RequiredFieldValidator InitialValue="none" ControlToValidate="tipo_usuario" ValidationGroup="one" ForeColor="Red" ID="RequiredFieldValidator4" runat="server" ErrorMessage="<b>Debe elegir una opcion</b>"></asp:RequiredFieldValidator>
+                                                    <asp:RequiredFieldValidator InitialValue="none" ControlToValidate="tipo_usuario" ValidationGroup="one" ForeColor="Red" ID="RequiredFieldValidator4" runat="server" ErrorMessage="<b>Debe elegir una opción</b>"></asp:RequiredFieldValidator>
                                                 </div>
 
                                                 <div class="pure-controls-group" style="margin-top: 10px;">

@@ -63,7 +63,7 @@
                     <div class="panel-heading">
                         <ul class="nav nav-tabs">
                             <li class="active"><a href="index.aspx">Salir</a></li>
-                            <li><a href="#tab2primary" data-toggle="tab">Conozcanos</a></li>
+                            <li><a href="#tab2primary" data-toggle="tab">Conózcanos</a></li>
                             <li><a href="#tab3primary" data-toggle="tab">Contacto</a></li>
                         </ul>
                     </div>
@@ -77,21 +77,21 @@
                 <div style="margin-top:50px;"><asp:SiteMapPath ID="SiteMapPath1" runat="server"></asp:SiteMapPath></div>
                 <div class="panel panel-primary">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Gestión de préstamos</h3>
+                        <h3 class="panel-title">Gestión de Préstamos</h3>
                         <div>
                         <a style="float:right;margin-top:21px;" href="mainAdministrador.aspx" class="btn"><span class="glyphicon glyphicon-menu-left"></span>  Atrás</a>
                         </div>
                     </div>
                     <div class="panel-body">
                         <asp:TabContainer ID="TabContainer1" CssClass="nav nav-tabs" runat="server" ActiveTabIndex="0">
-                            <asp:TabPanel runat="server" HeaderText="<span style='margin: 5px' data-toggle='tab'><b>Registro de préstamo</b><span style='margin: 10px' class='glyphicon glyphicon-plus-sign'></span></span>" ID="TabPanel1">
+                            <asp:TabPanel runat="server" HeaderText="<span style='margin: 5px' data-toggle='tab'><b>Registro de Préstamo</b><span style='margin: 10px' class='glyphicon glyphicon-plus-sign'></span></span>" ID="TabPanel1">
                                 <HeaderTemplate>
                                     <span data-toggle="tab" style="margin: 5px"><b>Registro de préstamo</b><span class="glyphicon glyphicon-plus-sign" style="margin: 10px; left: 0px; width: 5px;"></span></span>
                                 </HeaderTemplate>
                                 <ContentTemplate>
                                     <asp:Panel ID="Panel2" runat="server" DefaultButton="Bt_Ingresar">
                                     <div class="tab-pane fade in active" id="Ingresar">
-                                        <h1 style="text-align: center">Formulario creación</h1>
+                                        <h1 style="text-align: center">Formulario Creación</h1>
                                         <div class="pure-form pure-form-aligned" style="margin-top: 5px; margin-left: 20px;">
 
                                             <fieldset>
@@ -100,13 +100,13 @@
                                                 <div class="pure-control-group">
                                          
                                         <label  for="numero" >Número de Placa / Serie </label>
-                                          <asp:TextBox ValidationGroup="one" runat="server" ID="numero" data-toggle="tooltip" data-placement="right" MaxLength="10"  title="Este espacio debe proporcionar el numero de placa o de seria para consultar activo." />
+                                          <asp:TextBox ValidationGroup="one" runat="server" ID="numero" data-toggle="tooltip" data-placement="right" MaxLength="10"  title="Este espacio debe proporcionar el numero de placa o de serie que desea consultar activo." />
                                         
                                                </div>
                                          <!--Ingresar DESCRIPCION -->
                                          <div class="pure-control-group">
                                         <label for="descripcion">Descripción del activo</label>
-                                        <asp:DropDownList ValidationGroup="one"  runat="server" data-toggle="tooltip" title="En este espacio puede seleccionar la descripción a buscar." id="descripcion_activo" CssClass="pure-input-1-2">
+                                        <asp:DropDownList ValidationGroup="one"  runat="server" data-toggle="tooltip" title="Seleccione una descripción como filtro para búsqueda." id="descripcion_activo" CssClass="pure-input-1-2">
                                         <asp:ListItem Value="0">Todos</asp:ListItem>
                                         </asp:DropDownList>
                                                                                          </div>
@@ -114,7 +114,7 @@
                              <!--Ingresar Despatamento-->
                                            <div class="pure-control-group">
                              <label for="area">Departamento o Sede regional destinado(a)</label>
-                                        <asp:DropDownList runat="server" data-toggle="tooltip" title="En este espacio puede seleccionar el Departamento o Sede regional destinado(a) a buscar. " id="departamento_activo" CssClass="pure-input-1-2">
+                                        <asp:DropDownList runat="server" data-toggle="tooltip" title="Seleccione un departamento o área como filtro para su búsqueda." id="departamento_activo" CssClass="pure-input-1-2">
                                           <asp:ListItem Value="0">Todos</asp:ListItem>
                                              </asp:DropDownList>
                                                      
@@ -122,7 +122,7 @@
                              <!--Ingresar Proveedor-->
                                                 <div class="pure-control-group">
                              <label for="provedor">Proveedor</label>
-                                        <asp:DropDownList runat="server" data-toggle="tooltip" title=" En este espacio puede selecionar el nombre del proveedor del activo a buscar." id="proveedor" CssClass="pure-input-1-2">
+                                        <asp:DropDownList runat="server" data-toggle="tooltip" title="Seleccione un proveedor como filtro para búsqueda." id="proveedor" CssClass="pure-input-1-2">
                                         <asp:ListItem Value="0">Todos</asp:ListItem>
                                              </asp:DropDownList>
                                                     
@@ -143,7 +143,7 @@
                                                 <!--Ingresar Cedula-->
                                                 <div class="pure-control-group" >
                                                     <label for="cedula_usuario">Número de cédula</label>
-                                                    <asp:TextBox ValidationGroup="one" runat="server" ID="cedula_usuario"  AutoPostBack="True" OnTextChanged="cedula_usuario_TextChanged" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar el número de cedula de la persona a registrar, omita guiones y todos los dígitos del documento de identidad, es requerido."  placeholder="#-####-####" />
+                                                    <asp:TextBox ValidationGroup="one" runat="server" ID="cedula_usuario"  AutoPostBack="True" OnTextChanged="cedula_usuario_TextChanged" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar el número de cedula de la persona a registrar, omita guiones, no excluya ningún dígito del documento, este espacio es requerido."  placeholder="#-####-####" />
                                                     <asp:RequiredFieldValidator ValidationGroup="one" ID="vCedula" runat="server" ControlToValidate="cedula_usuario" ForeColor="Red" SetFocusOnError="True" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
                                                     <asp:MaskedEditExtender ID="cedula_usuario_MaskedEditExtender" runat="server" BehaviorID="cedula_usuario_MaskedEditExtender" Century="2000" ClearMaskOnLostFocus="False" CultureAMPMPlaceholder="" CultureCurrencySymbolPlaceholder="" CultureDateFormat="" CultureDatePlaceholder="" CultureDecimalPlaceholder="" CultureThousandsPlaceholder="" CultureTimePlaceholder="" Mask="9-9999-9999" TargetControlID="cedula_usuario" />
                                                     <asp:RegularExpressionValidator ValidationGroup="one" ID="RegularExpressionValidator2" runat="server" ControlToValidate="cedula_usuario" ErrorMessage="&lt;b&gt;*&lt;/b&gt;" ForeColor="Red" ValidationExpression="^[1-9]-\d{4}-\d{4}$"></asp:RegularExpressionValidator>
@@ -171,7 +171,7 @@
                                                                                                   
                                                      <fieldset class="pure-control-group">
                                                  <label for="Fecha_entrega">Fecha de regreso:</label>
-                                                <asp:TextBox runat="server"  ID="Fecha_regreso" ToolTip="Este espacio debe contener la fecha de regreso del préstamo, este espacio es requerido."></asp:TextBox>
+                                                <asp:TextBox runat="server"  ID="Fecha_regreso" ToolTip="Este espacio debe contener la fecha en que se está retornando el activo, este espacio es requerido."></asp:TextBox>
                                                          <asp:CalendarExtender ID="Fecharegreso" Format="yyyy/MM/dd"  runat="server"   PopupButtonID="Fecha_regreso"   TargetControlID="Fecha_regreso" BehaviorID="_content_Fecharegreso" />
                                                          <asp:RequiredFieldValidator  ValidationGroup="one"   ID="RequiredFieldValidator5"   runat="server" ControlToValidate="Fecha_regreso"   ForeColor="Red" SetFocusOnError="True" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
                                                          <asp:CompareValidator ID="CompareValidator1" runat="server" ValidationGroup="one"  ControlToCompare="Fecha_entrega" Operator="GreaterThanEqual" ControlToValidate="Fecha_regreso"  ErrorMessage="No se puede escoger una fecha menor a la del día de entrega" ForeColor="Red" SetFocusOnError="True"></asp:CompareValidator>
@@ -203,26 +203,24 @@
                                 <ContentTemplate>
                                     <asp:Panel ID="Panel1" runat="server">
                                         <div class="tab-pane" id="Consultar">
-                                            <h1 style="text-align: center" id="titulo">Formulario de consultas</h1>
+                                            <h1 style="text-align: center" id="titulo">Formulario de Consultas</h1>
                                             
                                             <asp:Panel ID="Panel3" runat="server">
                                                 <div class="pure-form pure-form-aligned">
                                                 <label for="cedula_consulta"> Número de cédula: </label>
-                                                <asp:TextBox ID="cedula_consulta" ValidationGroup="two" AutoPostBack="true" OnTextChanged="cedula_consulta_TextChanged" runat="server"   data-toggle="tooltip" data-placement="left" ToolTip="En este espacio se debe proporcionar el número de cedula de la persona a registrar, omita guiones y todos los dígitos del documento de identidad, es requerido." placeholder="#-####-####"></asp:TextBox>
+                                                <asp:TextBox ID="cedula_consulta" ValidationGroup="two" AutoPostBack="true" OnTextChanged="cedula_consulta_TextChanged" runat="server"   data-toggle="tooltip" data-placement="left" ToolTip="En este espacio se debe proporcionar el número de cedula de la persona a registrar, omita guiones, no excluya ningún dígito del documento, este espacio es requerido." placeholder="#-####-####"></asp:TextBox>
                                                 <asp:RegularExpressionValidator ValidationGroup="two" ID="RegularExpressionValidator4" runat="server" ControlToValidate="cedula_consulta" ErrorMessage="&lt;b&gt;Formato no valido&lt;/b&gt;" ForeColor="Red" ValidationExpression="^[1-9]-\d{4}-\d{4}$"></asp:RegularExpressionValidator>
                                                 <cc1:MaskedEditExtender ID="MaskedEditExtender1" runat="server" BehaviorID="cedula_consulta_MaskedEditExtender" Century="2000" ClearMaskOnLostFocus="False" CultureAMPMPlaceholder="" CultureCurrencySymbolPlaceholder="" CultureDateFormat="" CultureDatePlaceholder="" CultureDecimalPlaceholder="" CultureThousandsPlaceholder="" CultureTimePlaceholder="" Mask="9-9999-9999" TargetControlID="cedula_consulta"></cc1:MaskedEditExtender>
                                                 <label  runat="server"  id="Info2" style="font-family: Arial, Helvetica, sans-serif; font-size: 17px; font-style: normal;" ></label>
                                                 <br />
-                                                <label for="id_prestamo">Número de Prestamo:</label>
-                                                <asp:TextBox runat="server"    data-toggle="tooltip" data-placement="left"     ToolTip="Proporcione el número de prestamo,a consultar" ID="id_prestamo" />
+                                                <label for="id_prestamo">Número de Préstamo:</label>
+                                                <asp:TextBox runat="server"    data-toggle="tooltip" data-placement="left"     ToolTip="Ingrese el número del préstamo que desea consultar" ID="id_prestamo" />
                                                 <cc1:MaskedEditExtender ID="MaskedEditExtender2" runat="server" BehaviorID="id_prestamo_MaskedEditExtender" Century="2000" ClearMaskOnLostFocus="true" CultureAMPMPlaceholder="" CultureCurrencySymbolPlaceholder="" CultureDateFormat="" CultureDatePlaceholder="" CultureDecimalPlaceholder="" CultureThousandsPlaceholder="" CultureTimePlaceholder="" Mask="999999999" TargetControlID="id_prestamo"></cc1:MaskedEditExtender>
                                                 <asp:Button runat="server" ID="Consulta_prestamo" OnClick="Consulta_prestamo_Click"    class="btn btn-success" Text="Consultar"></asp:Button>
                                                  </div>  
                                   <br />
                                   <br />
                                   <br />
-
-                                             
                                                 <asp:GridView runat="server" OnRowCommand="tabla2_RowCommand" ID="tabla2" CssClass="table table-striped table-hover" >
 
                                                     <Columns>
@@ -239,13 +237,8 @@
                                                         </asp:TemplateField>
                                                         <asp:TemplateField HeaderText="Prolongar">
                                                             <ItemTemplate><asp:LinkButton   ID="Prolongar" runat="server"  CssClass="glyphicon glyphicon-plus"  CommandName="Prolongar"   CommandArgument="<%# ((GridViewRow) Container).RowIndex %>"  /> </ItemTemplate> </asp:TemplateField>
-                                      
-    
                                     </Columns>
-
                                 </asp:GridView>
-
-                            
                                             </asp:Panel>
                                        
                                     </asp:Panel>
@@ -263,7 +256,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <asp:Button runat="server" CssClass="close"  BorderStyle="None" OnClick="close_Click" aria-label="Close" aria-hidden="true" Text="&times;" ></asp:Button>
-        <h4 class="modal-title">Detalle del préstamo</h4>
+        <h4 class="modal-title">Detalle del Préstamo</h4>
 
       </div>
       <div class="modal-body">
@@ -271,18 +264,13 @@
            <div class="container" id="Imprimir" runat="server">
               <img src="img/ExpediaLogo.png" style="width:90px; height:90px; padding-right:7px;  float:left" alt="" />
                                                 <br />
-                                               <label for="TextBox4">Prestamo: </label> <asp:TextBox ID="TextBox4" runat="server" BorderStyle="None" BorderWidth="0px" Enabled="False" EnableTheming="True" BackColor="White"></asp:TextBox><br/>
+                                               <label for="TextBox4">Préstamo: </label> <asp:TextBox ID="TextBox4" runat="server" BorderStyle="None" BorderWidth="0px" Enabled="False" EnableTheming="True" BackColor="White"></asp:TextBox><br/>
                                                 <label for="TextBox5">Identificación de solicitante:</label><asp:TextBox ID="TextBox5" runat="server" BorderStyle="None" BorderWidth="0px" Enabled="False" EnableTheming="True" BackColor="White"></asp:TextBox><br/>
                                                 <label for="TextBox6">Fecha de entrega:</label><asp:TextBox ID="TextBox6" runat="server" BorderStyle="None" BorderWidth="0px" Enabled="False" EnableTheming="True" BackColor="White"></asp:TextBox><br/>
-                                                <label for="TextBox7" style="padding-left:90px;">Fecha de regreso: </label><asp:TextBox ID="TextBox7" runat="server" BorderStyle="None" BorderWidth="0px" Enabled="False" EnableTheming="True" BackColor="White"></asp:TextBox><br />
+                                                <label for="TextBox7" style="padding-left:90px;">Fecha de retorno: </label><asp:TextBox ID="TextBox7" runat="server" BorderStyle="None" BorderWidth="0px" Enabled="False" EnableTheming="True" BackColor="White"></asp:TextBox><br />
                                             <div class="col-md-6 column">
-                                              
-                                                    
                                                     <asp:GridView runat="server" ID="Gridview1" CssClass="table table-bordered table-hover"></asp:GridView>
-                                                
                                                 </div>
-                                             
-
                                             </div>
 
       </div>
@@ -342,7 +330,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <asp:Button runat="server" CssClass="close"  BorderStyle="None" OnClick="Button3_Click" aria-label="Close" aria-hidden="true" Text="&times;" ></asp:Button>
-        <h4 class="modal-title">Prolongar préstamo</h4>
+        <h4 class="modal-title">Prolongar Préstamo</h4>
 
       </div>
       <div class="modal-body">
@@ -356,7 +344,7 @@
 
                      <div class="pure-control-group">
                <label for="TextBox10" >Fecha de cambio: </label>
-               <asp:TextBox ID="TextBox10" runat="server" ToolTip="Este espacio debe contener la fecha de regreso del préstamo, este espacio es requerido."></asp:TextBox>
+               <asp:TextBox ID="TextBox10" runat="server" ToolTip="Este espacio debe contener la fecha de retorno del préstamo, este espacio es requerido."></asp:TextBox>
                <asp:CalendarExtender runat="server" Format="yyyy/MM/dd"  BehaviorID="TextBox10_CalendarExtender" TargetControlID="TextBox10" ID="TextBox10_CalendarExtender"></asp:CalendarExtender>
                 <asp:RequiredFieldValidator  ValidationGroup="one"   ID="RequiredFieldValidator1"   runat="server" ControlToValidate="TextBox10"   ForeColor="Red" SetFocusOnError="True" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator><br />
                <asp:CompareValidator ID="CompareValidator2" runat="server" ValidationGroup="one"  ControlToCompare="TextBox9" Operator="GreaterThan"  ControlToValidate="TextBox10"  ErrorMessage="No se puede escoger una fecha menor a la del día de entrega /n Si desea puede finalizar el prestamo " ForeColor="Red" SetFocusOnError="True"></asp:CompareValidator>
@@ -388,25 +376,21 @@
     <div class="modal-content">
       <div class="modal-header">
         <asp:Button runat="server" CssClass="close"  BorderStyle="None" OnClick="Button4_Click" aria-label="Close" aria-hidden="true" Text="&times;" ></asp:Button>
-        <h4 class="modal-title">Prestamo pendiente</h4>
+        <h4 class="modal-title">Préstamo Pendiente</h4>
 
       </div>
       <div class="modal-body">
       
            <div class="container" id="Div4" runat="server">
 
-                <label for="TextBox11">Prestamo: </label> <asp:TextBox ID="TextBox11" runat="server" BorderStyle="None" BorderWidth="0px" Enabled="False" EnableTheming="True" BackColor="White"></asp:TextBox><br/>
+                <label for="TextBox11">Préstamo: </label> <asp:TextBox ID="TextBox11" runat="server" BorderStyle="None" BorderWidth="0px" Enabled="False" EnableTheming="True" BackColor="White"></asp:TextBox><br/>
                 <label for="TextBox12">Identificación de solicitante:</label><asp:TextBox ID="TextBox12" runat="server" BorderStyle="None" BorderWidth="0px" Enabled="False" EnableTheming="True" BackColor="White"></asp:TextBox><br/>
                  <label for="TextBox13">Fecha de entrega:</label><asp:TextBox ID="TextBox13" runat="server" BorderStyle="None" BorderWidth="0px" Enabled="False" EnableTheming="True" BackColor="White"></asp:TextBox><br/>
-                 <label for="TextBox14" style="padding-left:90px;">Fecha de regreso: </label><asp:TextBox ID="TextBox14" runat="server" BorderStyle="None" BorderWidth="0px" Enabled="False" EnableTheming="True" BackColor="White"></asp:TextBox><br />
-                  <div class="col-md-6 column">
-                                              
-                                                    
+                 <label for="TextBox14" style="padding-left:90px;">Fecha de retorno: </label><asp:TextBox ID="TextBox14" runat="server" BorderStyle="None" BorderWidth="0px" Enabled="False" EnableTheming="True" BackColor="White"></asp:TextBox><br />
+                  <div class="col-md-6 column">                                     
                 <asp:GridView runat="server" ID="Gridview2" CssClass="table table-bordered table-hover"></asp:GridView>
                                                 
                           </div>
-                                             
->
             </div>
 
       </div>
@@ -419,20 +403,7 @@
   </div><!-- /.modal-dialog -->
 </div>
    </asp:Panel>
-
-
-
-
-
-
-
-
-
                 <%-- ****** FIN DE MODAL DE USUARIO INHABILIDATO --%>
-                    
-
-
-
 
                 <div id="Modales">
                    <%-- DefaultButton="Btn_ocupacion"--%>
@@ -449,7 +420,7 @@
                                                 <img src="img/colegioAbogadoscr.png" style="width:90px; height:90px;float:left" alt="" />
                                                 <br />
                                                 <label for="Fecha" style="font-size:20px; margin-right:148px; margin-left:75px;">COLEGIO DE ABOGADOS Y ABOGADAS DE COSTA RICA</label> Fecha:<asp:TextBox runat="server" ID="TextBox3" BorderStyle="None" BorderWidth="0px" Enabled="False" EnableTheming="True" BackColor="White" />
-                                                <label for="Numero" style="font-size:20px; margin-right:150px; margin-left:25px;">SOLICITUD DE TRASLADO,PRESTAMO,EXCLUSIÓN DE ACTIVO FIJO N°</label><asp:TextBox runat="server" ID="TextBox2" BorderStyle="None" BorderWidth="0px" Enabled="False" EnableTheming="True" BackColor="White" />
+                                                <label for="Numero" style="font-size:20px; margin-right:150px; margin-left:25px;">SOLICITUD DE TRASLADO, PRESTAMO, EXCLUSIÓN DE ACTIVO FIJO N°</label><asp:TextBox runat="server" ID="TextBox2" BorderStyle="None" BorderWidth="0px" Enabled="False" EnableTheming="True" BackColor="White" />
                                                 <br />
                                                 <br />
                                                 <br />
@@ -467,7 +438,7 @@
                                                             </tr>
                                                              <tr>
                                                                 <td>
-                                                                   <label for="check_exclusion" style="font-size:18px; margin-right:250px;">2.SOLICITUD DE EXCLUSIÓN(cuando va a dejarse de usar por el colegio)</label> 
+                                                                   <label for="check_exclusion" style="font-size:18px; margin-right:250px;">2.SOLICITUD DE EXCLUSIÓN (cuando va a dejarse de usar por el colegio)</label> 
                                                                 </td>
                                                                 <td>
                                                                     <asp:CheckBox runat="server" ID="check_exclusion"  readonly = 'true'/>
@@ -475,7 +446,7 @@
                                                             </tr>
                                                             <tr>
                                                                 <td>
-                                                                   <label for="check_prestamo" style="font-size:18px; margin-right:370px;">3.SOLICITUD DE PRESTAMO (cuando es en forma temporal)</label> 
+                                                                   <label for="check_prestamo" style="font-size:18px; margin-right:370px;">3.SOLICITUD DE PRÉSTAMO (cuando es en forma temporal)</label> 
                                                                 </td>
                                                                 <td>
                                                                    <asp:CheckBox runat="server" ID="check_prestamo" readonly = 'true' Checked="true"  />
@@ -505,7 +476,7 @@
                                                 <pre style="border:none; background:none">_________________________________________                     __________________________________________ 
  NOMBRE DEL DEPARTAMENTO QUE ENTREGA Y                NOMBRE DEL DEPARTAMENTO QUE RECIBE Y 
        FIRMA DEL RESPONSABLE                                                  FIRMA DEL RESPONSABLE</pre>
-                                                <pre style="background:none; width:85%;">Observaciones: (indicar si se entrega con otros componentes,motivo de préstamo,traslado o exclisión y
+                                                <pre style="background:none; width:85%;">Observaciones: (indicar si se entrega con otros componentes, motivo de préstamo, traslado o exclisión y
 condiciones fisicas - en caso de préstamo o traslado)
 
 
