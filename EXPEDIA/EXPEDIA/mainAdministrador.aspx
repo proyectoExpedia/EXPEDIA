@@ -272,6 +272,7 @@
                                 </div>
                             </div>
                         </div>
+                       
                         <div class="col-sm-3 col-md-4" >
                             <div class="thumbnail"   style=" border: 7px double #003566;">
                                 <a class="" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">
@@ -298,75 +299,9 @@
                                     </div>
                                 </div>
                                 <div class="caption" style="text-align:center">
-                                    <a href="gestionAreas.aspx" class="btn">
-                                        <span style="font-size: 60px" class="glyphicon glyphicon-globe"></span>
-                                        <h3>Gestión de áreas</h3>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-3 col-md-4" >
-                            <div class="thumbnail"   style=" border: 7px double #003566;">
-                                <a class="" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">
-                                    <span style="font-size: 40px" class="glyphicon glyphicon-question-sign"></span>
-                                </a>
-                                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                                <h4 class="modal-title" style="text-align:center" id="exampleModalLabel">Gestor de ayuda</h4>
-                                            </div>
-                                            <div class="modal-body">
-                                                <div class="container" style="width: 400px;">
-                                                    <p>Instrucciones</p>
-                                                </div> <!-- /container -->
-
-                                            </div>
-                                            <div class="modal-footer">
-                                                <img src="img/ExpediaLogo.png" alt="" style="width:50px; height:50px;float:left" />
-                                                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="caption" style="text-align:center">
-                                    <a href="gestionPuestos.aspx" class="btn">
-                                        <span style="font-size: 60px" class="glyphicon glyphicon-briefcase"></span>
-                                        <h3>Gestión de puestos</h3>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-3 col-md-4" >
-                            <div class="thumbnail"   style=" border: 7px double #003566;">
-                                <a class="" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">
-                                    <span style="font-size: 40px" class="glyphicon glyphicon-question-sign"></span>
-                                </a>
-                                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                                <h4 class="modal-title" style="text-align:center" id="exampleModalLabel">Gestor de ayuda</h4>
-                                            </div>
-                                            <div class="modal-body">
-                                                <div class="container" style="width: 400px;">
-                                                    <p>Instrucciones</p>
-                                                </div> <!-- /container -->
-
-                                            </div>
-                                            <div class="modal-footer">
-                                                <img src="img/ExpediaLogo.png" alt="" style="width:50px; height:50px;float:left" />
-                                                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="caption" style="text-align:center">
-                                    <a href="gestionProveedores.aspx" class="btn">
-                                        <span style="font-size: 60px" class="glyphicon glyphicon-shopping-cart"></span>
-                                        <h3>Gestión de proveedores</h3>
+                                    <a href="gestionAjustes.aspx" class="btn">
+                                        <span style="font-size: 60px" class="glyphicon glyphicon-wrench"></span>
+                                        <h3>Gestión de ajustes</h3>
                                     </a>
                                 </div>
                             </div>

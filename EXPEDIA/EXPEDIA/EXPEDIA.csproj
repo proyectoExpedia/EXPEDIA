@@ -85,6 +85,8 @@
     <Content Include="Global.asax" />
     <Content Include="img\Thumbs.db" />
     <Content Include="js\sweetalert.min.js" />
+    <Content Include="mainConsulta - Copia.aspx" />
+    <Content Include="gestionAjustes.aspx" />
     <Content Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -207,6 +209,20 @@
     </Compile>
     <Compile Include="index.aspx.designer.cs">
       <DependentUpon>index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="mainConsulta - Copia.aspx.cs">
+      <DependentUpon>mainConsulta - Copia.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="mainConsulta - Copia.aspx.designer.cs">
+      <DependentUpon>mainConsulta - Copia.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="gestionAjustes.aspx.cs">
+      <DependentUpon>gestionAjustes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="gestionAjustes.aspx.designer.cs">
+      <DependentUpon>gestionAjustes.aspx</DependentUpon>
     </Compile>
     <Compile Include="mainAdministrador.aspx.cs">
       <DependentUpon>mainAdministrador.aspx</DependentUpon>
