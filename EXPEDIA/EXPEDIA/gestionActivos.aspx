@@ -935,10 +935,10 @@
 <%--                                        <asp:RadioButton runat="server" ID="RadioButton5" ClientIDMode="Static" Enabled="true" Text="Software" GroupName="location" />
                                         <asp:RadioButton runat="server" ID="RadioButton6" ClientIDMode="Static" Enabled="true" Text="Hardware" GroupName="location" />--%>
                                         <label class="btn btn-primary" runat="server" id="btn5">
-                                            <asp:RadioButton runat="server" ID="RadioButton5" Text="Software" GroupName="location" />
+                                            <asp:RadioButton runat="server" ID="RadioButton5" Text="Software" CssClass="nada "  autocomplete="off"  GroupName="location" />
                                         </label>
                                         <label class="btn btn-primary" runat="server" id="btn6">
-                                            <asp:RadioButton runat="server" ID="RadioButton6" Text="Hardware" GroupName="location" />
+                                            <asp:RadioButton runat="server" ID="RadioButton6" Text="Hardware"  autocomplete="off" GroupName="location" />
                                         </label>
                                     </div>
                                         <asp:CustomValidator id="CustomValidator9" ValidationGroup="one" runat="server" Display="Dynamic" ForeColor="Red" ErrorMessage="*" ClientValidationFunction="CustomValidator1_ClientValidate"></asp:CustomValidator>
