@@ -302,7 +302,7 @@ namespace EXPEDIA
                     cmd.Parameters.AddWithValue("@descripcion", descripcion_nueva.Text);
                     cmd.ExecuteNonQuery();
                     c.Desconectar(Conexion);
-                    ListItem item2 = new ListItem(id_descripcion_nueva.Text, descripcion_nueva.Text, true);
+                    ListItem item2 = new ListItem(descripcion_nueva.Text, id_descripcion_nueva.Text, true);
                     descripcion.Items.Add(item2);
                     descripcion2.Items.Add(item2);
                     excelente(Registar_Descripcion_Ac);
@@ -337,7 +337,7 @@ namespace EXPEDIA
                     cmd.Parameters.AddWithValue("@telProv", telefono1.Text);
                     cmd.Parameters.AddWithValue("@telCont", telefono.Text);
                     cmd.ExecuteNonQuery();
-                    ListItem item3 = new ListItem(idp.Text, nproveedor.Text, true);
+                    ListItem item3 = new ListItem(nproveedor.Text, idp.Text, true);
                     proveedor.Items.Add(item3);
                     proveedor2.Items.Add(item3);
                     c.Desconectar(Conexion);
