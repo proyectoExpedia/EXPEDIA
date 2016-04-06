@@ -125,7 +125,7 @@
                     <div class="panel-heading">
                         <h3 class="panel-title">Gestión de Proveedores</h3>
                         <div>
-                        <a style="float:right;margin-top:21px;" href="mainAdministrador.aspx" class="btn"><span class="glyphicon glyphicon-menu-left"></span>  Atrás</a>
+                        <a style="float:right;margin-top:21px;" href="gestionAjustes.aspx" class="btn"><span class="glyphicon glyphicon-menu-left"></span>  Atrás</a>
                         </div>
                     </div>
                   
