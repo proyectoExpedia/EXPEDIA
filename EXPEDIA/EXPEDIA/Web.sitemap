@@ -6,10 +6,18 @@
         <siteMapNode url="gestionActivos.aspx" title="Gestión de activos"  description="" />
         <siteMapNode url="gestionPrestamos.aspx" title="Gestión de préstamos"  description="" />
         <siteMapNode url="GestionConsultas.aspx" title="Gestión de consultas"  description="" />
-        <siteMapNode url="gestionAreas.aspx" title="Gestión de áreas"  description="" />
+        <siteMapNode url="GestionDonaciones.aspx" title="Gestión de donaciones"  description="" />
+  
+        <siteMapNode url="gestionAjustes.aspx" title="Gestión de ajustes"  description="" >
         <siteMapNode url="gestionProveedores.aspx" title="Gestión de proveedores"  description="" />
+        <siteMapNode url="gestionAreas.aspx" title="Gestión de área"  description="" />
         <siteMapNode url="gestionPuestos.aspx" title="Gestión de ocupaciones"  description="" />
       </siteMapNode>
+      </siteMapNode>
+        <siteMapNode url="mainConsulta.aspx" title="Menú principal"  description="" >
+          
+        </siteMapNode>
+          
   </siteMapNode>
 
 </siteMap>
