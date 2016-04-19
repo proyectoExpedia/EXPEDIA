@@ -101,7 +101,9 @@ namespace EXPEDIA
             Div.ID = "notificacion " + placa;
             Div.Attributes.Add("class", "alert alert-success");
             Div.Attributes.Add("role", "alert");
-            Div.InnerHtml = placa + " " + campo + " " + descripcion + " " + fecha + " " + fechaGen + " " + serie;
+            String notificacion = "Fecha de generación: "+ fechaGen + ". El activo placa/serie: " + placa + "/" + serie + ", ha generado la siguiente notificación: " 
+                                  + descripcion + " ( " + fecha + " ) ";
+            Div.InnerHtml = notificacion;
             this.poolNotificaciones.Controls.Add(Div);
             // this.Controls.Add(createDiv);
 
@@ -113,7 +115,8 @@ namespace EXPEDIA
             Div.ID = "notificacion " + placa;
             Div.Attributes.Add("class", "alert alert-success");
             Div.Attributes.Add("role", "alert");
-            Div.InnerHtml = placa + " " + campo + " " + descripcion + " " + fecha + " " + fechaGen + " " + serie;
+            String notificacion = "Fecha de generación: " + fechaGen + ". El préstamo con identificador: " + placa + ", perteneciente al usuario: " + serie + ", ha generado la siguiente notificación: " + descripcion + " ( " + fecha + " ) ";
+            Div.InnerHtml = notificacion;
             this.poolnotificacionesP.Controls.Add(Div);
             // this.Controls.Add(createDiv);
 

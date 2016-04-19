@@ -341,8 +341,11 @@
                         <div class="modal-body">
                                 <div class="container">
                                         <div runat="server" id="poolNotificaciones" style="margin-left:-20px;" class="col-md-6">
-
-
+                                           
+                                            <div class="alert alert-warning" role="alert">
+                                                     Recuerda, toda notificación tendrá una vigencia de 6 días, 3 días antes de realizarse el evento y 3 días después del mismo. 
+                                                    <button type="button" class="close" data-dismiss="alert"><span>&times;</span></button>
+                                            </div>
                                         </div>
                                  </div>
                             </div> <!-- /container -->
@@ -364,8 +367,10 @@
                         <div class="modal-body">
                                 <div class="container">
                                         <div runat="server" id="poolnotificacionesP" style="margin-left:-20px;" class="col-md-6">
-
-
+                                            <div class="alert alert-warning" role="alert">
+                                                     Recuerda, toda notificación tendrá una vigencia de 6 días, 3 días antes de realizarse el evento y 3 días después del mismo. 
+                                                    <button type="button" class="close" data-dismiss="alert"><span>&times;</span></button>
+                                            </div>
                                         </div>
                                  </div>
                             </div> <!-- /container -->
