@@ -176,7 +176,7 @@
 <%--      |             --%>        <asp:TextBox ValidationGroup="one" runat="server" ID="numero_placa" data-toggle="tooltip" data-placement="right" title="Este espacio debe proporcionar el número de placa del activo que desea consultar, este espacio es requerido." placeholder="ENF-1523" />
 <%--      |             --%>        <asp:CompareValidator ValidationGroup="one" ID="CompareValidator1" runat="server" ControlToCompare="numero_placa" ControlToValidate="numero_serie" Operator="NotEqual" Type="String" ForeColor="Red" SetFocusOnError="true" Display="Dynamic" ErrorMessage="Los números de placa y serie no pueden ser iguales. Por favor ingrese números de placa y serie distintos."></asp:CompareValidator>
 <%--      |             --%>        <asp:RequiredFieldValidator ValidationGroup="one" ID="RequiredFieldValidator2" runat="server" ControlToValidate="numero_placa" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
-                                    <asp:CustomValidator ValidationGroup="one" ID="MenuLabelVal" runat="server" ClientValidationFunction="ValidateFieldLegth_P" ErrorMessage="El número de placa no puede exceder los 10 digitos." ControlToValidate="numero_placa" EnableClientScript="true"  /> 
+                                    <asp:CustomValidator ValidationGroup="one" ID="MenuLabelVal" runat="server" ClientValidationFunction="ValidateFieldLegth_P" ErrorMessage="El número de placa no puede exceder los 10 digitos." ForeColor="#3498db" ControlToValidate="numero_placa" EnableClientScript="true"  /> 
 <%--      |             --%>         <%--     Validar si excede 10 espacios       --%>    
                                     <script>
                                             function ValidateFieldLegth_P(sender, args) {
@@ -196,7 +196,7 @@
 <%--      |             --%>        <asp:TextBox ValidationGroup="one" ID="numero_serie" runat="server" data-toggle="tooltip" data-placement="right" title="Este espacio debe proporcionar el número de serie del activo, este espacio es requerido." placeholder="MUJ23HJCK987" />
 <%--      |             --%>        <asp:CompareValidator ValidationGroup="one" ID="vPlacaYserie" runat="server" ControlToCompare="numero_serie" ControlToValidate="numero_placa" Operator="NotEqual" Type="String" ForeColor="Red" SetFocusOnError="true" Display="Dynamic" ErrorMessage="Los números de placa y serie no pueden ser iguales. Por favor ingrese números de placa y serie distintos."></asp:CompareValidator>
 <%--      |             --%>        <asp:RequiredFieldValidator ValidationGroup="one" ID="RequiredFieldValidator1" runat="server" ControlToValidate="numero_serie" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
-<%--      |             --%>        <asp:CustomValidator ValidationGroup="one" ID="CustomValidator1" runat="server" ClientValidationFunction="ValidateFieldLegth_S" ErrorMessage="El número de serie no puede exceder los 10 digitos." ControlToValidate="numero_serie" EnableClientScript="true"  /> 
+<%--      |             --%>        <asp:CustomValidator ValidationGroup="one" ID="CustomValidator1" runat="server" ClientValidationFunction="ValidateFieldLegth_S" ErrorMessage="El número de serie no puede exceder los 10 digitos." ForeColor="#3498db" ControlToValidate="numero_serie" EnableClientScript="true"  /> 
 <%--      |             --%>         <%--     Validar si excede 10 espacios       --%>    
                                     <script>
                                             function ValidateFieldLegth_S(sender, args) {
@@ -406,7 +406,7 @@
                                     <label for="precio">Costo en colones, del activo</label>
                                     <asp:TextBox ValidationGroup="one" ID="precio" ClientIDMode="Static" runat="server" TextMode="Number" data-toggle="tooltip" data-placement="right" title="Este espacio debe proporcionar el valor total del activo, este espacio es requerido." placeholder="120360.17" />
                                     <asp:RequiredFieldValidator ValidationGroup="one" ID="vPrecio" runat="server" ControlToValidate="precio" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
-                               <asp:CustomValidator ValidationGroup="one" ID="CustomValidator7" runat="server" ClientValidationFunction="ValidateFieldLegth_Pr" ErrorMessage="El precio no puede exceder los 10 digitos." ControlToValidate="precio" EnableClientScript="true"  />
+                               <asp:CustomValidator ValidationGroup="one" ID="CustomValidator7" runat="server" ClientValidationFunction="ValidateFieldLegth_Pr" ErrorMessage="El precio no puede exceder los 10 digitos." ForeColor="#3498db" ControlToValidate="precio" EnableClientScript="true"  />
                                 <%--     Validar si excede 10 espacios       --%>  
                                 <script>     
                                 function ValidateFieldLegth_Pr(sender, args) { // Pr -> Precio
@@ -845,9 +845,9 @@
                                 <%--      Especificaciones       --%>
                                     <fieldset class="pure-control-group">
                                         <label for="Tipo">Especificaciones técnicas</label>
-                                        <asp:TextBox ValidationGroup="one" ID="especificacion_tecnica" TextMode="MultiLine" runat="server" data-toggle="tooltip" data-placement="right" title="En este espacio se debe proporcionar las cualidades del activo. Ejemplo: 1TB disco duro, 16GB RAM, 2GB AMD Radeon Fury (se pueden incluir otras caracteristicas que se deseen), este espacio es requerido" class="pure-input-1-2" placeholder="Especificaciones Técnicas" />
+                                        <asp:TextBox ValidationGroup="one" ID="especificacion_tecnica" TextMode="MultiLine" runat="server" data-toggle="tooltip" data-placement="right" title="En este espacio se debe proporcionar las cualidades del activo. Ejemplo: 1TB disco duro, 16GB RAM, 2GB AMD Radeon Fury (se pueden incluir otras caracteristicas que se deseen, no puede exceder 350 caractéres), este espacio es requerido" class="pure-input-1-2" placeholder="Especificaciones Técnicas" />
                                    <asp:RequiredFieldValidator ValidationGroup="one" ID="vEspecificacion" runat="server" ControlToValidate="especificacion_tecnica" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
-                                        <asp:CustomValidator ValidationGroup="one" ID="CustomValidator3" runat="server" ClientValidationFunction="ValidateFieldLegth_ET" ErrorMessage="La especificación técnica no puede exceder los 350 digitos." ControlToValidate="especificacion_tecnica" EnableClientScript="true"  />
+                                        <asp:CustomValidator ValidationGroup="one" ID="CustomValidator3" runat="server" ClientValidationFunction="ValidateFieldLegth_ET" ErrorMessage="La especificación técnica no puede exceder los 350 digitos." ForeColor="#3498db" ControlToValidate="especificacion_tecnica" EnableClientScript="true"  />
                                <%--     Validar si excede 350 espacios       --%> 
                                          <script>
                                             function ValidateFieldLegth_ET(sender, args) {   //ET -> Especificación Tecnica
@@ -951,7 +951,7 @@
 <%--      |             --%>             <label for="nplaca">Número de placa del activo</label>
 <%--      |             --%>                 <asp:TextBox ValidationGroup="two" runat="server" ReadOnly="true" ID="numero_placa2" data-placement="left" ToolTip="Este espacio debe proporcionar el número de placa del activo, este espacio es requerido." placeholder="ENF-1523" />
 <%--      |             --%>                      <asp:RequiredFieldValidator ValidationGroup="two" ID="vPlaca2" runat="server" ControlToValidate="numero_placa2" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
-<%--      |             --%>        <asp:CustomValidator ValidationGroup="two" ID="CustomValidator4" runat="server" ClientValidationFunction="ValidateFieldLegth_PrM" ErrorMessage="El número de placa no puede exceder los 10 digitos." ControlToValidate="numero_placa2" EnableClientScript="true"  /> 
+<%--      |             --%>        <asp:CustomValidator ValidationGroup="two" ID="CustomValidator4" runat="server" ClientValidationFunction="ValidateFieldLegth_PrM" ErrorMessage="El número de placa no puede exceder los 10 digitos." ForeColor="#3498db" ControlToValidate="numero_placa2" EnableClientScript="true"  /> 
 <%--      |             --%>         <%--     Validar si excede 10 espacios       --%>    
                                     <script>
                                             function ValidateFieldLegth_PrM(sender, args) {   // PrM -> Precio Modificar
@@ -969,7 +969,7 @@
 <%--      |             --%>             <label for="nserie">Número de serie del activo</label>
 <%--      |             --%>                  <asp:TextBox ValidationGroup="two" ID="numero_serie2" ReadOnly="true" runat="server" data-placement="left" ToolTip="Este espacio debe proporcionar el número de serie del activo, este espacio es requerido." placeholder="MUJ23HJCK987" />
 <%--      |             --%>                       <asp:RequiredFieldValidator ValidationGroup="two" ID="vSerie2" runat="server" ControlToValidate="numero_serie2" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
-<%--      |             --%>        <asp:CustomValidator ValidationGroup="two" ID="CustomValidator5" runat="server" ClientValidationFunction="ValidateFieldLegth_SM" ErrorMessage="El número de serie no puede exceder los 10 digitos." ControlToValidate="numero_serie2" EnableClientScript="true"  /> 
+<%--      |             --%>        <asp:CustomValidator ValidationGroup="two" ID="CustomValidator5" runat="server" ClientValidationFunction="ValidateFieldLegth_SM" ErrorMessage="El número de serie no puede exceder los 10 digitos." ForeColor="#3498db" ControlToValidate="numero_serie2" EnableClientScript="true"  /> 
 <%--      |             --%>         <%--     Validar si excede 10 espacios       --%>    
                                     <script>
                                             function ValidateFieldLegth_SM(sender, args) {   //SM  -> Serie de Modificar
@@ -1010,7 +1010,7 @@
                                     <label for="lprecio2">Costo en colones, del activo</label>
                                     <asp:TextBox ValidationGroup="two" ID="precio2" runat="server" TextMode="Number" data-toggle="tooltip" data-placement="right" title="Este espacio debe proporcionar el valor total del activo, este espacio es requerido." placeholder="120360.17" />
                                     <asp:RequiredFieldValidator ValidationGroup="two" ID="vPrecio2" runat="server" ControlToValidate="precio2" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
-                                <asp:CustomValidator ValidationGroup="two" ID="CustomValidator8" runat="server" ClientValidationFunction="ValidateFieldLegth_PM" ErrorMessage="El precio no puede exceder los 10 digitos." ControlToValidate="precio2" EnableClientScript="true"  />
+                                <asp:CustomValidator ValidationGroup="two" ID="CustomValidator8" runat="server" ClientValidationFunction="ValidateFieldLegth_PM" ErrorMessage="El precio no puede exceder los 10 digitos." ForeColor="#3498db" ControlToValidate="precio2" EnableClientScript="true"  />
                                 <%--     Validar si excede 10 espacios       --%>  
                                 <script>     
                                 function ValidateFieldLegth_PM(sender, args) { // PM -> Precio Modificar
@@ -1397,9 +1397,9 @@
                                 <%--      Especificaciones Técnicas       --%>
                                     <fieldset class="pure-control-group">
                                         <label for="Tipo">Especificaciones técnicas</label>
-                                        <asp:TextBox ValidationGroup="two" ID="especificacion_tecnica2" TextMode="MultiLine" runat="server" data-toggle="tooltip" data-placement="right" title="En este espacio se debe proporcionar las cualidades del activo, este espacio es requerido" class="pure-input-1-2" placeholder="Especificaciones Técnicas" />
+                                        <asp:TextBox ValidationGroup="two" ID="especificacion_tecnica2" TextMode="MultiLine" runat="server" data-toggle="tooltip" data-placement="right" title="En este espacio se debe proporcionar las cualidades del activo (No puede exceder 350 caractéres), este espacio es requerido" class="pure-input-1-2" placeholder="Especificaciones Técnicas" />
                                    <asp:RequiredFieldValidator ValidationGroup="two" ID="vEspecificacion2" runat="server" ControlToValidate="especificacion_tecnica2" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
-                                   <asp:CustomValidator ValidationGroup="two" ID="CustomValidator6" runat="server" ClientValidationFunction="ValidateFieldLegth_ETM" ErrorMessage="La especificación técnica no puede exceder los 350 digitos." ControlToValidate="especificacion_tecnica2" EnableClientScript="true"  />
+                                   <asp:CustomValidator ValidationGroup="two" ID="CustomValidator6" runat="server" ClientValidationFunction="ValidateFieldLegth_ETM" ErrorMessage="La especificación técnica no puede exceder los 350 digitos." ForeColor="#3498db" ControlToValidate="especificacion_tecnica2" EnableClientScript="true"  />
                                <%--     Validar si excede 350 espacios       --%> 
                                          <script>
                                             function ValidateFieldLegth_ETM(sender, args) {  // ETM  -> Especificaciones técnicas de Modificar

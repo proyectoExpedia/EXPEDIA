@@ -174,6 +174,11 @@ namespace EXPEDIA
             idiv.Visible = true;
             theDiv.Visible = false;
         }
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            idiv.Visible = false;
+            theDiv.Visible = true;
+        }
 
 
 

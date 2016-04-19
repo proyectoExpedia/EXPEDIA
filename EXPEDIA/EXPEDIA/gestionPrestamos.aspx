@@ -93,7 +93,7 @@
                                         <div class="pure-form pure-form-aligned" style="margin-top: 5px; margin-left: 20px;">
 
                                             <fieldset>
-                                                <div runat="server" id="idiv">
+                                                <div runat="server" id="idiv" visible="False">
                                                 <!--Ingresar Numero de placa o serie -->
                                                 <div class="pure-control-group">
                                          
@@ -127,6 +127,7 @@
                                                  <br />  
 
                                                <asp:Button runat="server" ID="Consultar1" CssClass="btn btn-primary" OnClick="Consultar1_Click" Text="Consultar" />
+                                               <asp:Button runat="server" CssClass="btn btn-danger"  OnClick="Button1_Click" ID="Button1"  Text="Regresar" />
                                                
                                                     </div>
                                                  
@@ -137,8 +138,9 @@
                                                 </asp:CommandField>
                                             </Columns>
                                         </asp:GridView>
+                                               
                                                 </div>
-                                            <div runat="server" id="theDiv" visible="False" >
+                                            <div runat="server" id="theDiv" >
                                                 <!--Ingresar Cedula-->
                                                 <div class="pure-control-group" >
                                                     <label for="cedula_usuario">Número de cédula</label>
@@ -149,7 +151,7 @@
                                                      <label for="cedula_usuario" runat="server"  id="Info" style="font-family: Arial, Helvetica, sans-serif; font-size: 17px; font-style: normal;  margin-right: 10px"></label>
                                                     
                                                     
-                                                    <asp:Button runat="server" CssClass="btn btn-primary"  OnClick="Agregar_Click" ID="Agregar"  Text="Agregar más  Activos " />
+                                                    <asp:Button runat="server" CssClass="btn btn-primary"  OnClick="Agregar_Click" ID="Agregar"  Text="Agregar  Activos " />
                                                      </div>
 
 
