@@ -221,7 +221,7 @@
                        <!-----------------------------------------------Modificación de usuarios----------------------------------------------->
 
                                                         <asp:Button runat="server"  Text="Habilitar modificación" CssClass="btn btn-success" ClientIDMode="Static"  ID="Btn_habilitar" OnClientClick="habilitar()" OnClick="Btn_habilitar_Click" />
-                                                        <input type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalInhabilitar" value="Inhabilitar usuario" />
+                                                        <input type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalIn" value="Inhabilitar usuario" />
                                                         <%--<asp:Button runat="server" ID="inhabilitar" CssClass="btn btn-danger" data-toggle="modal" data-target="#myModal" Text="Inhabilitar usuario"></asp:Button>--%>
                                                     </p>
                                                     </div>
@@ -359,7 +359,7 @@
                    </div> 
                   </asp:Panel>
                     <asp:Panel ID="Panel6" runat="server" DefaultButton="Btn_inhabilitar">
-                        <div class="modal fade" id="modalInv" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal fade" id="modalIn" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
