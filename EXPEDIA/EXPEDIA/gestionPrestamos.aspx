@@ -93,7 +93,7 @@
                                         <div class="pure-form pure-form-aligned" style="margin-top: 5px; margin-left: 20px;">
 
                                             <fieldset>
-                                                <div runat="server" id="idiv">
+                                                <div runat="server" id="idiv" visible="False">
                                                 <!--Ingresar Numero de placa o serie -->
                                                 <div class="pure-control-group">
                                          
@@ -137,8 +137,9 @@
                                                 </asp:CommandField>
                                             </Columns>
                                         </asp:GridView>
+                                                <asp:Button runat="server" CssClass="btn btn-danger"  OnClick="Button1_Click" ID="Button1"  Text="Regresar" />
                                                 </div>
-                                            <div runat="server" id="theDiv" visible="False" >
+                                            <div runat="server" id="theDiv" >
                                                 <!--Ingresar Cedula-->
                                                 <div class="pure-control-group" >
                                                     <label for="cedula_usuario">Número de cédula</label>
