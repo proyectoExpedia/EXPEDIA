@@ -94,7 +94,7 @@
                                         <div class="pure-form pure-form-aligned" style="margin-top: 5px; margin-left: 20px;">
 
                                             <fieldset>
-                                                <div runat="server" id="idiv">
+                                                <div runat="server" id="idiv" visible="False">
                                                 <!--Ingresar Numero de placa o serie -->
                                                 <div class="pure-control-group">
                                          
@@ -127,6 +127,7 @@
                                                     <br />
                                                     <br />
                                                <asp:Button  runat="server" ID="Consultar1" CssClass="btn btn-primary" OnClick="Consultar1_Click" Text="Consultar" />
+                                               <asp:Button runat="server" CssClass="btn btn-danger"  OnClick="Button1_Click" ID="Button1"  Text="Regresar" />
                                                
                                                     </div>
                                                  
@@ -138,7 +139,7 @@
                                             </Columns>
                                         </asp:GridView>
                                                 </div>
-                                            <div runat="server" id="theDiv" visible="False" >
+                                            <div runat="server" id="theDiv"  >
 
 
                                                    <!--Ingresar Fecha_entrega-->                                                                                                 
@@ -148,7 +149,7 @@
                                                 <asp:CalendarExtender Format="yyyy/MM/dd"  ID="Fechaentrega" runat="server"  PopupButtonID="Fecha_entrega"  TargetControlID="Fecha_entrega" BehaviorID="_content_Fechaentrega" />
                                                 <asp:RequiredFieldValidator ValidationGroup="one" ID="vFinalizacon" runat="server"   ControlToValidate="Fecha_entrega" ForeColor="Red" SetFocusOnError="True" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
                                                 <asp:RangeValidator ID="RangeValidator1"  ControlToValidate="Fecha_entrega" ValidationGroup="one" runat="server" ErrorMessage="No se puede escoger una fecha menor a la del día de hoy" ForeColor="Red" SetFocusOnError="True"></asp:RangeValidator>
-                                                <asp:Button runat="server" CssClass="btn btn-primary"  OnClick="Agregar_Click" ID="Agregar"  Text="Agregar más  Activos " />
+                                                <asp:Button runat="server" CssClass="btn btn-primary"  OnClick="Agregar_Click" ID="Agregar"  Text="Agregar Activos " />
                                                 </fieldset>
                                                 
                                                 <!--Ingresar Cedula-->
