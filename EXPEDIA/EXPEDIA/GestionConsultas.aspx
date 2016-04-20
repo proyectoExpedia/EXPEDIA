@@ -74,7 +74,7 @@
                 <div class="tabs-example">
                     <ul id="myTab" class="nav nav-tabs">
                         <li class="active"><a href="#Ingresar" data-toggle="tab">Consulta de Activos <span class="glyphicon glyphicon-plus-sign"></span></a></li>
-                        <li><a href="#Consultar" data-toggle="tab">Consulta de bitácora  <span class="glyphicon glyphicon-question-sign"></span><span class="glyphicon glyphicon-minus-sign"></span><span class="glyphicon glyphicon-ok-sign"></span></a></li>
+                        <!--<li><a href="#Consultar" data-toggle="tab">Consulta de bitácora  <span class="glyphicon glyphicon-question-sign"></span><span class="glyphicon glyphicon-minus-sign"></span><span class="glyphicon glyphicon-ok-sign"></span></a></li>-->
                         <a style="float:right" href="mainAdministrador.aspx" class="btn"><span class="glyphicon glyphicon-menu-left"></span>  Atrás</a>
                     </ul>
                     <%-- PANTALLA DONDE SE MUESTRA LAS OPCIONES DE CONSULTA DE ACTIVOS  --%>
