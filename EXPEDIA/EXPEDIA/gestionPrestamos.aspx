@@ -127,6 +127,7 @@
                                                  <br />  
 
                                                <asp:Button runat="server" ID="Consultar1" CssClass="btn btn-primary" OnClick="Consultar1_Click" Text="Consultar" />
+                                               <asp:Button runat="server" CssClass="btn btn-danger"  OnClick="Button1_Click" ID="Button1"  Text="Regresar" />
                                                
                                                     </div>
                                                  
@@ -137,7 +138,7 @@
                                                 </asp:CommandField>
                                             </Columns>
                                         </asp:GridView>
-                                                <asp:Button runat="server" CssClass="btn btn-danger"  OnClick="Button1_Click" ID="Button1"  Text="Regresar" />
+                                               
                                                 </div>
                                             <div runat="server" id="theDiv" >
                                                 <!--Ingresar Cedula-->
@@ -150,7 +151,7 @@
                                                      <label for="cedula_usuario" runat="server"  id="Info" style="font-family: Arial, Helvetica, sans-serif; font-size: 17px; font-style: normal;  margin-right: 10px"></label>
                                                     
                                                     
-                                                    <asp:Button runat="server" CssClass="btn btn-primary"  OnClick="Agregar_Click" ID="Agregar"  Text="Agregar más  Activos " />
+                                                    <asp:Button runat="server" CssClass="btn btn-primary"  OnClick="Agregar_Click" ID="Agregar"  Text="Agregar  Activos " />
                                                      </div>
 
 
