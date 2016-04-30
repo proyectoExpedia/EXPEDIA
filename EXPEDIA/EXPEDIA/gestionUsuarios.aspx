@@ -10,6 +10,7 @@
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>EXPEDIA</title>
+    <link href="css/bootstrap.css" rel="stylesheet" />
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="icon" href="img/ExpediaLogo.png" />
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
@@ -211,7 +212,7 @@
                                                     <asp:Button ID="Btn_consultar" ValidationGroup="two" Text="Consultar" CssClass="btn btn-primary" OnClick="Btn_consultar_Click" runat="server" />
                                                 </p
                                             </asp:Panel>
-                                        </div>  
+                                            </div>  
                                             <div id="divOcultoConsulta" runat="server" class="pure-form pure-form-aligned" style="display:none">
                                                 <div class="pure-control-group" style="margin-top: 40px;">
                                                     <div runat="server" id="controles">
@@ -234,25 +235,25 @@
                                                             <!--Consulta nombre-->
                                                             <div class="pure-control-group">
                                                                 <label for="nombre1">Nombre</label>
-                                                                <asp:TextBox runat="server" MaxLength="20" ValidationGroup="three" ID="nombre_actualizar" data-toggle="tooltip" title="En este espacio se debe proporcionar el nombre de la persona a modificar, este espacio es requerido." />
+                                                                <asp:TextBox runat="server" MaxLength="20" ValidationGroup="three" ID="nombre_actualizar" data-toggle="tooltip" data-placement="right" title="En este espacio se debe proporcionar el nombre de la persona a modificar, este espacio es requerido." />
                                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" ErrorMessage="<b>*</b>" ValidationGroup="three" ControlToValidate="nombre_actualizar" ForeColor="Red"></asp:RequiredFieldValidator>
                                                             </div>
                                                             <!--Consulta Apellido1-->
                                                             <div class="pure-control-group">
                                                                 <label for="nombre1">Primer Apellido</label>
-                                                                <asp:TextBox runat="server" MaxLength="20" ValidationGroup="three"  ID="apellido_actualizar1" data-toggle="tooltip" title="En este espacio se debe proporcionar el primer apellido de la persona a modificar, este espacio es requerido." />
+                                                                <asp:TextBox runat="server" MaxLength="20" ValidationGroup="three"  ID="apellido_actualizar1" data-toggle="tooltip" data-placement="right" title="En este espacio se debe proporcionar el primer apellido de la persona a modificar, este espacio es requerido." />
                                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator12" runat="server" ErrorMessage="<b>*</b>" ValidationGroup="three" ControlToValidate="apellido_actualizar1" ForeColor="Red"></asp:RequiredFieldValidator>
                                                             </div>
                                                             <!--Consulta Apellido2-->
                                                             <div class="pure-control-group">
                                                                 <label for="nombre1">Segundo Apellido</label>
-                                                                <asp:TextBox runat="server" MaxLength="20" ValidationGroup="three"  ID="apellido_actualizar2" data-toggle="tooltip" title="En este espacio se debe proporcionar el segundo apellido de la persona a modificar, este espacio es requerido." />
+                                                                <asp:TextBox runat="server" MaxLength="20" ValidationGroup="three"  ID="apellido_actualizar2" data-toggle="tooltip" data-placement="right" title="En este espacio se debe proporcionar el segundo apellido de la persona a modificar, este espacio es requerido." />
                                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator13" runat="server" ErrorMessage="<b>*</b>" ValidationGroup="three" ControlToValidate="apellido_actualizar2" ForeColor="Red"></asp:RequiredFieldValidator>
                                                             </div>
                                                             <!--Consulta Contraseña-->
                                                             <div class="pure-control-group">
                                                                 <label for="contraseña1">Contraseña</label>
-                                                                <asp:TextBox runat="server" MaxLength="50" ValidationGroup="three"  ID="contrasena_actualizar" data-toggle="tooltip" title="En este espacio se debe proporcionar la contraseña que el usuario desee para su eventual ingreso al sistema, este espacio es requerido."  />
+                                                                <asp:TextBox runat="server" MaxLength="50" ValidationGroup="three"  ID="contrasena_actualizar" data-toggle="tooltip" data-placement="right" title="En este espacio se debe proporcionar la contraseña que el usuario desee para su eventual ingreso al sistema, este espacio es requerido."  />
                                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator14" runat="server" ErrorMessage="<b>*</b>" ValidationGroup="three" ControlToValidate="contrasena_actualizar" ForeColor="Red"></asp:RequiredFieldValidator>
                                                             </div>
                                                             <!--Ingresar ReContraseña-->
@@ -265,7 +266,7 @@
                                                             <!--Consulta Correo Electronico-->
                                                             <div class="pure-control-group">
                                                                 <label for="correo1">Correo electrónico</label>
-                                                                <asp:TextBox ID="correo_actualizar" MaxLength="70" ValidationGroup="three"  runat="server" data-toggle="tooltip" title="En este espacio se debe proporcionar la nueva dirección de correo electrónico de la persona a modificar, es requerido. " TextMode="Email" />
+                                                                <asp:TextBox ID="correo_actualizar" MaxLength="70" ValidationGroup="three"  runat="server" data-toggle="tooltip" data-placement="right"  title="En este espacio se debe proporcionar la nueva dirección de correo electrónico de la persona a modificar, es requerido. " TextMode="Email" />
                                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator15" runat="server" ErrorMessage="<b>*</b>" ValidationGroup="three" ControlToValidate="correo_actualizar" ForeColor="Red"></asp:RequiredFieldValidator>
                                                                 <asp:RegularExpressionValidator ValidationGroup="three" ID="RegularExpressionValidator16" runat="server" ControlToValidate="correo_actualizar" ErrorMessage="&lt;b&gt;  Formato no valido&lt;/b&gt;" ForeColor="Red" ValidationExpression="^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$"></asp:RegularExpressionValidator>
                                                             </div>
@@ -273,7 +274,7 @@
                                                             <fieldset class="pure-control-group">
                                                                 <label for="telefono1">Número telefónico</label>
                                                                 <span class="add-on btn btn-default">506</span>
-                                                                <asp:TextBox runat="server" MaxLength="20" ValidationGroup="three"  ID="telefono_actualizar" data-toggle="tooltip" title="En este espacio se debe proporcionar el nuevo número telefónico principal de la persona a modificar, este espacio es requerido."  placeholder="####-####" min="11111111" max="99999999" />
+                                                                <asp:TextBox runat="server" MaxLength="20" ValidationGroup="three"  ID="telefono_actualizar" data-toggle="tooltip" data-placement="right"  title="En este espacio se debe proporcionar el nuevo número telefónico principal de la persona a modificar, este espacio es requerido."  placeholder="####-####" min="11111111" max="99999999" />
                                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator17" runat="server" ErrorMessage="<b>*</b>" ValidationGroup="three" ControlToValidate="telefono_actualizar" ForeColor="Red"></asp:RequiredFieldValidator> 
                                                                 <asp:RegularExpressionValidator ValidationGroup="three" ID="RegularExpressionValidator18" runat="server" ControlToValidate="telefono_actualizar" ErrorMessage="&lt;b&gt;Formato no valido&lt;/b&gt;" ForeColor="Red" ValidationExpression="^\d{4}-\d{4}$"></asp:RegularExpressionValidator>
                                                                 <cc1:MaskedEditExtender ID="MaskedEditExtender2" runat="server" BehaviorID="telefono_actualizar_MaskedEditExtender" Century="2000" ClearMaskOnLostFocus="False" CultureAMPMPlaceholder="" CultureCurrencySymbolPlaceholder="" CultureDateFormat="" CultureDatePlaceholder="" CultureDecimalPlaceholder="" CultureThousandsPlaceholder="" CultureTimePlaceholder="" Mask="9999-9999" TargetControlID="telefono_actualizar"></cc1:MaskedEditExtender>
@@ -281,7 +282,7 @@
                                                             <!--Consulta Ocupacion-->
                                                             <div class="pure-control-group">
                                                                 <label for="puesto1">Ocupación</label>
-                                                                <asp:DropDownList runat="server" ValidationGroup="three" ID="puesto_actualizar" CssClass="pure-input-1-2" data-toggle="tooltip" title="En este espacio se debe proporcionar el puesto en el cual se desempeña la persona a modificar, este espacio es requerido.">
+                                                                <asp:DropDownList runat="server" ValidationGroup="three" ID="puesto_actualizar" CssClass="pure-input-1-2" data-toggle="tooltip" data-placement="right"  title="En este espacio se debe proporcionar el puesto en el cual se desempeña la persona a modificar, este espacio es requerido.">
                                                                     <asp:ListItem Selected="False" disabled="disabled">¿La ocupación no aparece? Haz uso el icono situado contiguo a esta categoría para proporcionar una nueva.</asp:ListItem>
                                                                 </asp:DropDownList>
                                                                 <a runat="server" id="llavePuestos" data-toggle="modal" data-target="#modalPuesto"><span class="glyphicon glyphicon-wrench"></span></a>
@@ -289,7 +290,7 @@
                                                             <!--Consulta Area-->
                                                             <div class="pure-control-group">
                                                                 <label for="area1">Área de servicio</label>
-                                                                <asp:DropDownList ValidationGroup="three"  runat="server" ID="area_actualizar" CssClass="pure-input-1-2" data-toggle="tooltip" title="En este espacio se debe proporcionar el área o sede regional, donde labora la persona a modificar, este espacio es requerido.">
+                                                                <asp:DropDownList ValidationGroup="three"  runat="server" ID="area_actualizar" CssClass="pure-input-1-2" data-toggle="tooltip" data-placement="right"  title="En este espacio se debe proporcionar el área o sede regional, donde labora la persona a modificar, este espacio es requerido.">
                                                                     <asp:ListItem Selected="False" disabled="disabled">¿El área no aparece? Haz uso el icono situado contiguo a esta categoría para proporcionar una nueva.</asp:ListItem>
                                                                 </asp:DropDownList>
                                                                  <a runat="server" id="llaveAreas" data-toggle="modal" data-target="#modalAreas"><span class="glyphicon glyphicon-wrench"></span></a>
@@ -297,7 +298,7 @@
                                                             <!--Consulta Tipo de Usuario-->
                                                             <div class="pure-control-group">
                                                                 <label for="tipo1">Usuario</label>
-                                                                <asp:DropDownList ValidationGroup="three"  runat="server" ID="tipo_actualizar" CssClass="pure-input-1-2" data-toggle="tooltip" title="En este espacio se debe representar el rol de la persona a modificar en el sistema,  este espacio es requerido." disable>
+                                                                <asp:DropDownList ValidationGroup="three"  runat="server" ID="tipo_actualizar" CssClass="pure-input-1-2" data-toggle="tooltip" data-placement="right"  title="En este espacio se debe representar el rol de la persona a modificar en el sistema,  este espacio es requerido." disable>
                                                                     <asp:ListItem Value="0">Consultas</asp:ListItem>
                                                                     <asp:ListItem Value="1">Administrador</asp:ListItem>
                                                                 </asp:DropDownList>
@@ -358,7 +359,7 @@
                    </div> 
                   </asp:Panel>
                     <asp:Panel ID="Panel6" runat="server" DefaultButton="Btn_inhabilitar">
-                        <div class="modal fade" id="modalInhabilitar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal fade" id="modalInv" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">

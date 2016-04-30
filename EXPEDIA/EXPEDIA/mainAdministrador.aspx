@@ -54,6 +54,27 @@
                                 <li><a href="#tab5primary" data-toggle="tab">Primary 5</a></li>
                             </ul>
                         </li>-->
+                        <style type="text/css">
+                        .badge-notify{
+                            background:red;
+                            position:relative;
+                            top: -20px;
+                            left: -35px;
+                        }
+                        </style>
+                        <li>
+                            <div class="container" style="float:left; margin-left: 300px; margin-top:-55px;">
+                                <a class="btn btn-default btn-lg btn-link" data-toggle="modal" data-target="#exampleModaA" style="font-size:36px;">
+                                <span class="glyphicon glyphicon-barcode"></span>
+                                </a>
+                                <span class="badge badge-notify" runat="server" id="contador"></span>
+                                <a class="btn btn-default btn-lg btn-link" data-toggle="modal" data-target="#exampleModaP" style="font-size:36px;">
+                                <span class="glyphicon glyphicon-th-list"></span>
+                                </a>
+                                <span class="badge badge-notify" runat="server" id="contador2"></span>
+                            </div>
+
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -310,6 +331,51 @@
                 </div>
             </div>
         </div>
+    <div class="modal fade" id="exampleModaA" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+                        <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h1 class="modal-title" style="text-align:center" id="exampleModalLabe">Notificaciones</h1>
+                        </div>
+                        <div class="modal-body">
+                                <div class="container">
+                                        <div runat="server" id="poolNotificaciones" style="margin-left:-20px;" class="col-md-6">
+
+
+                                        </div>
+                                 </div>
+                            </div> <!-- /container -->
+                        <div class="modal-footer">
+                            <img src="img/ExpediaLogo.png" alt="" style="width:50px; height:50px;float:left" />
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+    <div class="modal fade" id="exampleModaP" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+                        <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h1 class="modal-title" style="text-align:center" id="exampleModalLabe">Notificaciones</h1>
+                        </div>
+                        <div class="modal-body">
+                                <div class="container">
+                                        <div runat="server" id="poolnotificacionesP" style="margin-left:-20px;" class="col-md-6">
+
+
+                                        </div>
+                                 </div>
+                            </div> <!-- /container -->
+                        <div class="modal-footer">
+                            <img src="img/ExpediaLogo.png" alt="" style="width:50px; height:50px;float:left" />
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
     <!-- /.container -->
     <footer class="navbar" style="background-color:white">
         <div class="container">

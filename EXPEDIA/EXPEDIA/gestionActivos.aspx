@@ -10,7 +10,6 @@
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>EXPEDIA</title>
-    <link href="css/bootstrap.css" rel="stylesheet" />
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="icon" href="img/ExpediaLogo.png"/>
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
@@ -18,9 +17,6 @@
     <script src="js/jquery.bxslider.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <link href="css/purecss.css" rel="stylesheet"/>
-    <script src="js/jQueryUI/jquery-ui.min.js"></script>
-    <link href="js/jQueryUI/jquery-ui.theme.min.css" rel="stylesheet" />
-    <link href="js/jQueryUI/jquery-ui.min.css" rel="stylesheet" />
     <link href="css/sweetalert.css" rel="stylesheet" />
     <script src="js/sweetalert.min.js"></script>
 </head>
@@ -73,11 +69,12 @@
 
             
         <div class="container">
+            <asp:SiteMapPath ID="SiteMapPath1" runat="server"></asp:SiteMapPath>
         <div class="panel panel-primary">
                 <div class="panel-heading">
                     <h3 class="panel-title">Gestión de activos</h3>
                     <div>
-                    <a style="float: right" href="mainAdministrador.aspx" class="btn"><span class="glyphicon glyphicon-menu-left"></span>Atrás</a>
+                    <a style="float:right;margin-top:21px;" href="mainAdministrador.aspx" class="btn"><span class="glyphicon glyphicon-menu-left"></span>Atrás</a>
                     </div>
                 </div>               
 
@@ -176,7 +173,7 @@
 <%--      |             --%>         <%--      Numero de placa del activo       --%>
 <%--      |             --%>  <div class="pure-control-group">
 <%--      |             --%>        <label for="nplaca">Número de placa del activo</label>
-<%--      |             --%>        <asp:TextBox ValidationGroup="one" runat="server" ID="numero_placa" data-placement="left" ToolTip="Este espacio debe proporcionar el número de placa del activo que desea consultar, este espacio es requerido." placeholder="ENF-1523" />
+<%--      |             --%>        <asp:TextBox ValidationGroup="one" runat="server" ID="numero_placa" data-toggle="tooltip" data-placement="right" title="Este espacio debe proporcionar el número de placa del activo que desea consultar, este espacio es requerido." placeholder="ENF-1523" />
 <%--      |             --%>        <asp:CompareValidator ValidationGroup="one" ID="CompareValidator1" runat="server" ControlToCompare="numero_placa" ControlToValidate="numero_serie" Operator="NotEqual" Type="String" ForeColor="Red" SetFocusOnError="true" Display="Dynamic" ErrorMessage="Los números de placa y serie no pueden ser iguales. Por favor ingrese números de placa y serie distintos."></asp:CompareValidator>
 <%--      |             --%>        <asp:RequiredFieldValidator ValidationGroup="one" ID="RequiredFieldValidator2" runat="server" ControlToValidate="numero_placa" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
                                     <asp:CustomValidator ValidationGroup="one" ID="MenuLabelVal" runat="server" ClientValidationFunction="ValidateFieldLegth_P" ErrorMessage="El número de placa no puede exceder los 10 digitos." ControlToValidate="numero_placa" EnableClientScript="true"  /> 
@@ -196,7 +193,7 @@
                                 <%--      Numero de placa del activo       --%>
                               <div class="pure-control-group">
 <%--      |             --%>  <label for="nserie">Número de serie del activo</label>
-<%--      |             --%>        <asp:TextBox ValidationGroup="one" ID="numero_serie" runat="server" data-placement="left" ToolTip="Este espacio debe proporcionar el número de serie del activo, este espacio es requerido." placeholder="MUJ23HJCK987" />
+<%--      |             --%>        <asp:TextBox ValidationGroup="one" ID="numero_serie" runat="server" data-toggle="tooltip" data-placement="right" title="Este espacio debe proporcionar el número de serie del activo, este espacio es requerido." placeholder="MUJ23HJCK987" />
 <%--      |             --%>        <asp:CompareValidator ValidationGroup="one" ID="vPlacaYserie" runat="server" ControlToCompare="numero_serie" ControlToValidate="numero_placa" Operator="NotEqual" Type="String" ForeColor="Red" SetFocusOnError="true" Display="Dynamic" ErrorMessage="Los números de placa y serie no pueden ser iguales. Por favor ingrese números de placa y serie distintos."></asp:CompareValidator>
 <%--      |             --%>        <asp:RequiredFieldValidator ValidationGroup="one" ID="RequiredFieldValidator1" runat="server" ControlToValidate="numero_serie" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
 <%--      |             --%>        <asp:CustomValidator ValidationGroup="one" ID="CustomValidator1" runat="server" ClientValidationFunction="ValidateFieldLegth_S" ErrorMessage="El número de serie no puede exceder los 10 digitos." ControlToValidate="numero_serie" EnableClientScript="true"  /> 
@@ -219,7 +216,7 @@
 <%--      |             --%>        <div class="pure-control-group">
 <%--      |             --%>  <%--      Fecha de adquisición       --%>
 <%--      |             --%>        <label for="fechaEntrega">Fecha de adquisición</label>
-<%--      |             --%>            <asp:TextBox runat="server" ValidationGroup="one"  ID="fecha_adquisicion" ClientIDMode="Static" ToolTip="Este espacio debe contener la fecha en que el Colegio de Abogados y Abogadas de Costa Rica adquirió el activo, este espacio es requerido." > </asp:TextBox>
+<%--      |             --%>            <asp:TextBox runat="server" ValidationGroup="one"  ID="fecha_adquisicion" ClientIDMode="Static" data-toggle="tooltip" data-placement="right" title="Este espacio debe contener la fecha en que el Colegio de Abogados y Abogadas de Costa Rica adquirió el activo, este espacio es requerido." > </asp:TextBox>
 <%--      |             --%>            <cc1:CalendarExtender TargetControlID="fecha_adquisicion"  ID="calAdquisicion" runat="server" OnClientDateSelectionChanged="verificarFechaG3"/>
 <%--      |             --%>            <asp:RequiredFieldValidator ValidationGroup="one" ID="vFechaAdquisicion" runat="server" ControlToValidate="fecha_adquisicion" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
 <%--      |             --%>
@@ -228,7 +225,7 @@
 <%--      |             --%>                                    
 <%--      |             --%>     <%--     Fecha de Finalización      --%>
 <%--      |             --%>     <label for="duracion_contrato">Finalización del Contrato</label>
-<%--      |             --%>     <asp:TextBox runat="server" ID="finalizacion_contrato" ClientIDMode="Static" ToolTip="Este espacio debe contener la fecha en que finaliza el contrato para el activo, este espacio es requerido."> </asp:TextBox>
+<%--      |             --%>     <asp:TextBox runat="server" ID="finalizacion_contrato" ClientIDMode="Static" data-toggle="tooltip" data-placement="right" title="Este espacio debe contener la fecha en que finaliza el contrato para el activo, este espacio es requerido."> </asp:TextBox>
 <%--      |             --%>     <cc1:CalendarExtender TargetControlID="finalizacion_contrato"  ID="finContrato" runat="server" OnClientDateSelectionChanged="verificarFechaG4"/>
 <%--      |             --%>     <asp:RequiredFieldValidator ValidationGroup="one" ID="vFinalizacion" runat="server" ControlToValidate="finalizacion_contrato" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
 <%--      |             --%> </div>
@@ -407,7 +404,7 @@
                                 <%--      Costo del activo       --%>
                                 <div class="pure-control-group">
                                     <label for="precio">Costo en colones, del activo</label>
-                                    <asp:TextBox ValidationGroup="one" ID="precio" ClientIDMode="Static" runat="server" TextMode="Number" data-placement="left" ToolTip="Este espacio debe proporcionar el valor total del activo, este espacio es requerido." placeholder="120360.17" />
+                                    <asp:TextBox ValidationGroup="one" ID="precio" ClientIDMode="Static" runat="server" TextMode="Number" data-toggle="tooltip" data-placement="right" title="Este espacio debe proporcionar el valor total del activo, este espacio es requerido." placeholder="120360.17" />
                                     <asp:RequiredFieldValidator ValidationGroup="one" ID="vPrecio" runat="server" ControlToValidate="precio" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
                                <asp:CustomValidator ValidationGroup="one" ID="CustomValidator7" runat="server" ClientValidationFunction="ValidateFieldLegth_Pr" ErrorMessage="El precio no puede exceder los 10 digitos." ControlToValidate="precio" EnableClientScript="true"  />
                                 <%--     Validar si excede 10 espacios       --%>  
@@ -426,7 +423,7 @@
                                 <%--      fecha de compra       --%>
                                 <div class="pure-control-group" id="leaComp" style="display: block">
                                     <label for="fechaCompra">Fecha de compra</label>
-                                    <asp:TextBox runat="server" ValidationGroup="one" ID="fecha_compra" ClientIDMode="Static" data-toggle="tooltip" title="En este espacio debe proporcionar la fecha de compra del activo, este espacio es requerido."> </asp:TextBox>
+                                    <asp:TextBox runat="server" ValidationGroup="one" ID="fecha_compra" ClientIDMode="Static" data-toggle="tooltip"  data-placement="right" title="En este espacio debe proporcionar la fecha de compra del activo, este espacio es requerido."> </asp:TextBox>
                                     <cc1:CalendarExtender TargetControlID="fecha_compra" ID="calCompra" runat="server" OnClientDateSelectionChanged="verificarFechaG1"/>
                                     <asp:RequiredFieldValidator ValidationGroup="one" ID="vFechaCompra" runat="server" ControlToValidate="fecha_compra" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
                                 
@@ -759,10 +756,11 @@
                                 }
 
                                 </script>
+
                                 <%--      Inicio de la garantía       --%>
                                 <fieldset class="pure-control-group" id="leaComp2" style="display: block">
                                     <label for="inicio">Fecha de Inicio de la garantía</label>
-                                    <asp:TextBox runat="server" ID="inicio_garantia" ClientIDMode="Static" data-toggle="tooltip" title="En este espacio debe proporcionar la fecha en que inicia la garantía, especificada por el proveedor, este espacio es requerido."></asp:TextBox>
+                                    <asp:TextBox runat="server" ID="inicio_garantia" ClientIDMode="Static" data-toggle="tooltip" data-placement="right"  title="En este espacio debe proporcionar la fecha en que inicia la garantía, especificada por el proveedor, este espacio es requerido."></asp:TextBox>
                                     <cc1:CalendarExtender TargetControlID="inicio_garantia"  ID="calInicio" runat="server" OnClientDateSelectionChanged="verificarFechaG"/>
                                     <asp:RequiredFieldValidator ValidationGroup="one" ID="vFechaInicio" runat="server" ControlToValidate="inicio_garantia" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
                                 
@@ -770,7 +768,7 @@
                                 <%--      Finalización de la garantía       --%>
                                 <fieldset class="pure-control-group" id="leaComp3" style="display: block">
                                     <label for="finalizacion">Fecha de finalización de la garantía</label>
-                                    <asp:TextBox runat="server" ID="final_garantia" ClientIDMode="Static" data-toggle="tooltip" title="En este espacio debe proporcionar la fecha en que finaliza la garantía, especificada por el proveedor, este espacio es requerido."></asp:TextBox>
+                                    <asp:TextBox runat="server" ID="final_garantia" ClientIDMode="Static" data-toggle="tooltip" data-placement="right" title="En este espacio debe proporcionar la fecha en que finaliza la garantía, especificada por el proveedor, este espacio es requerido."></asp:TextBox>
                                     <cc1:CalendarExtender TargetControlID="final_garantia"  ID="calFinal" runat="server" OnClientDateSelectionChanged="verificarFechaG2"/>
                                     <asp:RequiredFieldValidator ValidationGroup="one" ID="vFinal" runat="server" ControlToValidate="final_garantia" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
                                 
@@ -779,7 +777,7 @@
                                 <%--      Descripción del activo       --%>
                                 <fieldset class="pure-control-group">
                                     <label for="descripcion">Descripción del activo</label>
-                                    <asp:DropDownList ValidationGroup="one" ID="descripcion" runat="server" data-toggle="tooltip" title="Para completar este espacio facilmente, preguntese a si mismo: ¿Que estoy ingresando? Ejemplo: Estoy ingresando una Laptop. En este espacio usted deberá colocar la palabra Laptop, este espacio es requerido. " class="pure-input-1-2">
+                                    <asp:DropDownList ValidationGroup="one" ID="descripcion" runat="server" data-toggle="tooltip" data-placement="right" title="Para completar este espacio facilmente, preguntese a si mismo: ¿Que estoy ingresando? Ejemplo: Estoy ingresando una Laptop. En este espacio usted deberá colocar la palabra Laptop, este espacio es requerido. " class="pure-input-1-2">
                                         <asp:ListItem disabled="disabled" Value="" Selected="True">Elija una descripción</asp:ListItem>
                                         <asp:ListItem disabled="disabled" >¿La descripción no aparece? Haz uso el icono situado contiguo a esta categoría para proporcionar una nueva.</asp:ListItem>
                                     </asp:DropDownList>
@@ -803,7 +801,7 @@
                                 <%--      Sede regional o departamento       --%>
                                 <fieldset class="pure-control-group">
                                     <label for="area">Departamento o Sede regional destinado(a)</label>
-                                    <asp:DropDownList ValidationGroup="one" ID="area" runat="server" data-toggle="tooltip" title="En este espacio debe proporcionar el área la cual está destinada el activo, es requerido. " class="pure-input-1-2">
+                                    <asp:DropDownList ValidationGroup="one" ID="area" runat="server" data-toggle="tooltip" data-placement="right" title="En este espacio debe proporcionar el área la cual está destinada el activo, es requerido. " class="pure-input-1-2">
                                         <asp:ListItem disabled="disabled" Selected="True" Value="">Elija un Área o Departamento</asp:ListItem>
                                         <asp:ListItem disabled="disabled" >¿La opción que busca no aparece? Haz uso el icono situado contiguo a esta categoría para proporcionar una nueva.</asp:ListItem>
                                     </asp:DropDownList>
@@ -825,7 +823,7 @@
                                 <%--      Proveedor      --%>
                                 <fieldset class="pure-control-group">
                                     <label for="provedor">Proveedor</label>
-                                    <asp:DropDownList ValidationGroup="one" ID="proveedor" runat="server" data-toggle="tooltip" title="Proveedor: En este espacio debe proporcionar el nombre del proveedor del activo, este espacio es requerido." class="pure-input-1-2">
+                                    <asp:DropDownList ValidationGroup="one" ID="proveedor" runat="server" data-toggle="tooltip" data-placement="right" title="Proveedor: En este espacio debe proporcionar el nombre del proveedor del activo, este espacio es requerido." class="pure-input-1-2">
                                         <asp:ListItem  disabled="disabled" Selected="True" Value="">Elija un proveedor</asp:ListItem>
                                         <asp:ListItem disabled="disabled" >¿El proveedor no aparece? Haz uso el icono situado contiguo a esta categoría para proporcionar una nueva.</asp:ListItem>
                                     </asp:DropDownList>
@@ -847,7 +845,7 @@
                                 <%--      Especificaciones       --%>
                                     <fieldset class="pure-control-group">
                                         <label for="Tipo">Especificaciones técnicas</label>
-                                        <asp:TextBox ValidationGroup="one" ID="especificacion_tecnica" TextMode="MultiLine" runat="server" data-toggle="tooltip" title="En este espacio se debe proporcionar las cualidades del activo. Ejemplo: 1TB disco duro, 16GB RAM, 2GB AMD Radeon Fury (se pueden incluir otras caracteristicas que se deseen), este espacio es requerido" class="pure-input-1-2" placeholder="Especificaciones Técnicas" />
+                                        <asp:TextBox ValidationGroup="one" ID="especificacion_tecnica" TextMode="MultiLine" runat="server" data-toggle="tooltip" data-placement="right" title="En este espacio se debe proporcionar las cualidades del activo. Ejemplo: 1TB disco duro, 16GB RAM, 2GB AMD Radeon Fury (se pueden incluir otras caracteristicas que se deseen), este espacio es requerido" class="pure-input-1-2" placeholder="Especificaciones Técnicas" />
                                    <asp:RequiredFieldValidator ValidationGroup="one" ID="vEspecificacion" runat="server" ControlToValidate="especificacion_tecnica" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
                                         <asp:CustomValidator ValidationGroup="one" ID="CustomValidator3" runat="server" ClientValidationFunction="ValidateFieldLegth_ET" ErrorMessage="La especificación técnica no puede exceder los 350 digitos." ControlToValidate="especificacion_tecnica" EnableClientScript="true"  />
                                <%--     Validar si excede 350 espacios       --%> 
@@ -884,14 +882,13 @@
                             <div class="pure-form pure-form-aligned">
                                 <asp:Panel ID="Panel3" runat="server" DefaultButton="">
                                 <div class="pure-control-group">
-
                                     <label for="cedula">Número de placa o serie del activo</label>
-                                    <asp:TextBox runat="server" ID="placa_buscar" data-toggle="tooltip" data-placement="left" title="Proporciona el número de placa o serie del activo que desees consultar." placeholder="#########" />
-
+                                    <asp:TextBox runat="server" ID="placa_buscar" ValidationGroup="seven" data-toggle="tooltip" data-placement="right" title="Proporciona el número de placa o serie del activo que desees consultar." placeholder="ENF-1523" />
+                                    <asp:RequiredFieldValidator ValidationGroup="seven" ID="RequiredFieldValidator6" runat="server" ControlToValidate="placa_buscar" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
                                 </div>
 
                                 <div class="pure-control-group">
-                                    <asp:Button runat="server" ID="btn_consultarAc" CssClass="btn btn-primary" OnClick="bt_consultarAC_Click" Text="Consultar"/>
+                                    <asp:Button runat="server" ValidationGroup="seven" ID="btn_consultarAc" CssClass="btn btn-primary" OnClick="bt_consultarAC_Click" Text="Consultar"/>
                                 </div>
                                 </asp:Panel>
 <%--                                <script type="text/javascript">
@@ -907,13 +904,13 @@
                             <div id="ocultoAC" class="pure-form pure-form-aligned" style="display:none" runat="server">
                                 <!--Esto realmente es un form-->
                                 <fieldset>
-                                    <div class="pure-control-group" style="margin-top: 40px;">
+                                    <div class="pure-control-group">
                                         <div>
                                             <asp:Button class="btn btn-success" runat="server" id="habilitarMA" Onclick="bt_Habilitar_Modif_Click"  Text="Habilitar modificación" />
                                             <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal">Inhabilitar activo</button>
                                         </div>
                                         <%--<asp:Button runat="server" ID="HOLI" OnClick="bt_Habilitar_Modif_Click" />--%>
-                                        <div id="t" style="display: none">
+                                        <div id="notificacionDatosConsulta" style="display: none">
                                             <h3>Formulario de modificación</h3>
                                         </div>
                                
@@ -928,10 +925,10 @@
                                </script>
                                     
 
-                                    <fieldset>
+                                    <fieldset style="margin-top: 40px;">
                                     <div class="pure-controls-group">
                                     <label for="tipo_activo">Tipo de activo</label>
-                                    <div style="margin-left: 55px" class="btn-group">
+                                    <div class="btn-group">
 <%--                                        <asp:RadioButton runat="server" ID="RadioButton5" ClientIDMode="Static" Enabled="true" Text="Software" GroupName="location" />
                                         <asp:RadioButton runat="server" ID="RadioButton6" ClientIDMode="Static" Enabled="true" Text="Hardware" GroupName="location" />--%>
                                         <label class="btn btn-primary" runat="server" id="btn5">
@@ -948,7 +945,8 @@
                                         
                                        
 <%--       -----------> --%><%--      Los cambios que genera el botón leasing       --%> 
-<%--      |             --%>     <%--      Numero de placa del activo       --%>                              
+<%--      |             --%>     <%--      Numero de placa del activo       --%>   
+                                                                 
 <%--      |             --%>         <div class="pure-control-group">
 <%--      |             --%>             <label for="nplaca">Número de placa del activo</label>
 <%--      |             --%>                 <asp:TextBox ValidationGroup="two" runat="server" ReadOnly="true" ID="numero_placa2" data-placement="left" ToolTip="Este espacio debe proporcionar el número de placa del activo, este espacio es requerido." placeholder="ENF-1523" />
@@ -1010,7 +1008,7 @@
                                         <%--      costo       --%>
                                 <div class="pure-control-group">
                                     <label for="lprecio2">Costo en colones, del activo</label>
-                                    <asp:TextBox ValidationGroup="two" ID="precio2" runat="server" TextMode="Number" data-placement="left" ToolTip="Este espacio debe proporcionar el valor total del activo, este espacio es requerido." placeholder="120360.17" />
+                                    <asp:TextBox ValidationGroup="two" ID="precio2" runat="server" TextMode="Number" data-toggle="tooltip" data-placement="right" title="Este espacio debe proporcionar el valor total del activo, este espacio es requerido." placeholder="120360.17" />
                                     <asp:RequiredFieldValidator ValidationGroup="two" ID="vPrecio2" runat="server" ControlToValidate="precio2" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
                                 <asp:CustomValidator ValidationGroup="two" ID="CustomValidator8" runat="server" ClientValidationFunction="ValidateFieldLegth_PM" ErrorMessage="El precio no puede exceder los 10 digitos." ControlToValidate="precio2" EnableClientScript="true"  />
                                 <%--     Validar si excede 10 espacios       --%>  
@@ -1029,7 +1027,7 @@
                                     <%--     Inicio de la garantía      --%>
                                 <div class="pure-control-group">
                                     <label for="lfechaCompra2">Fecha de compra</label>
-                                    <asp:TextBox runat="server" ValidationGroup="two" ID="fecha_compra2" ClientIDMode="Static" data-toggle="tooltip" title="En este espacio debe proporcionar la fecha de compra del activo, este espacio es requerido."> </asp:TextBox>
+                                    <asp:TextBox runat="server" ValidationGroup="two" ID="fecha_compra2" ClientIDMode="Static" data-toggle="tooltip" data-placement="right" title="En este espacio debe proporcionar la fecha de compra del activo, este espacio es requerido."> </asp:TextBox>
                                     <cc1:CalendarExtender TargetControlID="fecha_compra2" ID="vFC2" runat="server" OnClientDateSelectionChanged="verificarFechaG11"/>
                                     <asp:RequiredFieldValidator ValidationGroup="two" ID="RequiredFieldValidator5" runat="server" ControlToValidate="fecha_compra2" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
                                 
@@ -1350,7 +1348,7 @@
                                         <%--     Inicio de la garantía      --%>
                                 <fieldset class="pure-control-group">
                                     <label for="inicio">Fecha de Inicio de la garantía</label>
-                                    <asp:TextBox runat="server" ID="inicio_garantia2" ValidationGroup="two" data-toggle="tooltip" title="En este espacio debe proporcionar la fecha en que inicia la garantía, especificada por el proveedor, este espacio es requerido."></asp:TextBox>
+                                    <asp:TextBox runat="server" ID="inicio_garantia2" ValidationGroup="two" data-toggle="tooltip" data-placement="right" title="En este espacio debe proporcionar la fecha en que inicia la garantía, especificada por el proveedor, este espacio es requerido."></asp:TextBox>
                                     <cc1:CalendarExtender TargetControlID="inicio_garantia2" ID="calInicio3" runat="server" OnClientDateSelectionChanged="verificarFechaGG"/>
                                     <asp:RequiredFieldValidator ValidationGroup="two" ID="vInicio" runat="server" ControlToValidate="inicio_garantia2" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
                                 
@@ -1358,7 +1356,7 @@
                                         <%--      Finalización de la garantía      --%>
                                 <fieldset class="pure-control-group">
                                     <label for="finalizacion">Fecha de finalización de la garantía</label>
-                                    <asp:TextBox runat="server" ID="final_garantia2" ValidationGroup="two" data-toggle="tooltip" title="En este espacio debe proporcionar la fecha en que finaliza la garantía, especificada por el proveedor, este espacio es requerido."></asp:TextBox>
+                                    <asp:TextBox runat="server" ID="final_garantia2" ValidationGroup="two" data-toggle="tooltip" data-placement="right" title="En este espacio debe proporcionar la fecha en que finaliza la garantía, especificada por el proveedor, este espacio es requerido."></asp:TextBox>
                                     <cc1:CalendarExtender TargetControlID="final_garantia2" ID="calFinal3" runat="server" OnClientDateSelectionChanged="verificarFechaG22"/>
                                     <asp:RequiredFieldValidator ValidationGroup="two" ID="vFinal2" runat="server" ControlToValidate="final_garantia2" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
                                 
@@ -1366,7 +1364,7 @@
                                         <%--      Descripción del activo       --%>
                                 <fieldset class="pure-control-group">
                                     <label for="descripcion">Descripción del activo</label>
-                                    <asp:DropDownList ValidationGroup="two"  ID="descripcion2" runat="server" tooltip="Para completar este espacio facilmente, preguntese a si mismo: ¿Que estoy ingresando? Ejemplo: Estoy ingresando una Laptop. En este espacio usted deberá colocar la palabra Laptop, este espacio es requerido. " class="pure-input-1-2">
+                                    <asp:DropDownList ValidationGroup="two"  ID="descripcion2" runat="server" data-toggle="tooltip" data-placement="right" title="Para completar este espacio facilmente, preguntese a si mismo: ¿Que estoy ingresando? Ejemplo: Estoy ingresando una Laptop. En este espacio usted deberá colocar la palabra Laptop, este espacio es requerido. " class="pure-input-1-2">
                                         <asp:ListItem disabled="disabled">Elija una descripción</asp:ListItem>
                                         <asp:ListItem disabled="disabled">¿La descripción no aparece? Haz uso el icono situado contiguo a esta categoría para proporcionar una nueva.</asp:ListItem>
                                     </asp:DropDownList>
@@ -1377,7 +1375,7 @@
                                         <%--     Area/Sede regional      --%>
                                 <fieldset class="pure-control-group">
                                     <label for="area">Departamento o Sede regional destinado(a)</label>
-                                    <asp:DropDownList ValidationGroup="two" ID="area2" runat="server" data-toggle="tooltip" title="En este espacio debe proporcionar el área la cual está destinada el activo, es requerido. " class="pure-input-1-2">
+                                    <asp:DropDownList ValidationGroup="two" ID="area2" runat="server" data-toggle="tooltip" data-placement="right" title="En este espacio debe proporcionar el área la cual está destinada el activo, es requerido. " class="pure-input-1-2">
                                         <asp:ListItem disabled="disabled">Elija un Área o Departamento</asp:ListItem>
 
                                         <asp:ListItem disabled="disabled">¿La opción que busca no aparece? Haz uso el icono situado contiguo a esta categoría para proporcionar una nueva.</asp:ListItem>
@@ -1388,7 +1386,7 @@
                                         <%--      Proveedor       --%>
                                 <fieldset class="pure-control-group">
                                     <label for="provedor">Proveedor</label>
-                                    <asp:DropDownList ValidationGroup="two" ID="proveedor2" runat="server" data-toggle="tooltip" title="Proveedor: En este espacio debe proporcionar el nombre del proveedor del activo, este espacio es requerido." class="pure-input-1-2">
+                                    <asp:DropDownList ValidationGroup="two" ID="proveedor2" runat="server" data-toggle="tooltip"  data-placement="right" title="Proveedor: En este espacio debe proporcionar el nombre del proveedor del activo, este espacio es requerido." class="pure-input-1-2">
                                         <asp:ListItem disabled="disabled">Elija un proveedor</asp:ListItem>
                                         <asp:ListItem disabled="disabled">¿El proveedor no aparece? Haz uso el icono situado contiguo a esta categoría para proporcionar una nueva.</asp:ListItem>
                                     </asp:DropDownList>
@@ -1399,7 +1397,7 @@
                                 <%--      Especificaciones Técnicas       --%>
                                     <fieldset class="pure-control-group">
                                         <label for="Tipo">Especificaciones técnicas</label>
-                                        <asp:TextBox ValidationGroup="two" ID="especificacion_tecnica2" TextMode="MultiLine" runat="server" data-toggle="tooltip" title="En este espacio se debe proporcionar las cualidades del activo, este espacio es requerido" class="pure-input-1-2" placeholder="Especificaciones Técnicas" />
+                                        <asp:TextBox ValidationGroup="two" ID="especificacion_tecnica2" TextMode="MultiLine" runat="server" data-toggle="tooltip" data-placement="right" title="En este espacio se debe proporcionar las cualidades del activo, este espacio es requerido" class="pure-input-1-2" placeholder="Especificaciones Técnicas" />
                                    <asp:RequiredFieldValidator ValidationGroup="two" ID="vEspecificacion2" runat="server" ControlToValidate="especificacion_tecnica2" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
                                    <asp:CustomValidator ValidationGroup="two" ID="CustomValidator6" runat="server" ClientValidationFunction="ValidateFieldLegth_ETM" ErrorMessage="La especificación técnica no puede exceder los 350 digitos." ControlToValidate="especificacion_tecnica2" EnableClientScript="true"  />
                                <%--     Validar si excede 350 espacios       --%> 
@@ -1418,9 +1416,6 @@
                                     </fieldset>
                                        <div class="pure-controls" runat="server" id="bny" style="display:none"> 
                                             <asp:Button class="btn btn-success" runat="server" id="actualizaDatosAC" ValidationGroup="two" OnClick="bt_Guardar_Cambios_Click" Text="Realizar modificaciones"/>
-                                            <div id="mensaje1" style="display: none; float: right">
-                                                <h3>Las acciones han sido realizado con éxito.</h3>
-                                            </div>
                                         </div>
                                         </div>
 
@@ -1533,19 +1528,6 @@
                                                     <asp:Button runat="server" ValidationGroup="a" ID="Registrar_Area" CssClass="btn btn-success" OnClick="btn_Registrar_Area_Click" Text="Registrar área" />
                                                     <button class="btn btn-default" data-dismiss="modal">Cerrar</button>
                                                 </div>
-                                                <div class="span pull-left" style="margin-top: 20px;">
-                                                    <div class="alert alert-success fade">
-                                                        <button type="button" class="close" data-dismiss="alert">×</button>
-                                                        <strong>¡Acciones completadas!</strong> Ahora puedes seleccionar esta categoria.
-                                                   
-                                                    </div>
-                                                </div>
-                                                <script>
-                                                    $("#bt1").on("click", function () {
-                                                        $(".alert").removeClass("in").show();
-                                                        $(".alert").delay(500).addClass("in").fadeOut(2000);
-                                                    });
-                                                </script>
                                             </div>
                                         </div>
                                     </div>
@@ -1588,18 +1570,6 @@
                                                     <asp:Button runat="server" ValidationGroup="b" ID="Registar_Descripcion_Ac" OnClick="btn_Registrar_Descripcion_Ac_Click" CssClass="btn btn-success" Text="Registrar descripción" />
                                                     <button class="btn btn-default" data-dismiss="modal">Cerrar</button>
                                                 </div>
-                                                <div class="span pull-left" style="margin-top: 20px;">
-                                                    <div class="alert alert-success fade">
-                                                        <button type="button" class="close" data-dismiss="alert">×</button>
-                                                        <strong>¡Acciones completadas!</strong> Ahora puedes seleccionar esta categoria.
-                                                    </div>
-                                                </div>
-                                                <script>
-                                                    $("#btn_Registar").on("click", function () {
-                                                        $(".alert").removeClass("in").show();
-                                                        $(".alert").delay(500).addClass("in").fadeOut(2000);
-                                                    });
-                                                </script>
                                             </div>
                                         </div>
                                     </div>
@@ -1668,19 +1638,6 @@
                                                     <asp:Button runat="server" ValidationGroup="c" ID="Resgistrar_Proveedor" CssClass="btn btn-success" OnClick="btn_Registrar_Proveedor_Click" Text="Registrar proveedor" />
                                                     <button class="btn btn-default" data-dismiss="modal">Cerrar</button>
                                                 </div>
-                                                <div class="span pull-left" style="margin-top: 20px;">
-                                                    <div class="alert alert-success fade">
-                                                        <button type="button" class="close" data-dismiss="alert">×</button>
-                                                        <strong>¡Acciones completadas!</strong> Ahora puedes seleccionar esta categoria.
-                                               
-                                                    </div>
-                                                </div>
-                                                <script>
-                                                    $("#pv1").on("click", function () {
-                                                        $(".alert").removeClass("in").show();
-                                                        $(".alert").delay(500).addClass("in").fadeOut(2000);
-                                                    });
-                                            </script>
                                             </div>
                                         </div>
                                     </div>
@@ -1774,5 +1731,10 @@
 
             }</script>
     </form>
+         <script type="text/javascript">
+             $(document).ready(function () {
+                 $('[data-toggle="tooltip"]').tooltip();
+             });
+     </script>
 </body>
 </html>

@@ -13,6 +13,14 @@ namespace EXPEDIA
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+
+
+            if (Session["Usuario"] == "Inicio")
+            {
+                Session["Usuario"] = "Anonimo";
+                Response.Redirect("index.aspx");
+            }
+
             if (!IsPostBack)
             {
                 cargar_area(area);
@@ -22,6 +30,8 @@ namespace EXPEDIA
                 cargar_descripcion(descripcion2);
                 cargar_proveedor(proveedor2);
             }
+
+            bny.Style.Add("display", "none");
 
 
         }
@@ -42,7 +52,7 @@ namespace EXPEDIA
                 {
                     Conexion c = new Conexion();
                     SqlConnection Conexion = c.Conectar();
-                    string Sql = @"INSERT INTO Activos (bd_tipo_activo, bd_numero_placa, bd_numero_serie, bd_fecha_inicio_garantia, bd_fecha_final_garantia, bd_descripcion_activo, bd_departamento, bd_proveedor, bd_especificacion_tecnica, bd_aquisicion_ac, bd_finalizacion_contrato, bd_fecha_compra, bd_costo_activo, bd_id_prestamo, bd_estado) 
+                    string Sql = @ "INSERT INTO Activos (bd_tipo_activo, bd_numero_placa, bd_numero_serie, bd_fecha_inicio_garantia, bd_fecha_final_garantia, bd_descripcion_activo, bd_departamento, bd_proveedor, bd_especificacion_tecnica, bd_aquisicion_ac, bd_finalizacion_contrato, bd_fecha_compra, bd_costo_activo, bd_id_prestamo, bd_estado) 
                         values (@tipo_activo, @placa, @serie, @garantia_inicio, @garantia_final, @descripcion, @departamento, @proveedor, @especificacion_tecnica, @aquisicion_ac, @finalizacion_contrato,  @fecha_compra, @costo , @id_prestamo, @estado)";
 
                     Conexion.Open();//abrimos conexion    
@@ -615,6 +625,17 @@ namespace EXPEDIA
             bny.Style.Add("display", "block");
             RadioButton5.Enabled = true;
             RadioButton6.Enabled = true;
+            notificacionCampos(habilitarMA);
+        }
+
+        protected void notificacionCampos(Control boton)
+        {
+            System.Text.StringBuilder sb = new System.Text.StringBuilder();
+            sb.Append(@"<script>");
+            sb.Append(@"$(document).ready(function () {");
+            sb.Append(@"$('#notificacionDatosConsulta').show(2000, 'swing')});");
+            sb.Append(@"</script>");
+            ScriptManager.RegisterStartupScript(boton, this.GetType(), "Holi", sb.ToString(), false);
         }
 
         protected void inhabilitarCampos()
@@ -631,6 +652,7 @@ namespace EXPEDIA
             especificacion_tecnica2.ReadOnly = true;
             RadioButton5.Enabled = false;
             RadioButton6.Enabled = false;
+            
         }
 
         protected String cargaridDescrip(String descrip)
@@ -673,15 +695,14 @@ namespace EXPEDIA
 
         protected void bt_consultarAC_Click(object sender, EventArgs e)
         {
-            mostrarConsultaAC();
-            inhabilitarCampos();
+
             //Dele asi mop no no syave
             //cargar_descripcion(descripcion2);
             //cargar_area(area2);
            // cargar_proveedor(proveedor2);
             Conexion c = new Conexion();
             SqlConnection Conexion = c.Conectar();
-            string Sql = @"SELECT * FROM Activos WHERE bd_numero_placa = @placa";
+            string Sql = @"SELECT * FROM Activos WHERE bd_numero_placa = @placa OR bd_numero_serie =@placa";
             Conexion.Open();//abrimos conexion
             SqlCommand cmd = new SqlCommand(Sql, Conexion); //ejecutamos la instruccion            
             cmd.Parameters.AddWithValue("@placa", placa_buscar.Text);
@@ -690,23 +711,24 @@ namespace EXPEDIA
             {
                 while (reader.Read())
                 {
-                    if (reader.GetString(0) == "Software") {
-                    this.RadioButton5.Checked = true;
-                    //this.btn5.Style.Add("background-color", "#204d74");
-                    this.RadioButton6.Checked = false;
-                    //this.btn6.Style.Add("background-color", "#337ab7");
+                    if (reader.GetString(0) == "Software")
+                    {
+                        this.RadioButton5.Checked = true;
+                        //this.btn5.Style.Add("background-color", "#204d74");
+                        this.RadioButton6.Checked = false;
+                        //this.btn6.Style.Add("background-color", "#337ab7");
                         numero_placa2.Text = reader.GetString(1);
-                    numero_serie2.Text = reader.GetString(2);
+                        numero_serie2.Text = reader.GetString(2);
                         precio2.Text = reader.GetInt32(12).ToString();
                         String fechaC = reader.GetDateTime(11).ToString();
                         fechaC = fechaC.Split(' ')[0];
-                    fecha_compra2.Text = fechaC;
+                        fecha_compra2.Text = fechaC;
                         String fechaIG = reader.GetDateTime(3).ToString();
                         fechaIG = fechaIG.Split(' ')[0];
-                    inicio_garantia2.Text = fechaIG;
+                        inicio_garantia2.Text = fechaIG;
                         String fechaFG = reader.GetDateTime(4).ToString();
                         fechaFG = fechaFG.Split(' ')[0];
-                    final_garantia2.Text = fechaFG;
+                        final_garantia2.Text = fechaFG;
                         //Cargar descrip para el drop
                         String descrip = reader.GetString(5).ToString();
                         String descripVal = cargaridDescrip(descrip);
@@ -839,8 +861,19 @@ namespace EXPEDIA
                 }
 
                 Conexion.Close();
-
+                excelente(btn_consultarAc);
+                mostrarConsultaAC();
+                inhabilitarCampos();
+            }else {
+                ocultarConsulta();
+                error(btn_consultarAc, "Disculpa", "El valor " + placa_buscar.Text + " no existe en el sistema");
             }
+        }
+
+        protected void ocultarConsulta()
+        {
+            ocultoAC.Style.Add("display", "none");
+            
         }
 
         protected void bt_Habilitar_Modif_Click(object sender, EventArgs e)

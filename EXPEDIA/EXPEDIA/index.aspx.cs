@@ -15,6 +15,7 @@ namespace EXPEDIA
         protected static Boolean tipo;
         protected void Page_Load(object sender, EventArgs e)
         {
+            username.Focus();
         }
         protected void Bt_Ingresar_Click(object sender, EventArgs e){
             String cedula, pass;

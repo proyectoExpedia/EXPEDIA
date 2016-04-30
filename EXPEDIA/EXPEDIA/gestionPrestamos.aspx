@@ -17,9 +17,7 @@
     <script src="js/jquery.bxslider.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <link href="css/purecss.css" rel="stylesheet" />
-    <script src="js/jQueryUI/jquery-ui.min.js"></script>
-    <link href="js/jQueryUI/jquery-ui.theme.min.css" rel="stylesheet" />
-    <link href="js/jQueryUI/jquery-ui.min.css" rel="stylesheet" />
+    <script src="js/sweetalert.js"></script>
     <script src="js/sweetalert.min.js"></script>
     <link href="css/sweetalert.css" rel="stylesheet" />
 </head>
@@ -106,7 +104,7 @@
                                          <!--Ingresar DESCRIPCION -->
                                          <div class="pure-control-group">
                                         <label for="descripcion">Descripción del activo</label>
-                                        <asp:DropDownList ValidationGroup="one"  runat="server" data-toggle="tooltip" title="Seleccione una descripción como filtro para búsqueda." id="descripcion_activo" CssClass="pure-input-1-2">
+                                        <asp:DropDownList ValidationGroup="one"  runat="server" data-placement="right" data-toggle="tooltip" title="Seleccione una descripción como filtro para búsqueda." id="descripcion_activo" CssClass="pure-input-1-2">
                                         <asp:ListItem Value="0">Todos</asp:ListItem>
                                         </asp:DropDownList>
                                                                                          </div>
@@ -114,7 +112,7 @@
                              <!--Ingresar Despatamento-->
                                            <div class="pure-control-group">
                              <label for="area">Departamento o Sede regional destinado(a)</label>
-                                        <asp:DropDownList runat="server" data-toggle="tooltip" title="Seleccione un departamento o área como filtro para su búsqueda." id="departamento_activo" CssClass="pure-input-1-2">
+                                        <asp:DropDownList runat="server" data-toggle="tooltip" data-placement="right" title="Seleccione un departamento o área como filtro para su búsqueda." id="departamento_activo" CssClass="pure-input-1-2">
                                           <asp:ListItem Value="0">Todos</asp:ListItem>
                                              </asp:DropDownList>
                                                      
@@ -122,10 +120,11 @@
                              <!--Ingresar Proveedor-->
                                                 <div class="pure-control-group">
                              <label for="provedor">Proveedor</label>
-                                        <asp:DropDownList runat="server" data-toggle="tooltip" title="Seleccione un proveedor como filtro para búsqueda." id="proveedor" CssClass="pure-input-1-2">
+                                        <asp:DropDownList runat="server" data-toggle="tooltip" data-placement="right" title="Seleccione un proveedor como filtro para búsqueda." id="proveedor" CssClass="pure-input-1-2">
                                         <asp:ListItem Value="0">Todos</asp:ListItem>
                                              </asp:DropDownList>
-                                                    
+                                                 <br />
+                                                 <br />  
 
                                                <asp:Button runat="server" ID="Consultar1" CssClass="btn btn-primary" OnClick="Consultar1_Click" Text="Consultar" />
                                                
@@ -143,7 +142,7 @@
                                                 <!--Ingresar Cedula-->
                                                 <div class="pure-control-group" >
                                                     <label for="cedula_usuario">Número de cédula</label>
-                                                    <asp:TextBox ValidationGroup="one" runat="server" ID="cedula_usuario"  AutoPostBack="True" OnTextChanged="cedula_usuario_TextChanged" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar el número de cedula de la persona a registrar, omita guiones, no excluya ningún dígito del documento, este espacio es requerido."  placeholder="#-####-####" />
+                                                    <asp:TextBox ValidationGroup="one" runat="server" ID="cedula_usuario"  AutoPostBack="True" OnTextChanged="cedula_usuario_TextChanged" data-toggle="tooltip" data-placement="right" title="En este espacio se debe proporcionar el número de cedula de la persona a registrar, omita guiones, no excluya ningún dígito del documento, este espacio es requerido."  placeholder="#-####-####" />
                                                     <asp:RequiredFieldValidator ValidationGroup="one" ID="vCedula" runat="server" ControlToValidate="cedula_usuario" ForeColor="Red" SetFocusOnError="True" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
                                                     <asp:MaskedEditExtender ID="cedula_usuario_MaskedEditExtender" runat="server" BehaviorID="cedula_usuario_MaskedEditExtender" Century="2000" ClearMaskOnLostFocus="False" CultureAMPMPlaceholder="" CultureCurrencySymbolPlaceholder="" CultureDateFormat="" CultureDatePlaceholder="" CultureDecimalPlaceholder="" CultureThousandsPlaceholder="" CultureTimePlaceholder="" Mask="9-9999-9999" TargetControlID="cedula_usuario" />
                                                     <asp:RegularExpressionValidator ValidationGroup="one" ID="RegularExpressionValidator2" runat="server" ControlToValidate="cedula_usuario" ErrorMessage="&lt;b&gt;*&lt;/b&gt;" ForeColor="Red" ValidationExpression="^[1-9]-\d{4}-\d{4}$"></asp:RegularExpressionValidator>
@@ -159,7 +158,7 @@
                                                   
                                                       <fieldset class="pure-control-group">
                                                  <label for="Fecha_entrega">Fecha de entrega:</label>
-                                                <asp:TextBox runat="server" ID="Fecha_entrega" ToolTip="Este espacio debe contener la fecha de entrega del préstamo, este espacio es requerido."></asp:TextBox>
+                                                <asp:TextBox runat="server" ID="Fecha_entrega"  data-toggle="tooltip" data-placement="right" title="Este espacio debe contener la fecha de entrega del préstamo, este espacio es requerido."></asp:TextBox>
                                                  <asp:CalendarExtender Format="yyyy/MM/dd"  ID="Fechaentrega" runat="server"  PopupButtonID="Fecha_entrega"  TargetControlID="Fecha_entrega" BehaviorID="_content_Fechaentrega" />
                                                 <asp:RequiredFieldValidator ValidationGroup="one" ID="vFinalizacon" runat="server"   ControlToValidate="Fecha_entrega" ForeColor="Red" SetFocusOnError="True" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
                                                           <asp:RangeValidator ID="RangeValidator1"  ControlToValidate="Fecha_entrega" ValidationGroup="one" runat="server" ErrorMessage="No se puede escoger una fecha menor a la del día de hoy" ForeColor="Red" SetFocusOnError="True"></asp:RangeValidator>
@@ -171,7 +170,7 @@
                                                                                                   
                                                      <fieldset class="pure-control-group">
                                                  <label for="Fecha_entrega">Fecha de regreso:</label>
-                                                <asp:TextBox runat="server"  ID="Fecha_regreso" ToolTip="Este espacio debe contener la fecha en que se está retornando el activo, este espacio es requerido."></asp:TextBox>
+                                                <asp:TextBox runat="server"  ID="Fecha_regreso" data-toggle="tooltip" data-placement="right" title="Este espacio debe contener la fecha en que se está retornando el activo, este espacio es requerido."></asp:TextBox>
                                                          <asp:CalendarExtender ID="Fecharegreso" Format="yyyy/MM/dd"  runat="server"   PopupButtonID="Fecha_regreso"   TargetControlID="Fecha_regreso" BehaviorID="_content_Fecharegreso" />
                                                          <asp:RequiredFieldValidator  ValidationGroup="one"   ID="RequiredFieldValidator5"   runat="server" ControlToValidate="Fecha_regreso"   ForeColor="Red" SetFocusOnError="True" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
                                                          <asp:CompareValidator ID="CompareValidator1" runat="server" ValidationGroup="one"  ControlToCompare="Fecha_entrega" Operator="GreaterThanEqual" ControlToValidate="Fecha_regreso"  ErrorMessage="No se puede escoger una fecha menor a la del día de entrega" ForeColor="Red" SetFocusOnError="True"></asp:CompareValidator>
@@ -204,20 +203,43 @@
                                     <asp:Panel ID="Panel1" runat="server">
                                         <div class="tab-pane" id="Consultar">
                                             <h1 style="text-align: center" id="titulo">Formulario de Consultas</h1>
-                                            
-                                            <asp:Panel ID="Panel3" runat="server">
-                                                <div class="pure-form pure-form-aligned">
+                                            <div class="pure-form pure-form-aligned">
+                                            <asp:Panel ID="Panel3" class="tab-pane" runat="server">
+                                                <style>
+                                                    table.tablita {
+                                                        border-collapse: separate;
+                                                       border-spacing: 10px 20px; 
+                                                    }
+                                                </style>
+                                                 <table class="tablita" id="tablita"> 
+                                                 <tr>
+                                                 <td>
                                                 <label for="cedula_consulta"> Número de cédula: </label>
-                                                <asp:TextBox ID="cedula_consulta" ValidationGroup="two" AutoPostBack="true" OnTextChanged="cedula_consulta_TextChanged" runat="server"   data-toggle="tooltip" data-placement="left" ToolTip="En este espacio se debe proporcionar el número de cedula de la persona a registrar, omita guiones, no excluya ningún dígito del documento, este espacio es requerido." placeholder="#-####-####"></asp:TextBox>
+                                                     </td>
+                                                <td>
+                                                <asp:TextBox ID="cedula_consulta" ValidationGroup="two" AutoPostBack="true" OnTextChanged="cedula_consulta_TextChanged" runat="server"   data-toggle="tooltip" data-placement="right" title="En este espacio se debe proporcionar el número de cedula de la persona a registrar, omita guiones, no excluya ningún dígito del documento, este espacio es requerido." placeholder="#-####-####"></asp:TextBox>
                                                 <asp:RegularExpressionValidator ValidationGroup="two" ID="RegularExpressionValidator4" runat="server" ControlToValidate="cedula_consulta" ErrorMessage="&lt;b&gt;Formato no valido&lt;/b&gt;" ForeColor="Red" ValidationExpression="^[1-9]-\d{4}-\d{4}$"></asp:RegularExpressionValidator>
                                                 <cc1:MaskedEditExtender ID="MaskedEditExtender1" runat="server" BehaviorID="cedula_consulta_MaskedEditExtender" Century="2000" ClearMaskOnLostFocus="False" CultureAMPMPlaceholder="" CultureCurrencySymbolPlaceholder="" CultureDateFormat="" CultureDatePlaceholder="" CultureDecimalPlaceholder="" CultureThousandsPlaceholder="" CultureTimePlaceholder="" Mask="9-9999-9999" TargetControlID="cedula_consulta"></cc1:MaskedEditExtender>
                                                 <label  runat="server"  id="Info2" style="font-family: Arial, Helvetica, sans-serif; font-size: 17px; font-style: normal;" ></label>
                                                 <br />
-                                                <label for="id_prestamo">Número de Préstamo:</label>
-                                                <asp:TextBox runat="server"    data-toggle="tooltip" data-placement="left"     ToolTip="Ingrese el número del préstamo que desea consultar" ID="id_prestamo" />
+                                                    </td>
+                                                 </tr>
+                                                 <br />
+                                                <tr >
+                                                <td><label for="id_prestamo">Número de Préstamo:</label></td>
+                                                <td>
+                                                <asp:TextBox runat="server"    data-toggle="tooltip" data-placement="right" title="Ingrese el número del préstamo que desea consultar" ID="id_prestamo" />
                                                 <cc1:MaskedEditExtender ID="MaskedEditExtender2" runat="server" BehaviorID="id_prestamo_MaskedEditExtender" Century="2000" ClearMaskOnLostFocus="true" CultureAMPMPlaceholder="" CultureCurrencySymbolPlaceholder="" CultureDateFormat="" CultureDatePlaceholder="" CultureDecimalPlaceholder="" CultureThousandsPlaceholder="" CultureTimePlaceholder="" Mask="999999999" TargetControlID="id_prestamo"></cc1:MaskedEditExtender>
-                                                <asp:Button runat="server" ID="Consulta_prestamo" OnClick="Consulta_prestamo_Click"    class="btn btn-success" Text="Consultar"></asp:Button>
-                                                 </div>  
+                                                </td>
+                                                  
+                                                <br />
+                                                <br />
+                                               
+                                                
+                                               </tr>
+                                               </table>
+                                                 <asp:Button runat="server" ID="Consulta_prestamo" OnClick="Consulta_prestamo_Click"    class="btn btn-success" Text="Consultar"></asp:Button>
+                                                 
                                   <br />
                                   <br />
                                   <br />
@@ -555,6 +577,12 @@ function imprimePanel() {
 
 
     </script>
+
+                                                  <script type="text/javascript">
+                                                      $(document).ready(function () {
+                                                          $('[data-toggle="tooltip"]').tooltip();
+                                                      });
+                            </script>
 
 
     </form>

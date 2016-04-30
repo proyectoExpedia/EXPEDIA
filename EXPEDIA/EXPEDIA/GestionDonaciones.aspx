@@ -18,9 +18,6 @@
     <script src="js/jquery.bxslider.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <link href="css/purecss.css" rel="stylesheet" />
-    <script src="js/jQueryUI/jquery-ui.min.js"></script>
-    <link href="js/jQueryUI/jquery-ui.theme.min.css" rel="stylesheet" />
-    <link href="js/jQueryUI/jquery-ui.min.css" rel="stylesheet" />
     <script src="js/sweetalert.min.js"></script>
     <link href="css/sweetalert.css" rel="stylesheet" />
 </head>
@@ -102,13 +99,13 @@
                                                 <div class="pure-control-group">
                                          
                                         <label  for="numero" >Número de Placa / Serie </label>
-                                          <asp:TextBox ValidationGroup="one" runat="server" ID="numero" data-toggle="tooltip" MaxLength="10" data-placement="left" ToolTip="Este espacio debe proporcionar el número de placa o de serie del activo que desea consultar." />
+                                          <asp:TextBox ValidationGroup="one" runat="server" ID="numero" data-toggle="tooltip" MaxLength="10" data-placement="right" ToolTip="Este espacio debe proporcionar el número de placa o de serie del activo que desea consultar." />
                                         
                                                </div>
                                          <!--Ingresar DESCRIPCION -->
                                          <div class="pure-control-group">
                                         <label for="descripcion">Descripción del activo</label>
-                                        <asp:DropDownList ValidationGroup="one"  runat="server" data-toggle="tooltip" title="Seleccione una descripción como filtro para búsqueda." id="descripcion_activo" CssClass="pure-input-1-2">
+                                        <asp:DropDownList ValidationGroup="one"  runat="server" data-placement="right"  data-toggle="tooltip" title="Seleccione una descripción como filtro para búsqueda." id="descripcion_activo" CssClass="pure-input-1-2">
                                         <asp:ListItem Value="0">Todos</asp:ListItem>
                                         </asp:DropDownList>
                                                                                          </div>
@@ -116,7 +113,7 @@
                              <!--Ingresar Despatamento-->
                                            <div class="pure-control-group">
                              <label for="area">Departamento o Sede regional destinado(a)</label>
-                                        <asp:DropDownList runat="server" data-toggle="tooltip" title="Seleccione un departamento o área como filtro para su búsqueda." id="departamento_activo" CssClass="pure-input-1-2">
+                                        <asp:DropDownList runat="server" data-toggle="tooltip" data-placement="right"  title="Seleccione un departamento o área como filtro para su búsqueda." id="departamento_activo" CssClass="pure-input-1-2">
                                           <asp:ListItem Value="0">Todos</asp:ListItem>
                                              </asp:DropDownList>
                                                      
@@ -124,12 +121,12 @@
                              <!--Ingresar Proveedor-->
                                                 <div class="pure-control-group">
                              <label for="provedor">Proveedor</label>
-                                        <asp:DropDownList runat="server" data-toggle="tooltip" title="Seleccione un proveedor como filtro para búsqueda." id="proveedor" CssClass="pure-input-1-2">
+                                        <asp:DropDownList runat="server" data-toggle="tooltip" data-placement="right"  title="Seleccione un proveedor como filtro para búsqueda." id="proveedor" CssClass="pure-input-1-2">
                                         <asp:ListItem Value="0">Todos</asp:ListItem>
                                              </asp:DropDownList>
-                                                    
-
-                                               <asp:Button runat="server" ID="Consultar1" CssClass="btn btn-primary" OnClick="Consultar1_Click" Text="Consultar" />
+                                                    <br />
+                                                    <br />
+                                               <asp:Button  runat="server" ID="Consultar1" CssClass="btn btn-primary" OnClick="Consultar1_Click" Text="Consultar" />
                                                
                                                     </div>
                                                  
@@ -147,7 +144,7 @@
                                                    <!--Ingresar Fecha_entrega-->                                                                                                 
                                                 <fieldset class="pure-control-group">
                                                 <label for="Fecha_entrega">Fecha de entrega:</label>
-                                                <asp:TextBox runat="server" ID="Fecha_entrega" ToolTip="Este espacio debe contener la fecha de entrega de la donación, este espacio es requerido."></asp:TextBox>
+                                                <asp:TextBox runat="server" ID="Fecha_entrega" data-toggle="tooltip" data-placement="right" title="Este espacio debe contener la fecha de entrega de la donación, este espacio es requerido."></asp:TextBox>
                                                 <asp:CalendarExtender Format="yyyy/MM/dd"  ID="Fechaentrega" runat="server"  PopupButtonID="Fecha_entrega"  TargetControlID="Fecha_entrega" BehaviorID="_content_Fechaentrega" />
                                                 <asp:RequiredFieldValidator ValidationGroup="one" ID="vFinalizacon" runat="server"   ControlToValidate="Fecha_entrega" ForeColor="Red" SetFocusOnError="True" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
                                                 <asp:RangeValidator ID="RangeValidator1"  ControlToValidate="Fecha_entrega" ValidationGroup="one" runat="server" ErrorMessage="No se puede escoger una fecha menor a la del día de hoy" ForeColor="Red" SetFocusOnError="True"></asp:RangeValidator>
@@ -157,7 +154,7 @@
                                                 <!--Ingresar Cedula-->
                                                 <div class="pure-control-group" >
                                                     <label for="cedula_usuario">Número de cédula</label>
-                                                    <asp:TextBox ValidationGroup="one" runat="server" ID="cedula_usuario"  AutoPostBack="True" OnTextChanged="cedula_usuario_TextChanged" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar el número de cedula de la persona a entregar el préstamo, omita guiones, no excluya ningún digito del documento, este espacio es requerido."  placeholder="#-####-####" />
+                                                    <asp:TextBox ValidationGroup="one" runat="server" ID="cedula_usuario"  AutoPostBack="True" OnTextChanged="cedula_usuario_TextChanged" data-toggle="tooltip" data-placement="right" title="En este espacio se debe proporcionar el número de cedula de la persona a entregar el préstamo, omita guiones, no excluya ningún digito del documento, este espacio es requerido."  placeholder="#-####-####" />
                                                     <asp:RequiredFieldValidator ValidationGroup="one" ID="vCedula" runat="server" ControlToValidate="cedula_usuario" ForeColor="Red" SetFocusOnError="True" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
                                                     <asp:MaskedEditExtender ID="cedula_usuario_MaskedEditExtender" runat="server" BehaviorID="cedula_usuario_MaskedEditExtender" Century="2000" ClearMaskOnLostFocus="False" CultureAMPMPlaceholder="" CultureCurrencySymbolPlaceholder="" CultureDateFormat="" CultureDatePlaceholder="" CultureDecimalPlaceholder="" CultureThousandsPlaceholder="" CultureTimePlaceholder="" Mask="9-9999-9999" TargetControlID="cedula_usuario" />
                                                     <asp:RegularExpressionValidator ValidationGroup="one" ID="RegularExpressionValidator2" runat="server" ControlToValidate="cedula_usuario" ErrorMessage="&lt;b&gt;*&lt;/b&gt;" ForeColor="Red" ValidationExpression="^[1-9]-\d{4}-\d{4}$"></asp:RegularExpressionValidator>
@@ -216,7 +213,7 @@
                                                             </Columns>
                                                         </asp:GridView>
                                                  <div class="pure-controls-group" style="margin-top: 10px;">
-                                                    <asp:Button runat="server" CssClass="btn btn-success"   ValidationGroup="one" OnClick="Bt_Ingresar_Click" ID="Bt_Ingresar" Text="Realizar Préstamo" />
+                                                    <asp:Button runat="server" CssClass="btn btn-success"   ValidationGroup="one" OnClick="Bt_Ingresar_Click" ID="Bt_Ingresar" Text="Realizar Donación" />
                                                 </div>
                                                  
 
@@ -239,10 +236,12 @@
                                                 <div class="pure-form pure-form-aligned">
                                                
                                                 <label for="id_prestamo">Número de Donación:</label>
-                                                <asp:TextBox runat="server" ValidationGroup="two"   data-toggle="tooltip" data-placement="left"     ToolTip="Por favor, Ingrese el número del préstamo a consultar" ID="id_prestamo" />
+                                                <asp:TextBox runat="server" ValidationGroup="two"   data-toggle="tooltip" data-placement="right"     ToolTip="Por favor, Ingrese el número del préstamo a consultar" ID="id_prestamo" />
                                                 <asp:RequiredFieldValidator ValidationGroup="two" ID="RequiredFieldValidator1" runat="server" ControlToValidate="id_prestamo" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
                                                   <cc1:MaskedEditExtender ID="MaskedEditExtender2" runat="server" BehaviorID="id_prestamo_MaskedEditExtender" Century="2000" ClearMaskOnLostFocus="true" CultureAMPMPlaceholder="" CultureCurrencySymbolPlaceholder="" CultureDateFormat="" CultureDatePlaceholder="" CultureDecimalPlaceholder="" CultureThousandsPlaceholder="" CultureTimePlaceholder="" Mask="999999999" TargetControlID="id_prestamo"></cc1:MaskedEditExtender>
-                                                <asp:Button runat="server" ValidationGroup="two" ID="Consulta_prestamo" OnClick="Consulta_prestamo_Click"    class="btn btn-success" Text="Consultar"></asp:Button>
+                                               <br />
+                                               <br />
+                                                     <asp:Button runat="server" ValidationGroup="two" ID="Consulta_prestamo" OnClick="Consulta_prestamo_Click"    class="btn btn-success" Text="Consultar"></asp:Button>
                                                  </div>  
                                   <br />
                                   <br />
@@ -588,7 +587,11 @@ function imprimePanel1() {
 }
 
 </script>
-
+                                       <script type="text/javascript">
+                                           $(document).ready(function () {
+                                               $('[data-toggle="tooltip"]').tooltip();
+                                           });
+                            </script>
 
          <script type="text/javascript" >
 

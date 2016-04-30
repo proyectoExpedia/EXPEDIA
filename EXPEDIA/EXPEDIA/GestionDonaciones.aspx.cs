@@ -12,6 +12,8 @@ namespace EXPEDIA
 {
 	public partial class GestionDonaciones : System.Web.UI.Page
 	{
+
+
         private string departamento;
         private string descripcion;
         private string provedor;
@@ -33,6 +35,12 @@ namespace EXPEDIA
 
         protected void Page_Load(object sender, EventArgs e)
         {
+
+            if (Session["Usuario"] == "Inicio")
+            {
+                Session["Usuario"] = "Anonimo";
+                Response.Redirect("index.aspx");
+            }
 
             if (!IsPostBack)
             {

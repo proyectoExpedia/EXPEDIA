@@ -82,9 +82,10 @@
                         <div class="tab-pane fade in active" id="Ingresar">
                             <h1 style="text-align:center">Activos</h1>
 
-                             <div class="pure-controls-group">
+
                                     <label for="tipo_activo">Tipo de Activo</label>
-                                    <div style="margin-left: 55px" class="btn-group" data-toggle="buttons">
+                                 <div class="pure-form pure-form-aligned" style="margin-top: 5px; margin-left: 20px;">
+                                    <div class="btn-group" data-toggle="buttons">
                                         <label class="btn btn-primary" >
                                             <asp:RadioButton  runat="server" GroupName="tipo" ID="RadioButton2" Text="Software" autocomplete="off" />
                                         </label>
@@ -96,7 +97,7 @@
                                         </label>
 
                                     </div>
-                                </div>
+                                
                             <br />
                             <br />
                             
@@ -107,15 +108,15 @@
                                         <asp:DropDownList runat="server" data-toggle="tooltip" title="Seleccione una descripción como filtro para búsqueda." id="descripcion_activo" CssClass="pure-input-1-2">
                                         <asp:ListItem Value="0">Elija una descripción</asp:ListItem>
                                         </asp:DropDownList>
+                             <br />
                              
-                             
-                             <label for="area">Departamento o Sede regional destinado(a)</label>
+                             <label for="departamento_activo">Departamento o Sede regional destinado(a)</label>
                                         <asp:DropDownList runat="server" data-toggle="tooltip" title="Seleccione un departamento o área como filtro para su búsqueda." id="departamento_activo" CssClass="pure-input-1-2">
                                           <asp:ListItem Value="0">Elija un Departamento o Sede</asp:ListItem>
                                              </asp:DropDownList>
                                 
-                             
-                             <label for="provedor">Proveedor</label>
+                             <br />
+                             <label for="proveedor">Proveedor</label>
                                         <asp:DropDownList runat="server" data-toggle="tooltip" title="Seleccione un proveedor como filtro para búsqueda." id="proveedor" CssClass="pure-input-1-2">
                                         <asp:ListItem Value="0">Elija un proveedor</asp:ListItem>
                                              </asp:DropDownList>
@@ -124,7 +125,7 @@
                      <asp:Button runat="server" ID="Button1" CssClass="btn btn-primary" OnClick="Consultar_Click"  Text="Consultar"/>
                                <br />
                                <br />
-                                                        <br />
+                                </div>                        <br />
                                                         <br />
                                 <asp:GridView  runat="server" ID="lista" CssClass="table" > </asp:GridView>
                                     <br />

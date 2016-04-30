@@ -24,11 +24,35 @@
     <script src="http://tablefilter.free.fr/TableFilter/filtergrid.css"></script>
     <link href="css/bootstrap-table.css" rel="stylesheet" />
     <script src="https://cdn.datatables.net/1.10.10/js/jquery.dataTables.min.js"></script>
+<link href="css/spectrum.css" rel="stylesheet" />
+<script src="js/spectrum.js"></script>
+<script src="js/dw_event.js" type="text/javascript"></script>
+<script src="js/dw_cookies.js" type="text/javascript"></script>
+<script src="js/dw_sizerdx.js" type="text/javascript"></script>
+<script type="text/javascript">
+    dw_Event.add(window, 'load', dw_fontSizerDX.init);
+</script>
     <!--HASTA AQUI LAS TABLAS-->
+    <script src="js/dw_sizerdx.js"></script>
 </head>
 <body>
     <form id="form1" runat="server">
-   
+   <div id="sizer"><a class="increase" href="#" title="Increase text size"><img src="images/plus.gif" alt="" border="0" /></a><a class="decrease" href="#" title="Decrease text size"><img src="images/minus.gif" alt="" border="0" /></a><a class="reset" href="#" title="Restore default font-sizes"><img src="images/reset.gif" alt="" border="0" /></a></div>
+   <div id="color"><input type='text' class="colores" /> </div> 
+    <script>
+        $(".colores").spectrum({
+            color: "#ffffff",
+            showPalette: true,
+            palette: [
+                ['black', 'white', 'blanchedalmond'],
+                ['rgb(255, 128, 0);', 'hsv 100 70 50', 'lightyellow']
+            ],
+            change: function (color) {
+                //alert(color.toHexString());
+                $('body').css("background-color", color.toHexString());
+            }
+        });
+            </script>
 <!--Menu-->
     <nav class="navbar" role="navigation" style="margin-top:20px;">
         <div class="container">
@@ -65,7 +89,7 @@
         </div>
     </nav>
     <div class="container">
-        <div class="panel panel-primary">
+        <div class="panel panel-primary"  style="background-color:transparent;">
             <div class="panel-heading">
                 <h3 class="panel-title">Gestión de activos</h3>
             </div>
