@@ -76,6 +76,15 @@ namespace EXPEDIA {
         protected global::System.Web.UI.WebControls.TextBox nombre_usuario;
         
         /// <summary>
+        /// Control RegularExpressionValidator5.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator5;
+        
+        /// <summary>
         /// Control vNombre.
         /// </summary>
         /// <remarks>
@@ -94,6 +103,15 @@ namespace EXPEDIA {
         protected global::System.Web.UI.WebControls.TextBox apellido_usuario1;
         
         /// <summary>
+        /// Control RegularExpressionValidator6.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator6;
+        
+        /// <summary>
         /// Control vApellido1.
         /// </summary>
         /// <remarks>
@@ -110,6 +128,15 @@ namespace EXPEDIA {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox apellido_usuario2;
+        
+        /// <summary>
+        /// Control RegularExpressionValidator7.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator7;
         
         /// <summary>
         /// Control vApellido2.
@@ -445,6 +472,15 @@ namespace EXPEDIA {
         protected global::System.Web.UI.WebControls.TextBox nombre_actualizar;
         
         /// <summary>
+        /// Control RegularExpressionValidator8.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator8;
+        
+        /// <summary>
         /// Control RequiredFieldValidator11.
         /// </summary>
         /// <remarks>
@@ -463,6 +499,15 @@ namespace EXPEDIA {
         protected global::System.Web.UI.WebControls.TextBox apellido_actualizar1;
         
         /// <summary>
+        /// Control RegularExpressionValidator9.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator9;
+        
+        /// <summary>
         /// Control RequiredFieldValidator12.
         /// </summary>
         /// <remarks>
@@ -479,6 +524,15 @@ namespace EXPEDIA {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox apellido_actualizar2;
+        
+        /// <summary>
+        /// Control RegularExpressionValidator10.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator10;
         
         /// <summary>
         /// Control RequiredFieldValidator13.
@@ -697,6 +751,15 @@ namespace EXPEDIA {
         protected global::System.Web.UI.WebControls.TextBox ocupacion;
         
         /// <summary>
+        /// Control RegularExpressionValidator11.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator11;
+        
+        /// <summary>
         /// Control RequiredFieldValidator51.
         /// </summary>
         /// <remarks>
@@ -785,6 +848,15 @@ namespace EXPEDIA {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox areas;
+        
+        /// <summary>
+        /// Control RegularExpressionValidator12.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator12;
         
         /// <summary>
         /// Control RequiredFieldValidator7.
