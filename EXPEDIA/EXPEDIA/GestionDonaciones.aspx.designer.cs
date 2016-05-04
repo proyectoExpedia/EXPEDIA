@@ -157,6 +157,15 @@ namespace EXPEDIA {
         protected global::System.Web.UI.WebControls.TextBox Fecha_entrega;
         
         /// <summary>
+        /// Control MaskedEditExtender4.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::AjaxControlToolkit.MaskedEditExtender MaskedEditExtender4;
+        
+        /// <summary>
         /// Control Fechaentrega.
         /// </summary>
         /// <remarks>

@@ -146,7 +146,8 @@
                                                 <fieldset class="pure-control-group">
                                                 <label for="Fecha_entrega">Fecha de entrega:</label>
                                                 <asp:TextBox runat="server" ID="Fecha_entrega" data-toggle="tooltip" data-placement="right" title="Este espacio debe contener la fecha de entrega de la donación, este espacio es requerido."></asp:TextBox>
-                                                <asp:CalendarExtender Format="yyyy/MM/dd"  ID="Fechaentrega" runat="server"  PopupButtonID="Fecha_entrega"  TargetControlID="Fecha_entrega" BehaviorID="_content_Fechaentrega" />
+                                                 <cc1:MaskedEditExtender ID="MaskedEditExtender4" runat="server" BehaviorID="fecha_MaskedEditExtender1" Century="2000" ClearMaskOnLostFocus="false"  Mask="9999/99/99" TargetControlID="Fecha_entrega"></cc1:MaskedEditExtender>
+                                                    <asp:CalendarExtender Format="yyyy/MM/dd"  ID="Fechaentrega" runat="server"  PopupButtonID="Fecha_entrega"  TargetControlID="Fecha_entrega" BehaviorID="_content_Fechaentrega" />
                                                 <asp:RequiredFieldValidator ValidationGroup="one" ID="vFinalizacon" runat="server"   ControlToValidate="Fecha_entrega" ForeColor="Red" SetFocusOnError="True" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
                                                 <asp:RangeValidator ID="RangeValidator1"  ControlToValidate="Fecha_entrega" ValidationGroup="one" runat="server" ErrorMessage="No se puede escoger una fecha menor a la del día de hoy" ForeColor="Red" SetFocusOnError="True"></asp:RangeValidator>
                                                 <asp:Button runat="server" CssClass="btn btn-primary"  OnClick="Agregar_Click" ID="Agregar"  Text="Agregar Activos " />
@@ -559,7 +560,7 @@ condiciones fisicas - en caso de préstamo o traslado)
 
            <!----------JAVA SCRIPTS--------->
            <script  type="text/jscript">
-function imprimePanel1() {
+function imprimePanel() {
     var printContent = document.getElementById("<%=Panel19.ClientID%>");
     var windowUrl = 'about:blank';
 

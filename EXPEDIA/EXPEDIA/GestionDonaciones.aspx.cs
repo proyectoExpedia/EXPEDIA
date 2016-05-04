@@ -20,7 +20,6 @@ namespace EXPEDIA
         private string num;
         private string id_des;
         private string id_dep;
-        private static int id_finalizar;
         private static int id_prolongar;
         private static bool tiene = false;
         private static string ced;
@@ -36,7 +35,7 @@ namespace EXPEDIA
         protected void Page_Load(object sender, EventArgs e)
         {
 
-            if (Session["Usuario"] == "Inicio")
+            if (Session["Usuario"].Equals("Inicio"))
             {
                 Session["Usuario"] = "Anonimo";
                 Response.Redirect("index.aspx");
@@ -51,11 +50,11 @@ namespace EXPEDIA
                 dt = new DataTable();
                 cargar();
                 RangeValidator1.MinimumValue = DateTime.Now.ToString("yyyy/MM/dd");
-                RangeValidator1.MaximumValue = "99/99/9999";
+                RangeValidator1.MaximumValue = "9999/99/99";
 
             }
 
-            if (Session["Usuario"] == "Inicio")
+            if (Session["Usuario"].Equals( "Inicio"))
             {
                 Session["Usuario"] = "Anonimo";
                 Response.Redirect("index.aspx");
@@ -110,7 +109,7 @@ namespace EXPEDIA
                                 Cargar_Id_Donacion(cedula_usuario.Text);
                                 Cargar_Activos(id, tab_logic_hover);
                                 excelente(Bt_Ingresar);
-                        Page.ClientScript.RegisterStartupScript(GetType(), "Bt_Ingresar ", "imprimePanel1()", true);
+                        Page.ClientScript.RegisterStartupScript(GetType(), "Bt_Ingresar", "imprimePanel()", true);
 
                         limpiarIngresar();
 
