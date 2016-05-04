@@ -51,7 +51,7 @@ namespace EXPEDIA
 
             }
 
-            if (Session["Usuario"] == "Inicio")
+            if (Session["Usuario"].Equals( "Inicio"))
             {
                 Session["Usuario"] = "Anonimo";
                 Response.Redirect("index.aspx");
@@ -108,7 +108,7 @@ namespace EXPEDIA
                                 Cargar_Id_Prestamo(cedula_usuario.Text);
                                 Cargar_Activos(id, tab_logic_hover);
                                 excelente(Bt_Ingresar);
-                                Page.ClientScript.RegisterStartupScript(this.GetType(), "Bt_Ingresar ", "imprimePanel()", true);
+                                Page.ClientScript.RegisterStartupScript(this.GetType(), "Bt_Ingresar", "imprimePanel()", true);
                                 Cambiar_Estado_usuario(2, cedula_usuario.Text);
                                 limpiarIngresar();
 
