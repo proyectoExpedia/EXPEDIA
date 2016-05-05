@@ -13,7 +13,7 @@ namespace EXPEDIA
         protected void Page_Load(object sender, EventArgs e)
         {
        
-                if (Session["Usuario"] == "Inicio")
+                if (Session["Usuario"].Equals( "Inicio"))
                 {
                     Session["Usuario"] = "Anonimo";
                     Response.Redirect("index.aspx");

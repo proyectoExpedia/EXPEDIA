@@ -93,18 +93,22 @@
                                                 <div class="pure-control-group">
                                                     <label for="nombre">Nombre</label>
                                                     <asp:TextBox ValidationGroup="one" MaxLength="20" runat="server" ID="nombre_usuario" data-toggle="tooltip" data-placement="right" title="Este espacio debe proporcionar el nombre de la persona a registrar, este espacio es requerido." />
+                                                    <asp:RegularExpressionValidator ID="RegularExpressionValidator5" runat="server" ControlToValidate="nombre_usuario" ForeColor="Red" ErrorMessage="&lt;b&gt;*&lt;/b&gt; Solo letras" ValidationExpression="^[a-zA-Z- - ]*$"></asp:RegularExpressionValidator>
                                                     <asp:RequiredFieldValidator ValidationGroup="one" ID="vNombre" runat="server" ControlToValidate="nombre_usuario" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
                                                 </div>
+                                                
                                                 <!--Ingresar apellido 1-->
                                                 <div class="pure-control-group">
                                                     <label for="nombre">Primer Apellido</label>
                                                     <asp:TextBox ValidationGroup="one" MaxLength="20" runat="server" ID="apellido_usuario1" data-toggle="tooltip" data-placement="right" ToolTip="Este espacio debe proporcionar el primer apellido de la persona a registrar, este espacio es requerido." />
+                                                     <asp:RegularExpressionValidator ID="RegularExpressionValidator6" runat="server" ControlToValidate="apellido_usuario1" ForeColor="Red" ErrorMessage="&lt;b&gt;*&lt;/b&gt; Solo letras" ValidationExpression="^[a-zA-Z- - ]*$"></asp:RegularExpressionValidator>
                                                     <asp:RequiredFieldValidator ValidationGroup="one" ID="vApellido1" runat="server" ControlToValidate="apellido_usuario1" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
                                                 </div>
                                                 <!--Ingresar apellido 2-->
                                                 <div class="pure-control-group">
                                                     <label for="nombre">Segundo Apellido</label>
                                                     <asp:TextBox ValidationGroup="one" MaxLength="20" runat="server" ID="apellido_usuario2" data-placement="right"   data-toggle="tooltip" title="Este espacio debe proporcionar el segundo apellido de la persona a registrar, este espacio es requerido." />
+                                                     <asp:RegularExpressionValidator ID="RegularExpressionValidator7" runat="server" ControlToValidate="apellido_usuario2" ForeColor="Red" ErrorMessage="&lt;b&gt;*&lt;/b&gt; Solo letras" ValidationExpression="^[a-zA-Z- ]*$"></asp:RegularExpressionValidator>
                                                     <asp:RequiredFieldValidator ValidationGroup="one" ID="vApellido2" runat="server" ControlToValidate="apellido_usuario2" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
                                                 </div>
                                                 <!--Ingresar Cedula-->
@@ -233,18 +237,21 @@
                                                             <div class="pure-control-group">
                                                                 <label for="nombre1">Nombre</label>
                                                                 <asp:TextBox runat="server" MaxLength="20" ValidationGroup="three" ID="nombre_actualizar" data-toggle="tooltip" data-placement="right" title="En este espacio se debe proporcionar el nombre de la persona a modificar, este espacio es requerido." />
+                                                                 <asp:RegularExpressionValidator ID="RegularExpressionValidator8" runat="server" ControlToValidate="nombre_actualizar" ForeColor="Red" ErrorMessage="&lt;b&gt;*&lt;/b&gt; Solo letras" ValidationExpression="^[a-zA-Z- ]*$"></asp:RegularExpressionValidator>
                                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" ErrorMessage="<b>*</b>" ValidationGroup="three" ControlToValidate="nombre_actualizar" ForeColor="Red"></asp:RequiredFieldValidator>
                                                             </div>
                                                             <!--Consulta Apellido1-->
                                                             <div class="pure-control-group">
                                                                 <label for="nombre1">Primer Apellido</label>
                                                                 <asp:TextBox runat="server" MaxLength="20" ValidationGroup="three"  ID="apellido_actualizar1" data-toggle="tooltip" data-placement="right" title="En este espacio se debe proporcionar el primer apellido de la persona a modificar, este espacio es requerido." />
+                                                                 <asp:RegularExpressionValidator ID="RegularExpressionValidator9" runat="server" ControlToValidate="apellido_actualizar1" ForeColor="Red" ErrorMessage="&lt;b&gt;*&lt;/b&gt; Solo letras" ValidationExpression="^[a-zA-Z- ]*$"></asp:RegularExpressionValidator>
                                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator12" runat="server" ErrorMessage="<b>*</b>" ValidationGroup="three" ControlToValidate="apellido_actualizar1" ForeColor="Red"></asp:RequiredFieldValidator>
                                                             </div>
                                                             <!--Consulta Apellido2-->
                                                             <div class="pure-control-group">
                                                                 <label for="nombre1">Segundo Apellido</label>
                                                                 <asp:TextBox runat="server" MaxLength="20" ValidationGroup="three"  ID="apellido_actualizar2" data-toggle="tooltip" data-placement="right" title="En este espacio se debe proporcionar el segundo apellido de la persona a modificar, este espacio es requerido." />
+                                                                 <asp:RegularExpressionValidator ID="RegularExpressionValidator10" runat="server" ControlToValidate="apellido_actualizar2" ForeColor="Red" ErrorMessage="&lt;b&gt;*&lt;/b&gt; Solo letras" ValidationExpression="^[a-zA-Z- ]*$"></asp:RegularExpressionValidator>
                                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator13" runat="server" ErrorMessage="<b>*</b>" ValidationGroup="three" ControlToValidate="apellido_actualizar2" ForeColor="Red"></asp:RequiredFieldValidator>
                                                             </div>
                                                             <!--Consulta Contraseña-->
@@ -339,6 +346,7 @@
                                                     <div class="input-prepend">
                                                         <label for="ocupacion">Ocupación</label>
                                                         <asp:TextBox runat="server" ID="ocupacion"  MaxLength="500" ValidationGroup="four" placeholder="Programador" data-toggle="tooltip" data-placement="right" title="En este espacio se debe proporcionar el nombre de la ocupación que se desea registrar, este espacio es requerido."/>
+                                                         <asp:RegularExpressionValidator ID="RegularExpressionValidator11" runat="server" ControlToValidate="ocupacion" ForeColor="Red" ErrorMessage="&lt;b&gt;*&lt;/b&gt; Solo letras" ValidationExpression="^[a-zA-Z- ]*$"></asp:RegularExpressionValidator>
                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator51" ForeColor="Red" ControlToValidate="ocupacion" ValidationGroup="four" runat="server" ErrorMessage="<b>*</b>"></asp:RequiredFieldValidator>                                                                                                              
                                                     </div>
                                                 </fieldset>
@@ -398,7 +406,8 @@
                                                     <div class="input-prepend">
                                                         <label for="area">Área</label>
                                                         <asp:TextBox runat="server" MaxLength="20" id="areas" ValidationGroup="Six" type="text" placeholder="Recursos Humanos" data-toggle="tooltip" data-placement="right" title="En este espacio se debe proporcionar el nombre de la área que se desea registrar, este espacio es requerido." />
-                                                        <asp:RequiredFieldValidator ValidationGroup="Six" MaxLength="500" ID="RequiredFieldValidator7" runat="server"  ForeColor="Red" ControlToValidate="areas" ErrorMessage="<b>*</b>"></asp:RequiredFieldValidator>
+                                                        <asp:RegularExpressionValidator ID="RegularExpressionValidator12" runat="server" ControlToValidate="areas" ForeColor="Red" ErrorMessage="&lt;b&gt;*&lt;/b&gt; Solo letras" ValidationExpression="^[a-zA-Z- ]*$"></asp:RegularExpressionValidator>
+                                                         <asp:RequiredFieldValidator ValidationGroup="Six" MaxLength="500" ID="RequiredFieldValidator7" runat="server"  ForeColor="Red" ControlToValidate="areas" ErrorMessage="<b>*</b>"></asp:RequiredFieldValidator>
                                                     </div>
                                                 </fieldset>
                                             </div> <!-- /container -->

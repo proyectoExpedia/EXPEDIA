@@ -161,7 +161,8 @@
                                                       <fieldset class="pure-control-group">
                                                  <label for="Fecha_entrega">Fecha de entrega:</label>
                                                 <asp:TextBox runat="server" ID="Fecha_entrega"  data-toggle="tooltip" data-placement="right" title="Este espacio debe contener la fecha de entrega del préstamo, este espacio es requerido."></asp:TextBox>
-                                                 <asp:CalendarExtender Format="yyyy/MM/dd"  ID="Fechaentrega" runat="server"  PopupButtonID="Fecha_entrega"  TargetControlID="Fecha_entrega" BehaviorID="_content_Fechaentrega" />
+                                                   <cc1:MaskedEditExtender ID="MaskedEditExtender4" runat="server" BehaviorID="fecha_MaskedEditExtender1" Century="2000" ClearMaskOnLostFocus="false"  Mask="9999/99/99" TargetControlID="Fecha_entrega"></cc1:MaskedEditExtender>
+                                                          <asp:CalendarExtender Format="yyyy/MM/dd"  ID="Fechaentrega" runat="server"  PopupButtonID="Fecha_entrega"  TargetControlID="Fecha_entrega" BehaviorID="_content_Fechaentrega" />
                                                 <asp:RequiredFieldValidator ValidationGroup="one" ID="vFinalizacon" runat="server"   ControlToValidate="Fecha_entrega" ForeColor="Red" SetFocusOnError="True" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
                                                           <asp:RangeValidator ID="RangeValidator1"  ControlToValidate="Fecha_entrega" ValidationGroup="one" runat="server" ErrorMessage="No se puede escoger una fecha menor a la del día de hoy" ForeColor="Red" SetFocusOnError="True"></asp:RangeValidator>
                                                
@@ -173,6 +174,7 @@
                                                      <fieldset class="pure-control-group">
                                                  <label for="Fecha_entrega">Fecha de regreso:</label>
                                                 <asp:TextBox runat="server"  ID="Fecha_regreso" data-toggle="tooltip" data-placement="right" title="Este espacio debe contener la fecha en que se está retornando el activo, este espacio es requerido."></asp:TextBox>
+                                                         <cc1:MaskedEditExtender ID="MaskedEditExtender3" runat="server" BehaviorID="fecha_MaskedEditExtender2" Century="2000" ClearMaskOnLostFocus="false"  Mask="9999/99/99" TargetControlID="Fecha_regreso"></cc1:MaskedEditExtender>
                                                          <asp:CalendarExtender ID="Fecharegreso" Format="yyyy/MM/dd"  runat="server"   PopupButtonID="Fecha_regreso"   TargetControlID="Fecha_regreso" BehaviorID="_content_Fecharegreso" />
                                                          <asp:RequiredFieldValidator  ValidationGroup="one"   ID="RequiredFieldValidator5"   runat="server" ControlToValidate="Fecha_regreso"   ForeColor="Red" SetFocusOnError="True" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
                                                          <asp:CompareValidator ID="CompareValidator1" runat="server" ValidationGroup="one"  ControlToCompare="Fecha_entrega" Operator="GreaterThanEqual" ControlToValidate="Fecha_regreso"  ErrorMessage="No se puede escoger una fecha menor a la del día de entrega" ForeColor="Red" SetFocusOnError="True"></asp:CompareValidator>
