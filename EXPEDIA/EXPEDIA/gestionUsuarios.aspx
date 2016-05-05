@@ -193,9 +193,6 @@
                                 </asp:Panel>
                                 </ContentTemplate>
                              </asp:TabPanel>
-
-                                            <!-----------------------------------------------Formulario Consultas----------------------------------------------->
-
                             <asp:TabPanel runat="server" HeaderText="<span style='margin: 5px'  data-toggle='tab'><b>Control de usuarios</b> <span style='margin: 10px'  class='glyphicon glyphicon-question-sign'></span><span class='glyphicon glyphicon-minus-sign'></span><span class='glyphicon glyphicon-ok-sign'></span></span>" ID="TabPanel2">
                                 <ContentTemplate>
                                     <asp:Panel ID="Panel1" runat="server">
