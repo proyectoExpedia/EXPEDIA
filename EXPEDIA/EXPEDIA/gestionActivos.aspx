@@ -495,7 +495,7 @@
                                     <asp:TextBox runat="server" ID="final_garantia2" ValidationGroup="two" data-toggle="tooltip" data-placement="right" title="En este espacio debe proporcionar la fecha en que finaliza la garantía, especificada por el proveedor. EL formato de ingreso de la fecha es AAAA/MM/DD (Año/Mes/Día), este espacio es requerido."></asp:TextBox>
                                     <cc1:CalendarExtender Format="yyyy/MM/dd" TargetControlID="final_garantia2" ID="calFinal3" runat="server" />
                                     <cc1:MaskedEditExtender ID="MaskedEditExtender8" runat="server"  Century="2000" ClearMaskOnLostFocus="false"  Mask="9999/99/99" TargetControlID="final_garantia2"></cc1:MaskedEditExtender>
-                                    <asp:CompareValidator ID="CompareValidator7" runat="server" ControlToCompare="inicio_garantia2" Operator="GreaterThanEqual" ControlToValidate="final_garantia2" ForeColor="Red" SetFocusOnError="true" ErrorMessage="La fecha no puede ser menor a la de inicio de garantia"></asp:CompareValidator>
+                                    <asp:CompareValidator ID="CompareValidator7" runat="server" ControlToCompare="inicio_garantia2" Operator="GreaterThanEqual" ControlToValidate="final_garantia2" ForeColor="Red" SetFocusOnError="true" ErrorMessage="La fecha no puede ser menor a la de inicio de garantía"></asp:CompareValidator>
                                     <asp:RequiredFieldValidator ValidationGroup="two" ID="vFinal2" runat="server" ControlToValidate="final_garantia2" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
                                 
                                      </fieldset>
@@ -537,7 +537,7 @@
                                         <label for="Tipo">Especificaciones técnicas</label>
                                         <asp:TextBox ValidationGroup="two" ID="especificacion_tecnica2" MaxLength="350" TextMode="MultiLine" runat="server" data-toggle="tooltip" data-placement="right" title="En este espacio se debe proporcionar las cualidades del activo (No puede exceder 350 caractéres), este espacio es requerido" class="pure-input-1-2" placeholder="Especificaciones Técnicas" />
                                    <asp:RequiredFieldValidator ValidationGroup="two" ID="vEspecificacion2" runat="server" ControlToValidate="especificacion_tecnica2" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
-                                   <asp:CustomValidator ValidationGroup="two" ID="CustomValidator6" runat="server" ClientValidationFunction="ValidateFieldLegth_ETM" ErrorMessage="La especificación técnica no puede exceder los 350 digitos." ForeColor="#3498db" ControlToValidate="especificacion_tecnica2" EnableClientScript="true"  />
+                                   <asp:CustomValidator ValidationGroup="two" ID="CustomValidator6" runat="server" ClientValidationFunction="ValidateFieldLegth_ETM" ErrorMessage="La especificación técnica no puede exceder los 350 dígitos." ForeColor="#3498db" ControlToValidate="especificacion_tecnica2" EnableClientScript="true"  />
                               
                                         </div>
                                     </fieldset>
