@@ -63,7 +63,7 @@ namespace EXPEDIA
                         cmd.Parameters.AddWithValue("@costo", precio.Text);
                         cmd.Parameters.AddWithValue("@placa", numero_placa.Text);
                         cmd.Parameters.AddWithValue("@serie", numero_serie.Text);
-                        cmd.Parameters.AddWithValue("@garantia_inicio", inicio_garantia.Text);
+                        cmd.Parameters.AddWithValue("@garantia_inicio", fecha_compra.Text);
                         cmd.Parameters.AddWithValue("@garantia_final", final_garantia.Text);
                         cmd.Parameters.AddWithValue("@descripcion", descripcion.SelectedValue);
                         cmd.Parameters.AddWithValue("@departamento", area.SelectedValue);
@@ -109,7 +109,7 @@ namespace EXPEDIA
                         cmd.Parameters.AddWithValue("@tipo_activo", "Hardware");
                         cmd.Parameters.AddWithValue("@placa", numero_placa.Text);
                         cmd.Parameters.AddWithValue("@serie", numero_serie.Text);
-                        cmd.Parameters.AddWithValue("@garantia_inicio", inicio_garantia.Text);
+                        cmd.Parameters.AddWithValue("@garantia_inicio", fecha_compra.Text);
                         cmd.Parameters.AddWithValue("@garantia_final", final_garantia.Text);
                         cmd.Parameters.AddWithValue("@descripcion", descripcion.SelectedValue);
                         cmd.Parameters.AddWithValue("@departamento", area.SelectedValue);
@@ -615,7 +615,7 @@ namespace EXPEDIA
             numero_serie2.ReadOnly = true;
             precio2.ReadOnly = false;
             fecha_compra2.ReadOnly = false;
-            inicio_garantia2.ReadOnly = false;
+            //inicio_garantia2.ReadOnly = false;
             final_garantia2.ReadOnly = false;
             descripcion2.Enabled = true;
             area2.Enabled = true;
@@ -643,7 +643,7 @@ namespace EXPEDIA
             numero_serie2.ReadOnly = true;
             precio2.ReadOnly = true;
             fecha_compra2.ReadOnly = true;
-            inicio_garantia2.ReadOnly = true;
+            //inicio_garantia2.ReadOnly = true;
             final_garantia2.ReadOnly = true;
             descripcion2.Enabled = false;
             area2.Enabled = false;
@@ -722,10 +722,11 @@ namespace EXPEDIA
                         String fechaC = reader.GetDateTime(11).ToString("yyyy/MM/dd");
                     
                         fecha_compra2.Text = fechaC;
-                        String fechaIG = reader.GetDateTime(3).ToString("yyyy/MM/dd");
+                        /*
+                        String fechaIG = reader.GetDateTime(3).ToString("yyyy/MM/dd");*/
                         
                         
-                        inicio_garantia2.Text = fechaIG;
+                      /* inicio_garantia2.Text = fechaIG;*/
                         String fechaFG = reader.GetDateTime(4).ToString("yyyy/MM/dd");
                         
                         final_garantia2.Text = fechaFG;
@@ -783,9 +784,9 @@ namespace EXPEDIA
                         String fechaC = reader.GetDateTime(11).ToString("yyyy/MM/dd");
                     
                         fecha_compra2.Text =fechaC;
-                        String fechaIG = reader.GetDateTime(3).ToString("yyyy/MM/dd");
+                       /* String fechaIG = reader.GetDateTime(3).ToString("yyyy/MM/dd");
                       
-                        inicio_garantia2.Text = fechaIG;
+                        inicio_garantia2.Text = fechaIG;*/
                         String fechaFG = reader.GetDateTime(4).ToString("yyyy/MM/dd");
                       
                         final_garantia2.Text = fechaFG;
@@ -910,7 +911,7 @@ namespace EXPEDIA
                         cmd.Parameters.AddWithValue("@tipo_activo", "Software");
                         cmd.Parameters.AddWithValue("@placa", numero_placa2.Text);
                         cmd.Parameters.AddWithValue("@serie", numero_serie2.Text);
-                        cmd.Parameters.AddWithValue("@garantia_inicio", inicio_garantia2.Text);
+                        cmd.Parameters.AddWithValue("@garantia_inicio", fecha_compra2.Text);
                         cmd.Parameters.AddWithValue("@garantia_final", final_garantia2.Text);
                         cmd.Parameters.AddWithValue("@descripcion", descripcion2.SelectedValue);
                         cmd.Parameters.AddWithValue("@departamento", area2.SelectedValue);
@@ -953,7 +954,7 @@ namespace EXPEDIA
                         cmd.Parameters.AddWithValue("@tipo_activo", "Hardware");
                         cmd.Parameters.AddWithValue("@placa", numero_placa2.Text);
                         cmd.Parameters.AddWithValue("@serie", numero_serie2.Text);
-                        cmd.Parameters.AddWithValue("@garantia_inicio", inicio_garantia2.Text);
+                        cmd.Parameters.AddWithValue("@garantia_inicio", fecha_compra2.Text);
                         cmd.Parameters.AddWithValue("@garantia_final", final_garantia2.Text);
                         cmd.Parameters.AddWithValue("@descripcion", descripcion2.SelectedValue);
                         cmd.Parameters.AddWithValue("@departamento", area2.SelectedValue);
@@ -1027,13 +1028,13 @@ namespace EXPEDIA
                 {
                     SqlCommand cmd = new SqlCommand(Sql, Conexion);
                     cmd.Parameters.AddWithValue("@placa", numero_placa2.Text);
-                    cmd.Parameters.AddWithValue("@estado", 4);
+                    cmd.Parameters.AddWithValue("@estado", 2);
                     //invalidos
                     cmd.ExecuteNonQuery();
-                    //excelente(darBaja);
+                    excelente(enviar2);
                     c.Desconectar(Conexion);
 
-                    Response.Redirect("gestionActivos.aspx");
+                   
 
                 }
                 catch (Exception t) { Response.Write("error" + t); }
@@ -1050,7 +1051,7 @@ namespace EXPEDIA
             finalizacion_contrato.Text = "";
             precio.Text = "";
             fecha_compra.Text = "";
-            inicio_garantia.Text = "";
+            //inicio_garantia.Text = "";
             final_garantia.Text = "";
             descripcion.SelectedIndex = 0;
             area.SelectedIndex = 0;
@@ -1070,7 +1071,7 @@ namespace EXPEDIA
             //finalizacion_contrato3.Text = "";
             precio2.Text = "";
             fecha_compra2.Text = "";
-            inicio_garantia2.Text = "";
+            //inicio_garantia2.Text = "";
             final_garantia2.Text = "";
             descripcion2.SelectedIndex = 0;
             area2.SelectedIndex = 0;
