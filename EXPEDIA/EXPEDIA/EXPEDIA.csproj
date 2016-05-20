@@ -88,11 +88,15 @@
     <Content Include="js\dw_cookies.js" />
     <Content Include="js\dw_event.js" />
     <Content Include="js\dw_sizerdx.js" />
+    <Content Include="js\jquery-2.0.1.min.js" />
+    <Content Include="js\jquery.base64.js" />
+    <Content Include="js\jquery.btechco.excelexport.js" />
     <Content Include="js\spectrum.js" />
     <Content Include="js\sweetalert.min.js" />
     <Content Include="gestionAjustes.aspx" />
     <Content Include="mainConsulta.aspx" />
     <Content Include="packages.config" />
+    <None Include="Properties\PublishProfiles\EXPEDIA.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
       <SubType>Designer</SubType>

@@ -20,6 +20,7 @@ namespace EXPEDIA
                 //Conect = new SqlConnection("Data Source=DARUWARCHIEF-PC\\SQLEXPRESS;Initial Catalog=BD_EXPEDIA;User ID=root;Password=root123");
                // Conect = new SqlConnection("Data Source=PERSONAL-PC\\CHUZ;Initial Catalog=BD_EXPEDIA;User ID=root;Password=root123");
                 Conect = new SqlConnection("Data Source=CHARLIE\\SQLEXPRESS; Initial Catalog=BD_EXPEDIA;User ID=root;Password=root123");
+               // Conect = new SqlConnection("Data Source=EXPEDIA.mssql.somee.com; Initial Catalog=EXPEDIA;User ID=charleycg93_SQLLogin_1;Password=jf3vtixrbw");
                 return Conect;
             }catch(Exception ){
                 return null;

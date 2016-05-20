@@ -167,7 +167,8 @@
                                         <div class="tab-pane" id="Consultar">
                                             <h1 style="text-align: center" id="titulo">Formulario de Consultas</h1>
                                             <div class="pure-form pure-form-aligned">
-                                            <asp:Panel ID="Panel3" runat="server" DefaultButton="">Ingrese el valor a buscar" /></div>
+                                            <asp:Panel ID="Panel3" runat="server" DefaultButton="">
+                                                <div class="form-group pull-right">  <input type="text" class="search form-control" placeholder="Digite el valor a buscar" /></div>
                                                     <span class="counter pull-left"></span>
                                                 <div class="form-group pull-right"><label>Buscar:  </label></div>
                                                     <asp:Table ID="Table2" runat="server" CssClass="table table-hover table-bordered results">

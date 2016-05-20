@@ -262,7 +262,7 @@ namespace EXPEDIA
 
                 Conexion c = new Conexion();
                 SqlConnection Conexion = c.Conectar();
-                string Sql = @"INSERT INTO Areas (bd_id_area, bd_descripcion) values (@idA, @descripcionA)";
+                string Sql = @"INSERT INTO Areas (bd_id_area, bd_descripcion, bd_estado,bd_motivos) values (@idA, @descripcionA,@estado,@motivos)";
 
                 Conexion.Open();//abrimos conexion
 
@@ -271,6 +271,8 @@ namespace EXPEDIA
                     SqlCommand cmd = new SqlCommand(Sql, Conexion);
                     cmd.Parameters.AddWithValue("@idA", id_areas.Text); //enviamos los parametros
                     cmd.Parameters.AddWithValue("@descripcionA", descripcion_area.Text);
+                    cmd.Parameters.AddWithValue("@estado", 1);
+                    cmd.Parameters.AddWithValue("@motivos", "Activo");
                     cmd.ExecuteNonQuery();
                     c.Desconectar(Conexion);
                     ListItem item = new ListItem(descripcion_area.Text, id_areas.Text, true);
@@ -333,7 +335,7 @@ namespace EXPEDIA
             {
                 Conexion c = new Conexion();
                 SqlConnection Conexion = c.Conectar();
-                string Sql = @"INSERT INTO Proveedores (bd_id_proveedor, bd_nombre_proveedor, bd_correo_electronico_prov, bd_numero_telefonico_empresa, bd_numero_contacto) values (@idProv, @nombProv, @CorreoProv, @telProv, @telCont)";
+                string Sql = @"INSERT INTO Proveedores (bd_id_proveedor, bd_nombre_proveedor, bd_correo_electronico_prov, bd_numero_telefonico_empresa, bd_numero_contacto, bd_motivos, bd_estado) values (@idProv, @nombProv, @CorreoProv, @telProv, @telCont,@motivos,@estado)";
 
                 Conexion.Open();//abrimos conexion
 
@@ -345,6 +347,8 @@ namespace EXPEDIA
                     cmd.Parameters.AddWithValue("@CorreoProv", correo.Text);
                     cmd.Parameters.AddWithValue("@telProv", telefono1.Text);
                     cmd.Parameters.AddWithValue("@telCont", telefono.Text);
+                    cmd.Parameters.AddWithValue("@motivos", "Activo");
+                    cmd.Parameters.AddWithValue("@estado", 1);
                     cmd.ExecuteNonQuery();
                     ListItem item3 = new ListItem(nproveedor.Text, idp.Text, true);
                     proveedor.Items.Add(item3);

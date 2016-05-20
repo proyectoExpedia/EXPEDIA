@@ -109,7 +109,7 @@ namespace EXPEDIA
                                 Cargar_Id_Donacion(cedula_usuario.Text);
                                 Cargar_Activos(id, tab_logic_hover);
                                 excelente(Bt_Ingresar);
-                        Page.ClientScript.RegisterStartupScript(GetType(), "Bt_Ingresar", "imprimePanel()", true);
+                        ClientScript.RegisterStartupScript(GetType(), "Bt_Ingresar", "imprimePanel()", true);
 
                         limpiarIngresar();
 
@@ -166,7 +166,7 @@ namespace EXPEDIA
             else
             {
                 tiene = false;
-                Info.InnerText = "No existe ningun usuario con esa cedula"; Info.Style.Add("color", "green");
+                
 
             }
 

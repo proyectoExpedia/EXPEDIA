@@ -260,7 +260,7 @@
                                         </div>
                                         <div class="modal-footer">
                                             <div class="span">
-                                                <asp:Button runat="server" ValidationGroup="Six" CssClass="btn btn-primary" OnClick="Btn_modificar_proveedores_Click" ID="Button1" Text="Modificar oroveedor" />
+                                                <asp:Button runat="server" ValidationGroup="Six" CssClass="btn btn-primary" OnClick="Btn_modificar_proveedores_Click" ID="Button1" Text="Modificar proveedor" />
                                                 <button class="btn btn-default" data-dismiss="modal">Cerrar</button>
                                             </div>
                                         </div>

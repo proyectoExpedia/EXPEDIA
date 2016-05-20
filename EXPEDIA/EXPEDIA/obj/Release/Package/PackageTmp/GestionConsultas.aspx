@@ -24,10 +24,10 @@
     <link href="js/jQueryUI/jquery-ui.min.css" rel="stylesheet" />
     <script src="js/sweetalert.min.js"></script>
     <link href="css/sweetalert.css" rel="stylesheet" />
+
+
 </head>
-
 <body>
-
     <form id="for" runat="server" >
  <!--Menu-->
     <nav class="navbar" role="navigation" style="margin-top:20px;">
