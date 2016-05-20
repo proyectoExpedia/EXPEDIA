@@ -10,6 +10,7 @@
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>EXPEDIA</title>
+    <link href="css/bootstrap.css" rel="stylesheet" />
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="icon" href="img/ExpediaLogo.png"/>
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
@@ -781,7 +782,38 @@
                         </div>
         </div>
 
+          <%-- *********MODAL DE habilitar activo****************************** --%>
+
+                 <asp:Panel ID="PanelModal"  runat="server" >
+<div class="modalPrestamo" runat="server" visible="false" tabindex="-1" style="background-color:rgba(51, 51, 51, 0.71)"  id="detalle" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <asp:Button runat="server" CssClass="close"  BorderStyle="None" OnClick="close_Click" aria-label="Close" aria-hidden="true" Text="&times;" ></asp:Button>
+        <h4 class="modal-title">Activo inhabilitado</h4>
+
+      </div>
+      <div class="modal-body">
+      
+           <div class="container" >
+              <img src="img/ExpediaLogo.png" style="width:90px; height:90px; padding-right:7px;  float:left" alt="" />
+                                                <br />
+                                               <label for="TextBox1">Numero de placa: </label> <asp:TextBox ID="TextBox1" runat="server" BorderStyle="None" BorderWidth="0px" Enabled="False" EnableTheming="True" BackColor="White"></asp:TextBox><br/>
+                                               <label for="TextBox4">Motivo: </label> <asp:TextBox ID="TextBox4" runat="server" BorderStyle="None" BorderWidth="0px" Enabled="False" EnableTheming="True" BackColor="White"></asp:TextBox><br/>
+                                               
+                                        
+                                            </div>
+
+      </div>
+      <div class="modal-footer">
+        <asp:Button  runat="server" ID="Habilitar" CssClass="btn btn-primary"  OnClick="Habilitar_Click1" Text="Habilitar" ></asp:Button>
+        <asp:Button runat="server" ID="close" CssClass="btn btn-default" Text="Cerrar" OnClick="close_Click"></asp:Button>
         
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div>
+   </asp:Panel>
         <script>
             // You can also use "$(window).load(function() {"
             $(document).ready(function () {
