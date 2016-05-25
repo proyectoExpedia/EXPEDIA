@@ -10,6 +10,7 @@
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>EXPEDIA</title>
+    <link href="css/bootstrap.css" rel="stylesheet" />
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="icon" href="img/ExpediaLogo.png"/>
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
@@ -206,7 +207,7 @@
 <%--      |             --%>     <asp:TextBox runat="server" ID="finalizacion_contrato" ClientIDMode="Static" data-toggle="tooltip" data-placement="right" title="Este espacio debe contener la fecha en que finaliza el contrato para el activo. EL formato de ingreso de la fecha es AAAA/MM/DD (Año/Mes/Día), este espacio es requerido."> </asp:TextBox>
                                   <cc1:CalendarExtender Format="yyyy/MM/dd" TargetControlID="finalizacion_contrato"  ID="finContrato" runat="server" />
 <%--      |             --%>     <cc1:MaskedEditExtender ID="MaskedEditExtender2" runat="server"  Century="2000" ClearMaskOnLostFocus="false"  Mask="9999/99/99" TargetControlID="finalizacion_contrato"></cc1:MaskedEditExtender>
-                                     <asp:CompareValidator ID="CompareValidator2" runat="server" ControlToValidate="fecha_adquisicion" Operator="GreaterThanEqual" ControlToCompare="finalizacion_contrato"  ForeColor="Red" SetFocusOnError="true" ErrorMessage=" La fecha de final de contrato no puede ser una fecha menor a la fecha en que fue adquirido el activo (Fecha en que inició el contrato)."></asp:CompareValidator>
+                                     <asp:CompareValidator ID="CompareValidator2" ValidationGroup="one" runat="server" ControlToValidate="fecha_adquisicion" Operator="GreaterThanEqual" ControlToCompare="finalizacion_contrato"  ForeColor="Red" SetFocusOnError="true" ErrorMessage=" La fecha de final de contrato no puede ser una fecha menor a la fecha en que fue adquirido el activo (Fecha en que inició el contrato)."></asp:CompareValidator>
                                     
 <%--      |             --%>     <asp:RequiredFieldValidator ValidationGroup="one" ID="vFinalizacion" runat="server" ControlToValidate="finalizacion_contrato" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
 <%--      |             --%> </div>
@@ -220,7 +221,7 @@
                                     <label for="precio">Costo en colones, del activo</label>
                                     <asp:TextBox ValidationGroup="one" ID="precio" MaxLength="10" ClientIDMode="Static" runat="server" TextMode="Number" data-toggle="tooltip" data-placement="right" title="Este espacio debe proporcionar el valor total del activo, este espacio es requerido." placeholder="120360.17" />
                                     <asp:RequiredFieldValidator ValidationGroup="one" ID="vPrecio" runat="server" ControlToValidate="precio" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
-                               <asp:CustomValidator ValidationGroup="one" ID="CustomValidator7" runat="server" ClientValidationFunction="ValidateFieldLegth_Pr" ErrorMessage="El precio no puede exceder los 10 digitos." ForeColor="#3498db" ControlToValidate="precio" EnableClientScript="true"  />
+                              
     
                                 </div>
                                 <%--      fecha de compra       --%>
@@ -237,25 +238,25 @@
                              
                                
 
-                                <%--      Inicio de la garantía       --%>
+                                <%--      Inicio de la garantía       
                                 <fieldset class="pure-control-group" id="leaComp2" style="display: block">
                                     <label for="inicio">Fecha de Inicio de la garantía</label>
                                     <asp:TextBox runat="server" ID="inicio_garantia" ClientIDMode="Static" data-toggle="tooltip" data-placement="right"  title="En este espacio debe proporcionar la fecha en que inicia la garantía, especificada por el proveedor. EL formato de ingreso de la fecha es AAAA/MM/DD (Año/Mes/Día), este espacio es requerido."></asp:TextBox>
                                      <cc1:CalendarExtender Format="yyyy/MM/dd" TargetControlID="inicio_garantia"  ID="calInicio" runat="server" />
                                     <cc1:MaskedEditExtender ID="MaskedEditExtender4" runat="server"  Century="2000" ClearMaskOnLostFocus="false"  Mask="9999/99/99" TargetControlID="inicio_garantia"></cc1:MaskedEditExtender>
-                                   
                                     <asp:CompareValidator ID="CompareValidator3" runat="server" ControlToValidate="fecha_compra" Operator="Equal" ControlToCompare="inicio_garantia" ForeColor="Red" SetFocusOnError="true"  ErrorMessage="Fecha igual a la de compra"></asp:CompareValidator>
                                     <asp:RequiredFieldValidator ValidationGroup="one" ID="vFechaInicio" runat="server" ControlToValidate="inicio_garantia" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
                                 
                                 </fieldset>
-                                <%--      Finalización de la garantía       --%>
+                                     Finalización de la garantía       --%>
+                                  
+
                                 <fieldset class="pure-control-group" id="leaComp3" style="display: block">
                                     <label for="finalizacion">Fecha de finalización de la garantía</label>
                                     <asp:TextBox runat="server" ID="final_garantia" ClientIDMode="Static" data-toggle="tooltip" data-placement="right" title="En este espacio debe proporcionar la fecha en que finaliza la garantía, especificada por el proveedor. EL formato de ingreso de la fecha es AAAA/MM/DD (Año/Mes/Día), este espacio es requerido."></asp:TextBox>
                                     <cc1:CalendarExtender Format="yyyy/MM/dd" TargetControlID="final_garantia"  ID="calFinal" runat="server" />
                                     <cc1:MaskedEditExtender ID="MaskedEditExtender5" runat="server"  Century="2000" ClearMaskOnLostFocus="false"  Mask="9999/99/99" TargetControlID="final_garantia"></cc1:MaskedEditExtender>
-                                    
-                                    <asp:CompareValidator ID="CompareValidator4" runat="server" ControlToCompare="inicio_garantia" Operator="GreaterThanEqual" ControlToValidate="final_garantia" ForeColor="Red" SetFocusOnError="true" ErrorMessage="La fecha no puede ser menor a la de inicio de garantia"></asp:CompareValidator>
+                                    <asp:CompareValidator ID="CompareValidator4" runat="server" ValidationGroup="one" ControlToCompare="fecha_compra" Operator="GreaterThanEqual" ControlToValidate="final_garantia" ForeColor="Red" SetFocusOnError="true" ErrorMessage="La fecha no puede ser menor a la de compra"></asp:CompareValidator>
                                     <asp:RequiredFieldValidator ValidationGroup="one" ID="vFinal" runat="server" ControlToValidate="final_garantia" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
                                 
                                      </fieldset>
@@ -382,7 +383,7 @@
                                     <div class="pure-control-group">
                                         <div>
                                             <asp:Button class="btn btn-success" runat="server" id="habilitarMA" Onclick="bt_Habilitar_Modif_Click"  Text="Habilitar modificación" />
-                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal">Inhabilitar activo</button>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal"  data-target="#myModal">Inhabilitar activo</button>
                                         </div>
                                         <%--<asp:Button runat="server" ID="HOLI" OnClick="bt_Habilitar_Modif_Click" />--%>
                                         <div id="notificacionDatosConsulta" style="display: none">
@@ -450,7 +451,7 @@
                                              <asp:TextBox runat="server" ValidationGroup="two" ID="finalizacion_contrato3" data-toggle="tooltip" title="Este espacio debe contener la fecha en que finaliza el contrato para el activo. EL formato de ingreso de la fecha es AAAA/MM/DD (Año/Mes/Día), este espacio es requerido."></asp:TextBox>
                                                   <cc1:CalendarExtender Format="yyyy/MM/dd" TargetControlID="finalizacion_contrato3" ID="calFinalizacion" runat="server"/>
                                                    <cc1:MaskedEditExtender ID="MaskedEditExtender10" runat="server"  Century="2000" ClearMaskOnLostFocus="false"  Mask="9999/99/99" TargetControlID="finalizacion_contrato3"></cc1:MaskedEditExtender>
-                                        <asp:CompareValidator ID="CompareValidator5" runat="server" ControlToValidate="fecha_entrega3" Operator="GreaterThanEqual" ControlToCompare="finalizacion_contrato3"  ForeColor="Red" SetFocusOnError="true" ErrorMessage=" La fecha de final de contrato no puede ser una fecha menor a la fecha en que fue adquirido el activo (Fecha en que inició el contrato)."></asp:CompareValidator>
+                                        <asp:CompareValidator ID="CompareValidator5" runat="server" ValidationGroup="two" ControlToValidate="fecha_entrega3" Operator="GreaterThanEqual" ControlToCompare="finalizacion_contrato3"  ForeColor="Red" SetFocusOnError="true" ErrorMessage=" La fecha de final de contrato no puede ser una fecha menor a la fecha en que fue adquirido el activo (Fecha en que inició el contrato)."></asp:CompareValidator>
                                        <asp:RequiredFieldValidator ValidationGroup="two" ID="vDuracion" runat="server" ControlToValidate="finalizacion_contrato3" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
                                     </div>
 <%--       -----------> --%><%--      terminan las opciones del leasing       --%>
@@ -481,6 +482,7 @@
 
                                        
                                         <%--     Inicio de la garantía      --%>
+                                          <%-- 
                                 <fieldset class="pure-control-group">
                                     <label for="inicio">Fecha de Inicio de la garantía</label>
                                     <asp:TextBox runat="server" ID="inicio_garantia2" ValidationGroup="two" data-toggle="tooltip" data-placement="right" title="En este espacio debe proporcionar la fecha en que inicia la garantía, especificada por el proveedor. EL formato de ingreso de la fecha es AAAA/MM/DD (Año/Mes/Día), este espacio es requerido."></asp:TextBox>
@@ -490,13 +492,13 @@
                                     <asp:RequiredFieldValidator ValidationGroup="two" ID="vInicio" runat="server" ControlToValidate="inicio_garantia2" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
                                 
                                 </fieldset>
-                                        <%--      Finalización de la garantía       --%>
+                                           Finalización de la garantía       --%>
                                 <fieldset class="pure-control-group">
                                     <label for="finalizacion">Fecha de finalización de la garantía</label>
                                     <asp:TextBox runat="server" ID="final_garantia2" ValidationGroup="two" data-toggle="tooltip" data-placement="right" title="En este espacio debe proporcionar la fecha en que finaliza la garantía, especificada por el proveedor. EL formato de ingreso de la fecha es AAAA/MM/DD (Año/Mes/Día), este espacio es requerido."></asp:TextBox>
                                     <cc1:CalendarExtender Format="yyyy/MM/dd" TargetControlID="final_garantia2" ID="calFinal3" runat="server" />
                                     <cc1:MaskedEditExtender ID="MaskedEditExtender8" runat="server"  Century="2000" ClearMaskOnLostFocus="false"  Mask="9999/99/99" TargetControlID="final_garantia2"></cc1:MaskedEditExtender>
-                                    <asp:CompareValidator ID="CompareValidator7" runat="server" ControlToCompare="inicio_garantia2" Operator="GreaterThanEqual" ControlToValidate="final_garantia2" ForeColor="Red" SetFocusOnError="true" ErrorMessage="La fecha no puede ser menor a la de inicio de garantía"></asp:CompareValidator>
+                                    <asp:CompareValidator ID="CompareValidator7" ValidationGroup="two" runat="server" ControlToCompare="fecha_compra2" Operator="GreaterThanEqual" ControlToValidate="final_garantia2" ForeColor="Red" SetFocusOnError="true" ErrorMessage="La fecha no puede ser menor a la de inicio de garantía"></asp:CompareValidator>
                                     <asp:RequiredFieldValidator ValidationGroup="two" ID="vFinal2" runat="server" ControlToValidate="final_garantia2" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
                                 
                                      </fieldset>
@@ -640,11 +642,11 @@
                                                     <fieldset class="pure-control-group">
                                                         <div class="input-prepend">
                                                             <label for="id_area">Identificador del área</label>
-                                                            <asp:TextBox ValidationGroup="a" runat="server" ID="id_areas" placeholder="AR-001" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar un identificador que caracterice el área o unidad que se esté registrando, es requerido. " />
+                                                            <asp:TextBox ValidationGroup="a" runat="server" ID="id_areas" placeholder="AR-001" data-toggle="tooltip" data-placement="right" title="En este espacio se debe proporcionar un identificador que caracterice el área o unidad que se esté registrando, es requerido. " />
                                                             <asp:RequiredFieldValidator ValidationGroup="a" ID="RequiredFieldValidator3" runat="server" ControlToValidate="id_areas" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
                                                             <br />
                                                             <label for="area57">Área</label>
-                                                            <asp:TextBox ValidationGroup="a" runat="server" ID="descripcion_area" type="text" placeholder="Recursos Humanos" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar el nombre de la área que se desea registrar, es requerido. " />
+                                                            <asp:TextBox ValidationGroup="a" runat="server" ID="descripcion_area" type="text" placeholder="Recursos Humanos" data-toggle="tooltip" data-placement="right" title="En este espacio se debe proporcionar el nombre de la área que se desea registrar, es requerido. " />
                                                             <asp:RequiredFieldValidator ValidationGroup="a" ID="RequiredFieldValidator4" runat="server" ControlToValidate="descripcion_area" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
                                                         </div>
                                                     </fieldset>
@@ -680,13 +682,13 @@
                                                     <fieldset class="pure-control-group">
                                                         <div class="input-prepend">
                                                             <label for="id_descripcion_nueva">ID de descripción:</label>
-                                                            <asp:TextBox runat="server" ValidationGroup="b" ID="id_descripcion_nueva" placeholder="D-001" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar la descripción del activo que se desea registrar, es requerido. " />
+                                                            <asp:TextBox runat="server" ValidationGroup="b" ID="id_descripcion_nueva" placeholder="D-001" data-toggle="tooltip" data-placement="right" title="En este espacio se debe proporcionar la descripción del activo que se desea registrar, es requerido. " />
                                                              <asp:RequiredFieldValidator ValidationGroup="b" ID="vDescId" runat="server" ControlToValidate="id_descripcion_nueva" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
                                                             </div>
                                                             <br />
                                                             <div class="input-prepend">
                                                             <label for="ocupacion">Descripción</label>
-                                                            <asp:TextBox runat="server" ValidationGroup="b" ID="descripcion_nueva" placeholder="Laptop" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar la descripción del activo que se desea registrar, es requerido. " />
+                                                            <asp:TextBox runat="server" ValidationGroup="b" ID="descripcion_nueva" placeholder="Laptop" data-toggle="tooltip" data-placement="right" title="En este espacio se debe proporcionar la descripción del activo que se desea registrar, es requerido. " />
                                                             <asp:RequiredFieldValidator ValidationGroup="b" ID="vDesc" runat="server" ControlToValidate="descripcion_nueva" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
                                                             </div>
                                                     </fieldset>
@@ -729,33 +731,33 @@
                                                     <fieldset>
                                                         <div class="pure-control-group">
                                                             <label for="idP">Identificador</label>
-                                                            <asp:TextBox runat="server" ValidationGroup="c" ID="idp" placeholder="PR-000" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar un identificador que caracterice el proveedor que se esté registrando, es requerido. " />
+                                                            <asp:TextBox runat="server" ValidationGroup="c" ID="idp" placeholder="PR-000" data-toggle="tooltip" data-placement="right" title="En este espacio se debe proporcionar un identificador que caracterice el proveedor que se esté registrando, es requerido. " />
                                                             <asp:RequiredFieldValidator ValidationGroup="c" ID="vIdp" runat="server" ControlToValidate="idp" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
                                                         </div>
 
                                                         <div class="pure-control-group">
                                                             <label for="nproveedor">Nombre del proveedor</label>
-                                                            <asp:TextBox runat="server" ValidationGroup="c" ID="nproveedor" placeholder="Dell" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar el nombre del proveedor que se esté registrando, es requerido." />
+                                                            <asp:TextBox runat="server" ValidationGroup="c" ID="nproveedor" placeholder="Dell" data-toggle="tooltip" data-placement="right" title="En este espacio se debe proporcionar el nombre del proveedor que se esté registrando, es requerido." />
                                                             <asp:RequiredFieldValidator ValidationGroup="c" ID="vnproveedor" runat="server" ControlToValidate="nproveedor" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
                                                         </div>
 
                                                         <div class="pure-control-group">
                                                             <label for="correo">Correo electrónico</label>
-                                                            <asp:TextBox runat="server" ValidationGroup="c" TextMode="Email" ID="correo" type="email" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar la dirección de correo electrónico del proveedor a registrar, es requerido." />
+                                                            <asp:TextBox runat="server" ValidationGroup="c" TextMode="Email" ID="correo" type="email" data-toggle="tooltip" data-placement="right" title="En este espacio se debe proporcionar la dirección de correo electrónico del proveedor a registrar, es requerido." />
                                                             <asp:RequiredFieldValidator ValidationGroup="c" ID="vcorreo" runat="server" ControlToValidate="correo" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
                                                         </div>
 
                                                         <div class="pure-control-group">
                                                             <label for="telefono">Número telefónico de la empresa</label>
                                                             <span class="add-on btn btn-default">506</span>
-                                                            <asp:TextBox runat="server" ValidationGroup="c" ID="telefono1" type="number" placeholder="########" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar el número telefónico principal del proveedor a registrar, es requerido." min="11111111" max="99999999" />
+                                                            <asp:TextBox runat="server" ValidationGroup="c" ID="telefono1" type="number" placeholder="########" data-toggle="tooltip" data-placement="right" title="En este espacio se debe proporcionar el número telefónico principal del proveedor a registrar, es requerido." min="11111111" max="99999999" />
                                                             <asp:RequiredFieldValidator ValidationGroup="c" ID="vtelefono1" runat="server" ControlToValidate="telefono1" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
                                                         </div>
 
                                                         <div class="pure-control-group">
                                                             <label for="telefono">Número telefónico de contacto </label>
                                                             <span class="add-on btn btn-default">506</span>
-                                                            <asp:TextBox runat="server" ValidationGroup="c" ID="telefono" type="number" placeholder="########" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar el número telefónico principal del contacto del proveedor, es requerido." min="11111111" max="99999999" />
+                                                            <asp:TextBox runat="server" ValidationGroup="c" ID="telefono" type="number" placeholder="########" data-toggle="tooltip" data-placement="right" title="En este espacio se debe proporcionar el número telefónico principal del contacto del proveedor, es requerido." min="11111111" max="99999999" />
                                                             <asp:RequiredFieldValidator ValidationGroup="c" ID="vtelefono" runat="server" ControlToValidate="telefono" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
                                                         </div>
                                                     </fieldset>
@@ -780,7 +782,38 @@
                         </div>
         </div>
 
+          <%-- *********MODAL DE habilitar activo****************************** --%>
+
+                 <asp:Panel ID="PanelModal"  runat="server" >
+<div class="modalPrestamo" runat="server" visible="false" tabindex="-1" style="background-color:rgba(51, 51, 51, 0.71)"  id="detalle" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <asp:Button runat="server" CssClass="close"  BorderStyle="None" OnClick="close_Click" aria-label="Close" aria-hidden="true" Text="&times;" ></asp:Button>
+        <h4 class="modal-title">Activo inhabilitado</h4>
+
+      </div>
+      <div class="modal-body">
+      
+           <div class="container" >
+              <img src="img/ExpediaLogo.png" style="width:90px; height:90px; padding-right:7px;  float:left" alt="" />
+                                                <br />
+                                               <label for="TextBox1">Numero de placa: </label> <asp:TextBox ID="TextBox1" runat="server" BorderStyle="None" BorderWidth="0px" Enabled="False" EnableTheming="True" BackColor="White"></asp:TextBox><br/>
+                                               <label for="TextBox4">Motivo: </label> <asp:TextBox ID="TextBox4" runat="server" BorderStyle="None" BorderWidth="0px" Enabled="False" EnableTheming="True" BackColor="White"></asp:TextBox><br/>
+                                               
+                                        
+                                            </div>
+
+      </div>
+      <div class="modal-footer">
+        <asp:Button  runat="server" ID="Habilitar" CssClass="btn btn-primary"  OnClick="Habilitar_Click1" Text="Habilitar" ></asp:Button>
+        <asp:Button runat="server" ID="close" CssClass="btn btn-default" Text="Cerrar" OnClick="close_Click"></asp:Button>
         
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div>
+   </asp:Panel>
         <script>
             // You can also use "$(window).load(function() {"
             $(document).ready(function () {

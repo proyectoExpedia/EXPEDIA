@@ -23,6 +23,7 @@ namespace EXPEDIA
         private static int id_prolongar;
         private static bool tiene = false;
         private static string ced;
+        
 
 
 
@@ -54,17 +55,32 @@ namespace EXPEDIA
 
             }
 
-            if (Session["Usuario"].Equals( "Inicio"))
-            {
-                Session["Usuario"] = "Anonimo";
-                Response.Redirect("index.aspx");
-            }
-
+       
 
         }
 
 
+        protected void Page_Unload(object sender, EventArgs e)
+        {
 
+
+            
+
+                //if (tabla1.Rows.Count != 0   )
+                //{
+                //    foreach (GridViewRow row in tabla1.Rows)
+                //    {
+
+                //        string placa = row.Cells[1].Text;
+                //        Cambiar_Estado(1, placa);
+
+
+
+
+                // }   }
+                
+           
+        }
 
 
         //** METODOS ESPECIFICOS PARA BOTONES*****
@@ -109,7 +125,7 @@ namespace EXPEDIA
                                 Cargar_Id_Donacion(cedula_usuario.Text);
                                 Cargar_Activos(id, tab_logic_hover);
                                 excelente(Bt_Ingresar);
-                        ClientScript.RegisterStartupScript(GetType(), "Bt_Ingresar", "imprimePanel()", true);
+                        ClientScript.RegisterStartupScript(GetType(), "Bt_Ingresar", "imprimePanel();", true);
 
                         limpiarIngresar();
 
@@ -302,8 +318,13 @@ namespace EXPEDIA
                 Fecha_entrega.Text = "";
                
                 cedula_usuario.Text = "";
+                nombre_usuario.Text = "";
+                apellido_usuario1.Text = "";
+                apellido_usuario2.Text = "";
                 tabla1.DataBind();
                 dt = new DataTable();
+                tiene = false;
+
                 cargar();
 
 
@@ -1321,10 +1342,7 @@ namespace EXPEDIA
             catch (Exception a) { Response.Write(a); }
         }
 
-        protected void descargar_Click(object sender, EventArgs e)
-        {
-            Page.ClientScript.RegisterStartupScript(this.GetType(), "descargar", "imprSelec()", true);
-        }
+
 
         //****** VA LIDACION DE PENDIENTES********
         protected void Pendiente_detalle(string y)

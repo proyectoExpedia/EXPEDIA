@@ -88,9 +88,13 @@
     <Content Include="js\dw_cookies.js" />
     <Content Include="js\dw_event.js" />
     <Content Include="js\dw_sizerdx.js" />
+    <Content Include="js\Exportacion\base64.js" />
+    <Content Include="js\Exportacion\html2canvas.js" />
+    <Content Include="js\Exportacion\jquery.base64.js" />
+    <Content Include="js\Exportacion\jspdf.js" />
+    <Content Include="js\Exportacion\sprintf.js" />
+    <Content Include="js\Exportacion\tableExport.js" />
     <Content Include="js\jquery-2.0.1.min.js" />
-    <Content Include="js\jquery.base64.js" />
-    <Content Include="js\jquery.btechco.excelexport.js" />
     <Content Include="js\spectrum.js" />
     <Content Include="js\sweetalert.min.js" />
     <Content Include="gestionAjustes.aspx" />

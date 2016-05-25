@@ -1,5 +1,4 @@
 ﻿
-
 <%@ Page Language="C#" AutoEventWireup="true" CodeBehind="GestionDonaciones.aspx.cs" Inherits="EXPEDIA.GestionDonaciones" Culture="Auto" UICulture="Auto" %>
 
 <%@ Register assembly="AjaxControlToolkit" namespace="AjaxControlToolkit" tagprefix="asp" %>
@@ -21,7 +20,7 @@
     <script src="js/sweetalert.min.js"></script>
     <link href="css/sweetalert.css" rel="stylesheet" />
 </head>
-<body>
+<body >
 
        <form id="form1" runat="server">
            <asp:ScriptManager ID="ScriptManager2" runat="server" EnableScriptGlobalization="true" EnableScriptLocalization="true"></asp:ScriptManager>
@@ -167,18 +166,21 @@
                                                 <div class="pure-control-group">
                                                     <label for="nombre">Nombre</label>
                                                     <asp:TextBox ValidationGroup="one" MaxLength="20" runat="server" ID="nombre_usuario" data-toggle="tooltip" data-placement="right" title="Este espacio debe proporcionar el nombre de la persona a la quién se entrega el activo, este espacio es requerido." />
-                                                    <asp:RequiredFieldValidator ValidationGroup="one" ID="vNombre" runat="server" ControlToValidate="nombre_usuario" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
+                                                   <asp:RegularExpressionValidator ID="RegularExpressionValidator4" runat="server" ControlToValidate="nombre_usuario" ForeColor="Red" ErrorMessage="&lt;b&gt;*&lt;/b&gt; Solo letras" ValidationExpression="^[a-zA-Z- - ]*$"></asp:RegularExpressionValidator>
+                                                     <asp:RequiredFieldValidator ValidationGroup="one" ID="vNombre" runat="server" ControlToValidate="nombre_usuario" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
                                                 </div>
                                                 <!--Ingresar apellido 1-->
                                                 <div class="pure-control-group">
                                                     <label for="nombre">Primer Apellido</label>
                                                     <asp:TextBox ValidationGroup="one" MaxLength="20" runat="server" ID="apellido_usuario1" data-toggle="tooltip" data-placement="right" ToolTip="Este espacio debe proporcionar el primer apellido de la persona a quién se le entrega el activo, este espacio es requerido." />
+                                                    <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="apellido_usuario1" ForeColor="Red" ErrorMessage="&lt;b&gt;*&lt;/b&gt; Solo letras" ValidationExpression="^[a-zA-Z- - ]*$"></asp:RegularExpressionValidator>
                                                     <asp:RequiredFieldValidator ValidationGroup="one" ID="vApellido1" runat="server" ControlToValidate="apellido_usuario1" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
                                                 </div>
                                                 <!--Ingresar apellido 2-->
                                                 <div class="pure-control-group">
                                                     <label for="nombre">Segundo Apellido</label>
                                                     <asp:TextBox ValidationGroup="one" MaxLength="20" runat="server" ID="apellido_usuario2" data-placement="right"   data-toggle="tooltip" title="Este espacio debe proporcionar el segundo apellido de la persona a quién se entrega el activo, este espacio es requerido." />
+                                                    <asp:RegularExpressionValidator ID="RegularExpressionValidator5" runat="server" ControlToValidate="apellido_usuario2" ForeColor="Red" ErrorMessage="&lt;b&gt;*&lt;/b&gt; Solo letras" ValidationExpression="^[a-zA-Z- - ]*$"></asp:RegularExpressionValidator>
                                                     <asp:RequiredFieldValidator ValidationGroup="one" ID="vApellido2" runat="server" ControlToValidate="apellido_usuario2" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
                                                 </div>
 
@@ -215,7 +217,7 @@
                                                             </Columns>
                                                         </asp:GridView>
                                                  <div class="pure-controls-group" style="margin-top: 10px;">
-                                                    <asp:Button runat="server" CssClass="btn btn-success"   ValidationGroup="one" OnClick="Bt_Ingresar_Click" ID="Bt_Ingresar" Text="Realizar Donación" />
+                                                    <asp:Button runat="server" CssClass="btn btn-success"   ValidationGroup="one" OnClick="Bt_Ingresar_Click"  ID="Bt_Ingresar" Text="Realizar Donación" />
                                                 </div>
                                                  
 
@@ -465,7 +467,7 @@
                                        
                                     </div>
                                     <div class="modal-body">
-                                        <div class="container">
+                                        <div id="Imprimir2" class="container" runat="server">
                                                 <img src="img/colegioAbogadoscr.png" style="width:90px; height:90px;float:left" alt="" />
                                                 <br />
                                                 <label for="Fecha" style="font-size:20px; margin-right:148px; margin-left:75px;">COLEGIO DE ABOGADOS Y ABOGADAS DE COSTA RICA</label> Fecha:<asp:TextBox runat="server" ID="TextBox3" BorderStyle="None" BorderWidth="0px" Enabled="False" EnableTheming="True" BackColor="White" />
@@ -559,9 +561,9 @@ condiciones fisicas - en caso de préstamo o traslado)
 
 
            <!----------JAVA SCRIPTS--------->
-           <script  type="text/jscript">
+           <script  type="text/javascript">
 function imprimePanel() {
-    var printContent = document.getElementById("<%=Panel19.ClientID%>");
+    var printContent = document.getElementById("<%=Imprimir2.ClientID%>");
     var windowUrl = 'about:blank';
 
     var windowName = 'Comprobante de solicitud de tralasdo';
@@ -574,7 +576,7 @@ function imprimePanel() {
     printWindow.close();
 }
 
-               function imprimeDetalle() {
+           function imprimeDetalle() {
     var printContent = document.getElementById("<%=Imprimir.ClientID%>");
     var windowUrl = 'about:blank';
 
@@ -588,26 +590,19 @@ function imprimePanel() {
     printWindow.close();
 }
 
+
+   
 </script>
+ 
+
+
                                        <script type="text/javascript">
                                            $(document).ready(function () {
                                                $('[data-toggle="tooltip"]').tooltip();
                                            });
                             </script>
 
-         <script type="text/javascript" >
-
-            
-
-
-
-
-             
-
-
-
-
-    </script>
+  
 
 
     </form>

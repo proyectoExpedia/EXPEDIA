@@ -24,6 +24,12 @@
     <link href="js/jQueryUI/jquery-ui.min.css" rel="stylesheet" />
     <script src="js/sweetalert.min.js"></script>
     <link href="css/sweetalert.css" rel="stylesheet" />
+    <script src="js/Exportacion/base64.js"></script>
+    <script src="js/Exportacion/html2canvas.js"></script>
+    <script src="js/Exportacion/jquery.base64.js"></script>
+    <script src="js/Exportacion/jspdf.js"></script>
+    <script src="js/Exportacion/sprintf.js"></script>
+    <script src="js/Exportacion/tableExport.js"></script>
 </head>
 
 <body>
@@ -125,10 +131,23 @@
                                <br />
                                 </div>                        <br />
                                                         <br />
-                                <asp:GridView  runat="server" ID="lista" CssClass="table" > </asp:GridView>
+                                <div runat="server" ID="export" class="btn-group" style="float:right;display:none; margin-bottom:10px;">
+                                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Exportar <span class="caret"></span>
+                </button>
+                                    <ul class="dropdown-menu">
+                    <li><a id="excel">Excel</a></li>
+                    <li><a id="word">Word</a></li>
+                    <li><a id="texto">Texto</a></li>
+                    <li><a id="sql">SQL</a></li>
+                    <li><a id="pdf">PDF</a></li>
+                    <li><a id="xml">XML</a></li>
+                    <li><a id="json">JSON</a></li>
+                </ul>
+                                </div>
+                                <asp:GridView  runat="server" ID="lista" CssClass="table table-hover table-bordered results" > </asp:GridView>
                                     <br />
                                     <br />                                   
-                            <asp:Button ID="exportar" runat="server"    CssClass="btn btn-success" Text="Exportar a Excel"  OnClick="exportar_Click" />
                         </div>
                         <div class="tab-pane fade" id="Consultar">
                              <h1 style="text-align:center" id="titulo">Bitácoras</h1>
@@ -247,17 +266,70 @@
     </script>
 
   
-        </form>
-   
-        	<script >
+     </form>
+  
+     <script >
 		$(function() {
 		  theTable = $("#lista");
 		  $("#q").keyup(function() {
 			$.uiTableFilter(theTable, this.value);
 		  });
 		});
-		</script>
-
+	 </script>
+     <script>
+         $(document).ready(function (e) {
+             $("#excel").click(function (e) {
+                 $("#lista").tableExport({
+                     type: 'excel',
+                     escape: false
+                 });
+             });
+             $("#pdf").click(function (e) {
+                 $("#lista").tableExport({
+                     type: 'pdf',
+                     escape: true,
+                     pdfLeftMargin:10,
+                     pdfFontSize:8
+                 });
+             });
+             $("#word").click(function (e) {
+                 $("#lista").tableExport({
+                     type: 'doc',
+                     escape: false
+                 });
+             });
+             $("#sql").click(function (e) {
+                 $("#lista").tableExport({
+                     type: 'sql',
+                     escape: false
+                 });
+             });
+             $("#xml").click(function (e) {
+                 $("#lista").tableExport({
+                     type: 'xml',
+                     escape: false
+                 });
+             });
+             $("#json").click(function (e) {
+                 $("#lista").tableExport({
+                     type: 'json',
+                     escape: false
+                 });
+             });
+             $("#texto").click(function (e) {
+                 $("#lista").tableExport({
+                     type: 'txt',
+                     escape: false
+                 });
+             });
+             $("#png").click(function (e) {
+                 $("#lista").tableExport({
+                     type: 'png',
+                     escape: false
+                 });
+             });
+         });
+    </script>
   
 </body>
 </html>

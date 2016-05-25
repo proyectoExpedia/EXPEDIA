@@ -208,7 +208,7 @@ namespace EXPEDIA
 
 
 
-            Cambiar_Estado(3, tabla.Rows[e.RowIndex].Cells[1].Text);
+            Cambiar_Estado(3, tabla.Rows[e.RowIndex].Cells[1].Text.ToString());
 
             dt.Rows.Add(tabla.Rows[e.RowIndex].Cells[1].Text, tabla.Rows[e.RowIndex].Cells[2].Text, tabla.Rows[e.RowIndex].Cells[3].Text, tabla.Rows[e.RowIndex].Cells[4].Text, tabla.Rows[e.RowIndex].Cells[5].Text, tabla.Rows[e.RowIndex].Cells[6].Text, tabla.Rows[e.RowIndex].Cells[7].Text);
             tabla1.DataSource = dt;
@@ -237,7 +237,7 @@ namespace EXPEDIA
         {
             Conexion c = new Conexion();
             SqlConnection Conexion = c.Conectar();
-            string Sql = @"UPDATE Activos SET bd_estado=" + y + " WHERE bd_numero_placa=" + placa + "";
+            string Sql = @"UPDATE Activos SET bd_estado=" +y+ " WHERE bd_numero_placa='" +placa + "'";
             Conexion.Open();//abrimos conexion
             SqlCommand cmd = new SqlCommand(Sql, Conexion); //ejecutamos la instruccion
             cmd.ExecuteNonQuery();
@@ -1268,10 +1268,10 @@ namespace EXPEDIA
             foreach (GridViewRow row in tabla1.Rows)
             {
 
-                string placa = row.Cells[1].Text;
+                string placa = row.Cells[1].Text.ToString();
                 Conexion c = new Conexion();
                 SqlConnection Conexion = c.Conectar();
-                string Sql = @"UPDATE Activos SET bd_id_prestamo=" + y + " WHERE bd_numero_placa=" + placa + "";
+                string Sql = @"UPDATE Activos SET bd_id_prestamo=" +y+ "WHERE bd_numero_placa='"+placa+"'";
                 Conexion.Open();//abrimos conexion
                 SqlCommand cmd = new SqlCommand(Sql, Conexion); //ejecutamos la instruccion
                 cmd.ExecuteNonQuery();

@@ -256,6 +256,15 @@ namespace EXPEDIA {
         protected global::System.Web.UI.WebControls.TextBox nombre_usuario;
         
         /// <summary>
+        /// Control RegularExpressionValidator4.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator4;
+        
+        /// <summary>
         /// Control vNombre.
         /// </summary>
         /// <remarks>
@@ -274,6 +283,15 @@ namespace EXPEDIA {
         protected global::System.Web.UI.WebControls.TextBox apellido_usuario1;
         
         /// <summary>
+        /// Control RegularExpressionValidator1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator1;
+        
+        /// <summary>
         /// Control vApellido1.
         /// </summary>
         /// <remarks>
@@ -290,6 +308,15 @@ namespace EXPEDIA {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox apellido_usuario2;
+        
+        /// <summary>
+        /// Control RegularExpressionValidator5.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator5;
         
         /// <summary>
         /// Control vApellido2.
@@ -713,6 +740,15 @@ namespace EXPEDIA {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel Panel19;
+        
+        /// <summary>
+        /// Control Imprimir2.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Imprimir2;
         
         /// <summary>
         /// Control TextBox3.

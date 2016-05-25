@@ -103,6 +103,15 @@ namespace EXPEDIA {
         protected global::System.Web.UI.WebControls.Button Button1;
         
         /// <summary>
+        /// Control export.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl export;
+        
+        /// <summary>
         /// Control lista.
         /// </summary>
         /// <remarks>
@@ -110,15 +119,6 @@ namespace EXPEDIA {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView lista;
-        
-        /// <summary>
-        /// Control exportar.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button exportar;
         
         /// <summary>
         /// Control Table2.

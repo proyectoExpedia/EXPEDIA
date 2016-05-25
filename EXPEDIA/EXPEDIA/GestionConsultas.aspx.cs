@@ -108,6 +108,13 @@ namespace EXPEDIA
                 if ((departamento != null) && (numero.Text == "") && (descripcion != null) && (provedor == null)) { Consulta_Despartamento_descripcion_leasing(); }
             }
 
+            if (lista.Rows.Count != 0)
+            {
+                this.export.Style.Add("display", "block");
+            }
+            else {
+                this.export.Style.Add("display", "none");
+            }
 
         }
         protected void exportar_Click(object sender, EventArgs e)
