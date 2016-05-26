@@ -158,8 +158,8 @@ namespace EXPEDIA
                 while (reader.Read())
                 {
 
-                   /* if (reader.GetInt16(2) == 2) { Info.InnerText = "" + reader.GetString(0) + " " + reader.GetString(1) + " tiene prestamos pendientes"; Info.Style.Add("color", "red"); tiene = true; Pendiente_detalle(cedula_usuario.Text); pendiente.Visible = true; }
-                    if (reader.GetInt16(2) == 1) { Info.InnerText = "" + reader.GetString(0) + " " + reader.GetString(1) + " no tiene prestamos pendientes "; Info.Style.Add("color", "green"); }*/
+                    /* if (reader.GetInt16(2) == 2) { Info.InnerText = "" + reader.GetString(0) + " " + reader.GetString(1) + " tiene prestamos pendientes"; Info.Style.Add("color", "red"); tiene = true; Pendiente_detalle(cedula_usuario.Text); pendiente.Visible = true; }*/
+                    if (reader.GetInt16(2) == 1) { Info.InnerText = "" + reader.GetString(0) + " " + reader.GetString(1); Info.Style.Add("color", "green"); }
                     // los if comentados anteriormente son  para controlar si el usurio tiene prestamos anteriores y no  permiten que el usuario relice un prestamos si lo tiene
 
                     if (reader.GetInt16(2) == 3) { Info.InnerText = "" + reader.GetString(0) + " " + reader.GetString(1) + "se encuentra inhabilitado "; Info.Style.Add("color", "red");  no_puede = true; }
@@ -1342,9 +1342,9 @@ namespace EXPEDIA
             Page.ClientScript.RegisterStartupScript(this.GetType(), "descargar", "imprSelec()", true);
         }
 
-        /****** VALIDACION DE PENDIENTES********
+        //****** VALIDACION DE PENDIENTES********
 
-            Metodos para validar que un usuario no tenga un prestamo previamente dado
+           // Metodos para validar que un usuario no tenga un prestamo previamente dado
         protected void Pendiente_detalle(string y)
         {
             Conexion c = new Conexion();
@@ -1382,7 +1382,7 @@ namespace EXPEDIA
         {
             pendiente.Visible = false;
         }
-        */
+        
         //****************** METODOS PARA LA PARTE DE CONTROL DE PRESTAMOS**********************************
 
                 //funcion para corroborar estados del usuario
@@ -1409,7 +1409,7 @@ namespace EXPEDIA
                 {
 
                     //if (reader.GetInt16(2) == 2) { Info2.InnerText = "" + reader.GetString(0) + " " + reader.GetString(1) + " tiene prestamos pendientes"; Info2.Style.Add("color", "red"); tiene = true;  }
-                    //if (reader.GetInt16(2) == 1) { Info2.InnerText = "" + reader.GetString(0) + " " + reader.GetString(1) + " no tiene prestamos pendientes "; Info2.Style.Add("color", "green"); }
+                    if (reader.GetInt16(2) == 1) { Info2.InnerText = "" + reader.GetString(0) + " " + reader.GetString(1); Info2.Style.Add("color", "green"); }
                     if (reader.GetInt16(2) == 3) { Info2.InnerText = "" + reader.GetString(0) + " " + reader.GetString(1) + "se encuentra inhabilitado "; Info2.Style.Add("color", "red"); no_puede = true; }
 
 
