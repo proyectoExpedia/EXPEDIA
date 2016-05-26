@@ -13,13 +13,15 @@ namespace EXPEDIA
 	public partial class GestionDonaciones : System.Web.UI.Page
 	{
 
-
-        private string departamento;
-        private string descripcion;
-        private string provedor;
-        private string num;
-        private string id_des;
-        private string id_dep;
+        //****Variable para control de informacion con la base de datos**///////
+        private string departamento;//Variable para contener el nombre del departamento del activo de la base de datos
+        private string descripcion;//Variable para contener la descripcion del activo de la base de datos
+        private string provedor;//Variable para contener el nombre del proveedor de la base de datos
+        private string num;//variable para controlar ls busquedas 0 busca por numero de placa , 1  busca por numero de serie 
+        //***variable para guardar infomracion selecionada por el usuario***///////
+        private string id_des;//variable para contener la descripcion selecionada en el dropdownlist de descripcion 
+        private string id_dep;//variable para contener el departamento selecionado en el dropdownlist de descripcion
+        //***variables de control de validaciones
         private static int id_prolongar;
         private static bool tiene = false;
         private static string ced;
@@ -27,10 +29,10 @@ namespace EXPEDIA
 
 
 
-        private bool bandera = false;
+        private bool bandera = false;//variable para controla excepciones 
         private int id;
 
-        static DataTable dt;
+        static DataTable dt;//variable para controlar las tablas donde se muestra la informacion del actico consultado
 
 
         protected void Page_Load(object sender, EventArgs e)
@@ -84,6 +86,7 @@ namespace EXPEDIA
 
 
         //** METODOS ESPECIFICOS PARA BOTONES*****
+            //boton para realizar la consulta segun se selecionen los filtros
         protected void Consultar1_Click(object sender, EventArgs e)
         {
             num = numero.Text;
@@ -109,6 +112,7 @@ namespace EXPEDIA
 
 
         }
+            //boton para crear prestamo
         protected void Bt_Ingresar_Click(object sender, EventArgs e)
         {
 
@@ -147,7 +151,7 @@ namespace EXPEDIA
             
             
         }
-
+            //Funcion para revisar que la cedula que se esta ingresado no sea la de un usuario registrado en sistema
         protected void cedula_usuario_TextChanged(object sender, EventArgs e)
         {
 
@@ -188,13 +192,13 @@ namespace EXPEDIA
 
 
         }
-
+             //funcion para mostrar la seccion de consulta de activos
         protected void Agregar_Click(object sender, EventArgs e)
         {
             idiv.Visible = true;
             theDiv.Visible = false;
         }
-
+        //funcion para regresar al formulario de creacion de prestamo
         protected void Button1_Click(object sender, EventArgs e)
         {
             idiv.Visible = false;
@@ -203,6 +207,7 @@ namespace EXPEDIA
 
 
         //****** METODOS DE PARA CONTROLES DE INFORMACION*********************
+        //funcion para cargar los campos del griview en el que se muestra la informacion de cada activo
         protected void cargar()
         {
             dt.Columns.AddRange(new DataColumn[7] {
@@ -221,7 +226,7 @@ namespace EXPEDIA
             });
         }
 
-
+            //funcion cuando se agrega un activo consultado a la donacion
         protected void tabla_SelectedIndexChanged(object sender, GridViewDeleteEventArgs e)
         {
 
@@ -240,7 +245,7 @@ namespace EXPEDIA
 
 
         }
-
+            //funcion cuadno no se quiere un activo a la donacion y habia sido selecionado 
         protected void tabla1_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
 
@@ -251,7 +256,7 @@ namespace EXPEDIA
             tabla1.DataBind();
 
         }
-
+            //funcion para cambier el estado del activo de 1 (en alta) o 2(en baja ) a 4 (donado)
         protected void Cambiar_Estado(int y, string placa)
         {
             Conexion c = new Conexion();
@@ -264,8 +269,9 @@ namespace EXPEDIA
 
         }
 
-       
 
+        //***Metodos de notificaciones**********
+        //funcion para mostrar alerta de error o no encontrado
 
         protected void error(Control btn, String titulo, String texto)
         {
@@ -284,7 +290,7 @@ namespace EXPEDIA
 
         }
 
-
+        //funcion para mostrar que la accion fue realizada correctamente
         protected void excelente(Control boton)
         {
             System.Text.StringBuilder sb = new System.Text.StringBuilder();
@@ -310,7 +316,7 @@ namespace EXPEDIA
             sb.Append(@"</script>");
             ScriptManager.RegisterStartupScript(boton, this.GetType(), "Holi", sb.ToString(), false);
         }
-
+        //funcion para limpiear los campos una ves realizada la donacion
         protected void limpiarIngresar()
         {
             try
@@ -363,7 +369,7 @@ namespace EXPEDIA
         }
 
 
-        //****** METODOS PARA HACER LA CONSULTA DE LOS ACTIVOS DISPONIBLES **********
+       
 
 
         //***METODOS PARA CARGAR LA INFORMACION DE LOS DROPDOWNLIST ******
@@ -1231,7 +1237,7 @@ namespace EXPEDIA
             }
             catch (Exception e) { Response.Write(e); bandera = true; }
         }
-
+        //metodo para corroborar que la cedula ingresada corresponda a un usuario
         protected bool Login(String ced)
         {
             Conexion c = new Conexion();
@@ -1255,7 +1261,7 @@ namespace EXPEDIA
                 return true;
             }
         }
-
+        //este metodo y el siguiente son   para una vez creado el prestamo , el id de la donacion se les agregue a todos los activos relacionados con la donacion
         protected void Cargar_Id_Donacion(String cd)
         {
             Conexion c = new Conexion();
@@ -1302,7 +1308,7 @@ namespace EXPEDIA
             }
         }
 
-
+        //funcion para cargar todos los activos a la factura la cual se manda a imprimir 
         protected void Cargar_Activos(int g, GridView j)
         {
             DataTable dt = new DataTable();
@@ -1344,7 +1350,7 @@ namespace EXPEDIA
 
 
 
-        //****** VA LIDACION DE PENDIENTES********
+        /****** VA LIDACION DE PENDIENTES********
         protected void Pendiente_detalle(string y)
         {
             Conexion c = new Conexion();
@@ -1381,18 +1387,18 @@ namespace EXPEDIA
         protected void Button4_Click(object sender, EventArgs e)
         {
             pendiente.Visible = false;
-        }
+        }*/
 
         //****************** METODOS PARA LA PARTE DE CONTROL DE Donaciones**********************************
 
 
-    
+                //funcion para realizar las distintas consultas de una donacion 
         protected void Consulta_prestamo_Click(object sender, EventArgs e)
         {
             tiene = false;
             Consultar_id();     
         }
-
+        //funcion para controlar las distintas acciones de la table una vez consultada la donacion 
         protected void tabla2_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             switch (e.CommandName)
@@ -1400,7 +1406,8 @@ namespace EXPEDIA
                 case "Detalle":
                     {
 
-
+                        //esta funcion se encarga de tomar el id de la donacion de la tabla para realizar una consulta a la base de datos para
+                        // cargar toda la informacion en una ventana modal llamada detalle
                         string rowIndex = e.CommandArgument.ToString();
 
                         int index = Convert.ToInt32(rowIndex);
@@ -1418,7 +1425,7 @@ namespace EXPEDIA
                     }
                 case "Descripcion":
                     {
-
+                        //esta funcion muestra lo que la base datos tiene registrado en la opcion de descripcion de la donacion 
                         string rowIndex = e.CommandArgument.ToString();
 
                         int index = Convert.ToInt32(rowIndex);
@@ -1437,7 +1444,7 @@ namespace EXPEDIA
                     }
                 case "Contactar":
                     {
-
+                        //muestra la ifnormacion de los telefono de la presona y emoresa que tiene registrado la donacion 
                         string rowIndex = e.CommandArgument.ToString();
 
                         int index = Convert.ToInt32(rowIndex);
@@ -1464,7 +1471,7 @@ namespace EXPEDIA
         }
 
     
-
+            //funcion para consultar con el id de la donacion 
         private void Consultar_id()
         {
             DataTable dt = new DataTable();
@@ -1515,17 +1522,18 @@ namespace EXPEDIA
 
             else { error(Consulta_prestamo, "Disculpa", "No se encuentran donaciones con la informacion solicitado  en el sistema"); }
         }
-       
+
 
 
 
 
         //******FUNCIONES PARA LA MODAL DE DETALLE****************************
+            //funcion para cerrar la ventana modal
         protected void close_Click(object sender, EventArgs e)
         {
             detalle.Visible = false;
         }
-
+            //funcion para llenar el detalle
         protected void llenar_detalle(int y)
         {
             Conexion c = new Conexion();
@@ -1561,6 +1569,7 @@ namespace EXPEDIA
 
         //***FUNCIONES PARA LA MODAL DE descripcion****************************
 
+            //metodo para obtener la descripcion de la donacion 
         protected void calcular(int x)
         {
             Conexion c = new Conexion();
@@ -1592,7 +1601,7 @@ namespace EXPEDIA
 
 
         }
-
+            //funcion para cerrar la ventana modal
         protected void Button2_Click(object sender, EventArgs e)
         {
             finalizar.Visible = false;
@@ -1601,7 +1610,7 @@ namespace EXPEDIA
 
 
         //***FUNCIONES PARA LA MODAL contactar****************************
-
+         //funcion para obtener los datos de contacto de la donacion
         protected void validar_prolongar(int y)
         {
             Conexion c = new Conexion();
@@ -1634,7 +1643,7 @@ namespace EXPEDIA
 
 
         }
-
+        //funcion para cerrar
         protected void Button3_Click(object sender, EventArgs e)
         {
             prolongar.Visible = false;
