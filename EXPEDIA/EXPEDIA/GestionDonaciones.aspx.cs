@@ -52,8 +52,8 @@ namespace EXPEDIA
                 cargar_proveedor(proveedor);
                 dt = new DataTable();
                 cargar();
-                RangeValidator1.MinimumValue = DateTime.Now.ToString("yyyy/MM/dd");
-                RangeValidator1.MaximumValue = "9999/99/99";
+                RangeValidator1.MinimumValue = DateTime.Now.ToString("dd/MM/yyyy");
+                RangeValidator1.MaximumValue = "99/99/9999";
 
             }
 
@@ -1280,9 +1280,9 @@ namespace EXPEDIA
 
                     Agregar_Activos_Donacion(reader.GetInt32(0));
                     TextBox2.Text = reader.GetInt32(0).ToString();
-                    TextBox3.Text = reader.GetDateTime(1).ToString();
+                    TextBox3.Text = reader.GetDateTime(1).ToString("dd/MM/yyyy");
                     TextBox1.Text = reader.GetString(3);
-                    fecha_conclucion.Text = reader.GetDateTime(1).ToString();
+                    fecha_conclucion.Text = reader.GetDateTime(1).ToString("dd/MM/yyyy");
 
 
                 }
