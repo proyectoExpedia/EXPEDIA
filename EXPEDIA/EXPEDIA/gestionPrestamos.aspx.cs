@@ -48,7 +48,7 @@ namespace EXPEDIA
                 cargar_proveedor(proveedor);
                 dt = new DataTable();
                 cargar();
-                RangeValidator1.MinimumValue = DateTime.Now.ToString("yyyy/MM/dd");
+                RangeValidator1.MinimumValue = DateTime.Now.ToString("dd/MM/yyyy");
                 RangeValidator1.MaximumValue = "99/99/9999";
 
             }
@@ -1268,9 +1268,9 @@ namespace EXPEDIA
 
                     Agregar_Activos_Prestamo(reader.GetInt32(0));
                     TextBox2.Text = reader.GetInt32(0).ToString();
-                    TextBox3.Text = reader.GetDateTime(2).ToString();
+                    TextBox3.Text = reader.GetDateTime(2).ToString("dd/MM/yyyy");
                     TextBox1.Text = reader.GetString(1);
-                    fecha_conclucion.Text = reader.GetDateTime(3).ToString();
+                    fecha_conclucion.Text = reader.GetDateTime(3).ToString("dd/MM/yyyy");
 
 
                 }
