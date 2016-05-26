@@ -1350,7 +1350,7 @@ namespace EXPEDIA
 
 
 
-        /****** VA LIDACION DE PENDIENTES********
+        //****** VA LIDACION DE PENDIENTES********
         protected void Pendiente_detalle(string y)
         {
             Conexion c = new Conexion();
@@ -1387,7 +1387,7 @@ namespace EXPEDIA
         protected void Button4_Click(object sender, EventArgs e)
         {
             pendiente.Visible = false;
-        }*/
+        }
 
         //****************** METODOS PARA LA PARTE DE CONTROL DE Donaciones**********************************
 
