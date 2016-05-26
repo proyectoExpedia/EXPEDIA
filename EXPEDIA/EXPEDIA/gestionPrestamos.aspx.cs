@@ -13,26 +13,28 @@ namespace EXPEDIA
 {
     public partial class gestionPrestamos : System.Web.UI.Page
     {
+        //****Variable para control de informacion con la base de datos**///////
+        private string departamento;//Variable para contener el nombre del departamento del activo de la base de datos
+        private string descripcion;//Variable para contener la descripcion del activo de la base de datos
+        private string provedor;//Variable para contener el nombre del proveedor de la base de datos
+        private string num;//variable para controlar ls busquedas 0 busca por numero de placa , 1  busca por numero de serie 
 
-        private string departamento;
-        private string descripcion;
-        private string provedor;
-        private string num;
-        private string id_des;
-        private string id_dep;
+        //***variable para guardar infomracion selecionada por el usuario***///////
+
+        private string id_des;//variable para contener la descripcion selecionada en el dropdownlist de descripcion 
+        private string id_dep;//variable para contener el departamento selecionado en el dropdownlist de descripcion
         private  static int id_finalizar;
         private static int id_prolongar;
-        private static bool tiene=false;
-        private static bool no_puede=false;
-        private static bool atrasado = false;
+        //***variables de control de permisos de usuario
+       // private static bool tiene=false; esta varibla controla si el usuario ya contaba con un prestamo y no se ha entregado;
+        private static bool no_puede=false;//esta varibla controla si el usuario esta de alta false o se ha deshabilitado true;
+        private static bool atrasado = false;//esta variable controla si el prestamo esta atrasado.
         private static string ced;
 
-
-
-        private bool bandera = false;
+        private bool bandera = false;//variable para controla excepciones 
         private int id;
 
-        static DataTable dt;
+        static DataTable dt;//variable para controlar las tablas donde se muestra la informacion del actico consultado
 
 
         protected void Page_Load(object sender, EventArgs e)
@@ -65,6 +67,8 @@ namespace EXPEDIA
 
 
         //** METODOS ESPECIFICOS PARA BOTONES*****
+
+            //boton para realizar la consulta segun se selecionen los filtros
         protected void Consultar1_Click(object sender, EventArgs e)
         {
             num = numero.Text;
@@ -90,12 +94,13 @@ namespace EXPEDIA
 
 
         }
+            //boton para crear prestamo
         protected void Bt_Ingresar_Click(object sender, EventArgs e)
         {
             if (!no_puede)
             {
-                if (!tiene)
-                {
+               /* if (!tiene)
+                {*/
                     if (tabla1.Rows.Count != 0)
                     {
                         if (corroborarExistenciaDatos("Usuarios", "bd_cedula", cedula_usuario.Text, Bt_Ingresar))
@@ -109,7 +114,7 @@ namespace EXPEDIA
                                 Cargar_Activos(id, tab_logic_hover);
                                 excelente(Bt_Ingresar);
                                 Page.ClientScript.RegisterStartupScript(this.GetType(), "Bt_Ingresar", "imprimePanel()", true);
-                                Cambiar_Estado_usuario(2, cedula_usuario.Text);
+                               // Cambiar_Estado_usuario(2, cedula_usuario.Text); cambia el estado del usuario de 1(listo) a 2(con pendientes)
                                 limpiarIngresar();
 
 
@@ -118,19 +123,19 @@ namespace EXPEDIA
                             else { error(Bt_Ingresar, "Disculpa", "Se tuvo un problema a la hora de crear el prestamo"); }
 
 
-                            //System.Threading.Thread.Sleep(9000);
 
 
                         }
                     }
                     else { error(Bt_Ingresar, "Disculpa", "No hay ningun activos selecionados el prestamo"); }
 
-                }
-                else { Pendiente_detalle(cedula_usuario.Text); pendiente.Visible = true; }
+               /* }
+                else { Pendiente_detalle(cedula_usuario.Text); pendiente.Visible = true; } el if anteriormente comentado junto con el else son el paso final de la verificacion de estados del usuario*/
             }
             else { error(Bt_Ingresar, "Disculpa", "El usuario esta inhabilitado, para más infomarcion vaya a gestion de usuarios en consultar"); }
         }
 
+            //Funcion para revisar estados del usuario al terminar de ingresar una cedula 
         protected void cedula_usuario_TextChanged(object sender, EventArgs e)
         {
             
@@ -153,8 +158,10 @@ namespace EXPEDIA
                 while (reader.Read())
                 {
 
-                    if (reader.GetInt16(2) == 2) { Info.InnerText = "" + reader.GetString(0) + " " + reader.GetString(1) + " tiene prestamos pendientes"; Info.Style.Add("color", "red"); tiene = true; Pendiente_detalle(cedula_usuario.Text); pendiente.Visible = true; }
-                    if (reader.GetInt16(2) == 1) { Info.InnerText = "" + reader.GetString(0) + " " + reader.GetString(1) + " no tiene prestamos pendientes "; Info.Style.Add("color", "green"); }
+                   /* if (reader.GetInt16(2) == 2) { Info.InnerText = "" + reader.GetString(0) + " " + reader.GetString(1) + " tiene prestamos pendientes"; Info.Style.Add("color", "red"); tiene = true; Pendiente_detalle(cedula_usuario.Text); pendiente.Visible = true; }
+                    if (reader.GetInt16(2) == 1) { Info.InnerText = "" + reader.GetString(0) + " " + reader.GetString(1) + " no tiene prestamos pendientes "; Info.Style.Add("color", "green"); }*/
+                    // los if comentados anteriormente son  para controlar si el usurio tiene prestamos anteriores y no  permiten que el usuario relice un prestamos si lo tiene
+
                     if (reader.GetInt16(2) == 3) { Info.InnerText = "" + reader.GetString(0) + " " + reader.GetString(1) + "se encuentra inhabilitado "; Info.Style.Add("color", "red");  no_puede = true; }
 
 
@@ -168,12 +175,13 @@ namespace EXPEDIA
 
 
         }
-
+            //funcion para mostrar la seccion de consulta de activos
         protected void Agregar_Click(object sender, EventArgs e)
         {
             idiv.Visible = true;
             theDiv.Visible = false;
         }
+            //funcion para regresar al formulario de creacion de prestamo
         protected void Button1_Click(object sender, EventArgs e)
         {
             idiv.Visible = false;
@@ -184,6 +192,8 @@ namespace EXPEDIA
 
 
         //****** METODOS DE PARA CONTROLES DE INFORMACION*********************
+
+            //funcion para cargar los campos del griview en el que se muestra la informacion de cada activo
         protected void cargar()
         {
             dt.Columns.AddRange(new DataColumn[7] {
@@ -202,13 +212,13 @@ namespace EXPEDIA
             });
         }
 
-
+            //funcion cuando se agrega un activo consultado al prestamo
         protected void tabla_SelectedIndexChanged(object sender, GridViewDeleteEventArgs e)
         {
 
 
 
-            Cambiar_Estado(3, tabla.Rows[e.RowIndex].Cells[1].Text.ToString());
+            Cambiar_Estado(3, tabla.Rows[e.RowIndex].Cells[1].Text);
 
             dt.Rows.Add(tabla.Rows[e.RowIndex].Cells[1].Text, tabla.Rows[e.RowIndex].Cells[2].Text, tabla.Rows[e.RowIndex].Cells[3].Text, tabla.Rows[e.RowIndex].Cells[4].Text, tabla.Rows[e.RowIndex].Cells[5].Text, tabla.Rows[e.RowIndex].Cells[6].Text, tabla.Rows[e.RowIndex].Cells[7].Text);
             tabla1.DataSource = dt;
@@ -221,7 +231,7 @@ namespace EXPEDIA
 
 
         }
-
+            //funcion cuadno no se quiere un activo en el prestamo y habia sido selecionado 
         protected void tabla1_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
 
@@ -232,19 +242,20 @@ namespace EXPEDIA
             tabla1.DataBind();
 
         }
-
+          //funcion para cambier el estado del activo de 1 (en alta) a 3 (prestamo)
         protected void Cambiar_Estado(int y, string placa)
         {
             Conexion c = new Conexion();
             SqlConnection Conexion = c.Conectar();
-            string Sql = @"UPDATE Activos SET bd_estado=" +y+ " WHERE bd_numero_placa='" +placa + "'";
+            string Sql = @"UPDATE Activos SET bd_estado=" + y + " WHERE bd_numero_placa=" + placa + "";
             Conexion.Open();//abrimos conexion
             SqlCommand cmd = new SqlCommand(Sql, Conexion); //ejecutamos la instruccion
             cmd.ExecuteNonQuery();
 
 
         }
-
+        /*
+        Esta funcion es para cambiar el estado del usuario a 3 (tiene un prestamo) p
         protected void Cambiar_Estado_usuario(int y, string placa)
         {
             Conexion c = new Conexion();
@@ -256,8 +267,10 @@ namespace EXPEDIA
 
 
         }
+        */
 
-
+        //***Metodos de notificaciones**********
+            //funcion para mostrar alerta de error o no encontrado
         protected void error(Control btn, String titulo, String texto)
         {
             System.Text.StringBuilder sb = new System.Text.StringBuilder();
@@ -275,7 +288,7 @@ namespace EXPEDIA
 
         }
 
-
+            //funcion para mostrar que la accion fue realizada correctamente
         protected void excelente(Control boton)
         {
             System.Text.StringBuilder sb = new System.Text.StringBuilder();
@@ -301,7 +314,7 @@ namespace EXPEDIA
             sb.Append(@"</script>");
             ScriptManager.RegisterStartupScript(boton, this.GetType(), "Holi", sb.ToString(), false);
         }
-
+            //funcion para limpiear los campos una ves realizado el prestamo
         protected void limpiarIngresar()
         {
             try
@@ -323,6 +336,7 @@ namespace EXPEDIA
 
         }
 
+        //funcion para corroborrar que existen los datos del usuario
         protected bool corroborarExistenciaDatos(String tabla, String id, String valor, Control btn)
         {
 
@@ -349,10 +363,12 @@ namespace EXPEDIA
         }
 
 
-        //****** METODOS PARA HACER LA CONSULTA DE LOS ACTIVOS DISPONIBLES **********
+     
 
 
         //***METODOS PARA CARGAR LA INFORMACION DE LOS DROPDOWNLIST ******
+            //estod metodos consultan a la base de datos por las tablas de are , proveedor y descripcion asociadas a activos para mostrar su infomracion 
+            //en un dropdownlist
         protected void cargar_area(DropDownList dropdown)
         {
             Conexion c = new Conexion();
@@ -436,7 +452,7 @@ namespace EXPEDIA
             error(Consultar1, "Disculpa", "Utiliaza los filtros de busqueda para una mejor consulta");
 
         }
-
+ 
         protected void Consulta_Despartamento_Numero(string quien, int cuantas)
         {
 
@@ -1209,7 +1225,7 @@ namespace EXPEDIA
             }
             catch (Exception e) { Response.Write(e); bandera = true; }
         }
-
+            //metodo para corroborar que la cedula ingresada corresponda a un usuario
         protected bool Login(String ced)
         {
             Conexion c = new Conexion();
@@ -1233,7 +1249,7 @@ namespace EXPEDIA
                 return true;
             }
         }
-
+            //este metodo y el siguiente son   para una vez creado el prestamo , el id del prestamo se les agregue a todos los activos relacionados con el
         protected void Cargar_Id_Prestamo(String cd)
         {
             Conexion c = new Conexion();
@@ -1268,10 +1284,10 @@ namespace EXPEDIA
             foreach (GridViewRow row in tabla1.Rows)
             {
 
-                string placa = row.Cells[1].Text.ToString();
+                string placa = row.Cells[1].Text;
                 Conexion c = new Conexion();
                 SqlConnection Conexion = c.Conectar();
-                string Sql = @"UPDATE Activos SET bd_id_prestamo=" +y+ "WHERE bd_numero_placa='"+placa+"'";
+                string Sql = @"UPDATE Activos SET bd_id_prestamo=" + y + " WHERE bd_numero_placa=" + placa + "";
                 Conexion.Open();//abrimos conexion
                 SqlCommand cmd = new SqlCommand(Sql, Conexion); //ejecutamos la instruccion
                 cmd.ExecuteNonQuery();
@@ -1280,7 +1296,7 @@ namespace EXPEDIA
             }
         }
 
-
+            //funcion para cargar todos los activos a la factura la cual se manda a imprimir 
         protected void Cargar_Activos(int g, GridView j)
         {
             DataTable dt = new DataTable();
@@ -1320,12 +1336,15 @@ namespace EXPEDIA
             catch (Exception a) { Response.Write(a); }
         }
 
+            //funcion para imprimir la factura 
         protected void descargar_Click(object sender, EventArgs e)
         {
             Page.ClientScript.RegisterStartupScript(this.GetType(), "descargar", "imprSelec()", true);
         }
 
-        //****** VA LIDACION DE PENDIENTES********
+        /****** VALIDACION DE PENDIENTES********
+
+            Metodos para validar que un usuario no tenga un prestamo previamente dado
         protected void Pendiente_detalle(string y)
         {
             Conexion c = new Conexion();
@@ -1363,10 +1382,10 @@ namespace EXPEDIA
         {
             pendiente.Visible = false;
         }
-
+        */
         //****************** METODOS PARA LA PARTE DE CONTROL DE PRESTAMOS**********************************
 
-
+                //funcion para corroborar estados del usuario
         protected void cedula_consulta_TextChanged(object sender, EventArgs e)
         {
 
@@ -1389,8 +1408,8 @@ namespace EXPEDIA
                 while (reader.Read())
                 {
 
-                    if (reader.GetInt16(2) == 2) { Info2.InnerText = "" + reader.GetString(0) + " " + reader.GetString(1) + " tiene prestamos pendientes"; Info2.Style.Add("color", "red"); tiene = true;  }
-                    if (reader.GetInt16(2) == 1) { Info2.InnerText = "" + reader.GetString(0) + " " + reader.GetString(1) + " no tiene prestamos pendientes "; Info2.Style.Add("color", "green"); }
+                    //if (reader.GetInt16(2) == 2) { Info2.InnerText = "" + reader.GetString(0) + " " + reader.GetString(1) + " tiene prestamos pendientes"; Info2.Style.Add("color", "red"); tiene = true;  }
+                    //if (reader.GetInt16(2) == 1) { Info2.InnerText = "" + reader.GetString(0) + " " + reader.GetString(1) + " no tiene prestamos pendientes "; Info2.Style.Add("color", "green"); }
                     if (reader.GetInt16(2) == 3) { Info2.InnerText = "" + reader.GetString(0) + " " + reader.GetString(1) + "se encuentra inhabilitado "; Info2.Style.Add("color", "red"); no_puede = true; }
 
 
@@ -1404,23 +1423,25 @@ namespace EXPEDIA
 
 
         }
+               //funcion para controlar el filtro de busqueda ya sea por id de usuario o por id del prestamo
         protected void Consulta_prestamo_Click(object sender, EventArgs e)
         {
-            tiene = false;
+            //tiene = false;
             if (cedula_consulta.Text == "_-____-____" &&  id_prestamo.Text == "") { error(Consulta_prestamo, "Disculpa", "Utilice los filtros de busqueda para una mejor consulta"); }
             if (cedula_consulta.Text != "" && id_prestamo.Text == "") { Consultar_cedula(); }
             if (cedula_consulta.Text == "_-____-____" && id_prestamo.Text != "") { Consultar_id(); }
             if (cedula_consulta.Text != "" && id_prestamo.Text != "") { Consultar_cedula_id(); }
 
         }
-
+               //funcion para controlar las distintas acciones de la table una vez consultado  el prestamo
         protected void tabla2_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             switch (e.CommandName)
             {
                 case "Detalle":
                     {
-
+                        //esta funcion se encarga de tomar el id del prestamo de la tabla para realizar una consulta a la base de datos para 
+                        // cargar toda la informacion en una ventana modal llamada detalle
 
                         string rowIndex = e.CommandArgument.ToString();
 
@@ -1439,7 +1460,8 @@ namespace EXPEDIA
                     }
                 case "Al_día":
                     {
-
+                        //esta funcion se encarga de tomar el id del prestamo de la tabla para realizar la finalizacion del prestamo 
+                        // medianta la ventanda modal finalizar
                         string rowIndex = e.CommandArgument.ToString();
 
                         int index = Convert.ToInt32(rowIndex);
@@ -1459,7 +1481,8 @@ namespace EXPEDIA
                         break;
                     }
                 case "Prolongar": {
-
+                        //esta funcion se encarga de tomar el id del prestamo de la tabla para realizar una consulta a la base de datos para 
+                        // realizar una prologacion del prestamo 
                         string rowIndex = e.CommandArgument.ToString();
 
                         int index = Convert.ToInt32(rowIndex);
@@ -1483,6 +1506,7 @@ namespace EXPEDIA
 
         }
 
+        //*****METODOS PARA CONSULTAR CON LA BASE DE DATOS SEGUN EL FILTRADO ***
         private void Consultar_cedula()
         {
             DataTable dt = new DataTable();
@@ -1545,7 +1569,6 @@ namespace EXPEDIA
 
             else { error(Consulta_prestamo, "Disculpa", "No se encuentran prestamos con el id solicitado  en el sistema"); }
         }
-    
         private void Consultar_id()
         {
             DataTable dt = new DataTable();
@@ -1715,7 +1738,7 @@ namespace EXPEDIA
         }
 
         //***FUNCIONES PARA LA MODAL FINALIZAR****************************
-
+            //metodo para comparar la fechas del prestamo (entrega y regreso)
         protected void calcular(int x , HtmlGenericControl l , TextBox tx)
         {
             Conexion c = new Conexion();
@@ -1760,7 +1783,7 @@ namespace EXPEDIA
 
 
         }
-
+            //funcion para cerrar ventana modal
         protected void Button2_Click(object sender, EventArgs e)
         {
             finalizar.Visible = false;
@@ -1772,7 +1795,7 @@ namespace EXPEDIA
             {
                 regresar_ativos();
                 eliminar_prestamo();
-                Cambiar_Estado_usuario(1, ced);
+                //Cambiar_Estado_usuario(1, ced); funcion que cambia el estado del usuario 2 (con pendiente) a 1(listo);
                 excelente(Finalizar1);
                 
           
@@ -1804,7 +1827,7 @@ namespace EXPEDIA
         }
 
         //***FUNCIONES PARA LA MODAL PROLONGAR****************************
-
+            //funcion para validar si el prestamo se encuantra aptop para prolongar (si no esta atrasado se puede prolongar);
         protected void validar_prolongar(int y)
         {
             Conexion c = new Conexion();
@@ -1847,6 +1870,7 @@ namespace EXPEDIA
 
         }
 
+            //funcion para cerrar ventana modal
         protected void Button3_Click(object sender, EventArgs e)
         {
             prolongar.Visible = false;
