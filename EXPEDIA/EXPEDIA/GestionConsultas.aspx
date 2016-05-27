@@ -19,9 +19,6 @@
     <script src="js/jquery.bxslider.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <link href="css/purecss.css" rel="stylesheet" />
-    <script src="js/jQueryUI/jquery-ui.min.js"></script>
-    <link href="js/jQueryUI/jquery-ui.theme.min.css" rel="stylesheet" />
-    <link href="js/jQueryUI/jquery-ui.min.css" rel="stylesheet" />
     <script src="js/sweetalert.min.js"></script>
     <link href="css/sweetalert.css" rel="stylesheet" />
     <script src="js/Exportacion/base64.js"></script>
@@ -30,6 +27,9 @@
     <script src="js/Exportacion/jspdf.js"></script>
     <script src="js/Exportacion/sprintf.js"></script>
     <script src="js/Exportacion/tableExport.js"></script>
+        <link href="css/bootstrap-table.css" rel="stylesheet" />
+    <script src="https://cdn.datatables.net/1.10.10/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.10/js/dataTables.bootstrap.min.js"></script>
 </head>
 
 <body>
@@ -70,11 +70,12 @@
             </div>
         </div>
     </nav>
-    <div class="container">
+    <center>
+    <div style="text-align:left;width:90%">
         <div style="margin-top:50px;"><asp:SiteMapPath ID="SiteMapPath1" runat="server"></asp:SiteMapPath></div>
         <div class="panel panel-primary">
             <div class="panel-heading">
-                <h3 class="panel-title">Gestión de Activos</h3>
+                <h3 class="panel-title">Gestión de consultas</h3>
             </div>
             <div class="panel-body">
                 <div class="tabs-example">
@@ -131,20 +132,7 @@
                                <br />
                                 </div>                        <br />
                                                         <br />
-                                <div runat="server" ID="export" class="btn-group" style="float:right;display:none; margin-bottom:10px;">
-                                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Exportar <span class="caret"></span>
-                </button>
-                                    <ul class="dropdown-menu">
-                    <li><a id="excel">Excel</a></li>
-                    <li><a id="word">Word</a></li>
-                    <li><a id="texto">Texto</a></li>
-                    <li><a id="sql">SQL</a></li>
-                    <li><a id="pdf">PDF</a></li>
-                    <li><a id="xml">XML</a></li>
-                    <li><a id="json">JSON</a></li>
-                </ul>
-                                </div>
+     
                                 <asp:GridView  runat="server" ID="lista" CssClass="table table-hover table-bordered results" > </asp:GridView>
                                     <br />
                                     <br />                                   
@@ -161,89 +149,133 @@
                              </ul>
                              </div>
                             <div id="myTabConten" class="tab-content">
-                                <br />
-                                 <div class="tab-pane fade in active" id="Usuarios">
-                                    <asp:Table ID="Table2" runat="server" CssClass="table table-hover table-bordered results">
-                                                         <asp:TableHeaderRow runat="server">
-                                                                <asp:TableHeaderCell ColumnSpan="1">Identificador</asp:TableHeaderCell>
-                                                                <asp:TableHeaderCell ColumnSpan="1">Nombre</asp:TableHeaderCell>
-                                                                <asp:TableHeaderCell ColumnSpan="1">Correo electrónico</asp:TableHeaderCell>
-                                                                <asp:TableHeaderCell ColumnSpan="1">Contacto</asp:TableHeaderCell>
-                                                                <asp:TableHeaderCell ColumnSpan="1">Acciones</asp:TableHeaderCell>
-                                                         </asp:TableHeaderRow>
-                                                         <asp:TableRow CssClass="warning no-result">
-                                                        <asp:TableCell ColumnSpan="4" CssClass="fa fa-warning">No existen resultados</asp:TableCell>
-                                                    </asp:TableRow>
-                                                    </asp:Table>   
+
+                                 <div class="tab-pane fade" id="Usuarios">
+                                        <div class="btn-group" style="float:right;">
+                                            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                Exportar <span class="caret"></span>
+                                            </button>
+                                            <ul class="dropdown-menu">
+                                                <li><a id="excelu">Excel</a></li>
+                                                <li><a id="wordu">Word</a></li>
+                                                <li><a id="textou">Texto</a></li>
+                                                <li><a id="sqlu">SQL</a></li>
+                                                <li><a id="pdfu">PDF</a></li>
+                                                <li><a id="xmlu">XML</a></li>
+                                                <li><a id="jsonu">JSON</a></li>
+                                            </ul>
+                                        </div>
+                                     <br />
+                                     <div runat="server" id="usuarios">
+
+                                     </div>  
                                  </div>
 
-                                 <div class="tab-pane fade" id="Activos">
+                                 <div class="tab-pane fade in active" id="Activos">
+                                        <div class="btn-group" style="float:right;">
+                                            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                Exportar <span class="caret"></span>
+                                            </button>
+                                            <ul class="dropdown-menu">
+                                                <li><a id="excelac">Excel</a></li>
+                                                <li><a id="wordac">Word</a></li>
+                                                <li><a id="textoac">Texto</a></li>
+                                                <li><a id="sqlac">SQL</a></li>
+                                                <li><a id="pdfac">PDF</a></li>
+                                                <li><a id="xmlac">XML</a></li>
+                                                <li><a id="jsonac">JSON</a></li>
+                                            </ul>
+                                        </div>
                                      <br />
-                                    <asp:Table ID="Table1" runat="server" CssClass="table table-hover table-bordered results">
-                                                         <asp:TableHeaderRow runat="server">
-                                                                <asp:TableHeaderCell ColumnSpan="1">Identificador</asp:TableHeaderCell>
-                                                                <asp:TableHeaderCell ColumnSpan="1">Nombre</asp:TableHeaderCell>
-                                                                <asp:TableHeaderCell ColumnSpan="1">Correo electrónico</asp:TableHeaderCell>
-                                                                <asp:TableHeaderCell ColumnSpan="1">Contacto</asp:TableHeaderCell>
-                                                                <asp:TableHeaderCell ColumnSpan="1">Acciones</asp:TableHeaderCell>
-                                                         </asp:TableHeaderRow>
-                                                         <asp:TableRow CssClass="warning no-result">
-                                                        <asp:TableCell ColumnSpan="4" CssClass="fa fa-warning">No existen resultados</asp:TableCell>
-                                                    </asp:TableRow>
-                                                    </asp:Table>    
+                                     <div runat="server" id="activosCorp">
+                                         
+
+                                     </div>
+                                     <br />
+                                     <div class="btn-group" style="float:right;">
+                                            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                Exportar <span class="caret"></span>
+                                            </button>
+                                            <ul class="dropdown-menu">
+                                                <li><a id="excelal">Excel</a></li>
+                                                <li><a id="wordal">Word</a></li>
+                                                <li><a id="textoal">Texto</a></li>
+                                                <li><a id="sqlal">SQL</a></li>
+                                                <li><a id="pdfal">PDF</a></li>
+                                                <li><a id="xmlal">XML</a></li>
+                                                <li><a id="jsonal">JSON</a></li>
+                                            </ul>
+                                        </div>
+                                     <div runat="server" id="activosLeasing">
+                                         <h1 style="text-align:center">Leasing</h1>
+
+                                     </div>   
+
                                  </div>
 
                                  
                                  <div class="tab-pane fade" id="Prestamos">
+                                         <div class="btn-group" style="float:right;">
+                                            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                Exportar <span class="caret"></span>
+                                            </button>
+                                            <ul class="dropdown-menu">
+                                                <li><a id="excelap">Excel</a></li>
+                                                <li><a id="wordp">Word</a></li>
+                                                <li><a id="textop">Texto</a></li>
+                                                <li><a id="sqlp">SQL</a></li>
+                                                <li><a id="pdfp">PDF</a></li>
+                                                <li><a id="xmlp">XML</a></li>
+                                                <li><a id="jsonp">JSON</a></li>
+                                            </ul>
+                                        </div>
                                      <br />
-                                    <asp:Table ID="Table3" runat="server" CssClass="table table-hover table-bordered results">
-                                                         <asp:TableHeaderRow runat="server">
-                                                                <asp:TableHeaderCell ColumnSpan="1">Identificador</asp:TableHeaderCell>
-                                                                <asp:TableHeaderCell ColumnSpan="1">Nombre</asp:TableHeaderCell>
-                                                                <asp:TableHeaderCell ColumnSpan="1">Correo electrónico</asp:TableHeaderCell>
-                                                                <asp:TableHeaderCell ColumnSpan="1">Contacto</asp:TableHeaderCell>
-                                                                <asp:TableHeaderCell ColumnSpan="1">Acciones</asp:TableHeaderCell>
-                                                         </asp:TableHeaderRow>
-                                                         <asp:TableRow CssClass="warning no-result">
-                                                        <asp:TableCell ColumnSpan="4" CssClass="fa fa-warning">No existen resultados</asp:TableCell>
-                                                    </asp:TableRow>
-                                                    </asp:Table>  
+                                     <div runat="server" id="prestamos">
+
+                                     </div>  
                                  </div>
 
                                  
                                  <div class="tab-pane fade" id="Donaciones">
+                                        <div class="btn-group" style="float:right;">
+                                            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                Exportar <span class="caret"></span>
+                                            </button>
+                                            <ul class="dropdown-menu">
+                                                <li><a id="exceld">Excel</a></li>
+                                                <li><a id="wordd">Word</a></li>
+                                                <li><a id="textod">Texto</a></li>
+                                                <li><a id="sqld">SQL</a></li>
+                                                <li><a id="pdfd">PDF</a></li>
+                                                <li><a id="xmld">XML</a></li>
+                                                <li><a id="jsond">JSON</a></li>
+                                            </ul>
+                                        </div>
                                      <br />
-                                    <asp:Table ID="Table4" runat="server" CssClass="table table-hover table-bordered results">
-                                                         <asp:TableHeaderRow runat="server">
-                                                                <asp:TableHeaderCell ColumnSpan="1">Identificador</asp:TableHeaderCell>
-                                                                <asp:TableHeaderCell ColumnSpan="1">Nombre</asp:TableHeaderCell>
-                                                                <asp:TableHeaderCell ColumnSpan="1">Correo electrónico</asp:TableHeaderCell>
-                                                                <asp:TableHeaderCell ColumnSpan="1">Contacto</asp:TableHeaderCell>
-                                                                <asp:TableHeaderCell ColumnSpan="1">Acciones</asp:TableHeaderCell>
-                                                         </asp:TableHeaderRow>
-                                                         <asp:TableRow CssClass="warning no-result">
-                                                        <asp:TableCell ColumnSpan="4" CssClass="fa fa-warning">No existen resultados</asp:TableCell>
-                                                    </asp:TableRow>
-                                                    </asp:Table>  
+                                     <div runat="server" id="donaciones">
+
+                                     </div>  
                                  </div>
 
 
                              </div>
                             <br />
                             <br />
-                            <input class="btn btn-success" type="button" id="btnExport11" value=" Exportar a Excel " /> 
+                            
                        </div>
                     </div>
                     </div>
                 </div>
             </div>
         </div>
-
+    </center>
     <footer class="navbar" style="background-color:white">
         <div class="container">
 <%--            <h5 style="text-align: center" class="text-muted">Prototipo I EXPEDIA - Ingeniería en sistemas de información II</h5>--%>
         </div>
     </footer>
+
+
     <script>
         // You can also use "$(window).load(function() {"
         $(document).ready(function () {
@@ -278,58 +310,298 @@
 	 </script>
      <script>
          $(document).ready(function (e) {
-             $("#excel").click(function (e) {
-                 $("#lista").tableExport({
+             $("#excelu").click(function (e) {
+                 $("#usua").tableExport({
                      type: 'excel',
                      escape: false
                  });
              });
-             $("#pdf").click(function (e) {
-                 $("#lista").tableExport({
+             $("#pdfu").click(function (e) {
+                 $("#usua").tableExport({
                      type: 'pdf',
                      escape: true,
                      pdfLeftMargin:10,
                      pdfFontSize:8
                  });
              });
-             $("#word").click(function (e) {
-                 $("#lista").tableExport({
+             $("#wordu").click(function (e) {
+                 $("#usua").tableExport({
                      type: 'doc',
                      escape: false
                  });
              });
-             $("#sql").click(function (e) {
-                 $("#lista").tableExport({
+             $("#sqlu").click(function (e) {
+                 $("#usua").tableExport({
                      type: 'sql',
                      escape: false
                  });
              });
-             $("#xml").click(function (e) {
-                 $("#lista").tableExport({
+             $("#xmlu").click(function (e) {
+                 $("#usua").tableExport({
                      type: 'xml',
                      escape: false
                  });
              });
-             $("#json").click(function (e) {
-                 $("#lista").tableExport({
+             $("#jsonu").click(function (e) {
+                 $("#usua").tableExport({
                      type: 'json',
                      escape: false
                  });
              });
-             $("#texto").click(function (e) {
-                 $("#lista").tableExport({
+             $("#textou").click(function (e) {
+                 $("#usua").tableExport({
                      type: 'txt',
                      escape: false
                  });
              });
-             $("#png").click(function (e) {
-                 $("#lista").tableExport({
+             $("#pngu").click(function (e) {
+                 $("#usua").tableExport({
                      type: 'png',
                      escape: false
                  });
              });
          });
     </script>
-  
+     <script>
+             $(document).ready(function (e) {
+                 $("#excelac").click(function (e) {
+                     $("#actiCorp").tableExport({
+                         type: 'excel',
+                         escape: false
+                     });
+
+                 });
+                 $("#pdfac").click(function (e) {
+                     $("#actiCorp").tableExport({
+                         type: 'pdf',
+                         escape: false
+                     });
+                 });
+                 $("#wordac").click(function (e) {
+                     $("#actiCorp").tableExport({
+                         type: 'doc',
+                         escape: false
+                     });
+                 });
+                 $("#sqlac").click(function (e) {
+                     $("#actiCorp").tableExport({
+                         type: 'sql',
+                         escape: false
+                     });
+                 });
+                 $("#xmlac").click(function (e) {
+                     $("#actiCorp").tableExport({
+                         type: 'xml',
+                         escape: false
+                     });
+                 });
+                 $("#jsonac").click(function (e) {
+                     $("#actiCorp").tableExport({
+                         type: 'json',
+                         escape: false
+                     });
+                 });
+                 $("#textoac").click(function (e) {
+                     $("#actiCorp").tableExport({
+                         type: 'txt',
+                         escape: false
+                     });
+                 });
+                 $("#pngac").click(function (e) {
+                     $("#actiCorp").tableExport({
+                         type: 'png',
+                         escape: false
+                     });
+                 });
+             });
+    </script>
+    <script>
+        $(document).ready(function (e) {
+            $("#excelal").click(function (e) {
+                $("#actiLeasing").tableExport({
+                    type: 'excel',
+                    escape: false
+                });
+
+            });
+            $("#pdfal").click(function (e) {
+                $("#actiLeasing").tableExport({
+                    type: 'pdf',
+                    escape: false
+                });
+            });
+            $("#wordal").click(function (e) {
+                $("#actiLeasing").tableExport({
+                    type: 'doc',
+                    escape: false
+                });
+            });
+            $("#sqlal").click(function (e) {
+                $("#actiLeasing").tableExport({
+                    type: 'sql',
+                    escape: false
+                });
+            });
+            $("#xmlal").click(function (e) {
+                $("#actiLeasing").tableExport({
+                    type: 'xml',
+                    escape: false
+                });
+            });
+            $("#jsonal").click(function (e) {
+                $("#actiLeasing").tableExport({
+                    type: 'json',
+                    escape: false
+                });
+            });
+            $("#textoal").click(function (e) {
+                $("#actiLeasing").tableExport({
+                    type: 'txt',
+                    escape: false
+                });
+            });
+            $("#pnga").click(function (e) {
+                $("#actiLeasing").tableExport({
+                    type: 'png',
+                    escape: false
+                });
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function (e) {
+            $("#excel").click(function (e) {
+                $("#usuarios").tableExport({
+                    type: 'excel',
+                    escape: false
+                });
+
+            });
+            $("#pdf").click(function (e) {
+                $("#usuarios").tableExport({
+                    type: 'pdf',
+                    escape: false
+                });
+            });
+            $("#word").click(function (e) {
+                $("#usuarios").tableExport({
+                    type: 'doc',
+                    escape: false
+                });
+            });
+            $("#sql").click(function (e) {
+                $("#usuarios").tableExport({
+                    type: 'sql',
+                    escape: false
+                });
+            });
+            $("#xml").click(function (e) {
+                $("#usuarios").tableExport({
+                    type: 'xml',
+                    escape: false
+                });
+            });
+            $("#json").click(function (e) {
+                $("#usuarios").tableExport({
+                    type: 'json',
+                    escape: false
+                });
+            });
+            $("#texto").click(function (e) {
+                $("#usuarios").tableExport({
+                    type: 'txt',
+                    escape: false
+                });
+            });
+            $("#png").click(function (e) {
+                $("#usuarios").tableExport({
+                    type: 'png',
+                    escape: false
+                });
+            });
+        });
+    </script>
+     <script>
+         $(document).ready(function () {
+             $('#actiCorp').DataTable({
+                 "language": {
+                     "sProcessing": "Procesando...",
+                     "sLengthMenu": "Mostrar _MENU_ registros",
+                     "sZeroRecords": "No se encontraron resultados",
+                     "sEmptyTable": "Ningún dato disponible en esta tabla",
+                     "sInfo": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                     "sInfoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+                     "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
+                     "sInfoPostFix": "",
+                     "sSearch": "Buscar:",
+                     "sUrl": "",
+                     "sInfoThousands": ",",
+                     "sLoadingRecords": "Cargando...",
+                     "oPaginate": {
+                         "sFirst": "Primero",
+                         "sLast": "Último",
+                         "sNext": "Siguiente",
+                         "sPrevious": "Anterior"
+                     },
+                     "oAria": {
+                         "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
+                         "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+                     }
+                 }
+             });
+             $('#actiLeasing').DataTable({
+                 "language": {
+                     "sProcessing": "Procesando...",
+                     "sLengthMenu": "Mostrar _MENU_ registros",
+                     "sZeroRecords": "No se encontraron resultados",
+                     "sEmptyTable": "Ningún dato disponible en esta tabla",
+                     "sInfo": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                     "sInfoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+                     "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
+                     "sInfoPostFix": "",
+                     "sSearch": "Buscar:",
+                     "sUrl": "",
+                     "sInfoThousands": ",",
+                     "sLoadingRecords": "Cargando...",
+                     "oPaginate": {
+                         "sFirst": "Primero",
+                         "sLast": "Último",
+                         "sNext": "Siguiente",
+                         "sPrevious": "Anterior"
+                     },
+                     "oAria": {
+                         "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
+                         "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+                     }
+                 }
+             });
+             $('#usua').DataTable({
+                 "language": {
+                     "sProcessing": "Procesando...",
+                     "sLengthMenu": "Mostrar _MENU_ registros",
+                     "sZeroRecords": "No se encontraron resultados",
+                     "sEmptyTable": "Ningún dato disponible en esta tabla",
+                     "sInfo": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                     "sInfoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+                     "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
+                     "sInfoPostFix": "",
+                     "sSearch": "Buscar:",
+                     "sUrl": "",
+                     "sInfoThousands": ",",
+                     "sLoadingRecords": "Cargando...",
+                     "oPaginate": {
+                         "sFirst": "Primero",
+                         "sLast": "Último",
+                         "sNext": "Siguiente",
+                         "sPrevious": "Anterior"
+                     },
+                     "oAria": {
+                         "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
+                         "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+                     }
+                 }
+             });
+        });
+    </script>  
 </body>
 </html>
