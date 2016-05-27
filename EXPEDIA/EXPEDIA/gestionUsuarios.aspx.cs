@@ -10,6 +10,7 @@ namespace EXPEDIA
 {
     public partial class gestionUsuarios : System.Web.UI.Page
     {
+        //en caso de no poseer la session sera redirigido a index
         protected void Page_Load(object sender, EventArgs e)
         {
        
@@ -25,9 +26,12 @@ namespace EXPEDIA
             cargar_puesto(puesto_actualizar);
 
         }
+        //metodo encargado de insertar un nuevosuario
         protected void Bt_Ingresar_Click(object sender, EventArgs e)
         {
+
             Session["Inhabilitado"] = "";
+            //se encarga de envaluar que no exista un usuario con los mismos datos
             if (corroborarExistenciaDatos("Usuarios", "bd_cedula", cedula_usuario.Text, Bt_Ingresar))
             {
                 Conexion c = new Conexion();
@@ -67,7 +71,7 @@ namespace EXPEDIA
                 }
             }
         }
-
+        //mensaje que es mostrado en caso de existir algun error con los datos ingresados 
         protected void error(Control btn, String titulo, String texto)
         {
             System.Text.StringBuilder sb = new System.Text.StringBuilder();
@@ -84,13 +88,14 @@ namespace EXPEDIA
             //http://limonte.github.io/sweetalert2/
 
         }
-
+        //carga los datos de las area para ser mostradas en el dropdown
         protected void cargar_area(DropDownList dropdown)
         {
             if (dropdown.Items.Count < 2)
             {
                 Conexion c = new Conexion();
                 SqlConnection Conexion = c.Conectar();
+
                 string Sql = @"SELECT bd_id_area, bd_descripcion FROM Areas";
                 Conexion.Open();//abrimos conexion
                 SqlCommand cmd = new SqlCommand(Sql, Conexion); //ejecutamos la instruccion
@@ -107,7 +112,7 @@ namespace EXPEDIA
                 Conexion.Close();
             }
         }
-
+        //encargado de cargar los datos de puestos
         protected void cargar_puesto(DropDownList dropdown)
         {
             if (dropdown.Items.Count < 2)
@@ -132,10 +137,12 @@ namespace EXPEDIA
                 Conexion.Close();
             }
         }
+        //encargado de habilitar los campos del formulario
         protected void Btn_habilitar_Click(object sender, EventArgs e)
         {
             habilitarCampos();
         }
+        //metodo encargado de buscar el usuario por cedula
         protected void Btn_consultar_Click(object sender, EventArgs e)
         {
             Conexion c = new Conexion();
@@ -150,7 +157,7 @@ namespace EXPEDIA
             SqlDataReader reader = cmd.ExecuteReader();
             if (reader.HasRows)
             {
-                while (reader.Read())
+                while (reader.Read())//ingreso de datos al formulario
                 {
                     bool tipo = reader.GetBoolean(0);
                     if (tipo) tipo_actualizar.SelectedValue = "1";
@@ -191,6 +198,7 @@ namespace EXPEDIA
 
 
         }
+        //no permite el ingreso de datos en el formulario
         public void inhabilitarCampos()
         {
             apellido_actualizar1.ReadOnly = true;
@@ -210,6 +218,7 @@ namespace EXPEDIA
             llaveAreas.Style.Add("display", "none");
             llavePuestos.Style.Add("display", "none");
         }
+        //muestra los espacios para ingresar datos
         public void habilitarCampos()
         {
             apellido_actualizar1.ReadOnly = false;
@@ -231,7 +240,7 @@ namespace EXPEDIA
             notificacionCampos(Btn_habilitar);
 
         }
-
+        //mensaje mostrado si los datos son ingresados correctamente
         protected void excelente(Control boton)
         {
             System.Text.StringBuilder sb = new System.Text.StringBuilder();
@@ -247,7 +256,7 @@ namespace EXPEDIA
 
 
         }
-
+        //mensaje mostrado en los campos segun una restriccion
         protected void notificacionCampos(Control boton)
         {
             System.Text.StringBuilder sb = new System.Text.StringBuilder();
@@ -257,17 +266,19 @@ namespace EXPEDIA
             sb.Append(@"</script>");
             ScriptManager.RegisterStartupScript(boton, this.GetType(), "Holi", sb.ToString(), false);
         }
+        //habilita la vista de una opciones
         protected void mostrarConsulta()
         {
             divOcultoConsulta.Style.Add("display", "block");
         }
-
+        //oculta la vista de opciones
         protected void ocultarConsulta()
         {
             divOcultoConsulta.Style.Add("display", "none");
             limpiarConsulta();
 
         }
+        //limpia de los datos del form necesario 
         protected void limpiarConsulta()
         {
             try
@@ -292,7 +303,7 @@ namespace EXPEDIA
 
 
         }
-
+        //limpia el form despues de ingresar
         protected void limpiarIngresar()
         {
             try
@@ -315,6 +326,7 @@ namespace EXPEDIA
 
 
         }
+        //metodo encargado de ingresar cambios a la tabla usuarios
         protected void Bt_actualizar_Click(object sender, EventArgs e)
         {
             Conexion c = new Conexion();
@@ -323,7 +335,7 @@ namespace EXPEDIA
             Conexion.Open();
             try
             {
-                int tipo_usuarioac = Convert.ToInt32(tipo_actualizar.SelectedValue);
+                int tipo_usuarioac = Convert.ToInt32(tipo_actualizar.SelectedValue);//tipo seleccionado
                 SqlCommand cmd = new SqlCommand(Sql, Conexion);
                 cmd.Parameters.AddWithValue("@tipo_usuario", true); //enviamos los parametros
                 cmd.Parameters.AddWithValue("@nombre", nombre_actualizar.Text);
@@ -349,8 +361,10 @@ namespace EXPEDIA
             excelente(Btn_actualizar);
 
         }
+        //metodo la el ingreso de una nueva ocupacion
         protected void Btn_ocupacion_Click(object sender, EventArgs e)
         {
+            //veriifica que esa coupacion no exista
             if (corroborarExistenciaDatos("Puestos", "bd_id_puesto", idocupacion.Text, Btn_ocupacion))
             {
                 Conexion c = new Conexion();
@@ -383,9 +397,10 @@ namespace EXPEDIA
             }
 
         }
-
+        //encargado de crear una nueva area
         protected void Btn_areas_Click(object sender, EventArgs e)
         {
+            //verifica que no exista la area ingresada
             if (corroborarExistenciaDatos("Areas", "bd_id_area", idareas.Text, Btn_areas))
             {
                 Conexion c = new Conexion();
@@ -417,16 +432,16 @@ namespace EXPEDIA
                 }
             }
         }
-
+        //encargado de actualizar el estado del usuario
         protected void Btn_inhabilitar_Click(object sender, EventArgs e)
         {
             Conexion c = new Conexion();
             SqlConnection Conexion = c.Conectar();
             string Sql = @"UPDATE Usuarios SET bd_estado=@usuario_estado, bd_motivos=@motivos WHERE bd_cedula=@cedula";
-            Conexion.Open();
+            Conexion.Open();//abrimos conexion
             try
             {
-                SqlCommand cmd = new SqlCommand(Sql, Conexion);
+                SqlCommand cmd = new SqlCommand(Sql, Conexion);//ejecutamos la sentencia
                 cmd.Parameters.AddWithValue("@usuario_Estado", 3);
                 cmd.Parameters.AddWithValue("@cedula", cedula_consulta.Text);
                 cmd.Parameters.AddWithValue("@motivos", TextArea1.Text);
@@ -441,6 +456,7 @@ namespace EXPEDIA
             excelente(Btn_inhabilitar);
             ocultarConsulta();
         }
+        //comprueba si los datos ingresados ya existen 
         protected bool corroborarExistenciaDatos(String tabla, String id, String valor, Control btn)
         {
 
@@ -472,7 +488,7 @@ namespace EXPEDIA
             this.controles.Style.Add("display", "none");
         }
 
-
+        //habilita el esttado del usuario
         protected void btn_habilitarUsuario_Click(object sender, EventArgs e) {
             string[] separadores = { "*" };
             string[] final = Session["Inhabilitado"].ToString().Split(separadores, StringSplitOptions.RemoveEmptyEntries);
