@@ -11,11 +11,12 @@ namespace EXPEDIA
 {
     public partial class gestionProveedores : System.Web.UI.Page
     {
+        //carga de todos los proveedores en BD
         protected void Page_Load(object sender, EventArgs e)
         {
             cargar_provedores();
         }
-
+        //selecciona de Bd todos los proveedores existentes con sus repectivos atributos
         protected void cargar_provedores() {
             Conexion c = new Conexion();
             SqlConnection Conexion = c.Conectar();
@@ -39,6 +40,7 @@ namespace EXPEDIA
         
         }
         
+        //inserta en la tabla todos los datos correspondientes al proveedor en el orden del formulario
         void insertarRow(String id, String nombre, String correo, String numeros, String motivos, int estado)
         {
             TableRow row = new TableRow();
@@ -79,7 +81,7 @@ namespace EXPEDIA
             Table2.Rows.Add(row);
 
         }
-        
+        //metodo para eliminar un proveedor no deseado
         void eliminarRow(string id)
         {
             for (int i = 0; i < Table2.Rows.Count; i++)
@@ -91,9 +93,10 @@ namespace EXPEDIA
 
             }
         }
-        
+        //ejecuta lainstrauccion para ingresar a BD el proveedor nuevo
         protected void btn_Registrar_Proveedor_Click(object sender, EventArgs e)
         {
+            //verifica que no exista ya ese proveerdor con el id
             if (corroborarExistenciaDatos("Proveedores", "bd_id_proveedor", idp.Text, Resgistrar_Proveedor))
             {
                 Conexion c = new Conexion();
@@ -125,7 +128,7 @@ namespace EXPEDIA
                 }
             }
         }
-
+        //limpia el form de los datos ingresados anteriormente
         protected void limpiarIngresar()
         {
             try
@@ -143,7 +146,7 @@ namespace EXPEDIA
 
 
         }
-
+        //comprueba en BD que el proveedor no exista antes de ser ingresado
         protected bool corroborarExistenciaDatos(String tabla, String id, String valor, Control btn)
         {
             Conexion c = new Conexion();
@@ -165,7 +168,7 @@ namespace EXPEDIA
                 return false;
             }
         }
-
+        //mensaje modal mostrado si todos los datos son registrados correctamente
         protected void excelente(Control boton)
         {
             System.Text.StringBuilder sb = new System.Text.StringBuilder();
@@ -181,7 +184,7 @@ namespace EXPEDIA
 
 
         }
-
+        //en caso de existir error de registro se muestra esta ventana
         protected void error(Control btn, String titulo, String texto)
         {
             System.Text.StringBuilder sb = new System.Text.StringBuilder();
@@ -198,16 +201,16 @@ namespace EXPEDIA
             //http://limonte.github.io/sweetalert2/
 
         }
-
+        //metodo existente para la actualizacion de un proveedor
         protected void Btn_modificar_proveedores_Click(object sender, EventArgs e)
         {
             Conexion c = new Conexion();
             SqlConnection Conexion = c.Conectar();
             string Sql = @"UPDATE Proveedores SET bd_nombre_proveedor=@nombre, bd_correo_electronico_prov=@correo, bd_numero_telefonico_empresa=@telefono1, bd_numero_contacto=@telefono WHERE bd_id_proveedor=@id";
-            Conexion.Open();
+            Conexion.Open();//inicio de conexion
             try
             {
-                SqlCommand cmd = new SqlCommand(Sql, Conexion);
+                SqlCommand cmd = new SqlCommand(Sql, Conexion);//ejecucion de la instruccion
                 cmd.Parameters.AddWithValue("@nombre", nproveedorM.Text);
                 cmd.Parameters.AddWithValue("@correo", correoM.Text);
                 cmd.Parameters.AddWithValue("@telefono1",telefono1M.Text);
@@ -225,7 +228,7 @@ namespace EXPEDIA
                 Response.Write("error" + a.ToString());
             }
         }
-
+        //metodo encargado de cambiar el estado a inhabilitado del proveedor
         protected void Btn_inhabilitar_Click(object sender, EventArgs e)
         {
             Conexion c = new Conexion();
@@ -250,16 +253,16 @@ namespace EXPEDIA
             excelente(Btn_inhabilitar);
 
         }
-        
+        //metodo encargado de cambiar el estado a habilitado del proveedor
         protected void btn_habilitarUsuario_Click(object sender, EventArgs e)
         {
             Conexion c = new Conexion();
             SqlConnection Conexion = c.Conectar();
             string Sql = @"UPDATE Proveedores SET bd_estado=@area_estado, bd_motivos=@motivos WHERE bd_id_proveedor=@area";
-            Conexion.Open();
+            Conexion.Open();//inicio de la conexion
             try
             {
-                SqlCommand cmd = new SqlCommand(Sql, Conexion);
+                SqlCommand cmd = new SqlCommand(Sql, Conexion);//ejecucion la sentencia de actualizar estado
                 cmd.Parameters.AddWithValue("@area_estado", 1);
                 cmd.Parameters.AddWithValue("@area", idpMO.Text);
                 cmd.Parameters.AddWithValue("@motivos", "Activo");

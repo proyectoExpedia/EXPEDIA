@@ -903,9 +903,6 @@ namespace EXPEDIA
                             new DataColumn(" Proveedor ", typeof(string)),
                             new DataColumn(" Especificaciones ",typeof(string)),
 
-
-
-
             });
 
 
@@ -952,9 +949,6 @@ namespace EXPEDIA
                             new DataColumn(" Departamento ",typeof(string)),
                             new DataColumn(" Proveedor ", typeof(string)),
                             new DataColumn(" Especificaciones ",typeof(string)),
-
-
-
 
             });
 
@@ -1052,9 +1046,6 @@ namespace EXPEDIA
                             new DataColumn(" Proveedor ", typeof(string)),
                             new DataColumn(" Especificaciones ",typeof(string)),
 
-
-
-
             });
 
             try
@@ -1099,9 +1090,6 @@ namespace EXPEDIA
                             new DataColumn(" Departamento ",typeof(string)),
                             new DataColumn(" Proveedor ", typeof(string)),
                             new DataColumn(" Especificaciones ",typeof(string)),
-
-
-
 
             });
 
@@ -1518,12 +1506,6 @@ namespace EXPEDIA
                             new DataColumn("Estado ",typeof(string)),
 
 
-
-
-
-
-
-
             });
 
             
@@ -1578,13 +1560,6 @@ namespace EXPEDIA
                             new DataColumn("Identificador del préstamo", typeof(int)),
                             new DataColumn("Identificacíon del solicitante asosiado ",typeof(string)),
                             new DataColumn("Estado ",typeof(string)),
-
-
-
-
-
-
-
 
             });
 

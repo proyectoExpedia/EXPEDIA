@@ -10,6 +10,8 @@ namespace EXPEDIA
 {
     public partial class gestionAreas : System.Web.UI.Page
     {
+        //verifica que el el usarua posea una session sino el redirigido al index
+        //carga las areas disponibles
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -25,7 +27,7 @@ namespace EXPEDIA
           
 
         } 
-
+        // en caso de datos invalidos se muestra este mensaje
         protected void error(Control btn, String titulo, String texto)
         {
             System.Text.StringBuilder sb = new System.Text.StringBuilder();
@@ -42,7 +44,7 @@ namespace EXPEDIA
             //http://limonte.github.io/sweetalert2/
 
         }
-
+        //seleciona los datos alojados en base de datos de todas la areas
         protected void cargar_area(){
                 Conexion c = new Conexion();
                 SqlConnection Conexion = c.Conectar();
@@ -60,7 +62,7 @@ namespace EXPEDIA
                 }
                 Conexion.Close();
         }
-
+        //se inserta una nueva linea de areas con los parametros correspodientes
         void insertarRow(String id, String nombre,String motivos, int estado) {
             TableRow row = new TableRow();
             row.ID = id.ToString();
@@ -90,7 +92,7 @@ namespace EXPEDIA
             Table2.Rows.Add(row);
 
         }
-
+        //eliminar una de la lineas alojadas en la tabla de areas
         void eliminarRow(string id)
         {
             for (int i = 0; i < Table2.Rows.Count; i++)
@@ -102,7 +104,7 @@ namespace EXPEDIA
 
             }
         }
-
+        //mensaje mostrado si todos los datos son ingresados correctamente
         protected void excelente(Control boton)
         {
             System.Text.StringBuilder sb = new System.Text.StringBuilder();
@@ -118,7 +120,7 @@ namespace EXPEDIA
 
 
         }
-
+        //limpias los espacios del formulario
         protected void limpiarIngresar()
         {
             try
@@ -133,7 +135,7 @@ namespace EXPEDIA
 
 
         }
-        
+        //se inserta una nueva area registrada
         protected void Btn_areas_Click(object sender, EventArgs e)
         {
             if (corroborarExistenciaDatos("Areas", "bd_id_area", idareas.Text, Btn_areas))
@@ -163,7 +165,7 @@ namespace EXPEDIA
                 }
             }
         }
-
+        //metodo para la modificacion de una area nueva
         protected void Btn_modificar_areas_Click(object sender, EventArgs e)
         {
             Conexion c = new Conexion();
@@ -187,7 +189,7 @@ namespace EXPEDIA
                 Response.Write("error" + a.ToString());
             }
         }
-
+        //metodo para cambiar ha inhablitado el estado del area
         protected void Btn_inhabilitar_Click(object sender, EventArgs e)
         {
             Conexion c = new Conexion();
@@ -213,7 +215,7 @@ namespace EXPEDIA
             excelente(Btn_inhabilitar);
             
         }
-        
+        //comprueba si existe el area que se desea registrar
         protected bool corroborarExistenciaDatos(String tabla, String id, String valor, Control btn)
         {
 
@@ -238,7 +240,7 @@ namespace EXPEDIA
 
 
         }
-
+        //se cambias el estado del area habilitado 
         protected void btn_habilitarUsuario_Click(object sender, EventArgs e)
         {
             Conexion c = new Conexion();

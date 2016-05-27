@@ -11,6 +11,8 @@ namespace EXPEDIA
 {
     public partial class gestionActivos : System.Web.UI.Page
     {
+        //Page_Load carga la sesion, en caso de no tener actividad sera dirigido al index,
+        //se carga los datos de las diferentes opciones de uso en el formulario         
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -35,6 +37,7 @@ namespace EXPEDIA
 
 
         }
+        //el ingresar procede a validar si existe los datos en la base, de no existir registra los datos en la base segun sea:
         protected void Bt_Ingresar_Click(object sender, EventArgs e)
         {
             if (Page.IsValid)
@@ -44,12 +47,11 @@ namespace EXPEDIA
 
             if (corroborarExistenciaDatos("Activos", "bd_numero_placa", numero_placa.Text, Button1) && corroborarExistenciaDatos("Activos", "bd_numero_serie", numero_serie.Text, Button1))
             {
-                //{ }
-                //if ()
-                //{ }
-
+                
+                // si se seleciono sofawre registra los datos correspondientes del formulario 
                 if (RadioButton2.Checked)
                 {
+                    //crea la concexion para ejecutar la insercion
                     Conexion c = new Conexion();
                     SqlConnection Conexion = c.Conectar();
                     string Sql = @"INSERT INTO Activos (bd_tipo_activo, bd_numero_placa, bd_numero_serie, bd_fecha_inicio_garantia, bd_fecha_final_garantia, bd_descripcion_activo, bd_departamento, bd_proveedor, bd_especificacion_tecnica, bd_aquisicion_ac, bd_finalizacion_contrato, bd_fecha_compra, bd_costo_activo, bd_id_prestamo, bd_estado) values (@tipo_activo, @placa, @serie, @garantia_inicio, @garantia_final, @descripcion, @departamento, @proveedor, @especificacion_tecnica, @aquisicion_ac, @finalizacion_contrato,  @fecha_compra, @costo , @id_prestamo, @estado)";
@@ -89,14 +91,10 @@ namespace EXPEDIA
 
 
                 }
-
-
-
-
-
-
+                // si se seleciono hardware registra los datos correspondientes del formulario 
                 if (RadioButton3.Checked)
                 {
+                    //crea la concexion para ejecutar la insercion
                     Conexion c = new Conexion();
                     SqlConnection Conexion = c.Conectar();
                     string Sql = @"INSERT INTO Activos (bd_tipo_activo, bd_numero_placa, bd_numero_serie, bd_fecha_inicio_garantia, bd_fecha_final_garantia, bd_descripcion_activo, bd_departamento, bd_proveedor, bd_especificacion_tecnica, bd_aquisicion_ac, bd_finalizacion_contrato, bd_fecha_compra, bd_costo_activo, bd_id_prestamo, bd_estado) 
@@ -131,9 +129,10 @@ namespace EXPEDIA
                     }
                     catch (Exception t) { Response.Write("error" + t); }
                 }
-
+                // si se seleciono hardware registra los datos correspondientes del formulario 
                 if (RadioButton4.Checked)
                 {
+                    //crea la concexion para ejecutar la insercion
                     Conexion c = new Conexion();
                     SqlConnection Conexion = c.Conectar();
                     string Sql = @"INSERT INTO Activos (bd_tipo_activo, bd_numero_placa, bd_numero_serie, bd_fecha_inicio_garantia, bd_fecha_final_garantia, bd_descripcion_activo, bd_departamento, bd_proveedor, bd_especificacion_tecnica, bd_aquisicion_ac, bd_finalizacion_contrato, bd_fecha_compra, bd_costo_activo, bd_id_prestamo, bd_estado) 
@@ -173,6 +172,7 @@ namespace EXPEDIA
 
             }
         }
+        //metodo que verifica que no exista un activo con ese id
         protected bool corroborarExistenciaDatos(String tabla, String id, String valor, Control btn)
         {
             Conexion c = new Conexion();
@@ -195,7 +195,7 @@ namespace EXPEDIA
             }
         }
 
-
+        //carga los valores alojados en la base de datos de area para mostrar en el dropdown de areas disponibles
         protected void cargar_area(DropDownList dropdown)
         {
             Conexion c = new Conexion();
@@ -215,6 +215,7 @@ namespace EXPEDIA
             }
             Conexion.Close();
         }
+        //carga los valores alojados en la base de datos de proveedor para mostrar en el dropdown de proveedor disponibles
         protected void cargar_proveedor(DropDownList dropdown)
         {
             Conexion c = new Conexion();
@@ -234,6 +235,7 @@ namespace EXPEDIA
             }
             Conexion.Close();
         }
+        //carga los valores alojados en la base de datos de descripcion para mostrar en el dropdown de descripcion disponibles
         protected void cargar_descripcion(DropDownList dropdown)
         {
             Conexion c = new Conexion();
@@ -254,7 +256,7 @@ namespace EXPEDIA
             Conexion.Close();
         }
 
-
+        //se registra los datos de una nueva area
         protected void btn_Registrar_Area_Click(object sender, EventArgs e)
         {
             if (corroborarExistenciaDatos("Areas", "bd_id_area", id_areas.Text, Registrar_Area))
@@ -294,7 +296,7 @@ namespace EXPEDIA
             }
 
         }
-
+        //se registra los datos de una nueva descripcion
         protected void btn_Registrar_Descripcion_Ac_Click(object sender, EventArgs e)
         {
             if (corroborarExistenciaDatos("Descripcion", "bd_id_descripcion", id_descripcion_nueva.Text, Registar_Descripcion_Ac))
@@ -328,7 +330,7 @@ namespace EXPEDIA
                 }
             }
         }
-
+        //se registra los datos de una nuevo proveedor
         protected void btn_Registrar_Proveedor_Click(object sender, EventArgs e)
         {
             if (corroborarExistenciaDatos("Proveedores", "bd_nombre_proveedor", nproveedor.Text, Resgistrar_Proveedor))
@@ -366,7 +368,7 @@ namespace EXPEDIA
                 }
             }
         }
-
+        //mensaje mostrado si los datos son correctos
         protected void excelente(Control boton)
         {
             System.Text.StringBuilder sb = new System.Text.StringBuilder();
@@ -382,7 +384,7 @@ namespace EXPEDIA
 
 
         }
-
+        //si algunos de los datos son erroneos se muestra este mensaje
         protected void error(Control btn, String titulo, String texto)
         {
             System.Text.StringBuilder sb = new System.Text.StringBuilder();
@@ -505,6 +507,8 @@ namespace EXPEDIA
         //    }
         //}
         // ----------- Modificar, deberíamos crear un boton en la tuerca que permita consultar área, proveedor y descripción ----------//
+        
+        //al habilitar la modificaciones de provedor se puede cambiar todos los atributos correspondientes 
         protected void btn_Modificar_Proveedor_Click(object sender, EventArgs e)
         {
             if (corroborarExistenciaDatos("Proveedores", "bd_nombre_proveedor", nproveedor.Text, Resgistrar_Proveedor))
@@ -540,6 +544,7 @@ namespace EXPEDIA
                 }
             }
         }
+        //modificacion de todos los atributos de una descripcion registrada
         protected void btn_Modificar_Descripcion_Ac_Click(object sender, EventArgs e)
         {
             if (corroborarExistenciaDatos("Descripcion", "bd_id_descripcion", id_descripcion_nueva.Text, Registar_Descripcion_Ac))
@@ -572,6 +577,7 @@ namespace EXPEDIA
                 }
             }
         }
+        //modificacion de todos los atributos de una area registrada
         protected void btn_Modificar_Area_Click(object sender, EventArgs e)
         {
             if (corroborarExistenciaDatos("Areas", "bd_id_area", id_areas.Text, Registrar_Area))
@@ -606,13 +612,13 @@ namespace EXPEDIA
             }
 
         }
-
+        //metodo que muestra las opciones segun los privilegios
         protected void mostrarConsultaAC()
         {
             ocultoAC.Style.Add("display", "block");
 
         }
-
+        //da la posibilidades de habilitar los campos para modificacion
         protected void habilitarCampos()
         {
             numero_placa2.ReadOnly = true;
@@ -630,7 +636,7 @@ namespace EXPEDIA
             RadioButton6.Enabled = true;
             notificacionCampos(habilitarMA);
         }
-
+        
         protected void notificacionCampos(Control boton)
         {
             System.Text.StringBuilder sb = new System.Text.StringBuilder();
@@ -640,7 +646,7 @@ namespace EXPEDIA
             sb.Append(@"</script>");
             ScriptManager.RegisterStartupScript(boton, this.GetType(), "Holi", sb.ToString(), false);
         }
-
+        //metodo para no poder digitar los campos 
         protected void inhabilitarCampos()
         {
             numero_placa2.ReadOnly = true;
@@ -657,7 +663,7 @@ namespace EXPEDIA
             RadioButton6.Enabled = false;
 
         }
-
+        //carga desde base de datos todas la descripciones disponibles
         protected String cargaridDescrip(String descrip)
         {
             String i = "";
@@ -676,7 +682,7 @@ namespace EXPEDIA
 
             return i;
         }
-
+        //carga desde base de datos todas la areas disponibles
         protected String cargaridArea(String AuxArea)
         {
             String x = "";
@@ -695,7 +701,7 @@ namespace EXPEDIA
 
             return x;
         }
-
+        //metodo para mostrar si existe el activo consultado
         protected void bt_consultarAC_Click(object sender, EventArgs e)
         {
 
@@ -880,7 +886,7 @@ namespace EXPEDIA
                 error(btn_consultarAc, "Disculpa", "El valor " + placa_buscar.Text + " no existe en el sistema");
             }
         }
-
+        //metodo para ocultar bloques segun privilegios
         protected void ocultarConsulta()
         {
             ocultoAC.Style.Add("display", "none");
@@ -894,7 +900,7 @@ namespace EXPEDIA
 
 
         }
-
+        //guarda los datos modificados del activo
         protected void bt_Guardar_Cambios_Click(object sender, EventArgs e)
         {
             if (Page.IsValid)
@@ -1028,7 +1034,7 @@ namespace EXPEDIA
 
             }
         }
-
+        //cambia el esto del activo para darlo de baja
         protected void BajaActivo_Click(object sender, EventArgs e) {
             Conexion c = new Conexion();
             SqlConnection Conexion = c.Conectar();
@@ -1049,7 +1055,7 @@ namespace EXPEDIA
             }
             catch (Exception t) { Response.Write("error" + t); }
         }
-
+        //limpiar los espacios de formulario
         protected void limpiar1() {
             RadioButton2.Checked = false;
             RadioButton3.Checked = false;
