@@ -131,7 +131,7 @@
                   
                     <div class="panel-body">
                         <asp:TabContainer ID="TabContainer1" CssClass="nav nav-tabs" runat="server" ActiveTabIndex="0">
-                            <asp:TabPanel runat="server" HeaderText="<span style='margin: 5px' data-toggle='tab'><b>Registro de Áreas</b><span style='margin: 10px' class='glyphicon glyphicon-plus-sign'></span></span>" ID="TabPanel1">
+                            <asp:TabPanel runat="server" HeaderText="<span style='margin: 5px' data-toggle='tab'><b>Registro de Departamento</b><span style='margin: 10px' class='glyphicon glyphicon-plus-sign'></span></span>" ID="TabPanel1">
                                 <ContentTemplate>
                                     <asp:Panel ID="Panel2" runat="server" DefaultButton="Btn_areas">
                                         <div class="tab-pane fade in active" id="Ingresar">
@@ -139,18 +139,18 @@
                                             <div class="pure-form pure-form-aligned" style="margin-top: 5px; margin-left: 20px;">
                                                  <fieldset class="pure-control-group">
                                                     <div class="input-prepend">
-                                                        <label for="idarea">Identificador del área</label>
-                                                        <asp:TextBox runat="server" MaxLength="20" ValidationGroup="one"  ID="idareas"   placeholder="AR-001" data-toggle="tooltip" data-placement="right" title="Ingrese la identificación para la nueva área, a la que se destinarán los activos, este espacio es requerido. " />
+                                                        <label for="idarea">Identificador del Departamento</label>
+                                                        <asp:TextBox runat="server" MaxLength="20" ValidationGroup="one"  ID="idareas"   placeholder="AR-001" data-toggle="tooltip" data-placement="right" title="Ingrese la identificación para el nuevo Departamento, a la que se destinarán los activos, este espacio es requerido. " />
                                                         <asp:RequiredFieldValidator ValidationGroup="one" ID="RequiredFieldValidator6" runat="server"  ForeColor="Red" ControlToValidate="idareas" ErrorMessage="<b>*</b>"></asp:RequiredFieldValidator>
                                                     </div>
                                                     <div class="input-prepend">
-                                                        <label for="area">Área</label>
-                                                        <asp:TextBox runat="server" MaxLength="20" id="areas" ValidationGroup="one" type="text" placeholder="Recursos Humanos" data-toggle="tooltip" data-placement="right" title="Ingrese el nombre para la nueva área, a la que se destinarán los activos, este espacio es requerido. " />
+                                                        <label for="area">Departamento</label>
+                                                        <asp:TextBox runat="server" MaxLength="20" id="areas" ValidationGroup="one" type="text" placeholder="Recursos Humanos" data-toggle="tooltip" data-placement="right" title="Ingrese el nombre para el nuevo Departamento, a la que se destinarán los activos, este espacio es requerido. " />
                                                         <asp:RequiredFieldValidator ValidationGroup="one" MaxLength="500" ID="RequiredFieldValidator7" runat="server"  ForeColor="Red" ControlToValidate="areas" ErrorMessage="<b>*</b>"></asp:RequiredFieldValidator>
                                                     </div>
                                                 </fieldset>
                                                  <div class="span">
-                                                    <asp:Button runat="server" ValidationGroup="one" CssClass="btn btn-success" OnClick="Btn_areas_Click" ID="Btn_areas" Text="Registrar área" />
+                                                    <asp:Button runat="server" ValidationGroup="one" CssClass="btn btn-success" OnClick="Btn_areas_Click" ID="Btn_areas" Text="Registrar Departamento" />
                                                  </div>
                                                 <br />
                                             </div>
@@ -158,7 +158,7 @@
                                     </asp:Panel>
                                 </ContentTemplate>
                              </asp:TabPanel>
-                            <asp:TabPanel runat="server" HeaderText="<span style='margin: 5px'  data-toggle='tab'><b>Control de Áreas</b> <span style='margin: 10px'  class='glyphicon glyphicon-question-sign'></span><span class='glyphicon glyphicon-minus-sign'></span><span class='glyphicon glyphicon-ok-sign'></span></span>" ID="TabPanel2">
+                            <asp:TabPanel runat="server" HeaderText="<span style='margin: 5px'  data-toggle='tab'><b>Control de Departamentos</b> <span style='margin: 10px'  class='glyphicon glyphicon-question-sign'></span><span class='glyphicon glyphicon-minus-sign'></span><span class='glyphicon glyphicon-ok-sign'></span></span>" ID="TabPanel2">
                                 <ContentTemplate>
                                     <asp:Panel ID="Panel1" runat="server">
                                         <div class="tab-pane" id="Consultar">
@@ -194,21 +194,21 @@
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                        <h4 class="modal-title" style="text-align:center" id="exampleModalLabel">Nueva área de servicio</h4>
+                                        <h4 class="modal-title" style="text-align:center" id="exampleModalLabel">Nueva Departamento de servicio</h4>
                                     </div>
                                     <div class="modal-body">
                                         <div class="container">
                                             <div class="pure-form pure-form-aligned">
                                                 <fieldset class="pure-control-group">
                                                     <div class="input-prepend">
-                                                        <label for="idarea">Identificador del área</label>
-                                                        <asp:TextBox ClientIDMode="Static" runat="server" MaxLength="20" ValidationGroup="Six" ReadOnly="true" ID="midArea" placeholder="AR-001" data-toggle="tooltip" data-placement="right" title="Ingrese la identificación para la nueva área, a la que se destinarán los activos, este espacio es requerido. " />
+                                                        <label for="idarea">Identificador del Departamento</label>
+                                                        <asp:TextBox ClientIDMode="Static" runat="server" MaxLength="20" ValidationGroup="Six" ReadOnly="true" ID="midArea" placeholder="AR-001" data-toggle="tooltip" data-placement="right" title="Ingrese la identificación para el nuevo Departamento, a la que se destinarán los activos, este espacio es requerido. " />
                                                         <asp:TextBox runat="server" ClientIDMode="Static" ID="midAreas" ></asp:TextBox>
                                                         <asp:RequiredFieldValidator ValidationGroup="Six" ID="RequiredFieldValidator1" runat="server"  ForeColor="Red" ControlToValidate="midAreas" ErrorMessage="<b>*</b>"></asp:RequiredFieldValidator>
                                                     </div>
                                                     <div class="input-prepend">
-                                                        <label for="area">Área</label>
-                                                        <asp:TextBox runat="server" ClientIDMode="Static" MaxLength="20" id="mDescripcion" ValidationGroup="Six" type="text" placeholder="Recursos Humanos" data-toggle="tooltip" data-placement="right" title="Ingrese el nombre para la nueva área, a la que se destinarán los activos, este espacio es requerido. " />
+                                                        <label for="area">Departamento</label>
+                                                        <asp:TextBox runat="server" ClientIDMode="Static" MaxLength="20" id="mDescripcion" ValidationGroup="Six" type="text" placeholder="Recursos Humanos" data-toggle="tooltip" data-placement="right" title="Ingrese el nombre para el nuevo Departamento, a la que se destinarán los activos, este espacio es requerido. " />
                                                         <asp:RequiredFieldValidator ValidationGroup="Six" MaxLength="500" ID="RequiredFieldValidator2" runat="server"  ForeColor="Red" ControlToValidate="mDescripcion" ErrorMessage="<b>*</b>"></asp:RequiredFieldValidator>
                                                     </div>
                                                 </fieldset>
@@ -216,7 +216,7 @@
                                         </div>
                                         <div class="modal-footer">
                                             <div class="span">
-                                                <asp:Button runat="server" ValidationGroup="Six" CssClass="btn btn-primary" OnClick="Btn_modificar_areas_Click" ID="Button1" Text="Modificar área" />
+                                                <asp:Button runat="server" ValidationGroup="Six" CssClass="btn btn-primary" OnClick="Btn_modificar_areas_Click" ID="Button1" Text="Modificar Departamento" />
                                                 <button class="btn btn-default" data-dismiss="modal">Cerrar</button>
                                             </div>
                                         </div>
@@ -258,11 +258,11 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            <h1 class="modal-title" style="text-align:center" id="exampleModalLabe">Área Inhabilitada</h1>
+                            <h1 class="modal-title" style="text-align:center" id="exampleModalLabe">Departamento Inhabilitado</h1>
                         </div>
                         <div class="modal-body">
                             <div class="container">
-                               El área <b id="idA"></b> que está consultando, se encuentra inhabilitado en el sistema.
+                               El Departamento <b id="idA"></b> que está consultando, se encuentra inhabilitado en el sistema.
                                 <br />
                                 <a href="#" title="Motivos de inhabilitacion: " id="motivos" data-toggle="popover" data-trigger="focus" data-content=""><b>Detalle <span style='margin: 5px'  class='glyphicon glyphicon-paperclip'></span></b></a>          
                                     <script>
@@ -271,7 +271,7 @@
                                         });
                                     </script>
                                 <br />
-                                <h3>¿Desea habilitar denuevo el área?</h3>
+                                <h3>¿Desea habilitar denuevo el Departamento?</h3>
                                 </div>
                             </div> <!-- /container -->
                         <div class="modal-footer">
