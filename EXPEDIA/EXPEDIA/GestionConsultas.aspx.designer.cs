@@ -103,15 +103,6 @@ namespace EXPEDIA {
         protected global::System.Web.UI.WebControls.Button Button1;
         
         /// <summary>
-        /// Control export.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl export;
-        
-        /// <summary>
         /// Control lista.
         /// </summary>
         /// <remarks>
@@ -121,39 +112,48 @@ namespace EXPEDIA {
         protected global::System.Web.UI.WebControls.GridView lista;
         
         /// <summary>
-        /// Control Table2.
+        /// Control usuarios.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Table Table2;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl usuarios;
         
         /// <summary>
-        /// Control Table1.
+        /// Control activosCorp.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Table Table1;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl activosCorp;
         
         /// <summary>
-        /// Control Table3.
+        /// Control activosLeasing.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Table Table3;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl activosLeasing;
         
         /// <summary>
-        /// Control Table4.
+        /// Control prestamos.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Table Table4;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl prestamos;
+        
+        /// <summary>
+        /// Control donaciones.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl donaciones;
     }
 }

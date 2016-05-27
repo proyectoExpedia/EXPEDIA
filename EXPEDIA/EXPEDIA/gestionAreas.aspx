@@ -21,7 +21,7 @@
     <script src="js/sweetalert.js"></script>
     <link href="css/sweetalert.css" rel="stylesheet" />
     <script src="js/sweetalert.min.js"></script>
-    <style type)="text/css">
+    <style type="text/css">
         body{
   padding:20px 20px;
 }
