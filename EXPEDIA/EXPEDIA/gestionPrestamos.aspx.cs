@@ -48,7 +48,7 @@ namespace EXPEDIA
                 cargar_proveedor(proveedor);
                 dt = new DataTable();
                 cargar();
-                RangeValidator1.MinimumValue = DateTime.Now.ToString("yyyy/MM/dd");
+                RangeValidator1.MinimumValue = DateTime.Now.ToString("dd/MM/yyyy");
                 RangeValidator1.MaximumValue = "99/99/9999";
 
             }
@@ -1007,6 +1007,7 @@ namespace EXPEDIA
                     Conexion c = new Conexion();
                     SqlConnection Conexion = c.Conectar();
                     string Sql = @"SELECT  bd_tipo_activo, bd_numero_placa , bd_numero_serie, bd_descripcion_activo, bd_departamento,bd_proveedor, bd_especificacion_tecnica FROM Activos  WHERE " + que + "=@num  AND bd_estado=1 AND bd_tipo_activo='Hardware'";
+
                     Conexion.Open();//abrimos conexion
                     SqlCommand cmd = new SqlCommand(Sql, Conexion); //ejecutamos la instruccion
                     cmd.Parameters.AddWithValue("num", num); //enviamos los paramet
@@ -1405,7 +1406,7 @@ namespace EXPEDIA
             }
             else
             {
-                Info.InnerText = "No existe ningun usuario con esa cedula"; Info.Style.Add("color", "red");
+                Info2.InnerText = "No existe ningun usuario con esa cedula"; Info2.Style.Add("color", "red");
 
             }
 
@@ -1524,7 +1525,7 @@ namespace EXPEDIA
                 while (reader.Read())
                 {
                     DateTime date = reader.GetDateTime(3);
-                    string t = DateTime.Now.ToString("yyyy/MM/dd");
+                    string t = DateTime.Now.ToString("dd/MM/yyyy");
                     string al = System.Drawing.Color.Green.ToString();
                     al = "Al día";
                     string at = System.Drawing.Color.Red.ToString();
@@ -1579,7 +1580,7 @@ namespace EXPEDIA
                 while (reader.Read())
                 {
                     DateTime date = reader.GetDateTime(3);
-                    string t = DateTime.Now.ToString("yyyy/MM/dd");
+                    string t = DateTime.Now.ToString("dd/MM/yyyy");
                     string al = System.Drawing.Color.Green.ToString();
                     al = "Al día";
                     string at = System.Drawing.Color.Red.ToString();
@@ -1642,7 +1643,7 @@ namespace EXPEDIA
                 while (reader.Read())
                 {
                     DateTime date = reader.GetDateTime(3);
-                    string t = DateTime.Now.ToString("yyyy/MM/dd");
+                    string t = DateTime.Now.ToString("dd/MM/yyyy");
                     string al = System.Drawing.Color.Green.ToString();
                     al = "Al día";
                     string at = System.Drawing.Color.Red.ToString();
@@ -1732,8 +1733,8 @@ namespace EXPEDIA
 
 
                     DateTime date = reader.GetDateTime(0);
-                    tx.Text = date.ToString("yyyy/MM/dd");
-                    string t = DateTime.Now.ToString("yyyy/MM/dd");
+                    tx.Text = date.ToString("dd/MM/yyyy");
+                    string t = DateTime.Now.ToString("dd/MM/yyyy");
 
                     DateTime date2 = DateTime.Parse(t);
 
@@ -1822,7 +1823,7 @@ namespace EXPEDIA
 
                     DateTime date = reader.GetDateTime(0);
                     TextBox8.Text = date.ToString("dd/MM/yyyy");
-                    string t = DateTime.Now.ToString("yyyy/MM/dd");
+                    string t = DateTime.Now.ToString("dd/MM/yyyy");
 
                     DateTime date2 = DateTime.Parse(t);
 
