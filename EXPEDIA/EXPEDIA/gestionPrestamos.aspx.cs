@@ -78,18 +78,18 @@ namespace EXPEDIA
             descripcion = Seleciono_Descripcion();
             provedor = Seleciono_proveedor();
             if ((departamento == null) && (numero.Text == "") && (descripcion == null) && (provedor == null)) { Consultar_todo(); }
-            if ((departamento != null) && (numero.Text != "") && (descripcion == null) && (provedor == null)) { Consulta_Despartamento_Numero("bd_numero_placa", 1); }
+            if ((departamento != null) && (numero.Text != "") && (descripcion == null) && (provedor == null)) { Consulta_Despartamento_Numero("bd_numero_placa", 0); }
             if ((departamento != null) && (numero.Text == "") && (descripcion == null) && (provedor == null)) { Consulta_Despartamento(); }
-            if ((departamento != null) && (numero.Text != "") && (descripcion != null) && (provedor == null)) { Consulta_Despartamento_Numero_descripcion("bd_numero_placa", 1); }
+            if ((departamento != null) && (numero.Text != "") && (descripcion != null) && (provedor == null)) { Consulta_Despartamento_Numero_descripcion("bd_numero_placa", 0); }
             if ((departamento == null) && (numero.Text == "") && (descripcion != null) && (provedor == null)) { Consulta_Descripcion(); }
-            if ((departamento == null) && (numero.Text != "") && (descripcion != null) && (provedor == null)) { Consulta_Descripcion_Numero("bd_numero_placa", 1); }
-            if ((departamento != null) && (numero.Text != "") && (descripcion != null) && (provedor != null)) { Consulta_Despartamento_Numero_descripcion_proveedor("bd_numero_placa", 1); }
+            if ((departamento == null) && (numero.Text != "") && (descripcion != null) && (provedor == null)) { Consulta_Descripcion_Numero("bd_numero_placa", 0); }
+            if ((departamento != null) && (numero.Text != "") && (descripcion != null) && (provedor != null)) { Consulta_Despartamento_Numero_descripcion_proveedor("bd_numero_placa", 0); }
             if ((departamento != null) && (numero.Text == "") && (descripcion != null) && (provedor != null)) { Consulta_Despartamento_descripcion_proveedor(); }
             if ((departamento == null) && (numero.Text == "") && (descripcion != null) && (provedor != null)) { Consulta_Descripcion_proveedor(); }
             if ((departamento != null) && (numero.Text == "") && (descripcion == null) && (provedor != null)) { Consulta_Despartamento_proveedor(); }
-            if ((departamento == null) && (numero.Text != "") && (descripcion == null) && (provedor != null)) { Consulta_Proveedor_Numero("bd_numero_placa", 1); }
+            if ((departamento == null) && (numero.Text != "") && (descripcion == null) && (provedor != null)) { Consulta_Proveedor_Numero("bd_numero_placa", 0); }
             if ((departamento == null) && (numero.Text == "") && (descripcion == null) && (provedor != null)) { Consulta_Proveedor(); }
-            if ((departamento == null) && (numero.Text != "") && (descripcion == null) && (provedor == null)) { Consulta_Numero("bd_numero_placa", 1); }
+            if ((departamento == null) && (numero.Text != "") && (descripcion == null) && (provedor == null)) { Consulta_Numero("bd_numero_placa", 0); }
             if ((departamento != null) && (numero.Text == "") && (descripcion != null) && (provedor == null)) { Consulta_Despartamento_descripcion(); }
 
 
@@ -480,7 +480,7 @@ namespace EXPEDIA
 
                 try
                 {
-
+                    string num = numero.Text;
                     Conexion c = new Conexion();
                     SqlConnection Conexion = c.Conectar();
                     string Sql = @"SELECT  bd_tipo_activo, bd_numero_placa , bd_numero_serie, bd_descripcion_activo, bd_departamento,bd_proveedor, bd_especificacion_tecnica FROM Activos  WHERE " + quien + "= @num  AND bd_departamento = @dpt AND bd_estado=1 AND bd_tipo_activo='Hardware'";
@@ -539,9 +539,13 @@ namespace EXPEDIA
                 try
                 {
 
+
+                
+
+
                     Conexion c = new Conexion();
                     SqlConnection Conexion = c.Conectar();
-                    string Sql = @"SELECT  bd_tipo_activo, bd_numero_placa , bd_numero_serie, bd_descripcion_activo, bd_departamento,bd_proveedor, bd_especificacion_tecnica FROM Activos WHERE " + quien + "= @num  AND bd_descripcion_activo = @dpt AND bd_estado=1 AND bd_tipo_activo='Hardware'";
+                    string Sql = @"SELECT  bd_tipo_activo, bd_numero_placa , bd_numero_serie, bd_descripcion_activo, bd_departamento,bd_proveedor, bd_especificacion_tecnica FROM Activos  WHERE " + quien + "=@num  AND bd_descripcion_activo= @dpt AND bd_estado=1 AND bd_tipo_activo='Hardware'";
                     Conexion.Open();//abrimos conexion
                     SqlCommand cmd = new SqlCommand(Sql, Conexion); //ejecutamos la instruccion
                     cmd.Parameters.AddWithValue("@num", num); //enviamos los paramet
@@ -560,7 +564,7 @@ namespace EXPEDIA
                         tabla.DataSource = dt;
                         tabla.DataBind();
                     }
-                    else { cuantas++; Consulta_Despartamento_Numero("bd_numero_serie", cuantas); }
+                    else { cuantas++; Consulta_Descripcion_Numero("bd_numero_serie", cuantas); }
                 }
                 catch (Exception a) { Response.Write(a); }
             }
@@ -593,14 +597,14 @@ namespace EXPEDIA
 
                 try
                 {
-
+                    string num = numero.Text;
                     Conexion c = new Conexion();
                     SqlConnection Conexion = c.Conectar();
-                    string Sql = @"SELECT  bd_tipo_activo, bd_numero_placa , bd_numero_serie, bd_descripcion_activo, bd_departamento,bd_proveedor, bd_especificacion_tecnica FROM Activos  WHERE " + quien + "= @num  AND bd_proveedor = @dpt  AND bd_estado=1 AND bd_tipo_activo='Hardware'";
+                    string Sql = @"SELECT  bd_tipo_activo, bd_numero_placa , bd_numero_serie, bd_descripcion_activo, bd_departamento,bd_proveedor, bd_especificacion_tecnica FROM Activos  WHERE " + quien + "= @num  AND bd_proveedor = @pro  AND bd_estado=1 AND bd_tipo_activo='Hardware'";
                     Conexion.Open();//abrimos conexion
                     SqlCommand cmd = new SqlCommand(Sql, Conexion); //ejecutamos la instruccion
                     cmd.Parameters.AddWithValue("@num", num); //enviamos los paramet
-                    cmd.Parameters.AddWithValue("@dpt", provedor); //enviamos los paramet
+                    cmd.Parameters.AddWithValue("@pro", provedor); //enviamos los paramet
 
                     SqlDataReader reader = cmd.ExecuteReader();
                     if (reader.HasRows)
@@ -615,7 +619,7 @@ namespace EXPEDIA
                         tabla.DataSource = dt;
                         tabla.DataBind();
                     }
-                    else { cuantas++; Consulta_Despartamento_Numero("bd_numero_serie", cuantas); }
+                    else { cuantas++; Consulta_Proveedor_Numero("bd_numero_serie", cuantas); }
                 }
                 catch (Exception a) { Response.Write(a); }
             }
@@ -648,7 +652,7 @@ namespace EXPEDIA
 
                 try
                 {
-
+                    string num = numero.Text;
                     Conexion c = new Conexion();
                     SqlConnection Conexion = c.Conectar();
                     string Sql = @"SELECT  bd_tipo_activo, bd_numero_placa , bd_numero_serie, bd_descripcion_activo, bd_departamento,bd_proveedor, bd_especificacion_tecnica FROM Activos WHERE " + quien + "= @num  AND bd_departamento=@dpt AND bd_descripcion_activo=@desc  AND bd_estado=1 AND bd_tipo_activo='Hardware'";
@@ -705,7 +709,7 @@ namespace EXPEDIA
 
                 try
                 {
-
+                    string num = numero.Text;
                     Conexion c = new Conexion();
                     SqlConnection Conexion = c.Conectar();
                     string Sql = @"SELECT  bd_tipo_activo, bd_numero_placa , bd_numero_serie, bd_descripcion_activo, bd_departamento,bd_proveedor, bd_especificacion_tecnica FROM Activos  WHERE " + quien + "=@num  AND bd_departamento =@dpt AND bd_descripcion_activo=@desc AND bd_proveedor=@pro  AND bd_estado=1 AND bd_tipo_activo='Hardware'";
