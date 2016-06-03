@@ -193,9 +193,9 @@
 <%--      |             --%>        <div class="pure-control-group">
 <%--      |             --%>  <%--      Fecha de adquisición       --%>
 <%--      |             --%>        <label for="fechaEntrega">Fecha de adquisición</label>
-<%--      |             --%>            <asp:TextBox runat="server" ValidationGroup="one"  ID="fecha_adquisicion" ClientIDMode="Static" data-toggle="tooltip" data-placement="right" title="Este espacio debe contener la fecha en que el Colegio de Abogados y Abogadas de Costa Rica adquirió el activo. EL formato de ingreso de la fecha es AAAA/MM/DD (Año/Mes/Día), este espacio es requerido." > </asp:TextBox>
-                                        <cc1:CalendarExtender Format="yyyy/MM/dd" TargetControlID="fecha_adquisicion"  ID="calAdquisicion" runat="server" />
-<%--      |             --%>            <cc1:MaskedEditExtender ID="MaskedEditExtender1" runat="server"  Century="2000" ClearMaskOnLostFocus="false"  Mask="9999/99/99" TargetControlID="fecha_adquisicion"></cc1:MaskedEditExtender>
+<%--      |             --%>            <asp:TextBox runat="server" ValidationGroup="one"  ID="fecha_adquisicion" ClientIDMode="Static" data-toggle="tooltip" data-placement="right" title="Este espacio debe contener la fecha en que el Colegio de Abogados y Abogadas de Costa Rica adquirió el activo. EL formato de ingreso de la fecha es DD/MM/AAAA(Año/Mes/Día), este espacio es requerido." > </asp:TextBox>
+                                        <cc1:CalendarExtender Format="dd/MM/yyyy" TargetControlID="fecha_adquisicion"  ID="calAdquisicion" runat="server" />
+<%--      |             --%>            <cc1:MaskedEditExtender ID="MaskedEditExtender1" runat="server"  Century="2000" ClearMaskOnLostFocus="false"  Mask="99/99/9999" TargetControlID="fecha_adquisicion"></cc1:MaskedEditExtender>
                                      
 <%--      |             --%>            <asp:RequiredFieldValidator ValidationGroup="one" ID="vFechaAdquisicion" runat="server" ControlToValidate="fecha_adquisicion" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
 <%--      |             --%>
@@ -204,9 +204,9 @@
 <%--      |             --%>                                    
 <%--      |             --%>     <%--     Fecha de Finalización      --%>
 <%--      |             --%>     <label for="duracion_contrato">Finalización del Contrato</label>
-<%--      |             --%>     <asp:TextBox runat="server" ID="finalizacion_contrato" ClientIDMode="Static" data-toggle="tooltip" data-placement="right" title="Este espacio debe contener la fecha en que finaliza el contrato para el activo. EL formato de ingreso de la fecha es AAAA/MM/DD (Año/Mes/Día), este espacio es requerido."> </asp:TextBox>
-                                  <cc1:CalendarExtender Format="yyyy/MM/dd" TargetControlID="finalizacion_contrato"  ID="finContrato" runat="server" />
-<%--      |             --%>     <cc1:MaskedEditExtender ID="MaskedEditExtender2" runat="server"  Century="2000" ClearMaskOnLostFocus="false"  Mask="9999/99/99" TargetControlID="finalizacion_contrato"></cc1:MaskedEditExtender>
+<%--      |             --%>     <asp:TextBox runat="server" ID="finalizacion_contrato" ClientIDMode="Static" data-toggle="tooltip" data-placement="right" title="Este espacio debe contener la fecha en que finaliza el contrato para el activo. EL formato de ingreso de la fecha es DD/MM/AAAA(Año/Mes/Día), este espacio es requerido."> </asp:TextBox>
+                                  <cc1:CalendarExtender Format="dd/MM/yyyy" TargetControlID="finalizacion_contrato"  ID="finContrato" runat="server" />
+<%--      |             --%>     <cc1:MaskedEditExtender ID="MaskedEditExtender2" runat="server"  Century="2000" ClearMaskOnLostFocus="false"  Mask="99/99/9999" TargetControlID="finalizacion_contrato"></cc1:MaskedEditExtender>
                                      <asp:CompareValidator ID="CompareValidator2" ValidationGroup="one" runat="server" ControlToValidate="fecha_adquisicion" Operator="GreaterThanEqual" ControlToCompare="finalizacion_contrato"  ForeColor="Red" SetFocusOnError="true" ErrorMessage=" La fecha de final de contrato no puede ser una fecha menor a la fecha en que fue adquirido el activo (Fecha en que inició el contrato)."></asp:CompareValidator>
                                     
 <%--      |             --%>     <asp:RequiredFieldValidator ValidationGroup="one" ID="vFinalizacion" runat="server" ControlToValidate="finalizacion_contrato" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
@@ -227,9 +227,9 @@
                                 <%--      fecha de compra       --%>
                                 <div class="pure-control-group" id="leaComp" style="display: block">
                                     <label for="fechaCompra">Fecha de compra</label>
-                                    <asp:TextBox runat="server" ValidationGroup="one" ID="fecha_compra" ClientIDMode="Static" data-toggle="tooltip"  data-placement="right" title="En este espacio debe proporcionar la fecha de compra del activo. EL formato de ingreso de la fecha es AAAA/MM/DD (Año/Mes/Día), este espacio es requerido."> </asp:TextBox>
-                                    <cc1:CalendarExtender Format="yyyy/MM/dd" TargetControlID="fecha_compra" ID="calCompra" runat="server" />
-                                     <cc1:MaskedEditExtender ID="MaskedEditExtender3" runat="server"  Century="2000" ClearMaskOnLostFocus="false"  Mask="9999/99/99" TargetControlID="fecha_compra"></cc1:MaskedEditExtender>
+                                    <asp:TextBox runat="server" ValidationGroup="one" ID="fecha_compra" ClientIDMode="Static" data-toggle="tooltip"  data-placement="right" title="En este espacio debe proporcionar la fecha de compra del activo. EL formato de ingreso de la fecha es DD/MM/AAAA(Año/Mes/Día), este espacio es requerido."> </asp:TextBox>
+                                    <cc1:CalendarExtender Format="dd/MM/yyyy" TargetControlID="fecha_compra" ID="calCompra" runat="server" />
+                                     <cc1:MaskedEditExtender ID="MaskedEditExtender3" runat="server"  Century="2000" ClearMaskOnLostFocus="false"  Mask="99/99/9999" TargetControlID="fecha_compra"></cc1:MaskedEditExtender>
                       
                                     <asp:RequiredFieldValidator ValidationGroup="one" ID="vFechaCompra" runat="server" ControlToValidate="fecha_compra" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
                                 
@@ -241,9 +241,9 @@
                                 <%--      Inicio de la garantía       
                                 <fieldset class="pure-control-group" id="leaComp2" style="display: block">
                                     <label for="inicio">Fecha de Inicio de la garantía</label>
-                                    <asp:TextBox runat="server" ID="inicio_garantia" ClientIDMode="Static" data-toggle="tooltip" data-placement="right"  title="En este espacio debe proporcionar la fecha en que inicia la garantía, especificada por el proveedor. EL formato de ingreso de la fecha es AAAA/MM/DD (Año/Mes/Día), este espacio es requerido."></asp:TextBox>
-                                     <cc1:CalendarExtender Format="yyyy/MM/dd" TargetControlID="inicio_garantia"  ID="calInicio" runat="server" />
-                                    <cc1:MaskedEditExtender ID="MaskedEditExtender4" runat="server"  Century="2000" ClearMaskOnLostFocus="false"  Mask="9999/99/99" TargetControlID="inicio_garantia"></cc1:MaskedEditExtender>
+                                    <asp:TextBox runat="server" ID="inicio_garantia" ClientIDMode="Static" data-toggle="tooltip" data-placement="right"  title="En este espacio debe proporcionar la fecha en que inicia la garantía, especificada por el proveedor. EL formato de ingreso de la fecha es DD/MM/AAAA(Año/Mes/Día), este espacio es requerido."></asp:TextBox>
+                                     <cc1:CalendarExtender Format="dd/MM/yyyy" TargetControlID="inicio_garantia"  ID="calInicio" runat="server" />
+                                    <cc1:MaskedEditExtender ID="MaskedEditExtender4" runat="server"  Century="2000" ClearMaskOnLostFocus="false"  Mask="99/99/9999" TargetControlID="inicio_garantia"></cc1:MaskedEditExtender>
                                     <asp:CompareValidator ID="CompareValidator3" runat="server" ControlToValidate="fecha_compra" Operator="Equal" ControlToCompare="inicio_garantia" ForeColor="Red" SetFocusOnError="true"  ErrorMessage="Fecha igual a la de compra"></asp:CompareValidator>
                                     <asp:RequiredFieldValidator ValidationGroup="one" ID="vFechaInicio" runat="server" ControlToValidate="inicio_garantia" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
                                 
@@ -253,9 +253,9 @@
 
                                 <fieldset class="pure-control-group" id="leaComp3" style="display: block">
                                     <label for="finalizacion">Fecha de finalización de la garantía</label>
-                                    <asp:TextBox runat="server" ID="final_garantia" ClientIDMode="Static" data-toggle="tooltip" data-placement="right" title="En este espacio debe proporcionar la fecha en que finaliza la garantía, especificada por el proveedor. EL formato de ingreso de la fecha es AAAA/MM/DD (Año/Mes/Día), este espacio es requerido."></asp:TextBox>
-                                    <cc1:CalendarExtender Format="yyyy/MM/dd" TargetControlID="final_garantia"  ID="calFinal" runat="server" />
-                                    <cc1:MaskedEditExtender ID="MaskedEditExtender5" runat="server"  Century="2000" ClearMaskOnLostFocus="false"  Mask="9999/99/99" TargetControlID="final_garantia"></cc1:MaskedEditExtender>
+                                    <asp:TextBox runat="server" ID="final_garantia" ClientIDMode="Static" data-toggle="tooltip" data-placement="right" title="En este espacio debe proporcionar la fecha en que finaliza la garantía, especificada por el proveedor. EL formato de ingreso de la fecha es DD/MM/AAAA(Año/Mes/Día), este espacio es requerido."></asp:TextBox>
+                                    <cc1:CalendarExtender Format="dd/MM/yyyy" TargetControlID="final_garantia"  ID="calFinal" runat="server" />
+                                    <cc1:MaskedEditExtender ID="MaskedEditExtender5" runat="server"  Century="2000" ClearMaskOnLostFocus="false"  Mask="99/99/9999" TargetControlID="final_garantia"></cc1:MaskedEditExtender>
                                     <asp:CompareValidator ID="CompareValidator4" runat="server" ValidationGroup="one" ControlToCompare="fecha_compra" Operator="GreaterThanEqual" ControlToValidate="final_garantia" ForeColor="Red" SetFocusOnError="true" ErrorMessage="La fecha no puede ser menor a la de compra"></asp:CompareValidator>
                                     <asp:RequiredFieldValidator ValidationGroup="one" ID="vFinal" runat="server" ControlToValidate="final_garantia" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
                                 
@@ -440,17 +440,17 @@
                                    <div class="pure-control-group" style="display: none">
                                          <div class="pure-control-group">
                                               <label for="fechaEntrega">Fecha de adquisición</label>
-                                                  <asp:TextBox runat="server" ValidationGroup="two" ID="fecha_entrega3" tooltip="En este espacio debe proporcionar la fecha en que el activo fue adquirido por el Colegio de Abogados y Abogadas de Costa Rica. EL formato de ingreso de la fecha es AAAA/MM/DD (Año/Mes/Día), este espacio es requerido"></asp:TextBox>
-                                                  <cc1:CalendarExtender Format="yyyy/MM/dd" TargetControlID="fecha_entrega3" ID="entrega2" runat="server"/>
-                                                  <cc1:MaskedEditExtender ID="MaskedEditExtender9" runat="server"  Century="2000" ClearMaskOnLostFocus="false"  Mask="9999/99/99" TargetControlID="fecha_entrega3"></cc1:MaskedEditExtender>
+                                                  <asp:TextBox runat="server" ValidationGroup="two" ID="fecha_entrega3" tooltip="En este espacio debe proporcionar la fecha en que el activo fue adquirido por el Colegio de Abogados y Abogadas de Costa Rica. EL formato de ingreso de la fecha es DD/MM/AAAA(Año/Mes/Día), este espacio es requerido"></asp:TextBox>
+                                                  <cc1:CalendarExtender Format="dd/MM/yyyy" TargetControlID="fecha_entrega3" ID="entrega2" runat="server"/>
+                                                  <cc1:MaskedEditExtender ID="MaskedEditExtender9" runat="server"  Century="2000" ClearMaskOnLostFocus="false"  Mask="99/99/9999" TargetControlID="fecha_entrega3"></cc1:MaskedEditExtender>
                                               <asp:RequiredFieldValidator ValidationGroup="two" ID="vEntrega" runat="server" ControlToValidate="fecha_entrega3" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
                                      </div>
                                           <%--      Duración del Contrato       --%>
                                    <div class="pure-control-group">
                                         <label for="duracion_contrato">Duración del Contrato</label>
-                                             <asp:TextBox runat="server" ValidationGroup="two" ID="finalizacion_contrato3" data-toggle="tooltip" title="Este espacio debe contener la fecha en que finaliza el contrato para el activo. EL formato de ingreso de la fecha es AAAA/MM/DD (Año/Mes/Día), este espacio es requerido."></asp:TextBox>
-                                                  <cc1:CalendarExtender Format="yyyy/MM/dd" TargetControlID="finalizacion_contrato3" ID="calFinalizacion" runat="server"/>
-                                                   <cc1:MaskedEditExtender ID="MaskedEditExtender10" runat="server"  Century="2000" ClearMaskOnLostFocus="false"  Mask="9999/99/99" TargetControlID="finalizacion_contrato3"></cc1:MaskedEditExtender>
+                                             <asp:TextBox runat="server" ValidationGroup="two" ID="finalizacion_contrato3" data-toggle="tooltip" title="Este espacio debe contener la fecha en que finaliza el contrato para el activo. EL formato de ingreso de la fecha es DD/MM/AAAA(Año/Mes/Día), este espacio es requerido."></asp:TextBox>
+                                                  <cc1:CalendarExtender Format="dd/MM/yyyy" TargetControlID="finalizacion_contrato3" ID="calFinalizacion" runat="server"/>
+                                                   <cc1:MaskedEditExtender ID="MaskedEditExtender10" runat="server"  Century="2000" ClearMaskOnLostFocus="false"  Mask="99/99/9999" TargetControlID="finalizacion_contrato3"></cc1:MaskedEditExtender>
                                         <asp:CompareValidator ID="CompareValidator5" runat="server" ValidationGroup="two" ControlToValidate="fecha_entrega3" Operator="GreaterThanEqual" ControlToCompare="finalizacion_contrato3"  ForeColor="Red" SetFocusOnError="true" ErrorMessage=" La fecha de final de contrato no puede ser una fecha menor a la fecha en que fue adquirido el activo (Fecha en que inició el contrato)."></asp:CompareValidator>
                                        <asp:RequiredFieldValidator ValidationGroup="two" ID="vDuracion" runat="server" ControlToValidate="finalizacion_contrato3" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
                                     </div>
@@ -464,16 +464,16 @@
                                         <%--      costo       --%>
                                 <div class="pure-control-group">
                                     <label for="lprecio2">Costo en colones, del activo</label>
-                                    <asp:TextBox ValidationGroup="two" ID="precio2" runat="server" MaxLength="10" TextMode="Number" data-toggle="tooltip" data-placement="right" title="Este espacio debe proporcionar el valor total del activo. EL formato de ingreso de la fecha es AAAA/MM/DD (Año/Mes/Día), este espacio es requerido." placeholder="120360.17" />
+                                    <asp:TextBox ValidationGroup="two" ID="precio2" runat="server" MaxLength="10" TextMode="Number" data-toggle="tooltip" data-placement="right" title="Este espacio debe proporcionar el valor total del activo. EL formato de ingreso de la fecha es DD/MM/AAAA(Año/Mes/Día), este espacio es requerido." placeholder="120360.17" />
                                     <asp:RequiredFieldValidator ValidationGroup="two" ID="vPrecio2" runat="server" ControlToValidate="precio2" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
                                
                                 </div>
                                     <%--     fecha de compra      --%>
                                 <div class="pure-control-group">
                                     <label for="fecha_Compra2">Fecha de compra</label>
-                                    <asp:TextBox runat="server" ValidationGroup="two" ID="fecha_compra2" ClientIDMode="Static" data-toggle="tooltip" data-placement="right" title="En este espacio debe proporcionar la fecha de compra del activo. EL formato de ingreso de la fecha es AAAA/MM/DD (Año/Mes/Día), este espacio es requerido."> </asp:TextBox>
-                                    <cc1:CalendarExtender Format="yyyy/MM/dd" TargetControlID="fecha_compra2" ID="vFC2" runat="server" />
-                                   <cc1:MaskedEditExtender ID="MaskedEditExtender6" runat="server"  Century="2000" ClearMaskOnLostFocus="false"  Mask="9999/99/99" TargetControlID="fecha_compra2"></cc1:MaskedEditExtender>
+                                    <asp:TextBox runat="server" ValidationGroup="two" ID="fecha_compra2" ClientIDMode="Static" data-toggle="tooltip" data-placement="right" title="En este espacio debe proporcionar la fecha de compra del activo. EL formato de ingreso de la fecha es DD/MM/AAAA(Año/Mes/Día), este espacio es requerido."> </asp:TextBox>
+                                    <cc1:CalendarExtender Format="dd/MM/yyyy" TargetControlID="fecha_compra2" ID="vFC2" runat="server" />
+                                   <cc1:MaskedEditExtender ID="MaskedEditExtender6" runat="server"  Century="2000" ClearMaskOnLostFocus="false"  Mask="99/99/9999" TargetControlID="fecha_compra2"></cc1:MaskedEditExtender>
                               
            <asp:RequiredFieldValidator ValidationGroup="two" ID="RequiredFieldValidator5" runat="server" ControlToValidate="fecha_compra2" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
                                 
@@ -485,9 +485,9 @@
                                           <%-- 
                                 <fieldset class="pure-control-group">
                                     <label for="inicio">Fecha de Inicio de la garantía</label>
-                                    <asp:TextBox runat="server" ID="inicio_garantia2" ValidationGroup="two" data-toggle="tooltip" data-placement="right" title="En este espacio debe proporcionar la fecha en que inicia la garantía, especificada por el proveedor. EL formato de ingreso de la fecha es AAAA/MM/DD (Año/Mes/Día), este espacio es requerido."></asp:TextBox>
-                                     <cc1:CalendarExtender Format="yyyy/MM/dd" TargetControlID="inicio_garantia2" ID="calInicio3" runat="server" />
-                                    <cc1:MaskedEditExtender ID="MaskedEditExtender7" runat="server"  Century="2000" ClearMaskOnLostFocus="false"  Mask="9999/99/99" TargetControlID="inicio_garantia2"></cc1:MaskedEditExtender>
+                                    <asp:TextBox runat="server" ID="inicio_garantia2" ValidationGroup="two" data-toggle="tooltip" data-placement="right" title="En este espacio debe proporcionar la fecha en que inicia la garantía, especificada por el proveedor. EL formato de ingreso de la fecha es DD/MM/AAAA(Año/Mes/Día), este espacio es requerido."></asp:TextBox>
+                                     <cc1:CalendarExtender Format="dd/MM/yyyy" TargetControlID="inicio_garantia2" ID="calInicio3" runat="server" />
+                                    <cc1:MaskedEditExtender ID="MaskedEditExtender7" runat="server"  Century="2000" ClearMaskOnLostFocus="false"  Mask="99/99/9999" TargetControlID="inicio_garantia2"></cc1:MaskedEditExtender>
                                 <asp:CompareValidator ID="CompareValidator6" runat="server" ControlToValidate="fecha_compra2" Operator="Equal" ControlToCompare="inicio_garantia2" ForeColor="Red" SetFocusOnError="true"  ErrorMessage="Fecha igual a la de compra"></asp:CompareValidator>
                                     <asp:RequiredFieldValidator ValidationGroup="two" ID="vInicio" runat="server" ControlToValidate="inicio_garantia2" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
                                 
@@ -495,9 +495,9 @@
                                            Finalización de la garantía       --%>
                                 <fieldset class="pure-control-group">
                                     <label for="finalizacion">Fecha de finalización de la garantía</label>
-                                    <asp:TextBox runat="server" ID="final_garantia2" ValidationGroup="two" data-toggle="tooltip" data-placement="right" title="En este espacio debe proporcionar la fecha en que finaliza la garantía, especificada por el proveedor. EL formato de ingreso de la fecha es AAAA/MM/DD (Año/Mes/Día), este espacio es requerido."></asp:TextBox>
-                                    <cc1:CalendarExtender Format="yyyy/MM/dd" TargetControlID="final_garantia2" ID="calFinal3" runat="server" />
-                                    <cc1:MaskedEditExtender ID="MaskedEditExtender8" runat="server"  Century="2000" ClearMaskOnLostFocus="false"  Mask="9999/99/99" TargetControlID="final_garantia2"></cc1:MaskedEditExtender>
+                                    <asp:TextBox runat="server" ID="final_garantia2" ValidationGroup="two" data-toggle="tooltip" data-placement="right" title="En este espacio debe proporcionar la fecha en que finaliza la garantía, especificada por el proveedor. EL formato de ingreso de la fecha es DD/MM/AAAA(Año/Mes/Día), este espacio es requerido."></asp:TextBox>
+                                    <cc1:CalendarExtender Format="dd/MM/yyyy" TargetControlID="final_garantia2" ID="calFinal3" runat="server" />
+                                    <cc1:MaskedEditExtender ID="MaskedEditExtender8" runat="server"  Century="2000" ClearMaskOnLostFocus="false"  Mask="99/99/9999" TargetControlID="final_garantia2"></cc1:MaskedEditExtender>
                                     <asp:CompareValidator ID="CompareValidator7" ValidationGroup="two" runat="server" ControlToCompare="fecha_compra2" Operator="GreaterThanEqual" ControlToValidate="final_garantia2" ForeColor="Red" SetFocusOnError="true" ErrorMessage="La fecha no puede ser menor a la de inicio de garantía"></asp:CompareValidator>
                                     <asp:RequiredFieldValidator ValidationGroup="two" ID="vFinal2" runat="server" ControlToValidate="final_garantia2" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
                                 

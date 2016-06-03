@@ -730,15 +730,15 @@ namespace EXPEDIA
                                 numero_placa2.Text = reader.GetString(1);
                                 numero_serie2.Text = reader.GetString(2);
                                 precio2.Text = reader.GetInt32(12).ToString();
-                                String fechaC = reader.GetDateTime(11).ToString("yyyy/MM/dd");
+                                String fechaC = reader.GetDateTime(11).ToString("dd/MM/yyyy");
 
                                 fecha_compra2.Text = fechaC;
                                 /*
-                                String fechaIG = reader.GetDateTime(3).ToString("yyyy/MM/dd");*/
+                                String fechaIG = reader.GetDateTime(3).ToString("dd/MM/yyyy");*/
 
 
                                 /* inicio_garantia2.Text = fechaIG;*/
-                                String fechaFG = reader.GetDateTime(4).ToString("yyyy/MM/dd");
+                                String fechaFG = reader.GetDateTime(4).ToString("dd/MM/yyyy");
 
                                 final_garantia2.Text = fechaFG;
                                 //Cargar descrip para el drop
@@ -792,13 +792,13 @@ namespace EXPEDIA
                                 numero_placa2.Text = reader.GetString(1);
                                 numero_serie2.Text = reader.GetString(2);
                                 precio2.Text = reader.GetInt32(12).ToString();
-                                String fechaC = reader.GetDateTime(11).ToString("yyyy/MM/dd");
+                                String fechaC = reader.GetDateTime(11).ToString("dd/MM/yyyy");
 
                                 fecha_compra2.Text = fechaC;
-                                /* String fechaIG = reader.GetDateTime(3).ToString("yyyy/MM/dd");
+                                /* String fechaIG = reader.GetDateTime(3).ToString("dd/MM/yyyy");
 
                                  inicio_garantia2.Text = fechaIG;*/
-                                String fechaFG = reader.GetDateTime(4).ToString("yyyy/MM/dd");
+                                String fechaFG = reader.GetDateTime(4).ToString("dd/MM/yyyy");
 
                                 final_garantia2.Text = fechaFG;
                                 //Cargar descrip para el drop
