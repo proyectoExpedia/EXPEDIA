@@ -100,7 +100,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" style="float: right" href="#">
+                    <a class="navbar-brand" style="float: left" href="#">
                         <h3>Colegio de Abogados y Abogadas de Costa Rica</h3>
                     </a>
                 </div>
@@ -136,37 +136,37 @@
                                     <asp:Panel ID="Panel2" runat="server" DefaultButton="Resgistrar_Proveedor">
                                         <div class="tab-pane fade in active" id="Ingresar">
                                             <h1 style="text-align: center">Formulario de Registro</h1>
-                                            <div class="pure-form pure-form-aligned" style="margin-top: 5px; margin-left: 20px;">
+                                            <div class="pure-form pure-form-aligned" style="margin-top: 5px; margin-right: 20px;">
                                                 <fieldset>
                                                         <div class="pure-control-group">
                                                             <label for="idP">Identificador</label>
-                                                            <asp:TextBox runat="server" ValidationGroup="c" ID="idp" placeholder="PR-000" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar un identificador para el proveedor que se está ingresando, este espacio es requerido. " />
+                                                            <asp:TextBox runat="server" ValidationGroup="c" ID="idp" placeholder="PR-000" data-toggle="tooltip" data-placement="right" title="En este espacio se debe proporcionar un identificador para el proveedor que se está ingresando, este espacio es requerido. " />
                                                             <asp:RequiredFieldValidator ValidationGroup="c" ID="vIdp" runat="server" ControlToValidate="idp" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
                                                         </div>
 
                                                         <div class="pure-control-group">
                                                             <label for="nproveedor">Nombre del proveedor</label>
-                                                            <asp:TextBox runat="server" ValidationGroup="c" ID="nproveedor" placeholder="Dell" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar el nombre del proveedor que está registrando, este espacio es requerido." />
+                                                            <asp:TextBox runat="server" ValidationGroup="c" ID="nproveedor" placeholder="Dell" data-toggle="tooltip" data-placement="right" title="En este espacio se debe proporcionar el nombre del proveedor que está registrando, este espacio es requerido." />
                                                             <asp:RequiredFieldValidator ValidationGroup="c" ID="vnproveedor" runat="server" ControlToValidate="nproveedor" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
                                                         </div>
 
                                                         <div class="pure-control-group">
                                                             <label for="correo">Correo electrónico</label>
-                                                            <asp:TextBox runat="server" ValidationGroup="c" TextMode="Email" ID="correo" type="email" data-toggle="tooltip" data-placement="left" title="Ingrese el correo electrónico del proveedor que está ingresando, este espacio es requerido." />
+                                                            <asp:TextBox runat="server" ValidationGroup="c" TextMode="Email" ID="correo" type="email" data-toggle="tooltip" data-placement="right" title="Ingrese el correo electrónico del proveedor que está ingresando, este espacio es requerido." />
                                                             <asp:RequiredFieldValidator ValidationGroup="c" ID="vcorreo" runat="server" ControlToValidate="correo" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
                                                         </div>
 
                                                         <div class="pure-control-group">
                                                             <label for="telefono">Número telefónico de la empresa</label>
                                                             <span class="add-on btn btn-default">506</span>
-                                                            <asp:TextBox runat="server" ValidationGroup="c" ID="telefono1" type="number" placeholder="########" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar el número telefónico principal del proveedor que está ingresando, este espacio es requerido." min="11111111" max="99999999" />
+                                                            <asp:TextBox runat="server" ValidationGroup="c" ID="telefono1" type="number" placeholder="########" data-toggle="tooltip" data-placement="right" title="En este espacio se debe proporcionar el número telefónico principal del proveedor que está ingresando, este espacio es requerido." min="11111111" max="99999999" />
                                                             <asp:RequiredFieldValidator ValidationGroup="c" ID="vtelefono1" runat="server" ControlToValidate="telefono1" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
                                                         </div>
 
                                                         <div class="pure-control-group">
                                                             <label for="telefono">Número telefónico de contacto </label>
                                                             <span class="add-on btn btn-default">506</span>
-                                                            <asp:TextBox runat="server" ValidationGroup="c" ID="telefono" type="number" placeholder="########" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar un número secundario (por ejemplo celular) del proveedor que se está registrando, este espacio es requerido." min="11111111" max="99999999" />
+                                                            <asp:TextBox runat="server" ValidationGroup="c" ID="telefono" type="number" placeholder="########" data-toggle="tooltip" data-placement="right" title="En este espacio se debe proporcionar un número secundario (por ejemplo celular) del proveedor que se está registrando, este espacio es requerido." min="11111111" max="99999999" />
                                                             <asp:RequiredFieldValidator ValidationGroup="c" ID="vtelefono" runat="server" ControlToValidate="telefono" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
                                                         </div>
                                                     </fieldset>
@@ -187,7 +187,7 @@
                                             <div class="pure-form pure-form-aligned">
                                             <asp:Panel ID="Panel3" runat="server" DefaultButton="">
                                                     <div class="form-group pull-right">  <input type="text" class="search form-control" placeholder="Digita el valor a buscar" /></div>
-                                                    <span class="counter pull-left"></span>
+                                                    <span class="counter pull-right"></span>
                                                 <div class="form-group pull-right"><label>Buscar:  </label></div>
                                                     <asp:Table ID="Table2" runat="server" CssClass="table table-hover table-bordered results">
                                                          <asp:TableHeaderRow runat="server">
@@ -225,34 +225,34 @@
                                                 <fieldset>
                                                         <div class="pure-control-group">
                                                             <label for="idP">Identificador</label>
-                                                            <asp:TextBox runat="server" ReadOnly="true" ValidationGroup="Six" ID="idpM" placeholder="PR-000" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar un identificador para el proveedor que se está registrando, este espacio es requerido. " />
+                                                            <asp:TextBox runat="server" ReadOnly="true" ValidationGroup="Six" ID="idpM" placeholder="PR-000" data-toggle="tooltip" data-placement="right" title="En este espacio se debe proporcionar un identificador para el proveedor que se está registrando, este espacio es requerido. " />
                                                             <asp:TextBox runat="server" ClientIDMode="Static" ID="idpMO" ></asp:TextBox>
                                                             <asp:RequiredFieldValidator ValidationGroup="Six" ID="RequiredFieldValidator1" runat="server" ControlToValidate="idpM" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
                                                         </div>
 
                                                         <div class="pure-control-group">
                                                             <label for="nproveedor">Nombre del proveedor</label>
-                                                            <asp:TextBox runat="server" ValidationGroup="c" ID="nproveedorM" placeholder="Dell" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar el nombre del proveedor que se está registrando, este espacio es requerido." />
+                                                            <asp:TextBox runat="server" ValidationGroup="c" ID="nproveedorM" placeholder="Dell" data-toggle="tooltip" data-placement="right" title="En este espacio se debe proporcionar el nombre del proveedor que se está registrando, este espacio es requerido." />
                                                             <asp:RequiredFieldValidator ValidationGroup="Six" ID="RequiredFieldValidator2" runat="server" ControlToValidate="nproveedorM" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
                                                         </div>
 
                                                         <div class="pure-control-group">
                                                             <label for="correo">Correo electrónico</label>
-                                                            <asp:TextBox runat="server" ValidationGroup="Six" TextMode="Email" ID="correoM" type="email" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar la dirección de correo electrónico del proveedor a registrar, este espacio es requerido." />
+                                                            <asp:TextBox runat="server" ValidationGroup="Six" TextMode="Email" ID="correoM" type="email" data-toggle="tooltip" data-placement="right" title="En este espacio se debe proporcionar la dirección de correo electrónico del proveedor a registrar, este espacio es requerido." />
                                                             <asp:RequiredFieldValidator ValidationGroup="Six" ID="RequiredFieldValidator3" runat="server" ControlToValidate="correoM" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
                                                         </div>
 
                                                         <div class="pure-control-group">
                                                             <label for="telefono">Número telefónico de la empresa</label>
                                                             <span class="add-on btn btn-default">506</span>
-                                                            <asp:TextBox runat="server" ValidationGroup="Six" ID="telefono1M" type="number" placeholder="########" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar el número telefónico principal del proveedor que se está registrando, este espacio es requerido." min="11111111" max="99999999" />
+                                                            <asp:TextBox runat="server" ValidationGroup="Six" ID="telefono1M" type="number" placeholder="########" data-toggle="tooltip" data-placement="right" title="En este espacio se debe proporcionar el número telefónico principal del proveedor que se está registrando, este espacio es requerido." min="11111111" max="99999999" />
                                                             <asp:RequiredFieldValidator ValidationGroup="Six" ID="RequiredFieldValidator4" runat="server" ControlToValidate="telefono1M" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
                                                         </div>
 
                                                         <div class="pure-control-group">
                                                             <label for="telefono">Número telefónico de contacto </label>
                                                             <span class="add-on btn btn-default">506</span>
-                                                            <asp:TextBox runat="server" ValidationGroup="Six" ID="telefonoM" type="number" placeholder="########" data-toggle="tooltip" data-placement="left" title="En este espacio se debe proporcionar un número secundario (por ejemplo, celular) del proveedor que se está registrando, este espacio es requerido." min="11111111" max="99999999" />
+                                                            <asp:TextBox runat="server" ValidationGroup="Six" ID="telefonoM" type="number" placeholder="########" data-toggle="tooltip" data-placement="right" title="En este espacio se debe proporcionar un número secundario (por ejemplo, celular) del proveedor que se está registrando, este espacio es requerido." min="11111111" max="99999999" />
                                                             <asp:RequiredFieldValidator ValidationGroup="Six" ID="RequiredFieldValidator6" runat="server" ControlToValidate="telefonoM" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
                                                         </div>
                                                     </fieldset>
@@ -319,7 +319,7 @@
                                 </div>
                             </div> <!-- /container -->
                         <div class="modal-footer">
-                            <img src="img/ExpediaLogo.png" alt="" style="width:50px; height:50px;float:left" />
+                            <img src="img/ExpediaLogo.png" alt="" style="width:50px; height:50px;float:right" />
                             <asp:Button runat="server" ID="btn_habilitarUsuario" Text="Si" CssClass="btn btn-danger" OnClick="btn_habilitarUsuario_Click"/>
                             <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
                         </div>
