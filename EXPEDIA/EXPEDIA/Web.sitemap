@@ -10,8 +10,9 @@
   
         <siteMapNode url="gestionAjustes.aspx" title="Gestión de ajustes"  description="" >
         <siteMapNode url="gestionProveedores.aspx" title="Gestión de proveedores"  description="" />
-        <siteMapNode url="gestionAreas.aspx" title="Gestión de área"  description="" />
+        <siteMapNode url="gestionAreas.aspx" title="Gestión de departamentos"  description="" />
         <siteMapNode url="gestionPuestos.aspx" title="Gestión de ocupaciones"  description="" />
+        <siteMapNode url="gestionTipoActivos.aspx" title="Gestión de descripciones"  description="" />
       </siteMapNode>
       </siteMapNode>
         <siteMapNode url="mainConsulta.aspx" title="Menú principal"  description="" >

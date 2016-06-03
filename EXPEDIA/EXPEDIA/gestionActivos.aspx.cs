@@ -304,7 +304,7 @@ namespace EXPEDIA
 
                 Conexion c = new Conexion();
                 SqlConnection Conexion = c.Conectar();
-                string Sql = @"INSERT INTO Descripcion (bd_id_descripcion, Descripcion) values (@id, @descripcion)";
+                string Sql = @"INSERT INTO Descripcion (bd_id_descripcion, Descripcion, bd_motivos, bd_estado) values (@id, @descripcion,@motivos,@estado)";
 
                 Conexion.Open();//abrimos conexion
 
@@ -313,6 +313,8 @@ namespace EXPEDIA
                     SqlCommand cmd = new SqlCommand(Sql, Conexion);
                     cmd.Parameters.AddWithValue("@id", id_descripcion_nueva.Text); //enviamos los parametros
                     cmd.Parameters.AddWithValue("@descripcion", descripcion_nueva.Text);
+                    cmd.Parameters.AddWithValue("@estado", 1);
+                    cmd.Parameters.AddWithValue("@motivos", "Activo");
                     cmd.ExecuteNonQuery();
                     c.Desconectar(Conexion);
                     ListItem item2 = new ListItem(descripcion_nueva.Text, id_descripcion_nueva.Text, true);

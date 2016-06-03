@@ -25,6 +25,8 @@ namespace EXPEDIA
         private List<String> Bitacora_Activos_Leasing = new List<string>();
         private List<String> Bitacora_Activos_Corporativos = new List<string>();
         private List<String> Bitacora_Usuarios = new List<string>();
+        private List<String> Bitacora_Prestamo = new List<string>();
+        private List<String> Bitacora_Donacion = new List<string>();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -2019,6 +2021,10 @@ namespace EXPEDIA
             Bitacora_Activos_Lea();
             Bitacora_Consultar_Usuarios();
             Bitacora_Usuario();
+            Bitacora_Consultar_Prestamos();
+            Bitacora_Prestamos();
+            Bitacora_Consultar_Donaciones();
+            Bitacora_Donaciones();
 
         
         }
@@ -2056,6 +2062,31 @@ namespace EXPEDIA
             tablaUsuarios += "</table>";
 
             this.usuarios.InnerHtml = tablaUsuarios;
+        }
+        protected void Bitacora_Prestamos() {
+
+
+            String tablaPrestamos = "<h1 style=\"text-align:center\">Préstamos</h1><table id=\"pres\" class=\"table table-striped table-bordered\"> <thead> <tr><th>Fecha de acción</th><th>Identificador del préstamo</th><th>Identificación del solicitante</th><th>Fecha de solicitud</th><th>Fecha de emisión</th><th>Fecha de recepción</th></tr></thead>";
+            for (int i = 0; i < this.Bitacora_Prestamo.Count; i++)
+            {
+                tablaPrestamos += this.Bitacora_Prestamo[i];
+            }
+
+            tablaPrestamos += "</table>";
+
+            this.prestamos.InnerHtml = tablaPrestamos;
+        
+        }
+        protected void Bitacora_Donaciones() {
+            String tablaDonaciones = "<h1 style=\"text-align:center\">Donaciones</h1><table id=\"Dona\" class=\"table table-striped table-bordered\"> <thead> <tr><th>Fecha de acción</th><th>Identificador de la donacion</th><th>Fecha de salida</th><th>Identificación del beneficiario</th><th>Nombre del beneficiario</th><th>Telefono del beneficiario</th><th>Descripción del la donacion</th></tr></thead>";
+            for (int i = 0; i < this.Bitacora_Donacion.Count; i++)
+            {
+                tablaDonaciones += this.Bitacora_Donacion[i];
+            }
+
+            tablaDonaciones += "</table>";
+
+            this.donaciones.InnerHtml = tablaDonaciones;
         }
         protected void Bitacora_Consultar_Activos()
         {
@@ -2146,12 +2177,63 @@ namespace EXPEDIA
         }
         protected void Bitacora_Consultar_Prestamos()
         {
+            Conexion c = new Conexion();
+            SqlConnection Conexion = c.Conectar();
+            string Sql = @"SELECT bd_fecha_accion,bd_id_prestamo_nuevo,bd_id_solicitante_nuevo,bd_fecha_emision_nuevo,bd_fecha_recepcion_nuevo FROM Bitacora_Prestamos WHERE bd_accion != 'Eliminó datos'";
+            Conexion.Open();//abrimos conexion
+            SqlCommand cmd = new SqlCommand(Sql, Conexion);
+            SqlDataReader reader = cmd.ExecuteReader();
 
+            while (reader.Read())
+            {
+                String row = "<tr>";
+                String fecha_accion = reader.GetString(0);
+                int id_prestamo = reader.GetInt32(1);
+                String cedula = reader.GetString(2);
+                String fecha_solicitud = reader.GetDateTime(3).ToString("dd/MM/yyyy");
+                String fecha_emision = reader.GetDateTime(3).ToString("dd/MM/yyyy");
+                String fecha_recepcion = reader.GetDateTime(3).ToString("dd/MM/yyyy");
+
+
+                row += "<td>" + fecha_accion + "</td>" + "<td>" + id_prestamo + "</td>" + "<td>" + cedula + "</td>" + "<td>" + fecha_solicitud + "</td> " +
+                "<td>" + fecha_emision + "</td>" + "<td>" + fecha_recepcion + "</td>";
+                row += "</tr>";
+                Bitacora_Prestamo.Add(row);
+
+
+            }
 
         }
         protected void Bitacora_Consultar_Donaciones()
         {
+            Conexion c = new Conexion();
+            SqlConnection Conexion = c.Conectar();
+            string Sql = @"SELECT bd_fecha_accion,bd_id_donacion_nuevo,bd_fecha_salida_nuevo,bd_nombre_veneficiado_nuevo,bd_id_veneficiado_nuevo,bd_apellido1_veneficiado_nuevo,bd_apellido2_veneficiado_nuevo,bd_telefono_veneficiado_nuevo,bd_descripcion_donaciones_nuevo FROM Bitacora_Donaciones WHERE bd_accion != 'Eliminó datos'";
+            Conexion.Open();//abrimos conexion
+            SqlCommand cmd = new SqlCommand(Sql, Conexion);
+            SqlDataReader reader = cmd.ExecuteReader();
 
+            while (reader.Read())
+            {
+                String row = "<tr>";
+                String fecha_accion = reader.GetString(0);
+                int id_donacion = reader.GetInt32(1);
+                String fecha_salida = reader.GetDateTime(2).ToString("dd/MM/yyyy");
+                String nombre_beneficiario = reader.GetString(3);
+                String cedula_beneficiario = reader.GetString(4);
+                String apellido1_beneficiario = reader.GetString(5);
+                String apellido2_beneficiario = reader.GetString(6);
+                String telefono_beneficiario = reader.GetString(7);
+                String descripcion_donacion = reader.GetString(8);
+
+                String nombre_completo = nombre_beneficiario + " " + apellido1_beneficiario + " " + apellido2_beneficiario; 
+
+                row += "<td>" + fecha_accion + "</td>" + "<td>" + id_donacion + "</td>" + "<td>" + fecha_salida + "</td>"+ "<td>" + cedula_beneficiario + "</td>" + "<td>" + nombre_completo + "</td> " + "<td>" + telefono_beneficiario +
+                "</td>" + "<td>" + descripcion_donacion + "</td>";
+                Bitacora_Donacion.Add(row);
+
+
+            }
 
         }
         protected String obtener_estado_activos(int valor) { 
