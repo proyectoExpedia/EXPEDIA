@@ -370,17 +370,17 @@
 
                      <div class="pure-control-group">
                <label for="TextBox10" >Fecha de cambio: </label>
-               <asp:TextBox ID="TextBox10" runat="server" ToolTip="Este espacio debe contener la fecha de retorno del préstamo, este espacio es requerido."></asp:TextBox>
+               <asp:TextBox ID="TextBox10" runat="server" data-toggle="tooltip" data-placement="right" title="Este espacio debe contener la fecha de retorno del préstamo, este espacio es requerido."></asp:TextBox>
+                <asp:CalendarExtender runat="server" BehaviorID="TextBox10_CalendarExtender" TargetControlID="TextBox10" ID="TextBox10_CalendarExtender"></asp:CalendarExtender>
                 <cc1:MaskedEditExtender ID="MaskedEditExtender5" runat="server" BehaviorID="fecha_MaskedEditExtender2" Century="2000" ClearMaskOnLostFocus="false"  Mask="99/99/9999" TargetControlID="TextBox10"></cc1:MaskedEditExtender>
-                <asp:CalendarExtender runat="server" Format="dd/MM/yyyy"  BehaviorID="TextBox10_CalendarExtender" TargetControlID="TextBox10" ID="TextBox10_CalendarExtender"></asp:CalendarExtender>
-                <asp:RequiredFieldValidator  ValidationGroup="one"   ID="RequiredFieldValidator1"   runat="server" ControlToValidate="TextBox10"   ForeColor="Red" SetFocusOnError="True" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator><br />
+                <asp:RequiredFieldValidator  ValidationGroup="three"   ID="RequiredFieldValidator1"   runat="server" ControlToValidate="TextBox10"   ForeColor="Red" SetFocusOnError="True" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator><br />
                <asp:CompareValidator ID="CompareValidator2" runat="server" ValidationGroup="one"  ControlToCompare="TextBox9" Operator="GreaterThan"  ControlToValidate="TextBox10"  ErrorMessage="No se puede escoger una fecha menor a la del día de entrega /n Si desea puede finalizar el prestamo " ForeColor="Red" SetFocusOnError="True"></asp:CompareValidator>
                </div>
             </div>
 
       </div>
       <div class="modal-footer">
-        <asp:Button  runat="server" ID="prolongar1" ValidationGroup="one" CssClass="btn btn-primary" OnClick="prolongar1_Click"   Text="Prolongar" ></asp:Button>
+          <asp:Button runat="server" ID="prolongar1" ValidationGroup="three"  CssClass="btn btn-primary" OnClick="prolongar1_Click" Text="Prolongar" ></asp:Button>
         <asp:Button runat="server" ID="Button3" CssClass="btn btn-default" Text="Cerrar" OnClick="Button3_Click"></asp:Button>
         
       </div>

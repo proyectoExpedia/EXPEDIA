@@ -1777,8 +1777,9 @@ namespace EXPEDIA
                 eliminar_prestamo();
                 //Cambiar_Estado_usuario(1, ced); funcion que cambia el estado del usuario 2 (con pendiente) a 1(listo);
                 excelente(Finalizar1);
-                
-          
+                finalizar.Visible = false;
+
+
             }
             catch{ error(Finalizar1, "Disculpa", "no se pudo realizar la accion "); }
         }
@@ -1868,6 +1869,7 @@ namespace EXPEDIA
                 cmd.Parameters.AddWithValue("@fech", TextBox10.Text);
                 cmd.ExecuteNonQuery();
                 excelente(prolongar1);
+                prolongar.Visible = false;
 
             }
             catch
