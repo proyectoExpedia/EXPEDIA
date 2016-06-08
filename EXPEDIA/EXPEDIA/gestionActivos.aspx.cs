@@ -54,19 +54,19 @@ namespace EXPEDIA
                     //crea la concexion para ejecutar la insercion
                     Conexion c = new Conexion();
                     SqlConnection Conexion = c.Conectar();
-                    string Sql = @"INSERT INTO Activos (bd_tipo_activo, bd_numero_placa, bd_numero_serie, bd_fecha_inicio_garantia, bd_fecha_final_garantia, bd_descripcion_activo, bd_departamento, bd_proveedor, bd_especificacion_tecnica, bd_aquisicion_ac, bd_finalizacion_contrato, bd_fecha_compra, bd_costo_activo, bd_id_prestamo, bd_estado) values (@tipo_activo, @placa, @serie, @garantia_inicio, @garantia_final, @descripcion, @departamento, @proveedor, @especificacion_tecnica, @aquisicion_ac, @finalizacion_contrato,  @fecha_compra, @costo , @id_prestamo, @estado)";
+                    string Sql = @"INSERT INTO Activos (bd_tipo_activo, bd_numero_placa, bd_numero_serie, bd_fecha_inicio_garantia, bd_fecha_final_garantia, bd_descripcion_activo, bd_departamento, bd_proveedor, bd_especificacion_tecnica, bd_aquisicion_ac, bd_finalizacion_contrato, bd_fecha_compra, bd_costo_activo, bd_id_prestamo, bd_estado,bd_motivos) values (@tipo_activo, @placa, @serie, @garantia_inicio, @garantia_final, @descripcion, @departamento, @proveedor, @especificacion_tecnica, @aquisicion_ac, @finalizacion_contrato,  @fecha_compra, @costo , @id_prestamo, @estado, @motivos)";
 
                     Conexion.Open();//abrimos conexion    
                     try
                     {
                         SqlCommand cmd = new SqlCommand(Sql, Conexion);
                         cmd.Parameters.AddWithValue("@tipo_activo", "Software");
-                        cmd.Parameters.AddWithValue("@fecha_compra", fecha_compra.Text);
+                        cmd.Parameters.AddWithValue("@fecha_compra", (Convert.ToDateTime(fecha_compra.Text).ToString("yyyy/MM/dd")).ToString());
                         cmd.Parameters.AddWithValue("@costo", precio.Text);
                         cmd.Parameters.AddWithValue("@placa", numero_placa.Text);
                         cmd.Parameters.AddWithValue("@serie", numero_serie.Text);
-                        cmd.Parameters.AddWithValue("@garantia_inicio", fecha_compra.Text);
-                        cmd.Parameters.AddWithValue("@garantia_final", final_garantia.Text);
+                        cmd.Parameters.AddWithValue("@garantia_inicio", (Convert.ToDateTime(fecha_compra.Text).ToString("yyyy/MM/dd")).ToString());
+                        cmd.Parameters.AddWithValue("@garantia_final", (Convert.ToDateTime(final_garantia.Text).ToString("yyyy/MM/dd")).ToString());
                         cmd.Parameters.AddWithValue("@descripcion", descripcion.SelectedValue);
                         cmd.Parameters.AddWithValue("@departamento", area.SelectedValue);
                         cmd.Parameters.AddWithValue("@proveedor", proveedor.SelectedItem.Text);
@@ -76,6 +76,7 @@ namespace EXPEDIA
                         cmd.Parameters.AddWithValue("@aquisicion_ac", "");
                         cmd.Parameters.AddWithValue("@finalizacion_contrato", "");
                         cmd.Parameters.AddWithValue("@id_prestamo", 0);
+                        cmd.Parameters.AddWithValue("@motivos", "Activo");
                         cmd.ExecuteNonQuery();
 
                         c.Desconectar(Conexion);
@@ -97,29 +98,29 @@ namespace EXPEDIA
                     //crea la concexion para ejecutar la insercion
                     Conexion c = new Conexion();
                     SqlConnection Conexion = c.Conectar();
-                    string Sql = @"INSERT INTO Activos (bd_tipo_activo, bd_numero_placa, bd_numero_serie, bd_fecha_inicio_garantia, bd_fecha_final_garantia, bd_descripcion_activo, bd_departamento, bd_proveedor, bd_especificacion_tecnica, bd_aquisicion_ac, bd_finalizacion_contrato, bd_fecha_compra, bd_costo_activo, bd_id_prestamo, bd_estado) 
-                        values (@tipo_activo, @placa, @serie, @garantia_inicio, @garantia_final, @descripcion, @departamento, @proveedor, @especificacion_tecnica, @aquisicion_ac, @finalizacion_contrato,  @fecha_compra, @costo , @id_prestamo, @estado)";
+                    string Sql = @"INSERT INTO Activos (bd_tipo_activo, bd_numero_placa, bd_numero_serie, bd_fecha_inicio_garantia, bd_fecha_final_garantia, bd_descripcion_activo, bd_departamento, bd_proveedor, bd_especificacion_tecnica, bd_aquisicion_ac, bd_finalizacion_contrato, bd_fecha_compra, bd_costo_activo, bd_id_prestamo, bd_estado,bd_motivos) values (@tipo_activo, @placa, @serie, @garantia_inicio, @garantia_final, @descripcion, @departamento, @proveedor, @especificacion_tecnica, @aquisicion_ac, @finalizacion_contrato,  @fecha_compra, @costo , @id_prestamo, @estado, @motivos)";
 
                     Conexion.Open();//abrimos conexion    
                     try
                     {
                         SqlCommand cmd = new SqlCommand(Sql, Conexion);
                         cmd.Parameters.AddWithValue("@tipo_activo", "Hardware");
+                        cmd.Parameters.AddWithValue("@fecha_compra", (Convert.ToDateTime(fecha_compra.Text).ToString("yyyy/MM/dd")).ToString());
+                        cmd.Parameters.AddWithValue("@costo", precio.Text);
                         cmd.Parameters.AddWithValue("@placa", numero_placa.Text);
                         cmd.Parameters.AddWithValue("@serie", numero_serie.Text);
-                        cmd.Parameters.AddWithValue("@garantia_inicio", fecha_compra.Text);
-                        cmd.Parameters.AddWithValue("@garantia_final", final_garantia.Text);
+                        cmd.Parameters.AddWithValue("@garantia_inicio", (Convert.ToDateTime(fecha_compra.Text).ToString("yyyy/MM/dd")).ToString());
+                        cmd.Parameters.AddWithValue("@garantia_final", (Convert.ToDateTime(final_garantia.Text).ToString("yyyy/MM/dd")).ToString());
                         cmd.Parameters.AddWithValue("@descripcion", descripcion.SelectedValue);
                         cmd.Parameters.AddWithValue("@departamento", area.SelectedValue);
                         cmd.Parameters.AddWithValue("@proveedor", proveedor.SelectedItem.Text);
                         cmd.Parameters.AddWithValue("@especificacion_tecnica", especificacion_tecnica.Text);
-                        cmd.Parameters.AddWithValue("@fecha_compra", fecha_compra.Text);
-                        cmd.Parameters.AddWithValue("@costo", precio.Text);
                         cmd.Parameters.AddWithValue("@estado", 1);
                         //invalidos
                         cmd.Parameters.AddWithValue("@aquisicion_ac", "");
                         cmd.Parameters.AddWithValue("@finalizacion_contrato", "");
                         cmd.Parameters.AddWithValue("@id_prestamo", 0);
+                        cmd.Parameters.AddWithValue("@motivos", "Activo");
                         cmd.ExecuteNonQuery();
                         excelente(Button1);
                         c.Desconectar(Conexion);
@@ -142,12 +143,12 @@ namespace EXPEDIA
                     try
                     {
                         SqlCommand cmd = new SqlCommand(Sql, Conexion);
-
+ 
                         cmd.Parameters.AddWithValue("@tipo_activo", "Leasing");
                         cmd.Parameters.AddWithValue("@placa", numero_placa.Text);
                         cmd.Parameters.AddWithValue("@serie", numero_serie.Text);
-                        cmd.Parameters.AddWithValue("@aquisicion_ac", fecha_adquisicion.Text);
-                        cmd.Parameters.AddWithValue("@finalizacion_contrato", finalizacion_contrato.Text);
+                        cmd.Parameters.AddWithValue("@aquisicion_ac",(Convert.ToDateTime(fecha_adquisicion.Text).ToString("yyyy/MM/dd")).ToString());
+                        cmd.Parameters.AddWithValue("@finalizacion_contrato", (Convert.ToDateTime(finalizacion_contrato.Text).ToString("yyyy/MM/dd")).ToString());
                         cmd.Parameters.AddWithValue("@costo", precio.Text);
                         cmd.Parameters.AddWithValue("@descripcion", descripcion.SelectedValue);
                         cmd.Parameters.AddWithValue("@departamento", area.SelectedValue);
@@ -240,7 +241,7 @@ namespace EXPEDIA
         {
             Conexion c = new Conexion();
             SqlConnection Conexion = c.Conectar();
-            string Sql = @"SELECT bd_id_descripcion, Descripcion FROM Descripcion ";
+            string Sql = @"SELECT bd_id_descripcion, Descripcion FROM Descripcion where bd_estado = 1 ";
             Conexion.Open();//abrimos conexion
             SqlCommand cmd = new SqlCommand(Sql, Conexion); //ejecutamos la instruccion
             SqlDataReader reader = cmd.ExecuteReader();
@@ -707,6 +708,7 @@ namespace EXPEDIA
         protected void bt_consultarAC_Click(object sender, EventArgs e)
         {
 
+            int validacion=0;
             Conexion c = new Conexion();
             SqlConnection Conexion = c.Conectar();
             try
@@ -752,6 +754,7 @@ namespace EXPEDIA
                                     if (item.ToString().Equals(descripVal))
                                     {
                                         descripcion2.SelectedIndex = i;
+                                        validacion++;
                                         break;
                                     }
                                     i++;
@@ -765,6 +768,7 @@ namespace EXPEDIA
                                     if (item.ToString().Equals(AreaVal))
                                     {
                                         area2.SelectedIndex = x;
+                                        validacion++;
                                         break;
                                     }
                                     x++;
@@ -777,6 +781,7 @@ namespace EXPEDIA
                                     if (item.ToString().Equals(AuxPro))
                                     {
                                         proveedor2.SelectedIndex = y;
+                                        validacion++;
                                         break;
                                     }
                                     y++;
@@ -812,6 +817,7 @@ namespace EXPEDIA
                                     if (item.ToString().Equals(descripVal))
                                     {
                                         descripcion2.SelectedIndex = i;
+                                        validacion++;
                                         break;
                                     }
                                     i++;
@@ -825,6 +831,7 @@ namespace EXPEDIA
                                     if (item.ToString().Equals(AreaVal))
                                     {
                                         area2.SelectedIndex = x;
+                                        validacion++;
                                         break;
                                     }
                                     x++;
@@ -837,6 +844,7 @@ namespace EXPEDIA
                                     if (item.ToString().Equals(AuxPro))
                                     {
                                         proveedor2.SelectedIndex = y;
+                                        validacion++;
                                         break;
                                     }
                                     y++;
@@ -876,10 +884,15 @@ namespace EXPEDIA
 
                         else { Habilitar_Activo(reader.GetString(1)); }
                     }
-
-                    // excelente(btn_consultarAc);
-                    mostrarConsultaAC();
-                    inhabilitarCampos();
+                    if (validacion == 3)
+                    {
+                        excelente(btn_consultarAc);
+                        mostrarConsultaAC();
+                        inhabilitarCampos();
+                    }
+                    else {
+                        error(btn_consultarAc, "Disculpa", "Los datos del activo no pueden ser accedidos debido a que el departamento, proveedor o descripción se encuentran inhabilitados");
+                    }
                 }
                 else
                 {
@@ -889,7 +902,7 @@ namespace EXPEDIA
             }
             catch (Exception ex)
             {
-                error(btn_consultarAc, "Disculpa", "Los datos del activo no pueden ser accedidos debido a que el departamento o proveedor se encuentra inhabilitado");
+                error(btn_consultarAc, "Disculpa", "Los datos del activo no pueden ser accedidos debido a que el departamento, proveedor o descripción se encuentran inhabilitados");
                 ex.ToString();
             }
             finally {
@@ -928,28 +941,28 @@ namespace EXPEDIA
                 {
                     Conexion c = new Conexion();
                     SqlConnection Conexion = c.Conectar();
-                    String Sql = @"UPDATE Activos SET  bd_tipo_activo = @tipo_activo, bd_descripcion_activo = @descripcion, bd_fecha_final_garantia = @garantia_final, bd_fecha_inicio_garantia = @garantia_inicio, bd_numero_serie = @serie,  bd_departamento = @departamento, bd_proveedor = @proveedor, bd_especificacion_tecnica = @especificacion_tecnica, bd_aquisicion_ac = @aquisicion_ac, bd_finalizacion_contrato = @finalizacion_contrato, bd_fecha_compra = @fecha_compra, bd_costo_activo = @costo , bd_id_prestamo =  @id_prestamo, bd_estado = @estado WHERE bd_numero_placa = @placa";
+                    String Sql = @"UPDATE Activos SET  bd_tipo_activo = @tipo_activo, bd_descripcion_activo = @descripcion, bd_fecha_final_garantia = @garantia_final, bd_fecha_inicio_garantia = @garantia_inicio, bd_numero_serie = @serie,  bd_departamento = @departamento, bd_proveedor = @proveedor, bd_especificacion_tecnica = @especificacion_tecnica, bd_aquisicion_ac = @aquisicion_ac, bd_finalizacion_contrato = @finalizacion_contrato, bd_fecha_compra = @fecha_compra, bd_costo_activo = @costo  WHERE bd_numero_placa = @placa";
 
                     Conexion.Open();//abrimos conexion    
                     try
                     {
                         SqlCommand cmd = new SqlCommand(Sql, Conexion);
                         cmd.Parameters.AddWithValue("@tipo_activo", "Software");
+                        cmd.Parameters.AddWithValue("@fecha_compra", (Convert.ToDateTime(fecha_compra2.Text).ToString("yyyy/MM/dd")).ToString());
+                        cmd.Parameters.AddWithValue("@costo", precio2.Text);
                         cmd.Parameters.AddWithValue("@placa", numero_placa2.Text);
                         cmd.Parameters.AddWithValue("@serie", numero_serie2.Text);
-                        cmd.Parameters.AddWithValue("@garantia_inicio", fecha_compra2.Text);
-                        cmd.Parameters.AddWithValue("@garantia_final", final_garantia2.Text);
+                        cmd.Parameters.AddWithValue("@garantia_inicio", (Convert.ToDateTime(fecha_compra2.Text).ToString("yyyy/MM/dd")).ToString());
+                        cmd.Parameters.AddWithValue("@garantia_final", (Convert.ToDateTime(final_garantia2.Text).ToString("yyyy/MM/dd")).ToString());
                         cmd.Parameters.AddWithValue("@descripcion", descripcion2.SelectedValue);
                         cmd.Parameters.AddWithValue("@departamento", area2.SelectedValue);
                         cmd.Parameters.AddWithValue("@proveedor", proveedor2.SelectedItem.Text);
                         cmd.Parameters.AddWithValue("@especificacion_tecnica", especificacion_tecnica2.Text);
-                        cmd.Parameters.AddWithValue("@fecha_compra", fecha_compra2.Text);
-                        cmd.Parameters.AddWithValue("@costo", precio2.Text);
-                        cmd.Parameters.AddWithValue("@estado", 1);
+                        //cmd.Parameters.AddWithValue("@estado", 1);
                         //invalidos
                         cmd.Parameters.AddWithValue("@aquisicion_ac", "");
                         cmd.Parameters.AddWithValue("@finalizacion_contrato", "");
-                        cmd.Parameters.AddWithValue("@id_prestamo", 0);
+                        //cmd.Parameters.AddWithValue("@id_prestamo", 0);
                         cmd.ExecuteNonQuery();
                         excelente(actualizaDatosAC);
                         c.Desconectar(Conexion);
@@ -958,6 +971,9 @@ namespace EXPEDIA
 
                     }
                     catch (Exception t) { Response.Write("error" + t); }
+                    finally {
+                        ocultarConsulta();
+                    }
 
 
                 }
@@ -972,27 +988,29 @@ namespace EXPEDIA
                     Conexion c = new Conexion();
                     SqlConnection Conexion = c.Conectar();
 
-                    String Sql = @"UPDATE Activos SET  bd_tipo_activo = @tipo_activo, bd_descripcion_activo = @descripcion, bd_fecha_final_garantia = @garantia_final, bd_fecha_inicio_garantia = @garantia_inicio, bd_numero_serie = @serie,  bd_departamento = @departamento, bd_proveedor = @proveedor, bd_especificacion_tecnica = @especificacion_tecnica, bd_aquisicion_ac = @aquisicion_ac, bd_finalizacion_contrato = @finalizacion_contrato, bd_fecha_compra = @fecha_compra, bd_costo_activo = @costo , bd_id_prestamo =  @id_prestamo, bd_estado = @estado WHERE bd_numero_placa = @placa";
+                    String Sql = @"UPDATE Activos SET  bd_tipo_activo = @tipo_activo, bd_descripcion_activo = @descripcion, bd_fecha_final_garantia = @garantia_final, bd_fecha_inicio_garantia = @garantia_inicio, bd_numero_serie = @serie,  bd_departamento = @departamento, bd_proveedor = @proveedor, bd_especificacion_tecnica = @especificacion_tecnica, bd_aquisicion_ac = @aquisicion_ac, bd_finalizacion_contrato = @finalizacion_contrato, bd_fecha_compra = @fecha_compra, bd_costo_activo = @costo  WHERE bd_numero_placa = @placa";
                     Conexion.Open();//abrimos conexion    
                     try
                     {
                         SqlCommand cmd = new SqlCommand(Sql, Conexion);
                         cmd.Parameters.AddWithValue("@tipo_activo", "Hardware");
+                        cmd.Parameters.AddWithValue("@fecha_compra", (Convert.ToDateTime(fecha_compra2.Text).ToString("yyyy/MM/dd")).ToString());
+                        cmd.Parameters.AddWithValue("@costo", precio2.Text);
                         cmd.Parameters.AddWithValue("@placa", numero_placa2.Text);
                         cmd.Parameters.AddWithValue("@serie", numero_serie2.Text);
-                        cmd.Parameters.AddWithValue("@garantia_inicio", fecha_compra2.Text);
-                        cmd.Parameters.AddWithValue("@garantia_final", final_garantia2.Text);
+                        cmd.Parameters.AddWithValue("@garantia_inicio", (Convert.ToDateTime(fecha_compra2.Text).ToString("yyyy/MM/dd")).ToString());
+                        cmd.Parameters.AddWithValue("@garantia_final", (Convert.ToDateTime(final_garantia2.Text).ToString("yyyy/MM/dd")).ToString());
                         cmd.Parameters.AddWithValue("@descripcion", descripcion2.SelectedValue);
                         cmd.Parameters.AddWithValue("@departamento", area2.SelectedValue);
                         cmd.Parameters.AddWithValue("@proveedor", proveedor2.SelectedItem.Text);
                         cmd.Parameters.AddWithValue("@especificacion_tecnica", especificacion_tecnica2.Text);
-                        cmd.Parameters.AddWithValue("@fecha_compra", fecha_compra2.Text);
-                        cmd.Parameters.AddWithValue("@costo", precio2.Text);
-                        cmd.Parameters.AddWithValue("@estado", 1);
+                        //cmd.Parameters.AddWithValue("@estado", 1);
                         //invalidos
                         cmd.Parameters.AddWithValue("@aquisicion_ac", "");
                         cmd.Parameters.AddWithValue("@finalizacion_contrato", "");
-                        cmd.Parameters.AddWithValue("@id_prestamo", 0);
+                        //cmd.Parameters.AddWithValue("@id_prestamo", 0);
+                        //cmd.Parameters.AddWithValue("@motivos", "Activo");
+                        cmd.ExecuteNonQuery();
                         cmd.ExecuteNonQuery();
                         excelente(actualizaDatosAC);
                         c.Desconectar(Conexion);
@@ -1001,6 +1019,10 @@ namespace EXPEDIA
 
                     }
                     catch (Exception t) { Response.Write("error" + t); }
+                    finally
+                    {
+                        ocultarConsulta();
+                    }
                 }
 
                 //if (RadioButton4.Checked)
@@ -1048,16 +1070,16 @@ namespace EXPEDIA
         protected void BajaActivo_Click(object sender, EventArgs e) {
             Conexion c = new Conexion();
             SqlConnection Conexion = c.Conectar();
-            string Sql = @"UPDATE Activos SET bd_estado = @estado WHERE bd_numero_placa = @placa ";
+            string Sql = @"UPDATE Activos SET bd_estado = @estado, bd_motivos = @motivos WHERE bd_numero_placa = @placa ";
             Conexion.Open();//abrimos conexion    
             try
             {
                 SqlCommand cmd = new SqlCommand(Sql, Conexion);
                 cmd.Parameters.AddWithValue("@placa", numero_placa2.Text);
                 cmd.Parameters.AddWithValue("@estado", 2);
-                //invalidos
+                cmd.Parameters.AddWithValue("@motivos", TextArea1.Text);
                 cmd.ExecuteNonQuery();
-                excelente(enviar2);
+                excelente(Btn_inhabilitar);
                 c.Desconectar(Conexion);
 
 
@@ -1154,7 +1176,7 @@ namespace EXPEDIA
                 cmd.Parameters.AddWithValue("@estado", 1);
                 //invalidos
                 cmd.ExecuteNonQuery();
-                excelente(enviar2);
+                excelente(Btn_inhabilitar);
                 c.Desconectar(Conexion);
 
 
@@ -1163,6 +1185,9 @@ namespace EXPEDIA
             catch (Exception t) { Response.Write("error" + t); }
             detalle.Visible = false;
         }
+
+
+    
     }
         
 }

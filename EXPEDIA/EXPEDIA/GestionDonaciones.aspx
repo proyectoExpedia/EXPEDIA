@@ -150,7 +150,7 @@
                                                     <asp:CalendarExtender Format="dd/MM/yyyy"  ID="Fechaentrega" runat="server"  PopupButtonID="Fecha_entrega"  TargetControlID="Fecha_entrega" BehaviorID="_content_Fechaentrega" />
                                                 <asp:RequiredFieldValidator ValidationGroup="one" ID="vFinalizacon" runat="server"   ControlToValidate="Fecha_entrega" ForeColor="Red" SetFocusOnError="True" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
                                                 <asp:RangeValidator ID="RangeValidator1"  ControlToValidate="Fecha_entrega" ValidationGroup="one" runat="server" ErrorMessage="No se puede escoger una fecha menor a la del día de hoy" ForeColor="Red" SetFocusOnError="True"></asp:RangeValidator>
-                                                <asp:Button runat="server" CssClass="btn btn-primary"  OnClick="Agregar_Click" ID="Agregar"  Text="Agregar Activos " />
+                                                <asp:Button runat="server" CssClass="btn btn-primary" style="float:right;"  OnClick="Agregar_Click" ID="Agregar"  Text="Agregar Activos " />
                                                 </fieldset>
                                                 
                                                 <!--Ingresar Cedula-->
@@ -160,7 +160,7 @@
                                                     <asp:RequiredFieldValidator ValidationGroup="one" ID="vCedula" runat="server" ControlToValidate="cedula_usuario" ForeColor="Red" SetFocusOnError="True" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
                                                     <asp:MaskedEditExtender ID="cedula_usuario_MaskedEditExtender" runat="server" BehaviorID="cedula_usuario_MaskedEditExtender" Century="2000" ClearMaskOnLostFocus="False" CultureAMPMPlaceholder="" CultureCurrencySymbolPlaceholder="" CultureDateFormat="" CultureDatePlaceholder="" CultureDecimalPlaceholder="" CultureThousandsPlaceholder="" CultureTimePlaceholder="" Mask="9-9999-9999" TargetControlID="cedula_usuario" />
                                                     <asp:RegularExpressionValidator ValidationGroup="one" ID="RegularExpressionValidator2" runat="server" ControlToValidate="cedula_usuario" ErrorMessage="&lt;b&gt;*&lt;/b&gt;" ForeColor="Red" ValidationExpression="^[1-9]-\d{4}-\d{4}$"></asp:RegularExpressionValidator>
-                                                     <label for="cedula_usuario" runat="server"  id="Info" style="font-family: Arial, Helvetica, sans-serif; font-size: 17px; font-style: normal;  margin-right: 10px"></label>
+                                                     <label for="cedula_usuario" runat="server"  id="Info" style="font-family: Arial, Helvetica, sans-serif; font-size: 15px; font-style: normal;  margin-right: 10px; width:400px"></label>
                                                      </div>
 
                                                  <!--Ingresar nombre-->
@@ -200,7 +200,7 @@
                                                 <fieldset class="pure-control-group">
                                                     <div class="input-prepend">
                                                         <label for="descripcion_donacion">Especificaciones de la donación</label>
-                                                        <asp:TextBox ValidationGroup="one"  runat="server" ID="descripcion_donacion" TextMode="MultiLine"  data-toggle="tooltip" data-placement="right" title="En este espacio se debe proporcionar una especificación detallada de la donación, este espacio es requerido." />
+                                                        <asp:TextBox ValidationGroup="one"  runat="server" ID="descripcion_donacion" TextMode="MultiLine" MaxLength="500" Columns="75" Rows="10"   data-toggle="tooltip" data-placement="right" title="En este espacio se debe proporcionar una especificación detallada de la donación, este espacio es requerido." />
                                                         <asp:RequiredFieldValidator ValidationGroup="one" ID="RequiredFieldValidator2" runat="server" ControlToValidate="descripcion_donacion" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
                                                         </div>
                                                 </fieldset>
@@ -342,7 +342,7 @@
            <div class="container" id="Div2" runat="server">
                <img src="img/ExpediaLogo.png" style="width:90px; height:90px; padding-right:7px;  float:left" alt="" />
                <br />
-              <asp:TextBox ID="TextBox8" TextMode="MultiLine" runat="server" BorderStyle="None" BorderWidth="0px" Enabled="False" EnableTheming="True" BackColor="White"></asp:TextBox>
+              <asp:TextBox ID="TextBox8" TextMode="MultiLine" runat="server" BorderStyle="None" BorderWidth="0px" MaxLength="500" Columns="60" Rows="10"   Enabled="False" EnableTheming="True" BackColor="White"></asp:TextBox>
                <br />
                
                 
@@ -383,6 +383,7 @@
                <br />
                <div class="pure-control-group">
             <label for="Nombre">Nombre Completo:</label><asp:TextBox runat="server" ID="Nombre" BorderStyle="None" BorderWidth="0px" Enabled="False" EnableTheming="True" BackColor="White"></asp:TextBox>
+                <br />
                <label for="Telefono">Telefóno:</label><asp:TextBox runat="server" ID="Telefono" BorderStyle="None" BorderWidth="0px" Enabled="False" EnableTheming="True" BackColor="White"></asp:TextBox>
             </div>
                </div>

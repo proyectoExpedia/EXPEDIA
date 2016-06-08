@@ -162,7 +162,7 @@ namespace EXPEDIA
                     if (reader.GetInt16(2) == 1) { Info.InnerText = "" + reader.GetString(0) + " " + reader.GetString(1); Info.Style.Add("color", "green"); }
                     // los if comentados anteriormente son  para controlar si el usurio tiene prestamos anteriores y no  permiten que el usuario relice un prestamos si lo tiene
 
-                    if (reader.GetInt16(2) == 3) { Info.InnerText = "" + reader.GetString(0) + " " + reader.GetString(1) + "se encuentra inhabilitado "; Info.Style.Add("color", "red");  no_puede = true; }
+                    if (reader.GetInt16(2) == 3) { Info.InnerText = "" + reader.GetString(0) + " " + reader.GetString(1) + " se encuentra inhabilitado "; Info.Style.Add("color", "red");  no_puede = true; }
 
 
                 }
@@ -373,7 +373,7 @@ namespace EXPEDIA
         {
             Conexion c = new Conexion();
             SqlConnection Conexion = c.Conectar();
-            string Sql = @"SELECT bd_id_area, bd_descripcion FROM Areas";
+            string Sql = @"SELECT bd_id_area, bd_descripcion FROM Areas  WHERE bd_estado = 1";
             Conexion.Open();//abrimos conexion
             SqlCommand cmd = new SqlCommand(Sql, Conexion); //ejecutamos la instruccion
             SqlDataReader reader = cmd.ExecuteReader();
@@ -393,7 +393,7 @@ namespace EXPEDIA
         {
             Conexion c = new Conexion();
             SqlConnection Conexion = c.Conectar();
-            string Sql = @"SELECT bd_nombre_proveedor FROM Proveedores";
+            string Sql = @"SELECT bd_nombre_proveedor FROM Proveedores  WHERE bd_estado = 1";
             Conexion.Open();//abrimos conexion
             SqlCommand cmd = new SqlCommand(Sql, Conexion); //ejecutamos la instruccion
             SqlDataReader reader = cmd.ExecuteReader();
@@ -411,7 +411,7 @@ namespace EXPEDIA
         {
             Conexion c = new Conexion();
             SqlConnection Conexion = c.Conectar();
-            string Sql = @"SELECT bd_id_descripcion, Descripcion FROM Descripcion";
+            string Sql = @"SELECT bd_id_descripcion, Descripcion FROM Descripcion  WHERE bd_estado = 1";
             Conexion.Open();//abrimos conexion
             SqlCommand cmd = new SqlCommand(Sql, Conexion); //ejecutamos la instruccion
             SqlDataReader reader = cmd.ExecuteReader();
@@ -1207,9 +1207,11 @@ namespace EXPEDIA
                 SqlCommand cmd = new SqlCommand(Sql, Conexion);
 
 
+
                 cmd.Parameters.AddWithValue("@id_solicitante", val);
-                cmd.Parameters.AddWithValue("@fecha_emision", Fecha_entrega.Text);
-                cmd.Parameters.AddWithValue("@fecha_recepcion", Fecha_regreso.Text);
+                cmd.Parameters.AddWithValue("@fecha_emision", (Convert.ToDateTime(Fecha_entrega.Text).ToString("yyyy/MM/dd")).ToString());
+                cmd.Parameters.AddWithValue("@fecha_recepcion", (Convert.ToDateTime(Fecha_regreso.Text).ToString("yyyy/MM/dd")).ToString());
+
 
                 cmd.ExecuteNonQuery();
 
@@ -1804,6 +1806,12 @@ namespace EXPEDIA
             SqlCommand cmd = new SqlCommand(Sql, Conexion); //ejecutamos la instruccion
             cmd.Parameters.AddWithValue("@fin",id_finalizar);
             cmd.ExecuteNonQuery();
+            Sql = @"UPDATE Notificaciones SET bd_estado_notificacion=0 where bd_numero_placa=@fin";
+            cmd = new SqlCommand(Sql, Conexion); //ejecutamos la instruccion
+            cmd.Parameters.AddWithValue("@fin", id_finalizar.ToString());
+            cmd.ExecuteNonQuery();
+            Conexion.Close();
+
         }
 
         //***FUNCIONES PARA LA MODAL PROLONGAR****************************
@@ -1865,7 +1873,7 @@ namespace EXPEDIA
                 string Sql = @"UPDATE Prestamos SET  bd_fecha_recepcion=@fech    WHERE bd_id_prestamo=" + id_prolongar + "";
                 Conexion.Open();//abrimos conexion
                 SqlCommand cmd = new SqlCommand(Sql, Conexion); //ejecutamos la instruccion
-                cmd.Parameters.AddWithValue("@fech", TextBox10.Text);
+                cmd.Parameters.AddWithValue("@fech", (Convert.ToDateTime(TextBox10.Text).ToString("yyyy/MM/dd")).ToString());
                 cmd.ExecuteNonQuery();
                 excelente(prolongar1);
 

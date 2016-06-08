@@ -508,7 +508,7 @@ namespace EXPEDIA
                 SqlCommand cmd = new SqlCommand(Sql, Conexion);
                 cmd.Parameters.AddWithValue("@usuario_Estado", 1);
                 cmd.Parameters.AddWithValue("@cedula", final[0]);
-                cmd.Parameters.AddWithValue("@motivos", "Activo");
+                cmd.Parameters.AddWithValue("@motivos", TextBox1.Text);
                 cmd.ExecuteNonQuery();
                 excelente(Btn_inhabilitar);
                 this.controles.Style.Add("display", "block");

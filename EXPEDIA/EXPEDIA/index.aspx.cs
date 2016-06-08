@@ -46,7 +46,7 @@ namespace EXPEDIA
         {
             Conexion c = new Conexion();
             SqlConnection Conexion = c.Conectar();
-            string Sql = @"SELECT bd_cedula, bd_contrasena, bd_nombre, bd_apellido1, bd_apellido2, bd_estado,bd_tipo_usuario FROM Usuarios WHERE bd_cedula = @user AND bd_contrasena = @pass";
+            string Sql = @"SELECT bd_cedula, bd_contrasena, bd_nombre, bd_apellido1, bd_apellido2, bd_estado, bd_tipo_usuario FROM Usuarios WHERE bd_cedula = @user AND bd_contrasena = @pass";
             Conexion.Open();//abrimos conexion
             SqlCommand cmd = new SqlCommand(Sql, Conexion); //ejecutamos la instruccion
             cmd.Parameters.AddWithValue("@user", ced); //enviamos los parametros

@@ -428,10 +428,12 @@
 <%--            </ContentTemplate>
         </asp:UpdatePanel>--%>
 
-      <% if (Session["Inhabilitado"]!="") {
+<asp:Panel runat="server" DefaultButton="btn_habilitarUsuario"> 
+        <% if (Session["Inhabilitado"]!="") {
              string[] separadores = {"*"};
              string[] final = Session["Inhabilitado"].ToString().Split(separadores, StringSplitOptions.RemoveEmptyEntries);
              %>
+           
             <div class="modal fade" id="exampleModa" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
                         <div class="modal-dialog" role="document">
                     <div class="modal-content">
@@ -451,6 +453,9 @@
                                     </script>
                                 <br />
                                 <h3>¿Deseas habilitar denuevo el usuario?</h3>
+                                <h5>Indica tus motivos</h5>
+                                <asp:TextBox ValidationGroup="in" id="TextBox1" TextMode="multiline" MaxLength="500" Columns="75" Rows="10" runat="server"/>
+                                <asp:RequiredFieldValidator ValidationGroup="in" ID="RequiredFieldValidator9" ControlToValidate="TextBox1" runat="server" ForeColor="Red" ErrorMessage="<b>*</b>"></asp:RequiredFieldValidator>
                                 </div>
                             </div> <!-- /container -->
                             <script type="text/javascript">
@@ -462,15 +467,15 @@
                        
                         <div class="modal-footer">
                             <img src="img/ExpediaLogo.png" alt="" style="width:50px; height:50px;float:left" />
-                            <asp:Button runat="server" ID="btn_habilitarUsuario" Text="Si" CssClass="btn btn-danger" OnClick="btn_habilitarUsuario_Click"/>
+                            <asp:Button runat="server" ValidationGroup="in" ID="btn_habilitarUsuario" Text="Si" CssClass="btn btn-danger" OnClick="btn_habilitarUsuario_Click"/>
                             <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
                         </div>
                     </div>
                 </div>
             </div>
-              
+           
       <% } %>
-
+    </asp:Panel>
      <script type="text/javascript">
          $(document).ready(function () {
              $('[data-toggle="tooltip"]').tooltip();

@@ -1,6 +1,4 @@
-﻿
-
-<%@ Page Language="C#"  AutoEventWireup="true" EnableEventValidation="true" CodeBehind="GestionConsultas.aspx.cs" Inherits="EXPEDIA.GestionConsultas" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" EnableEventValidation="true" CodeBehind="gestionConsultasComun.aspx.cs" Inherits="EXPEDIA.gestionConsultasComun" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 
@@ -82,7 +80,7 @@
                     <ul id="myTab" class="nav nav-tabs">
                         <li class="active"><a href="#Ingresar" data-toggle="tab">Consulta de activos <span class="glyphicon glyphicon-plus-sign"></span></a></li>
                         <li><a href="#Consultar" data-toggle="tab">Consulta de bitácora  <span class="glyphicon glyphicon-question-sign"></span><span class="glyphicon glyphicon-minus-sign"></span><span class="glyphicon glyphicon-ok-sign"></span></a></li>
-                        <a style="float:right" href="mainAdministrador.aspx" class="btn"><span class="glyphicon glyphicon-menu-left"></span>  Atrás</a>
+                        <a style="float:right" href="mainConsulta.aspx" class="btn"><span class="glyphicon glyphicon-menu-left"></span>  Atrás</a>
                     </ul>
                     <%-- PANTALLA DONDE SE MUESTRA LAS OPCIONES DE CONSULTA DE ACTIVOS  --%>
                     <div id="myTabContent" class="tab-content">
@@ -120,13 +118,9 @@
                             <br />
                             <br />
                             
-
-                             <div class="pure-control-group">
-
-                                                                     <label  for="numero" >Número de Placa / Serie </label>
+                                     <label  for="numero" >Número de Placa / Serie </label>
                                        <asp:textbox runat="server" ID="numero"/>
-                     <br />
-                                      <br />
+                             <div class="pure-control-group">
                              <label for="descripcion">Descripción del activo</label>
                                         <asp:DropDownList runat="server" data-toggle="tooltip" title="Seleccione una descripción como filtro para búsqueda." id="descripcion_activo" CssClass="pure-input-1-2">
                                         <asp:ListItem Value="0">Elija una descripción</asp:ListItem>
@@ -319,12 +313,12 @@
      </form>
   
      <script >
-		$(function() {
-		  theTable = $("#lista");
-		  $("#q").keyup(function() {
-			$.uiTableFilter(theTable, this.value);
-		  });
-		});
+         $(function () {
+             theTable = $("#lista");
+             $("#q").keyup(function () {
+                 $.uiTableFilter(theTable, this.value);
+             });
+         });
 	 </script>
      <script>
          $(document).ready(function (e) {
@@ -338,8 +332,8 @@
                  $("#usua").tableExport({
                      type: 'pdf',
                      escape: true,
-                     pdfLeftMargin:10,
-                     pdfFontSize:8
+                     pdfLeftMargin: 10,
+                     pdfFontSize: 8
                  });
              });
              $("#wordu").click(function (e) {
@@ -381,271 +375,271 @@
          });
     </script>
      <script>
-             $(document).ready(function (e) {
-                 $("#exceld").click(function (e) {
-                     $("#Dona").tableExport({
-                         type: 'excel',
-                         escape: false
-                     });
-                 });
-                 $("#pdfd").click(function (e) {
-                     $("#Dona").tableExport({
-                         type: 'pdf',
-                         escape: true,
-                         pdfLeftMargin: 10,
-                         pdfFontSize: 8
-                     });
-                 });
-                 $("#wordd").click(function (e) {
-                     $("#Dona").tableExport({
-                         type: 'doc',
-                         escape: false
-                     });
-                 });
-                 $("#sqld").click(function (e) {
-                     $("#Dona").tableExport({
-                         type: 'sql',
-                         escape: false
-                     });
-                 });
-                 $("#xmld").click(function (e) {
-                     $("#Dona").tableExport({
-                         type: 'xml',
-                         escape: false
-                     });
-                 });
-                 $("#jsond").click(function (e) {
-                     $("#Dona").tableExport({
-                         type: 'json',
-                         escape: false
-                     });
-                 });
-                 $("#textod").click(function (e) {
-                     $("#Dona").tableExport({
-                         type: 'txt',
-                         escape: false
-                     });
-                 });
-                 $("#pngd").click(function (e) {
-                     $("#Dona").tableExport({
-                         type: 'png',
-                         escape: false
-                     });
+         $(document).ready(function (e) {
+             $("#exceld").click(function (e) {
+                 $("#Dona").tableExport({
+                     type: 'excel',
+                     escape: false
                  });
              });
-    </script>
-     <script>
-             $(document).ready(function (e) {
-                 $("#excelp").click(function (e) {
-                     $("#pres").tableExport({
-                         type: 'excel',
-                         escape: false
-                     });
-                 });
-                 $("#pdfp").click(function (e) {
-                     $("#pres").tableExport({
-                         type: 'pdf',
-                         escape: true,
-                         pdfLeftMargin: 10,
-                         pdfFontSize: 8
-                     });
-                 });
-                 $("#wordp").click(function (e) {
-                     $("#pres").tableExport({
-                         type: 'doc',
-                         escape: false
-                     });
-                 });
-                 $("#sqlp").click(function (e) {
-                     $("#pres").tableExport({
-                         type: 'sql',
-                         escape: false
-                     });
-                 });
-                 $("#xmlp").click(function (e) {
-                     $("#pres").tableExport({
-                         type: 'xml',
-                         escape: false
-                     });
-                 });
-                 $("#jsonp").click(function (e) {
-                     $("#pres").tableExport({
-                         type: 'json',
-                         escape: false
-                     });
-                 });
-                 $("#textop").click(function (e) {
-                     $("#pres").tableExport({
-                         type: 'txt',
-                         escape: false
-                     });
-                 });
-                 $("#pngp").click(function (e) {
-                     $("#pres").tableExport({
-                         type: 'png',
-                         escape: false
-                     });
+             $("#pdfd").click(function (e) {
+                 $("#Dona").tableExport({
+                     type: 'pdf',
+                     escape: true,
+                     pdfLeftMargin: 10,
+                     pdfFontSize: 8
                  });
              });
-    </script>
-     <script>
-             $(document).ready(function (e) {
-                 $("#excelac").click(function (e) {
-                     $("#actiCorp").tableExport({
-                         type: 'excel',
-                         escape: false
-                     });
-
-                 });
-                 $("#pdfac").click(function (e) {
-                     $("#actiCorp").tableExport({
-                         type: 'pdf',
-                         escape: false
-                     });
-                 });
-                 $("#wordac").click(function (e) {
-                     $("#actiCorp").tableExport({
-                         type: 'doc',
-                         escape: false
-                     });
-                 });
-                 $("#sqlac").click(function (e) {
-                     $("#actiCorp").tableExport({
-                         type: 'sql',
-                         escape: false
-                     });
-                 });
-                 $("#xmlac").click(function (e) {
-                     $("#actiCorp").tableExport({
-                         type: 'xml',
-                         escape: false
-                     });
-                 });
-                 $("#jsonac").click(function (e) {
-                     $("#actiCorp").tableExport({
-                         type: 'json',
-                         escape: false
-                     });
-                 });
-                 $("#textoac").click(function (e) {
-                     $("#actiCorp").tableExport({
-                         type: 'txt',
-                         escape: false
-                     });
-                 });
-                 $("#pngac").click(function (e) {
-                     $("#actiCorp").tableExport({
-                         type: 'png',
-                         escape: false
-                     });
+             $("#wordd").click(function (e) {
+                 $("#Dona").tableExport({
+                     type: 'doc',
+                     escape: false
                  });
              });
+             $("#sqld").click(function (e) {
+                 $("#Dona").tableExport({
+                     type: 'sql',
+                     escape: false
+                 });
+             });
+             $("#xmld").click(function (e) {
+                 $("#Dona").tableExport({
+                     type: 'xml',
+                     escape: false
+                 });
+             });
+             $("#jsond").click(function (e) {
+                 $("#Dona").tableExport({
+                     type: 'json',
+                     escape: false
+                 });
+             });
+             $("#textod").click(function (e) {
+                 $("#Dona").tableExport({
+                     type: 'txt',
+                     escape: false
+                 });
+             });
+             $("#pngd").click(function (e) {
+                 $("#Dona").tableExport({
+                     type: 'png',
+                     escape: false
+                 });
+             });
+         });
     </script>
      <script>
-        $(document).ready(function (e) {
-            $("#excelal").click(function (e) {
-                $("#actiLeasing").tableExport({
-                    type: 'excel',
-                    escape: false
-                });
-
-            });
-            $("#pdfal").click(function (e) {
-                $("#actiLeasing").tableExport({
-                    type: 'pdf',
-                    escape: false
-                });
-            });
-            $("#wordal").click(function (e) {
-                $("#actiLeasing").tableExport({
-                    type: 'doc',
-                    escape: false
-                });
-            });
-            $("#sqlal").click(function (e) {
-                $("#actiLeasing").tableExport({
-                    type: 'sql',
-                    escape: false
-                });
-            });
-            $("#xmlal").click(function (e) {
-                $("#actiLeasing").tableExport({
-                    type: 'xml',
-                    escape: false
-                });
-            });
-            $("#jsonal").click(function (e) {
-                $("#actiLeasing").tableExport({
-                    type: 'json',
-                    escape: false
-                });
-            });
-            $("#textoal").click(function (e) {
-                $("#actiLeasing").tableExport({
-                    type: 'txt',
-                    escape: false
-                });
-            });
-            $("#pnga").click(function (e) {
-                $("#actiLeasing").tableExport({
-                    type: 'png',
-                    escape: false
-                });
-            });
-        });
+         $(document).ready(function (e) {
+             $("#excelp").click(function (e) {
+                 $("#pres").tableExport({
+                     type: 'excel',
+                     escape: false
+                 });
+             });
+             $("#pdfp").click(function (e) {
+                 $("#pres").tableExport({
+                     type: 'pdf',
+                     escape: true,
+                     pdfLeftMargin: 10,
+                     pdfFontSize: 8
+                 });
+             });
+             $("#wordp").click(function (e) {
+                 $("#pres").tableExport({
+                     type: 'doc',
+                     escape: false
+                 });
+             });
+             $("#sqlp").click(function (e) {
+                 $("#pres").tableExport({
+                     type: 'sql',
+                     escape: false
+                 });
+             });
+             $("#xmlp").click(function (e) {
+                 $("#pres").tableExport({
+                     type: 'xml',
+                     escape: false
+                 });
+             });
+             $("#jsonp").click(function (e) {
+                 $("#pres").tableExport({
+                     type: 'json',
+                     escape: false
+                 });
+             });
+             $("#textop").click(function (e) {
+                 $("#pres").tableExport({
+                     type: 'txt',
+                     escape: false
+                 });
+             });
+             $("#pngp").click(function (e) {
+                 $("#pres").tableExport({
+                     type: 'png',
+                     escape: false
+                 });
+             });
+         });
     </script>
      <script>
-        $(document).ready(function (e) {
-            $("#excel").click(function (e) {
-                $("#usuarios").tableExport({
-                    type: 'excel',
-                    escape: false
-                });
+         $(document).ready(function (e) {
+             $("#excelac").click(function (e) {
+                 $("#actiCorp").tableExport({
+                     type: 'excel',
+                     escape: false
+                 });
 
-            });
-            $("#pdf").click(function (e) {
-                $("#usuarios").tableExport({
-                    type: 'pdf',
-                    escape: false
-                });
-            });
-            $("#word").click(function (e) {
-                $("#usuarios").tableExport({
-                    type: 'doc',
-                    escape: false
-                });
-            });
-            $("#sql").click(function (e) {
-                $("#usuarios").tableExport({
-                    type: 'sql',
-                    escape: false
-                });
-            });
-            $("#xml").click(function (e) {
-                $("#usuarios").tableExport({
-                    type: 'xml',
-                    escape: false
-                });
-            });
-            $("#json").click(function (e) {
-                $("#usuarios").tableExport({
-                    type: 'json',
-                    escape: false
-                });
-            });
-            $("#texto").click(function (e) {
-                $("#usuarios").tableExport({
-                    type: 'txt',
-                    escape: false
-                });
-            });
-            $("#png").click(function (e) {
-                $("#usuarios").tableExport({
-                    type: 'png',
-                    escape: false
-                });
-            });
-        });
+             });
+             $("#pdfac").click(function (e) {
+                 $("#actiCorp").tableExport({
+                     type: 'pdf',
+                     escape: false
+                 });
+             });
+             $("#wordac").click(function (e) {
+                 $("#actiCorp").tableExport({
+                     type: 'doc',
+                     escape: false
+                 });
+             });
+             $("#sqlac").click(function (e) {
+                 $("#actiCorp").tableExport({
+                     type: 'sql',
+                     escape: false
+                 });
+             });
+             $("#xmlac").click(function (e) {
+                 $("#actiCorp").tableExport({
+                     type: 'xml',
+                     escape: false
+                 });
+             });
+             $("#jsonac").click(function (e) {
+                 $("#actiCorp").tableExport({
+                     type: 'json',
+                     escape: false
+                 });
+             });
+             $("#textoac").click(function (e) {
+                 $("#actiCorp").tableExport({
+                     type: 'txt',
+                     escape: false
+                 });
+             });
+             $("#pngac").click(function (e) {
+                 $("#actiCorp").tableExport({
+                     type: 'png',
+                     escape: false
+                 });
+             });
+         });
+    </script>
+     <script>
+         $(document).ready(function (e) {
+             $("#excelal").click(function (e) {
+                 $("#actiLeasing").tableExport({
+                     type: 'excel',
+                     escape: false
+                 });
+
+             });
+             $("#pdfal").click(function (e) {
+                 $("#actiLeasing").tableExport({
+                     type: 'pdf',
+                     escape: false
+                 });
+             });
+             $("#wordal").click(function (e) {
+                 $("#actiLeasing").tableExport({
+                     type: 'doc',
+                     escape: false
+                 });
+             });
+             $("#sqlal").click(function (e) {
+                 $("#actiLeasing").tableExport({
+                     type: 'sql',
+                     escape: false
+                 });
+             });
+             $("#xmlal").click(function (e) {
+                 $("#actiLeasing").tableExport({
+                     type: 'xml',
+                     escape: false
+                 });
+             });
+             $("#jsonal").click(function (e) {
+                 $("#actiLeasing").tableExport({
+                     type: 'json',
+                     escape: false
+                 });
+             });
+             $("#textoal").click(function (e) {
+                 $("#actiLeasing").tableExport({
+                     type: 'txt',
+                     escape: false
+                 });
+             });
+             $("#pnga").click(function (e) {
+                 $("#actiLeasing").tableExport({
+                     type: 'png',
+                     escape: false
+                 });
+             });
+         });
+    </script>
+     <script>
+         $(document).ready(function (e) {
+             $("#excel").click(function (e) {
+                 $("#usuarios").tableExport({
+                     type: 'excel',
+                     escape: false
+                 });
+
+             });
+             $("#pdf").click(function (e) {
+                 $("#usuarios").tableExport({
+                     type: 'pdf',
+                     escape: false
+                 });
+             });
+             $("#word").click(function (e) {
+                 $("#usuarios").tableExport({
+                     type: 'doc',
+                     escape: false
+                 });
+             });
+             $("#sql").click(function (e) {
+                 $("#usuarios").tableExport({
+                     type: 'sql',
+                     escape: false
+                 });
+             });
+             $("#xml").click(function (e) {
+                 $("#usuarios").tableExport({
+                     type: 'xml',
+                     escape: false
+                 });
+             });
+             $("#json").click(function (e) {
+                 $("#usuarios").tableExport({
+                     type: 'json',
+                     escape: false
+                 });
+             });
+             $("#texto").click(function (e) {
+                 $("#usuarios").tableExport({
+                     type: 'txt',
+                     escape: false
+                 });
+             });
+             $("#png").click(function (e) {
+                 $("#usuarios").tableExport({
+                     type: 'png',
+                     escape: false
+                 });
+             });
+         });
     </script>
      <script>
          $(document).ready(function () {
@@ -780,60 +774,60 @@
                  }
              });
          });
-         
+
     </script>  
      <script>
-             $(document).ready(function (e) {
-                 $("#excell").click(function (e) {
-                     $("#lista").tableExport({
-                         type: 'excel',
-                         escape: false
-                     });
+         $(document).ready(function (e) {
+             $("#excell").click(function (e) {
+                 $("#lista").tableExport({
+                     type: 'excel',
+                     escape: false
+                 });
 
-                 });
-                 $("#pdfl").click(function (e) {
-                     $("#lista").tableExport({
-                         type: 'pdf',
-                         escape: false
-                     });
-                 });
-                 $("#wordl").click(function (e) {
-                     $("#lista").tableExport({
-                         type: 'doc',
-                         escape: false
-                     });
-                 });
-                 $("#sqll").click(function (e) {
-                     $("#lista").tableExport({
-                         type: 'sql',
-                         escape: false
-                     });
-                 });
-                 $("#xmll").click(function (e) {
-                     $("#lista").tableExport({
-                         type: 'xml',
-                         escape: false
-                     });
-                 });
-                 $("#jsonl").click(function (e) {
-                     $("#lista").tableExport({
-                         type: 'json',
-                         escape: false
-                     });
-                 });
-                 $("#textol").click(function (e) {
-                     $("#lista").tableExport({
-                         type: 'txt',
-                         escape: false
-                     });
-                 });
-                 $("#pngl").click(function (e) {
-                     $("#lista").tableExport({
-                         type: 'png',
-                         escape: false
-                     });
+             });
+             $("#pdfl").click(function (e) {
+                 $("#lista").tableExport({
+                     type: 'pdf',
+                     escape: false
                  });
              });
+             $("#wordl").click(function (e) {
+                 $("#lista").tableExport({
+                     type: 'doc',
+                     escape: false
+                 });
+             });
+             $("#sqll").click(function (e) {
+                 $("#lista").tableExport({
+                     type: 'sql',
+                     escape: false
+                 });
+             });
+             $("#xmll").click(function (e) {
+                 $("#lista").tableExport({
+                     type: 'xml',
+                     escape: false
+                 });
+             });
+             $("#jsonl").click(function (e) {
+                 $("#lista").tableExport({
+                     type: 'json',
+                     escape: false
+                 });
+             });
+             $("#textol").click(function (e) {
+                 $("#lista").tableExport({
+                     type: 'txt',
+                     escape: false
+                 });
+             });
+             $("#pngl").click(function (e) {
+                 $("#lista").tableExport({
+                     type: 'png',
+                     escape: false
+                 });
+             });
+         });
     </script>
 </body>
 </html>

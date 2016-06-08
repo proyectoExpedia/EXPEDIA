@@ -186,7 +186,7 @@ namespace EXPEDIA
             else
             {
                 tiene = false;
-                
+                Info.InnerText = "";
 
             }
 
@@ -261,7 +261,7 @@ namespace EXPEDIA
         {
             Conexion c = new Conexion();
             SqlConnection Conexion = c.Conectar();
-            string Sql = @"UPDATE Activos SET bd_estado=" + y + " WHERE bd_numero_placa=" + placa + "";
+            string Sql = @"UPDATE Activos SET bd_estado=" + y + " WHERE bd_numero_placa='" + placa + "'";
             Conexion.Open();//abrimos conexion
             SqlCommand cmd = new SqlCommand(Sql, Conexion); //ejecutamos la instruccion
             cmd.ExecuteNonQuery();
@@ -327,6 +327,8 @@ namespace EXPEDIA
                 nombre_usuario.Text = "";
                 apellido_usuario1.Text = "";
                 apellido_usuario2.Text = "";
+                telefono_usuario.Text = "";
+                descripcion_donacion.Text = "";
                 tabla1.DataBind();
                 dt = new DataTable();
                 tiene = false;
@@ -377,7 +379,7 @@ namespace EXPEDIA
         {
             Conexion c = new Conexion();
             SqlConnection Conexion = c.Conectar();
-            string Sql = @"SELECT bd_id_area, bd_descripcion FROM Areas";
+            string Sql = @"SELECT bd_id_area, bd_descripcion FROM Areas WHERE bd_estado=1";
             Conexion.Open();//abrimos conexion
             SqlCommand cmd = new SqlCommand(Sql, Conexion); //ejecutamos la instruccion
             SqlDataReader reader = cmd.ExecuteReader();
@@ -397,7 +399,7 @@ namespace EXPEDIA
         {
             Conexion c = new Conexion();
             SqlConnection Conexion = c.Conectar();
-            string Sql = @"SELECT bd_nombre_proveedor FROM Proveedores";
+            string Sql = @"SELECT bd_nombre_proveedor FROM Proveedores WHERE bd_estado=1";
             Conexion.Open();//abrimos conexion
             SqlCommand cmd = new SqlCommand(Sql, Conexion); //ejecutamos la instruccion
             SqlDataReader reader = cmd.ExecuteReader();
@@ -415,7 +417,7 @@ namespace EXPEDIA
         {
             Conexion c = new Conexion();
             SqlConnection Conexion = c.Conectar();
-            string Sql = @"SELECT bd_id_descripcion, Descripcion FROM Descripcion";
+            string Sql = @"SELECT bd_id_descripcion, Descripcion FROM Descripcion WHERE bd_estado=1";
             Conexion.Open();//abrimos conexion
             SqlCommand cmd = new SqlCommand(Sql, Conexion); //ejecutamos la instruccion
             SqlDataReader reader = cmd.ExecuteReader();
@@ -1221,7 +1223,7 @@ namespace EXPEDIA
                 SqlCommand cmd = new SqlCommand(Sql, Conexion);
 
 
-                cmd.Parameters.AddWithValue("@bd_fecha_salida", Fecha_entrega.Text);
+                cmd.Parameters.AddWithValue("@bd_fecha_salida", Convert.ToDateTime(Fecha_entrega.Text).ToString("yyyy/MM/dd").ToString());
                 cmd.Parameters.AddWithValue("@bd_nombre_veneficiado", nombre_usuario.Text);
                 cmd.Parameters.AddWithValue("@bd_id_veneficiado", cedula_usuario.Text);
                 cmd.Parameters.AddWithValue("@bd_apellido1_veneficiado", apellido_usuario1.Text);
@@ -1299,7 +1301,7 @@ namespace EXPEDIA
                 string placa = row.Cells[1].Text;
                 Conexion c = new Conexion();
                 SqlConnection Conexion = c.Conectar();
-                string Sql = @"UPDATE Activos SET bd_id_donaciones=" + y + " WHERE bd_numero_placa=" + placa + "";
+                string Sql = @"UPDATE Activos SET bd_id_donaciones=" + y + " WHERE bd_numero_placa='" + placa + "'";
                 Conexion.Open();//abrimos conexion
                 SqlCommand cmd = new SqlCommand(Sql, Conexion); //ejecutamos la instruccion
                 cmd.ExecuteNonQuery();

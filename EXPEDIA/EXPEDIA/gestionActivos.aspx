@@ -172,6 +172,7 @@
 <%--       -----------> --%><%--      Los cambios que genera el botón leasing       --%> 
 <%--      |             --%>
 <%--      |             --%>         <%--      Numero de placa del activo       --%>
+                                <br />
 <%--      |             --%>  <div class="pure-control-group">
 <%--      |             --%>        <label for="nplaca">Número de placa del activo</label>
 <%--      |             --%>        <asp:TextBox ValidationGroup="one" runat="server" ID="numero_placa" MaxLength="10" data-toggle="tooltip" data-placement="right" title="Este espacio debe proporcionar el número de placa del activo que desea consultar, este espacio es requerido." placeholder="ENF-1523" />
@@ -179,6 +180,7 @@
 <%--      |             --%>        <asp:RequiredFieldValidator ValidationGroup="one" ID="RequiredFieldValidator2"   runat="server" ControlToValidate="numero_placa" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
                                     
 <%--      |             --%>  </div>
+                               
                                 <%--      Numero de placa del activo       --%>
                               <div class="pure-control-group">
 <%--      |             --%>  <label for="nserie">Número de serie del activo</label>
@@ -383,7 +385,7 @@
                                     <div class="pure-control-group">
                                         <div>
                                             <asp:Button class="btn btn-success" runat="server" id="habilitarMA" Onclick="bt_Habilitar_Modif_Click"  Text="Habilitar modificación" />
-                                            <button type="button" class="btn btn-danger" data-toggle="modal"  data-target="#myModal">Inhabilitar activo</button>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal"  data-target="#modalInhabilitar">Inhabilitar activo</button>
                                         </div>
                                         <%--<asp:Button runat="server" ID="HOLI" OnClick="bt_Habilitar_Modif_Click" />--%>
                                         <div id="notificacionDatosConsulta" style="display: none">
@@ -423,7 +425,7 @@
                                        
 <%--       -----------> --%><%--      Los cambios que genera el botón leasing       --%> 
 <%--      |             --%>     <%--      Numero de placa del activo       --%>   
-                                                                 
+                                     <br />                         
 <%--      |             --%>         <div class="pure-control-group">
 <%--      |             --%>             <label for="nplaca">Número de placa del activo</label>
 <%--      |             --%>                 <asp:TextBox ValidationGroup="two" runat="server"  MaxLength="10" ReadOnly="true" ID="numero_placa2" data-placement="left" ToolTip="Este espacio debe proporcionar el número de placa del activo, este espacio es requerido." placeholder="ENF-1523" />
@@ -505,7 +507,7 @@
                                         <%--      Descripción del activo       --%>
                                 <fieldset class="pure-control-group">
                                     <label for="descripcion">Descripción del activo</label>
-                                    <asp:DropDownList ValidationGroup="two"  ID="descripcion2" runat="server" data-toggle="tooltip" data-placement="right" title="Para completar este espacio facilmente, preguntese a si mismo: ¿Que estoy ingresando? Ejemplo: Estoy ingresando una Laptop. En este espacio usted deberá colocar la palabra Laptop, este espacio es requerido. " class="pure-input-1-2">
+                                    <asp:DropDownList ValidationGroup="two"  ID="descripcion2" runat="server" data-toggle="tooltip" data-placement="right" title="Para completar este espacio facilmente, preguntese a si mismo: ¿Que estoy ingresando? Ejemplo: Estoy ingresando una Laptop. En este espacio usted deberá colocar la palabra Laptop, este espacio es requerido. "  CssClass="pure-input-1-2">
                                         <asp:ListItem disabled="disabled">Elija una descripción</asp:ListItem>
                                         <asp:ListItem disabled="disabled">¿La descripción no aparece? Haz uso el icono situado contiguo a esta categoría para proporcionar una nueva.</asp:ListItem>
                                     </asp:DropDownList>
@@ -516,9 +518,8 @@
                                         <%--     Area/Sede regional      --%>
                                 <fieldset class="pure-control-group">
                                     <label for="area">Departamento o Sede regional destinado(a)</label>
-                                    <asp:DropDownList ValidationGroup="two" ID="area2" runat="server" data-toggle="tooltip" data-placement="right" title="En este espacio debe proporcionar el departamento la cual está destinada el activo, es requerido. " class="pure-input-1-2">
+                                    <asp:DropDownList ValidationGroup="two" ID="area2" runat="server" data-toggle="tooltip" data-placement="right" title="En este espacio debe proporcionar el departamento la cual está destinada el activo, es requerido. " CssClass="pure-input-1-2">
                                         <asp:ListItem disabled="disabled">Elija un Área o Departamento</asp:ListItem>
-
                                         <asp:ListItem disabled="disabled">¿La opción que busca no aparece? Haz uso el icono situado contiguo a esta categoría para proporcionar una nueva.</asp:ListItem>
                                     </asp:DropDownList>
                                     <a data-toggle="modal" data-target="#modalAreas"><span class="glyphicon glyphicon-wrench"></span></a>
@@ -527,7 +528,7 @@
                                         <%--      Proveedor       --%>
                                 <fieldset class="pure-control-group">
                                     <label for="provedor">Proveedor</label>
-                                    <asp:DropDownList ValidationGroup="two" ID="proveedor2" runat="server" data-toggle="tooltip"  data-placement="right" title="Proveedor: En este espacio debe proporcionar el nombre del proveedor del activo, este espacio es requerido." class="pure-input-1-2">
+                                    <asp:DropDownList ValidationGroup="two" ID="proveedor2" runat="server" data-toggle="tooltip"  data-placement="right" title="Proveedor: En este espacio debe proporcionar el nombre del proveedor del activo, este espacio es requerido." CssClass="pure-input-1-2">
                                         <asp:ListItem disabled="disabled">Elija un proveedor</asp:ListItem>
                                         <asp:ListItem disabled="disabled">¿El proveedor no aparece? Haz uso el icono situado contiguo a esta categoría para proporcionar una nueva.</asp:ListItem>
                                     </asp:DropDownList>
@@ -541,7 +542,7 @@
                                         <asp:TextBox ValidationGroup="two" ID="especificacion_tecnica2" MaxLength="350" TextMode="MultiLine" runat="server" data-toggle="tooltip" data-placement="right" title="En este espacio se debe proporcionar las cualidades del activo (No puede exceder 350 caractéres), este espacio es requerido" class="pure-input-1-2" placeholder="Especificaciones Técnicas" />
                                    <asp:RequiredFieldValidator ValidationGroup="two" ID="vEspecificacion2" runat="server" ControlToValidate="especificacion_tecnica2" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
                                    <asp:CustomValidator ValidationGroup="two" ID="CustomValidator6" runat="server" ClientValidationFunction="ValidateFieldLegth_ETM" ErrorMessage="La especificación técnica no puede exceder los 350 dígitos." ForeColor="#3498db" ControlToValidate="especificacion_tecnica2" EnableClientScript="true"  />
-                              
+                                     </fieldset>
                                         </div>
                                     </fieldset>
                                        <div class="pure-controls" runat="server" id="bny" style="display:none"> 
@@ -603,28 +604,29 @@
         </div>         
                         
         <div id="myTabContent" class="tab-content">                                 
-                            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                                <span class="sr-only">Close</span>
-                                            </button>
-                                            <h4 class="modal-title">Motivos de inhabilitación</h4>
-                                        </div>
-                                        <div class="modal-body">
-                                            <asp:TextBox runat="server" TextMode="MultiLine" />
-                                        </div>
-                                        <div class="modal-footer">
-                                            <asp:Button runat="server" CssClass="btn btn-secondary" data-dismiss="modal" Text="Cerrar" />
-                                            <asp:Button runat="server" CssClass="btn btn-danger" OnClick="BajaActivo_Click" ID="enviar2" Text="Inhabilitar" />
-                                        </div>
+                    <asp:Panel ID="Panel4" runat="server" DefaultButton="Btn_inhabilitar">
+                        <div class="modal fade" id="modalInhabilitar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                            <span class="sr-only">Close</span>
+                                        </button>
+                                        <h4 class="modal-title">Motivos de Inhabilitación</h4>
                                     </div>
-                                    <!-- /.modal-content -->
+                                    <div class="modal-body">
+                                        <asp:TextBox ValidationGroup="five" id="TextArea1" TextMode="multiline" MaxLength="500" Columns="75" Rows="10" runat="server"/>
+                                        <asp:RequiredFieldValidator ValidationGroup="five" ID="RequiredFieldValidator7" ControlToValidate="TextArea1" runat="server" ForeColor="Red" ErrorMessage="<b>*</b>"></asp:RequiredFieldValidator>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                        <asp:Button runat="server" Text="Inhabilitar"  CssClass="btn btn-danger" ID="Btn_inhabilitar" ValidationGroup="five" OnClick="BajaActivo_Click" />
+                                   </div>
                                 </div>
-                                <!-- /.modal-dialog -->
                             </div>
+                    </div> 
+                    </asp:Panel> 
 
                       <%--               ----------------Modal Agregar Nueva Area--------------                                --%>   
 

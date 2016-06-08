@@ -102,7 +102,7 @@
                                     </div>
                                 </div>
                                 <div class="caption" style="text-align:center">
-                                    <a href="gestionConsultas.aspx" class="btn">
+                                    <a href="gestionConsultasComun.aspx" class="btn">
                                         <span style="font-size: 60px" class="glyphicon glyphicon-info-sign"></span>
                                         <h3>Gestión de consultas</h3>
                                     </a>

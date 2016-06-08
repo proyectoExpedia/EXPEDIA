@@ -225,14 +225,14 @@
                                                 <fieldset>
                                                         <div class="pure-control-group">
                                                             <label for="idP">Identificador</label>
-                                                            <asp:TextBox runat="server" ReadOnly="true" ValidationGroup="Six" ID="idpM" placeholder="PR-000" data-toggle="tooltip" data-placement="right" title="En este espacio se debe proporcionar un identificador para el proveedor que se está registrando, este espacio es requerido. " />
+                                                            <asp:TextBox runat="server" ValidationGroup="Six" ID="idpM" placeholder="PR-000" data-toggle="tooltip" data-placement="right" title="En este espacio se debe proporcionar un identificador para el proveedor que se está registrando, este espacio es requerido. " />
                                                             <asp:TextBox runat="server" ClientIDMode="Static" ID="idpMO" ></asp:TextBox>
                                                             <asp:RequiredFieldValidator ValidationGroup="Six" ID="RequiredFieldValidator1" runat="server" ControlToValidate="idpM" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
                                                         </div>
 
                                                         <div class="pure-control-group">
                                                             <label for="nproveedor">Nombre del proveedor</label>
-                                                            <asp:TextBox runat="server" ValidationGroup="c" ID="nproveedorM" placeholder="Dell" data-toggle="tooltip" data-placement="right" title="En este espacio se debe proporcionar el nombre del proveedor que se está registrando, este espacio es requerido." />
+                                                            <asp:TextBox runat="server"  ReadOnly="true" ValidationGroup="c" ID="nproveedorM" placeholder="Dell" data-toggle="tooltip" data-placement="right" title="En este espacio se debe proporcionar el nombre del proveedor que se está registrando, este espacio es requerido." />
                                                             <asp:RequiredFieldValidator ValidationGroup="Six" ID="RequiredFieldValidator2" runat="server" ControlToValidate="nproveedorM" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
                                                         </div>
 
