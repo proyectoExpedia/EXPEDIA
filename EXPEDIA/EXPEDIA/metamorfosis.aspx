@@ -170,7 +170,7 @@
     </div>
     <footer class="navbar" style="background-color:white">
         <div class="container">
-            <h5 style="text-align: center" class="text-muted">Prototipo I EXPEDIA - Ingeniería en sistemas de información II</h5>
+            <h5 style="text-align: center" class="text-muted">EXPEDIA - Colegio de Abogados y Abogadas de Costa Rica - UNA</h5>
         </div>
     </footer>
     <script>

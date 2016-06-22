@@ -39,7 +39,7 @@ namespace EXPEDIA
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            Page.DataBind(); 
             if (!IsPostBack)
             {
 
@@ -48,8 +48,8 @@ namespace EXPEDIA
                 cargar_proveedor(proveedor);
                 dt = new DataTable();
                 cargar();
-                RangeValidator1.MinimumValue = DateTime.Now.ToString("dd/MM/yyyy");
-                RangeValidator1.MaximumValue = "99/99/9999";
+                //RangeValidator1.MinimumValue = DateTime.Now.ToString("dd/MM/yyyy");
+                //RangeValidator1.MaximumValue = "99/99/9999";
 
             }
 
@@ -1779,8 +1779,9 @@ namespace EXPEDIA
                 eliminar_prestamo();
                 //Cambiar_Estado_usuario(1, ced); funcion que cambia el estado del usuario 2 (con pendiente) a 1(listo);
                 excelente(Finalizar1);
-                
-          
+                finalizar.Visible = false;
+
+
             }
             catch{ error(Finalizar1, "Disculpa", "no se pudo realizar la accion "); }
         }
@@ -1876,6 +1877,7 @@ namespace EXPEDIA
                 cmd.Parameters.AddWithValue("@fech", (Convert.ToDateTime(TextBox10.Text).ToString("yyyy/MM/dd")).ToString());
                 cmd.ExecuteNonQuery();
                 excelente(prolongar1);
+                prolongar.Visible = false;
 
             }
             catch

@@ -25,10 +25,8 @@
 
        <form id="form1" runat="server">
            <asp:ScriptManager ID="ScriptManager2" runat="server" EnableScriptGlobalization="true" EnableScriptLocalization="true"></asp:ScriptManager>
-          
-        <nav class="navbar" role="navigation" style="margin-top: 20px;">
+           <nav class="navbar" role="navigation" style="margin-top: 20px;">
             <div class="container">
-          
                 <ul class="bxslider">
                     <li>
                         <img src="img/colegioAbogadoscr.png" style="width: 100px; height: 100px; float: left" alt="" /></li>
@@ -56,24 +54,34 @@
                         <h3>Colegio de Abogados y Abogadas de Costa Rica</h3>
                     </a>
                 </div>
+
                 <!----------------------------------------------- Opciones menu ------------------------------------------------------>
                 <div class="col-md-6" style="margin-top: 15px;">
                     <div class="panel-heading">
-                        <ul class="nav nav-tabs">
-                            <li class="active"><a href="index.aspx">Salir</a></li>
-                            <li><a href="#tab2primary" data-toggle="tab">Conózcanos</a></li>
-                            <li><a href="#tab3primary" data-toggle="tab">Contacto</a></li>
+                        <ul class="nav">
+                         <li>
+                            <div class="container" style="float:left; margin-left: 500px; margin-top:-55px;">
+                                
+                                <a class="btn btn-default btn-lg btn-link"  href="index.aspx" style="font-size:36px;">
+                                <span class="glyphicon glyphicon-log-out"><br /><p style="font-size:12px; font-family:sans-serif;"> <br />Cerrar<br />sesión</p></span> 
+                                </a>
+
+                            </div>
+
+                        </li>
                         </ul>
                     </div>
                 </div>
                 <!-----------------------------------------------Fin de las opciones----------------------------------------------->
             </div>
         </nav>
-   <%--     <asp:UpdatePanel runat="server">
-            <ContentTemplate>--%>
-            <div class="container">
-                <div style="margin-top:50px;"><asp:SiteMapPath ID="SiteMapPath1" runat="server"></asp:SiteMapPath></div>
-                <div class="panel panel-primary">
+           
+            
+        <div class="container">
+            <asp:SiteMapPath ID="SiteMapPath1" runat="server"></asp:SiteMapPath>
+            <br />
+            <br />
+                 <div class="panel panel-primary">
                     <div class="panel-heading">
                         <h3 class="panel-title">Gestión de Préstamos</h3>
                         <div>
@@ -164,7 +172,7 @@
                                                    <cc1:MaskedEditExtender ID="MaskedEditExtender4" runat="server" BehaviorID="fecha_MaskedEditExtender1" Century="2000" ClearMaskOnLostFocus="false"  Mask="99/99/9999" TargetControlID="Fecha_entrega"></cc1:MaskedEditExtender>
                                                           <asp:CalendarExtender Format="dd/MM/yyyy"  ID="Fechaentrega" runat="server"  PopupButtonID="Fecha_entrega"  TargetControlID="Fecha_entrega" BehaviorID="_content_Fechaentrega" />
                                                 <asp:RequiredFieldValidator ValidationGroup="one" ID="vFinalizacon" runat="server"   ControlToValidate="Fecha_entrega" ForeColor="Red" SetFocusOnError="True" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
-                                                          <asp:RangeValidator ID="RangeValidator1"  ControlToValidate="Fecha_entrega" ValidationGroup="one" runat="server" ErrorMessage="No se puede escoger una fecha menor a la del día de hoy" ForeColor="Red" SetFocusOnError="True"></asp:RangeValidator>
+                                                     <asp:CompareValidator Type="Date" ID="CompareValidator3"   Display="Dynamic" runat="server" ControlToValidate="Fecha_entrega" Operator="GreaterThanEqual" ValueToCompare="<%#  DateTime.Now.ToShortDateString() %>"  ForeColor="Red" SetFocusOnError="true" ErrorMessage="No se puede escoger una fecha menor a la del día de hoy."></asp:CompareValidator>
                                                
                                                            
                                                            </fieldset>
@@ -177,7 +185,7 @@
                                                          <cc1:MaskedEditExtender ID="MaskedEditExtender3" runat="server" BehaviorID="fecha_MaskedEditExtender2" Century="2000" ClearMaskOnLostFocus="false"  Mask="99/99/9999" TargetControlID="Fecha_regreso"></cc1:MaskedEditExtender>
                                                          <asp:CalendarExtender ID="Fecharegreso" Format="dd/MM/yyyy"  runat="server"   PopupButtonID="Fecha_regreso"   TargetControlID="Fecha_regreso" BehaviorID="_content_Fecharegreso" />
                                                          <asp:RequiredFieldValidator  ValidationGroup="one"   ID="RequiredFieldValidator5"   runat="server" ControlToValidate="Fecha_regreso"   ForeColor="Red" SetFocusOnError="True" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
-                                                         <asp:CompareValidator ID="CompareValidator1" runat="server" ValidationGroup="one"  ControlToCompare="Fecha_entrega" Operator="GreaterThanEqual" ControlToValidate="Fecha_regreso"  ErrorMessage="No se puede escoger una fecha menor a la del día de entrega" ForeColor="Red" SetFocusOnError="True"></asp:CompareValidator>
+                                                         <asp:CompareValidator ID="CompareValidator1" runat="server" ValidationGroup="one" Type="Date"  ControlToCompare="Fecha_entrega" Operator="GreaterThanEqual" ControlToValidate="Fecha_regreso"  ErrorMessage="No se puede escoger una fecha menor a la del día de entrega" ForeColor="Red" SetFocusOnError="True"></asp:CompareValidator>
                                                      </fieldset>
 
                                                 <asp:GridView ID="tabla1" runat="server" OnRowDeleting="tabla1_RowDeleting" CssClass="table table-striped table-hover">
@@ -301,7 +309,7 @@
 
       </div>
       <div class="modal-footer">
-        <asp:Button  runat="server" ID="detalle1" CssClass="btn btn-primary"  OnClientClick="imprimeDetalle();" Text="Impimir Detalle" ></asp:Button>
+        <asp:Button  runat="server" ID="detalle1" CssClass="btn btn-primary"  OnClientClick="imprimeDetalle();" Text="Imprimir detalle" ></asp:Button>
         <asp:Button runat="server" ID="close" CssClass="btn btn-default" Text="Cerrar" OnClick="close_Click"></asp:Button>
         
       </div>
@@ -591,5 +599,10 @@ function imprimePanel() {
 
 
     </form>
+        <footer class="navbar" style="background-color:white">
+        <div class="container">
+            <h5 style="text-align: center" class="text-muted">EXPEDIA - Colegio de Abogados y Abogadas de Costa Rica - UNA</h5>
+        </div>
+    </footer>
 </body>
 </html>

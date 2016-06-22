@@ -37,7 +37,7 @@ namespace EXPEDIA
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            Page.DataBind(); 
             if (Session["Usuario"].Equals("Inicio"))
             {
                 Session["Usuario"] = "Anonimo";
@@ -52,8 +52,8 @@ namespace EXPEDIA
                 cargar_proveedor(proveedor);
                 dt = new DataTable();
                 cargar();
-                RangeValidator1.MinimumValue = DateTime.Now.ToString("dd/MM/yyyy");
-                RangeValidator1.MaximumValue = "99/99/9999";
+                //RangeValidator1.MinimumValue = DateTime.Now.ToString("dd/MM/yyyy");
+                //RangeValidator1.MaximumValue = "99/99/9999";
 
             }
 

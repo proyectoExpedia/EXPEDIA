@@ -43,17 +43,8 @@
             <!-- Opciones menu -->
             <div class="col-md-6" style="margin-top:15px;">
                 <div class="panel-heading">
-                    <ul class="nav nav-tabs">
-                        <li class="active"><a href="index.aspx">Salir</a></li>
-                        <li><a href="#tab2primary" data-toggle="tab">Conózcanos</a></li>
-                        <li><a href="#tab3primary" data-toggle="tab">Contacto</a></li>
-                        <!--<li class="dropdown">
-                            <a href="#" data-toggle="dropdown">Dropdown <span class="caret"></span></a>
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a href="#tab4primary" data-toggle="tab">Primary 4</a></li>
-                                <li><a href="#tab5primary" data-toggle="tab">Primary 5</a></li>
-                            </ul>
-                        </li>-->
+                    <ul class="nav ">
+
                         <style type="text/css">
                         .badge-notify{
                             background:red;
@@ -72,6 +63,9 @@
                                 <span class="glyphicon glyphicon-th-list"></span>
                                 </a>
                                 <span class="badge badge-notify" runat="server" id="contador2"></span>
+                                <a class="btn btn-default btn-lg btn-link"  href="index.aspx" style="font-size:36px; margin-top:28px;">
+                                <span class="glyphicon glyphicon-log-out"><br /><p style="font-size:12px; font-family:sans-serif;"> <br />Cerrar<br />sesión</p></span> 
+                                </a>
                             </div>
 
                         </li>
@@ -82,6 +76,8 @@
     </nav>
     <div class="container">
         <asp:SiteMapPath ID="SiteMapPath1" runat="server"></asp:SiteMapPath>
+        <br />
+        <br />
         <div class="alert alert-success" role="alert">
             <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
             <span class="sr-only"><strong></strong></span> Bienvenido: 
@@ -97,21 +93,46 @@
                     <div class="row" >
                         <div class="col-sm-3 col-md-4" >
                             <div class="thumbnail"  style=" border: 7px double #003566;">
-                                <a class="" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">
+                                <a class="" data-toggle="modal" data-target="#instrucUsuarios">
                                     <span style="font-size: 40px" class="glyphicon glyphicon-question-sign"></span>
                                 </a>
-                                <div style="color:#161f68" class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
+                                <div class="modal fade" id="instrucUsuarios" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+                                    <div class="modal-dialog" role="document" style="width:1000px;">
+                                        <div class="modal-content" role="document" >
                                             <div class="modal-header">
                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                                 <h4 class="modal-title" style="text-align:center" id="exampleModalLabel">Gestor de ayuda</h4>
                                             </div>
                                             <div class="modal-body">
-                                                <div class="container" style="width: 400px;">
-                                                    <p>Instrucciones</p>
-                                                </div> <!-- /container -->
+                                                <center>
+                                                    <div class="panel panel-primary">
+                                                    <div class="panel-heading">
+                                                        <h1 class="panel-title"> Creación de usuarios </h1>
+                                                    </div>
+                                                    <div class="panel-body">
+                                                        <video src="instructivos/Creacion%20de%20usuarios.mp4" controls="controls"></video>
+                                                    </div>
+                                                    </div>
+                                                    <br />
+                                                    <div class="panel panel-primary">
+                                                    <div class="panel-heading">
+                                                        <h1 class="panel-title">Modificación de usuarios</h1>
+                                                    </div>
+                                                    <div class="panel-body">
+                                                        <video src="instructivos/Modificacion%20de%20usuarios.mp4" controls="controls"></video>
+                                                    </div>
+                                                    </div>
+                                                    <div class="panel panel-primary">
+                                                    <div class="panel-heading">
+                                                        <h1 class="panel-title">Habilitación - Inhabilitar usuarios</h1>
+                                                    </div>
+                                                    <div class="panel-body">
+                                                        <video src="instructivos/inhabilitacion%20-%20habilitacion%20de%20usuarios.mp4" controls="controls" />
+                                                    </div>
+                                                    </div>
+                                                    <br />
 
+                                                    </center>
                                             </div>
                                             <div class="modal-footer">
                                                 <img src="img/ExpediaLogo.png" alt="" style="width:50px; height:50px;float:left" />
@@ -130,21 +151,38 @@
                         </div>
                         <div class="col-sm-3 col-md-4">
                             <div class="thumbnail"   style=" border: 7px double #003566;">
-                                <a class="" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">
+                                <a class="" data-toggle="modal" data-target="#instrucActivos" >
                                     <span style="font-size: 40px" class="glyphicon glyphicon-question-sign"></span>
                                 </a>
-                                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
+                                <div class="modal fade" id="instrucActivos" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+                                    <div class="modal-dialog" role="document" style="width:1000px;">
+                                        <div class="modal-content" role="document" >
                                             <div class="modal-header">
                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                                 <h4 class="modal-title" style="text-align:center" id="exampleModalLabel">Gestor de ayuda</h4>
                                             </div>
                                             <div class="modal-body">
-                                                <div class="container" style="width: 400px;">
-                                                    <p>Instrucciones</p>
-                                                </div> <!-- /container -->
+                                                <center>
+                                                    <div class="panel panel-primary">
+                                                    <div class="panel-heading">
+                                                        <h1 class="panel-title"> Creación de activos </h1>
+                                                    </div>
+                                                    <div class="panel-body">
+                                                        <video src="instructivos/Creacion%20de%20activos.mp4" controls="controls" />
+                                                    </div>
+                                                    </div>
+                                                    <br />
+                                                    <div class="panel panel-primary">
+                                                    <div class="panel-heading">
+                                                        <h1 class="panel-title">Modificación de activos</h1>
+                                                    </div>
+                                                    <div class="panel-body">
+                                                        <video src="instructivos/modificacion.mp4" controls="controls" />
+                                                    </div>
+                                                    </div>
+                                                    <br />
 
+                                                    </center>
                                             </div>
                                             <div class="modal-footer">
                                                 <img src="img/ExpediaLogo.png" alt="" style="width:50px; height:50px;float:left" />
@@ -161,56 +199,40 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-3 col-md-4" style="display:none;" >
-                            <div class="thumbnail"   style=" border: 7px double #003566;">
-                                <a class="" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">
-                                    <span style="font-size: 40px" class="glyphicon glyphicon-question-sign"></span>
-                                </a>
-                                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                                <h4 class="modal-title" style="text-align:center" id="exampleModalLabel">Gestor de ayuda</h4>
-                                            </div>
-                                            <div class="modal-body">
-                                                <div class="container" style="width: 400px;">
-                                                    <p>Instrucciones</p>
-                                                </div> <!-- /container -->
-
-                                            </div>
-                                            <div class="modal-footer">
-                                                <img src="img/ExpediaLogo.png" alt="" style="width:50px; height:50px;float:left" />
-                                                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="caption" style="text-align:center">
-                                    <a href="" class="btn">
-                                        <span style="font-size: 60px" class="glyphicon glyphicon-shopping-cart"></span>
-                                        <h3>Gestión de proveedores</h3>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
                         <div class="col-sm-3 col-md-4">
                             <div class="thumbnail"   style=" border: 7px double #003566;">
-                                <a class="" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">
+                                <a class="" data-toggle="modal" data-target="#instrucPrestamos" data-whatever="@mdo">
                                     <span style="font-size: 40px" class="glyphicon glyphicon-question-sign"></span>
                                 </a>
-                                <div style="color:#161f68" class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
+                                <div class="modal fade" id="instrucPrestamos" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+                                    <div class="modal-dialog" role="document" style="width:1000px;">
+                                        <div class="modal-content" role="document" >
                                             <div class="modal-header">
                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                                 <h4 class="modal-title" style="text-align:center" id="exampleModalLabel">Gestor de ayuda</h4>
                                             </div>
                                             <div class="modal-body">
-                                                <div class="container" style="width: 400px;">
-                                                    <p>Instrucciones</p>
-                                                </div> <!-- /container -->
+                                                <center>
+                                                    <div class="panel panel-primary">
+                                                    <div class="panel-heading">
+                                                        <h1 class="panel-title"> Creación de préstamos </h1>
+                                                    </div>
+                                                    <div class="panel-body">
+                                                        <video src="instructivos/Creacion%20de%20prestamos.mp4" controls="controls" />
+                                                    </div>
+                                                    </div>
+                                                    <br />
+                                                    <div class="panel panel-primary">
+                                                    <div class="panel-heading">
+                                                        <h1 class="panel-title">Control de préstamos</h1>
+                                                    </div>
+                                                    <div class="panel-body">
+                                                        <video src="instructivos/Control%20de%20prestamos.mp4" controls="controls" />
+                                                    </div>
+                                                    </div>
+                                                    <br />
 
+                                                    </center>
                                             </div>
                                             <div class="modal-footer">
                                                 <img src="img/ExpediaLogo.png" alt="" style="width:50px; height:50px;float:left" />
@@ -218,8 +240,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="caption" style="text-align:center">
+                                </div>                                <div class="caption" style="text-align:center">
                                     <a href="gestionPrestamos.aspx" class="btn">
                                         <span style="font-size: 60px" class="glyphicon glyphicon-th-list"></span>
                                         <h3>Gestión de prestamos</h3>
@@ -229,21 +250,38 @@
                         </div>
                         <div class="col-sm-3 col-md-4" >
                             <div class="thumbnail"   style=" border: 7px double #003566;">
-                                <a class="" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">
+                                <a class="" data-toggle="modal" data-target="#instrucDonaciones" data-whatever="@mdo">
                                     <span style="font-size: 40px" class="glyphicon glyphicon-question-sign"></span>
                                 </a>
-                                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
+                                 <div class="modal fade" id="instrucDonaciones" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+                                    <div class="modal-dialog" role="document" style="width:1000px;">
+                                        <div class="modal-content" role="document" >
                                             <div class="modal-header">
                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                                 <h4 class="modal-title" style="text-align:center" id="exampleModalLabel">Gestor de ayuda</h4>
                                             </div>
                                             <div class="modal-body">
-                                                <div class="container" style="width: 400px;">
-                                                    <p>Instrucciones</p>
-                                                </div> <!-- /container -->
+                                                <center>
+                                                    <div class="panel panel-primary">
+                                                    <div class="panel-heading">
+                                                        <h1 class="panel-title"> Creación de donaciones </h1>
+                                                    </div>
+                                                    <div class="panel-body">
+                                                        <video src="instructivos/Creacion%20de%20donacion.mp4" controls="controls" />
+                                                    </div>
+                                                    </div>
+                                                    <br />
+                                                    <div class="panel panel-primary">
+                                                    <div class="panel-heading">
+                                                        <h1 class="panel-title">Control de donaciones</h1>
+                                                    </div>
+                                                    <div class="panel-body">
+                                                        <video src="instructivos/Control%20Donaciones.mp4" controls="controls" />
+                                                    </div>
+                                                    </div>
+                                                    <br />
 
+                                                    </center>
                                             </div>
                                             <div class="modal-footer">
                                                 <img src="img/ExpediaLogo.png" alt="" style="width:50px; height:50px;float:left" />
@@ -251,7 +289,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div>  
                                 <div class="caption" style="text-align:center">
                                     <a href="GestionDonaciones.aspx" class="btn">
                                         <span style="font-size: 60px" class="glyphicon glyphicon-gift"></span>
@@ -293,7 +331,6 @@
                                 </div>
                             </div>
                         </div>
-                       
                         <div class="col-sm-3 col-md-4" >
                             <div class="thumbnail"   style=" border: 7px double #003566;">
                                 <a class="" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">
@@ -384,7 +421,7 @@
     <!-- /.container -->
     <footer class="navbar" style="background-color:white">
         <div class="container">
-            <h6 style="text-align: center" class="text-muted">Prototipo I EXPEDIA - Ingeniería en sistemas de información II</h6>
+            <h5 style="text-align: center" class="text-muted">EXPEDIA - Colegio de Abogados y Abogadas de Costa Rica - UNA</h5>
         </div>
     </footer>
     <script>

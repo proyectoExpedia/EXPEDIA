@@ -16,7 +16,7 @@
       </siteMapNode>
       </siteMapNode>
         <siteMapNode url="mainConsulta.aspx" title="Menú principal"  description="" >
-          
+          <siteMapNode url="gestionConsultasComun.aspx" title="Gestión de consultas"  description="" />
         </siteMapNode>
           
   </siteMapNode>

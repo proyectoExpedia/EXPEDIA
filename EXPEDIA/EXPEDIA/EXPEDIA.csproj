@@ -62,7 +62,6 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Ajax.aspx" />
     <Content Include="css\boostrap-snipp.css" />
     <Content Include="css\bootstrap-table.css" />
     <Content Include="css\bootstrap.css" />
@@ -87,6 +86,15 @@
     <Content Include="gestionUsuarios.aspx" />
     <Content Include="Global.asax" />
     <Content Include="img\Thumbs.db" />
+    <Content Include="instructivos\Control de prestamos.mp4" />
+    <Content Include="instructivos\Control Donaciones.mp4" />
+    <Content Include="instructivos\Creacion de activos.mp4" />
+    <Content Include="instructivos\Creacion de donacion.mp4" />
+    <Content Include="instructivos\Creacion de prestamos.mp4" />
+    <Content Include="instructivos\Creacion de usuarios.mp4" />
+    <Content Include="instructivos\inhabilitacion - habilitacion de usuarios.mp4" />
+    <Content Include="instructivos\Modificacion de usuarios.mp4" />
+    <Content Include="instructivos\modificacion.mp4" />
     <Content Include="js\dw_cookies.js" />
     <Content Include="js\dw_event.js" />
     <Content Include="js\dw_sizerdx.js" />
@@ -139,19 +147,11 @@
     <Content Include="js\jQueryUI\jquery-ui.theme.min.css" />
     <Content Include="js\validator.js" />
     <Content Include="mainAdministrador.aspx" />
-    <Content Include="Prueba.aspx" />
-    <Content Include="pruebas.html" />
+    <Content Include="metamorfosis.aspx" />
     <Content Include="starter.html" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Ajax.aspx.cs">
-      <DependentUpon>Ajax.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Ajax.aspx.designer.cs">
-      <DependentUpon>Ajax.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Conexion.cs" />
     <Compile Include="Errores.aspx.cs">
       <DependentUpon>Errores.aspx</DependentUpon>
@@ -262,12 +262,12 @@
       <DependentUpon>mainConsulta.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Prueba.aspx.cs">
-      <DependentUpon>Prueba.aspx</DependentUpon>
+    <Compile Include="metamorfosis.aspx.cs">
+      <DependentUpon>metamorfosis.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Prueba.aspx.designer.cs">
-      <DependentUpon>Prueba.aspx</DependentUpon>
+    <Compile Include="metamorfosis.aspx.designer.cs">
+      <DependentUpon>metamorfosis.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <PropertyGroup>

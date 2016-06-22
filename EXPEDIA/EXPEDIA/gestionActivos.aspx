@@ -54,13 +54,21 @@
                         <h3>Colegio de Abogados y Abogadas de Costa Rica</h3>
                     </a>
                 </div>
+
                 <!----------------------------------------------- Opciones menu ------------------------------------------------------>
                 <div class="col-md-6" style="margin-top: 15px;">
                     <div class="panel-heading">
-                        <ul class="nav nav-tabs">
-                            <li class="active"><a href="index.aspx">Salir</a></li>
-                            <li><a href="#tab2primary" data-toggle="tab">Conózcanos</a></li>
-                            <li><a href="#tab3primary" data-toggle="tab">Contacto</a></li>
+                        <ul class="nav">
+                         <li>
+                            <div class="container" style="float:left; margin-left: 500px; margin-top:-55px;">
+                                
+                                <a class="btn btn-default btn-lg btn-link"  href="index.aspx" style="font-size:36px;">
+                                <span class="glyphicon glyphicon-log-out"><br /><p style="font-size:12px; font-family:sans-serif;"> <br />Cerrar<br />sesión</p></span> 
+                                </a>
+
+                            </div>
+
+                        </li>
                         </ul>
                     </div>
                 </div>
@@ -71,6 +79,8 @@
             
         <div class="container">
             <asp:SiteMapPath ID="SiteMapPath1" runat="server"></asp:SiteMapPath>
+            <br />
+            <br />
         <div class="panel panel-primary">
                 <div class="panel-heading">
                     <h3 class="panel-title">Gestión de activos</h3>
@@ -95,13 +105,13 @@
                                     <label for="tipo_activo">Tipo de activo</label>
                                     <div style="margin-left: 55px" class="btn-group" data-toggle="buttons">
                                         <label class="btn btn-primary" onclick="mostrarleasing(1);">
-                                            <asp:RadioButton runat="server" ID="RadioButton2" Text="Software" autocomplete="off" GroupName="location" />
+                                            <asp:RadioButton runat="server" ValidationGroup="one" ID="RadioButton2" Text="Software" autocomplete="off" GroupName="location" />
                                         </label>
                                         <label class="btn btn-primary " onclick="mostrarleasing(2);">
-                                            <asp:RadioButton runat="server" ID="RadioButton3" Text="Hardware" autocomplete="off" GroupName="location" />
+                                            <asp:RadioButton runat="server" ValidationGroup="one" ID="RadioButton3" Text="Hardware" autocomplete="off" GroupName="location" />
                                         </label>
                                         <label class="btn btn-primary " onclick="mostrarleasing(3);">
-                                            <asp:RadioButton runat="server" ID="RadioButton4" Text="Leasing" autocomplete="off" GroupName="location"/>
+                                            <asp:RadioButton runat="server" ValidationGroup="one" ID="RadioButton4" Text="Leasing" autocomplete="off" GroupName="location"/>
                                         </label>
                                     </div>
                                         <asp:CustomValidator id="CustomValidator2" ValidationGroup="one" runat="server" Display="Dynamic" ForeColor="Red" ErrorMessage="*" ClientValidationFunction="CustomValidator1_ClientValidate"></asp:CustomValidator>
@@ -207,10 +217,9 @@
 <%--      |             --%>     <%--     Fecha de Finalización      --%>
 <%--      |             --%>     <label for="duracion_contrato">Finalización del Contrato</label>
 <%--      |             --%>     <asp:TextBox runat="server" ID="finalizacion_contrato" ClientIDMode="Static" data-toggle="tooltip" data-placement="right" title="Este espacio debe contener la fecha en que finaliza el contrato para el activo. EL formato de ingreso de la fecha es DD/MM/AAAA(Año/Mes/Día), este espacio es requerido."> </asp:TextBox>
-                                  <cc1:CalendarExtender Format="dd/MM/yyyy" TargetControlID="finalizacion_contrato"  ID="finContrato" runat="server" />
+                                 <cc1:CalendarExtender Format="dd/MM/yyyy" TargetControlID="finalizacion_contrato"  ID="finContrato" runat="server" />
 <%--      |             --%>     <cc1:MaskedEditExtender ID="MaskedEditExtender2" runat="server"  Century="2000" ClearMaskOnLostFocus="false"  Mask="99/99/9999" TargetControlID="finalizacion_contrato"></cc1:MaskedEditExtender>
-                                     <asp:CompareValidator ID="CompareValidator2" ValidationGroup="one" runat="server" ControlToValidate="fecha_adquisicion" Operator="GreaterThanEqual" ControlToCompare="finalizacion_contrato"  ForeColor="Red" SetFocusOnError="true" ErrorMessage=" La fecha de final de contrato no puede ser una fecha menor a la fecha en que fue adquirido el activo (Fecha en que inició el contrato)."></asp:CompareValidator>
-                                    
+                                 <asp:CompareValidator ID="CompareValidator2" Type="Date" ValidationGroup="one" runat="server" ControlToValidate="fecha_adquisicion" Operator="GreaterThanEqual" ControlToCompare="finalizacion_contrato"  ForeColor="Red" SetFocusOnError="true" ErrorMessage=" La fecha de final de contrato no puede ser una fecha menor a la fecha en que fue adquirido el activo (Fecha en que inició el contrato)."></asp:CompareValidator>
 <%--      |             --%>     <asp:RequiredFieldValidator ValidationGroup="one" ID="vFinalizacion" runat="server" ControlToValidate="finalizacion_contrato" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
 <%--      |             --%> </div>
 <%--       -----------> --%><%--      terminan las opciones del leasing       --%>
@@ -232,7 +241,6 @@
                                     <asp:TextBox runat="server" ValidationGroup="one" ID="fecha_compra" ClientIDMode="Static" data-toggle="tooltip"  data-placement="right" title="En este espacio debe proporcionar la fecha de compra del activo. EL formato de ingreso de la fecha es DD/MM/AAAA(Año/Mes/Día), este espacio es requerido."> </asp:TextBox>
                                     <cc1:CalendarExtender Format="dd/MM/yyyy" TargetControlID="fecha_compra" ID="calCompra" runat="server" />
                                      <cc1:MaskedEditExtender ID="MaskedEditExtender3" runat="server"  Century="2000" ClearMaskOnLostFocus="false"  Mask="99/99/9999" TargetControlID="fecha_compra"></cc1:MaskedEditExtender>
-                      
                                     <asp:RequiredFieldValidator ValidationGroup="one" ID="vFechaCompra" runat="server" ControlToValidate="fecha_compra" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
                                 
                                 </div>
@@ -258,7 +266,7 @@
                                     <asp:TextBox runat="server" ID="final_garantia" ClientIDMode="Static" data-toggle="tooltip" data-placement="right" title="En este espacio debe proporcionar la fecha en que finaliza la garantía, especificada por el proveedor. EL formato de ingreso de la fecha es DD/MM/AAAA(Año/Mes/Día), este espacio es requerido."></asp:TextBox>
                                     <cc1:CalendarExtender Format="dd/MM/yyyy" TargetControlID="final_garantia"  ID="calFinal" runat="server" />
                                     <cc1:MaskedEditExtender ID="MaskedEditExtender5" runat="server"  Century="2000" ClearMaskOnLostFocus="false"  Mask="99/99/9999" TargetControlID="final_garantia"></cc1:MaskedEditExtender>
-                                    <asp:CompareValidator ID="CompareValidator4" runat="server" ValidationGroup="one" ControlToCompare="fecha_compra" Operator="GreaterThanEqual" ControlToValidate="final_garantia" ForeColor="Red" SetFocusOnError="true" ErrorMessage="La fecha no puede ser menor a la de compra"></asp:CompareValidator>
+                                    <asp:CompareValidator ID="CompareValidator4" runat="server" ValidationGroup="one" Type="Date" ControlToCompare="fecha_compra" Operator="GreaterThanEqual" ControlToValidate="final_garantia" ForeColor="Red" SetFocusOnError="true" ErrorMessage="La fecha no puede ser menor a la de compra"></asp:CompareValidator>
                                     <asp:RequiredFieldValidator ValidationGroup="one" ID="vFinal" runat="server" ControlToValidate="final_garantia" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
                                 
                                      </fieldset>
@@ -346,7 +354,7 @@
                             </fieldset>
                             </div>
                         </div>
-                    </asp:Panel>
+                     </asp:Panel>
                 </ContentTemplate>
             </cc1:TabPanel>
 
@@ -383,7 +391,7 @@
                                 <!--Esto realmente es un form-->
                                 <fieldset>
                                     <div class="pure-control-group">
-                                        <div>
+                                        <div runat="server" id="controles"> 
                                             <asp:Button class="btn btn-success" runat="server" id="habilitarMA" Onclick="bt_Habilitar_Modif_Click"  Text="Habilitar modificación" />
                                             <button type="button" class="btn btn-danger" data-toggle="modal"  data-target="#modalInhabilitar">Inhabilitar activo</button>
                                         </div>
@@ -453,7 +461,7 @@
                                              <asp:TextBox runat="server" ValidationGroup="two" ID="finalizacion_contrato3" data-toggle="tooltip" title="Este espacio debe contener la fecha en que finaliza el contrato para el activo. EL formato de ingreso de la fecha es DD/MM/AAAA(Año/Mes/Día), este espacio es requerido."></asp:TextBox>
                                                   <cc1:CalendarExtender Format="dd/MM/yyyy" TargetControlID="finalizacion_contrato3" ID="calFinalizacion" runat="server"/>
                                                    <cc1:MaskedEditExtender ID="MaskedEditExtender10" runat="server"  Century="2000" ClearMaskOnLostFocus="false"  Mask="99/99/9999" TargetControlID="finalizacion_contrato3"></cc1:MaskedEditExtender>
-                                        <asp:CompareValidator ID="CompareValidator5" runat="server" ValidationGroup="two" ControlToValidate="fecha_entrega3" Operator="GreaterThanEqual" ControlToCompare="finalizacion_contrato3"  ForeColor="Red" SetFocusOnError="true" ErrorMessage=" La fecha de final de contrato no puede ser una fecha menor a la fecha en que fue adquirido el activo (Fecha en que inició el contrato)."></asp:CompareValidator>
+                                        <asp:CompareValidator ID="CompareValidator5" Type="Date" runat="server" ValidationGroup="two" ControlToValidate="fecha_entrega3" Operator="GreaterThanEqual" ControlToCompare="finalizacion_contrato3"  ForeColor="Red" SetFocusOnError="true" ErrorMessage=" La fecha de final de contrato no puede ser una fecha menor a la fecha en que fue adquirido el activo (Fecha en que inició el contrato)."></asp:CompareValidator>
                                        <asp:RequiredFieldValidator ValidationGroup="two" ID="vDuracion" runat="server" ControlToValidate="finalizacion_contrato3" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
                                     </div>
 <%--       -----------> --%><%--      terminan las opciones del leasing       --%>
@@ -500,7 +508,7 @@
                                     <asp:TextBox runat="server" ID="final_garantia2" ValidationGroup="two" data-toggle="tooltip" data-placement="right" title="En este espacio debe proporcionar la fecha en que finaliza la garantía, especificada por el proveedor. EL formato de ingreso de la fecha es DD/MM/AAAA(Año/Mes/Día), este espacio es requerido."></asp:TextBox>
                                     <cc1:CalendarExtender Format="dd/MM/yyyy" TargetControlID="final_garantia2" ID="calFinal3" runat="server" />
                                     <cc1:MaskedEditExtender ID="MaskedEditExtender8" runat="server"  Century="2000" ClearMaskOnLostFocus="false"  Mask="99/99/9999" TargetControlID="final_garantia2"></cc1:MaskedEditExtender>
-                                    <asp:CompareValidator ID="CompareValidator7" ValidationGroup="two" runat="server" ControlToCompare="fecha_compra2" Operator="GreaterThanEqual" ControlToValidate="final_garantia2" ForeColor="Red" SetFocusOnError="true" ErrorMessage="La fecha no puede ser menor a la de inicio de garantía"></asp:CompareValidator>
+                                    <asp:CompareValidator ID="CompareValidator7" ValidationGroup="two" Type="Date" runat="server" ControlToCompare="fecha_compra2" Operator="GreaterThanEqual" ControlToValidate="final_garantia2" ForeColor="Red" SetFocusOnError="true" ErrorMessage="La fecha no puede ser menor a la de inicio de garantía"></asp:CompareValidator>
                                     <asp:RequiredFieldValidator ValidationGroup="two" ID="vFinal2" runat="server" ControlToValidate="final_garantia2" ForeColor="Red" SetFocusOnError="true" ErrorMessage="&lt;b&gt;*&lt;/b&gt;"></asp:RequiredFieldValidator>
                                 
                                      </fieldset>
@@ -787,35 +795,45 @@
           <%-- *********MODAL DE habilitar activo****************************** --%>
 
                  <asp:Panel ID="PanelModal"  runat="server" >
-<div class="modalPrestamo" runat="server" visible="false" tabindex="-1" style="background-color:rgba(51, 51, 51, 0.71)"  id="detalle" role="dialog">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <asp:Button runat="server" CssClass="close"  BorderStyle="None" OnClick="close_Click" aria-label="Close" aria-hidden="true" Text="&times;" ></asp:Button>
-        <h4 class="modal-title">Activo inhabilitado</h4>
-
-      </div>
-      <div class="modal-body">
-      
-           <div class="container" >
-              <img src="img/ExpediaLogo.png" style="width:90px; height:90px; padding-right:7px;  float:left" alt="" />
-                                                <br />
-                                               <label for="TextBox1">Numero de placa: </label> <asp:TextBox ID="TextBox1" runat="server" BorderStyle="None" BorderWidth="0px" Enabled="False" EnableTheming="True" BackColor="White"></asp:TextBox><br/>
-                                               <label for="TextBox4">Motivo: </label> <asp:TextBox ID="TextBox4" runat="server" BorderStyle="None" BorderWidth="0px" Enabled="False" EnableTheming="True" BackColor="White"></asp:TextBox><br/>
-                                               
-                                        
+                        <div class="modalPrestamo" runat="server" visible="false" tabindex="-1" style="background-color:rgba(51, 51, 51, 0.71); color:black;"  id="detalle" role="dialog">
+                                <div class="modal-dialog">
+                                 <div class="modal-content">
+                                    <div class="modal-header">
+                                        <asp:Button runat="server" CssClass="close"  BorderStyle="None" OnClick="close_Click" aria-label="Close" aria-hidden="true" Text="&times;" ></asp:Button>
+                                        <h1 class="modal-title" style="text-align:center" id="exampleModalLabe">Activo Inhabilitado</h1>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="container">
+                                           El activo <b runat="server" id="numero_inhabilitado"></b> que deseas consultar se encuentra inhabilitado en el sistema.
+                                            <br />
+                                            <a href="#" runat="server" id="motivos_inhabilitacion" title="Motivos de inhabilitacion: " data-toggle="popover" data-trigger="focus" data-content=""><b>Detalle <span style='margin: 5px'  class='glyphicon glyphicon-paperclip'></span></b></a>          
+                                                <script>
+                                                    $(document).ready(function () {
+                                                        $('[data-toggle="popover"]').popover();
+                                                    });
+                                                </script>
+                                            <br />
+                                            <h3>¿Deseas habilitar denuevo el usuario?</h3>
+                                            <h5>Indica tus motivos</h5>
+                                            <asp:TextBox ValidationGroup="in" id="TextBox2" TextMode="multiline" MaxLength="500" Columns="75" Rows="10" runat="server"/>
+                                            <asp:RequiredFieldValidator ValidationGroup="in" ID="RequiredFieldValidator9" ControlToValidate="TextBox2" runat="server" ForeColor="Red" ErrorMessage="<b>*</b>"></asp:RequiredFieldValidator>
                                             </div>
-
-      </div>
-      <div class="modal-footer">
-        <asp:Button  runat="server" ID="Habilitar" CssClass="btn btn-primary"  OnClick="Habilitar_Click1" Text="Habilitar" ></asp:Button>
-        <asp:Button runat="server" ID="close" CssClass="btn btn-default" Text="Cerrar" OnClick="close_Click"></asp:Button>
-        
-      </div>
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
-</div>
-   </asp:Panel>
+                                        </div> <!-- /container -->
+                                    <script type="text/javascript">
+                                            $(window).load(function () {
+                                                $('[data-toggle="tooltip"]').tooltip();
+                                                $('#exampleModa').modal('show');
+                                            });
+                                        </script>
+                                    <div class="modal-footer">
+                                        <img src="img/ExpediaLogo.png" alt="" style="width:50px; height:50px;float:left" />
+                                        <asp:Button runat="server" ValidationGroup="in" ID="btn_habilitarUsuario" Text="Si" OnClick="Habilitar_Click1" CssClass="btn btn-danger" />
+                                        <asp:Button runat="server" ID="Button2" CssClass="btn btn-default" Text="No" OnClick="close_Click"></asp:Button>
+                                    </div>
+                                </div>
+                                </div><!-- /.modal-dialog -->
+                       </div>
+                </asp:Panel>
         <script>
             // You can also use "$(window).load(function() {"
             $(document).ready(function () {
@@ -899,5 +917,10 @@
                  $('[data-toggle="tooltip"]').tooltip();
              });
      </script>
+        <footer class="navbar" style="background-color:white">
+        <div class="container">
+            <h5 style="text-align: center" class="text-muted">EXPEDIA - Colegio de Abogados y Abogadas de Costa Rica - UNA</h5>
+        </div>
+    </footer>
 </body>
 </html>

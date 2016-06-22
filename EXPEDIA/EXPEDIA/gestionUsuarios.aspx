@@ -25,7 +25,7 @@
 <body>
        <form id="form1" runat="server">
         <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-        <nav class="navbar" role="navigation" style="margin-top: 20px;">
+               <nav class="navbar" role="navigation" style="margin-top: 20px;">
             <div class="container">
                 <ul class="bxslider">
                     <li>
@@ -54,23 +54,33 @@
                         <h3>Colegio de Abogados y Abogadas de Costa Rica</h3>
                     </a>
                 </div>
+
                 <!----------------------------------------------- Opciones menu ------------------------------------------------------>
                 <div class="col-md-6" style="margin-top: 15px;">
                     <div class="panel-heading">
-                        <ul class="nav nav-tabs">
-                            <li class="active"><a href="index.aspx">Salir</a></li>
-                            <li><a href="#tab2primary" data-toggle="tab">Conózcanos</a></li>
-                            <li><a href="#tab3primary" data-toggle="tab">Contacto</a></li>
+                        <ul class="nav">
+                         <li>
+                            <div class="container" style="float:left; margin-left: 500px; margin-top:-55px;">
+                                
+                                <a class="btn btn-default btn-lg btn-link"  href="index.aspx" style="font-size:36px;">
+                                <span class="glyphicon glyphicon-log-out"><br /><p style="font-size:12px; font-family:sans-serif;"> <br />Cerrar<br />sesión</p></span> 
+                                </a>
+
+                            </div>
+
+                        </li>
                         </ul>
                     </div>
                 </div>
                 <!-----------------------------------------------Fin de las opciones----------------------------------------------->
             </div>
         </nav>
-<%--        <asp:UpdatePanel runat="server">
-            <ContentTemplate>--%>
-            <div class="container">
-                <asp:SiteMapPath ID="SiteMapPath1" runat="server"></asp:SiteMapPath>
+           
+            
+        <div class="container">
+            <asp:SiteMapPath ID="SiteMapPath1" runat="server"></asp:SiteMapPath>
+            <br />
+            <br />
                 <div class="panel panel-primary">
                     <div class="panel-heading">
                         <h3 class="panel-title">Gestión de Usuarios</h3>
@@ -482,6 +492,10 @@
          });
      </script>
     </form>
-
+        <footer class="navbar" style="background-color:white">
+        <div class="container">
+            <h5 style="text-align: center" class="text-muted">EXPEDIA - Colegio de Abogados y Abogadas de Costa Rica - UNA</h5>
+        </div>
+    </footer>
 </body>
 </html>

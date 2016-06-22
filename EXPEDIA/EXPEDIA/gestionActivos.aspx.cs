@@ -725,6 +725,21 @@ namespace EXPEDIA
                         if (reader.GetInt16(14) != 2)
                         {
 
+                            if (reader.GetInt16(14) == 4)
+                            {
+                                controles.Style.Add("display", "none");
+                                error(btn_consultarAc, "Disculpa", "El activo número de placa: " + placa_buscar.Text + " ha sido donado, no podrás realizar acciones sobre este activo");
+                            }
+                            else {
+                                if (reader.GetInt16(14) == 3) {
+                                    controles.Style.Add("display", "none");
+                                    error(btn_consultarAc, "Disculpa", "El activo número de placa " + placa_buscar.Text + " se encuentra prestado, debes dirigirte a la gestión de préstamos y finalizarlo");
+                                }
+                                else { 
+                                    controles.Style.Add("display", "block");
+                                }
+                            }
+
                             if (reader.GetString(0) == "Software")
                             {
                                 this.RadioButton5.Checked = true;
@@ -882,7 +897,18 @@ namespace EXPEDIA
                             //    ocultarConsulta();
                         }
 
-                        else { Habilitar_Activo(reader.GetString(1)); }
+                        else {
+                            if (reader.GetInt16(14) == 2)
+                            {
+                                Habilitar_Activo(reader.GetString(1),reader.GetString(16));
+                            }
+                            else {
+                                if (reader.GetInt16(14) == 4) { 
+                                    //donacion; alertar y no tirar la info
+                                }
+                            }
+                        
+                        }
                     }
                     if (validacion == 3)
                     {
@@ -891,8 +917,11 @@ namespace EXPEDIA
                         inhabilitarCampos();
                     }
                     else {
-                        error(btn_consultarAc, "Disculpa", "Los datos del activo no pueden ser accedidos debido a que el departamento, proveedor o descripción se encuentran inhabilitados");
-                    }
+                        if (validacion > 0)
+                        {
+                            error(btn_consultarAc, "Disculpa", "Los datos del activo no pueden ser accedidos debido a que el departamento, proveedor o descripción se encuentran inhabilitados");
+                        } 
+                   }
                 }
                 else
                 {
@@ -1081,6 +1110,8 @@ namespace EXPEDIA
                 cmd.ExecuteNonQuery();
                 excelente(Btn_inhabilitar);
                 c.Desconectar(Conexion);
+                ocultarConsulta();
+                
 
 
 
@@ -1148,10 +1179,10 @@ namespace EXPEDIA
             telefono1.Text = "";
         }
 
-        protected void Habilitar_Activo(string placa)
+        protected void Habilitar_Activo(string placa,string motivos)
         {
-            TextBox1.Text = placa;
-            TextBox4.Text = "Mal funcionamiento";
+            numero_inhabilitado.InnerText = placa;
+            motivos_inhabilitacion.Attributes.Add("data-content", motivos);
             detalle.Visible = true;
 
         }
@@ -1167,12 +1198,14 @@ namespace EXPEDIA
         {
             Conexion c = new Conexion();
             SqlConnection Conexion = c.Conectar();
-            string Sql = @"UPDATE Activos SET bd_estado = @estado WHERE bd_numero_placa = @placa ";
+            string Sql = @"UPDATE Activos SET bd_estado = @estado, bd_motivos=@motivos WHERE bd_numero_placa = @placa ";
             Conexion.Open();//abrimos conexion    
             try
             {
+                string placa = numero_inhabilitado.InnerText;
                 SqlCommand cmd = new SqlCommand(Sql, Conexion);
-                cmd.Parameters.AddWithValue("@placa", TextBox1.Text);
+                cmd.Parameters.AddWithValue("@placa", numero_inhabilitado.InnerText);
+                cmd.Parameters.AddWithValue("@motivos", TextBox2.Text);
                 cmd.Parameters.AddWithValue("@estado", 1);
                 //invalidos
                 cmd.ExecuteNonQuery();
@@ -1183,8 +1216,9 @@ namespace EXPEDIA
 
             }
             catch (Exception t) { Response.Write("error" + t); }
-            detalle.Visible = false;
-        }
+            finally { numero_inhabilitado.InnerText = ""; }
+                detalle.Visible = false;
+            }
 
 
     

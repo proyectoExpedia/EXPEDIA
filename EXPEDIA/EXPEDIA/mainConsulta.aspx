@@ -25,42 +25,62 @@
 
 <body>
 <!--Menu-->
-    <nav class="navbar" role="navigation" style="margin-top:20px;">
-        <div class="container">
-            <ul class="bxslider">
-                <li><img src="img/colegioAbogadoscr.png" style="width:100px; height:100px;float:left" alt="" /></li>
-                <li><img src="img/ExpediaLogo.png" alt="" style="width:100px; height:100px;float:left" /></li>
-            </ul>
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" style="float:right" href="#"><h3>Colegio de Abogados y Abogadas de Costa Rica</h3></a>
-            </div>
-            <!-- Opciones menu -->
-            <div class="col-md-6" style="margin-top:15px;">
-                <div class="panel-heading">
-                    <ul class="nav nav-tabs">
-                        <li class="active"><a href="index.aspx">Salir</a></li>
-                        <li><a href="#tab2primary" data-toggle="tab">Conózcanos</a></li>
-                        <li><a href="#tab3primary" data-toggle="tab">Contacto</a></li>
-                        <!--<li class="dropdown">
-                            <a href="#" data-toggle="dropdown">Dropdown <span class="caret"></span></a>
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a href="#tab4primary" data-toggle="tab">Primary 4</a></li>
-                                <li><a href="#tab5primary" data-toggle="tab">Primary 5</a></li>
-                            </ul>
-                        </li>-->
-                    </ul>
+         <nav class="navbar" role="navigation" style="margin-top: 20px;">
+            <div class="container">
+                <ul class="bxslider">
+                    <li>
+                        <img src="img/colegioAbogadoscr.png" style="width: 100px; height: 100px; float: left" alt="" /></li>
+                    <li>
+                        <img src="img/ExpediaLogo.png" alt="" style="width: 100px; height: 100px; float: left" /></li>
+                </ul>
+                <script>
+                    // You can also use "$(window).load(function() {"
+                    $(document).ready(function () {
+                        $('.bxslider').bxSlider({
+                            mode: 'fade',
+                            auto: true,
+                            controls: false
+                        });
+                    });
+                </script>
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" style="float: right" href="#">
+                        <h3>Colegio de Abogados y Abogadas de Costa Rica</h3>
+                    </a>
                 </div>
+
+                <!----------------------------------------------- Opciones menu ------------------------------------------------------>
+                <div class="col-md-6" style="margin-top: 15px;">
+                    <div class="panel-heading">
+                        <ul class="nav">
+                         <li>
+                            <div class="container" style="float:left; margin-left: 500px; margin-top:-55px;">
+                                
+                                <a class="btn btn-default btn-lg btn-link"  href="index.aspx" style="font-size:36px;">
+                                <span class="glyphicon glyphicon-log-out"><br /><p style="font-size:12px; font-family:sans-serif;"> <br />Cerrar<br />sesión</p></span> 
+                                </a>
+
+                            </div>
+
+                        </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-----------------------------------------------Fin de las opciones----------------------------------------------->
             </div>
-        </div>
-    </nav>
-    <div class="container">
-        <asp:SiteMapPath ID="SiteMapPath1" runat="server"></asp:SiteMapPath>
+        </nav>
+           
+            
+        <div class="container">
+            <asp:SiteMapPath ID="SiteMapPath1" runat="server"></asp:SiteMapPath>
+            <br />
+            <br />
         <div class="alert alert-success" role="alert">
             <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
             <span class="sr-only"><strong></strong></span> Bienvenido: 
@@ -118,7 +138,7 @@
     <!-- /.container -->
     <footer class="navbar" style="background-color:white">
         <div class="container">
-            <h6 style="text-align: center" class="text-muted">Prototipo I EXPEDIA - Ingeniería en sistemas de información II</h6>
+            <h5 style="text-align: center" class="text-muted">EXPEDIA - Colegio de Abogados y Abogadas de Costa Rica - UNA</h5>
         </div>
     </footer>
     <script>

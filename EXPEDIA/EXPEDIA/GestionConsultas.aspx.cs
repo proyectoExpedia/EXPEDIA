@@ -1978,7 +1978,7 @@ namespace EXPEDIA
         
         }
         protected void Bitacora_Activos_Corp() {
-            String tablaCorporativos = "<h1 style=\"text-align:center\">Hardware & Software</h1><table id=\"actiCorp\" class=\"table table-striped table-bordered\"> <thead> <tr><th>Fecha de acción</th><th>Tipo de activo</th><th>Número de placa</th><th>Número de serie</th><th>Fecha de compra</th><th>Fecha de finalización de garantía</th><th>Descripción del activo</th><th>Departamento del activo</th><th>Proveedor</th><th>Especificaciones tecnicas</th><th>Costo</th><th>Estado</th></tr></thead>";
+            String tablaCorporativos = "<h1 style=\"text-align:center\">Hardware & Software</h1><table id=\"actiCorp\" class=\"table table-striped table-bordered\"> <thead> <tr><th>Fecha de acción</th><th>Tipo de activo</th><th>Número de placa</th><th>Número de serie</th><th>Fecha de compra</th><th>Fecha de finalización de garantía</th><th>Descripción del activo</th><th>Departamento del activo</th><th>Proveedor</th><th>Especificaciones tecnicas</th><th>Costo</th><th>Estado</th><th>Motivos</th></tr></thead>";
            
                for(int i=0; i< this.Bitacora_Activos_Corporativos.Count;i++){
                     tablaCorporativos += this.Bitacora_Activos_Corporativos[i];
@@ -2042,7 +2042,7 @@ namespace EXPEDIA
             //Generar 2 tablas 1 leasing y otra por otros tipos
             Conexion c = new Conexion();
             SqlConnection Conexion = c.Conectar();
-            string Sql = @"SELECT bd_fecha_accion,bd_tipo_activo_nuevo,bd_numero_placa_nuevo,bd_numero_serie_nuevo,bd_fecha_final_garantia_nuevo,bd_descripcion_activo_nuevo,bd_departamento_nuevo,bd_proveedor_nuevo,bd_especificacion_tecnica_nuevo,bd_aquisicion_ac_nuevo,bd_finalizacion_contrato_nuevo,bd_fecha_compra_nuevo,bd_costo_activo_nuevo,bd_estado_nuevo FROM Bitacora_Activos where bd_accion != 'Eliminó datos' AND bd_tipo_activo_nuevo != 'NULL'";
+            string Sql = @"SELECT bd_fecha_accion,bd_tipo_activo_nuevo,bd_numero_placa_nuevo,bd_numero_serie_nuevo,bd_fecha_final_garantia_nuevo,bd_descripcion_activo_nuevo,bd_departamento_nuevo,bd_proveedor_nuevo,bd_especificacion_tecnica_nuevo,bd_aquisicion_ac_nuevo,bd_finalizacion_contrato_nuevo,bd_fecha_compra_nuevo,bd_costo_activo_nuevo,bd_estado_nuevo,bd_motivos_nuevos FROM Bitacora_Activos where bd_accion != 'Eliminó datos' AND bd_tipo_activo_nuevo != 'NULL'";
             Conexion.Open();//abrimos conexion
             SqlCommand cmd = new SqlCommand(Sql, Conexion); 
             SqlDataReader reader = cmd.ExecuteReader();
@@ -2064,12 +2064,13 @@ namespace EXPEDIA
                 String fecha_compra = reader.GetDateTime(11).ToString("dd/MM/yyyy");
                 int costo = reader.GetInt32(12);
                 String estado = obtener_estado_activos(reader.GetInt32(13));
+                String motivos = reader.GetString(14);
 
                 if (tipo_activo != "Leasing")
                 {
                     row += "<td>" + fecha_accion + "</td>" + "<td>" + tipo_activo + "</td>" + "<td>" + numero_placa + "</td> " + "<td>" + numero_serie + "</td>" + "<td>" + fecha_compra + "</td>" + "<td>" + fecha_final_Garantia + 
                    "</td>"+"<td>"+Obtener_Descripcion_Bitacora(descripcion_activo)+"</td>"+"<td>"+Obtener_Departamento_Bitacora(departamento_activo)+"</td>"+"<td>"+proveedor+"</td>"+"<td>"+especificacion_tecnica
-                   +"</td>"+"<td>"+costo+"</td>"+"<td>"+estado+"</td>";
+                   + "</td>" + "<td>" + costo + "</td>" + "<td>" + estado + "</td>" + "<td>" + motivos + "</td>";
                     row += "</tr>";
                     Bitacora_Activos_Corporativos.Add(row);
                 }
