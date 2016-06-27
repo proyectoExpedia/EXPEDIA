@@ -1743,15 +1743,18 @@ namespace EXPEDIA
                     string t = DateTime.Now.ToString("dd/MM/yyyy");
 
                     DateTime date2 = DateTime.Parse(t);
+                    TimeSpan ts = date2 - date;
 
-                    
-                    
+                    // Difference in days.
+                    int differenceInDays = ts.Days;
+
+
                     int y = DateTime.Compare(date, date2);
 
-                    if (y > 0) { l.InnerText = "Faltan " + y + " dias restantes para finalizar préstamo"; l.Style.Add("color", "green"); }
+                    if (y > 0) { l.InnerText = "Faltan " + differenceInDays + " dias restantes para finalizar préstamo"; l.Style.Add("color", "green"); }
 
-                    if (y == 0) { l.InnerText = "Faltan " + y + " dias restantes para finalizar préstamo"; l.Style.Add("color", "green"); }
-                    if (y < 0) { l.InnerText = "Entrega del prestamo tarde por  " + y + " dias "; l.Style.Add("color", "red"); }
+                    if (y == 0) { l.InnerText = "Faltan " + differenceInDays + " dias restantes para finalizar préstamo"; l.Style.Add("color", "green"); }
+                    if (y < 0) { l.InnerText = "Entrega del prestamo tarde por  " + differenceInDays + " dias "; l.Style.Add("color", "red"); }
 
 
 
