@@ -96,7 +96,7 @@ namespace EXPEDIA
                 Conexion c = new Conexion();
                 SqlConnection Conexion = c.Conectar();
 
-                string Sql = @"SELECT bd_id_area, bd_descripcion FROM Areas";
+                string Sql = @"SELECT bd_id_area, bd_descripcion FROM Areas WHERE bd_estado = 1";
                 Conexion.Open();//abrimos conexion
                 SqlCommand cmd = new SqlCommand(Sql, Conexion); //ejecutamos la instruccion
                 SqlDataReader reader = cmd.ExecuteReader();
@@ -119,7 +119,7 @@ namespace EXPEDIA
             {
                 Conexion c = new Conexion();
                 SqlConnection Conexion = c.Conectar();
-                string Sql = @"SELECT bd_id_puesto, bd_descripcion FROM Puestos";
+                string Sql = @"SELECT bd_id_puesto, bd_descripcion FROM Puestos WHERE bd_estado = 1";
                 Conexion.Open();//abrimos conexion
                 SqlCommand cmd = new SqlCommand(Sql, Conexion); //ejecutamos la instruccion
                 SqlDataReader reader = cmd.ExecuteReader();
@@ -147,55 +147,62 @@ namespace EXPEDIA
         {
             Conexion c = new Conexion();
             SqlConnection Conexion = c.Conectar();
-            int estado = 0;
-            string motivos = "";
-            Session["Inhabilitado"] = "";
-            string Sql = @"SELECT * FROM Usuarios WHERE bd_cedula = @ced";
-            Conexion.Open();//abrimos conexion
-            SqlCommand cmd = new SqlCommand(Sql, Conexion); //ejecutamos la instruccion            
-            cmd.Parameters.AddWithValue("@ced", cedula_consulta.Text);
-            SqlDataReader reader = cmd.ExecuteReader();
-            if (reader.HasRows)
+            try
             {
-                while (reader.Read())//ingreso de datos al formulario
+                
+                
+                int estado = 0;
+                string motivos = "";
+                Session["Inhabilitado"] = "";
+                string Sql = @"SELECT * FROM Usuarios WHERE bd_cedula = @ced";
+                Conexion.Open();//abrimos conexion
+                SqlCommand cmd = new SqlCommand(Sql, Conexion); //ejecutamos la instruccion            
+                cmd.Parameters.AddWithValue("@ced", cedula_consulta.Text);
+                SqlDataReader reader = cmd.ExecuteReader();
+                if (reader.HasRows)
                 {
-                    bool tipo = reader.GetBoolean(0);
-                    if (tipo) tipo_actualizar.SelectedValue = "1";
-                    else tipo_actualizar.SelectedValue = "0";
-                    nombre_actualizar.Text = reader.GetString(1);
-                    apellido_actualizar1.Text = reader.GetString(2);
-                    apellido_actualizar2.Text = reader.GetString(3);
-                    telefono_actualizar.Text = reader.GetString(4);
-                    correo_actualizar.Text = reader.GetString(5);
-                    contrasena_actualizar.Text = reader.GetString(6);
-                    rcontrasena_actualizar.Text = contrasena_actualizar.Text.ToString();
-                    puesto_actualizar.SelectedValue = reader.GetString(8);
-                    area_actualizar.SelectedValue = reader.GetString(9);
-                    motivos = reader.GetString(10);
-                    estado = reader.GetInt16(11);
-                }
-                if (estado == 3)
-                {
-                    mostrarInhabilitacion(Btn_consultar, motivos, cedula_consulta.Text);
-                    inhabilitarCampos();
-                    mostrarConsulta();
+                    while (reader.Read())//ingreso de datos al formulario
+                    {
+                        bool tipo = reader.GetBoolean(0);
+                        if (tipo) tipo_actualizar.SelectedValue = "1";
+                        else tipo_actualizar.SelectedValue = "0";
+                        nombre_actualizar.Text = reader.GetString(1);
+                        apellido_actualizar1.Text = reader.GetString(2);
+                        apellido_actualizar2.Text = reader.GetString(3);
+                        telefono_actualizar.Text = reader.GetString(4);
+                        correo_actualizar.Text = reader.GetString(5);
+                        contrasena_actualizar.Text = reader.GetString(6);
+                        rcontrasena_actualizar.Text = contrasena_actualizar.Text.ToString();
+                        puesto_actualizar.SelectedValue = reader.GetString(8);
+                        area_actualizar.SelectedValue = reader.GetString(9);
+                        motivos = reader.GetString(10);
+                        estado = reader.GetInt16(11);
+                    }
+                    if (estado == 3)
+                    {
+                        mostrarInhabilitacion(Btn_consultar, motivos, cedula_consulta.Text);
+                        inhabilitarCampos();
+                        mostrarConsulta();
+                    }
+                    else
+                    {
+                        this.controles.Style.Add("display", "block");
+                        excelente(Btn_consultar);
+                        inhabilitarCampos();
+                        mostrarConsulta();
+                    }
                 }
                 else
                 {
-                    this.controles.Style.Add("display", "block");
-                    excelente(Btn_consultar);
-                    inhabilitarCampos();
-                    mostrarConsulta();
+                    error(Btn_consultar, " Usuario no encontrado", "");
+                    ocultarConsulta();
                 }
+            }catch(Exception ex){
+                error(Btn_consultar, "Disculpa", "Los datos del usuario no pueden ser accedidos debido a que el departamento o puesto se encuentran inhabilitado");
+                ex.ToString();
+            }finally{
+                Conexion.Close();
             }
-            else
-            {
-                error(Btn_consultar, " Usuario no encontrado", "");
-                ocultarConsulta();
-            }
-
-            Conexion.Close();
-
 
         }
         //no permite el ingreso de datos en el formulario

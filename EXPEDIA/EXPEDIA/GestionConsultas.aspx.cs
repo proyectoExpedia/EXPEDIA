@@ -282,7 +282,7 @@ namespace EXPEDIA
                         if (reader.GetInt16(11) == 4) { estado = "Donado"; }
 
 
-                        dt.Rows.Add(reader.GetString(1), reader.GetString(2), id_des, reader.GetString(0), id_dep, reader.GetString(7), reader.GetString(8), reader.GetDateTime(3).ToString("yyyy/MM/dd"), reader.GetDateTime(4).ToString("yyyy/MM/dd"), reader.GetDateTime(9).ToString("yyyy/MM/dd"), reader.GetInt32(10).ToString(), estado);
+                        dt.Rows.Add(reader.GetString(1), reader.GetString(2), id_des, reader.GetString(0), id_dep, reader.GetString(7), reader.GetString(8), reader.GetDateTime(3).ToString("dd/MM/yyyy"), reader.GetDateTime(4).ToString("dd/MM/yyyy"), reader.GetDateTime(9).ToString("dd/MM/yyyy"), reader.GetInt32(10).ToString(), estado);
                     }
 
                     lista.DataSource = dt;
@@ -350,7 +350,7 @@ namespace EXPEDIA
                             if (reader.GetInt16(11) == 4) { estado = "Donado"; }
 
 
-                            dt.Rows.Add(reader.GetString(1), reader.GetString(2), id_des, reader.GetString(0), id_dep, reader.GetString(7), reader.GetString(8), reader.GetDateTime(3).ToString("yyyy/MM/dd"), reader.GetDateTime(4).ToString("yyyy/MM/dd"), reader.GetDateTime(9).ToString("yyyy/MM/dd"), reader.GetInt32(10).ToString(),estado);
+                            dt.Rows.Add(reader.GetString(1), reader.GetString(2), id_des, reader.GetString(0), id_dep, reader.GetString(7), reader.GetString(8), reader.GetDateTime(3).ToString("dd/MM/yyyy"), reader.GetDateTime(4).ToString("dd/MM/yyyy"), reader.GetDateTime(9).ToString("dd/MM/yyyy"), reader.GetInt32(10).ToString(),estado);
                         }
 
                         lista.DataSource = dt;
@@ -418,7 +418,7 @@ namespace EXPEDIA
                             if (reader.GetInt16(11) == 4) { estado = "Donado"; }
 
 
-                            dt.Rows.Add(reader.GetString(1), reader.GetString(2), id_des, reader.GetString(0), id_dep, reader.GetString(7), reader.GetString(8), reader.GetDateTime(3).ToString("yyyy/MM/dd"), reader.GetDateTime(4).ToString("yyyy/MM/dd"), reader.GetDateTime(9).ToString("yyyy/MM/dd"), reader.GetInt32(10).ToString(), estado);
+                            dt.Rows.Add(reader.GetString(1), reader.GetString(2), id_des, reader.GetString(0), id_dep, reader.GetString(7), reader.GetString(8), reader.GetDateTime(3).ToString("dd/MM/yyyy"), reader.GetDateTime(4).ToString("dd/MM/yyyy"), reader.GetDateTime(9).ToString("dd/MM/yyyy"), reader.GetInt32(10).ToString(), estado);
                         }
 
                         lista.DataSource = dt;
@@ -486,7 +486,7 @@ namespace EXPEDIA
                             if (reader.GetInt16(11) == 4) { estado = "Donado"; }
 
 
-                            dt.Rows.Add(reader.GetString(1), reader.GetString(2), id_des, reader.GetString(0), id_dep, reader.GetString(7), reader.GetString(8), reader.GetDateTime(3).ToString("yyyy/MM/dd"), reader.GetDateTime(4).ToString("yyyy/MM/dd"), reader.GetDateTime(9).ToString("yyyy/MM/dd"), reader.GetInt32(10).ToString(), estado);
+                            dt.Rows.Add(reader.GetString(1), reader.GetString(2), id_des, reader.GetString(0), id_dep, reader.GetString(7), reader.GetString(8), reader.GetDateTime(3).ToString("dd/MM/yyyy"), reader.GetDateTime(4).ToString("dd/MM/yyyy"), reader.GetDateTime(9).ToString("dd/MM/yyyy"), reader.GetInt32(10).ToString(), estado);
                         }
 
                         lista.DataSource = dt;
@@ -555,7 +555,7 @@ namespace EXPEDIA
                             if (reader.GetInt16(11) == 4) { estado = "Donado"; }
 
 
-                            dt.Rows.Add(reader.GetString(1), reader.GetString(2), id_des, reader.GetString(0), id_dep, reader.GetString(7), reader.GetString(8), reader.GetDateTime(3).ToString("yyyy/MM/dd"), reader.GetDateTime(4).ToString("yyyy/MM/dd"), reader.GetDateTime(9).ToString("yyyy/MM/dd"), reader.GetInt32(10).ToString(), estado);
+                            dt.Rows.Add(reader.GetString(1), reader.GetString(2), id_des, reader.GetString(0), id_dep, reader.GetString(7), reader.GetString(8), reader.GetDateTime(3).ToString("dd/MM/yyyy"), reader.GetDateTime(4).ToString("dd/MM/yyyy"), reader.GetDateTime(9).ToString("dd/MM/yyyy"), reader.GetInt32(10).ToString(), estado);
                         }
 
                         lista.DataSource = dt;
@@ -626,7 +626,7 @@ namespace EXPEDIA
                             if (reader.GetInt16(11) == 4) { estado = "Donado"; }
 
 
-                            dt.Rows.Add(reader.GetString(1), reader.GetString(2), id_des, reader.GetString(0), id_dep, reader.GetString(7), reader.GetString(8), reader.GetDateTime(3).ToString("yyyy/MM/dd"), reader.GetDateTime(4).ToString("yyyy/MM/dd"), reader.GetDateTime(9).ToString("yyyy/MM/dd"), reader.GetInt32(10).ToString(), estado);
+                            dt.Rows.Add(reader.GetString(1), reader.GetString(2), id_des, reader.GetString(0), id_dep, reader.GetString(7), reader.GetString(8), reader.GetDateTime(3).ToString("dd/MM/yyyy"), reader.GetDateTime(4).ToString("dd/MM/yyyy"), reader.GetDateTime(9).ToString("dd/MM/yyyy"), reader.GetInt32(10).ToString(), estado);
                         }
 
                         lista.DataSource = dt;
@@ -690,7 +690,7 @@ namespace EXPEDIA
                         if (x == 4) { estado = "Donado"; }
 
 
-                        dt.Rows.Add(reader.GetString(1), reader.GetString(2), id_des, reader.GetString(0), id_dep, reader.GetString(7), reader.GetString(8), reader.GetDateTime(3).ToString("yyyy/MM/dd"), reader.GetDateTime(4).ToString("yyyy/MM/dd"), reader.GetDateTime(9).ToString("yyyy/MM/dd"), reader.GetInt32(10).ToString(), estado);
+                        dt.Rows.Add(reader.GetString(1), reader.GetString(2), id_des, reader.GetString(0), id_dep, reader.GetString(7), reader.GetString(8), reader.GetDateTime(3).ToString("dd/MM/yyyy"), reader.GetDateTime(4).ToString("dd/MM/yyyy"), reader.GetDateTime(9).ToString("dd/MM/yyyy"), reader.GetInt32(10).ToString(), estado);
                     }
 
                     lista.DataSource = dt;
@@ -749,7 +749,7 @@ namespace EXPEDIA
                         if (reader.GetInt16(11) == 4) { estado = "Donado"; }
 
 
-                        dt.Rows.Add(reader.GetString(1), reader.GetString(2), id_des, reader.GetString(0), id_dep, reader.GetString(7), reader.GetString(8), reader.GetDateTime(3).ToString("yyyy/MM/dd"), reader.GetDateTime(4).ToString("yyyy/MM/dd"), reader.GetDateTime(9).ToString("yyyy/MM/dd"), reader.GetInt32(10).ToString(), estado);
+                        dt.Rows.Add(reader.GetString(1), reader.GetString(2), id_des, reader.GetString(0), id_dep, reader.GetString(7), reader.GetString(8), reader.GetDateTime(3).ToString("dd/MM/yyyy"), reader.GetDateTime(4).ToString("dd/MM/yyyy"), reader.GetDateTime(9).ToString("dd/MM/yyyy"), reader.GetInt32(10).ToString(), estado);
                     }
 
                     lista.DataSource = dt;
@@ -810,7 +810,7 @@ namespace EXPEDIA
                         if (reader.GetInt16(11) == 4) { estado = "Donado"; }
 
 
-                        dt.Rows.Add(reader.GetString(1), reader.GetString(2), id_des, reader.GetString(0), id_dep, reader.GetString(7), reader.GetString(8), reader.GetDateTime(3).ToString("yyyy/MM/dd"), reader.GetDateTime(4).ToString("yyyy/MM/dd"), reader.GetDateTime(9).ToString("yyyy/MM/dd"), reader.GetInt32(10).ToString(), estado);
+                        dt.Rows.Add(reader.GetString(1), reader.GetString(2), id_des, reader.GetString(0), id_dep, reader.GetString(7), reader.GetString(8), reader.GetDateTime(3).ToString("dd/MM/yyyy"), reader.GetDateTime(4).ToString("dd/MM/yyyy"), reader.GetDateTime(9).ToString("dd/MM/yyyy"), reader.GetInt32(10).ToString(), estado);
                     }
 
                     lista.DataSource = dt;
@@ -871,7 +871,7 @@ namespace EXPEDIA
                         if (reader.GetInt16(11) == 4) { estado = "Donado"; }
 
 
-                        dt.Rows.Add(reader.GetString(1), reader.GetString(2), id_des, reader.GetString(0), id_dep, reader.GetString(7), reader.GetString(8), reader.GetDateTime(3).ToString("yyyy/MM/dd"), reader.GetDateTime(4).ToString("yyyy/MM/dd"), reader.GetDateTime(9).ToString("yyyy/MM/dd"), reader.GetInt32(10).ToString(), estado);
+                        dt.Rows.Add(reader.GetString(1), reader.GetString(2), id_des, reader.GetString(0), id_dep, reader.GetString(7), reader.GetString(8), reader.GetDateTime(3).ToString("dd/MM/yyyy"), reader.GetDateTime(4).ToString("dd/MM/yyyy"), reader.GetDateTime(9).ToString("dd/MM/yyyy"), reader.GetInt32(10).ToString(), estado);
                     }
 
                     lista.DataSource = dt;
@@ -930,7 +930,7 @@ namespace EXPEDIA
                         if (reader.GetInt16(11) == 4) { estado = "Donado"; }
 
 
-                        dt.Rows.Add(reader.GetString(1), reader.GetString(2), id_des, reader.GetString(0), id_dep, reader.GetString(7), reader.GetString(8), reader.GetDateTime(3).ToString("yyyy/MM/dd"), reader.GetDateTime(4).ToString("yyyy/MM/dd"), reader.GetDateTime(9).ToString("yyyy/MM/dd"), reader.GetInt32(10).ToString(), estado);
+                        dt.Rows.Add(reader.GetString(1), reader.GetString(2), id_des, reader.GetString(0), id_dep, reader.GetString(7), reader.GetString(8), reader.GetDateTime(3).ToString("dd/MM/yyyy"), reader.GetDateTime(4).ToString("dd/MM/yyyy"), reader.GetDateTime(9).ToString("dd/MM/yyyy"), reader.GetInt32(10).ToString(), estado);
                     }
 
                     lista.DataSource = dt;
@@ -991,7 +991,7 @@ namespace EXPEDIA
                             if (reader.GetInt16(11) == 4) { estado = "Donado"; }
 
 
-                            dt.Rows.Add(reader.GetString(1), reader.GetString(2), id_des, reader.GetString(0), id_dep, reader.GetString(7), reader.GetString(8), reader.GetDateTime(3).ToString("yyyy/MM/dd"), reader.GetDateTime(4).ToString("yyyy/MM/dd"), reader.GetDateTime(9).ToString("yyyy/MM/dd"), reader.GetInt32(10).ToString(), estado);
+                            dt.Rows.Add(reader.GetString(1), reader.GetString(2), id_des, reader.GetString(0), id_dep, reader.GetString(7), reader.GetString(8), reader.GetDateTime(3).ToString("dd/MM/yyyy"), reader.GetDateTime(4).ToString("dd/MM/yyyy"), reader.GetDateTime(9).ToString("dd/MM/yyyy"), reader.GetInt32(10).ToString(), estado);
                         }
 
                         lista.DataSource = dt;
@@ -1054,7 +1054,7 @@ namespace EXPEDIA
                         if (reader.GetInt16(11) == 4) { estado = "Donado"; }
 
 
-                        dt.Rows.Add(reader.GetString(1), reader.GetString(2), id_des, reader.GetString(0), id_dep, reader.GetString(7), reader.GetString(8), reader.GetDateTime(3).ToString("yyyy/MM/dd"), reader.GetDateTime(4).ToString("yyyy/MM/dd"), reader.GetDateTime(9).ToString("yyyy/MM/dd"), reader.GetInt32(10).ToString(), estado);
+                        dt.Rows.Add(reader.GetString(1), reader.GetString(2), id_des, reader.GetString(0), id_dep, reader.GetString(7), reader.GetString(8), reader.GetDateTime(3).ToString("dd/MM/yyyy"), reader.GetDateTime(4).ToString("dd/MM/yyyy"), reader.GetDateTime(9).ToString("dd/MM/yyyy"), reader.GetInt32(10).ToString(), estado);
                     }
 
                     lista.DataSource = dt;
@@ -1114,7 +1114,7 @@ namespace EXPEDIA
                         if (reader.GetInt16(11) == 4) { estado = "Donado"; }
 
 
-                        dt.Rows.Add(reader.GetString(1), reader.GetString(2), id_des, reader.GetString(0), id_dep, reader.GetString(7), reader.GetString(8), reader.GetDateTime(3).ToString("yyyy/MM/dd"), reader.GetDateTime(4).ToString("yyyy/MM/dd"), reader.GetDateTime(9).ToString("yyyy/MM/dd"), reader.GetInt32(10).ToString(), estado);
+                        dt.Rows.Add(reader.GetString(1), reader.GetString(2), id_des, reader.GetString(0), id_dep, reader.GetString(7), reader.GetString(8), reader.GetDateTime(3).ToString("dd/MM/yyyy"), reader.GetDateTime(4).ToString("dd/MM/yyyy"), reader.GetDateTime(9).ToString("dd/MM/yyyy"), reader.GetInt32(10).ToString(), estado);
                     }
 
                     lista.DataSource = dt;
@@ -1220,7 +1220,7 @@ namespace EXPEDIA
 
                 Conexion c = new Conexion();
                 SqlConnection Conexion = c.Conectar();
-                string Sql = @"SELECT  bd_tipo_activo,   bd_numero_placa , bd_numero_serie,  bd_descripcion_activo, bd_departamento, bd_proveedor, bd_especificacion_tecnica ,bd_aquisicion_ac,bd_finalizacion_contrato, bd_costo_activo, bd_estado  FROM Activos WHERE  bd_tipo_activo=@num";
+                string Sql = @"SELECT  bd_tipo_activo,bd_numero_placa,bd_numero_serie,bd_descripcion_activo,bd_departamento,bd_proveedor, bd_especificacion_tecnica ,bd_aquisicion_ac,bd_finalizacion_contrato, bd_costo_activo, bd_estado  FROM Activos WHERE  bd_tipo_activo=@num";
                 Conexion.Open();//abrimos conexion
                 SqlCommand cmd = new SqlCommand(Sql, Conexion); //ejecutamos la instruccion
                 cmd.Parameters.AddWithValue("@num", "Leasing"); //enviamos los paramet
@@ -1237,20 +1237,21 @@ namespace EXPEDIA
                         Retornar_Descripcion(reader.GetString(3));
                         Retornar_Departamento(reader.GetString(4));
                         string estado = "";
-                        if (reader.GetInt16(11) == 1) { estado = "Alta"; }
-                        if (reader.GetInt16(11) == 2) { estado = "Baja"; }
-                        if (reader.GetInt16(11) == 3) { estado = "Prestado"; }
-                        if (reader.GetInt16(11) == 4) { estado = "Donado"; }
-                        dt.Rows.Add(reader.GetString(1), reader.GetString(2), id_des, reader.GetString(0), id_dep, reader.GetString(5), reader.GetString(6), reader.GetDateTime(7).ToString("yyyy/MM/dd"), reader.GetDateTime(8).ToString("yyyy/MM/dd"), reader.GetInt32(9).ToString(), estado);
+                        if (reader.GetInt16(10) == 1) { estado = "Alta"; }
+                        if (reader.GetInt16(10) == 2) { estado = "Baja"; }
+                        if (reader.GetInt16(10) == 3) { estado = "Prestado"; }
+                        if (reader.GetInt16(10) == 4) { estado = "Donado"; }
+                        dt.Rows.Add(reader.GetString(1), reader.GetString(2), id_des, reader.GetString(0), id_dep, reader.GetString(5), reader.GetString(6), reader.GetDateTime(7).ToString("dd/MM/yyyy"), reader.GetDateTime(8).ToString("dd/MM/yyyy"), reader.GetInt32(9).ToString(), estado);
                     }
 
                     lista.DataSource = dt;
                     lista.DataBind();
                 }
-                error(Button1, "Disculpa", "No se encuentran activos con la informacion solicitada  disponibles en el sistema"); lista.DataBind();
+                
+                lista.DataBind();
 
             }
-            catch (Exception a) { Response.Write(a); }
+            catch (Exception a) { error(Button1, "Disculpa", "No se encuentran activos con la informacion solicitada  disponibles en el sistema"); }
         }
         protected void Consulta_Despartamento_Numero_leasing(string quien, int cuantas)
         {
@@ -1303,7 +1304,7 @@ namespace EXPEDIA
                             if (reader.GetInt16(11) == 2) { estado = "Baja"; }
                             if (reader.GetInt16(11) == 3) { estado = "Prestado"; }
                             if (reader.GetInt16(11) == 4) { estado = "Donado"; }
-                            dt.Rows.Add(reader.GetString(1), reader.GetString(2), id_des, reader.GetString(0), id_dep, reader.GetString(5), reader.GetString(6), reader.GetDateTime(7).ToString("yyyy/MM/dd"), reader.GetDateTime(8).ToString("yyyy/MM/dd"),reader.GetInt32(9).ToString(),estado);
+                            dt.Rows.Add(reader.GetString(1), reader.GetString(2), id_des, reader.GetString(0), id_dep, reader.GetString(5), reader.GetString(6), reader.GetDateTime(7).ToString("dd/MM/yyyy"), reader.GetDateTime(8).ToString("dd/MM/yyyy"),reader.GetInt32(9).ToString(),estado);
                         }
 
                         lista.DataSource = dt;
@@ -1366,7 +1367,7 @@ namespace EXPEDIA
                             if (reader.GetInt16(11) == 2) { estado = "Baja"; }
                             if (reader.GetInt16(11) == 3) { estado = "Prestado"; }
                             if (reader.GetInt16(11) == 4) { estado = "Donado"; }
-                            dt.Rows.Add(reader.GetString(1), reader.GetString(2), id_des, reader.GetString(0), id_dep, reader.GetString(5), reader.GetString(6), reader.GetDateTime(7).ToString("yyyy/MM/dd"), reader.GetDateTime(8).ToString("yyyy/MM/dd"), reader.GetInt32(9).ToString(), estado);
+                            dt.Rows.Add(reader.GetString(1), reader.GetString(2), id_des, reader.GetString(0), id_dep, reader.GetString(5), reader.GetString(6), reader.GetDateTime(7).ToString("dd/MM/yyyy"), reader.GetDateTime(8).ToString("dd/MM/yyyy"), reader.GetInt32(9).ToString(), estado);
                         }
 
                         lista.DataSource = dt;
@@ -1430,7 +1431,7 @@ namespace EXPEDIA
                             if (reader.GetInt16(11) == 2) { estado = "Baja"; }
                             if (reader.GetInt16(11) == 3) { estado = "Prestado"; }
                             if (reader.GetInt16(11) == 4) { estado = "Donado"; }
-                            dt.Rows.Add(reader.GetString(1), reader.GetString(2), id_des, reader.GetString(0), id_dep, reader.GetString(5), reader.GetString(6), reader.GetDateTime(7).ToString("yyyy/MM/dd"), reader.GetDateTime(8).ToString("yyyy/MM/dd"), reader.GetInt32(9).ToString(), estado);
+                            dt.Rows.Add(reader.GetString(1), reader.GetString(2), id_des, reader.GetString(0), id_dep, reader.GetString(5), reader.GetString(6), reader.GetDateTime(7).ToString("dd/MM/yyyy"), reader.GetDateTime(8).ToString("dd/MM/yyyy"), reader.GetInt32(9).ToString(), estado);
                         }
 
                         lista.DataSource = dt;
@@ -1495,7 +1496,7 @@ namespace EXPEDIA
                             if (reader.GetInt16(11) == 2) { estado = "Baja"; }
                             if (reader.GetInt16(11) == 3) { estado = "Prestado"; }
                             if (reader.GetInt16(11) == 4) { estado = "Donado"; }
-                            dt.Rows.Add(reader.GetString(1), reader.GetString(2), id_des, reader.GetString(0), id_dep, reader.GetString(5), reader.GetString(6), reader.GetDateTime(7).ToString("yyyy/MM/dd"), reader.GetDateTime(8).ToString("yyyy/MM/dd"), reader.GetInt32(9).ToString(), estado);
+                            dt.Rows.Add(reader.GetString(1), reader.GetString(2), id_des, reader.GetString(0), id_dep, reader.GetString(5), reader.GetString(6), reader.GetDateTime(7).ToString("dd/MM/yyyy"), reader.GetDateTime(8).ToString("dd/MM/yyyy"), reader.GetInt32(9).ToString(), estado);
                         }
 
                         lista.DataSource = dt;
@@ -1561,7 +1562,7 @@ namespace EXPEDIA
                             if (reader.GetInt16(11) == 2) { estado = "Baja"; }
                             if (reader.GetInt16(11) == 3) { estado = "Prestado"; }
                             if (reader.GetInt16(11) == 4) { estado = "Donado"; }
-                            dt.Rows.Add(reader.GetString(1), reader.GetString(2), id_des, reader.GetString(0), id_dep, reader.GetString(5), reader.GetString(6), reader.GetDateTime(7).ToString("yyyy/MM/dd"), reader.GetDateTime(8).ToString("yyyy/MM/dd"), reader.GetInt32(9).ToString(), estado);
+                            dt.Rows.Add(reader.GetString(1), reader.GetString(2), id_des, reader.GetString(0), id_dep, reader.GetString(5), reader.GetString(6), reader.GetDateTime(7).ToString("dd/MM/yyyy"), reader.GetDateTime(8).ToString("dd/MM/yyyy"), reader.GetInt32(9).ToString(), estado);
                         }
 
                         lista.DataSource = dt;
@@ -1619,7 +1620,7 @@ namespace EXPEDIA
                         if (reader.GetInt16(11) == 2) { estado = "Baja"; }
                         if (reader.GetInt16(11) == 3) { estado = "Prestado"; }
                         if (reader.GetInt16(11) == 4) { estado = "Donado"; }
-                        dt.Rows.Add(reader.GetString(1), reader.GetString(2), id_des, reader.GetString(0), id_dep, reader.GetString(5), reader.GetString(6), reader.GetDateTime(7).ToString("yyyy/MM/dd"), reader.GetDateTime(8).ToString("yyyy/MM/dd"), reader.GetInt32(9).ToString(), estado);
+                        dt.Rows.Add(reader.GetString(1), reader.GetString(2), id_des, reader.GetString(0), id_dep, reader.GetString(5), reader.GetString(6), reader.GetDateTime(7).ToString("dd/MM/yyyy"), reader.GetDateTime(8).ToString("dd/MM/yyyy"), reader.GetInt32(9).ToString(), estado);
 
                         lista.DataSource = dt;
                         lista.DataBind();
@@ -1675,7 +1676,7 @@ namespace EXPEDIA
                         if (reader.GetInt16(11) == 2) { estado = "Baja"; }
                         if (reader.GetInt16(11) == 3) { estado = "Prestado"; }
                         if (reader.GetInt16(11) == 4) { estado = "Donado"; }
-                        dt.Rows.Add(reader.GetString(1), reader.GetString(2), id_des, reader.GetString(0), id_dep, reader.GetString(5), reader.GetString(6), reader.GetDateTime(7).ToString("yyyy/MM/dd"), reader.GetDateTime(8).ToString("yyyy/MM/dd"), reader.GetInt32(9).ToString(), estado);
+                        dt.Rows.Add(reader.GetString(1), reader.GetString(2), id_des, reader.GetString(0), id_dep, reader.GetString(5), reader.GetString(6), reader.GetDateTime(7).ToString("dd/MM/yyyy"), reader.GetDateTime(8).ToString("dd/MM/yyyy"), reader.GetInt32(9).ToString(), estado);
                     }
 
                     lista.DataSource = dt;
@@ -1731,7 +1732,7 @@ namespace EXPEDIA
                         if (reader.GetInt16(11) == 2) { estado = "Baja"; }
                         if (reader.GetInt16(11) == 3) { estado = "Prestado"; }
                         if (reader.GetInt16(11) == 4) { estado = "Donado"; }
-                        dt.Rows.Add(reader.GetString(1), reader.GetString(2), id_des, reader.GetString(0), id_dep, reader.GetString(5), reader.GetString(6), reader.GetDateTime(7).ToString("yyyy/MM/dd"), reader.GetDateTime(8).ToString("yyyy/MM/dd"), reader.GetInt32(9).ToString(), estado);
+                        dt.Rows.Add(reader.GetString(1), reader.GetString(2), id_des, reader.GetString(0), id_dep, reader.GetString(5), reader.GetString(6), reader.GetDateTime(7).ToString("dd/MM/yyyy"), reader.GetDateTime(8).ToString("dd/MM/yyyy"), reader.GetInt32(9).ToString(), estado);
                     }
 
                     lista.DataSource = dt;
@@ -1788,7 +1789,7 @@ namespace EXPEDIA
                         if (reader.GetInt16(11) == 2) { estado = "Baja"; }
                         if (reader.GetInt16(11) == 3) { estado = "Prestado"; }
                         if (reader.GetInt16(11) == 4) { estado = "Donado"; }
-                        dt.Rows.Add(reader.GetString(1), reader.GetString(2), id_des, reader.GetString(0), id_dep, reader.GetString(5), reader.GetString(6), reader.GetDateTime(7).ToString("yyyy/MM/dd"), reader.GetDateTime(8).ToString("yyyy/MM/dd"), reader.GetInt32(9).ToString(), estado);
+                        dt.Rows.Add(reader.GetString(1), reader.GetString(2), id_des, reader.GetString(0), id_dep, reader.GetString(5), reader.GetString(6), reader.GetDateTime(7).ToString("dd/MM/yyyy"), reader.GetDateTime(8).ToString("dd/MM/yyyy"), reader.GetInt32(9).ToString(), estado);
                     }
 
                     lista.DataSource = dt;
@@ -1802,7 +1803,7 @@ namespace EXPEDIA
         {
             DataTable dt = new DataTable();
 
-            dt.Columns.AddRange(new DataColumn[11] {
+            dt.Columns.AddRange(new DataColumn[10] {
                             new DataColumn("Número de  Placa ", typeof(string)),
                             new DataColumn("Número de Serie ",typeof(string)),
                             new DataColumn(" Descripcion ", typeof(string)),
@@ -1812,8 +1813,7 @@ namespace EXPEDIA
                             new DataColumn(" Especificaciones ",typeof(string)),
                             new DataColumn(" Fecha de adquisición ",typeof(string)),
                             new DataColumn(" Fecha de finalizacion ",typeof(string)),
-                           new DataColumn(" Costo del activo",typeof(string)),
-                          new DataColumn("Estado del activo",typeof(string)),
+                           new DataColumn(" Costo del activo",typeof(string))
 
 
 
@@ -1824,7 +1824,7 @@ namespace EXPEDIA
                 string num = numero.Text;
                 Conexion c = new Conexion();
                 SqlConnection Conexion = c.Conectar();
-                string Sql = @"SELECT  bd_tipo_activo, bd_numero_placa ,bd_numero_serie, bd_descripcion_activo,bd_departamento,bd_proveedor, bd_especificacion_tecnica ,bd_aquisicion_ac, bd_finalizacion_contrato, bd_costo_activo, bd_estado  FROM Activos  WHERE bd_descripcion_activo=@dpt AND bd_tipo_activo= 'Leasing'";
+                string Sql = @"SELECT  bd_tipo_activo, bd_numero_placa ,bd_numero_serie, bd_descripcion_activo,bd_departamento,bd_proveedor, bd_especificacion_tecnica ,bd_aquisicion_ac, bd_finalizacion_contrato, bd_costo_activo,  FROM Activos  WHERE bd_descripcion_activo=@dpt AND bd_tipo_activo= 'Leasing'";
                 Conexion.Open();//abrimos conexion
                 SqlCommand cmd = new SqlCommand(Sql, Conexion); //ejecutamos la instruccion
                 cmd.Parameters.AddWithValue("@dpt", descripcion); //enviamos los paramet
@@ -1837,12 +1837,10 @@ namespace EXPEDIA
 
                         Retornar_Descripcion(reader.GetString(3));
                         Retornar_Departamento(reader.GetString(4));
-                        string estado = "";
-                        if (reader.GetInt16(11) == 1) { estado = "Alta"; }
-                        if (reader.GetInt16(11) == 2) { estado = "Baja"; }
-                        if (reader.GetInt16(11) == 3) { estado = "Prestado"; }
-                        if (reader.GetInt16(11) == 4) { estado = "Donado"; }
-                        dt.Rows.Add(reader.GetString(1), reader.GetString(2), id_des, reader.GetString(0), id_dep, reader.GetString(5), reader.GetString(6), reader.GetDateTime(7).ToString("yyyy/MM/dd"), reader.GetDateTime(8).ToString("yyyy/MM/dd"), reader.GetInt32(9).ToString(), estado);
+                      
+                       
+                        
+                        dt.Rows.Add(reader.GetString(1), reader.GetString(2), id_des, reader.GetString(0), id_dep, reader.GetString(5), reader.GetString(6), reader.GetDateTime(7).ToString("dd/MM/yyyy"), reader.GetDateTime(8).ToString("dd/MM/yyyy"), reader.GetInt32(9).ToString());
                     }
 
                     lista.DataSource = dt;
@@ -1858,7 +1856,7 @@ namespace EXPEDIA
             {
                 DataTable dt = new DataTable();
 
-                dt.Columns.AddRange(new DataColumn[11] {
+                dt.Columns.AddRange(new DataColumn[10] {
                             new DataColumn("Número de  Placa ", typeof(string)),
                             new DataColumn("Número de Serie ",typeof(string)),
                             new DataColumn(" Descripcion ", typeof(string)),
@@ -1868,8 +1866,9 @@ namespace EXPEDIA
                             new DataColumn(" Especificaciones ",typeof(string)),
                             new DataColumn(" Fecha de adquisición ",typeof(string)),
                             new DataColumn(" Fecha de finalizacion ",typeof(string)),
-                           new DataColumn(" Costo del activo",typeof(string)),
-                          new DataColumn("Estado del activo",typeof(string)),
+                           new DataColumn(" Costo del activo",typeof(string))
+
+                          
 
 
 
@@ -1894,12 +1893,13 @@ namespace EXPEDIA
 
                             Retornar_Descripcion(reader.GetString(3));
                             Retornar_Departamento(reader.GetString(4));
-                            string estado = "";
-                            if (reader.GetInt16(11) == 1) { estado = "Alta"; }
-                            if (reader.GetInt16(11) == 2) { estado = "Baja"; }
-                            if (reader.GetInt16(11) == 3) { estado = "Prestado"; }
-                            if (reader.GetInt16(11) == 4) { estado = "Donado"; }
-                            dt.Rows.Add(reader.GetString(1), reader.GetString(2), id_des, reader.GetString(0), id_dep, reader.GetString(5), reader.GetString(6), reader.GetDateTime(7).ToString("yyyy/MM/dd"), reader.GetDateTime(8).ToString("yyyy/MM/dd"), reader.GetInt32(9).ToString(), estado);
+                            
+                           
+
+                            
+                            
+                           
+                            dt.Rows.Add(reader.GetString(1), reader.GetString(2), id_des, reader.GetString(0), id_dep, reader.GetString(5), reader.GetString(6), reader.GetDateTime(7).ToString("dd/MM/yyyy"), reader.GetDateTime(8).ToString("dd/MM/yyyy"), reader.GetInt32(9).ToString());
                         }
 
                         lista.DataSource = dt;
@@ -1915,7 +1915,7 @@ namespace EXPEDIA
         {
             DataTable dt = new DataTable();
 
-            dt.Columns.AddRange(new DataColumn[11] {
+            dt.Columns.AddRange(new DataColumn[10] {
                             new DataColumn("Número de  Placa ", typeof(string)),
                             new DataColumn("Número de Serie ",typeof(string)),
                             new DataColumn(" Descripcion ", typeof(string)),
@@ -1925,8 +1925,8 @@ namespace EXPEDIA
                             new DataColumn(" Especificaciones ",typeof(string)),
                             new DataColumn(" Fecha de adquisición ",typeof(string)),
                             new DataColumn(" Fecha de finalizacion ",typeof(string)),
-                           new DataColumn(" Costo del activo",typeof(string)),
-                          new DataColumn("Estado del activo",typeof(string)),
+                           new DataColumn(" Costo del activo",typeof(string))
+                          
 
 
 
@@ -1952,12 +1952,7 @@ namespace EXPEDIA
 
                         Retornar_Descripcion(reader.GetString(3));
                         Retornar_Departamento(reader.GetString(4));
-                        string estado = "";
-                        if (reader.GetInt16(11) == 1) { estado = "Alta"; }
-                        if (reader.GetInt16(11) == 2) { estado = "Baja"; }
-                        if (reader.GetInt16(11) == 3) { estado = "Prestado"; }
-                        if (reader.GetInt16(11) == 4) { estado = "Donado"; }
-                        dt.Rows.Add(reader.GetString(1), reader.GetString(2), id_des, reader.GetString(0), id_dep, reader.GetString(5), reader.GetString(6), reader.GetDateTime(7).ToString("yyyy/MM/dd"), reader.GetDateTime(8).ToString("yyyy/MM/dd"), reader.GetInt32(9).ToString(), estado);
+                        dt.Rows.Add(reader.GetString(1), reader.GetString(2), id_des, reader.GetString(0), id_dep, reader.GetString(5), reader.GetString(6), reader.GetDateTime(7).ToString("dd/MM/yyyy"), reader.GetDateTime(8).ToString("dd/MM/yyyy"), reader.GetInt32(9).ToString());
                     }
 
                     lista.DataSource = dt;
@@ -1970,7 +1965,7 @@ namespace EXPEDIA
         {
             DataTable dt = new DataTable();
 
-            dt.Columns.AddRange(new DataColumn[11] {
+            dt.Columns.AddRange(new DataColumn[10] {
                             new DataColumn("Número de  Placa ", typeof(string)),
                             new DataColumn("Número de Serie ",typeof(string)),
                             new DataColumn(" Descripcion ", typeof(string)),
@@ -1980,8 +1975,8 @@ namespace EXPEDIA
                             new DataColumn(" Especificaciones ",typeof(string)),
                             new DataColumn(" Fecha de adquisición ",typeof(string)),
                             new DataColumn(" Fecha de finalizacion ",typeof(string)),
-                           new DataColumn(" Costo del activo",typeof(string)),
-                          new DataColumn("Estado del activo",typeof(string)),
+                           new DataColumn(" Costo del activo",typeof(string))
+                        
 
 
 
@@ -1992,7 +1987,7 @@ namespace EXPEDIA
                 string num = numero.Text;
                 Conexion c = new Conexion();
                 SqlConnection Conexion = c.Conectar();
-                string Sql = @"SELECT  bd_tipo_activo, bd_numero_placa ,bd_numero_serie, bd_descripcion_activo,bd_departamento,bd_proveedor, bd_especificacion_tecnica ,bd_aquisicion_ac, bd_finalizacion_contrato, bd_costo_activo, bd_estado  FROM Activos  WHERE  bd_departamento=@dpt AND bd_proveedor=@pro AND bd_tipo_activo= 'Leasing'";
+                string Sql = @"SELECT  bd_tipo_activo, bd_numero_placa ,bd_numero_serie, bd_descripcion_activo,bd_departamento,bd_proveedor, bd_especificacion_tecnica ,bd_aquisicion_ac, bd_finalizacion_contrato, bd_costo_activo  FROM Activos  WHERE  bd_departamento=@dpt AND bd_proveedor=@pro AND bd_tipo_activo= 'Leasing'";
                 Conexion.Open();//abrimos conexion
                 SqlCommand cmd = new SqlCommand(Sql, Conexion); //ejecutamos la instruccion
                 cmd.Parameters.AddWithValue("@dpt", departamento); //enviamos los paramet
@@ -2006,12 +2001,7 @@ namespace EXPEDIA
 
                         Retornar_Descripcion(reader.GetString(3));
                         Retornar_Departamento(reader.GetString(4));
-                        string estado = "";
-                        if (reader.GetInt16(11) == 1) { estado = "Alta"; }
-                        if (reader.GetInt16(11) == 2) { estado = "Baja"; }
-                        if (reader.GetInt16(11) == 3) { estado = "Prestado"; }
-                        if (reader.GetInt16(11) == 4) { estado = "Donado"; }
-                        dt.Rows.Add(reader.GetString(1), reader.GetString(2), id_des, reader.GetString(0), id_dep, reader.GetString(5), reader.GetString(6), reader.GetDateTime(7).ToString("yyyy/MM/dd"), reader.GetDateTime(8).ToString("yyyy/MM/dd"), reader.GetInt32(9).ToString(), estado);
+                        dt.Rows.Add(reader.GetString(1), reader.GetString(2), id_des, reader.GetString(0), id_dep, reader.GetString(5), reader.GetString(6), reader.GetDateTime(7).ToString("dd/MM/yyyy"), reader.GetDateTime(8).ToString("dd/MM/yyyy"), reader.GetInt32(9).ToString());
                     }
 
                     lista.DataSource = dt;
@@ -2080,7 +2070,7 @@ namespace EXPEDIA
             while (reader.Read())
             {
                 String row = "<tr>";
-                String fecha_accion = reader.GetDateTime(0).ToString("dd/MM/yyyy");
+                String fecha_accion = reader.GetString(0);
                 String tipo_activo = reader.GetString(1);
                 String numero_placa = reader.GetString(2);
                 String numero_serie = reader.GetString(3);
@@ -2129,7 +2119,7 @@ namespace EXPEDIA
             while (reader.Read())
             {
                 String row = "<tr>";
-                String fecha_accion = reader.GetDateTime(0).ToString("dd/MM/yyyy");
+                String fecha_accion = reader.GetString(0);
                 bool tipo_usuario = reader.GetBoolean(1);
                 String cedula = reader.GetString(8);
                 String nombre_usuario = reader.GetString(2);

@@ -171,7 +171,7 @@
                                                     <asp:Table ID="Table2" runat="server" CssClass="table table-hover table-bordered results">
                                                          <asp:TableHeaderRow runat="server">
                                                                 <asp:TableHeaderCell ColumnSpan="1">Identificador</asp:TableHeaderCell>
-                                                                <asp:TableHeaderCell ColumnSpan="1">Area</asp:TableHeaderCell>
+                                                                <asp:TableHeaderCell ColumnSpan="1">Departamento</asp:TableHeaderCell>
                                                                 <asp:TableHeaderCell ColumnSpan="2">Acciones</asp:TableHeaderCell>
                                                          </asp:TableHeaderRow>
                                                          <asp:TableRow CssClass="warning no-result">

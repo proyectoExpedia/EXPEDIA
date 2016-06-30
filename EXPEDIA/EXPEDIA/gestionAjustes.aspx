@@ -110,7 +110,7 @@
                                 <div class="caption" style="text-align:center">
                                     <a href="gestionAreas.aspx" class="btn">
                                         <span style="font-size: 60px" class="glyphicon glyphicon-globe"></span>
-                                        <h3>Gestión de Departamentos</h3>
+                                        <h3>Gestión de departamentos</h3>
                                     </a>
                                 </div>
                             </div>

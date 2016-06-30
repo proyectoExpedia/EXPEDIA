@@ -200,7 +200,7 @@ namespace EXPEDIA
         {
             Conexion c = new Conexion();
             SqlConnection Conexion = c.Conectar();
-            string Sql = @"SELECT bd_id_area, bd_descripcion FROM Areas";
+            string Sql = @"SELECT bd_id_area, bd_descripcion FROM Areas WHERE bd_estado = 1";
             Conexion.Open();//abrimos conexion
             SqlCommand cmd = new SqlCommand(Sql, Conexion); //ejecutamos la instruccion
             SqlDataReader reader = cmd.ExecuteReader();
@@ -220,7 +220,7 @@ namespace EXPEDIA
         {
             Conexion c = new Conexion();
             SqlConnection Conexion = c.Conectar();
-            string Sql = @"SELECT bd_id_proveedor, bd_nombre_proveedor FROM Proveedores";
+            string Sql = @"SELECT bd_id_proveedor, bd_nombre_proveedor FROM Proveedores WHERE bd_estado = 1";
             Conexion.Open();//abrimos conexion
             SqlCommand cmd = new SqlCommand(Sql, Conexion); //ejecutamos la instruccion
             SqlDataReader reader = cmd.ExecuteReader();
@@ -240,7 +240,7 @@ namespace EXPEDIA
         {
             Conexion c = new Conexion();
             SqlConnection Conexion = c.Conectar();
-            string Sql = @"SELECT bd_id_descripcion, Descripcion FROM Descripcion";
+            string Sql = @"SELECT bd_id_descripcion, Descripcion FROM Descripcion ";
             Conexion.Open();//abrimos conexion
             SqlCommand cmd = new SqlCommand(Sql, Conexion); //ejecutamos la instruccion
             SqlDataReader reader = cmd.ExecuteReader();
@@ -705,185 +705,193 @@ namespace EXPEDIA
         protected void bt_consultarAC_Click(object sender, EventArgs e)
         {
 
-            //Dele asi mop no no syave
-            //cargar_descripcion(descripcion2);
-            //cargar_area(area2);
-            // cargar_proveedor(proveedor2);
             Conexion c = new Conexion();
             SqlConnection Conexion = c.Conectar();
-            string Sql = @"SELECT * FROM Activos WHERE bd_numero_placa = @placa OR bd_numero_serie =@placa";
-            Conexion.Open();//abrimos conexion
-            SqlCommand cmd = new SqlCommand(Sql, Conexion); //ejecutamos la instruccion            
-            cmd.Parameters.AddWithValue("@placa", placa_buscar.Text);
-            SqlDataReader reader = cmd.ExecuteReader();
-            if (reader.HasRows)
+            try
             {
-                while (reader.Read())
+                string Sql = @"SELECT * FROM Activos WHERE bd_numero_placa = @placa OR bd_numero_serie =@placa";
+                Conexion.Open();//abrimos conexion
+                SqlCommand cmd = new SqlCommand(Sql, Conexion); //ejecutamos la instruccion            
+                cmd.Parameters.AddWithValue("@placa", placa_buscar.Text);
+                SqlDataReader reader = cmd.ExecuteReader();
+                if (reader.HasRows)
                 {
-                    if (reader.GetInt16(14)!= 2)
+                    while (reader.Read())
                     {
-
-                        if (reader.GetString(0) == "Software")
+                        if (reader.GetInt16(14) != 2)
                         {
-                            this.RadioButton5.Checked = true;
-                            //this.btn5.Style.Add("background-color", "#204d74");
-                            this.RadioButton6.Checked = false;
-                            //this.btn6.Style.Add("background-color", "#337ab7");
-                            numero_placa2.Text = reader.GetString(1);
-                            numero_serie2.Text = reader.GetString(2);
-                            precio2.Text = reader.GetInt32(12).ToString();
-                            String fechaC = reader.GetDateTime(11).ToString("yyyy/MM/dd");
 
-                            fecha_compra2.Text = fechaC;
-                            /*
-                            String fechaIG = reader.GetDateTime(3).ToString("yyyy/MM/dd");*/
-
-
-                            /* inicio_garantia2.Text = fechaIG;*/
-                            String fechaFG = reader.GetDateTime(4).ToString("yyyy/MM/dd");
-
-                            final_garantia2.Text = fechaFG;
-                            //Cargar descrip para el drop
-                            String descrip = reader.GetString(5).ToString();
-                            String descripVal = cargaridDescrip(descrip);
-                            int i = 0;
-                            foreach (var item in descripcion2.Items)
+                            if (reader.GetString(0) == "Software")
                             {
-                                if (item.ToString().Equals(descripVal))
-                                {
-                                    descripcion2.SelectedIndex = i;
-                                    break;
-                                }
-                                i++;
-                            }
-                            //Cargar areas para el drop
-                            String AuxArea = reader.GetString(6).ToString();
-                            String AreaVal = cargaridArea(AuxArea);
-                            int x = 0;
-                            foreach (var item in area2.Items)
-                            {
-                                if (item.ToString().Equals(AreaVal))
-                                {
-                                    area2.SelectedIndex = x;
-                                    break;
-                                }
-                                x++;
-                            }
-                            //Cargar proveedor para el drop
-                            String AuxPro = reader.GetString(7).ToString();
-                            int y = 0;
-                            foreach (var item in proveedor2.Items)
-                            {
-                                if (item.ToString().Equals(AuxPro))
-                                {
-                                    proveedor2.SelectedIndex = y;
-                                    break;
-                                }
-                                y++;
-                            }
-                            especificacion_tecnica2.Text = reader.GetString(8);
+                                this.RadioButton5.Checked = true;
+                                //this.btn5.Style.Add("background-color", "#204d74");
+                                this.RadioButton6.Checked = false;
+                                //this.btn6.Style.Add("background-color", "#337ab7");
+                                numero_placa2.Text = reader.GetString(1);
+                                numero_serie2.Text = reader.GetString(2);
+                                precio2.Text = reader.GetInt32(12).ToString();
+                                String fechaC = reader.GetDateTime(11).ToString("yyyy/MM/dd");
 
+                                fecha_compra2.Text = fechaC;
+                                /*
+                                String fechaIG = reader.GetDateTime(3).ToString("yyyy/MM/dd");*/
+
+
+                                /* inicio_garantia2.Text = fechaIG;*/
+                                String fechaFG = reader.GetDateTime(4).ToString("yyyy/MM/dd");
+
+                                final_garantia2.Text = fechaFG;
+                                //Cargar descrip para el drop
+                                String descrip = reader.GetString(5).ToString();
+                                String descripVal = cargaridDescrip(descrip);
+                                int i = 0;
+                                foreach (var item in descripcion2.Items)
+                                {
+                                    if (item.ToString().Equals(descripVal))
+                                    {
+                                        descripcion2.SelectedIndex = i;
+                                        break;
+                                    }
+                                    i++;
+                                }
+                                //Cargar areas para el drop
+                                String AuxArea = reader.GetString(6).ToString();
+                                String AreaVal = cargaridArea(AuxArea);
+                                int x = 0;
+                                foreach (var item in area2.Items)
+                                {
+                                    if (item.ToString().Equals(AreaVal))
+                                    {
+                                        area2.SelectedIndex = x;
+                                        break;
+                                    }
+                                    x++;
+                                }
+                                //Cargar proveedor para el drop
+                                String AuxPro = reader.GetString(7).ToString();
+                                int y = 0;
+                                foreach (var item in proveedor2.Items)
+                                {
+                                    if (item.ToString().Equals(AuxPro))
+                                    {
+                                        proveedor2.SelectedIndex = y;
+                                        break;
+                                    }
+                                    y++;
+                                }
+                                especificacion_tecnica2.Text = reader.GetString(8);
+
+                            }
+                            if (reader.GetString(0) == "Hardware")
+                            {
+                                this.RadioButton5.Checked = false;
+                                this.RadioButton6.Checked = true;
+                                //this.btn5.Style.Add("background-color", "#337ab7");
+                                //this.RadioButton6.Checked = false;
+                                //this.btn6.Style.Add("background-color", "#204d74");
+                                numero_placa2.Text = reader.GetString(1);
+                                numero_serie2.Text = reader.GetString(2);
+                                precio2.Text = reader.GetInt32(12).ToString();
+                                String fechaC = reader.GetDateTime(11).ToString("yyyy/MM/dd");
+
+                                fecha_compra2.Text = fechaC;
+                                /* String fechaIG = reader.GetDateTime(3).ToString("yyyy/MM/dd");
+
+                                 inicio_garantia2.Text = fechaIG;*/
+                                String fechaFG = reader.GetDateTime(4).ToString("yyyy/MM/dd");
+
+                                final_garantia2.Text = fechaFG;
+                                //Cargar descrip para el drop
+                                String descrip = reader.GetString(5).ToString();
+                                String descripVal = cargaridDescrip(descrip);
+                                int i = 0;
+                                foreach (var item in descripcion2.Items)
+                                {
+                                    if (item.ToString().Equals(descripVal))
+                                    {
+                                        descripcion2.SelectedIndex = i;
+                                        break;
+                                    }
+                                    i++;
+                                }
+                                //Cargar areas para el drop
+                                String AuxArea = reader.GetString(6).ToString();
+                                String AreaVal = cargaridArea(AuxArea);
+                                int x = 0;
+                                foreach (var item in area2.Items)
+                                {
+                                    if (item.ToString().Equals(AreaVal))
+                                    {
+                                        area2.SelectedIndex = x;
+                                        break;
+                                    }
+                                    x++;
+                                }
+                                //Cargar proveedor para el drop
+                                String AuxPro = reader.GetString(7).ToString();
+                                int y = 0;
+                                foreach (var item in proveedor2.Items)
+                                {
+                                    if (item.ToString().Equals(AuxPro))
+                                    {
+                                        proveedor2.SelectedIndex = y;
+                                        break;
+                                    }
+                                    y++;
+                                }
+                                especificacion_tecnica2.Text = reader.GetString(8);
+                            }
+
+                            //        apellido_actualizar2.Text = reader.GetString(3);
+                            //        telefono_actualizar.Text = reader.GetString(4);
+                            //        correo_actualizar.Text = reader.GetString(5);
+                            //        contrasena_actualizar.Text = reader.GetString(6);
+                            //        rcontrasena_actualizar.Text = contrasena_actualizar.Text.ToString();
+                            //        puesto_actualizar.SelectedValue = reader.GetString(8);
+                            //        area_actualizar.SelectedValue = reader.GetString(9);
+                            //        motivos = reader.GetString(10);
+                            //        estado = reader.GetInt16(11);
+                            //    }
+                            //    if (estado == 3)
+                            //    {
+                            //        mostrarInhabilitacion(Btn_consultar, motivos, cedula_consulta.Text);
+                            //        inhabilitarCampos();
+                            //        mostrarConsulta();
+                            //    }
+                            //    else
+                            //    {
+                            //        this.controles.Style.Add("display", "block");
+                            //        excelente(Btn_consultar);
+                            //        inhabilitarCampos();
+                            //        mostrarConsulta();
+                            //    }
+                            //}
+                            //else
+                            //{
+                            //    error(Btn_consultar, " Usuario no encontrado", "");
+                            //    ocultarConsulta();
                         }
-                        if (reader.GetString(0) == "Hardware")
-                        {
-                            this.RadioButton5.Checked = false;
-                            this.RadioButton6.Checked = true;
-                            //this.btn5.Style.Add("background-color", "#337ab7");
-                            //this.RadioButton6.Checked = false;
-                            //this.btn6.Style.Add("background-color", "#204d74");
-                            numero_placa2.Text = reader.GetString(1);
-                            numero_serie2.Text = reader.GetString(2);
-                            precio2.Text = reader.GetInt32(12).ToString();
-                            String fechaC = reader.GetDateTime(11).ToString("yyyy/MM/dd");
 
-                            fecha_compra2.Text = fechaC;
-                            /* String fechaIG = reader.GetDateTime(3).ToString("yyyy/MM/dd");
-
-                             inicio_garantia2.Text = fechaIG;*/
-                            String fechaFG = reader.GetDateTime(4).ToString("yyyy/MM/dd");
-
-                            final_garantia2.Text = fechaFG;
-                            //Cargar descrip para el drop
-                            String descrip = reader.GetString(5).ToString();
-                            String descripVal = cargaridDescrip(descrip);
-                            int i = 0;
-                            foreach (var item in descripcion2.Items)
-                            {
-                                if (item.ToString().Equals(descripVal))
-                                {
-                                    descripcion2.SelectedIndex = i;
-                                    break;
-                                }
-                                i++;
-                            }
-                            //Cargar areas para el drop
-                            String AuxArea = reader.GetString(6).ToString();
-                            String AreaVal = cargaridArea(AuxArea);
-                            int x = 0;
-                            foreach (var item in area2.Items)
-                            {
-                                if (item.ToString().Equals(AreaVal))
-                                {
-                                    area2.SelectedIndex = x;
-                                    break;
-                                }
-                                x++;
-                            }
-                            //Cargar proveedor para el drop
-                            String AuxPro = reader.GetString(7).ToString();
-                            int y = 0;
-                            foreach (var item in proveedor2.Items)
-                            {
-                                if (item.ToString().Equals(AuxPro))
-                                {
-                                    proveedor2.SelectedIndex = y;
-                                    break;
-                                }
-                                y++;
-                            }
-                            especificacion_tecnica2.Text = reader.GetString(8);
-                        }
-
-                        //        apellido_actualizar2.Text = reader.GetString(3);
-                        //        telefono_actualizar.Text = reader.GetString(4);
-                        //        correo_actualizar.Text = reader.GetString(5);
-                        //        contrasena_actualizar.Text = reader.GetString(6);
-                        //        rcontrasena_actualizar.Text = contrasena_actualizar.Text.ToString();
-                        //        puesto_actualizar.SelectedValue = reader.GetString(8);
-                        //        area_actualizar.SelectedValue = reader.GetString(9);
-                        //        motivos = reader.GetString(10);
-                        //        estado = reader.GetInt16(11);
-                        //    }
-                        //    if (estado == 3)
-                        //    {
-                        //        mostrarInhabilitacion(Btn_consultar, motivos, cedula_consulta.Text);
-                        //        inhabilitarCampos();
-                        //        mostrarConsulta();
-                        //    }
-                        //    else
-                        //    {
-                        //        this.controles.Style.Add("display", "block");
-                        //        excelente(Btn_consultar);
-                        //        inhabilitarCampos();
-                        //        mostrarConsulta();
-                        //    }
-                        //}
-                        //else
-                        //{
-                        //    error(Btn_consultar, " Usuario no encontrado", "");
-                        //    ocultarConsulta();
+                        else { Habilitar_Activo(reader.GetString(1)); }
                     }
 
-                    else { Habilitar_Activo(reader.GetString(1)); }
+                    // excelente(btn_consultarAc);
+                    mostrarConsultaAC();
+                    inhabilitarCampos();
                 }
-
+                else
+                {
+                    ocultarConsulta();
+                    error(btn_consultarAc, "Disculpa", "El valor " + placa_buscar.Text + " no existe en el sistema");
+                }
+            }
+            catch (Exception ex)
+            {
+                error(btn_consultarAc, "Disculpa", "Los datos del activo no pueden ser accedidos debido a que el departamento o proveedor se encuentra inhabilitado");
+                ex.ToString();
+            }
+            finally {
                 Conexion.Close();
-               // excelente(btn_consultarAc);
-                mostrarConsultaAC();
-                inhabilitarCampos();
-            } else {
-                ocultarConsulta();
-                error(btn_consultarAc, "Disculpa", "El valor " + placa_buscar.Text + " no existe en el sistema");
             }
         }
         //metodo para ocultar bloques segun privilegios
